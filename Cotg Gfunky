@@ -6,8 +6,8 @@
 // @author Greety
 // @match https://*.crownofthegods.com
 // @grant none
-// @updateURL https://raw.githubusercontent.com/DKhub85/COTG-Dfunky/master/Dfunky.user.js
-// @downloadURL https://raw.githubusercontent.com/DKhub85/COTG-Dfunky/master/Dfunky.user.js
+// @updateURL https://raw.githubusercontent.com/bmessin1/COTG-Gfunky/master/Gfunky.user.js
+// @downloadURL https://raw.githubusercontent.com/DKhub85/COTG-Gfunky/master/Gfunky.user.js
 // ==/UserScript==
 
 (function() {
