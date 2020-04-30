@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name Cotg Gfunky
+// @name Cotg Gfunky2
 // @namespace https://github.com/bmessin1/Gfunky2
 // @version 1.0.1
 // @description Gfunky2
