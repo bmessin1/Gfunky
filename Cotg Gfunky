@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name Cotg Gfunky1
+// @name Cotg Gfunky
 // @namespace https://github.com/bmessin1/Gfunky
 // @version 1.0.1
-// @description Gfunky1
+// @description Gfunky
 // @author Greety
 // @match https://*.crownofthegods.com
 // @grant none
@@ -11,13 +11,23 @@
 // ==/UserScript==
 
 (function() {
-	
+	// popup message for players when they open the game.
+    $(document).ready(function() {
+    var popwin="<div id='HelloWorld' style='width:400px;height:400px;background-color: #E2CBAC;-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: 4px ridge #DAA520;position:absolute;right:40%;top:100px; z-index:1000000;'><div class=\"popUpBar\"> <span class=\"ppspan\">Welcome!</span><button id=\"cfunkyX\" onclick=\"$('#HelloWorld').remove();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div id='hellobody' class=\"popUpWindow\"><span style='margin-left: 5%;'> <h3 style='text-align:center;'>Welcome to Crown Of The Gods!</h3></span><br><br><span style='margin-left: 5%;'> <h4 style='text-align:center;'> GFunky(Dfunky+Raid number changes by Greety)</h4></span><br><span style='margin-left: 5%;'> <h4 style='text-align:center;'>Updated 15th Mar 2020</h4></span><br><br><span style='margin-left: 5%;'><h4>changes:</h4> <ul style='margin-left: 6%;'><li>Modified Cavern resources for more accurate troop sends 15 Mar 2020</li></ul></span></div></div>";
+        $("body").append(popwin);
+
+        setTimeout(function() {
+                            var options = {};
+                            $('#HelloWorld').hide( 'drop', options, 2000);
+                        }, 5000);
+
+
     });
     var ttts=[1,10,1,1,1,1,1,2,2,2,2,2,10,10,100,100,400,1]; //ts per unit
     var citytc;
     var message="Not enough TS to kill this boss!";
-    var other_loot=[360,1014,3560,13000,32600,57250,118400,200450,304652,445925]; //forest, hill loot
-    var mountain_loot=[360,1014,3560,13000,32600,57250,118400,200450,304652,445925];//mountain loot
+    var other_loot=[400,1050,4500,15000,34250,60000,125000,210000,320000,462000]; //forest, hill loot
+    var mountain_loot=[400,1050,4500,15000,34250,60000,125000,210000,320000,462000];//mountain loot
     var tpicdiv=["guard32 trooptdcm","bally32 trooptdcm","ranger32 trooptdcm","triari32 trooptdcm","priest32 trooptdcm","vanq32 trooptdcm","sorc32 trooptdcm","scout32 trooptdcm","arbal32 trooptdcm","praet32 trooptdcm","horsem32 trooptdcm",
                  "druid32 trooptdcm","ram32 trooptdcm","scorp32 trooptdcm","galley32 trooptdcm","sting32 trooptdcm","wship32 trooptdcm","senat32 trooptdcm"];
     var tpicdiv20=["guard20 trooptdcm","bally20 trooptdcm","ranger20 trooptdcm","triari20 trooptdcm","priest20 trooptdcm","vanq20 trooptdcm","sorc20 trooptdcm","scout20 trooptdcm","arbal20 trooptdcm","praet20 trooptdcm","horsem20 trooptdcm",
@@ -34,7 +44,7 @@
                    bid: [448,446,464,461,479,447,504,445,465,483,449,481,460,466,462,500,463,482,477,502,"467",488,489,490,491,496,498,455,467]};
     var sum=true;
     var bdcountshow=true;
-//    var loot=[0,400,1000,4500,15000,33000,60000,120000,201000,300000,446000]; //cavern loot per lvl
+//    var loot=[0,400,1050,4500,15000,342500,60000,125000,210000,320000,462000]; //cavern loot per lvl
     var bossdef=[625,3750,25000,50000,125000,187500,250000,375000,562500,750000]; //bosses defense value
     var bossdefw=[425,2500,17000,33000,83000,125000,170000,250000,375000,500000]; // bosses defense value for weakness type
     var bossmts=[6,20,100,500,2000,3500,5000,8000,12000,15000]; //minimum TS to send to a boss
@@ -3135,11 +3145,11 @@
                 if(type_dung==="Mountain"){loot1=mountain_loot;}
                 else{loot1=other_loot;}
                 var total_loot= Math.ceil((loot1[Number(dunglvl)-1] * ((1-Number(progress)/100)+1))*1.02);
-                $("#dungloctab").find(".addraiwc td:nth-child(4)").html("<button id='raid115' style='padding: 4px; border-radius: 8px;' class='greenb shRnTr'>115%</button>");
+                $("#dungloctab").find(".addraiwc td:nth-child(4)").html("<button id='raid100' style='padding: 4px; border-radius: 8px;' class='greenb shRnTr'>100%</button>");
                 $("#dungloctab").find(".addraiwc td:nth-child(2)").html("<button id='raidAll' style='padding: 4px; border-radius: 8px;' class='greenb shRnTr'>Use All TS</button>");
   //              var troops = cotg.city.troops();
                 var home;
-                $("#raid115").click(function(){
+                $("#raid100").click(function(){
                     var i=0;
                     var home_loot=0;
                     var km=[];
@@ -3150,13 +3160,13 @@
                         i+=1;
                         if (i === 17) { break; }
                     }
-                    var loot_115=Math.ceil(total_loot*1.15);
-                    if(home_loot>loot_115){
-                        var option_numbers=Math.floor(home_loot/loot_115);
+                    var loot_100=Math.ceil(total_loot*1.00);
+                    if(home_loot>loot_100){
+                        var option_numbers=Math.floor(home_loot/loot_100);
                         if(option_numbers<count){
                             $("#WCcomcount").val(option_numbers);
                         }else{$("#WCcomcount").val(count);}
-                        var templ1=((home_loot/loot_115)*100)/option_numbers;
+                        var templ1=((home_loot/loot_100)*100)/option_numbers;
                         var templ2=((templ1-100)/templ1)*100;
                         for(var i in km){
                             if(km[i]!==0){
