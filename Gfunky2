@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name Cotg Gfunky
-// @namespace https://github.com/bmessin1/Gfunky
+// @namespace https://github.com/bmessin1/Gfunky2
 // @version 1.0.1
-// @description Gfunky
+// @description Gfunky2
 // @author Greety
 // @match https://*.crownofthegods.com
 // @grant none
-// @updateURL https://raw.githubusercontent.com/bmessin1/Gfunky/master/Gfunky.user.js
-// @downloadURL https://raw.githubusercontent.com/bmessin1/Gfunky/master/Gfunky.user.js
+// @updateURL https://raw.githubusercontent.com/bmessin1/Gfunky/master/Gfunky2.user.js
+// @downloadURL https://raw.githubusercontent.com/bmessin1/Gfunky/master/Gfunky2.user.js
 // ==/UserScript==
 
 (function() {
