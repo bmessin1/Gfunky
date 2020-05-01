@@ -7,8 +7,8 @@
 // @match https://*.crownofthegods.com
 // include https://*.crownofthegods.com/world
 // @grant none
-// @updateURL https://raw.githubusercontent.com/bmessin1/Gfunky/master/Gfunky3.user.js
-// @downloadURL https://raw.githubusercontent.com/bmessin1/Gfunky/master/Gfunky3.user.js
+// @updateURL https://raw.githubusercontent.com/bmessin1/Gfunky/master/gfunky3.user.js
+// @downloadURL https://raw.githubusercontent.com/bmessin1/Gfunky/master/gfunky3.user.js
 // ==/UserScript==
 
 (function() {
