@@ -5,6 +5,7 @@
 // @description Gfunky3
 // @author Greety
 // @match https://*.crownofthegods.com
+// include https://*.crownofthegods.com/world
 // @grant none
 // @updateURL https://raw.githubusercontent.com/bmessin1/Gfunky/master/Gfunky3.user.js
 // @downloadURL https://raw.githubusercontent.com/bmessin1/Gfunky/master/Gfunky3.user.js
