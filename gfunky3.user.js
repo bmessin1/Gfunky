@@ -3328,7 +3328,7 @@ var _0x09b7 = function (_0x207f3e, _0x36644f) {
         bdcountbox+="<div id='bdcountbut' class='tradeqarr2'><div></div></div><span class='qbspan'>Current Buildings</span>";
         bdcountbox+="<div id='numbdleft' class='barRightFloat tooltipstered'>0</div>";
         bdcountbox+="</div><div id='bdcountwin' class='queueWindow' style='display: block;'></div></div>";
-        $("#buildQueue").before(fourbutton);
+        $("#lioDiv").before(fourbutton);
         var fillbut='<button id="fillque" class="greenb tooltipstered" style="height:18px; width:40px; margin-left:7px; margin-top:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;">Fill</button>';
         $('#sortbut').after(fillbut);
         $('#fillque').click(function() {
