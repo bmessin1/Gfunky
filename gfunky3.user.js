@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Cotg Gfunky3
 // @namespace https://github.com/bmessin1/Gfunky3
-// @version 1.0.3
+// @version 1.0.4
 // @description Gfunky3
 // @author Greety
 // @match https://*.crownofthegods.com
@@ -13,8 +13,7 @@
 (function() {
 	// popup message for players when they open the game.
     $(document).ready(function() {
-    var popwin="<div id='HelloWorld' style='width:400px;height:400px;background-color: #E2CBAC;-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: 4px ridge #DAA520;position:absolute;right:40%;top:100px; z-index:1000000;'><div class=\"popUpBar\"> <span class=\"ppspan\">Welcome!</span><button id=\"cfunkyX\" onclick=\"$('#HelloWorld').remove();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div id='hellobody' class=\"popUpWindow\"><span style='margin-left: 5%;'> <h3 style='text-align:center;'>Welcome to Crown Of The Gods!</h3></span><br><br><span style='margin-left: 5%;'> <h4 style='text-align:center;'> GFunky3(Dfunky by Dhruv +QuickBuild by Lionell0 + Raid changes by Greety + Coords by Fact)</h4></span><br><span style='margin-left: 5%;'> <h4 style='text-align:center;'>Updated 30th Apr 2020</h4></span><br><br><span style='margin-left: 5%;'><h4>changes:</h4> <ul style='margin-left: 6%;'><li>Modified to add quickbuild, and city notes coordinates 30 Apr 2020</li></ul></span></div></div>";
-        $("body").append(popwin);
+    var popwin="<div id='HelloWorld' style='width:400px;height:600px;background-color: #E2CBAC;-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: 4px ridge #DAA520;position:absolute;right:40%;top:100px; z-index:1000000;'><div class=\"popUpBar\"> <span class=\"ppspan\">Welcome!</span><button id=\"cfunkyX\" onclick=\"$('#HelloWorld').remove();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div id='hellobody' class=\"popUpWindow\"><span style='margin-left: 5%;'> <h3 style='text-align:center;'>Welcome to Crown Of The Gods!</h3></span><br><br><span style='margin-left: 5%;'> <h4 style='text-align:center;'> GFunky3(Dfunky by Dhruv +QuickBuild by Lionell0 + Raid changes by Greety + Coords by Fact)</h4></span><br><span style='margin-left: 5%;'><h4 style='text-align:center;'>Updated 3rd May 2020</h4></span><br><br><span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;'><li>added quickbuild, city notes coordinates, 100% and 115% Raid options</li></ul></span></div></div>";        $("body").append(popwin);
 
         setTimeout(function() {
                             var options = {};
@@ -4619,6 +4618,7 @@ var _0x09b7 = function (_0x207f3e, _0x36644f) {
                 else{loot1=other_loot;}
                 var total_loot= Math.ceil((loot1[Number(dunglvl)-1] * ((1-Number(progress)/100)+1))*1.02);
                 $("#dungloctab").find(".addraiwc td:nth-child(4)").html("<button id='raid100' style='padding: 4px; border-radius: 8px;' class='greenb shRnTr'>100%</button>");
+                $("#dungloctab").find(".addraiwc td:nth-child(5)").html("<button id='raid115' style='padding: 4px; border-radius: 8px;' class='greenb shRnTr'>115%</button>");
                 $("#dungloctab").find(".addraiwc td:nth-child(2)").html("<button id='raidAll' style='padding: 4px; border-radius: 8px;' class='greenb shRnTr'>Use All TS</button>");
   //              var troops = cotg.city.troops();
                 var home;
@@ -4640,6 +4640,36 @@ var _0x09b7 = function (_0x207f3e, _0x36644f) {
                             $("#WCcomcount").val(option_numbers);
                         }else{$("#WCcomcount").val(count);}
                         var templ1=((home_loot/loot_100)*100)/option_numbers;
+                        var templ2=((templ1-100)/templ1)*100;
+                        for(var i in km){
+                            if(km[i]!==0){
+                                var templ3=km[i]/option_numbers;
+                                km[i]=Math.floor(templ3*(1-(templ2/100)));
+                                $("#rval"+i).val(km[i]);
+                                if(km[14]){$("#rval14").val("0");}
+                            }
+                        }
+                        carry_percentage(total_loot);
+                    }
+                });
+                $("#raid115").click(function(){
+                    var i=0;
+                    var home_loot=0;
+                    var km=[];
+                    for(var x in citytc) {
+                        home=Number(citytc[x]);
+                        home_loot+=home*ttloot[i];
+                        km.push(home);
+                        i+=1;
+                        if (i === 17) { break; }
+                    }
+                    var loot_115=Math.ceil(total_loot*1.15);
+                    if(home_loot>loot_115){
+                        var option_numbers=Math.floor(home_loot/loot_115);
+                        if(option_numbers<count){
+                            $("#WCcomcount").val(option_numbers);
+                        }else{$("#WCcomcount").val(count);}
+                        var templ1=((home_loot/loot_115)*100)/option_numbers;
                         var templ2=((templ1-100)/templ1)*100;
                         for(var i in km){
                             if(km[i]!==0){
