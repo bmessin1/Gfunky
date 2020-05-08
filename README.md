@@ -20,3 +20,6 @@ This script has the following
 18. buttons for 100% and 115% raiding options in War councilor by Greety.
 19. Shrine Planner
 20. Fixed Summary Tabs by Fact
+21. removed fill button from build que - Now in overviews
+22. Added Note to Summary incoming attacks that this is now on overviews Page
+23. Fixed sizing issues for summary all summary tabs
