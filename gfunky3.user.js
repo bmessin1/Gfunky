@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Cotg Gfunky3
 // @namespace https://github.com/bmessin1/Gfunky3
-// @version 1.0.4
+// @version 1.0.5
 // @description Gfunky3
 // @author Greety
 // @match https://*.crownofthegods.com
@@ -13,12 +13,12 @@
 (function() {
 	// popup message for players when they open the game.
     $(document).ready(function() {
-    var popwin="<div id='HelloWorld' style='width:400px;height:600px;background-color: #E2CBAC;-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: 4px ridge #DAA520;position:absolute;right:40%;top:100px; z-index:1000000;'><div class=\"popUpBar\"> <span class=\"ppspan\">Welcome!</span><button id=\"cfunkyX\" onclick=\"$('#HelloWorld').remove();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div id='hellobody' class=\"popUpWindow\"><span style='margin-left: 5%;'> <h3 style='text-align:center;'>Welcome to Crown Of The Gods!</h3></span><br><br><span style='margin-left: 5%;'> <h4 style='text-align:center;'> GFunky3(Dfunky by Dhruv +QuickBuild by Lionell0 + Raid changes by Greety + Coords by Fact)</h4></span><br><span style='margin-left: 5%;'><h4 style='text-align:center;'>Updated 3rd May 2020</h4></span><br><br><span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;'><li>added quickbuild, city notes coordinates, 100% and 115% Raid options</li></ul></span></div></div>";        $("body").append(popwin);
+    var popwin="<div id='HelloWorld' style='width:400px;height:600px;background-color: #E2CBAC;-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: 4px ridge #DAA520;position:absolute;right:40%;top:100px; z-index:1000000;'><div class=\"popUpBar\"> <span class=\"ppspan\">Welcome!</span><button id=\"cfunkyX\" onclick=\"$('#HelloWorld').remove();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div id='hellobody' class=\"popUpWindow\"><span style='margin-left: 5%;'> <h3 style='text-align:center;'>Welcome to Crown Of The Gods!</h3></span><br><br><span style='margin-left: 5%;'> <h4 style='text-align:center;'> GFunky3(Dfunky by Dhruv +QuickBuild by Lionell0 + Raid changes by Greety + Coords by Fact)</h4></span><br><span style='margin-left: 5%;'><h4 style='text-align:center;'>Updated 8th May 2020</h4></span><br><br><span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;'><li>fixed summary tabs</li></ul></span></div></div>";        $("body").append(popwin);
 
         setTimeout(function() {
                             var options = {};
                             $('#HelloWorld').hide( 'drop', options, 2000);
-                        }, 5000);
+                        }, 3000);
 
 var _0x9b70 = [
     '\x23\x69\x6e\x63\x41\x74\x74\x61\x63\x6b\x73\x44\x69\x76',
@@ -1504,6 +1504,8 @@ var _0x09b7 = function (_0x207f3e, _0x36644f) {
     var layoutsl=[""];
     var layoutsw=[""];
     var layoutdf=[""];
+	var today= new Date();
+    var hidespf=false;
     var cdata; //city data return
     var wdata; //world data
     var pldata; //players list on server
@@ -5608,86 +5610,119 @@ var _0x09b7 = function (_0x207f3e, _0x36644f) {
         jQuery.ajax({url: 'includes/mnio.php',type: 'POST',aysnc:false,data: dat});
     }
     //Summary
-     function opensumwin() {
-         sum=false;
-         var sumwin="<div id='sumWin' style='width:60%;height:50%;left: 360px; z-index: 2000;' class='popUpBox'><div id='popsum' class='popUpBar'><span class=\"ppspan\">Cities Summaries</span> <button id=\"sumX\" onclick=\"$('#sumWin').hide();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div class=\"popUpWindow\" style='height:100%'>";
-         sumwin+="<div id='sumdiv' class='beigetabspopup' style='background:none;border: none;padding: 0px;height:74%;'><ul id='sumtabs' role='tablist'><li role='tab'><a href='#resTab' role='presentation'>Resources</a></li>";
-         sumwin+="<li role='tab'><a href='#troopsTab' role='presentation'>Troops</a></li><li role='tab'><a href='#raidTab' role='presentation'>Raids</a></li><li role='tab'><a href='#raidoverTab' role='presentation'>Raids Overview</a></li>";
-         sumwin+="<li role='tab'><a href='#supportTab' role='presentation'>Support</a></li></ul>";
-         sumwin+="<div id='resTab'><button id='resup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button><span style='margin-left:50px;'>Show cities from: </span>";
-         sumwin+="<div class='beigemenutable scroll-pane' style='width:99%;height:100%;margin-left:4px;' ><table id='restable'>";
-         sumwin+="<thead><th>Name</th><th colspan='2'>Notes</th><th>Coords</th><th>Wood</th><th>(Storage)</th><th>Stones</th><th>(Storage)</th><th>Iron</th><th>(Storage)</th><th>Food</th><th>(Storage)</th><th>Carts</th><th>(Total)</th><th>Ships</th><th>(Total)</th><th>Score</th></thead></table></div></div>";
-         sumwin+="<div id='troopsTab'><button id='troopsup' class='greenb' style='font-size:14px;border-radius:6px;margin:4px;'>Update</button><span style='margin-left:50px;'>Show cities from: </span>";
-         sumwin+="<div  class='beigemenutable scroll-pane' style='width:99%;height:95%;margin-left:4px;'><table id='troopstable' style='width:250%'>";
-         sumwin+="<thead><tr data='0'><th>Name</th><th style='width:150px;'>Notes</th><th>Coords</th><th><div class='"+tpicdiv[8]+"'></div>(home)</th><th>(Total)</th><th><div class='"+tpicdiv[1]+"'></div>(home)</th><th>(Total)</th><th><div class='"+tpicdiv[11]+"'></div>(home)</th><th>(Total)</th></th>";
-         sumwin+="<th><div class='"+tpicdiv[14]+"'></div>(home)</th><th>(Total)</th><th><div class='"+tpicdiv[0]+"'></div>(home)</th><th>(Total)</th><th><div class='"+tpicdiv[10]+"'></div>(home)</th><th>(Total)</th><th><div class='"+tpicdiv[9]+"'></div>(home)</th><th>(Total)</th><th><div class='"+tpicdiv[4]+"'></div>(home)</th><th>(Total)</th><th><div class='"+tpicdiv[12]+"'></div>(home)</th><th>(Total)</th>";
-         sumwin+="<th><div class='"+tpicdiv[2]+"'></div>(home)</th><th>(Total)</th><th><div class='"+tpicdiv[13]+"'></div>(home)</th><th>(Total)</th><th><div class='"+tpicdiv[7]+"'></div>(home)</th><th>(Total)</th><th><div class='"+tpicdiv[17]+"'></div>(home)</th><th>(Total)</th><th><div class='"+tpicdiv[6]+"'></div>(home)</th><th>(Total)</th><th><div class='"+tpicdiv[15]+"'></div>(home)</th><th>(Total)</th>";
-         sumwin+="<th><div class='"+tpicdiv[3]+"'></div>(home)</th><th>(Total)</th><th><div class='"+tpicdiv[5]+"'></div>(home)</th><th>(Total)</th><th><div class='"+tpicdiv[16]+"'></div>(home)</th><th>(Total)</th><th>TS(home)</th><th>(Total)</th>";
-         sumwin+="</tr></thead></table></div></div>";
-         sumwin+="<div id='raidTab'><button id='raidup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button><span style='margin-left:50px;'>Number of reports to show:</span><select id='raidsturnc' class='greensel'><option value='100'>100</option><option value='500'>500</option><option value='1000'>1000</option><option value='10000'>10000</option></select>";
-         sumwin+="<div class='beigemenutable scroll-pane' style='width:99%;height:110%;margin-left:4px;' ><table id='raidtable'>";
-         sumwin+="<thead><th>Report</th><th>Type</th><th>Cavern progress</th><th>losses</th><th>Carry</th><th>Date</th><th>Origin</th></thead></table></div></div>";
-         sumwin+="<div id='raidoverTab'><button id='raidoverup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button><span style='margin-left:50px;'>Show cities from: </span>";
-         sumwin+="<div class='beigemenutable scroll-pane' style='width:99%;height:100%;margin-left:4px;' ><table id='raidovertable'>";
-         sumwin+="<thead><th></th><th>Name</th><th colspan='2'>Notes</th><th>Coords</th><th>Raids</th><th>Out</th><th>In</th><th>Raiding TS</th><th>Resources</th></thead></table></div></div>";
-         sumwin+="<div id='supportTab'><button id='supportup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button>";
-         sumwin+="<div class='beigemenutable scroll-pane' style='width:99%;height:110%;margin-left:4px;' ><table id='supporttable'>";
-         sumwin+="<thead><th></th><th>Player</th><th>City</th><th>Coords</th><th>Alliance</th><th>TS supporting</th><th>TS sending</th><th>TS returning</th></thead></table></div></div>";
-         sumwin+="</div></div>";
-         $("#reportsViewBox").after(sumwin);
-         $( "#sumWin" ).draggable({ handle: ".popUpBar" , containment: "window", scroll: false});
-         $( "#sumWin" ).resizable();
-         $(".popUpBar").click(function() {
-             if ($(this).parent().attr("id")=="sumWin") {
-                 setTimeout(function() {
-                     $("#sumWin").css("z-index",4001);
-                 },200);
-             } else {
-                 setTimeout(function() {
-                     $("#sumWin").css("z-index",3000);
+    function opensumwin() {
+        sum=false;
+        //console.log(1);
+        var sumwin="<div id='sumWin' style='width:60%;height:50%;left: 360px; z-index: 2000;' class='popUpBox'><div id='popsum' class='popUpBar'><span class=\"ppspan\">Cities Summaries</span> <button id=\"sumX\" onclick=\"$('#sumWin').hide();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div class=\"popUpWindow\" style='height:100%'>";
+        sumwin+="<div id='sumdiv' class='beigetabspopup' style='background:none;border: none;padding: 0px;height:74%;'><ul id='sumtabs' role='tablist'><li role='tab'><a href='#resTab' role='presentation'>Resources</a></li>";
+        sumwin+="<li role='tab'><a href='#troopsTab' role='presentation'>Troops</a></li><li role='tab'><a href='#raidTab' role='presentation'>Raids</a></li><li role='tab'><a href='#raidoverTab' role='presentation'>Raids Overview</a></li>";
+        sumwin+="<li role='tab'><a href='#supportTab' role='presentation'>Support</a></li><li role='tab'><a href='#incomingTab' role='presentation'>Incoming</a></li></ul>";
+        sumwin+="<div id='resTab'><button id='resup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button><button class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'><div class='button'><a href='#' id ='resexp' role='button' style='color:white;'>Export</a></div></button><span id='respan' style='margin-left:50px;'>Show cities from: </span>";
+        sumwin+="<div class='beigemenutable scroll-pane' style='width:99%;height:100%;margin-left:4px;' ><table id='restable'>";
+        sumwin+="<thead><th>Name</th><th colspan='2'>Notes</th><th>Coords</th><th>Wood</th><th>(Storage)</th><th>Stones</th><th>(Storage)</th><th>Iron</th><th>(Storage)</th><th>Food</th><th>(Storage)</th><th>Carts</th><th>(Total)</th><th>Ships</th><th>(Total)</th><th>Score</th></thead></table></div></div>";
+        sumwin+="<div id='troopsTab'><button id='troopsup' class='greenb' style='font-size:14px;border-radius:6px;margin:4px;'>Update</button><button class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'><div class='button'><a href='#' id ='troopsexp' role='button' style='color:white;'>Export</a></div></button>";
+        sumwin+="<button id='hidespfbut' class='greenb' style='font-size:14px;border-radius:6px;margin:4px;'>Hide Specific Troops Columns</button><span id='troopspan' style='margin-left:50px;'>Show cities from: </span>";
+        sumwin+="<div  class='beigemenutable scroll-pane' style='width:99%;height:95%;margin-left:4px;'><table id='troopstable' style='width:250%'>";
+        sumwin+="<thead><tr data='0'><th>Name</th><th style='width:150px;'>Notes</th><th>Coords</th><th class='spf'><div class='"+tpicdiv[8]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[1]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[11]+"'></div>(home)</th><th class='spf'>(Total)</th>";
+        sumwin+="<th class='spf'><div class='"+tpicdiv[14]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[0]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[10]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[9]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[4]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[12]+"'></div>(home)</th><th class='spf'>(Total)</th>";
+        sumwin+="<th class='spf'><div class='"+tpicdiv[2]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[13]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[7]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[17]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[6]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[15]+"'></div>(home)</th><th class='spf'>(Total)</th>";
+        sumwin+="<th class='spf'><div class='"+tpicdiv[3]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[5]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[16]+"'></div>(home)</th><th class='spf'>(Total)</th><th>TS(home)</th><th>(Total)</th>";
+        sumwin+="</tr></thead></table></div></div>";
+        sumwin+="<div id='raidTab'><button id='raidup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button><span style='margin-left:50px;'>Number of reports to show: </span><select id='raidsturnc' class='greensel' style='border-radius:4px;'><option value='100'>100</option><option value='500'>500</option><option value='1000'>1000</option><option value='10000'>10000</option></select>";
+        sumwin+="<div class='beigemenutable scroll-pane' style='width:99%;height:110%;margin-left:4px;' ><table id='raidtable'>";
+        sumwin+="<thead><th>Report</th><th>Type</th><th>Cavern progress</th><th>losses</th><th>Carry</th><th>Date</th><th>Origin</th></thead></table></div></div>";
+        sumwin+="<div id='raidoverTab'><button id='raidoverup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button><button class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'><div class='button'><a href='#' id ='raidexp' role='button' style='color:white;'>Export</a></div></button><span id='raidspan' style='margin-left:50px;'>Show cities from: </span>";
+        sumwin+="<div class='beigemenutable scroll-pane' style='width:99%;height:100%;margin-left:4px;' ><table id='raidovertable'>";
+        sumwin+="<thead><th></th><th>Name</th><th colspan='2'>Notes</th><th>Coords</th><th>Raids</th><th>Out</th><th>In</th><th>Raiding TS</th><th>Resources</th></thead></table></div></div>";
+        sumwin+="<div id='supportTab'><button id='supportup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button>";
+        sumwin+="<div class='beigemenutable scroll-pane' style='width:99%;height:110%;margin-left:4px;' ><table id='supporttable'>";
+        sumwin+="<thead><th></th><th>Player</th><th>City</th><th>Coords</th><th>Alliance</th><th>TS supporting</th><th>TS sending</th><th>TS returning</th></thead></table></div></div>";
+        sumwin+="<div id='incomingTab'><button id='incomingup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button><span id='incomingspan' style='margin-left:50px;'>Show cities from: </span><span style='margin-left: 20px;color: green;'>Supporting</span><span>/</span><span style='color: #949400;'>Incoming before attack</span><span>/</span><span style='color: red;'>Incoming after attack</span>";
+        sumwin+="<div class='beigemenutable scroll-pane' style='width:99%;height:110%;margin-left:4px;' ><table id='incomingtable' style='width:150%'>";
+        sumwin+="<thead><th>Player</th><th>City</th><th>Coords</th><th># of attacks</th><th><div class='"+tpicdiv[2]+"'</div></th><th><div class='"+tpicdiv[3]+"'</div>/th><th><div class='"+tpicdiv[4]+"'</div></th><th><div class='"+tpicdiv[7]+"'</div></th><th><div class='"+tpicdiv[8]+"'</div></th><th><div class='"+tpicdiv[9]+"'</div></th><th><div class='"+tpicdiv[15]+"'</div></th><th><div class='"+tpicdiv[14]+"'</div></th><th><div class='"+tpicdiv[1]+"'</div></th><th>other</th><th colspan='2'>TS total</th><th>Next attack</th></thead></table></div></div>";
+        sumwin+="</div></div>";
+        $("#reportsViewBox").after(sumwin);
+        $( "#sumWin" ).draggable({ handle: ".popUpBar" , containment: "window", scroll: false});
+        $( "#sumWin" ).resizable();
+        $(".popUpBar").click(function() {
+            //console.log("popup");
+            if ($(this).parent().attr("id")=="sumWin") {
+                setTimeout(function() {
+                    $("#sumWin").css("z-index",4001);
                 },200);
-             }
+            } else {
+                setTimeout(function() {
+                    $("#sumWin").css("z-index",3000);
+                },200);
+            }
         });
-         $( "#sumdiv" ).tabs();
-         var selres=$("#organiser").clone(false).attr({id:"selRes",style:"height: 30px;width:150px;font-size:14px;border-radius:6px;margin:7px"});
-         var seltroops=$("#organiser").clone(false).attr({id:"selTroops",style:"height: 30px;width:150px;font-size:14px;border-radius:6px;margin:7px"});
-         var selraids=$("#organiser").clone(false).attr({id:"selRaids",style:"height: 30px;width:150px;font-size:14px;border-radius:6px;margin:7px"});
-         $("#resup").next().after(selres);
-         $("#troopsup").next().after(seltroops);
-         $("#raidoverup").next().after(selraids);
-         $("#selTroops").val("all").change();
-         $("#selRes").val("all").change();
-         $("#selRaids").val("all").change();
-         //tabs.tabs( "refresh" );
-         $("#resup").click(function() {
-             $("#selRes").val("all").change();
-             jQuery.ajax({url: 'overview/citover.php',type: 'POST',aysnc:false,
-                          success: function(data) {
-                              var sumres=JSON.parse(data);
-                              updateres(sumres);
-                         }
-                         });
-         });
-         $("#troopsup").click(function() {
-             $("#selTroops").val("all").change();
-             var notes={id:[],notes:[]};
-             jQuery.ajax({url: 'overview/citover.php',type: 'POST',aysnc:false,
-                          success: function(data) {
+        $( "#sumdiv" ).tabs();
+        var selres=$("#organiser").clone(false).attr({id:"selres",style:"height: 30px;width:150px;font-size:14px;border-radius:6px;margin:7px"});
+        var seltroops=$("#organiser").clone(false).attr({id:"seltroops",style:"height: 30px;width:150px;font-size:14px;border-radius:6px;margin:7px"});
+        var selraids=$("#organiser").clone(false).attr({id:"selraid",style:"height: 30px;width:150px;font-size:14px;border-radius:6px;margin:7px"});
+        var selcres=$("#idleCsel").clone(false).attr({id:"selcres",style:"width:150px;height:30px;font-size:14px;border-radius:6px;margin:7px"});
+        var selcraid=$("#idleCsel").clone(false).attr({id:"selcraid",style:"width:150px;height:30px;font-size:14px;border-radius:6px;margin:7px"});
+        var selctroops=$("#idleCsel").clone(false).attr({id:"selctroops",style:"width:150px;height:30px;font-size:14px;border-radius:6px;margin:7px"});
+        var selcinc=$("#idleCsel").clone(false).attr({id:"selcincoming",style:"width:150px;height:30px;font-size:14px;border-radius:6px;margin:7px"});
+        $("#respan").after(selres);
+        $("#troopspan").after(seltroops);
+        $("#raidspan").after(selraids);
+        $("#incomingspan").after(selcinc);
+        $("#selres").after(selcres);
+        $("#seltroops").after(selctroops);
+        $("#selraid").after(selcraid);
+        $("#seltroops").val("all").change();
+        $("#selres").val("all").change();
+        $("#selraid").val("all").change();
+        $("#selcres").val(56).change();
+        $("#selcraid").val(56).change();
+        $("#selctroops").val(56).change();
+        $("#selcincoming").val(56).change();
+        //tabs.tabs( "refresh" );
+        $("#hidespfbut").click(function() {
+            if (hidespf) {
+                hidespf=false;
+                $(".spf").show();
+                $(".nspf").hide();
+                $("#troopstable").css("width","250%");
+                $(this).html("Hide Specific Troops Columns");
+            } else {
+                hidespf=true;
+                $(".spf").hide();
+                $(".nspf").show();
+                $("#troopstable").css("width","100%");
+                $(this).html("Show Specific Troops Columns");
+            }
+        });
+        $("#resup").click(function() {
+            $("#selres").val("all").change();
+            jQuery.ajax({url: 'overview/citover.php',type: 'POST',aysnc:false,
+                         success: function(data) {
                              var sumres=JSON.parse(data);
-                              $.each(sumres, function() {
-                                  notes.id.push(this.id);
-                                  notes.notes.push(this.reference);
-                              });
-                              jQuery.ajax({url: 'overview/trpover.php',type: 'POST',aysnc:false,
+                             updateres(sumres);
+                         }
+                        });
+        });
+        $("#troopsup").click(function() {
+            $("#seltroops").val("all").change();
+            var notes={id:[],notes:[]};
+            jQuery.ajax({url: 'overview/citover.php',type: 'POST',aysnc:false,
+                         success: function(data) {
+                             var sumres=JSON.parse(data);
+                             $.each(sumres, function() {
+                                 notes.id.push(this.id);
+                                 notes.notes.push(this.reference);
+                             });
+                             jQuery.ajax({url: 'overview/trpover.php',type: 'POST',aysnc:false,
                                           success: function(data) {
                                               var troopsres=JSON.parse(data);
                                               updatetroops(troopsres,notes);
                                           }
-                                          });
-                          }
-                         });
-         });
-         $("#raidup").click(function() {
+                                         });
+                         }
+                        });
+        });
+        $("#raidup").click(function() {
             jQuery.ajax({url: 'overview/rreps.php',type: 'POST',aysnc:false,
                          success: function(data) {
                              var raids=JSON.parse(data);
@@ -5695,24 +5730,25 @@ var _0x09b7 = function (_0x207f3e, _0x36644f) {
                          }
                         });
         });
-         $("#raidoverup").click(function() {
-             var notes={id:[],notes:[]};
-             jQuery.ajax({url: 'overview/citover.php',type: 'POST',aysnc:false,
-                          success: function(data) {
-                              var sumres=JSON.parse(data);
-                              $.each(sumres, function() {
-                                  notes.id.push(this.id);
-                                  notes.notes.push(this.reference);
-                              });
-                              jQuery.ajax({url: 'overview/graid.php',type: 'POST',aysnc:false,
-                                           success: function(data) {
+        $("#raidoverup").click(function() {
+            $("#selraid").val("all").change();
+            var notes={id:[],notes:[]};
+            jQuery.ajax({url: 'overview/citover.php',type: 'POST',aysnc:false,
+                         success: function(data) {
+                             var sumres=JSON.parse(data);
+                             $.each(sumres, function() {
+                                 notes.id.push(this.id);
+                                 notes.notes.push(this.reference);
+                             });
+                             jQuery.ajax({url: 'overview/graid.php',type: 'POST',aysnc:false,
+                                          success: function(data) {
                                               var raids=JSON.parse(data);
                                               updateraidover(raids,notes);
-                                           }
-                                          });
-                          }
-                         });
-         });
+                                          }
+                                         });
+                         }
+                        });
+        });
         $("#supportup").click(function() {
             jQuery.ajax({url: 'overview/reinover.php',type: 'POST',aysnc:false,
                          success: function(data) {
@@ -5721,77 +5757,186 @@ var _0x09b7 = function (_0x207f3e, _0x36644f) {
                          }
                         });
         });
-         var citylist=[];
-         $("#selTroops").change(function() {
-             if ( $("#selTroops").val()=="all") {
-                 $("#troopstable tr").each(function() {
+        $("#incomingup").click(function() {
+            jQuery.ajax({url: 'overview/incover.php',type: 'POST',aysnc:false,
+                         success: function(data) {
+                             var incoming=JSON.parse(data);
+                             updateincoming(incoming);
+                         }
+                        });
+        });
+        var citylist=[];
+        $("#seltroops").change(function() {
+            filtertroops("troops");
+        });
+        $("#selctroops").change(function() {
+            filtertroops("troops");
+        });
+        $("#selcincoming").change(function() {
+            if ($("#selcincoming").val()=="56") {
+                $("#incomingtable tr").each(function() {
                     $(this).show();
                 });
-             } else {
-                 $.each(pdata.clc, function(key, value) {
-                     if (key==$("#selTroops").val()) {
-                         citylist=value;
-                     }
-                 });
-                 $("#troopstable tr").each(function() {
-                    if (citylist.indexOf(Number($(this).attr("data")))>-1) {
-                        $(this).show();
-                    } else if (Number($(this).attr("data"))!=0) {
-                        $(this).hide();
-                    }
-                });
-             }
-         });
-         $("#selRes").change(function() {
-             if ( $("#selRes").val()=="all") {
-                $("#restable tr").each(function() {
-                    $(this).show();
-                });
-             } else {
-                 $.each(pdata.clc, function(key, value) {
-                    if (key==$("#selRes").val()) {
-                        citylist=value;
-                    }
-                 });
-                 $("#restable tr").each(function() {
-                    if (citylist.indexOf(Number($(this).attr("data")))>-1) {
-                        $(this).show();
-                    } else if (Number($(this).attr("data"))!=0) {
-                        $(this).hide();
-                    }
-                });
-             }
-         });
-         $("#selRaids").change(function() {
-             if ( $("#selRsaids").val()=="all") {
-                 $("#raidovertable tr").each(function() {
-                     $(this).show();
-                 });
             } else {
-                $.each(pdata.clc, function(key, value) {
-                    if (key==$("#selRaids").val()) {
-                        citylist=value;
-                    }
-                });
-                $("#raidovertable tr").each(function() {
-                    if (citylist.indexOf(Number($(this).attr("data")))>-1) {
-                        $(this).show();
-                    } else if (Number($(this).attr("data"))!=0) {
-                        $(this).hide();
+                $("#incomingtable tr").each(function() {
+                    if ($($(this).children()[0]).is( "td" )) {
+                        if ($(this).attr("cont")==$("#selcincoming").val()) {
+                            $(this).show();
+                        } else {
+                            $(this).hide();
+                        }
                     }
                 });
             }
-         });
-     }
+        });
+        function filtertroops(type) {
+            var clist=$("#sel"+type).val();
+            var con=Number($("#selc"+type).val());
+            var clistbool;
+            var contbool;
+            if (clist!="all") {
+                //console.log("1");
+                $.each(poll2.player.clc, function(key, value) {
+                    if (key==clist) {
+                        citylist=value;
+                    }
+                });
+            }
+            if (type=="raid") {
+                type+="over";
+            }
+            $("#"+type+"table tr").each(function() {
+                if ($(this).attr("class")!="nofilter") {
+                    if ($($(this).children()[0]).is( "td" )) {
+                        if (con==56) {
+                            contbool=true;
+                        } else {
+                            if (con==Number($(this).attr("cont"))) {
+                                contbool=true;
+                            } else {
+                                contbool=false;
+                            }
+                        }
+                        if ( clist=="all") {
+                            clistbool=true;
+                        } else {
+                            if (citylist.indexOf(Number($(this).attr("data")))>-1) {
+                                clistbool=true;
+                            } else {
+                                clistbool=false;
+                            }
+                        }
+                        //console.log(clistbool,contbool);
+                        if (clistbool && contbool) {
+                            //console.log("show");
+                            $(this).show();
+                        } else {
+                            //console.log("hide");
+                            $(this).hide();
+                        }
+                    }
+                }
+            });
+        }
+        $("#selres").change(function() {
+            filtertroops("res");
+        });
+        $("#selcres").change(function() {
+            filtertroops("res");
+        });
+        $("#selraid").change(function() {
+            filtertroops("raid");
+        });
+        $("#selcraid").change(function() {
+            filtertroops("raid");
+        });
+    }
+    //update incomings summary
+    function updateincoming(data) {
+        var inctab="<thead><th>Player</th><th>City</th><th>Coords</th><th># of attacks</th><th><div class='"+tpicdiv[2]+"'</div></th><th><div class='"+tpicdiv[3]+"'</div>/th><th><div class='"+tpicdiv[4]+"'</div></th><th><div class='"+tpicdiv[7]+"'</div></th><th><div class='"+tpicdiv[8]+"'</div></th><th><div class='"+tpicdiv[9]+"'</div></th><th><div class='"+tpicdiv[15]+"'</div></th><th><div class='"+tpicdiv[14]+"'</div></th><th><div class='"+tpicdiv[1]+"'</div></th><th>other</th><th colspan='2'>TS total</th><th>Next attack</th></thead><tbody>";
+        var i=0;
+        var ttd=[2,3,4,7,8,9,15,14,1];
+        $.each(data.a, function(key,value) {
+            var reinf=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+            var inc=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+            var incl=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+            var tsreinf=0;
+            var tsinc=0;
+            var tsincl=0;
+            var tempx=Number(key%65536);
+            var tempy=Number((key-tempx)/65536);
+            var cont=Number(Math.floor(tempx/100)+10*Math.floor(tempy/100));
+            var atime;
+            inctab+="<tr cont='"+cont+"'><td class='playerblink'>"+this[0]+"</td><td>"+this[1]+"</td><td class='coordblink shcitt' data='"+key+"'>"+tempx+":"+tempy+"</td><td>"+this[3]+"</td>";
+            var att=false;
+            for (var i in this[9]) {
+                if (this[9][i][5]=="3") {
+                    if (this[9][i][7]=="on support" || this[9][i][7]=="home") {
+                        if (this[9][i][3].length>0) {
+                            for (var j in this[9][i][3]) {
+                                var tmp=this[9][i][3][j].split(" ");
+                                var tt=ttname.indexOf(tmp[1]);
+                                var tts=Number(tmp[0].replace(/,/g,""));
+                                if (ttd.indexOf(tt)==-1) {
+                                    reinf[0]+=tts;
+                                } else {
+                                    reinf[tt]+=tts;
+                                }
+                                tsreinf+=ttts[tt]*tts;
+                            }
+                        }
+                    } else {
+                        for (var j in this[9][i][3]) {
+                            var tmp=this[9][i][3][j].split(" ");
+                            var tt=ttname.indexOf(tmp[1]);
+                            var tts=Number(tmp[0].replace(/,/g,""));
+                            if (att) {
+                                if (ttd.indexOf(tt)==-1) {
+                                    incl[tt]+=tts;
+                                } else {
+                                    incl[0]+=tts;
+                                }
+                                tsincl+=ttts[tt]*tts;
+                            } else {
+                                if (ttd.indexOf(tt)==-1) {
+                                    inc[tt]+=tts;
+                                } else {
+                                    inc[0]+=tts;
+                                }
+                                tsinc+=ttts[tt]*tts;
+                            }
+                        }
+                    }
+                }
+                if ((this[9][i][5]=="0" || this[9][i][5]=="1") && att==false) {
+                    att=true;
+                    atime=this[9][i][7];
+                }
+            }
+            for (var i in ttd) {
+                inctab+="<td><span style='color:green;'>"+reinf[ttd[i]].toLocaleString()+"</span>/<span style='color:#949400;'>"+inc[ttd[i]].toLocaleString()+"</span>/<span style='color:red;'>"+incl[ttd[i]].toLocaleString()+"</span></td>";
+            }
+            inctab+="<td><span style='color:green;'>"+reinf[0].toLocaleString()+"</span>/<span style='color:#949400;'>"+inc[0].toLocaleString()+"</span>/<span style='color:red;'>"+incl[0].toLocaleString()+"</span></td>";
+            inctab+="<td colspan='2'><span style='color:green;'>"+tsreinf.toLocaleString()+"</span>/<span style='color:#949400;'>"+tsinc.toLocaleString()+"</span>/<span style='color:red;'>"+tsincl.toLocaleString()+"</span></td><td>"+atime+"</td>";
+            inctab+="</tr>";
+        });
+        inctab+="</tbody>";
+        $("#incomingtable").html(inctab);
+        $("#incomingtable td").css("text-align","center");
+        var newTableObject = document.getElementById('incomingtable');
+        sorttable.makeSortable(newTableObject);
+    }
     //update raid overview
     function updateraidover(data,notes) {
+       // console.log(notes);
         var raidovertab="<thead><tr data='0'><th></th><th>Name</th><th colspan='2'>Notes</th><th>Coords</th><th>Raids</th><th>Out</th><th>In</th><th>Raiding TS</th><th>Resources</th></tr></thead><tbody>";
         $.each(data.a, function() {
             var cid=this[0];
             var not=notes.notes[notes.id.indexOf(cid)];
             var x=Number(cid%65536);
             var y=Number((cid-x)/65536);
-            raidovertab+="<tr data='"+cid+"'><td><button style='height: 20px;padding-top: 3px;border-radius:6px;' class='greenb recraid' data='"+cid+"'>Recall Raids</button></td>";
+            var con=Number(Math.floor(x/100)+10*Math.floor(y/100));
+            raidovertab+="<tr data='"+cid+"' cont='"+con+"'><td><button style='height: 20px;padding-top: 3px;border-radius:6px;' class='greenb recraid' data='"+cid+"'>Recall Raids</button></td>";
             raidovertab+="<td data='"+cid+"' class='coordblink raidclink'>"+this[1]+"</td><td colspan='2'>"+not+"</td><td class='coordblink shcitt' data='"+cid+"'>"+x+":"+y+"</td><td>"+this[3]+"</td><td>"+this[6]+"</td><td>"+this[5]+"</td><td>"+this[4].toLocaleString()+"</td>";
             raidovertab+="<td>"+(this[7]+this[8]+this[9]+this[10]+this[11]).toLocaleString()+"</td></tr>";
         });
@@ -5810,6 +5955,13 @@ var _0x09b7 = function (_0x207f3e, _0x36644f) {
             var dat={a: id};
             jQuery.ajax({url: 'overview/rcallall.php',type: 'POST',aysnc:false, data: dat});
             $(this).remove();
+        });
+        $("#raidexp").click(function(event) {
+            //var outputFile = window.prompt("What do you want to name your output file (Note: This won't have any effect on Safari)") || 'export';
+            var outputFile = 'RaidSum'+today.getDate()+Number(today.getMonth()+1)+today.getFullYear()+'.csv';
+
+            // CSV
+            exportTableToCSV.apply(this, [$('#raidovertable'), outputFile]);
         });
     }
     //update support summary
@@ -5873,6 +6025,13 @@ var _0x09b7 = function (_0x207f3e, _0x36644f) {
             jQuery.ajax({url: 'overview/reinrecall.php',type: 'POST',aysnc:false, data: dat});
             $(this).remove();
         });
+        $("#supportexp").click(function(event) {
+            //var outputFile = window.prompt("What do you want to name your output file (Note: This won't have any effect on Safari)") || 'export';
+            var outputFile = 'SupportSum'+today.getDate()+Number(today.getMonth()+1)+today.getFullYear()+'.csv';
+
+            // CSV
+            exportTableToCSV.apply(this, [$('#supporttable'), outputFile]);
+        });
     }
     //update raids summary
     function updateraids(data,turnc) {
@@ -5912,7 +6071,8 @@ var _0x09b7 = function (_0x207f3e, _0x36644f) {
             var cid=this.id;
             var x=Number(cid%65536);
             var y=Number((cid-x)/65536);
-            restabb+="<tr data='"+cid+"'><td id='cn"+cid+"' class='coordblink'>"+this.city+"</td><td colspan='2'>"+this.reference+"</td><td class='coordblink shcitt' data='"+cid+"'>"+x+":"+y+"</td>";
+            var con=Number(Math.floor(x/100)+10*Math.floor(y/100));
+            restabb+="<tr data='"+cid+"' cont='"+con+"'><td id='cn"+cid+"' class='coordblink'>"+this.city+"</td><td colspan='2'>"+this.reference+"</td><td class='coordblink shcitt' data='"+cid+"'>"+x+":"+y+"</td>";
             var res;
             var sto;
             cartstot+=this.carts_total;
@@ -5954,6 +6114,7 @@ var _0x09b7 = function (_0x207f3e, _0x36644f) {
         restabb+="</tbody>";
         $("#restable").html(restabb);
         $("#restable td").css("text-align","center");
+        //$("#restable").fixedHeaderTable({ cloneHeadToFoot: true });
         var newTableObject = document.getElementById('restable');
         sorttable.makeSortable(newTableObject);
         var tottab="<div id='rsum' class='beigemenutable scroll-pane' style='width: 99%;margin-left: 4px;'><table><td>Total wood: </td><td>"+woodtot.toLocaleString()+"</td><td>Total stones: </td><td>"+stonetot.toLocaleString()+"</td><td>Total iron: </td><td>"+irontot.toLocaleString()+"</td><td>Total food: </td><td>"+foodtot.toLocaleString()+"</td>";
@@ -5968,13 +6129,21 @@ var _0x09b7 = function (_0x207f3e, _0x36644f) {
                 $("#cityDropdownMenu").val(aa).change();
             });
         });
+        $("#resexp").click(function(event) {
+            //var outputFile = window.prompt("What do you want to name your output file (Note: This won't have any effect on Safari)") || 'export';
+            var outputFile = 'ResSum'+today.getDate()+Number(today.getMonth()+1)+today.getFullYear()+'.csv';
+
+            // CSV
+            exportTableToCSV.apply(this, [$('#restable'), outputFile]);
+        });
     }
-    //update trops summary
+    //update troops summary
     function updatetroops(data,notes) {
-        var troopstab="<thead><tr data='0'><th>Name</th><th style='width:150px;'>Notes</th><th>Coords</th><th><div class='"+tpicdiv[8]+"'></div>(home)</th><th>(Total)</th><th><div class='"+tpicdiv[1]+"'></div>(home)</th><th>(Total)</th><th><div class='"+tpicdiv[11]+"'></div>(home)</th><th>(Total)</th></th>";
-        troopstab+="<th><div class='"+tpicdiv[14]+"'></div>(home)</th><th>(Total)</th><th><div class='"+tpicdiv[0]+"'></div>(home)</th><th>(Total)</th><th><div class='"+tpicdiv[10]+"'></div>(home)</th><th>(Total)</th><th><div class='"+tpicdiv[9]+"'></div>(home)</th><th>(Total)</th><th><div class='"+tpicdiv[4]+"'></div>(home)</th><th>(Total)</th><th><div class='"+tpicdiv[12]+"'></div>(home)</th><th>(Total)</th>";
-        troopstab+="<th><div class='"+tpicdiv[2]+"'></div>(home)</th><th>(Total)</th><th><div class='"+tpicdiv[13]+"'></div>(home)</th><th>(Total)</th><th><div class='"+tpicdiv[7]+"'></div>(home)</th><th>(Total)</th><th><div class='"+tpicdiv[17]+"'></div>(home)</th><th>(Total)</th><th><div class='"+tpicdiv[6]+"'></div>(home)</th><th>(Total)</th><th><div class='"+tpicdiv[15]+"'></div>(home)</th><th>(Total)</th>";
-        troopstab+="<th><div class='"+tpicdiv[3]+"'></div>(home)</th><th>(Total)</th><th><div class='"+tpicdiv[5]+"'></div>(home)</th><th>(Total)</th><th><div class='"+tpicdiv[16]+"'></div>(home)</th><th>(Total)</th><th>TS(home)</th><th>(Total)</th>";
+        var troopstab="<thead><tr data='0'><th>Name</th><th style='width:150px;'>Notes</th><th>Coords</th><th class='spf'><div class='"+tpicdiv[8]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[1]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[11]+"'></div>(home)</th><th class='spf'>(Total)</th>";
+        troopstab+="<th class='spf'><div class='"+tpicdiv[14]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[0]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[10]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[9]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[4]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[12]+"'></div>(home)</th><th class='spf'>(Total)</th>";
+        troopstab+="<th class='spf'><div class='"+tpicdiv[2]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[13]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[7]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[17]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[6]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[15]+"'></div>(home)</th><th class='spf'>(Total)</th>";
+        troopstab+="<th class='spf'><div class='"+tpicdiv[3]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[5]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[16]+"'></div>(home)</th><th class='spf'>(Total)</th>";
+        troopstab+="<th class='nspf' style='width:350px'>Troops</th><th>TS Home</th><th>TS Total</th>";
         troopstab+="</tr></thead><tbody>";
         var arbstot=0;
         var balltot=0;
@@ -5996,8 +6165,8 @@ var _0x09b7 = function (_0x207f3e, _0x36644f) {
         var warshipstot=0;
         var tshome;
         var tstot;
-        var thome;
-        var ttot;
+        var strhome;
+        var strtot;
         $.each(data, function() {
             tshome=0;
             tstot=0;
@@ -6005,137 +6174,182 @@ var _0x09b7 = function (_0x207f3e, _0x36644f) {
             var not=notes.notes[notes.id.indexOf(cid)];
             var x=Number(cid%65536);
             var y=Number((cid-x)/65536);
-            troopstab+="<tr data='"+cid+"'><td id='cnt"+cid+"' class='coordblink'>"+this.c+"</td><td style='width:150px;'>"+not+"</td><td class='coordblink shcitt' data='"+cid+"'>"+x+":"+y+"</td>";
+            var con=Number(Math.floor(x/100)+10*Math.floor(y/100));
+            var strhome="<table><tr class='nofilter'>";
+            var strtot="<table><tr class='nofilter'>";
+            var thome;
+            var ttot;
+            var tt;
+            troopstab+="<tr data='"+cid+"' cont='"+con+"'><td id='cnt"+cid+"' class='coordblink'>"+this.c+"</td><td style='width:150px;'>"+not+"</td><td class='coordblink shcitt' data='"+cid+"'>"+x+":"+y+"</td>";
+            function makets() {
+                /*if (thome>0) {
+                    strhome+="<td style='width:50px;'>"+thome.toLocaleString()+"</td><td style='width:22px;'><div class='"+tpicdiv20[tt]+"'></div></td>";
+                }*/
+                if (ttot>0) {
+                    strtot+="<td>"+thome.toLocaleString()+"/"+ttot.toLocaleString()+"</td><td style='width:22px;'><div class='"+tpicdiv20[tt]+"'></div></td>";
+                }
+                troopstab+="<td class='spf'>"+thome.toLocaleString()+"</td><td class='spf'>"+ttot.toLocaleString()+"</td>";
+            }
             thome=this.Arbalist_home;
             ttot=this.Arbalist_total;
+            tt=8;
             arbstot+=ttot;
             tshome+=2*thome;
             tstot+=2*ttot;
-            troopstab+="<td>"+thome.toLocaleString()+"</td><td>"+ttot.toLocaleString()+"</td>";
+            makets();
 
             thome=this.Ballista_home;
             ttot=this.Ballista_total;
+            tt=1;
             balltot+=ttot;
             tshome+=10*thome;
             tstot+=10*ttot;
-            troopstab+="<td>"+thome.toLocaleString()+"</td><td>"+ttot.toLocaleString()+"</td>";
+            makets();
 
             thome=this.Druid_home;
             ttot=this.Druid_total;
+            tt=11;
             druidstot+=ttot;
             tshome+=2*thome;
             tstot+=2*ttot;
-            troopstab+="<td>"+thome.toLocaleString()+"</td><td>"+ttot.toLocaleString()+"</td>";
+            makets();
 
             thome=this.Galley_home;
             ttot=this.Galley_total;
+            tt=14;
             galltot+=ttot;
             tshome+=100*thome;
             tstot+=100*ttot;
-            troopstab+="<td>"+thome.toLocaleString()+"</td><td>"+ttot.toLocaleString()+"</td>";
+            makets();
 
             thome=this.Guard_home;
             ttot=this.Guard_total;
+            tt=0;
             guardstot+=ttot;
             tshome+=thome;
             tstot+=ttot;
-            troopstab+="<td>"+thome.toLocaleString()+"</td><td>"+ttot.toLocaleString()+"</td>";
+            makets();
 
             thome=this.Horseman_home;
             ttot=this.Horseman_total;
+            tt=10;
             horsetot+=ttot;
             tshome+=2*thome;
             tstot+=2*ttot;
-            troopstab+="<td>"+thome.toLocaleString()+"</td><td>"+ttot.toLocaleString()+"</td>";
+            makets();
 
             thome=this.Praetor_home;
             ttot=this.Praetor_total;
+            tt=9;
             praetorstot+=ttot;
             tshome+=2*thome;
             tstot+=2*ttot;
-            troopstab+="<td>"+thome.toLocaleString()+"</td><td>"+ttot.toLocaleString()+"</td>";
+            makets();
 
             thome=this.Priestess_home;
             ttot=this.Priestess_total;
+            tt=4;
             priesttot+=ttot;
             tshome+=thome;
             tstot+=ttot;
-            troopstab+="<td>"+thome.toLocaleString()+"</td><td>"+ttot.toLocaleString()+"</td>";
+            makets();
 
             thome=this.Ram_home;
             ttot=this.Ram_total;
+            tt=12;
             ramstot+=ttot;
             tshome+=10*thome;
             tstot+=10*ttot;
-            troopstab+="<td>"+thome.toLocaleString()+"</td><td>"+ttot.toLocaleString()+"</td>";
+            makets();
 
             thome=this.Ranger_home;
             ttot=this.Ranger_total;
+            tt=2;
             rangerstot+=ttot;
             tshome+=thome;
             tstot+=ttot;
-            troopstab+="<td>"+thome.toLocaleString()+"</td><td>"+ttot.toLocaleString()+"</td>";
+            makets();
 
             thome=this.Scorpion_home;
             ttot=this.Scorpion_total;
+            tt=13;
             scorptot+=ttot;
             tshome+=10*thome;
             tstot+=10*ttot;
-            troopstab+="<td>"+thome.toLocaleString()+"</td><td>"+ttot.toLocaleString()+"</td>";
+            makets();
 
             thome=this.Scout_home;
             ttot=this.Scout_total;
             scoutstot+=ttot;
+            tt=7;
             tshome+=2*thome;
             tstot+=2*ttot;
-            troopstab+="<td>"+thome.toLocaleString()+"</td><td>"+ttot.toLocaleString()+"</td>";
+            makets();
 
             thome=this.Senator_home;
             ttot=this.Senator_total;
+            tt=17;
             senatortot+=ttot;
             tshome+=thome;
             tstot+=ttot;
-            troopstab+="<td>"+thome.toLocaleString()+"</td><td>"+ttot.toLocaleString()+"</td>";
+            makets();
 
             thome=this.Sorcerer_home;
             ttot=this.Sorcerer_total;
+            tt=6;
             sorctot+=ttot;
             tshome+=thome;
             tstot+=ttot;
-            troopstab+="<td>"+thome.toLocaleString()+"</td><td>"+ttot.toLocaleString()+"</td>";
+            makets();
 
             thome=this.Stinger_home;
             ttot=this.Stinger_total;
+            tt=15;
             stingerstot+=ttot;
             tshome+=100*thome;
             tstot+=100*ttot;
-            troopstab+="<td>"+thome.toLocaleString()+"</td><td>"+ttot.toLocaleString()+"</td>";
+            makets();
 
             thome=this.Triari_home;
             ttot=this.Triari_total;
+            tt=3;
             triaritot+=ttot;
             tshome+=thome;
             tstot+=ttot;
-            troopstab+="<td>"+thome.toLocaleString()+"</td><td>"+ttot.toLocaleString()+"</td>";
+            makets();
 
             thome=this.Vanquisher_home;
             ttot=this.Vanquisher_total;
+            tt=5;
             vanqstot+=ttot;
             tshome+=thome;
             tstot+=ttot;
-            troopstab+="<td>"+thome.toLocaleString()+"</td><td>"+ttot.toLocaleString()+"</td>";
+            makets();
 
             thome=this.Warship_home;
             ttot=this.Warship_total;
+            tt=16;
             warshipstot+=ttot;
             tshome+=400*thome;
             tstot+=400*ttot;
-            troopstab+="<td>"+thome.toLocaleString()+"</td><td>"+ttot.toLocaleString()+"</td>";
+            makets();
 
-            troopstab+="<td>"+tshome.toLocaleString()+"</td><td>"+tstot.toLocaleString()+"</td></tr>";
+            strhome+="</tr></table>";
+            strtot+="</tr></table>";
+            //troopstab+="<td class='nspf' colspan='2'>"+strhome+"</td><td class='nspf' colspan='2'>"+strtot+"</td><td>"+tshome.toLocaleString()+"</td><td>"+tstot.toLocaleString()+"</td></tr>";
+            troopstab+="<td class='nspf'>"+strtot+"</td><td>"+tshome.toLocaleString()+"</td><td>"+tstot.toLocaleString()+"</td></tr>";
         });
         troopstab+="</tbody>";
         $("#troopstable").html(troopstab);
+        if (hidespf) {
+            $(".spf").hide();
+            $(".nspf").show();
+            $("#troopstable").css("width","100%");
+        } else {
+            $(".nspf").hide();
+            $(".spf").show();
+            $("#troopstable").css("width","250%");
+        }
         $("#troopstable td").css("text-align","center");
         $("#troopstable td").css("padding-left","0%");
         var newTableObject = document.getElementById('troopstable');
@@ -6169,13 +6383,12 @@ var _0x09b7 = function (_0x207f3e, _0x36644f) {
                 $("#cityDropdownMenu").val(aa).change();
             });
         });
-    }
-    //hiding cities in shrine planner
-    function hidecities() {
-        $("#shrineTab tr").each(function () {
-            if($(this).attr("data")=="city") {
-                $(this).hide();
-            }
+        $("#troopsexp").click(function(event) {
+            //var outputFile = window.prompt("What do you want to name your output file (Note: This won't have any effect on Safari)") || 'export';
+            var outputFile = 'TroopsSum'+today.getDate()+Number(today.getMonth()+1)+today.getFullYear()+'.csv';
+
+            // CSV
+            exportTableToCSV.apply(this, [$('#troopstable'), outputFile]);
         });
     }
     //showing cities in shrine planner
