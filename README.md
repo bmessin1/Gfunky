@@ -34,10 +34,10 @@ Clear.png A button is added in extra feature for the chat. Clicking on it clear 
 A button bar is added in left column to facilitate building construction. Button bar.png
 
 3.1 Prerequisite
-To activate the functionality you need to define a Layout planner. To define a layout click on edit in left bar, Edit layout.png, then set a map in layout planner Set layout.png If not, a message "Set a map to activate functionality". Currently this message can occur on city displayed while loading (see issue 2. If the map is set, switch city and get back. This functionality can be used in complement of cfuncky script.
+To activate the functionality you need to define a Layout planner. To define a layout click on edit in left bar, Edit layout.png, then set a map in layout planner Set layout.png If not, a message "Set a map to activate functionality". Currently this message can occur on city displayed while loading (see issue 2. If the map is set, switch city and get back. 
 
 3.2 Activating feature
-To activate/dis-activate, click on 1rst button. Warning, the status is kept while changing the city.
+To activate/deactivate, click on 1rst button. Warning, the status is kept while changing the city.
 
 3.3 Others selectors
 The others selectors indicates the remaining task comparing current map and planed map. The first selector indicate resources or buildings that have to be destroyed. The second selector indicate buildings that have to be moved. The third selector indicate buildings that have to be added. Those are only information items. Feel free to build an alternative regarding the planed map.
