@@ -26,9 +26,6 @@ This script has the following
 
 Quick Build Features
 1. Welcome
-This repository is an help of lionnel0 script designed as an add on for Crown of the Gods. 
-
-Here is documented features that the script provides. 
 
 2. Clear the chat feature
 Clear.png A button is added in extra feature for the chat. Clicking on it clear the different chats (world, ally, officer, whisper).
