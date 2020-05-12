@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Cotg Gfunky3
 // @namespace https://github.com/bmessin1/Gfunky3
-// @version 1.0.7
+// @version 1.0.8
 // @description Gfunky3
 // @author Greety
 // @match https://*.crownofthegods.com
@@ -13,10 +13,11 @@
 (function() {
 	// popup message for players when they open the game.
     $(document).ready(function() {
-    var popwin="<div id='HelloWorld' style='width:Auto; max-width: 35% ;height:Auto !important; Max-height: 85%; background-color: #E2CBAC;-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: 4px ridge #DAA520;position:absolute;right:40%;top:100px; z-index:1000000;'><div class=\"popUpBar\"> <span class=\"ppspan\">Welcome!</span><button id=\"gfunkyX\" onclick=\"$('#HelloWorld').remove();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div id='hellobody' class=\"popUpWindow\"><span style='margin-left: 5%;'> <h3 style='text-align:center;'>Welcome to Crown Of The Gods!</h3></span><br><br><span style='margin-left: 5%;'> <h4 style='text-align:center;'> GFunky3(Dfunky by Dhruv +QuickBuild by Lionell0 + Raid changes by Greety + Coords by Fact)</h4></span><br><span style='margin-left: 5%;'><h4 style='text-align:center;'>Updated 10th May 2020</h4></span><br><br><span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;'><li>added quickbuild, city notes coordinates, 100% and 115% Raid options, Fixed Summary Tabs,removed fill button from build que- now part of overviews,Added note to Summary incoming tab that Incomings are now part of Overviews, Fixed Sizing issue for Summary Function Tables </li></ul></span></div></div>";   
+    var popwin="<div id='HelloWorld' style='width:Auto; max-width: 35% ;height:Auto !important; Max-height: 85%; background-color: #E2CBAC;-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: 4px ridge #DAA520;position:absolute;right:40%;top:100px; z-index:1000000;'><div class=\"popUpBar\"> <span class=\"ppspan\">Welcome!</span><button id=\"gfunkyX\" onclick=\"$('#HelloWorld').remove();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div id='hellobody' class=\"popUpWindow\"><span style='margin-left: 5%;'> <h3 style='text-align:center;'>Welcome to Crown Of The Gods!</h3></span><br><br><span style='margin-left: 5%;'> <h4 style='text-align:center;'> GFunky3 BY GREETY </h4></span><br><span style='margin-left: 5%;'><h4 style='text-align:center;color:blue;'>Special Thanks to Dhruv, Lionell0, And  Fact</h4><br><h4 style='text-align:center;color:green;' >Updated 10th May 2020</h4></span><br><br><span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;'><li>added quickbuild</li> <li>city notes coordinates</li> <li> 100% and 115% Raid options</li> <li> Fixed Summary Tabs</li> <li> removed fill button from build que- now part of overviews</li> <li>Added note to Summary incoming tab that Incomings are now part of Overviews</li> <li> Fixed Sizing issue for Summary Function Tables </li><li>Optimized for Smoothness</li></ul></span></div></div>";
 	$("body").append(popwin);
 
         setTimeout(function() {
+
                             var options = {};
                             $('#HelloWorld').hide(2000);
                         }, 3000);
@@ -429,7 +430,7 @@
             //that.data.y=Number((cdata.cid-that.data.x)/65536);
             //that.data.cont=Number(Math.floor(that.data.x/100)+10*Math.floor(that.data.y/100));
 
-            //that.data.th = cdata.th; // idleTroops
+            //that.data.th = cdata.th; // idletroops
             //that.data.mo = cdata.mo; // Councilors configuration.
 
             // Current map
@@ -1099,7 +1100,7 @@
                             poll2.player.clc=saveclc;
                         }
                         if ($( "#warcouncTabs" ).tabs( "option", "active" )==2) {
-                            var idle="<table id='idleunits' class='beigetablescrollp'><tbody><tr><td style='text-align: center;'><span>Idle troops:</span></td>";
+                            var idle="<table id='idleunits' class='beigetablescrollp'><tbody><tr><td style='text-align: center;'><span>idle troops:</span></td>";
                             for (var i in poll2.city.th) {
                                 var notallow=[0,1,7,12,13];
                                 if (notallow.indexOf(i)==-1) {
@@ -3477,7 +3478,7 @@
             bosswin+="<td style='text-align: center;'>"+bosslist.time[i]+"</td><td style='text-align: center;'>"+bosslist.distance[i]+"</td></tr>";
         }
         bosswin+="</tbody></table></div>";
-        var idle="<table id='idleunits' class='beigetablescrollp'><tbody><tr><td style='text-align: center;'><span>Idle troops:</span></td>";
+        var idle="<table id='idleunits' class='beigetablescrollp'><tbody><tr><td style='text-align: center;'><span>idle troops:</span></td>";
         for (var i in city.th) {
             var notallow=[0,1,7,12,13];
             if (notallow.indexOf(i)==-1) {
