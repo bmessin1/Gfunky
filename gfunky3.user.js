@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name Cotg Gfunky3
+// @name Cotg Gfunky7
 // @namespace https://github.com/bmessin1/Gfunky3
-// @version 1.0.8
+// @version 1.0.9
 // @description Gfunky3
 // @author Greety
 // @match https://*.crownofthegods.com
@@ -10,8 +10,14 @@
 // @downloadURL https://raw.githubusercontent.com/bmessin1/Gfunky/master/gfunky3.user.js
 // ==/UserScript==
 
+/*
+
+START POPUP MESSAGE FOR PLAYERS WHEN THEY OPEN THE GAME
+
+
+*/
 (function() {
-	// popup message for players when they open the game.
+
     $(document).ready(function() {
     var popwin="<div id='HelloWorld' style='width:Auto; max-width: 35% ;height:Auto !important; Max-height: 85%; background-color: #E2CBAC;-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: 4px ridge #DAA520;position:absolute;right:40%;top:100px; z-index:1000000;'><div class=\"popUpBar\"> <span class=\"ppspan\">Welcome!</span><button id=\"gfunkyX\" onclick=\"$('#HelloWorld').remove();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div id='hellobody' class=\"popUpWindow\"><span style='margin-left: 5%;'> <h3 style='text-align:center;'>Welcome to Crown Of The Gods!</h3></span><br><br><span style='margin-left: 5%;'> <h4 style='text-align:center;'> GFunky3 BY GREETY </h4></span><br><span style='margin-left: 5%;'><h4 style='text-align:center;color:blue;'>Special Thanks to Dhruv, Lionell0, And  Fact</h4><br><h4 style='text-align:center;color:green;' >Updated 10th May 2020</h4></span><br><br><span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;'><li>added quickbuild</li> <li>city notes coordinates</li> <li> 100% and 115% Raid options</li> <li> Fixed Summary Tabs</li> <li> removed fill button from build que- now part of overviews</li> <li>Added note to Summary incoming tab that Incomings are now part of Overviews</li> <li> Fixed Sizing issue for Summary Function Tables </li><li>Optimized for Smoothness</li></ul></span></div></div>";
 	$("body").append(popwin);
@@ -22,6 +28,80 @@
                             $('#HelloWorld').hide(2000);
                         }, 3000);
 						});
+/*
+
+
+END POPUP MESSAGE FOR PLAYERS WHEN THEY OPEN THE GAME
+
+
+*/
+/* DEVELOPER NOTES TO HELP REFERENCE AND FOR OTHER CODES
+
+//	Troop	0	Guard
+//	Troop	1	Ballista
+//	Troop	2	Ranger
+//	Troop	3	Triari
+//	Troop	4	Priest
+//	Troop	5	Vanq
+//	Troop	6	Sorc
+//	Troop	7	Scout
+//	Troop	8	Arbalist
+//	Troop	9	Preator
+//	Troop	10	Horsemen
+//	Troop	11	Druid
+//	Troop	12	Ram
+//	Troop	13	Scorpion
+//	Troop	14	Galley
+//	Troop	15	Stinger
+//	Troop	16	Warship
+//	Troop	17	Senator
+
+//	includes/mBu.php',
+//	includes/gaLoy.php'
+//	includes/pD.php'
+//	includes/gC.php'
+//	includes/gIDl.php'
+//	includes/gPi.php'
+//	includes/UaO.php'
+//	includes/UpO.php'
+//	includes/mnio.php'
+//	overview/trpover.php'
+//	/overview/mconv.php'<---why does this work with the early slash still there?
+//	overview/citover.php'
+//	overview/rreps.php'
+//	overview/graid.php'
+//	overview/reinover.php'
+//	overview/incover.php'
+//	overview/rcallall.php'
+//	overview/reinreca.php'
+//	overview/reinrecall.php'
+
+
+
+
+
+
+
+
+
+
+
+*/
+/*
+
+
+
+
+
+
+
+START OF QUICKBUILD SCRIPT
+
+
+
+
+
+*/
 
 (function QuickBuild0Script() {
     const QB_DIV = "qbDiv";
@@ -39,13 +119,18 @@
         _version: "0.3.0"
     };
 
-    // Facility to have building informations
+
+
+// Facility to have building informations
     QB.BUILDINGS = new function () {
         var that = QB;
 
         // Inner data to characterise buildings
         that._DETAILS = {
-            // Resources getters
+
+
+
+// Resources getters
             forester: {
                 id: [448],
                 buildable: true,
@@ -75,7 +160,10 @@
                 movable: true
             },
 
-            // Resources helpers
+
+
+
+// Resources helpers
             sawmill: {
                 id: [460],
                 buildable: true,
@@ -105,7 +193,11 @@
                 movable: true
             },
 
-            // Others
+
+
+
+
+// Others
             storehouse: {
                 id: [464],
                 buildable: true,
@@ -135,7 +227,10 @@
                 movable: true
             }, // i.e. villa: useless. Raid !
 
-            // Not build
+
+
+
+//DO Not build
             townhall: {
                 id: [455],
                 buildable: false,
@@ -151,9 +246,22 @@
             temple: {
                 id: [1000],
                 buildable: false
-            }, // TODO update id
+            },
+/*
 
-            // Trade
+
+TODO update id for Temple
+
+
+
+
+*/
+
+
+
+
+
+// Trade
             port: {
                 id: [488, 489, 490],
                 buildable: true,
@@ -169,7 +277,12 @@
                 movable: true
             }, // i.e. forum
 
-            // Military
+
+
+
+
+
+// Military
             cityguardhouse: {
                 id: [504],
                 buildable: true,
@@ -227,7 +340,12 @@
                 movable: true
             },
 
-            // Resources
+
+
+
+
+
+// Resources
             forest: {
                 id: [454],
                 buildable: false,
@@ -249,13 +367,37 @@
                 schedule: ";"
             }
 
-            // TODO: add wall & towers
+ /*
+
+ TODO: add wall & towers
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ */
         };
 
-        // Same as _DETAILS but in a list.
+// Same as _DETAILS but in a list.
         that._LIST = [];
 
-        // Hash buildings from city planner letter.
+
+// Hash buildings from city planner letter.
         that._FromMapLetter = {};
 
         Object.keys(that._DETAILS).forEach(function (key) {
@@ -266,26 +408,37 @@
             }
         });
 
-        // Is a building type buildable. For information, due to dangerousness of building castles, the operation has to be manual.
+
+
+
+// Is a building type buildable. For information, due to dangerousness of building castles, the operation has to be manual.
         that.isBuildable = function (btype) {
             return that._LIST.filter(function (item) {
                 return (item.id.indexOf(btype) >= 0) && (item.buildable);
             }).length > 0;
         };
 
-        // Return building from a btype (if known)
+
+
+
+// Return building from a btype (if known)
         that.buildingFromId = function (btype) {
             return that._LIST.find(function (item) {
                 return (item.id.indexOf(btype) >= 0);
             });
         };
 
-        // Searching town hall.
+
+
+// Searching town hall.
         that.isTownHall = function (btype) {
             return that._DETAILS.townhall.id[0] === btype;
         };
 
-        // Return true if has farm or lakes in plan => i.e. food city.
+
+
+
+// Return true if has farm or lakes in plan => i.e. food city.
         that.needToClearAllResources = function (scheduleMap) {
             if (scheduleMap.length === 0) return false;
             return scheduleMap.some(function (building) {
@@ -294,7 +447,10 @@
                     (building === that._DETAILS.lake);
             });
         };
-        // Update curentBuilding status regarding schedule
+
+
+
+// Update curentBuilding status regarding schedule
         // error: true if wanted to build another resource than existing one.
         // toDestroy: true if it's curently a resource and want a building, or if it's curently a resource and needToClearAllResources
         // toMove: true if (not error, nor to destroy), and curent and schedule do not match, and movable.
@@ -332,8 +488,12 @@
                 }
                 return false;
             }
-            if (curentBuilding) {
-                // Curent but not planed
+
+
+
+
+		   if (curentBuilding) {
+// Current but not planned buildings
                 if (!curentBuilding.building) {
                     return; // Unknown building type.
                 } else if (curentBuilding.btype === that._DETAILS.forest.id[0] ||
@@ -354,9 +514,14 @@
             return false;
         };
 
-        // Count the number of building and transforming to move in to destroy for spare buildings.
+
+
+ // Count the number of building and transforming to move in to destroy for spare buildings.
         that.checkMove = function (curentMap, scheduleMap) {
-            // Counting in the map per type
+
+
+
+ // Counting in the map per type
             var nbOfBuildingScheduledPerType = scheduleMap.reduce(function (pv, cv) {
                 if (cv) {
                     if (pv[cv.name]) {
@@ -367,7 +532,11 @@
                 }
                 return pv;
             }, {});
-            // Removing already ok buildings
+
+
+
+
+// Removing already ok buildings
             for (var buildingIndex in curentMap) {
                 var curent = curentMap[buildingIndex];
                 var schedule = scheduleMap[buildingIndex];
@@ -378,7 +547,11 @@
                     }
                 }
             }
-            // Checking to move
+
+
+
+
+// Checking to move
             curentMap.forEach(function (curent) {
                 if (curent.toMove) {
                     if ((!nbOfBuildingScheduledPerType[curent.building.name]) ||
@@ -392,23 +565,36 @@
             });
         };
 
-        // Return the building from a plan letter.
+
+
+
+
+// Return the building from a plan letter.
         that.buildingFromMapLetter = function (letter) {
             return that._FromMapLetter[letter];
         };
 
         return that;
     }();
-    // Build manager constructor
+
+
+
+
+
+// Build manager constructor
     QB.buildManager = new function () {
         var that = QB;
 
-        // Id to identify curent city (cid in CoTG)
+
+
+
+ // Id to identify curent city (cid in CoTG)
         that.data = {
             id: null
         };
 
-        // CoTG city data parser
+
+// CoTG city data parser
         that.parseCurentCityData = function (cdata) {
             var updatedData = false;
 
@@ -425,7 +611,11 @@
                 };
             }
 
-            // Coordinates
+
+
+
+
+// Coordinates
             //that.data.x=Number(cdata.cid % 65536);
             //that.data.y=Number((cdata.cid-that.data.x)/65536);
             //that.data.cont=Number(Math.floor(that.data.x/100)+10*Math.floor(that.data.y/100));
@@ -433,7 +623,12 @@
             //that.data.th = cdata.th; // idletroops
             //that.data.mo = cdata.mo; // Councilors configuration.
 
-            // Current map
+
+
+
+
+
+// Current map
             if (cdata.bd) {
                 updatedData = true;
                 // Updating buildings count for city
@@ -456,7 +651,10 @@
 
             if (cdata.bq) {
                 updatedData = true;
-                // Processing building queue
+
+
+
+// Processing building queue
                 cdata.bq.forEach(function (buildQueueItem) {
                     var index = buildQueueItem.bspot;
                     if (that.data.curentMap[index]) {
@@ -472,7 +670,10 @@
                 });
             }
 
-            // Schedule map.
+
+
+
+// Schedule map.
             if (cdata.sts) {
                 updatedData = true;
                 that.data.scheduleMap = [];
@@ -502,7 +703,11 @@
             that.onCityDataUpdated(updatedData);
         }
 
-        // Utils
+
+
+
+
+// Utilities
         that.utils = {
             // DOM operation on object:
             // jquery selector,
@@ -544,7 +749,13 @@
             }
         };
 
-        // Building added data (re computed ones) & update HMI
+
+
+
+
+
+
+// Building added data (re computed ones) & update HMI
         that.previousViewData = {};
         that.onCityDataUpdated = function (updatedData) {
             if (updatedData) {
@@ -554,7 +765,10 @@
                     pureTrade: false
                 };
 
-                // Case of warship & stingers
+
+
+
+// Case of warship & stingers
                 var partialMap = that.data.scheduleMap.filter(function (item) {
                     return item && item.buildable
                 }).length <= 60;
@@ -571,7 +785,11 @@
                     that.addedData.pureTrade = true;
                 }
 
-                // Post processing data regarding scheduledMap
+
+
+
+
+// Post processing data regarding scheduledMap
                 if (that.data.scheduleMap.length > 0 && that.data.curentMap.length > 0) {
                     for (var buildingIndex in that.data.scheduleMap) {
                         if (that.data.scheduleMap[buildingIndex]) {
@@ -583,12 +801,18 @@
                             that.addedData.needToClearResources);
                     }
 
-                    // 2nd check to move
+
+
+// 2nd check to move
                     that.BUILDINGS.checkMove(that.data.curentMap, that.data.scheduleMap);
                 }
             }
 
-            // Building new view data
+
+
+
+
+// Building new view data
             var mapSetOk = (that.data.scheduleMap.length !== 0 && that.data.curentMap.length !== 0);
             var infoMsg = that.message.map;
             var buildingsToDestroy = that.data.curentMap.filter(function (item) {
@@ -742,7 +966,13 @@
             }
         };
 
-        // What to do with current building
+
+
+
+
+
+
+// What to do with current building
         that.processBuilding = function () {
             if (that.data.autoModeActivated) {
                 var selectedBuilding = $("#city_map .hoverbuild").attr("data");
@@ -816,7 +1046,11 @@
             }
         };
 
-        // Toggle automode
+
+
+
+
+// Toggle automode
         that.toggleAutoMode = function () {
             that.data.autoModeActivated = !that.data.autoModeActivated;
             that.onCityDataUpdated(false);
@@ -826,18 +1060,34 @@
         return that;
     }();
 
-    // Adding buttons once game loaded
+
+
+
+
+
+
+
+// Adding buttons once game loaded
     var waitForGameLoaded = function () {
         if ($("#incAttacksDiv").length > 0) {
             console.log("Game loaded.");
 
-            // Add'on starting.
+
+
+
+
+// Add'on starting.
             if ($("#" + QB_DIV).length > 0) {
                 // Removing current
                 $("#" + QB_DIV).remove();
             }
 
-            // Buttons for building in left bar
+
+
+
+
+
+// Buttons for building in left bar
             $("#incAttacksDiv").before(
                 '<div id="' + QB_DIV + '" class="commandinndiv">' +
                 '<div style="margin-left: 8px;margin-top: 10px;font-size: 12px;">Set a map to activate functionnality</div>' +
@@ -848,7 +1098,21 @@
                 '<select id="' + SELECT_CITY_ADD_ID + '" title="Add a building" ' + CLASS_AND_CSS_NEXT_BUTTON + '><option>Add</option></select>' +
                 '</div></div>');
 
-            // TODO: add buildtooltip tooltipstered & tooltip for BUTTON_CITY_CLEAR_ID
+
+
+
+/*
+
+
+
+
+// TODO: add buildtooltip tooltipstered & tooltip for BUTTON_CITY_CLEAR_ID
+
+
+
+
+
+*/
             $(BUTTON_CITY_INFO_SELECTOR).click(function () {
                 QB.buildManager.toggleAutoMode();
             });
@@ -864,7 +1128,12 @@
     };
     waitForGameLoaded();
 
-    // Adding for clearing the chat
+
+
+
+
+
+// Adding for clearing the chat
     var waitForChat = function () {
         if ($("#clbleft").length > 0) {
 
@@ -884,7 +1153,11 @@
     };
     waitForChat();
 
-    // Overriding some responses
+
+
+
+
+// Overriding some responses
     setTimeout(function () {
         (function (open) {
             XMLHttpRequest.prototype.open = function () {
@@ -919,8 +1192,51 @@
 
 })();
 
+/*
 
-    
+
+
+
+
+
+
+END OF QUICKBUILD SCRIPT
+
+
+
+
+
+*/
+/*
+
+
+
+
+
+
+
+START OF Core-Funky
+
+
+
+
+
+*/
+/*
+
+
+START OF CORE FUNKY
+
+
+
+
+
+
+*/
+
+
+// GLOBAL VARIABLES
+
     var ttts=[1,10,1,1,1,1,1,2,2,2,2,2,10,10,100,100,400,1]; //ts per unit
     var citytc;
     var message="Not enough TS to kill this boss!";
@@ -992,7 +1308,12 @@
     var buildingdata;
 	var coofz;
     var coon;
-    //getting city lists
+
+
+
+
+
+//getting city lists
     $(document).ready(function() {
         setTimeout(function() {
             var a=$("#organiser > option");
@@ -1119,7 +1440,14 @@
         };
     })(XMLHttpRequest.prototype.open);
     },4000);
-    //decoding world data in the new format
+
+
+
+
+
+
+
+//decoding world data in the new format
     function decwdata(data) {
         var DecData = {bosses:[],cities:[],ll:[],cavern:[],portals:[],shrines:[]},
             temp = data.split("|"),
@@ -1169,7 +1497,11 @@
         }
         return DecData;
     }
-    //getting date
+
+
+
+
+//getting date
     function getFormattedDate(date) {
         var year = date.getFullYear();
         var month = (1 + date.getMonth()).toString();
@@ -1178,7 +1510,11 @@
         day = day.length > 1 ? day : '0' + day;
         return month + '/' + day + '/' + year;
     }
-        //rounds nubers to second digit after decimal
+
+
+
+
+//rounds nubers to second digit after decimal
     function roundToTwo(num) {
         return +(Math.round(num + "e+2")  + "e-2");
     }
@@ -1245,7 +1581,12 @@
     }
     return a;
     };
-    //getting faith and research bonuses, attack,defence,boss tabs
+
+
+
+
+
+//getting faith and research bonuses, attack,defence,boss tabs
     $(document).ready(function() {
         jQuery.ajax({url: 'includes/gaLoy.php',type: 'POST',aysnc:false,
                          success: function(data) {
@@ -1256,7 +1597,9 @@
         var reslvl;
         function setloyal(ldata) {
             var faith=0;
-            //domdis
+
+
+
             $.each(ldata.t, function(key, value) {
                 if (key==1) {
                     $.each(this, function(key, value) {
@@ -1308,7 +1651,13 @@
             evarafaith=Math.min(evarafaith,100);
             meriusfaith=Math.min(meriusfaith,100);
              var research= cotg.player.research();
-           //attack power faith bonuses
+
+
+
+
+
+
+//attack power faith bonuses
              setTimeout(function() {
              ttres[0]+=((Number(naerafaith)*0.5)/100)+(Number(Res[research[29]])/100);//guards
              ttres[1]+=((Number(naerafaith)*0.5)/100)+(Number(Res[research[42]])/100);//ballista
@@ -1327,7 +1676,13 @@
              ttres[14]+=((Number(ylannafaith)*0.5)/100)+(Number(Res[research[44]])/100);//galley
              ttres[15]+=((Number(ylannafaith)*0.5)/100)+(Number(Res[research[43]])/100);//stinger
              ttres[16]+=((Number(cyndrosfaith)*0.5)/100)+(Number(Res[research[45]])/100);//warship
-             //faith travel speed bonuses
+
+
+
+
+
+
+//faith travel speed bonuses
              ttspeedres[1]+=((Number(domdisfaith)*0.5)/100)+(Number(Res[research[12]])/100);
              ttspeedres[2]+=((Number(ibriafaith)*0.5)/100)+(Number(Res[research[8]])/100);
              ttspeedres[3]+=((Number(ibriafaith)*0.5)/100)+(Number(Res[research[8]])/100);
@@ -1357,7 +1712,10 @@
              var dat={a:cid};
              jQuery.ajax({url: 'includes/gC.php',type: 'POST',aysnc:false, data: dat});
          },5000);
-        //buttons
+
+
+
+//buttons
         var returnAllbut="<button id='returnAllb' style='right: 35.6%; margin-top: 55px;width: 150px;height: 30px !important; font-size: 12px !important; position: absolute;' class='regButton greenb'>Return All</button>";
         var raidbossbut="<button id='raidbossGo' style='left: 65%;margin-left: 10px;margin-top: 15px;width: 150px;height: 30px !important; font-size: 12px !important; position: absolute;' class='regButton greenb'>Locate Bosses</button>";
         var attackbut="<button id='attackGo' style='margin-left: 25px;margin-top: 55px;width: 150px;height: 30px !important; font-size: 12px !important; position: absolute;' class='regButton greenb'>Attack Sender</button>";
@@ -1367,7 +1725,11 @@
         var nearoffbut="<button id='noffGo' style='right: 35.6%; margin-top: 95px;width: 150px;height: 30px !important; font-size: 12px !important; position: absolute;' class='regButton greenb'> Offensive list</button>";
         var addtoatt="<button id='addtoAtt' style='margin-left: 7%;margin-top: -5%;width: 40%;height: 26px !important; font-size: 9px !important;' class='regButton greenb'>Add to Attack Sender</button>";
         var addtodef="<button id='addtoDef' style='margin-left: 7%;width: 40%;height: 26px !important; font-size: 9px !important;' class='regButton greenb'>Add to Defense Sender</button>";
-	//bosstab
+
+
+
+
+//bosstab
         var bosstab="<li id='bosshuntab' class='ui-state-default ui-corner-top' role='tab' tabindex='-1' aria-controls='warBossmanager'";
         bosstab+="aria-labeledby='ui-id-20' aria-selected='false' aria-expanded='false'>";
         bosstab+="<a href='#warBossmanager' class='ui-tabs-anchor' role='presentation' tabindex='-1' id='ui-id-20'>Find Bosses</a></li>";
@@ -1375,21 +1737,27 @@
         bosstabbody+=" role='tabpanel' aria-hidden='true' style='display: none;'><div id='fpdcdiv3' class='redheading' style='margin-left: 2%;' >CFunky's Boss Raiding tool:</div>";
         bosstabbody+="<div id='bossbox' class='beigemenutable scroll-pane' style='width: 96%; height: AUTO !important;max-height: 85%; margin-left: 2%;'></div>";
         bosstabbody+="<div id='idletroops'></div></div>";
-        //attack tab
+
+
+
+
+//attack tab
         var attacktab="<li id='attacktab' class='ui-state-default ui-corner-top' role='tab' tabindex='-1' aria-controls='warAttackmanager'";
         attacktab+="aria-labeledby='ui-id-21' aria-selected='false' aria-expanded='false'>";
         attacktab+="<a href='#warAttackmanager' class='ui-tabs-anchor' role='presentation' tabindex='-1' id='ui-id-21'>Attack</a></li>";
-        //attack body
+ 
+ 
+	//attack body
         var attacktabbody="<div id='warAttackmanager' aria-labeledby='ui-id-21' class='ui-tabs-panel ui-widget-content ui-corner-bottom' ";
         attacktabbody+=" role='tabpanel' aria-hidden='true' style='display: none;'><div id='fpdcdiv3' class='redheading' style='margin-left: 2%;' >Attack Sender:</div>";
-        attacktabbody+="<div id='attackbox' class='beigemenutable scroll-pane' style='width: 53%; height: AUTO !important;max-height: 85%; float:left; margin-left: 1%; margin-right: 1%;'>";
+        attacktabbody+="<div id='attackbox' class='beigemenutable scroll-pane' style='width: 53%; height: 50%; float:left; margin-left: 1%; margin-right: 1%;'>";
         attacktabbody+="<table><thead><th></th><th>X</th><th>Y</th><th>Type</th></thead><tbody>";
         for (var i=1;i<16;i++) {
             attacktabbody+="<tr><td>Target "+i+" </td><td><input id='t"+i+"x' type='number' style='width: 85%'></td><td><input id='t"+i+"y' type='number' style='width: 85%'></td>";
             attacktabbody+="<td><select id='type"+i+"' class='greensel' style='font-size: 15px !important;width:95%;height:30px;'><option value='0'>Fake</option><option value='1'>Real</option></select></td></tr>";
         }
         attacktabbody+="</tbody></table></div>";
-        attacktabbody+="<div id='picktype' class='beigemenutable scroll-pane' style='width: 43%; height: AUTO !important;max-height: 85%;'></div>";
+        attacktabbody+="<div id='picktype' class='beigemenutable scroll-pane' style='width: 43%; height: 50%;'></div>";
         attacktabbody+="<table><tr><td><span>Use percentage of troops:</span></td><td><input id='perc' type='number' style='width: 30px'>%</td><td></td></tr>";
         attacktabbody+="<tr><td><span>Send real as:</span></td><td><select id='realtype' class='greensel' style='font-size: 15px !important;width:95%;height:30px;'>";
         attacktabbody+="<option value='0'>Assault</option><option value='1'>Siege</option><option value='2'>Plunder</option><option value='3'>Scout</option></select></td><td></td></tr>";
@@ -1403,11 +1771,19 @@
         attacktabbody+="<table style='margin-left: 10%; margin-top:20px;'><tbody><tr><td style='width: 20%'><button id='Attack' style='width: 95%;height: 30px !important; font-size: 12px !important;' class='regButton greenb'>Attack!</button></td>";
         attacktabbody+="<td style='width: 20%'><button id='Aexport' style='width: 95%;height: 30px !important; font-size: 12px !important;' class='regButton greenb'>Export Order</button></td>";
         attacktabbody+="<td style='width: 20%'><button id='Aimport' style='width: 95%;height: 30px !important; font-size: 12px !important;' class='regButton greenb'>Import Order</button></td></tr></tbody></table>";
-        // defend tab
+       
+
+
+
+// defend tab
         var deftab="<li id='deftab' class='ui-state-default ui-corner-top' role='tab' tabindex='-1' aria-controls='warDefmanager'";
         deftab+="aria-labeledby='ui-id-22' aria-selected='false' aria-expanded='false'>";
         deftab+="<a href='#warDefmanager' class='ui-tabs-anchor' role='presentation' tabindex='-1' id='ui-id-22'>Defend</a></li>";
-        //defense body
+
+
+
+
+	//defense body
         var deftabbbody="<div id='warDefmanager' aria-labeledby='ui-id-21' class='ui-tabs-panel ui-widget-content ui-corner-bottom' ";
         deftabbbody+=" role='tabpanel' aria-hidden='true' style='display: none;'><div id='fpdcdiv3' class='redheading' style='margin-left: 2%;' >Defense Sender:</div>";
         deftabbbody+="<div><p style='font-size: 10px;'>Defense sender will split all the troops you choose to send according to the number of targets you input.</p></div>";
@@ -1426,26 +1802,54 @@
         deftabbbody+="<tr><td>Set Time: </td><td><input id='defHr' type='number' style='width: 35px;height: 22px;font-size: 10px;' value='10'></td><td><input id='defMin' style='width: 35px;height: 22px;font-size: 10px;' type='number' value='00'></td>";
         deftabbbody+="<td><input style='width: 35px;height: 22px;font-size: 10px;' id='defSec' type='number' value='00'></td><td colspan='2'><input style='width:90px;' id='defDat' type='text' value='00/00/0000'></td></tr></tbody></table>";
         deftabbbody+="<button id='Defend' style='width: 35%;height: 30px; font-size: 12px; margin:10px;' class='regButton greenb'>Send Defense</button>";
-	    var ndeftab="<li id='neardeftab' class='ui-state-default ui-corner-top' role='tab'>";
+
+
+
+
+
+// NEAR DEFENSE TAB
+
+		var ndeftab="<li id='neardeftab' class='ui-state-default ui-corner-top' role='tab'>";
         ndeftab+="<a href='#warNdefmanager' class='ui-tabs-anchor' role='presentation'>Near Def</a></li>";
+
+	//Near Defense Body
         var ndeftabbody="<div id='warNdefmanager' class='ui-tabs-panel ui-widget-content ui-corner-bottom' ";
         ndeftabbody+=" role='tabpanel' style='display: none;'><div id='fpdcdiv3' class='redheading' style='margin-left: 2%;' >Nearest defense:</div>";
         ndeftabbody+="<table><td>Choose city:</td><td><input style='width: 30px;height: 22px;font-size: 10px;' id='ndefx' type='number'> : <input style='width: 30px;height: 22px;font-size: 10px;' id='ndefy' type='number'></td>";
         ndeftabbody+="<td>Showing For:</td><td id='asdfgh' class='coordblink shcitt'></td>";
         ndeftabbody+="<td><button class='regButton greenb' id='ndefup' style='height:30px; width:70px;'>Update</button></td></table>";
         ndeftabbody+="<div id='Ndefbox' class='beigemenutable scroll-pane' style='width: 96%; height: AUTO !important;max-height: 85%; margin-left: 2%;'></div>";
-        var nofftab="<li id='nearofftab' class='ui-state-default ui-corner-top' role='tab'>";
+
+
+
+
+
+// OFFENSIVE LIST TAB
+
+	   var nofftab="<li id='nearofftab' class='ui-state-default ui-corner-top' role='tab'>";
         nofftab+="<a href='#warNoffmanager' class='ui-tabs-anchor' role='presentation'>Offensive TS</a></li>";
+
+
+	// Offensive List Body
         var nofftabbody="<div id='warNoffmanager' class='ui-tabs-panel ui-widget-content ui-corner-bottom' ";
         nofftabbody+=" role='tabpanel' style='display: none;'><div id='fpdcdiv3' class='redheading' style='margin-left: 2%;' >ALL Offensive TS:</div>";
         nofftabbody+="<table><td colspan='2'> Continent(99 for navy):</td><td><input style='width: 30px;height: 22px;font-size: 10px;' id='noffx' type='number' value='0'>";
         nofftabbody+="<td><button class='regButton greenb' id='noffup' style='height:30px; width:70px;'>Update</button></td>";
         nofftabbody+="<td id='asdfg' style='width:10% !important;'></td><td><button class='regButton greenb' id='mailoff' style='height:30px; width:50px;'>Mail</button></td><td><input style='width: 100px;height: 22px;font-size: 10px;' id='mailname' type='text' value='Name_here;'></table>"
         nofftabbody+="<div id='Noffbox' class='beigemenutable scroll-pane' style='width: 96%; height: AUTO !important;max-height: 85%; margin-left: 2%;'></div>";
-        var expwin="<div id='ExpImp' style='width:250px;height:200px;' class='popUpBox ui-draggable'><div class=\"popUpBar\"><span class=\"ppspan\">Import/Export attack orders</span>";
+
+
+
+
+// Import Export
+		var expwin="<div id='ExpImp' style='width:250px;height:200px;' class='popUpBox ui-draggable'><div class=\"popUpBar\"><span class=\"ppspan\">Import/Export attack orders</span>";
         expwin+="<button id=\"gfunkyX\" onclick=\"$('#ExpImp').remove();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div id='expbody' class=\"popUpWindow\">";
         expwin+="<textarea style='font-size:11px;width:97%;margin-left:1%;height:17%;' id='expstring' maxlength='200'></textarea><button id='applyExp' style='margin-left: 15px; width: 100px;height: 30px !important; font-size: 12px !important;' class='regButton greenb'>Apply</button></div></div>";
 
+
+
+
+//BUTTONS  on War Council Tab
         var tabs = $( "#warcouncTabs" ).tabs();
         var ul = tabs.find( "ul" );
         $( bosstab ).appendTo( ul );
@@ -1627,6 +2031,18 @@
                 $("#ndefy").val(y);
             });
         });
+/*
+
+
+
+
+TODO: FIND REFERENCE POINT to Ui-id-115
+
+
+
+*/
+
+
         $('#ui-id-115').click(function() {
             cotgsubscribe.subscribe( "regional", function( data ) {
                 //do something with chat
@@ -1738,7 +2154,12 @@
               });
         });
     });
-    //import attack orders
+
+
+
+
+
+//import attack orders
   	function Aimp(str) {
         var Aexp=JSON.parse(str);
         for (var i=1; i<=Aexp.x.length; i++) {
@@ -2050,7 +2471,13 @@
                     }
                 }
             }
-            // normal def
+
+
+
+
+
+
+// normal def
         } else {
             time=Math.max.apply(Math, t.speed)*maxdist;
             for (var i in t.home) {
@@ -2063,7 +2490,13 @@
                 }
             }
         }
-        // sending def
+
+
+
+
+
+
+// sending def
         //console.log(t);
         var l=0; var end=targets.x.length;
         function dloop() {
@@ -2325,7 +2758,14 @@
                         t.scoutfake[0]=faketss/2;
             }}}
         }
-                //galley attack
+
+
+
+
+
+
+
+//galley attack
         if (t.type.indexOf(14)>-1 && $("#usereal14").prop( "checked")===true) {
             time=ttspeed[14]/ttspeedres[14]*maxdist;
             var gali=t.type.indexOf(14);
@@ -2417,7 +2857,13 @@
                             t.fake[i]=Math.ceil((fakeg*500)*t.home[i]/fakerat);
                         }
                     }
-                // number of senators to send on each fake/reak attack
+
+
+
+
+
+
+// number of senators to send on each fake/reak attack
                     if (t.type[i]==17) {
                         if ($("#usereal"+t.type[i]).prop( "checked")===true) {
                             if ($("#usefake"+t.type[i]).prop( "checked")===true) {
@@ -2465,7 +2911,14 @@
         else {
                 var fakerat=0;
             time=Math.max.apply(Math, t.speed)*maxdist;
-                //Adding all the TS standing home with fake ticked into fakerat
+
+
+
+
+
+
+
+//Adding all the TS standing home with fake ticked into fakerat
                 for (var i in t.home) {
                 if (t.type[i]!==17) {
                     if ($("#usefake"+t.type[i]).prop( "checked")===true) {
@@ -2492,7 +2945,13 @@
                             }
                         } else {t.real[i]=0;}
                     }
-                    //senator numbers
+
+
+
+
+
+
+//senator numbers
                 if (t.type[i]==17) {
                     if ($("#usereal"+t.type[i]).prop( "checked")===true) {
                         if ($("#usefake"+t.type[i]).prop( "checked")===true) {
@@ -2764,7 +3223,13 @@
             }
         }
     }
-	//for on/off councilor
+
+
+
+
+
+
+//for on/off councilor
 	function coonvalue() {
         if(coofz==1)
         {
@@ -2777,7 +3242,11 @@
 	}
         return coon;
     }
-    //Buttons convert,fill,demolish,building count
+
+
+
+
+//Buttons convert,fill,demolish,building count
     $(document).ready(function() {
         var fourbutton="<div id='fourbuttons' class='commandinndiv'><div><button id='fb1' style='height:28px; width:65px; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>ON/OFF</button><button id='fb2' style='height:28px; width:65px; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Refine</button><button id='fb3' style='height:28px; width:65px; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Raid</button><button id='fb4' style='height:28px; width:65px; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Demolish</button></div></div>";
         var bdcountbox="<div id='currentBd'><div id='bdcountbar' class='queueBar'>";
@@ -2786,7 +3255,17 @@
         bdcountbox+="</div><div id='bdcountwin' class='queueWindow' style='display: block;'></div></div>";
         $("#qbDiv").before(fourbutton);
 
-        var convbut='<button id="convque" class="greenb tooltipstered" style="height:18px; width:60px; margin-left:7px; margin-top:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;">Convert</button>';
+/*
+	 var fillbut='<button id="fillque" class="greenb tooltipstered" style="height:18px; width:40px; margin-left:7px; margin-top:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;">Fill</button>';
+        $('#sortbut').after(fillbut);
+        $('#fillque').click(function() {
+            var dfs=poll2.city.cid;
+            console.log(dfs);
+            event.stopPropagation();
+            var bB = $.post('/overview/fillq.php', {dfs});
+        });
+*/
+			var convbut='<button id="convque" class="greenb tooltipstered" style="height:18px; width:60px; margin-left:7px; margin-top:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;">Convert</button>';
         $('#sortbut').after(convbut);
         $('#convque').click(function() {
             var cfd=poll2.city.cid;
@@ -2794,6 +3273,7 @@
             event.stopPropagation();
             var cB = $.post('/overview/mconv.php', { a: cfd });
         });
+
 
         $("#fb1").click(function(){
             $('#councillorPopUpBox').show();
@@ -2938,7 +3418,13 @@
             }
             $("#foodsendamt").val(res);
         });
-        //shrine planer part
+
+
+
+
+
+
+//shrine planer part
         var shrinebut="<button class='regButton greenb' id='shrineP' style='width: 98%;margins: 1%;'>Shrine Planner</button>";
         $("#inactiveshrineInfo").before(shrinebut);
         $("#shrineP").click(function() {
@@ -3043,7 +3529,13 @@
             }
         });
     });
-    //Building count
+
+
+
+
+
+
+//Building count
     function makebuildcount() {
     $("#bdtable").remove();
     var currentbd={name:[],bid:[],count:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]};
@@ -3081,6 +3573,14 @@
     $("#bdcountwin").html(bdtable);
     $("#numbdleft").html(bdNumber);
 }
+
+
+
+
+
+
+
+
 //troop predictor part
 	$(document).ready(function() {
         //adding 2 elements into the html
@@ -3110,7 +3610,13 @@
         for (var i=1; i<201; i++){
             speeeed[i]=speeeed[i-1]+0.5;
         }
-        //  separating all possible speeds for troop types
+
+
+
+
+
+
+//  separating all possible speeds for troop types
         var navyspeed = [];
         var scoutspeed = [];
         var cavspeed = [];
@@ -3207,7 +3713,11 @@
             locktimes=twodigitnum(locktimes);
             arrivaltimemonth=twodigitnum(arrivaltimemonth);
             arrivaltimedate=twodigitnum(arrivaltimedate);
-            //output of results
+
+
+
+
+//output of results
             var newtd="<td></td>";
             if (addt.children().length === 14) {
                 $(this).append(newtd);
@@ -3224,14 +3734,22 @@
                 }
             }
             if ($(':nth-child(2)',this).text()=="-") {
-                // below will return -1 if calculated speed is not found inside the speed arrays and the correct index if it is found within the speed arrays
+
+
+
+
+// below will return -1 if calculated speed is not found inside the speed arrays and the correct index if it is found within the speed arrays
                 var zns = navyspeed.indexOf(nspeed);
                 var zss = scoutspeed.indexOf(ispeed);
                 var zcs = cavspeed.indexOf(ispeed);
                 var zis = infspeed.indexOf(ispeed);
                 var zas = artspeed.indexOf(ispeed);
                 var zsn = senspeed.indexOf(ispeed);
-                // below use ispeed and above return values to get the correct incoming troop type
+
+
+
+
+// below use ispeed and above return values to get the correct incoming troop type
                 if (tcont==scont) {
                     if (ispeed>30) {
                         if(zsn == -1){$(':nth-child(2)',this).text("Tower?/Sen");}
@@ -3288,7 +3806,13 @@
             }
         });
     }
-    //layout part,raid return part
+
+
+
+
+
+
+//layout part,raid return part
     function openreturnwin(data) {
         $(".toptdinncommtbl1:first").click();
         setTimeout(function() {
@@ -3412,7 +3936,13 @@
             }
         });
     }
-    //Boss script
+
+
+
+
+
+
+//Boss script
     function getbossinfo() {
         var temp;
         bossinfo={x:[],y:[],lvl:[],data:[],name:[],cont:[],distance:[],cid:[]};
@@ -3504,14 +4034,25 @@
             });
         }
     }
-    //region view left side troop panel list
+
+
+
+
+
+//region view left side troop panel list
     function bossele(){
         var bopti =$("#cityplayerInfo div table tbody");
         var bzTS ="<tr><td>Vanq:</td><td></td></tr><tr><td>R/T:</td><td></td></tr><tr><td>Ranger:</td><td></td></tr><tr><td>Triari:</td><td></td></tr><tr><td>Arb:</td><td></td></tr><tr><td>horse:</td><td></td></tr><tr><td>Sorc:</td><td></td></tr><tr><td>Druid:</td><td></td></tr>";
         bzTS+="<tr><td>Prietess:</td><td></td></tr><tr><td>Praetor:</td><td></td></tr><tr><td>Scout:</td><td></td></tr><tr><td>Galley:</td><td></td></tr><tr><td>Stinger:</td><td></td></tr><tr><td>Warships:</td><td></td></tr>";
         bopti.append(bzTS);
     }
-    //auto fill boss and raid numbers
+
+
+
+
+
+
+//auto fill boss and raid numbers
     cotgsubscribe.subscribe( "regional", function( data ) {
             var x=data.x;
             var y=data.y;
@@ -3936,7 +4477,12 @@
             $("#cityplayerInfo div table tbody tr:gt(6)").remove();
         }
         });
-    // recall button in command window
+
+
+
+
+
+// recall button in command window
     function recallraidl100(){
 //        var troops = cotg.city.troops();
         var loot;
@@ -3987,7 +4533,12 @@
         }
         loop();
     }
-    //carry check in command window
+
+
+
+
+
+//carry check in command window
     function carrycheck(){
  //       var troops = cotg.city.troops();
         var loot;
@@ -4025,7 +4576,12 @@
             $(trlist).find(".commandinntabl tbody tr:nth-child(4) td:nth-child(2)").text("Carry:"+percentage_ofloot+"%");//td:nth-child(1) span:nth-child(1)
         }
     }
-    //Raiding script // carry percentage part in war councilor raider
+
+
+
+
+
+//Raiding script // carry percentage part in war councilor raider
      function carry_percentage(total_loot){
         var troop_loot=0;
         $(".tninput").each(function() {
@@ -4189,7 +4745,12 @@
             });
         });
     }
-    //raiding part, cancel allt attack part
+
+
+
+
+
+//raiding part, cancel allt attack part
     $(document).ready(function() {
         var newbutz="<div style='float: left; margin-left: 2%;'><button id='newbuttonu' style='font-size:8px; padding: 4px; border-radius: 8px;' class='greenb shRnTr'>Recall(<90%)</button></div>";
         $("#totalTS").before(newbutz);
@@ -4334,7 +4895,15 @@
             }
         });
     });
-    //total research
+
+
+
+
+
+
+
+
+ //total research
     function Total_Research() {
         jQuery.ajax({url: 'includes/gaLoy.php',type: 'POST',aysnc:false,
                      success: function(data) {
@@ -4385,7 +4954,15 @@
             Total_Combat_Research[16]+=((Number(cyndros)*0.5)/100)+(Number(Res[research[45]])/100);//warship
         }
     }
-    // setting layouts
+
+
+
+
+
+
+
+
+// setting layouts
     $(document).ready(function() {
         $("#citynotes").draggable({ handle: ".popUpBar" , containment: "window", scroll: false});
         $('#citynotes').height('310px');
@@ -4968,7 +5545,16 @@
             },500);
         });
     });
-    //setting nearest hub to a city
+
+
+
+
+
+
+
+
+
+//setting nearest hub to a city
     function setnearhub() {
         var res=[0,0,0,0,1,130000,130000,0,0,0,0,0,0,1,0,0,0,0,0,300000,300000,300000,400000];
         var aa=city.mo;
@@ -5011,7 +5597,15 @@
         var dat={a:JSON.stringify(aa),b:cdata.cid};
         jQuery.ajax({url: 'includes/mnio.php',type: 'POST',aysnc:false,data: dat});
     }
-    //infantry setup
+
+
+
+
+
+
+
+
+//infantry setup
     function setinfantry() {
         var res=[0,0,0,0,1,200000,220000,200000,350000,0,0,0,0,1,0,0,0,0,0,300000,300000,300000,400000];
         var aa=city.mo;
@@ -5057,7 +5651,16 @@
         var dat={a:JSON.stringify(aa),b:cdata.cid};
         jQuery.ajax({url: 'includes/mnio.php',type: 'POST',aysnc:false,data: dat});
     }
-    //Summary
+
+
+
+
+
+
+
+
+
+//Summary
     function opensumwin() {
         sum=false;
         //console.log(1);
@@ -5299,7 +5902,14 @@
             filtertroops("raid");
         });
     }
-    //update incomings summary
+
+
+
+
+
+
+
+//update incomings summary
     function updateincoming(data) {
         var inctab="<thead><th>Player</th><th>City</th><th>Coords</th><th># INC</th><th><div class='"+tpicdiv[2]+"'</div></th><th><div class='"+tpicdiv[3]+"'</div></th><th><div class='"+tpicdiv[4]+"'</div></th><th><div class='"+tpicdiv[7]+"'</div></th><th><div class='"+tpicdiv[8]+"'</div></th><th><div class='"+tpicdiv[9]+"'</div></th><th><div class='"+tpicdiv[15]+"'</div></th><th><div class='"+tpicdiv[14]+"'</div></th><th><div class='"+tpicdiv[1]+"'</div></th><th>other</th><th colspan='2'>TS total</th><th>Next INC</th></thead><tbody> This Information Has been Moved";
         var i=0;
@@ -5374,7 +5984,14 @@
         var newTableObject = document.getElementById('incomingtable');
         sorttable.makeSortable(newTableObject);
     }
-    //update raid overview
+
+
+
+
+
+
+
+//update raid overview
     function updateraidover(data,notes) {
        // console.log(notes);
         var raidovertab="<thead><tr data='0'><th></th><th>Name</th><th colspan='2'>Notes</th><th>Coords</th><th>Raids</th><th>Out</th><th>In</th><th>Raiding TS</th><th>Resources</th></tr></thead><tbody>";
@@ -5408,11 +6025,21 @@
             //var outputFile = window.prompt("What do you want to name your output file (Note: This won't have any effect on Safari)") || 'export';
             var outputFile = 'RaidSum'+today.getDate()+Number(today.getMonth()+1)+today.getFullYear()+'.csv';
 
-            // CSV
+    // CSV
             exportTableToCSV.apply(this, [$('#raidovertable'), outputFile]);
         });
     }
-    //update support summary
+
+
+
+
+
+
+
+
+
+
+//update support summary
     function updatesupport(data) {
         var supporttab="<thead><th></th><th>Player</th><th>City</th><th>Coords</th><th>Alliance</th><th>TS supporting</th><th>TS sending</th><th>TS returning</th></thead><tbody>";
         $.each(data, function() {
@@ -5477,11 +6104,21 @@
             //var outputFile = window.prompt("What do you want to name your output file (Note: This won't have any effect on Safari)") || 'export';
             var outputFile = 'SupportSum'+today.getDate()+Number(today.getMonth()+1)+today.getFullYear()+'.csv';
 
-            // CSV
+    // CSV
             exportTableToCSV.apply(this, [$('#supporttable'), outputFile]);
         });
     }
-    //update raids summary
+
+
+
+
+
+
+
+
+
+
+//update raids summary
     function updateraids(data,turnc) {
         var raidtab="<thead><th>Report</th><th>Type</th><th>Cavern progress</th><th>losses</th><th>Carry</th><th>Date</th><th>Origin</th></thead><tbody>";
         var i=0;
@@ -5506,7 +6143,16 @@
         var newTableObject = document.getElementById('raidtable');
         sorttable.makeSortable(newTableObject);
     }
-    //update res summary
+
+
+
+
+
+
+
+
+
+//update res summary
     function updateres(data) {
         var restabb="<thead><tr data='0'><th>Name</th><th colspan='2'>Notes</th><th>Coords</th><th>Wood</th><th>(Storage)</th><th>Stones</th><th>(Storage)</th><th>Iron</th><th>(Storage)</th><th>Food</th><th>(Storage)</th><th>Carts</th><th>(Total)</th><th>Ships</th><th>(Total)</th><th>Score</th></tr></thead><tbody>";
         var woodtot=0;
@@ -5581,11 +6227,20 @@
             //var outputFile = window.prompt("What do you want to name your output file (Note: This won't have any effect on Safari)") || 'export';
             var outputFile = 'ResSum'+today.getDate()+Number(today.getMonth()+1)+today.getFullYear()+'.csv';
 
-            // CSV
+    // CSV
             exportTableToCSV.apply(this, [$('#restable'), outputFile]);
         });
     }
-    //update troops summary
+
+
+
+
+
+
+
+
+
+//update troops summary
     function updatetroops(data,notes) {
         var troopstab="<thead><tr data='0'><th>Name</th><th style='width:150px;'>Notes</th><th>Coords</th><th class='spf'><div class='"+tpicdiv[8]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[1]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[11]+"'></div>(home)</th><th class='spf'>(Total)</th>";
         troopstab+="<th class='spf'><div class='"+tpicdiv[14]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[0]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[10]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[9]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[4]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[12]+"'></div>(home)</th><th class='spf'>(Total)</th>";
@@ -5835,11 +6490,19 @@
             //var outputFile = window.prompt("What do you want to name your output file (Note: This won't have any effect on Safari)") || 'export';
             var outputFile = 'TroopsSum'+today.getDate()+Number(today.getMonth()+1)+today.getFullYear()+'.csv';
 
-            // CSV
+    // CSV
             exportTableToCSV.apply(this, [$('#troopstable'), outputFile]);
         });
     }
-    //showing cities in shrine planner
+
+
+
+
+
+
+
+
+//showing cities in shrine planner
     function showcities() {
         $("#shrineTab tr").each(function () {
             if($(this).attr("data")=="city") {
@@ -5847,7 +6510,14 @@
             }
         });
     }
-    //updating shrine enlightment list
+
+
+
+
+
+
+
+//updating shrine enlightment list
     function updateshrine() {
         var shrinetab="<table id='shrineTab'><thead><th style='width:115px'>Change</th><th style='width:50px'>Chances</th><th>Distance</th><th>Player</th><th>City</th><th>Coords</th><th style='width:100px'>Alliance</th><th>score</th><th>Type</th></thead><tbody>";
         var ccounter=0;
@@ -5969,7 +6639,15 @@
             updateshrine();
         });
     }
-    // exporting table to csv file taken from https://gist.github.com/adilapapaya/9787842
+
+
+
+
+
+
+
+
+// exporting table to csv file taken from https://gist.github.com/adilapapaya/9787842
     function exportTableToCSV($table, filename) {
         var $headers = $table.find('tr:has(th)')
         ,$rows = $table.find('tr:has(td)')
