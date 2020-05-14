@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name gfunky3
 // @namespace https://github.com/bmessin1/Gfunky3
-// @version 1.0.9
+// @version 1.1.0
 // @description gfunky3
 // @author Greety
 // @match https://*.crownofthegods.com
