@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name gfunky3
 // @namespace https://github.com/bmessin1/Gfunky3
-// @version 1.1.0
+// @version 1.1.1
 // @description gfunky3
 // @author Greety
 // @match https://*.crownofthegods.com
@@ -19,7 +19,7 @@ START POPUP MESSAGE FOR PLAYERS WHEN THEY OPEN THE GAME
 (function() {
 
     $(document).ready(function() {
-    var popwin="<div id='HelloWorld' style='width:Auto; max-width: 35% ;height:Auto !important; Max-height: 85%; background-color: #E2CBAC;-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: 4px ridge #DAA520;position:absolute;right:40%;top:100px; z-index:1000000;'><div class=\"popUpBar\"> <span class=\"ppspan\">Welcome!</span><button id=\"gfunkyX\" onclick=\"$('#HelloWorld').remove();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div id='hellobody' class=\"popUpWindow\"><span style='margin-left: 5%;'> <h3 style='text-align:center;'>Welcome to Crown Of The Gods!</h3></span><br><br><span style='margin-left: 5%;'> <h4 style='text-align:center;'> GFunky3 BY GREETY </h4></span><br><span style='margin-left: 5%;'><h4 style='text-align:center;color:blue;'>Special Thanks to Dhruv, Lionell0, And  Fact</h4><br><h4 style='text-align:center;color:green;' >Updated 10th May 2020</h4></span><br><br><span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;'><li>added quickbuild</li> <li>city notes coordinates</li> <li> 100% and 115% Raid options</li> <li> Fixed Summary Tabs</li> <li> removed fill button from build que- now part of overviews</li> <li>Added note to Summary incoming tab that Incomings are now part of Overviews</li> <li> Fixed Sizing issue for Summary Function Tables </li><li>Optimized for Smoothness</li></ul></span></div></div>";
+    var popwin="<div id='HelloWorld' style='width:Auto; max-width: 35% ;height:Auto !important; Max-height: 85%; background-color: #E2CBAC;-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: 4px ridge #DAA520;position:absolute;right:40%;top:100px; z-index:1000000;'><div class=\"popUpBar\"> <span class=\"ppspan\">Welcome!</span><button id=\"gfunkyX\" onclick=\"$('#HelloWorld').remove();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div id='hellobody' class=\"popUpWindow\"><span style='margin-left: 5%;'> <h3 style='text-align:center;'>Welcome to Crown Of The Gods!</h3></span><br><br><span style='margin-left: 5%;'> <h4 style='text-align:center;'> GFunky3 BY GREETY </h4></span><br><span style='margin-left: 5%;'><h4 style='text-align:center;color:blue;'>Special Thanks to Dhruv, Lionell0, And  Fact</h4><br><h4 style='text-align:center;color:green;' >Updated 23rd May 2020</h4></span><br><br><span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;'><li>added quickbuild</li> <li>city notes coordinates</li> <li> 100% and 115% Raid options</li> <li> Fixed Summary Tabs</li> <li> removed fill button from build que- now part of overviews</li> <li>Added note to Summary incoming tab that Incomings are now part of Overviews</li> <li> Fixed Sizing issue for Summary Function Tables </li><li>Optimized for Smoothness</li></ul></span></div></div>";
 	$("body").append(popwin);
 
         setTimeout(function() {
@@ -1310,32 +1310,6 @@ START OF CORE FUNKY
     var coon;
 
 
-
-
-
-//getting city lists
-    $(document).ready(function() {
-        setTimeout(function() {
-            var a=$("#organiser > option");
-            var l=a.length;
-            for  (var i=0; i<l;i++) {
-                var temp=String($(a[i]).attr("value"));
-                $("#organiser").val(temp).change();
-                clc[temp]=[];
-                var tempcl=$("#cityDropdownMenu > option");
-                var ll=tempcl.length;
-                if (cdata.cg.indexOf(temp)>-1) {
-                    clc[temp].push($(tempcl[0]).attr("value"));
-                }
-                if (ll>1) {
-                    for (var j=1;j<ll;j++) {
-                        clc[temp].push($(tempcl[j]).attr("value"));
-                    }
-                }
-            }
-            $("#organiser").val("all").change();
-        },4000);
-    });
     setTimeout(function() {
         (function(open) {
         XMLHttpRequest.prototype.open = function() {
@@ -1344,6 +1318,7 @@ START OF CORE FUNKY
                     var url=this.responseURL;
                     if (url.indexOf('gC.php')!= -1) {
                         cdata=JSON.parse(this.response);
+                        city = {};
                         city.cid=cdata.cid;
                         city.th=cdata.th;
                         citytc=cdata.th;
@@ -1392,6 +1367,9 @@ START OF CORE FUNKY
                     if (url.indexOf('gPlA.php')!=-1) {
                         pldata=JSON.parse(this.response);
                     }
+                    if (url.indexOf('cgS.php') != -1) {
+                        clc = JSON.parse(this.response);
+            }
                     if (url.indexOf('poll2.php')!=-1) {
                         if(poll2) {
 							var saveclc=poll2.player.clc;
@@ -1440,9 +1418,6 @@ START OF CORE FUNKY
         };
     })(XMLHttpRequest.prototype.open);
     },4000);
-
-
-
 
 
 
@@ -1554,7 +1529,7 @@ START OF CORE FUNKY
             $(c).remove();
         }, 6000);
     }
- /*   function errorgo(j) {
+   function errorgo(j) {
         var errormsgs;
         errmBR = errmBR+1;
         var b = 'errBR' +errmBR;
@@ -1562,9 +1537,23 @@ START OF CORE FUNKY
         var d = '#' +b+ ' div';
         errormsgs = '<tr ID = "' +b+ '"><td><div class = "errBR">' +j+ '<div></td></tr>';
         $("#errorBRpopup").append(errormsgs);
-        errormsgBR(c, d);
-    }
-    */
+        $(c).show();
+    $(d).animate({
+      opacity: 1,
+      bottom: "+10px"
+    }, 'slow');
+    setTimeout(function() {
+      $(d).animate({
+        opacity: 0,
+        bottom: "-10px"
+      }, 'slow');
+      $(c).fadeOut("slow");
+    }, 5000);
+    setTimeout(function() {
+      $(c).remove();
+    }, 6000);
+  }
+
     String.prototype.replaceAt=function(index, char) {
         var a = this.split("");
         a[index] = char;
@@ -1702,16 +1691,18 @@ START OF CORE FUNKY
              ttspeedres[17]+=((Number(domdisfaith)*0.5)/100)+(Number(Res[research[14]])/100);
              },2000);
          }
-        jQuery.ajax({url: 'includes/pD.php',type: 'POST',aysnc:false,
-                      success: function(data) {
-                          pdata=JSON.parse(data);
-                      }
-                     });
-         setTimeout(function(){
-             var cid=$("#cityDropdownMenu").val();
-             var dat={a:cid};
-             jQuery.ajax({url: 'includes/gC.php',type: 'POST',aysnc:false, data: dat});
-         },5000);
+        setTimeout(function() {
+      var cid = $("#cityDropdownMenu").val();
+      var dat = {
+        a: cid
+      };
+      jQuery.ajax({
+        url: 'includes/gC.php',
+        type: 'POST',
+        async: true,
+        data: dat
+      });
+    }, 5000);
 
 
 
