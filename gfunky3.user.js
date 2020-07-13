@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name Gfunky3
 // @namespace www.tampermonkey.com
-// @version 1.1.4
+// @version 1.1.5
 // @description gfunky3
 // @author Greety
 // @match https://*.crownofthegods.com
+// @include https://*.crownofthegods.com/?s=*
 // @grant none
 // @updateURL https://raw.githubusercontent.com/bmessin1/Gfunky/master/gfunky3.user.js
 // @downloadURL https://raw.githubusercontent.com/bmessin1/Gfunky/master/gfunky3.user.js
@@ -19,7 +20,7 @@ START POPUP MESSAGE FOR PLAYERS WHEN THEY OPEN THE GAME
 (function() {
 
     $(document).ready(function() {
-    var popwin="<div id='HelloWorld' style='width:Auto; max-width: 35% ;height:Auto !important; Max-height: 85%; background-color: #E2CBAC;-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: 4px ridge #DAA520;position:absolute;right:40%;top:100px; z-index:1000000;'><div class=\"popUpBar\"> <span class=\"ppspan\">Welcome!</span><button id=\"gfunkyX\" onclick=\"$('#HelloWorld').remove();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div id='hellobody' class=\"popUpWindow\"><span style='margin-left: 5%;'> <h3 style='text-align:center;'>Welcome to Crown Of The Gods. This is a Beta version prior to being approved by Developers for the addon marketplace</h3></span><br><br><span style='margin-left: 5%;'> <h4 style='text-align:center;'> GFunky3 BY GREETY </h4></span><br><span style='margin-left: 5%;'><h4 style='text-align:center;color:blue;'>Special Thanks to Dhruv, Lionell, And  Fact</h4><br><h4 style='text-align:center;color:green;' >Updated 06th July 2020</h4></span><br><br><span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;'><li>added Outgoing Summary</li> <li>Added Incoming Summary</li><li> Fixed Sizing issue for Summary Function Tables </li><li>Optimized for Smoothness</li><li>Added Defensive Mail list</li><li> Fixed Navy Display issue in Defensive Mail</li></ul></span></div></div>";
+    var popwin="<div id='HelloWorld' style='width:Auto; max-width: 35% ;height:Auto !important; Max-height: 85%; background-color: #E2CBAC;-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: 4px ridge #DAA520;position:absolute;right:40%;top:100px; z-index:1000000;'><div class=\"popUpBar\"> <span class=\"ppspan\">Welcome!</span><button id=\"gfunkyX\" onclick=\"$('#HelloWorld').remove();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div id='hellobody' class=\"popUpWindow\"><span style='margin-left: 5%;'> <h3 style='text-align:center;'>Welcome to Crown Of The Gods. This is a Beta version prior to being approved by Developers for the addon marketplace</h3></span><br><br><span style='margin-left: 5%;'> <h4 style='text-align:center;'> GFunky3 BY GREETY </h4></span><br><span style='margin-left: 5%;'><h4 style='text-align:center;color:blue;'>Special Thanks to Dhruv, Lionell, And  Fact</h4><br><h4 style='text-align:center;color:green;' >Updated 13th July 2020</h4></span><br><br><span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;'><li>added Outgoing Summary</li> <li>Added Incoming Summary</li><li> Fixed Sizing issue for Summary Function Tables </li><li>Optimized for Smoothness</li><li>Added Defensive Mail list</li><li> Fixed Navy Display issue in Defensive Mail</li><li>Added substitute Functionality</li></ul></span></div></div>";
 	$("body").append(popwin);
 
         setTimeout(function() {
