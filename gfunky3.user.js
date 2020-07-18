@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Gfunky3
 // @namespace www.tampermonkey.com
-// @version 1.1.5
+// @version 1.1.6
 // @description gfunky3
 // @author Greety
 // @match https://*.crownofthegods.com
@@ -20,7 +20,7 @@ START POPUP MESSAGE FOR PLAYERS WHEN THEY OPEN THE GAME
 (function() {
 
     $(document).ready(function() {
-    var popwin="<div id='HelloWorld' style='width:Auto; max-width: 35% ;height:Auto !important; Max-height: 85%; background-color: #E2CBAC;-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: 4px ridge #DAA520;position:absolute;right:40%;top:100px; z-index:1000000;'><div class=\"popUpBar\"> <span class=\"ppspan\">Welcome!</span><button id=\"gfunkyX\" onclick=\"$('#HelloWorld').remove();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div id='hellobody' class=\"popUpWindow\"><span style='margin-left: 5%;'> <h3 style='text-align:center;'>Welcome to Crown Of The Gods. This is a Beta version prior to being approved by Developers for the addon marketplace</h3></span><br><br><span style='margin-left: 5%;'> <h4 style='text-align:center;'> GFunky3 BY GREETY </h4></span><br><span style='margin-left: 5%;'><h4 style='text-align:center;color:blue;'>Special Thanks to Dhruv, Lionell, And  Fact</h4><br><h4 style='text-align:center;color:green;' >Updated 13th July 2020</h4></span><br><br><span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;'><li>added Outgoing Summary</li> <li>Added Incoming Summary</li><li> Fixed Sizing issue for Summary Function Tables </li><li>Optimized for Smoothness</li><li>Added Defensive Mail list</li><li> Fixed Navy Display issue in Defensive Mail</li><li>Added substitute Functionality</li></ul></span></div></div>";
+    var popwin="<div id='HelloWorld' style='width:Auto; max-width: 35% ;height:Auto !important; Max-height: 85%; background-color: #E2CBAC;-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: 4px ridge #DAA520;position:absolute;right:40%;top:100px; z-index:1000000;'><div class=\"popUpBar\"> <span class=\"ppspan\">Welcome!</span><button id=\"gfunkyX\" onclick=\"$('#HelloWorld').remove();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div id='hellobody' class=\"popUpWindow\"><span style='margin-left: 5%;'> <h3 style='text-align:center;'>Welcome to Crown Of The Gods. This is a Beta version prior to being approved by Developers for the addon marketplace</h3></span><br><br><span style='margin-left: 5%;'> <h4 style='text-align:center;'> GFunky3 BY GREETY </h4></span><br><span style='margin-left: 5%;'><h4 style='text-align:center;color:blue;'>Special Thanks to Dhruv, Lionell, And  Fact</h4><br><h4 style='text-align:center;color:green;' >Updated 18th July 2020</h4></span><br><br><span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;'><li>Fixed Galley scout issue with troops</li> <li>Fixed Cancel attack on ally</li><li>Added substitute Functionality</li></ul></span></div></div>";
 	$("body").append(popwin);
 
         setTimeout(function() {
@@ -103,6 +103,7 @@ START OF QUICKBUILD SCRIPT
 
 
 */
+
 
 (function QuickBuild0Script() {
     const QB_DIV = "qbDiv";
@@ -605,7 +606,7 @@ TODO update id for Temple
                     id: cdata.cid,
                     curentMap: [],
                     scheduleMap: [],
-                    autoModeActivated: that.data.autoModeActivated
+                    quickModeActivated: that.data.quickModeActivated
                 };
                 that.message = {
                     map: "No map"
@@ -697,7 +698,7 @@ TODO update id for Temple
                         }
                     }
                 } else {
-                    that.message.map = "Unknwon map format. Please report the evolution.";
+                    that.message.map = "Unknwon layout format. Please report to Greety or Fact.";
                 }
             }
 
@@ -828,8 +829,8 @@ TODO update id for Temple
             var divButtons = mapSetOk ? [{ // Button info
                 title: infoMsg,
                 removeClass: "redb greenb",
-                addClass: that.data.autoModeActivated ? "redb" : "greenb",
-                text: that.data.autoModeActivated ? "Activated" : "Deactivated"
+                addClass: that.data.quickModeActivated ? "redb" : "greenb",
+                text: that.data.quickModeActivated ? "Activated" : "Deactivated"
             }, { // Selector Clear
                 title: buildingsToDestroy.length > 0 ? "" : "Nothing to destroy",
                 removeClass: "disable greenb",
@@ -880,7 +881,7 @@ TODO update id for Temple
             var currentViewData = {
                 children: [{ // Div info
                     visible: !mapSetOk,
-                    text: 'Set a map to activate functionnality',
+                    text: 'Add a layout to use Quickbuild!',
                     title: infoMsg
                 }, { // Div button bar
                     visible: mapSetOk,
@@ -975,7 +976,7 @@ TODO update id for Temple
 
 // What to do with current building
         that.processBuilding = function () {
-            if (that.data.autoModeActivated) {
+            if (that.data.quickModeActivated) {
                 var selectedBuilding = $("#city_map .hoverbuild").attr("data");
                 if ((selectedBuilding) && that.data.curentMap[selectedBuilding]) {
                     var curentBuilding = that.data.curentMap[selectedBuilding];
@@ -1012,7 +1013,7 @@ TODO update id for Temple
                             }
                         }
                         if (!found) {
-                            that.utils.errorMsg.display("Error. Don't know where to move this building. Please report the bug with current and plan maps");
+                            that.utils.errorMsg.display("Error. Don't know where to move this building. Please report the bug with current and planned Layout");
                         }
                     } else if (curentBuilding.toAdd) {
                         toAdd = that.data.scheduleMap[selectedBuilding];
@@ -1040,7 +1041,7 @@ TODO update id for Temple
                             };
                             $("body").trigger(eventData);
                         } else {
-                            that.utils.errorMsg.display("Error. Don't know how to creat " + toAdd.name + ". Please report the bug");
+                            that.utils.errorMsg.display("Error. Don't know how to create " + toAdd.name + ". Please report the bug");
                         }
                     }
                 }
@@ -1051,12 +1052,12 @@ TODO update id for Temple
 
 
 
-// Toggle automode
-        that.toggleAutoMode = function () {
-            that.data.autoModeActivated = !that.data.autoModeActivated;
+// Toggle Quickmode
+        that.toggleQuickMode = function () {
+            that.data.quickModeActivated = !that.data.quickModeActivated;
             that.onCityDataUpdated(false);
-            that.utils.errorMsg.display("Auto build mode " +
-                (that.data.autoModeActivated ? "activated" : "disactivated"));
+            that.utils.errorMsg.display("Quick build mode " +
+                (that.data.quickModeActivated ? "activated" : "deactivated"));
         }
         return that;
     }();
@@ -1091,7 +1092,7 @@ TODO update id for Temple
 // Buttons for building in left bar
             $("#incAttacksDiv").before(
                 '<div id="' + QB_DIV + '" class="commandinndiv">' +
-                '<div style="margin-left: 8px;margin-top: 10px;font-size: 12px;">Set a map to activate functionnality</div>' +
+                '<div style="margin-left: 8px;margin-top: 10px;font-size: 12px;">Only Works With A Layout</div>' +
                 '<div style="display:none;">' +
                 '<button ' + CLASS_AND_CSS_FIRST_BUTTON + '>Info</button>' +
                 '<select title="Remove building or resource" ' + CLASS_AND_CSS_NEXT_BUTTON + '><option>Clear</option></select>' +
@@ -1115,7 +1116,7 @@ TODO update id for Temple
 
 */
             $(BUTTON_CITY_INFO_SELECTOR).click(function () {
-                QB.buildManager.toggleAutoMode();
+                QB.buildManager.toggleQuickMode();
             });
 
             $("#city_map").click(function () {
@@ -2951,8 +2952,7 @@ Send Attack Function
             var galcap=500*galnumb;
             var nongalts=0; // Non Galley TS
 			var galnumb=Math.floor(t.home[gali]-fakeg*fakenumb/realnumb); // Determining how many 
-			t.real[gali]=galnumb;	
-            t.fake[gali]=fakeg;
+			
 			for (var i in t.home) {
 			    if (t.type[i]==14 && t.type[i]==17 && t.type[i]==16) {
         //Galley Info            
@@ -2993,7 +2993,7 @@ Send Attack Function
 						}
 					}
 					
-		//Warship Info				
+		//Warship Info
                     if (t.type[i]==16 ) {
                         if ($("#usereal"+t.type[i]).prop( "checked")===true) {
                             if ($("#usefake"+t.type[i]).prop( "checked")===true) {
@@ -3014,7 +3014,7 @@ Send Attack Function
                             nongalts+=ttts[t.type[i]]*(t.home[i]-Math.ceil((fakeg*500)/ttts[t.type[i]])*fakenumb)/realnumb;
                         } else {nongalts+=ttts[t.type[i]]*(t.home[i])/realnumb;}
                     }
-                } 
+                }
 				 
                 if (t.type[i]==17) {
                     if ($("#usereal"+t.type[i]).prop( "checked")===true) {
@@ -3090,6 +3090,8 @@ Send Attack Function
                     }
                 }
             }
+			t.real[gali]=Math.ceil(nongalts/500);	
+            t.fake[gali]=fakeg;
         } 
 		else {
             var fakerat=0;
@@ -5034,14 +5036,14 @@ END Boss Only Section
             });
         }
 		
-        var cancelallya="<input id='cancelAllya' type='checkbox' checked='checked'> Cancel attack if same alliance";
-        var cancelallys="<input id='cancelAllys' type='checkbox' checked='checked'> Cancel attack if same alliance";
-        var cancelallyp="<input id='cancelAllyp' type='checkbox' checked='checked'> Cancel attack if same alliance";
-        var cancelallyc="<input id='cancelAllyc' type='checkbox' checked='checked'> Cancel attack if same alliance";
-        $("#assaulttraveltime").parent().next().html(cancelallya);
-        $("#siegetraveltime").parent().next().html(cancelallys);
-        $("#plundtraveltime").parent().next().html(cancelallyp);
-        $("#scouttraveltime").parent().next().html(cancelallyc);
+        //var cancelallya="<input id='cancelAllya' type='checkbox' checked='checked'> Cancel attack if same alliance";
+        //var cancelallys="<input id='cancelAllys' type='checkbox' checked='checked'> Cancel attack if same alliance";
+        //var cancelallyp="<input id='cancelAllyp' type='checkbox' checked='checked'> Cancel attack if same alliance";
+        //var cancelallyc="<input id='cancelAllyc' type='checkbox' checked='checked'> Cancel attack if same alliance";
+        //$("#assaulttraveltime").parent().next().html(cancelallya);
+        //$("#siegetraveltime").parent().next().html(cancelallys);
+        //$("#plundtraveltime").parent().next().html(cancelallyp);
+        //$("#scouttraveltime").parent().next().html(cancelallyc);
 		
     //Send Assault    
 		$("#assaultGo").click(function() {
