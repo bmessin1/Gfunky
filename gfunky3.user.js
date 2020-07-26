@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Gfunky3
 // @namespace www.tampermonkey.com
-// @version 1.1.6
+// @version 1.1.7
 // @description gfunky3
 // @author Greety
 // @match https://*.crownofthegods.com
@@ -20,7 +20,7 @@ START POPUP MESSAGE FOR PLAYERS WHEN THEY OPEN THE GAME
 (function() {
 
     $(document).ready(function() {
-    var popwin="<div id='HelloWorld' style='width:Auto; max-width: 35% ;height:Auto !important; Max-height: 85%; background-color: #E2CBAC;-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: 4px ridge #DAA520;position:absolute;right:40%;top:100px; z-index:1000000;'><div class=\"popUpBar\"> <span class=\"ppspan\">Welcome!</span><button id=\"gfunkyX\" onclick=\"$('#HelloWorld').remove();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div id='hellobody' class=\"popUpWindow\"><span style='margin-left: 5%;'> <h3 style='text-align:center;'>Welcome to Crown Of The Gods. This is a Beta version prior to being approved by Developers for the addon marketplace</h3></span><br><br><span style='margin-left: 5%;'> <h4 style='text-align:center;'> GFunky3 BY GREETY </h4></span><br><span style='margin-left: 5%;'><h4 style='text-align:center;color:blue;'>Special Thanks to Dhruv, Lionell, And  Fact</h4><br><h4 style='text-align:center;color:green;' >Updated 18th July 2020</h4></span><br><br><span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;'><li>Fixed Galley scout issue with troops</li> <li>Fixed Cancel attack on ally</li><li>Added substitute Functionality</li></ul></span></div></div>";
+    var popwin="<div id='HelloWorld' style='width:Auto; max-width: 35% ;height:Auto !important; Max-height: 85%; background-color: #E2CBAC;-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: 4px ridge #DAA520;position:absolute;right:40%;top:100px; z-index:1000000;'><div class=\"popUpBar\"> <span class=\"ppspan\">Welcome!</span><button id=\"gfunkyX\" onclick=\"$('#HelloWorld').remove();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div id='hellobody' class=\"popUpWindow\"><span style='margin-left: 5%;'> <h3 style='text-align:center;'>Welcome to Crown Of The Gods. This is a Beta version prior to being approved by Developers for the addon marketplace</h3></span><br><br><span style='margin-left: 5%;'> <h4 style='text-align:center;'> GFunky3 BY GREETY </h4></span><br><span style='margin-left: 5%;'><h4 style='text-align:center;color:blue;'>Special Thanks to Dhruv, Lionell, And  Fact</h4><br><h4 style='text-align:center;color:green;' >Updated 26th July 2020</h4></span><br><br><span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;'><li>Fixed Galley scout issue with troops</li> <li>Fixed Cancel attack on ally</li><li>Added substitute Functionality</li><li>Added builds to Land Layouts</li></ul></span></div></div>";
 	$("body").append(popwin);
 
         setTimeout(function() {
@@ -5759,10 +5759,10 @@ END Boss Only Section
         var layoutoptbody="<div id='layoutoptBody' aria-labeledby='ui-id-60' class='ui-tabs-panel ui-widget-content ui-corner-bottom' ";
         layoutoptbody+=" role='tabpanel' aria-hidden='true' style='display: none;'><table><tbody><tr><td><input id='addnotes' class='clsubopti' type='checkbox'> Add Notes</td>";
         layoutoptbody+="<td><input id='addtroops' class='clsubopti' type='checkbox'> Add Troops</td></tr><tr><td><input id='addtowers' class='clsubopti' type='checkbox'> Add Towers</td><td><input id='addbuildings' class='clsubopti' type='checkbox'> Upgrade Cabins</td>";
-        layoutoptbody+="<td> Cabin Lvl: <input id='cablev' type='number' style='width:22px;' value='7'></td></tr><tr><td><input id='addwalls' class='clsubopti' type='checkbox'> Add Walls</td>";
+        layoutoptbody+="<td> Cabin Lvl: <input id='cablev' type='number' style='width:22px;' value='9'></td></tr><tr><td><input id='addwalls' class='clsubopti' type='checkbox'> Add Walls</td>";
         layoutoptbody+="<td><input id='addhub' class='clsubopti' type='checkbox'> Set Nearest Hub With layout</td></tr><tr><td>Select Hubs list: </td><td id='selhublist'></td><td>";
         layoutoptbody+="<button id='nearhubAp' class='regButton greenb' style='width:130px; margin-left: 10%'>Set Nearest Hub</button><button id='infantryAp' class='regButton greenb' style='width:130px; margin-left: 10%'>Infantry setup</button></td></tr></tbody></table>";
-        layoutoptbody+="<table><tbody><tr><td colspan='2'><input id='addres' class='clsubopti' type='checkbox'> Add Resources:</td><td id='buttd' colspan='2'></td></tr><tr><td>wood<input id='woodin' type='number' style='width:100px;' value='200000'></td><td>stones<input id='stonein' type='number' style='width:100px;' value='220000'></td>";
+        layoutoptbody+="<table><tbody><tr><td colspan='2'><input id='addres' class='clsubopti' type='checkbox'> Add Resources:</td><td id='buttd' colspan='2'></td></tr><tr><td>wood<input id='woodin' type='number' style='width:100px;' value='250000'></td><td>stones<input id='stonein' type='number' style='width:100px;' value='250000'></td>";
         layoutoptbody+="<td>iron<input id='ironin' type='number' style='width:100px;' value='200000'></td><td>food<input id='foodin' type='number' style='width:100px;' value='350000'></td></tr>";
         layoutoptbody+="</tbody></table></div>";
         var layoptbut="<button id='layoptBut' class='regButton greenb' style='width:150px;'>Save Res Settings</button>";
@@ -6021,88 +6021,179 @@ END Boss Only Section
                 var selectbuttsl='<select id="landbuildlayouts" style="font-size: 10px !important;margin-top:1%;margin-left:2%;width:45%;" class="regButton greenb"><option value="0">Select land layout</option>';
                 var ll=1;
                 selectbuttsl+='<option value="'+ll+'">1 sec vanqs</option>';
-                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##GBGBG##-----##----##BGBGBGB##----##----#GBGBGBGBG#----##----#GBGBGBGBG#----#######GBGBTBGBG#######----#GBGBGBGBG#----##----#GBGBGBGBG#----##----##BGBGBGB##----##GGGGG##GBGBG##-----##BBBBB-#######------##GGGGGG--H#---------##BBBBBB--J#---------###GGGG---X#--------#####BB----S#-------########################");
-                remarksl.push("vanqs"); notesl.push("180000 vanqs @ 2 days");
-                troopcounl.push([0,0,0,0,0,180000,0,0,0,0,0,0,0,0,0,0,0]);
-                resl.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
+                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##GBGBG##-----##----##BGBGBGB##----##----#GBGBGBGBG#----##----#GBGBGBGBG#----#######GBGBTBGBG#######S--X#GBGBGBGBG#----##----#GBGBGBGBG#----##----##BGBGBGB##----##GGGGG##GBGBG##-----##BBBBBB#######------##GGGGGGJ--#---------##BBBBBB---#---------###GGGGZ---#--------#####B------#-------########################");
+                remarksl.push("Vanqs"); notesl.push("180000 Vanqs @ 2 days");
+                troopcounl.push([0,0,0,0,0,179999,0,0,0,0,0,0,0,0,0,0,0]);
+                resl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 ll++;
+
                 selectbuttsl+='<option value="'+ll+'">2 sec vanqs</option>';
-                layoutsl.push("[ShareString.1.3]:########################BBB--JX#-------#####BGBG--PP#--------###-BBBBB-MS#---------##-BGBGB--H#---------##-BGBGB#######------##-ZBB-##BBBBB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBBBBBGB#----#######BGBGTGBGB#######----#BGBBBBBGB#----##----#BGBGBGBGB#----##----##BBGBGBB##----##-----##BBBBB##-----##------#######------##---------#---------##---------#---------###--------#--------#####-------#-------########################");
-                remarksl.push("vanqs"); notesl.push("264000 vanqs @ 6 days");
-                troopcounl.push([0,0,0,0,0,264000,0,0,0,0,0,0,0,0,0,0,0]);
-                resl.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
+                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBGBGBGB#----#######BGBBTBBGB#######SSPX#BGBGBGBGB#----##MDPJ#BGBGBGBGB#----##S---##BBGBGBB##----##-----##BBBBB##-----##-BBBBB#######------##-ZBGGB---#---------##-BBBBB---#---------###-BGGB---#--------#####BBBB---#-------########################");
+                remarksl.push("vanqs"); notesl.push("256000 vanqs @ 6 days");
+                troopcounl.push([0,0,0,0,0,255999,0,0,0,0,0,0,0,0,0,0,0]);
+                resl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 ll++;
                 selectbuttsl+='<option value="'+ll+'">3 sec vanqs raiding</option>';
-                layoutsl.push("[ShareString.1.3];########################----PJX#-------#####BB----PP#--------###BGBGB--SS#---------##BBBBB--MP#---------##BGBGB-#######------##BBBBB##BBBBB##-----##--G-##BBGBGBB##----##----#BBBBBBBBB#----##----#BGBGBGBGB#----#######BBBBTBBBB#######----#BGBGBGBGB#----##----#BBBBBBBBB#----##----##BBGBGBB##----##-----##BBBBB##-----##------#######--__--##---------#----_##_-##---------#----_###_###--------#-----_#######-------#------_########################");
-                remarksl.push("vanqs"); notesl.push("296000 vanqs @ 10 days");
-                troopcounl.push([0,0,0,0,0,296000,0,0,0,0,0,0,0,0,0,0,0]);
-                resl.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
+                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BBBGBGBBB#----##----#BGBBBBBGB#----#######BBBGTGBBB#######SSPX#BGBBBBBGB#----##MDP-#BBBGBGBBB#----##S---##BBGBGBB##----##-----##BBBBB##-----##------#######------##---BBBBBB#---------##---BGGBGB#---------###--BBBBBB#--------#####-JBZBBB#-------########################");
+                remarksl.push("vanqs"); notesl.push("292000 vanqs @ 10 days");
+                troopcounl.push([0,0,0,0,0,291999,0,0,0,0,0,0,0,0,0,0,0]);
+                resl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
+                ll++;
+                selectbuttsl+='<option value="'+ll+'">4 sec vanqs Portal</option>';
+                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BBBGBGBBB#----##----#BGBBBBBGB#----#######BBBGTGBBB#######SS-X#BGBBBBBGB#----##M---#BBBGBGBBB#----##----##BBGBGBB##----##-----##BBBBB##-----##------#######------##--BBBBBBB#---------##--BBGGBGB#---------###-BBBBBBB#--------#####BJBZBBB#-------########################");
+                remarksl.push("vanqs"); notesl.push("308000 vanqs @ 14.5 days");
+                troopcounl.push([0,0,0,0,0,307999,0,0,0,0,0,0,0,0,0,0,0]);
+                resl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 ll++;
                 selectbuttsl+='<option value="'+ll+'">2 sec rangers</option>';
-                layoutsl.push("[ShareString.1.3]:########################BB---JX#-------#####BGBGB-PP#--------###-BGBGB-MS#---------##-BGBGB--H#---------##-BGBGB#######------##--BBB##BGBGB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBGBGBGB#----#######BGBGTGBGB#######----#BGBGBGBGB#----##----#BGBGBGBGB#----##----##BBGBGBB##----##-----##BBBBB##-----##------#######------##---------#---------##---------#---------###--------#--------#####-------#-------########################");
-                remarksl.push("rangers/triari"); notesl.push("236000 inf @ 6.5 days");
-                troopcounl.push([0,0,186000,50000,0,0,0,0,0,0,0,0,0,0,0,0,0]);
+                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBGBGBGB#----#######BGBGTGBGB#######SSPX#BGBGBGBGB#----##MLPJ#BGBGBGBGB#----##S---##BBGBGBG##----##-----##BBBGB##-----##--BBBB#######------##-BGGGG---#---------##-BBBBBB--#---------###-GGGG---#--------#####BBBB---#-------########################");
+                remarksl.push("Rangers"); notesl.push("228000 inf @ 5.2 days");
+                troopcounl.push([0,0,228000,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
+                resl.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
+                ll++;
+                selectbuttsl+='<option value="'+ll+'">3 sec rangers</option>';
+                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##GBGBGBG##----##----#BBBGBGBBB#----##----#BGBBBBBGB#----#######BBBGTGBBB#######SMSX#BGBBBBBGB#----##SLPP#BBBGBGBBB#----##----##GBGBGBG##----##-----##BBBBB##-----##------#######------##----BBBBB#---------##---BBGGGB#---------###--JBGBGB#--------#####-BBBBBB#-------########################");
+                remarksl.push("Rangers"); notesl.push("268000 inf @ 9.3 days");
+                troopcounl.push([0,0,268000,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
+                resl.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
+                ll++;
+                selectbuttsl+='<option value="'+ll+'">2s/3s Rangers/Triari</option>';
+                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBGBGBGB#----#######BGBGTGBGB#######SSPX#BGBGBGBGB#----##MLPJ#BGBGBGBGB#----##S---##BBGBGBG##----##-----##BBBGB##-----##--BBBB#######------##-BGGGG---#---------##-BBBBBB--#---------###-GGGG---#--------#####BBBB---#-------########################");
+                remarksl.push("rangers/triari"); notesl.push("228000 inf @ 6.2 days");
+                troopcounl.push([0,0,152000,76000,0,0,0,0,0,0,0,0,0,0,0,0,0]);
+                resl.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
+                ll++;
+                selectbuttsl+='<option value="'+ll+'">3s/3s Rangers/Triari</option>';
+                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##-BGBGBB##----##----#BBBGBGBGB#----##----#BGBGBGBGB#----#######BGBBTGBGB#######SLSX#BGBGBGBGB#----##SMPP#BGBGBGBGB#----##----##BBGBGBB##----##-----##BBBBB##-----##--BBBB#######------##--BGBGB--#---------##--BGBGB--#---------###JBGBGB--#--------#####BBBBB--#-------########################");
+                remarksl.push("rangers/triari"); notesl.push("252000 inf @ 6.2 days");
+                troopcounl.push([0,0,168000,84000,0,0,0,0,0,0,0,0,0,0,0,0,0]);
                 resl.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
                 ll++;
                 selectbuttsl+='<option value="'+ll+'">6 sec praetors</option>';
-                layoutsl.push("[ShareString.1.3]:########################BB---JX#-------#####BZBZB-PP#--------###-BZBZB-MS#---------##-BZBZB--H#---------##-BZBZB#######------##--BBB##BZBZB##-----##----##ZBZBZBZ##----##----#BZBZBZBZB#----##----#BZBZBZBZB#----#######BZBZTZBZB#######----#BZBZBZBZB#----##----#BZBZBZBZB#----##----##BBZBZBB##----##-----##BZBZB##-----##------#######------##---------#---------##---------#---------###--------#--------#####-------#-------########################");
-                remarksl.push("praetors"); notesl.push("110000 praetors @ 7.5 days");
-                troopcounl.push([0,0,0,0,0,0,0,0,0,110000,0,0,0,0,0,0,0]);
+                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##-BZB-##-----##----##BZBZBZB##----##----#-BZBZBZB-#----##----#-BZBZBZB-#----#######-BZBTBZB-#######SMPX#-BZBZBZB-#----##S-P-#-BZBZBZB-#----##----##BZBZBZB##----##-----##BBZB-##-----##BBBBBB#######------##ZZZZZZZBJ#---------##BBBBBBBBB#---------###ZZZZZZZZ#--------#####BBBBBBB#-------########################");
+                remarksl.push("praetors"); notesl.push("112000 praetors @ 7.75 days");
+                troopcounl.push([0,0,0,0,0,0,0,0,0,112000,0,0,0,0,0,0,0]);
+                resl.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
+                ll++;
+                selectbuttsl+='<option value="'+ll+'">7 sec praetors</option>';
+                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBZBB##-----##----##BZBZBZB##----##----#-BZBZBZB-#----##----#-BZBZBZB-#----#######-BZBTBZB-#######SSPX#-BZBZBZB-#----##MDPJ#-BZBZBZB-#----##S---##BZBZBZB##----##-----##BBZBB##-----##-BBBBB#######------##-BZBZBZB-#---------##BBZBZBZB-#---------###BZBZBZB-#--------#####BBBBBB-#-------########################");
+                remarksl.push("praetors"); notesl.push("120000 praetors @ 9.7 days");
+                troopcounl.push([0,0,0,0,0,0,0,0,0,120000,0,0,0,0,0,0,0]);
                 resl.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
                 ll++;
                 selectbuttsl+='<option value="'+ll+'">4 sec horses</option>';
-                layoutsl.push("[ShareString.1.3]:########################BB---JX#-------#####BEBEB-PP#--------###-BEBEB-MS#---------##-BEBEB--H#---------##-BEBEB#######------##--ZBB##BEBEB##-----##----##EBEBEBE##----##----#BEBEBEBEB#----##----#BEBEBEBEB#----#######BEBETEBEB#######----#BEBEBEBEB#----##----#BEBEBEBEB#----##----##BBEBEBE##----##-----##BEBEB##-----##------#######------##---------#---------##---------#---------###--------#--------#####-------#-------########################");
-                remarksl.push("horses"); notesl.push("106000 horses @ 5 days");
-                troopcounl.push([0,0,0,0,0,0,0,0,0,0,106000,0,0,0,0,0,0]);
-                resl.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
+                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BEBEB##-----##----##-BEBEB-##----##----#BEBEBEBEB#----##----#BEBEBEBEB#----#######BEBETEBEB#######SM-X#BEBEBEBEB#----##S---#BEBEBEBEB#----##----##-BEBEB-##----##-BBBB##BEBEB##-----##ZEEEE-#######------##BBBBBBBB-#---------##JEEEEEEE-#---------###BBBBBBB-#--------#####-------#-------########################");
+                remarksl.push("horses"); notesl.push("110000 horses @ 5 days");
+                troopcounl.push([0,0,0,0,0,0,0,0,0,0,109999,0,0,0,0,0,0]);
+                resl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 ll++;
                 selectbuttsl+='<option value="'+ll+'">5 sec horses</option>';
-                layoutsl.push("[ShareString.1.3]:########################-B---JX#-------#####BEBEB-PP#--------###-BEBEB-MS#---------##-BEBEB-PH#---------##-BEBEB#######------##--BBB##BBBBB##-----##----##BBEBEBB##----##----#BEBEBEBEB#----##----#BEBEBEBEB#----#######BEBBTBBEB#######----#BEBEBEBEB#----##----#BEBEBEBEB#----##----##BBEBEBB##----##-----##BBBBB##-----##------#######------##---------#---------##---------#---------###--------#--------#####-------#-------########################");
-                remarksl.push("horses"); notesl.push("124000 horses @ 7 days");
-                troopcounl.push([0,0,0,0,0,0,0,0,0,0,124000,0,0,0,0,0,0]);
-                resl.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
+                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BEBEBEB##----##----#-BEBEBEB-#----##----#-BEBEBEB-#----#######-BEBTBEB-#######SSPX#-BEBEBEB-#----##MDP-#-BEBEBEB-#----##S---##BEBEBEB##----##-----##BBBBB##-----##--BBBB#######------##--BEEEEEB#---------##-ZBBBBBBB#---------###JBEEEEEB#--------#####BBBBBBB#-------########################");
+                remarksl.push("horses"); notesl.push("120000 horses @ 7 days");
+                troopcounl.push([0,0,0,0,0,0,0,0,0,0,119999,0,0,0,0,0,0]);
+                resl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
+                ll++;
+                selectbuttsl+='<option value="'+ll+'">6 sec horses Portal</option>';
+                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBEBEBB##----##----#BEBEBEBEB#----##----#BEBBBBBEB#----#######BEBETEBEB#######SSPX#BEBBBBBEB#----##MDPJ#BEBEBEBEB#----##----##BBEBEBB##----##-----##BBBBB##-----##--BBBZ#######------##--BEBBB--#---------##--BBBEB--#---------###-BEBEB--#--------#####BBBBB--#-------########################");
+                remarksl.push("horses"); notesl.push("134000 horses @ 9.5 days");
+                troopcounl.push([0,0,0,0,0,0,0,0,0,0,133999,0,0,0,0,0,0]);
+                resl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 ll++;
                 selectbuttsl+='<option value="'+ll+'">5 sec arbs</option>';
-                layoutsl.push("[ShareString.1.3]:########################BB---JX#-------#####BEBEB-PP#--------###-BEBEB-MS#---------##-BEBEB--H#---------##-BEBEB#######------##--BBB##BEBEB##-----##----##EBEBEBE##----##----#BEBEBEBEB#----##----#BEBEBEBEB#----#######BEBETEBEB#######----#BEBEBEBEB#----##----#BEBEBEBEB#----##----##BBEBEBB##----##-----##BEBEB##-----##------#######------##---------#---------##---------#---------###--------#--------#####-------#-------########################");
+                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BEBEB##-----##----##EBEBEBE##----##----#BEBEBEBEB#----##----#BEBEBEBEB#----#######BEBETEBEB#######MSLX#BEBEBEBEB#----##--PP#BEBEBEBEB#----##----##BBEBEBB##----##-JBBB##BEBEB##-----##-BEBEB#######------##-BEBEB---#---------##-BEBEB---#---------###BEBEB---#--------#####BB-----#-------########################");
                 remarksl.push("arbs"); notesl.push("110000 arbs @ 6.5 days");
                 troopcounl.push([0,0,0,0,0,0,0,0,110000,0,0,0,0,0,0,0,0]);
-                resl.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
+                resl.push([0,0,0,0,1,250000,250000,150000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,150000,350000]);
                 ll++;
                 selectbuttsl+='<option value="'+ll+'">6 sec arbs</option>';
-                layoutsl.push("[ShareString.1.3]:########################BB---JX#-------#####BEBEB-PP#--------###-BBBEB-MS#---------##-BEBEB--H#---------##-BEBEB#######------##--BBB##BBBBB##-----##----##BBEBEBB##----##----#BEBEBEBEB#----##----#BEBEBEBEB#----#######BEBETEBEB#######----#BEBEBEBEB#----##----#BEBEBEBEB#----##----##BBEBEBB##----##-----##BBBBB##-----##------#######------##---------#---------##---------#---------###--------#--------#####-------#-------########################");
-                remarksl.push("arbs"); notesl.push("124000 arbs @ 8.5 days");
+                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BEBEBEB##----##----#-BEBEBEB-#----##----#-BEBEBEB-#----#######-BEBTBEB-#######SMSX#-BEBEBEB-#----##SLPP#-BEBEBEB-#----##----##BEBEBEB##----##-BBBB##BBBBB##-----##-EEEEJ#######------##BBBBBBBBB#---------##BEEEEEEEB#---------###BBBBBBB-#--------#####-------#-------########################");
+                remarksl.push("arbs"); notesl.push("120000 arbs @ 8.3 days");
                 troopcounl.push([0,0,0,0,0,0,0,0,124000,0,0,0,0,0,0,0,0]);
-                resl.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
+                resl.push([0,0,0,0,1,250000,250000,150000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,150000,350000]);
+                ll++;
+                selectbuttsl+='<option value="'+ll+'">7 sec arbs</option>';
+                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBEBEBB##----##----#BEBEBEBEB#----##----#BEBBBBBEB#----#######BEBETEBEB#######SMSX#BEBBBBBEB#----##SLPP#BEBEBEBEB#----##----##BBEBEBB##----##-----##BBBBB##-----##------#######------##---BBBBBJ#---------##--BEBEBEB#---------###-BEBEBEB#--------#####--BBBB-#-------########################");
+                remarksl.push("arbs"); notesl.push("130000 arbs @ 10.5 days");
+                troopcounl.push([0,0,0,0,0,0,0,0,124000,0,0,0,0,0,0,0,0]);
+                resl.push([0,0,0,0,1,250000,250000,150000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,150000,350000]);
+                ll++;
+                selectbuttsl+='<option value="'+ll+'">8 sec arbs</option>';
+                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##-BEBEBJ##----##----#BBBEBEBBB#----##----#BEBBBBBEB#----#######BEBETEBEB#######SMSX#BEBBBBBEB#----##SLPP#BBBEBEBBB#----##----##-BEBEB-##----##-----##BBBBB##-----##------#######------##---BBBBBB#---------##--BEBEBEB#---------###-BEBEBEB#--------#####BBBBBBB#-------########################");
+                remarksl.push("arbs"); notesl.push("138000 arbs @ 12.8 days");
+                troopcounl.push([0,0,0,0,0,0,0,0,124000,0,0,0,0,0,0,0,0]);
+                resl.push([0,0,0,0,1,250000,250000,150000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,150000,350000]);
                 ll++;
                 selectbuttsl+='<option value="'+ll+'">4 sec sorc</option>';
-                layoutsl.push("[ShareString.1.3]:########################BJBJ--X#-------#####JBJBJ--S#--------###-JBJBJ--M#---------##-JBJBJ--H#---------##-JBJBJ#######------##-ZBJB##JBJBJ##-----##----##BJBJBJB##----##----#JBJBJBJBJ#----##----#JBJBJBJBJ#----#######JBJBTBJBJ#######----#JBJBJBJBJ#----##----#JBJBJBJBJ#----##----##BJBJBJB##----##-----##JBJBJ##-----##------#######------##---------#---------##---------#---------###--------#--------#####-------#-------########################");
-                remarksl.push("sorc"); notesl.push("176000 sorc @ 8 days");
-                troopcounl.push([0,0,0,0,0,0,176000,0,0,0,0,0,0,0,0,0,0]);
-                resl.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
+                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BJBJB##-----##----##JBJBJBJ##----##----#-JBJBJBJ-#----##----#-JBJBJBJ-#----#######-JBJTJBJ-#######S--X#-JBJBJBJ-#----##M---#-JBJBJBJ-#----##----##JBJBJBJ##----##-JBJB##BJBJB##-----##BJBJBJ#######------##BJBJBJBJ-#---------##BJBJBJBJ-#---------###JBJBJBJ-#--------#####BJBJBZ-#-------########################");
+                remarksl.push("sorc"); notesl.push("180000 sorc @ 8.3 days");
+                troopcounl.push([0,0,0,0,0,0,179999,0,0,0,0,0,0,0,0,0,0]);
+                resl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 ll++;
                 selectbuttsl+='<option value="'+ll+'">5 sec sorc</option>';
-                layoutsl.push("[ShareString.1.3]:########################BBB---X#-------#####BJBJB--P#--------###-BJBJB-MS#---------##-BJBJB--H#---------##-BJBJB#######------##-ZBBB##BJBJB##-----##----##JBJBJBJ##----##----#BJBJBJBJB#----##----#BJBJBJBJB#----#######BJBJTJBJB#######----#BJBJBJBJB#----##----#BJBJBJBJB#----##----##BBJBJBB##----##-----##BJBJB##-----##------#######------##---------#---------##---------#---------###--------#--------#####-------#-------########################");
-                remarksl.push("sorc"); notesl.push("224000 sorc @ 13 days");
-                troopcounl.push([0,0,0,0,0,0,224000,0,0,0,0,0,0,0,0,0,0]);
-                resl.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
+                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BJBJB##-----##----##JBJBJBJ##----##----#BJBJBJBJB#----##----#BJBJBJBJB#----#######BJBJTJBJB#######SMPX#BJBJBJBJB#----##----#BJBJBJBJB#----##----##BBJBJBB##----##-BBBB##BJBJB##-----##-BJBJB#######------##-BJBJB---#---------##ZBJBJB---#---------###BJBJB---#--------#####BBB----#-------########################");
+                remarksl.push("sorc"); notesl.push("224000 sorc @ 12.5 days");
+                troopcounl.push([0,0,0,0,0,0,223999,0,0,0,0,0,0,0,0,0,0]);
+                resl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
+                ll++;
+                selectbuttsl+='<option value="'+ll+'">6 sec sorc Portal</option>';
+                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BJBJBJB##----##----#-BJBJBJB-#----##----#-BJBJBJB-#----#######-BJBTBJB-#######SMSX#-BJBJBJB-#----##SDPP#-BJBJBJB-#----##----##BJBJBJB##----##BBBBB##BBBBB##-----##BJJJJZ#######------##BBBBBBBB-#---------##BJJJJJJJ-#---------###BBBBBBB-#--------#####-------#-------########################");
+                remarksl.push("sorc"); notesl.push("240000 sorc @ 17 days");
+                troopcounl.push([0,0,0,0,0,0,239999,0,0,0,0,0,0,0,0,0,0]);
+                resl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 ll++;
                 selectbuttsl+='<option value="'+ll+'">10 sec druids</option>';
-                layoutsl.push("[ShareString.1.3]:########################-J----X#-------#####JBJB--MS#--------###BJBJB---H#---------##BJBJB----#---------##BJBJB-#######------##BJBJB##BJBJB##-----##-JBJ##JBJBJBJ##----##----#BJBJBJBJB#----##----#BJBJBJBJB#----#######BJBJTJBJB#######----#BJBJBJBJB#----##----#BJBJBJBJB#----##----##JBJBJBJ##----##-----##BJBJB##-----##------#######------##---------#---------##---------#---------###--------#--------#####-------#-------########################");
-                remarksl.push("druids"); notesl.push("102000 druids @ 12 days");
-                troopcounl.push([0,0,0,0,0,0,0,0,0,0,0,102000,0,0,0,0,0]);
-                resl.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
+                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BJBJB##-----##----##JBJBJBJ##----##----#BJBJBJBJB#----##----#BJBJBJBJB#----#######BJBJTJBJB#######SM-X#BJBJBJBJB#----##----#BJBJBJBJB#----##BBBB##JBJBJBJ##----##JJJJJ##BJBJB##-----##BBBBBB#######------##JJJJJJ---#---------##BBBBB----#---------###JJZ-----#--------#####-------#-------########################");
+                remarksl.push("druids"); notesl.push("102000 druids @ 11.5 days");
+                troopcounl.push([0,0,0,0,0,0,0,0,0,0,0,101999,0,0,0,0,0,0]);
+                resl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 ll++;
-                selectbuttsl+='<option value="'+ll+'">scorp/rams</option>';
-                layoutsl.push("[ShareString.1.3]:########################BBYB--X#-------#####BYBYB---#--------###-BYBYB-MS#---------##-BYBYB--H#---------##-BYBYB#######------##-BYBB##BYBYB##-----##----##YBYBYBY##----##----#BYBYBYBYB#----##----#BYBYBYBYB#----#######BYBYTYBYB#######----#BYBYBYBYB#----##----#BYBYBYBYB#----##----##YBYBYBY##----##-----##BYBYB##-----##------#######------##---------#---------##---------#---------###--------#--------#####-------#-------########################");
-                remarksl.push("scorp/rams"); notesl.push("21600 siege engines @ 7.5 days");
-                troopcounl.push([0,0,0,0,0,0,0,0,0,0,0,0,5500,16100,0,0,0]);
-                resl.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
+                selectbuttsl+='<option value="'+ll+'">11 sec druids</option>';
+                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BJBJB##-----##----##JBJBJBJ##----##----#BJBJBJBJB#----##----#BJBJBJBJB#----#######BJBJTJBJB#######SDPX#BJBJBJBJB#----##M---#BJBJBJBJB#----##----##JBJBJBJ##----##-----##BJBJB##-----##-----Z#######------##BBBBBBBBB#---------##BJJJJJJJJ#---------###BBBBBBBB#--------#####-------#-------########################");
+                remarksl.push("druids"); notesl.push("108000 druids @ 13.8 days");
+                troopcounl.push([0,0,0,0,0,0,0,0,0,0,0,107999,0,0,0,0,0,0]);
+                resl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
+                ll++;
+                selectbuttsl+='<option value="'+ll+'">14 sec druids Portal</option>';
+                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BJBJBJB##----##----#-BJBJBJB-#----##----#-BJBJBJB-#----#######-BBBTBJB-#######SMPX#-BJBJBJB-#----##SDP-#-BJBJBJB-#----##----##BJBJBJB##----##BBBBB##BBBBB##-----##BJJJJZ#######------##BBBBBBBB-#---------##BJJJJJJJB#---------###BBBBBBB-#--------#####-------#-------########################");
+                remarksl.push("druids"); notesl.push("124000 druids @ 20 days");
+                troopcounl.push([0,0,0,0,0,0,0,0,0,0,0,123999,0,0,0,0,0,0]);
+                resl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
+                ll++;
+                selectbuttsl+='<option value="'+ll+'">18 sec druids Portal</option>';
+                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BJBJBJB##----##----#-BJBJBJB-#----##----#-BJBJBJB-#----#######-BBBTBJB-#######SMPX#-BJBJBJB-#----##SDP-#-BJBJBJB-#----##----##BJBJBJB##----##BBBBB##BBBBB##-----##BJJJJZ#######------##BBBBBBBB-#---------##BJJJJJJJB#---------###BBBBBBB-#--------#####-------#-------########################");
+                remarksl.push("druids"); notesl.push("150000 druids @ 31.25 days");
+                troopcounl.push([0,0,0,0,0,0,0,0,0,0,0,149999,0,0,0,0,0,0]);
+                resl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
+                ll++;
+                selectbuttsl+='<option value="'+ll+'">scorp/rams 20s/32s</option>';
+                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##YBYBY##-----##----##BYBYBYB##----##----#-BYBYBYB-#----##----#YBYBYBYBY#----#######YBYBTBYBY#######SS-X#YBYBYBYBY#----##MD--#YBYBYBYBY#----##-BBB##BYBYBYB##----##-YYY-##YBYB-##-----##BBBBBB#######------##YYYYYY---#---------##BBBBBB---#---------###YYYZ----#--------#####BB-----#-------########################");
+                remarksl.push("scorp/rams"); notesl.push("3920 rams / 15680 scorps @ 6.7 days");
+                troopcounl.push([0,0,0,0,0,0,0,0,0,0,0,0,3920,15680,0,0,0]);
+                resl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
+                ll++;
+                selectbuttsl+='<option value="'+ll+'">scorp/rams 24s/39s</option>';
+                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBYB##-----##----##BBYBYBY##----##----#BYBYBYBYB#----##----#BYBYBYBYB#----#######BYBYTYBYB#######SMSX#BYBYBYBYB#----##SD--#BYBYBYBYB#----##----##BBYBYBY##----##-BBBB##BBBBB##-----##BYYYYB#######------##BBBBBB---#---------##BYYYYB---#---------###BBBB----#--------#####-------#-------########################");
+                remarksl.push("scorp/rams"); notesl.push("4720 rams / 18880 scorps @ 9.8 days");
+                troopcounl.push([0,0,0,0,0,0,0,0,0,0,0,0,4720,18880,0,0,0]);
+                resl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
+                ll++;
+                selectbuttsl+='<option value="'+ll+'">scorp/rams 28s/44s</option>';
+                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBYB##-----##----##BBYBYBY##----##----#BYBYBYBYB#----##----#BYBYBYBYB#----#######BYBYTYBYB#######SMSX#BYBYBYBYB#----##SD--#BYBYBYBYB#----##----##BBYBYBY##----##-BBBB##BBBBB##-----##BYYYYB#######------##BBBBBB---#---------##BYYYYB---#---------###BBBB----#--------#####-------#-------########################");
+                remarksl.push("scorp/rams"); notesl.push("5200 rams / 20800 scorps @ 12.3 days");
+                troopcounl.push([0,0,0,0,0,0,0,0,0,0,0,0,5200,20800,0,0,0]);
+                resl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
+                ll++;
+                selectbuttsl+='<option value="'+ll+'">scorps Portal 44s</option>';
+                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBYB##-----##----##BBYBYBY##----##----#BYBYBYBYB#----##----#BYBYBYBYB#----#######BYBYTYBYB#######SMSX#BYBYBYBYB#----##SD--#BYBYBYBYB#----##----##BBYBYBY##----##-BBBB##BBBBB##-----##BYYYYB#######------##BBBBBB---#---------##BYYYYB---#---------###BBBB----#--------#####-------#-------########################");
+                remarksl.push("scorpions"); notesl.push("26000 scorps @ 13.25 days");
+                troopcounl.push([0,0,0,0,0,0,0,0,0,0,0,0,0,26000,0,0,0]);
+                resl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 ll++;
                 selectbuttsl+='<option value="'+ll+'">ballista</option>';
-                layoutsl.push("[ShareString.1.3]:########################BBBB--X#-------#####BYBYB---#--------###-BYBYB-MS#---------##-BYBYB--H#---------##-BYBYB#######------##-BBBB##BBBBB##-----##----##BBYBYBB##----##----#BYBYBYBYB#----##----#BYBYBYBYB#----#######BYBYTYBYB#######----#BYBYBYBYB#----##----#BYBYBYBYB#----##----##BBYBYBB##----##-----##BBBBB##-----##------#######------##---------#---------##---------#---------###--------#--------#####-------#-------########################");
+                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBYBYBB##----##----#BYBYBYBYB#----##----#BYBYBYBYB#----#######BYBYTYBYB#######MSDX#BYBYBYBYB#----##----#BYBYBYBYB#----##----##BBYBYBB##----##-BBBB##BBBBB##-----##-BYBYB#######------##-BYBYB---#---------##-BYBYB---#---------###BYBYB---#--------#####BBBB---#-------########################");
                 remarksl.push("ballista"); notesl.push("25600 siege engines @ 10.5 days");
                 troopcounl.push([0,25600,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
-                resl.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
+                resl.push([0,0,0,0,1,150000,220000,250000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,250000,350000]);
                 selectbuttsl+='</select>';
 
                 $('#removeoverlayGo').after(selectbuttsdf);
@@ -6111,7 +6202,7 @@ END Boss Only Section
                 $('#landbuildlayouts').change(function() {
                     var newlayout=currentlayout;
                     for (var j=1; j<layoutsl.length; j++) {
-		//Land Build Layours				
+		//Land Build Layouts
                         if ($('#landbuildlayouts').val()==j) {
                             for (var i=20; i<currentlayout.length;i++) {
                                 var tmpchar=layoutsl[j].charAt(i);
@@ -6123,11 +6214,11 @@ END Boss Only Section
                             }
                             //$('#removeoverlayGo').click();
                             $('#overlaytextarea').val(newlayout);
-                            setTimeout(function(){jQuery("#applyoverlayGo")[0].click();},300);
+                            setTimeout(function(){jQuery("#applyoverlayGo")[0].click();},3000);
                             if ($("#addnotes").prop("checked")==true) {
                                 $('#CNremarks').val(remarksl[j]);
                                 $('#citynotestextarea').val(notesl[j]);
-                                setTimeout(function(){jQuery("#citnotesaveb")[0].click(); },100);
+                                setTimeout(function(){jQuery("#citnotesaveb")[0].click(); },1000);
                             }
                             var aa=city.mo;
                             if ($("#addtroops").prop("checked")==true) {
