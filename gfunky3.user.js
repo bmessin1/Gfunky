@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name gfunky3
 // @namespace www.tampermonkey.com
-// @version 1.1.8
+// @version 1.1.9
 // @description gfunky3
 // @author Greety
 // @match https://*.crownofthegods.com
@@ -20,7 +20,7 @@ START POPUP MESSAGE FOR PLAYERS WHEN THEY OPEN THE GAME
 (function() {
 
     $(document).ready(function() {
-    var popwin="<div id='HelloWorld' style='width:Auto; max-width: 35% ;height:Auto !important; Max-height: 85%; background-color: #E2CBAC;-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: 4px ridge #DAA520;position:absolute;right:40%;top:100px; z-index:1000000;'><div class=\"popUpBar\"> <span class=\"ppspan\">Welcome!</span><button id=\"gfunkyX\" onclick=\"$('#HelloWorld').remove();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div id='hellobody' class=\"popUpWindow\"><span style='margin-left: 5%;'> <h3 style='text-align:center;'>Welcome to Crown Of The Gods. This is a Beta version prior to being approved by Developers for the addon marketplace</h3></span><br><br><span style='margin-left: 5%;'> <h4 style='text-align:center;'> GFunky3 BY GREETY </h4></span><br><span style='margin-left: 5%;'><h4 style='text-align:center;color:blue;'>Special Thanks to Dhruv, Lionell, And  Fact</h4><br><h4 style='text-align:center;color:green;' >Updated 26th July 2020</h4></span><br><br><span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;'><li>Fixed Galley scout issue with troops</li> <li>Added Priestess layouts</li><li>Added substitute Functionality</li><li>Added builds to Land Layouts</li></ul></span></div></div>";
+    var popwin="<div id='HelloWorld' style='width:Auto; max-width: 35% ;height:Auto !important; Max-height: 85%; background-color: #E2CBAC;-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: 4px ridge #DAA520;position:absolute;right:40%;top:100px; z-index:1000000;'><div class=\"popUpBar\"> <span class=\"ppspan\">Welcome!</span><button id=\"gfunkyX\" onclick=\"$('#HelloWorld').remove();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div id='hellobody' class=\"popUpWindow\"><span style='margin-left: 5%;'> <h3 style='text-align:center;'>Welcome to Crown Of The Gods. This is a Beta version prior to being approved by Developers for the addon marketplace</h3></span><br><br><span style='margin-left: 5%;'> <h4 style='text-align:center;'> GFunky3 BY GREETY </h4></span><br><span style='margin-left: 5%;'><h4 style='text-align:center;color:blue;'>Special Thanks to Dhruv, Lionell, And  Fact</h4><br><h4 style='text-align:center;color:green;' >Updated 11th August 2020</h4></span><br><br><span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;'><li>Added Empire Logs</li><li>Attack Sender Changes</li><li>Added Clear Resources Button</li><li>Added builds to Land Layouts</li></ul></span></div></div>";
 	$("body").append(popwin);
 
         setTimeout(function() {
@@ -1692,7 +1692,7 @@ START OF CORE FUNKY
       });
     }, 5000);
    });
-   
+
 // WAR COUNC BUTTONS
 //buttons
         var returnAllbut="<button id='returnAllb' style='right: 35.6%; margin-top: 55px;width: 150px;height: 30px !important; font-size: 12px !important; position: absolute;' class='regButton greenb'>Return All</button>";
@@ -1827,7 +1827,7 @@ START OF CORE FUNKY
 // Import Export
 		var expwin="<div id='ExpImp' style='width:250px;height:200px;' class='popUpBox ui-draggable'><div class=\"popUpBar\"><span class=\"ppspan\">Import/Export attack orders</span>";
         expwin+="<button id=\"gfunkyX\" onclick=\"$('#ExpImp').remove();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div id='expbody' class=\"popUpWindow\">";
-        expwin+="<textarea style='font-size:11px;width:97%;margin-left:1%;height:17%;' id='expstring' maxlength='200'></textarea><button id='applyExp' style='margin-left: 15px; width: 100px;height: 30px !important; font-size: 12px !important;' class='regButton greenb'>Apply</button></div></div>";
+        expwin+="<textarea style='font-size:11px;width:100%;margin-left:1%;height:100%;' id='expstring' maxlength='300'></textarea><button id='applyExp' style='margin-left: 15px; width: 100px;height: 30px !important; font-size: 12px !important;' class='regButton greenb'>Apply</button></div></div>";
 
 
 
@@ -2044,12 +2044,12 @@ TODO: FIND REFERENCE POINT to Ui-id-115
             tabs.tabs( "option", "active", 6 );
             $("#nearofftab").trigger({type:"click",originalEvent:"1"});
         });
-		
+
 		$('#tdefGo').click(function() {
             $("#warcouncbox").show();
             tabs.tabs( "option", "active", 7 );
             $("#totaldeftab").trigger({type:"click",originalEvent:"1"});
-		});		
+		});
         $("#addtoAtt").click(function() {
             for (var i=1;i<8;i++) {
                 if (!$("#t"+i+"x").val()) {
@@ -2128,7 +2128,7 @@ TODO: FIND REFERENCE POINT to Ui-id-115
                         });
 
         });
-		
+
 		$("#Aexport").click(function() {
             var Aexp={x:[],y:[],type:[],time:[]};
             for (var i=1;i<16;i++) {
@@ -2170,7 +2170,7 @@ TODO: FIND REFERENCE POINT to Ui-id-115
         $("#attackSec").val(Aexp.time[2]);
         $("#attackDat").val(Aexp.time[3]);
         }
-		
+
 // Near Defense Table
 	function neardeftable(t) {
         var cx=$("#ndefx").val();
@@ -2394,8 +2394,8 @@ TODO: FIND REFERENCE POINT to Ui-id-115
             });
         });
     }
-	
-		
+
+
 //	Troop	0	Guard
 //	Troop	1	Ballista
 //	Troop	2	Ranger
@@ -2464,7 +2464,7 @@ TODO: FIND REFERENCE POINT to Ui-id-115
                 }
             }
 		}
-		
+
         cit.sort(function(a,b) {return b[2]-a[2];});
         $("#asdfgd").text("Total:"+counterdef);
         var totaldeftab="<table id='tdeftable'><thead><th></th><th>City</th><th>Coords</th><th>TS</th><th>type</th></thead><tbody>";
@@ -2518,20 +2518,20 @@ TODO: FIND REFERENCE POINT to Ui-id-115
                 $iframe.contents().find("body").append(mailto);
             });
         });
-    } 
+    }
 
 	    function clickevent(element) {
         var event = jQuery.Event("click");
             event.user = "foo";
     }
-	
+
 /*
 
 
 SEND DEFENSE Function
 
 
-*/	
+*/
     function SendDef(defobj) {
         $("#commandsPopUpBox").show();
         var commandtabs=$("#commandsdiv").tabs();
@@ -2542,8 +2542,8 @@ SEND DEFENSE Function
         var t=defobj.t;
         var maxdist=Math.max.apply(Math, targets.dist);
         var time;
-		
-		
+
+
 //Galley DEFEND MATH
         if (t.type.indexOf(14)>-1) {
             if (t.use[t.type.indexOf(14)]==1) {
@@ -2662,9 +2662,9 @@ SEND DEFENSE Function
             }
         }
         dloop();
-		
-		
-		
+
+
+
         function art() { //setting return time for raids according to city view outgoing list
             //console.log(poll2.OGA);
             $("#commandsPopUpBox").hide();
@@ -2747,23 +2747,23 @@ SEND DEFENSE Function
             }
         }
     }
-	
+
 /*
 
 
 END SEND DEFENSE Function
 
 
-*/	
+*/
 /*
 
 Update Attack Function
 
-*/	
+*/
     function updateattack() {
         var t={home:[],type:[]};
 		var scouttts;
-		for (var i in cdata.tc) {	
+		for (var i in cdata.tc) {
             if (cdata.tc[i]){
                 if(i==7){
                     scouttts=cdata.tc[7];
@@ -2774,8 +2774,8 @@ Update Attack Function
 				}
 			}
 		}
-	
-			
+
+
         var ttseltab="<table><thead><th>Troop Type</th><th>Use for real</th><th>Use for fake</th></thead><tbody>";
         for (var i in t.home) {
             ttseltab+="<tr><td style='height:40px;'><div class='"+tpicdiv[t.type[i]]+"'></div></td><td style='text-align: center;'><input id='usereal"+t.type[i]+"' class='clsubopti' type='checkbox' checked></td>";
@@ -2793,8 +2793,8 @@ Update Attack Function
 
  START Update Defense Function
 
-*/		
-	
+*/
+
     function updatedef() {
         var t={home:[],type:[]};
         for (var i in cdata.tc) {
@@ -2816,12 +2816,12 @@ Update Attack Function
  END Update Defense Function
 
 */
-	
+
 /*
 
 Send Attack Function
 
-*/		
+*/
     function SendAttack() {
         $("#commandsPopUpBox").show();
         var commandtabs=$("#commandsdiv").tabs();
@@ -2833,7 +2833,7 @@ Send Attack Function
         var realnumb=0;
         var tempx;
         var tempy;
-       
+
 
 	   for (var i=1;i<16;i++) {
             if ($("#t"+i+"x").val()) {
@@ -2848,8 +2848,8 @@ Send Attack Function
                 targets.dist.push(Math.sqrt((tempx-city.x)*(tempx-city.x)+(tempy-city.y)*(tempy-city.y)));
             }
         }
-		
-		
+
+
 //SCOUTS SECTION
         var scouttts; //Scout Total TS
         var t={home:[],type:[],real:[],fake:[],speed:[],scoutfake:[],scoutreal:[]};
@@ -2861,7 +2861,7 @@ Send Attack Function
                     t.type.push(Number(i));
                     if ($("#usereal"+i).prop( "checked")===true) {
                         t.speed.push(ttspeed[i]/ttspeedres[i]);
-                    } 
+                    }
 					else {t.speed.push(0);}
                 }
             }
@@ -2934,7 +2934,7 @@ Send Attack Function
                         t.scoutfake[0]=faketss/2;
 					}
 				}
-			
+
 			}
         }
 
@@ -2951,11 +2951,11 @@ Send Attack Function
             var gali=t.type.indexOf(14); // Designating "Gali" as Troop 14 which is Galley
             var galcap=500*galnumb;
             var nongalts=0; // Non Galley TS
-			var galnumb=Math.floor(t.home[gali]-fakeg*fakenumb/realnumb); // Determining how many 
-			
+			var galnumb=Math.floor(t.home[gali]-fakeg*fakenumb/realnumb); // Determining how many
+
 			for (var i in t.home) {
 			    if (t.type[i]==14 && t.type[i]==17 && t.type[i]==16) {
-        //Galley Info            
+        //Galley Info
 					if (t.type[i]==14) {
                         if ($("#usereal"+t.type[i]).prop( "checked")===true) {
                             if ($("#usefake"+t.type[i]).prop( "checked")===true) {
@@ -2967,11 +2967,11 @@ Send Attack Function
                             }
                         }
                     }
-					
-		//Senator Info			
+
+		//Senator Info
                     if (t.type[i]==17) {
                         if ($("#usereal"+t.type[i]).prop( "checked")===true) {
-                            
+
 							if ($("#usefake"+t.type[i]).prop( "checked")===true) {
                                 if (t.home[i]>=fakenumb+realnumb) {
                                     t.fake[i]=1;
@@ -2992,7 +2992,7 @@ Send Attack Function
                             t.fake[i]=0;
 						}
 					}
-					
+
 		//Warship Info
                     if (t.type[i]==16 ) {
                         if ($("#usereal"+t.type[i]).prop( "checked")===true) {
@@ -3006,7 +3006,7 @@ Send Attack Function
                     }
                 }
             }
-	//Galley And Senator		
+	//Galley And Senator
             for (var i in t.home) {
                 if (i!=gali && t.type[i]!=17) {
                     if ($("#usereal"+t.type[i]).prop( "checked")===true) {
@@ -3015,7 +3015,7 @@ Send Attack Function
                         } else {nongalts+=ttts[t.type[i]]*(t.home[i])/realnumb;}
                     }
                 }
-				 
+
                 if (t.type[i]==17) {
                     if ($("#usereal"+t.type[i]).prop( "checked")===true) {
                         if ($("#usefake"+t.type[i]).prop( "checked")===true) {
@@ -3029,7 +3029,7 @@ Send Attack Function
                         }
                     }
 				}
-					
+
             }
             var fakerat=0;
             for (var i in t.home) {
@@ -3090,9 +3090,9 @@ Send Attack Function
                     }
                 }
             }
-			t.real[gali]=Math.ceil(nongalts/500);	
+			t.real[gali]=Math.ceil(nongalts/500);
             t.fake[gali]=fakeg;
-        } 
+        }
 		else {
             var fakerat=0;
             time=Math.max.apply(Math, t.speed)*maxdist;
@@ -3112,7 +3112,7 @@ Send Attack Function
 					}
 				}
             }
-	
+
             //subracting fake numbers to get real numbers and distributing senator too
             for (var i in t.home) {
                 if (t.type[i]!=17) {
@@ -3132,7 +3132,7 @@ Send Attack Function
 							if (t.home[i]>=fakenumb+realnumb) {
                             t.fake[i]=1;
                             t.real[i]=1;
-							} 
+							}
 							else {
                             t.fake[i]=0;
                             t.real[i]=1;
@@ -3155,7 +3155,7 @@ Send Attack Function
         var l=0; var end=targets.x.length;
         function loop() {
             if (targets.real[l]==1) {
-		// Assault Real		
+		// Assault Real
                 if ($("#realtype").val()==0) {
                     pvptabs.tabs( "option", "active", 0 );
                     for (var i in t.real) {
@@ -3172,7 +3172,7 @@ Send Attack Function
                     alltimes.a.push($("#assaulttraveltime").text());
                     jQuery("#assaultGo")[0].click();
                 }
-		// Siege Real		
+		// Siege Real
                 if ($("#realtype").val()==1) {
                     pvptabs.tabs( "option", "active", 1 );
                     for (var i in t.real) {
@@ -3189,7 +3189,7 @@ Send Attack Function
                     alltimes.a.push($("#siegetraveltime").text());
                     jQuery("#siegeGo")[0].click();
                 }
-		// Plunder Real		
+		// Plunder Real
                 if ($("#realtype").val()==2) {
                     pvptabs.tabs( "option", "active", 2 );
                     for (var i in t.real) {
@@ -3207,7 +3207,7 @@ Send Attack Function
                      $("#plunderGo").prop('disabled', false);
                     jQuery("#plunderGo")[0].click();
                 }
-		// Scout Real		
+		// Scout Real
                     if ($("#realtype").val()==3) {
                         pvptabs.tabs( "option", "active", 3 );
                         for (var i in t.real) {
@@ -3226,7 +3226,7 @@ Send Attack Function
                     }
             }
             if (targets.real[l]==0) {
-        // Assault Fake       
+        // Assault Fake
 			   if ($("#faketype").val()==0) {
                         pvptabs.tabs( "option", "active", 0 );
                     for (var i in t.real) {
@@ -3243,7 +3243,7 @@ Send Attack Function
                     alltimes.a.push($("#assaulttraveltime").text());
                     jQuery("#assaultGo")[0].click();
                 }
-        // Siege Fake           
+        // Siege Fake
 				   if ($("#faketype").val()==1) {
                         pvptabs.tabs( "option", "active", 1 );
                         for (var i in t.real) {
@@ -3260,7 +3260,7 @@ Send Attack Function
                         alltimes.a.push($("#siegetraveltime").text());
                         jQuery("#siegeGo")[0].click();
                     }
-        // Plunder Fake        
+        // Plunder Fake
 				if ($("#faketype").val()==2) {
                     pvptabs.tabs( "option", "active", 2 );
                     for (var i in t.real) {
@@ -3278,7 +3278,7 @@ Send Attack Function
                     $("#plunderGo").prop('disabled', false);
                     jQuery("#plunderGo")[0].click();
                 }
-        // Scout Fake    
+        // Scout Fake
 				if ($("#faketype").val()==3) {
                         if($("#scoutick").prop( "checked")===true){
                             pvptabs.tabs( "option", "active", 3 );
@@ -3315,7 +3315,7 @@ Send Attack Function
             l++;
             if (l<end) {
                 setTimeout( loop, 1000 );
-            } 
+            }
 			else {
                 setTimeout( function() {
                     art();
@@ -3323,8 +3323,8 @@ Send Attack Function
              }
         }
         loop();
-		
-	//RETURN FUNCTION	
+
+	//RETURN FUNCTION
         function art() { //setting return time for raids according to city view attacks list
             //console.log(poll2.OGA);
             $("#commandsPopUpBox").hide();
@@ -3413,7 +3413,7 @@ Send Attack Function
 
 END SEND Attack Function
 
-*/	
+*/
 
 
 
@@ -3437,8 +3437,8 @@ END SEND Attack Function
 
 //Buttons convert,fill,demolish, SHRINE Section 2 building count,
     $(document).ready(function() {
-        var fourbutton="<div id='fourbuttons' class='commandinndiv'><div><button id='fb1' style='height:28px; width:65px; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>ON/OFF</button><button id='fb2' style='height:28px; width:65px; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Refine</button><button id='fb3' style='height:28px; width:65px; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Raid</button><button id='fb4' style='height:28px; width:65px; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Demolish</button></div></div>";
-        var bdcountbox="<div id='currentBd'><div id='bdcountbar' class='queueBar'>";
+        var fourbutton="<div id='fourbuttons' class='commandinndiv'><div><button id='fb1' style='height:28px; width:65px; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>ON/OFF</button><button id='fb2' style='height:28px; width:65px; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Refine</button><button id='fb3' style='height:28px; width:65px; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Raid</button><button id='fb4' style='height:28px; width:65px; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Demolish</button><button id='fb5' style='height:28px; width:40%; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Clear Resources</button><button id='fb6' style='height:28px; width:40%; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Empire Logs</button></div></div>";
+        var bdcountbox="<div id='currentbd'><div id='bdcountbar' class='queueBar'>";
         bdcountbox+="<div id='bdcountbut' class='tradeqarr2'><div></div></div><span class='qbspan'>Current Buildings</span>";
         bdcountbox+="<div id='numbdleft' class='barRightFloat tooltipstered'>0</div>";
         bdcountbox+="</div><div id='bdcountwin' class='queueWindow' style='display: block;'></div></div>";
@@ -3503,6 +3503,18 @@ END SEND Attack Function
                 $(this).addClass('greenb');
             }
         });
+        $("#fb5").click(function() {
+            $('#clearreswin').show();
+            setTimeout(function(){
+            jQuery("#clearresquad")[0].click();
+            },500);
+        });
+          $("#fb6").click(function() {
+            $('#commandlogPage').show();
+            setTimeout(function(){
+            jQuery("#commandlogTabs")[0].click();
+            },500);
+        });
         $("#centarrowNextDiv").click(function() {
             autodemoon=0;
             $("#fb4").removeClass('redb').addClass('greenb');
@@ -3543,7 +3555,7 @@ END SEND Attack Function
             if (bdcountshow) {
                 //console.log(1);
                 $("#bdcountwin").hide();
-                $("#bdcountbut").removeClass('tradeqarr2').addClass('tradeqarr1');
+                $("#bdcountbut").removeClass('tradeqarr1').addClass('tradeqarr2');
                 bdcountshow=false;
             } else {
                 $("#bdcountwin").show();
@@ -3613,7 +3625,7 @@ END SEND Attack Function
 
 
 
-//Shrine Section 2 
+//Shrine Section 2
         var shrinebut="<button class='regButton greenb' id='shrineP' style='width: 98%;margins: 1%;'>Shrine Planner</button>";
         $("#inactiveshrineInfo").before(shrinebut);
         $("#shrineP").click(function() {
@@ -3717,8 +3729,8 @@ END SEND Attack Function
                 alert("Press World Button");
             }
         });
-	});	
-    
+	});
+
 
 //Building count
     function makebuildcount() {
@@ -3784,15 +3796,15 @@ Predicting Incoming Troops Section
             setTimeout(function(){incomings();}, 5000);
         });
     });
-	
+
 	function roundingto2(num) {
         return +(Math.round(num + "e+2")  + "e-2");
     }
     function twodigitnum(n){
     return n > 9 ? "" + n: "0" + n;
     }
-	
-	
+
+
     function incomings() {
         //  below will give u a variable called speeeed which contains all the possible speed bonuses that can be in game
         var speeeed=[];
@@ -3800,7 +3812,7 @@ Predicting Incoming Troops Section
         for (var i=1; i<201; i++){
             speeeed[i]=speeeed[i-1]+0.5;
         }
-	
+
 
 
 
@@ -3988,7 +4000,7 @@ Predicting Incoming Troops Section
                         else
                         {$(':nth-child(2)',this).text("Navy "+speeeed[zns]+"%");}
                     }
-                } 
+                }
 				else if ($(':nth-child(1)',this).html()) {$(':nth-child(2)',this).text("Portal");}
                 else {
                     if(zns != -1){$(':nth-child(2)',this).text("Navy "+speeeed[zns]+"%");}
@@ -3997,7 +4009,7 @@ Predicting Incoming Troops Section
             }
         });
 	}
-    
+
 /*
 
 END Predicting Incoming Troops Section
@@ -4008,11 +4020,11 @@ END Predicting Incoming Troops Section
 //layout part,raid return part
     function openreturnwin(data) {
         $(".toptdinncommtbl1:first").click();
-		
+
         setTimeout(function() {
             $("#outgoingPopUpBox").hide();
         },300);
-		
+
         var selectcont=$("#idleCsel").clone(false).attr({id:"selcr",style:"width:40%;height:28px;font-size:11;border-radius:6px;margin:7px"});
         var returnwin="<div id='returnAll' style='width:300px;height:320px;background-color: #E2CBAC;-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: 4px ridge #DAA520;position:absolute;right:100px;top:100px; z-index:1000000;'><div class=\"popUpBar\"> <span class=\"ppspan\">Return all troops in all cities</span>";
         returnwin+="<button id=\"gfunkyX\" onclick=\"$('#returnAll').remove();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div id='returnbody' class=\"popUpWindow\">";
@@ -4034,25 +4046,25 @@ END Predicting Incoming Troops Section
         $("#selType").after(selectret);
         $("#returnSel").after(selectlist);
         $("#selClist").after(selecttime);
-        
+
 		$(function() {
         $( "#returnDat" ).datepicker();
         });
-        
+
         $("#returnbody").append(returnAllgo);
         $("#returnAllGo").after(nextcity);
         $("#nextCity").after(returntroops);
-       
-        
+
+
 		$("#returnSel").change(function() {
             if ($("#returnSel").val()==3) {
                 $("#timesel").show();
-            } 
+            }
 			else {
                 $("#timesel").hide();
             }
         });
-		
+
         var j,end,bb,cc,aa;
         var returncities={cid:[],cont:[]};
         $("#returnAllGo").click(function() {
@@ -4077,7 +4089,7 @@ END Predicting Incoming Troops Section
                             }
                         }
                     }
-					
+
                     if (cont==Number($("#selcr").val())) {
                         if($("#selType").val()==1) {
                             returncities.cid.push(data[i].i);
@@ -4098,7 +4110,7 @@ END Predicting Incoming Troops Section
                     }
                 }
 
-            } 
+            }
 			else {
                 $.each(clc, function(key, value) {
                     if (key==$("#selClist").val()) {
@@ -4111,7 +4123,7 @@ END Predicting Incoming Troops Section
             bb=$("#returnSel").val();
             if (bb==3) {
                 cc=$("#returnDat").val()+" "+$("#returnHr").val()+":"+$("#returnMin").val()+":"+$("#returnSec").val();
-            } 
+            }
 			else {cc=0;}
             j=0; end=returncities.cid.length;
             aa=returncities.cid[j];
@@ -4126,7 +4138,7 @@ END Predicting Incoming Troops Section
             $("#raidrettimeselinp").val(cc);
             jQuery("#doneOGAll")[0].click();
         });
-		
+
         $("#nextCity").click(function() {
             j++;
             if (j==end)  {
@@ -4166,15 +4178,15 @@ Boss Section
                 bossinfo.cid.push(cid);
             }
     }
-	
-	
-	
+
+
+
     function openbosswin() {
         var bosslist={name:[],x:[],y:[],lvl:[],distance:[],cid:[],time:[],cont:[]};
         for (var i in bossinfo.cont) {
             var distance=(Math.sqrt((bossinfo.x[i]-city.x)*(bossinfo.x[i]-city.x)+(bossinfo.y[i]-city.y)*(bossinfo.y[i]-city.y)));
             //if ((bossinfo.cont[i]==city.cont) && ((bossinfo.name[i]!="Triton")) && (bossinfo.data[i].charAt(0,1)==1)) {
-           
+
 		   if ((city.th[2] || city.th[3] || city.th[4]|| city.th[5]|| city.th[6]|| city.th[8]|| city.th[9]|| city.th[10]|| city.th[11]) && city.th[14]==0) {
                 if (bossinfo.cont[i]==city.cont) {
                     if (city.th[2] || city.th[3] || city.th[4]|| city.th[5]|| city.th[6]) {
@@ -4195,7 +4207,7 @@ Boss Section
                     bosslist.cont.push(bossinfo.cont[i]);
                 }
             }
-			
+
             if (distance<180) {
                 if (city.th[14] || city.th[15] || city.th[16]) {
                     var minutes=distance*ttspeed[14]/ttspeedres[14];
@@ -4212,27 +4224,27 @@ Boss Section
         }
         var bosswin="<table id='bosstable' class='beigetablescrollp sortable'><thead><tr><th>Coordinates</th><th>Level</th><th>Continent</th><th>Travel Time</th><th id='hdistance'>Distance</th></tr></thead>";
         bosswin+="<tbody>";
-		
+
         for (var i in bosslist.x) {
             var j=bosses.name.indexOf(bosslist.name[i]);
             bosswin+="<tr id='bossline"+bosslist.cid[i]+"' class='dunginf'><td id='cl"+bosslist.cid[i]+"' class='coordblink shcitt' data='"+bosslist.cid[i]+"' style='text-align: center;'>"+bosslist.x[i]+":"+bosslist.y[i]+"</td>";
             bosswin+="<td style='text-align: center;font-weight: bold;'>"+bosslist.lvl[i]+"</td><td style='text-align: center;'>"+bosslist.cont[i]+"</td>";
             bosswin+="<td style='text-align: center;'>"+bosslist.time[i]+"</td><td style='text-align: center;'>"+bosslist.distance[i]+"</td></tr>";
         }
-		
+
         bosswin+="</tbody></table></div>";
         var idle="<table id='idleunits' class='beigetablescrollp'><tbody><tr><td style='text-align: center;'><span>idle troops:</span></td>";
         for (var i in city.th) {
             var notallow=[0,1,7,12,13];
-			
+
             if (notallow.indexOf(i)==-1) {
                 if (city.th[i]>0) {
                     idle+="<td><div class='"+tpicdiv[i]+"' style='text-align: right;'></div></td><td style='text-align: left;'><span id='thbr"+i+"' style='text-align: left;'>"+city.th[i]+"</span></td>";
                 }
             }
         }
-		
-		
+
+
         idle+="</tbody></table>";
         $("#bossbox").html(bosswin);
         $("#idletroops").html(idle);
@@ -4291,7 +4303,7 @@ END Boss Only Section
                 var i=0;
                 var home_loot=0;
                 var km=[];
-				
+
                 for(var x in citytc) {
                     home=Number(citytc[x]);
                     home_loot+=home*ttloot[i];
@@ -4299,8 +4311,8 @@ END Boss Only Section
                     i+=1;
                     if (i === 17) { break; }
                 }
-				
-		// Sirens Cove Numbers		
+
+		// Sirens Cove Numbers
                 if(type==="Siren's Cove"){
                     var galleyTS= Math.ceil(optimalTS/100);
                     var stingerTS= Math.ceil(optimalTS/150);
@@ -4333,8 +4345,8 @@ END Boss Only Section
                     $("#cityplayerInfo div table tbody tr:nth-child(17) td:nth-child(2)").text(stingerTS);
                     $("#cityplayerInfo div table tbody tr:nth-child(18) td:nth-child(2)").text(warshipTS);
                 }
-				
-		// Mountain Cavern Numbers		
+
+		// Mountain Cavern Numbers
                 if(type==="Mountain Cavern"){
                     document.getElementById('raidDungGo').onclick = function() {
                         setTimeout(function(){
@@ -4374,7 +4386,7 @@ END Boss Only Section
                     $("#cityplayerInfo div table tbody tr:nth-child(17) td:nth-child(2)").text("0");
                     $("#cityplayerInfo div table tbody tr:nth-child(18) td:nth-child(2)").text("0");
                 }
-		// Hill and Forest Cavern Numbers		
+		// Hill and Forest Cavern Numbers
                 if(type==="Hill Cavern" || type==="Forest Cavern"){
                     document.getElementById('raidDungGo').onclick = function() {
                         setTimeout(function(){
@@ -4414,8 +4426,8 @@ END Boss Only Section
                     $("#cityplayerInfo div table tbody tr:nth-child(18) td:nth-child(2)").text("0");
                 }
             }
-			
-		//BOSS INFO	
+
+		//BOSS INFO
             if(dtype==="boss"){
                 if($("#cityplayerInfo div table tbody tr").length===11){
                     bossele();
@@ -4427,7 +4439,7 @@ END Boss Only Section
                 message="Not enough TS to kill this boss!";
                 var attackres=[];
                 var attackwres=[];
-				
+
                 for(var i in ttattack){
                     var bossTS= Math.ceil((Number(bossdef[lvl-1])*4)/(Number(ttattack[i])*Number(Total_Combat_Research[i])));
                     attackres.push(bossTS);
@@ -4455,22 +4467,22 @@ END Boss Only Section
                     i+=1;
                     if (i === 17) { break; }
                 }
-				
+
                 if(home_strength>boss_strength){//land strong bosses
                     var proportion=home_strength/boss_strength;
                     for(var i in km){
                         bm[i]=Math.ceil(Number(km[i])/proportion);
                     }
                 }
-				
+
                 if(home_strength>boss_strengthw){//land weak bosses
                     var proportionw=home_strength/boss_strengthw;
                     for(var i in km){
                         bmw[i]=Math.ceil(Number(km[i])/proportionw);
                     }
                 }
-				
-		// Triton Boss Info		
+
+		// Triton Boss Info
                 if(bossname==="Triton"){
                     var bmz=[];
                     var home_strengthw=0;
@@ -4524,8 +4536,8 @@ END Boss Only Section
                     $("#cityplayerInfo div table tbody tr:nth-child(17) td:nth-child(2)").text(attackwres[15]);
                     $("#cityplayerInfo div table tbody tr:nth-child(18) td:nth-child(2)").text(attackwres[16]);
                 }
-				
-		// Cyclops Boss Info		
+
+		// Cyclops Boss Info
                 if(bossname=="Cyclops"){
                     document.getElementById('raidDungGo').onclick = function() {
                         setTimeout(function(){
@@ -4556,8 +4568,8 @@ END Boss Only Section
                     $("#cityplayerInfo div table tbody tr:nth-child(17) td:nth-child(2)").text("0");
                     $("#cityplayerInfo div table tbody tr:nth-child(18) td:nth-child(2)").text("0");
                 }
-				
-		// Andars Colosseum Challenge Info		
+
+		// Andars Colosseum Challenge Info
                 if(bossname=="Andar's Colosseum Challenge"){
                     document.getElementById('raidDungGo').onclick = function() {
                         setTimeout(function(){
@@ -4588,8 +4600,8 @@ END Boss Only Section
                     $("#cityplayerInfo div table tbody tr:nth-child(17) td:nth-child(2)").text("0");
                     $("#cityplayerInfo div table tbody tr:nth-child(18) td:nth-child(2)").text("0");
                 }
-				
-		//Fact's Romulus and Remus Info		
+
+		//Fact's Romulus and Remus Info
                 if(bossname=="Romulus and Remus"){
                     document.getElementById('raidDungGo').onclick = function() {
                         setTimeout(function(){
@@ -4620,8 +4632,8 @@ END Boss Only Section
                     $("#cityplayerInfo div table tbody tr:nth-child(17) td:nth-child(2)").text("0");
                     $("#cityplayerInfo div table tbody tr:nth-child(18) td:nth-child(2)").text("0");
                 }
-				
-		//Dragon Boss Info		
+
+		//Dragon Boss Info
                 if(bossname=="Dragon"){
                    document.getElementById('raidDungGo').onclick = function() {
                         setTimeout(function(){
@@ -4652,7 +4664,7 @@ END Boss Only Section
                     $("#cityplayerInfo div table tbody tr:nth-child(17) td:nth-child(2)").text("0");
                     $("#cityplayerInfo div table tbody tr:nth-child(18) td:nth-child(2)").text("0");
                 }
-				
+
 		// Gorgon Boss Info
                 if(bossname=="Gorgon"){
                      document.getElementById('raidDungGo').onclick = function() {
@@ -4684,7 +4696,7 @@ END Boss Only Section
                     $("#cityplayerInfo div table tbody tr:nth-child(17) td:nth-child(2)").text("0");
                     $("#cityplayerInfo div table tbody tr:nth-child(18) td:nth-child(2)").text("0");
                 }
-				
+
 		// Gladiator Boss Info
                 if(bossname=="Gladiator"){
                     document.getElementById('raidDungGo').onclick = function() {
@@ -4835,7 +4847,7 @@ END Boss Only Section
         var percentage_loot_takable=Math.ceil((troop_loot/total_loot)*100);
         $("#dungloctab").find(".addraiwc td:nth-child(3)").text("carry:"+percentage_loot_takable+"%");
     }
-	
+
     function getDugRows(){
         $('#dungloctab th:contains("Distance")').click();
         $('#dungloctab th:contains("Distance")').click();
@@ -4867,12 +4879,12 @@ END Boss Only Section
                 else{loot1=other_loot;}
                 var total_loot= Math.ceil((loot1[Number(dunglvl)-1] * ((1-Number(progress)/100)+1))*1.02);
 				$("#dungloctab").find(".addraiwc td:nth-child(2)").html("<button id='raidAll' style='padding: 2px; border-radius: 4px;' class='greenb shRnTr'>Use All TS</button>");
-				$("#dungloctab").find(".addraiwc td:nth-child(4)").html("<button id='raid105' style='padding: 2px; border-radius: 4px;' class='greenb shRnTr'>105%</button>");               
+				$("#dungloctab").find(".addraiwc td:nth-child(4)").html("<button id='raid105' style='padding: 2px; border-radius: 4px;' class='greenb shRnTr'>105%</button>");
 				$("#dungloctab").find(".addraiwc td:nth-child(5)").html("<button id='raid115' style='padding: 2px; border-radius: 4px;' class='greenb shRnTr'>115%</button>");
-                
+
   //              var troops = cotg.city.troops();
                 var home;
-                
+
 				$("#raid105").click(function(){
                     var i=0;
                     var home_loot=0;
@@ -4903,8 +4915,8 @@ END Boss Only Section
                         }
                         carry_percentage(total_loot);
                     }
-                }); 
-				
+                });
+
 			   $("#raid115").click(function(){
                     var i=0;
                     var home_loot=0;
@@ -4936,7 +4948,7 @@ END Boss Only Section
                         carry_percentage(total_loot);
                     }
                 });
-				
+
                 $("#raidAll").click(function(){
                     var i=0;
                     var home_loot=0;
@@ -4977,7 +4989,7 @@ END Boss Only Section
                         carry_percentage(total_loot);
                     }
                 });
-				
+
                 setTimeout(function(){
                     jQuery("#raidAll")[0].click();
                 },100);
@@ -5026,7 +5038,7 @@ END Boss Only Section
             setTimeout(function(){incomings();}, 1000);
         });
         setTimeout(function(){Total_Research();}, 20000);
-        
+
 		if (localStorage.getItem("raidbox")==1) {
             var raidboxback="<button class='regButton greenb' id='raidboxb' style='width:120px; margin-left: 2%;'>Return Raiding Box</button>";
             $("#squaredung td").find(".squarePlayerInfo").before(raidboxback);
@@ -5035,7 +5047,7 @@ END Boss Only Section
                 $("#raidboxb").remove();
             });
         }
-		
+
         //var cancelallya="<input id='cancelAllya' type='checkbox' checked='checked'> Cancel attack if same alliance";
         //var cancelallys="<input id='cancelAllys' type='checkbox' checked='checked'> Cancel attack if same alliance";
         //var cancelallyp="<input id='cancelAllyp' type='checkbox' checked='checked'> Cancel attack if same alliance";
@@ -5044,8 +5056,8 @@ END Boss Only Section
         //$("#siegetraveltime").parent().next().html(cancelallys);
         //$("#plundtraveltime").parent().next().html(cancelallyp);
         //$("#scouttraveltime").parent().next().html(cancelallyc);
-		
-    //Send Assault    
+
+    //Send Assault
 		$("#assaultGo").click(function() {
             if ($("#cancelAllya").prop("checked")==false) {
                 setTimeout(function() {
@@ -5072,8 +5084,8 @@ END Boss Only Section
                 },4000);
             }
         });
-		
-	//Send Plunder	
+
+	//Send Plunder
         $("#plunderGo").click(function() {
             if ($("#cancelAllyp").prop("checked")==false) {
                 setTimeout(function() {
@@ -5100,8 +5112,8 @@ END Boss Only Section
                 },4000);
             }
         });
-		
-	//Send Scout	
+
+	//Send Scout
         $("#scoutGo").click(function() {
             if ($("#cancelAllyc").prop("checked")==false) {
                 setTimeout(function() {
@@ -5128,8 +5140,8 @@ END Boss Only Section
                 },4000);
             }
         });
-		
-	//Send Siege	
+
+	//Send Siege
         $("#siegeGo").click(function() {
             if ($("#cancelAllys").prop("checked")==false) {
                 setTimeout(function() {
@@ -5230,7 +5242,7 @@ END Boss Only Section
             makeincsum();
         });
     });
-	
+
     function makeoutsum() {
         var tg={id:[],se:[],oth:[],ts:[],x:[],y:[],cn:[],pn:[],an:[]}
         var i=0;
@@ -5282,7 +5294,7 @@ END Boss Only Section
             $("#outsumWin").css("z-index","4000");
         },300);
     }
-	// Incoming Summary Window	
+	// Incoming Summary Window
 		function makeincsum() {
 			var tg={id:[],hos:[],fr:[],x:[],y:[],cn:[],pn:[]}
 			var i=0;
@@ -5326,12 +5338,12 @@ END Boss Only Section
 
 				// CSV
 				exportTableToCSV.apply(this, [$('#outsumTab'), outputFile]);
-			});	
+			});
 			setTimeout(function() {
 				$("#outsumWin").css("z-index","4000");
 			},300);
 		}
-       
+
 	// combat reports summary
         $(document).ready(function() {
             var comsum="<button id='comsumGo' class='regButton greenb' style='margin-top: 40%;width: 95%;height: 25%;font-size: .8vw;'>Combat Summary</button>";
@@ -5347,7 +5359,7 @@ END Boss Only Section
             });
             //$("head").append("<script type='text/javascript' src='https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js'></script>");
         });
-		
+
     //combat sum window
         function comsumwin(arg) {
             var comswin="<div id='comsumWin' style='width:60%;height:65%;left:30%' class='popUpBox'><div class='popUpBar'><span class='ppspan'>Combat Reports Summary</span><button id='sumX' onclick=\"$('#comsumWin').remove();\" class='xbutton greenb'><div id='xbuttondiv'><div><div id='centxbuttondiv'></div></div></div></button></div><div id=comsumbody' class='popUpWindow'><span style='margin-left:5%;'>Pick a Date to retrieve combat summary:    </span><input style='width:90px;' id='comsumDat' type='text' value='00/00/0000'><button class='regButton greenbuttonGo greenb' id='getcomSum' style='width:10%;margin-left:5%'> Go </Button><div id='comsumTabbody' style='margin:1%;'></div></div></div>";
@@ -5359,7 +5371,7 @@ END Boss Only Section
                 comsumtab(arg);
             });
         }
-		
+
 		function comsumtab(arg) {
 			var ata={sent:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],lost:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],survive:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]};// non siege
 			var ats={sent:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],lost:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],survive:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]};// siege
@@ -5447,7 +5459,7 @@ END Boss Only Section
 												if (siege.src.indexOf(tempcoord)<0) {//if its not in siege.src then
 													if (tempts<5000) {
 														siec.fake++;
-													} 
+													}
 													else {
 														siec.real++;
 													}
@@ -5523,7 +5535,7 @@ END Boss Only Section
 												if (apl.indexOf(this.apn)<0) {// checking enemy name in apl, if not then
 													apl.push(this.apn);
 													aplcount[apl.indexOf(this.apn)]=1;
-												} 
+												}
 												else {// if enemy name already there then
                                                  aplcount[apl.indexOf(this.apn)]+=1;
 												}
@@ -5536,7 +5548,7 @@ END Boss Only Section
 												if (rdata.assault) {
 													if (tempts<5000) {
 														assc.fake++;
-													} 
+													}
 													else {
 														assc.real++;
 													}
@@ -5628,7 +5640,7 @@ END Boss Only Section
                 else {
                     if( ++r < rlines.length ){
                         setTimeout(loop, 0);
-                    } 
+                    }
 					else {
                         setTimeout(function() {
                             for (var i in siege.troops) {
@@ -5643,7 +5655,7 @@ END Boss Only Section
             };
             loop();
 		}
-		
+
         function drawcomsumtable() {
             //console.log(at,dt);
             //console.log(aally,dally);
@@ -6295,9 +6307,9 @@ END Boss Only Section
                         }
                     }
                 });
-	
 
-		//Water Layouts	
+
+		//Water Layouts
                 $('#waterbuildlayouts').change(function() {
                     var newlayout=currentlayout;
                     for (var j=1; j<layoutsw.length; j++) {
@@ -6371,7 +6383,7 @@ END Boss Only Section
                         }
                     }
                 });
-		//Fast Build Layouts		
+		//Fast Build Layouts
                 $('#fastbuildlayout').change(function() {
                     var newlayout=currentlayout;
                     for (var j=1; j<layoutdf.length; j++) {
