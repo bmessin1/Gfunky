@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name gfunky3
 // @namespace www.tampermonkey.com
-// @version 1.1.12
+// @version 1.1.15
 // @description gfunky3
 // @author Greety
 // @match https://*.crownofthegods.com
@@ -20,7 +20,7 @@ START POPUP MESSAGE FOR PLAYERS WHEN THEY OPEN THE GAME
 (function() {
 
     $(document).ready(function() {
-    var popwin="<div id='HelloWorld' style='width:Auto; max-width: 35% ;height:Auto !important; Max-height: 85%; background-color: #E2CBAC;-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: 4px ridge #DAA520;position:absolute;right:40%;top:100px; z-index:1000000;'><div class=\"popUpBar\"> <span class=\"ppspan\">Welcome!</span><button id=\"gfunkyX\" onclick=\"$('#HelloWorld').remove();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div id='hellobody' class=\"popUpWindow\"><span style='margin-left: 5%;'> <h3 style='text-align:center;'>Welcome to Crown Of The Gods. This is a Beta version prior to being approved by Developers for the addon marketplace</h3></span><br><br><span style='margin-left: 5%;'> <h4 style='text-align:center;'> GFunky3 BY GREETY </h4></span><br><span style='margin-left: 5%;'><h4 style='text-align:center;color:blue;'>Special Thanks to Dhruv, Lionell, And  Fact</h4><br><h4 style='text-align:center;color:green;' >Updated 28th August 2020</h4></span><br><br><span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;'><li>Added Empire Logs</li><li>Attack Sender Changes</li><li>Added Clear Resources Button</li><li>Added builds to Land Layouts</li></ul></span></div></div>";
+    var popwin="<div id='HelloWorld' style='width:Auto; max-width: 35% ;height:Auto !important; Max-height: 85%; background-color: #E2CBAC;-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: 4px ridge #DAA520;position:absolute;right:40%;top:100px; z-index:1000000;'><div class=\"popUpBar\"> <span class=\"ppspan\">Welcome!</span><button id=\"gfunkyX\" onclick=\"$('#HelloWorld').remove();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div id='hellobody' class=\"popUpWindow\"><span style='margin-left: 5%;'> <h3 style='text-align:center;'>Welcome to Crown Of The Gods. This is a Beta version prior to being approved by Developers for the addon marketplace</h3></span><br><br><span style='margin-left: 5%;'> <h4 style='text-align:center;'> GFunky3 BY GREETY </h4></span><br><span style='margin-left: 5%;'><h4 style='text-align:center;color:blue;'>Special Thanks to Dhruv, Lionell, And  Fact</h4><br><h4 style='text-align:center;color:green;' >Updated 20th Nov 2020</h4></span><br><br><span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;'><li>Attack Sender Changes</li><li>Added Water Build Layouts</li></ul></span></div></div>";
 	$("body").append(popwin);
 
         setTimeout(function() {
@@ -1227,8 +1227,8 @@ START OF CORE FUNKY
     var ttts=[1,10,1,1,1,1,1,2,2,2,2,2,10,10,100,100,400,1]; //ts per unit
     var citytc;
     var message="Not enough TS to kill this boss!";
-    var other_loot=[400,1050,4500,16000,34250,60000,125000,210000,320000,462000]; //forest, hill loot
-    var mountain_loot=[400,1050,4500,16000,34250,60000,125000,210000,320000,462000];//mountain loot
+    var other_loot=[360,1050,4500,16000,33000,58500,118400,200450,300000,450400]; //forest, hill loot
+    var mountain_loot=[360,1050,4500,16000,33000,58500,118400,200450,300000,450400];//mountain loot
     var tpicdiv=["guard32 trooptdcm","bally32 trooptdcm","ranger32 trooptdcm","triari32 trooptdcm","priest32 trooptdcm","vanq32 trooptdcm","sorc32 trooptdcm","scout32 trooptdcm","arbal32 trooptdcm","praet32 trooptdcm","horsem32 trooptdcm",
                  "druid32 trooptdcm","ram32 trooptdcm","scorp32 trooptdcm","galley32 trooptdcm","sting32 trooptdcm","wship32 trooptdcm","senat32 trooptdcm"];
     var tpicdiv20=["guard20 trooptdcm","bally20 trooptdcm","ranger20 trooptdcm","triari20 trooptdcm","priest20 trooptdcm","vanq20 trooptdcm","sorc20 trooptdcm","scout20 trooptdcm","arbal20 trooptdcm","praet20 trooptdcm","horsem20 trooptdcm",
@@ -1563,8 +1563,7 @@ START OF CORE FUNKY
 
 
 //getting faith and research bonuses
-// $(document).ready
-   (function() {
+ $(document).ready (function() {
         jQuery.ajax({url: 'includes/gaLoy.php',type: 'POST',aysnc:false,
                          success: function(data) {
                              var ldata=JSON.parse(data);
@@ -1691,7 +1690,7 @@ START OF CORE FUNKY
         data: dat
       });
     }, 5000);
-   });
+  
 
 // WAR COUNC BUTTONS
 //buttons
@@ -2051,7 +2050,7 @@ TODO: FIND REFERENCE POINT to Ui-id-115
             $("#totaldeftab").trigger({type:"click",originalEvent:"1"});
 		});
         $("#addtoAtt").click(function() {
-            for (var i=1;i<8;i++) {
+            for (var i=1;i<16;i++) {
                 if (!$("#t"+i+"x").val()) {
                     var tid=Number($("#showReportsGo").attr("data"));
                     var tempx;
@@ -2065,7 +2064,7 @@ TODO: FIND REFERENCE POINT to Ui-id-115
             }
         });
         $("#addtoDef").click(function() {
-            for (var i=1;i<15;i++) {
+            for (var i=1;i<16;i++) {
                 if (!$("#d"+i+"x").val()) {
                     var tid=Number($("#showReportsGo").attr("data"));
                     var tempx;
@@ -2155,7 +2154,7 @@ TODO: FIND REFERENCE POINT to Ui-id-115
                 $("#ExpImp").remove();
               });
         });
-
+ });
 
 //import attack orders
   	function Aimp(str) {
@@ -4295,7 +4294,7 @@ END Boss Only Section
             var bossactive=data.info.active;
      //       var troops = cotg.city.troops();
             var home;
-            var optimalTS= Math.ceil((other_loot[lvl-1]/10 * ((1-prog/100)+1))*1.02);
+            var optimalTS= Math.ceil((other_loot[lvl-1]/10 * ((1-prog/100)+1))*1.0175);
             if(dtype==="dungeon"){
                 if($("#cityplayerInfo div table tbody tr").length===11){
                     bossele();
@@ -4350,7 +4349,7 @@ END Boss Only Section
                 if(type==="Mountain Cavern"){
                     document.getElementById('raidDungGo').onclick = function() {
                         setTimeout(function(){
-                            var total_lootm= Math.ceil((mountain_loot[Number(lvl)-1] * ((1-Number(prog)/100)+1))*1.02);
+                            var total_lootm= Math.ceil((mountain_loot[Number(lvl)-1] * ((1-Number(prog)/100)+1))*1.0175);
                             if(home_loot>total_lootm){
                                 var option_numbersm=Math.floor(home_loot/total_lootm);
                                 var templ1m=((home_loot/total_lootm)*100)/option_numbersm;
@@ -4365,7 +4364,7 @@ END Boss Only Section
                             }
                         }, 1500);
                     };
-                    var optimalTSM= Math.ceil((mountain_loot[lvl-1]/10 * ((1-prog/100)+1))*1.02);
+                    var optimalTSM= Math.ceil((mountain_loot[lvl-1]/10 * ((1-prog/100)+1))*1.0175);
                     var cavoptim=Math.ceil((optimalTSM *2)/3);
                     var praoptim=Math.ceil(optimalTSM/2);
                     var sorcoptim=Math.ceil(optimalTSM *2);
@@ -4390,7 +4389,7 @@ END Boss Only Section
                 if(type==="Hill Cavern" || type==="Forest Cavern"){
                     document.getElementById('raidDungGo').onclick = function() {
                         setTimeout(function(){
-                            var total_looto= Math.ceil((other_loot[Number(lvl)-1] * ((1-Number(prog)/100)+1))*1.02);
+                            var total_looto= Math.ceil((other_loot[Number(lvl)-1] * ((1-Number(prog)/100)+1))*1.0175);
                             if(home_loot>total_looto){
                                 var option_numbers=Math.floor(home_loot/total_looto);
                                 var templ1=((home_loot/total_looto)*100)/option_numbers;
@@ -4877,15 +4876,15 @@ END Boss Only Section
                 var type_dung=$(this).attr('type');
                 if(type_dung==="Mountain"){loot1=mountain_loot;}
                 else{loot1=other_loot;}
-                var total_loot= Math.ceil((loot1[Number(dunglvl)-1] * ((1-Number(progress)/100)+1))*1.02);
+                var total_loot= Math.ceil((loot1[Number(dunglvl)-1] * ((1-Number(progress)/100)+1))*1.0175);
 				$("#dungloctab").find(".addraiwc td:nth-child(2)").html("<button id='raidAll' style='padding: 2px; border-radius: 4px;' class='greenb shRnTr'>Use All TS</button>");
-				$("#dungloctab").find(".addraiwc td:nth-child(4)").html("<button id='raid105' style='padding: 2px; border-radius: 4px;' class='greenb shRnTr'>105%</button>");
+				$("#dungloctab").find(".addraiwc td:nth-child(4)").html("<button id='raid100' style='padding: 2px; border-radius: 4px;' class='greenb shRnTr'>100%</button>");
 				$("#dungloctab").find(".addraiwc td:nth-child(5)").html("<button id='raid115' style='padding: 2px; border-radius: 4px;' class='greenb shRnTr'>115%</button>");
 
   //              var troops = cotg.city.troops();
                 var home;
 
-				$("#raid105").click(function(){
+				$("#raid100").click(function(){
                     var i=0;
                     var home_loot=0;
                     var km=[];
@@ -4896,14 +4895,14 @@ END Boss Only Section
                         i+=1;
                         if (i === 17) { break; }
                     }
-                    var loot_105=Math.ceil(total_loot*1.05);
-                    if(home_loot>loot_105){
-                        var option_numbers=Math.floor(home_loot/loot_105);
+                    var loot_100=Math.ceil(total_loot*1.00);
+                    if(home_loot>loot_100){
+                        var option_numbers=Math.floor(home_loot/loot_100);
                         if(option_numbers<count){
                             $("#WCcomcount").val(option_numbers);
                         }
 						else{$("#WCcomcount").val(count);}
-                        var templ1=((home_loot/loot_105)*100)/option_numbers;
+                        var templ1=((home_loot/loot_100)*100)/option_numbers;
                         var templ2=((templ1-100)/templ1)*100;
                         for(var i in km){
                             if(km[i]!==0){
@@ -5943,55 +5942,152 @@ END Boss Only Section
                 resd.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
                 selectbuttsdf+='</select>';
 
-                var selectbuttsw='<select id="waterbuildlayouts" style="font-size: 10px !important;margin-top:1%;margin-left:2%;width:45%;" class="regButton greenb"><option value="0">Select water layout</option>';
+                				var selectbuttsw='<select id="waterbuildlayouts" style="font-size: 10px !important;margin-top:1%;margin-left:2%;width:45%;" class="regButton greenb"><option value="0">Select water layout</option>';
                 var cww=1;
-                selectbuttsw+='<option value="'+cww+'">2 sec rang/galley</option>';
+                selectbuttsw+='<option value="'+cww+'">2/3 sec R/T/galley</option>';
                 layoutsw.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BGBGB##-----##----##GBGBGBG##----##----#BGBGBGBGB#----##----#BGBGBGBGB#---H#######BGBGTGBGB#######----#BGBGBGBGB#JSPX##----#BGBGBGBGB#----##----##GBGBGBG##G---##-----##BGGGB##BBBBG##------#######BBVVBB##---------#--GBV##VB##---------#--GBV###V###--------#---BBV#######-------#----BBV########################");
-                remarksw.push("rangers/triari/galley"); notesw.push("166600 inf and 334 galley @ 10 days");
+                remarksw.push("R/T/galley"); notesw.push("166600 inf and 334 galley @ 10 days");
                 troopcounw.push([0,0,83300,83300,0,0,0,0,0,0,0,0,0,0,334,0,0]);
-                resw.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
+                resw.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1450000]);
                 cww++;
-                selectbuttsw+='<option value="'+cww+'">6 sec arbs/galley</option>';
-                layoutsw.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BEBEB##-----##----##EBEBEBE##----##----#BEBEBEBEB#----##----#BEBEBEBEB#----#######BEBETEBEB#######----#BEBEBEBEB#SPJX##----#BEBEBEBEB#MH--##----##EBEBEBE##----##-----##BEBEB##BBBB-##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#--BBBVTT#####-------#--BEBBV########################");
-                remarksw.push("arbs/galley"); notesw.push("88300 inf and 354 galley @ 11.5 days");
-                troopcounw.push([0,0,0,0,0,0,0,0,88300,0,0,0,0,0,354,0,0]);
-                resw.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
+				selectbuttsw+='<option value="'+cww+'">2 sec Ranger/galley</option>';
+                layoutsw.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BGBGB##-----##----##GBGBGBG##----##----#BGBGBGBGB#----##----#BGBGBGBGB#---H#######BGBGTGBGB#######----#BGBGBGBGB#JSPX##----#BGBGBGBGB#----##----##GBGBGBG##G---##-----##BGGGB##BBBBG##------#######BBVVBB##---------#--GBV##VB##---------#--GBV###V###--------#---BBV#######-------#----BBV########################");
+                remarksw.push("Ranger/galley"); notesw.push("166600 inf and 334 galley @ 10 days");
+                troopcounw.push([0,0,166000,0,0,0,0,0,0,0,0,0,0,0,334,0,0]);
+                resw.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1450000]);
                 cww++;
-                selectbuttsw+='<option value="'+cww+'">3 sec priestess/galley</option>';
+				selectbuttsw+='<option value="'+cww+'">3 sec Ranger/galley</option>';
+                layoutsw.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##-BBBB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBGBGBGB#----#######BGBGTGBGB#######----#BGBGBGBGB#SMSX##----#BGBGBGBGB#SLPP##----##BBGBGBB##----##-----##BBBBB##BBBBJ##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#---BBBV########################");
+                remarksw.push("Ranger/galley"); notesw.push("196600 inf and 394 galley @ 16 days");
+                troopcounw.push([0,0,196600,0,0,0,0,0,0,0,0,0,0,0,394,0,0]);
+                resw.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1450000]);
+                cww++;
+				selectbuttsw+='<option value="'+cww+'">4 sec Ranger/galley</option>';
+                layoutsw.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBBBBBGB#----##----#BBBGBGBBB#----#######BGBBTBBGB#######----#BGBGBGBGB#SMSX##----#BGBGBGBGB#SLPP##----##BBGBGBB##----##-----##BBBBB##BBBBJ##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#----BBV########################");
+                remarksw.push("Ranger/galley"); notesw.push("216600 inf and 434 galley @ 20.5 days");
+                troopcounw.push([0,0,216600,0,0,0,0,0,0,0,0,0,0,0,434,0,0]);
+                resw.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1450000]);
+                cww++;
+				selectbuttsw+='<option value="'+cww+'">3 sec priestess/galley</option>';
                 layoutsw.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BZBZB##-----##----##ZBZBZBZ##----##----#BZBZBZBZB#----##----#BZBZBZBZB#---H#######BZBZTZBZB#######----#BZBZBZBZB#JSPX##----#BZBZBZBZB#----##----##ZBZBZBZ##-Z--##-----##BZZZB##BBBBZ##------#######BBVVBB##---------#---BV##VB##---------#--ZBV###V###--------#---BBV#######-------#---ZBBV########################");
                 remarksw.push("priestess/galley"); notesw.push("166600 inf and 334 galley @ 11 days");
                 troopcounw.push([0,0,0,0,166600,0,0,0,0,0,0,0,0,0,334,0,0]);
-                resw.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
+                resw.push([0,0,0,0,1,250000,220000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1350000]);
                 cww++;
+				selectbuttsw+='<option value="'+cww+'">4 sec priestess/galley</option>';
+                layoutsw.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BZBZB##-----##----##ZBZBZBZ##----##----#BZBZBZBZB#----##----#BZBZBZBZB#---H#######BZBZTZBZB#######----#BZBZBZBZB#JSPX##----#BZBZBZBZB#----##----##ZBZBZBZ##-Z--##-----##BZZZB##BBBBZ##------#######BBVVBB##---------#---BV##VB##---------#--ZBV###V###--------#---BBV#######-------#---ZBBV########################");
+                remarksw.push("priestess/galley"); notesw.push("186599 inf and 374 galley @ 18 days");
+                troopcounw.push([0,0,0,0,186599,0,0,0,0,0,0,0,0,0,374,0,0]);
+                resw.push([0,0,0,0,1,250000,220000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1350000]);
+                cww++;
+				selectbuttsw+='<option value="'+cww+'">5 sec priestess/galley</option>';
+                layoutsw.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BZBZB##-----##----##ZBZBZBZ##----##----#BZBZBZBZB#----##----#BZBZBZBZB#---H#######BZBZTZBZB#######----#BZBZBZBZB#JSPX##----#BZBZBZBZB#----##----##ZBZBZBZ##-Z--##-----##BZZZB##BBBBZ##------#######BBVVBB##---------#---BV##VB##---------#--ZBV###V###--------#---BBV#######-------#---ZBBV########################");
+                remarksw.push("priestess/galley"); notesw.push("206599 inf and 414 galley @ 22 days");
+                troopcounw.push([0,0,0,0,206599,0,0,0,0,0,0,0,0,0,414,0,0]);
+                resw.push([0,0,0,0,1,250000,220000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1350000]);
+                cww++;
+				selectbuttsw+='<option value="'+cww+'">6 sec priestess/galley</option>';
+                layoutsw.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBZBZBB##----##----#BZBBBBBZB#----##----#BBBZBZBBB#----#######BZBBTBBZB#######----#BZBZBZBBB#SMSX##----#BZBZBZBZB#SDPP##----##BBZBZBB##----##-----##BBBBB##BBBBJ##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#----BBV########################");
+                remarksw.push("priestess/galley"); notesw.push("219999 inf and 440 galley @ 22 days");
+                troopcounw.push([0,0,0,0,219999,0,0,0,0,0,0,0,0,0,440,0,0]);
+                resw.push([0,0,0,0,1,250000,220000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1350000]);
+                cww++;
+                selectbuttsw+='<option value="'+cww+'">6 sec arbs/galley</option>';
+                layoutsw.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BEBEB##-----##----##EBEBEBE##----##----#BEBEBEBEB#----##----#BEBEBEBEB#----#######BEBETEBEB#######----#BEBEBEBEB#SMSX##----#BEBEBEBEB#SLPP##----##EBEBEBE##----##-----##-EBE-##BBBBE##------#######BBVVBB##---------#--JBVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#---EBBV########################");
+                remarksw.push("arbs/galley"); notesw.push("81650 inf and 327 galley @ 13.5 days");
+                troopcounw.push([0,0,0,0,0,0,0,0,81650,0,0,0,0,0,327,0,0]);
+                resw.push([0,0,0,0,1,250000,250000,150000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,150000,1350000]);
+                cww++;
+				selectbuttsw+='<option value="'+cww+'">7 sec arbs/galley</option>';
+                layoutsw.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##EBEBEBE##----##----#BEBEBEBEB#----##----#BEBEBEBEB#----#######BEBETEBEB#######----#BEBEBEBEB#SMSX##----#BEBEBEBEB#SLPP##----##EBEBEBE##----##-----##BBBBB##BBBB-##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#---JBBV########################");
+                remarksw.push("arbs/galley"); notesw.push("91650 inf and 367 galley @ 16.5 days");
+                troopcounw.push([0,0,0,0,0,0,0,0,91650,0,0,0,0,0,367,0,0]);
+                resw.push([0,0,0,0,1,250000,250000,150000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,150000,1350000]);
+                cww++;
+				selectbuttsw+='<option value="'+cww+'">8 sec arbs/galley</option>';
+                layoutsw.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBEBEBB##----##----#BEBEBEBEB#----##----#BEBEBEBEB#----#######BEBETEBEB#######----#BEBEBEBEB#SMSX##----#BEBEBEBEB#SLPP##----##BBEBEBB##----##-----##BBBBB##BBBB-##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#---JBBV########################");
+                remarksw.push("arbs/galley"); notesw.push("98300 inf and 394 galley @ 16.5 days");
+                troopcounw.push([0,0,0,0,0,0,0,0,98300,0,0,0,0,0,394,0,0]);
+                resw.push([0,0,0,0,1,250000,250000,150000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,150000,1350000]);
+                cww++;
+                
                 selectbuttsw+='<option value="'+cww+'">7 sec praetor/galley</option>';
                 layoutsw.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BZBZB##-----##----##ZBZBZBZ##----##----#BZBZBZBZB#----##----#BZBZBZBZB#----#######BZBZTZBZB#######----#BZBZBZBZB#SPJX##----#BZBZBZBZB#MH--##----##ZBZBZBZ##----##-----##BZBZB##BBBBZ##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#--BZBBV########################");
                 remarksw.push("praetors/galley"); notesw.push("86650 praetors and 347 galley @ 12 days");
                 troopcounw.push([0,0,0,0,0,0,0,0,0,86650,0,0,0,0,347,0,0]);
-                resw.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
+                resw.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1350000]);
+                cww++;
+				selectbuttsw+='<option value="'+cww+'">8 sec praetor/galley</option>';
+                layoutsw.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBZB##-----##----##ZBZBZBZ##----##----#BZBZBZBZB#----##----#BZBZBZBZB#----#######BZBZTZBZB#######----#BZBZBZBZB#SMSX##----#BZBZBZBZB#SDPP##----##ZBZBZBZ##----##-----##BBBBB##BBBB-##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#---JBBV########################");
+                remarksw.push("praetors/galley"); notesw.push("89999 praetors and 360 galley @ 17 days");
+                troopcounw.push([0,0,0,0,0,0,0,0,0,89999,0,0,0,0,360,0,0]);
+                resw.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1350000]);
+                cww++;
+				selectbuttsw+='<option value="'+cww+'">9 sec praetor/galley</option>';
+                layoutsw.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBZBZBB##----##----#BZBZBZBZB#----##----#BZBZBZBZB#----#######BZBZTZBZB#######----#BZBZBZBZB#SMSX##----#BZBZBZBZB#SDPP##----##ZBZBZBB##----##-----##BBBBB##BBBB-##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#---JBBV########################");
+                remarksw.push("praetors/galley"); notesw.push("96649 praetors and 387 galley @ 19.5 days");
+                troopcounw.push([0,0,0,0,0,0,0,0,0,96649,0,0,0,0,387,0,0]);
+                resw.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1350000]);
                 cww++;
                 selectbuttsw+='<option value="'+cww+'">2 sec vanq/galley+senator</option>';
                 layoutsw.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BGBGB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBGBGBGB#---H#######BGBGTGBGB#######----#BGBGBGBGB#JSPX##----#BGBGBGBGB#----##----##BBGBGBB##---B##-----##BGBGB##BBBBZ##------#######BBVVBB##---------#---BV##VB##---------#---BV###V###--------#---BBV#######-------#--BBBBV########################");
-                remarksw.push("vanq/galley+senator"); notesw.push("193300 inf and 387 galley @ 10 days");
-                troopcounw.push([0,0,0,0,0,193300,0,0,0,0,0,0,0,0,387,0,0]);
-                resw.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
+                remarksw.push("vanq/galley+senator"); notesw.push("193299 inf and 387 galley @ 14 days");
+                troopcounw.push([0,0,0,0,0,1932990,0,0,0,0,0,0,0,0,387,0,0]);
+                resw.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1350000]);
+                cww++;
+				selectbuttsw+='<option value="'+cww+'">3 sec vanq/galley+senator</option>';
+                layoutsw.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BGBGB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBGBGBGB#---H#######BGBGTGBGB#######----#BGBGBGBGB#JSPX##----#BGBGBGBGB#----##----##BBGBGBB##---B##-----##BGBGB##BBBBZ##------#######BBVVBB##---------#---BV##VB##---------#---BV###V###--------#---BBV#######-------#--BBBBV########################");
+                remarksw.push("vanq/galley+senator"); notesw.push("219999 inf and 440 galley @ 16 days");
+                troopcounw.push([0,0,0,0,0,219999,0,0,0,0,0,0,0,0,440,0,0]);
+                resw.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1350000]);
+                cww++;
+				selectbuttsw+='<option value="'+cww+'">4 sec vanq/galley+senator</option>';
+                layoutsw.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BBBBBBBBB#----##----#BGBGBGBGB#----#######BBBBTBBGB#######----#BGBGBGBGB#----##----#BBBBBBBBB#----##----##BBGBGB-##----##-----##BBBBB##BBBBB##------#######BBVVBB##---------#SS-BV##VB##---------#DM-BV###V###--------#SP-BBV#######-------#XP-ZBBV########################");
+                remarksw.push("vanq/galley+senator"); notesw.push("232999 inf and 440 galley @ 22 days");
+                troopcounw.push([0,0,0,0,0,232999,0,0,0,0,0,0,0,0,466,0,0]);
+                resw.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1350000]);
                 cww++;
                 selectbuttsw+='<option value="'+cww+'">5 sec horses/galley</option>';
                 layoutsw.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BEBEB##-----##----##EBEBEBE##----##----#BEBEBEBEB#----##----#BEBEBEBEB#---H#######BEBETEBEB#######----#BEBEBEBEB#JSPX##----#BEBEBEBEB#-M--##----##EBEBEBB##----##-----##BEBEB##BBBB-##------#######BBVVBB##---------#---BV##VB##---------#---BV###V###--------#--BBBV#######-------#--BEBBV########################");
                 remarksw.push("horses/galley"); notesw.push("90000 cav and 360 galley @ 10.5 days");
                 troopcounw.push([0,0,0,0,0,0,0,0,0,0,90000,0,0,0,360,0,0]);
-                resw.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
+                resw.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,350000]);
+                cww++;
+				selectbuttsw+='<option value="'+cww+'">6 sec horses/galley</option>';
+                layoutsw.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##EBEBEBB##----##----#BEBEBEBEB#----##----#BEBEBEBEB#----#######BEBETEBEB#######----#BEBEBEBEB#SMSX##----#BEBEBEBEB#SDPP##----##EBEBEBB##----##-----##BBBBB##BBBB-##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#---JBBV########################");
+                remarksw.push("horses/galley"); notesw.push("95000 cav and 380 galley @ 16 days");
+                troopcounw.push([0,0,0,0,0,0,0,0,0,0,95000,0,0,0,380,0,0]);
+                resw.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,350000]);
+                cww++;
+				 selectbuttsw+='<option value="'+cww+'">7 sec horses/galley</option>';
+                layoutsw.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##-----##-----##----##BBBBBBB##----##----#BEEEEEEEB#----##----#BBBBBBBBB#----#######EEEETEEEB#######----#BBBBBBBBB#BBZ-##----#BEEEEEEEB#BBBB##----##BBBBBBB##BEBB##-----##-----##BBBBB##------#######BBVVBB##---------#SS-BV##VB##---------#M--BV###V###--------#PP-BBV#######-------#X--JBBV########################");
+                remarksw.push("horses/galley"); notesw.push("103299 cav and 414 galley @ 18.5 days");
+                troopcounw.push([0,0,0,0,0,0,0,0,0,0,103299,0,0,0,414,0,0]);
+                resw.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,350000]);
                 cww++;
                 selectbuttsw+='<option value="'+cww+'">5 sec sorc/galley</option>';
                 layoutsw.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##JBJBJ##-----##----##BJBJBJB##----##----#JBJBJBJBJ#----##----#JBJBJBJBJ#---H#######JBJBTBJBJ#######----#JBJBJBJBJ#-S-X##----#JBJBJBJBJ#----##----##BJBJBJB##JJ--##-----##JBJBJ##BBBBJ##------#######BBVVBB##---------#--JBV##VB##---------#--JBV###V###--------#---BBV#######-------#---JBBV########################");
                 remarksw.push("sorc/galley"); notesw.push("156600 sorc and 314 galley @ 13.5 days");
                 troopcounw.push([0,0,0,0,0,0,156600,0,0,0,0,0,0,0,314,0,0]);
-                resw.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
+                resw.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,350000]);
+                cww++;
+				selectbuttsw+='<option value="'+cww+'">6 sec sorc/galley</option>';
+                layoutsw.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##JJJJJJJ##----##----#BBBBBBBBB#----##----#JJJJJJJJJ#----#######BBBBTBBBB#######----#JJJJJJJJJ#----##----#BBBBBBBBB#----##----##JJJJJJJ##BJ--##-----##BBBBB##BBBBE##------#######BBVVBB##---------#SS-BV##VB##---------#M--BV###V###--------#P--BBV#######-------#X--ZBBV########################");
+                remarksw.push("sorc/galley"); notesw.push("173299 sorc and 387 galley @ 25 days");
+                troopcounw.push([0,0,0,0,0,0,173299,0,0,0,0,0,0,0,387,0,0]);
+                resw.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,350000]);
+                cww++;
+				selectbuttsw+='<option value="'+cww+'">7 sec sorc/galley</option>';
+                layoutsw.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##JJJJJJJ##----##----#BBBBBBBBB#----##----#JJJJJJJJJ#----#######BBBBTBBBB#######----#JJJJJJJJJ#----##----#BBBBBBBBB#----##----##JJJJJJJ##BJ--##-----##BBBBB##BBBBE##------#######BBVVBB##---------#SS-BV##VB##---------#M--BV###V###--------#P--BBV#######-------#X--ZBBV########################");
+                remarksw.push("sorc/galley"); notesw.push("193299 sorc and 347 galley @ 20.5 days");
+                troopcounw.push([0,0,0,0,0,0,193299,0,0,0,0,0,0,0,347,0,0]);
+                resw.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,350000]);
                 cww++;
                 selectbuttsw+='<option value="'+cww+'">vanqs+ports+senator</option>';
                 layoutsw.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBBBBBGB#----#######BBBGTGBBB#######----#BGBBBBBGB#PPJX##----#BGBGBGBGB#BBBB##----##BBGBGBB##BBBB##-----##BBBBB##BBBBB##------#######-BRRBB##---------#----R##RZ##---------#----R###R###--------#----SR#######-------#----MSR########################");
                 remarksw.push("vanqs+senator+ports"); notesw.push("264k infantry @ 10 days");
                 troopcounw.push([0,0,0,100000,0,164000,0,0,0,0,0,0,0,0,0,0,0]);
-                resw.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
+                resw.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,350000]);
                 cww++;
                 selectbuttsw+='<option value="'+cww+'">main hub</option>';
                 layoutsw.push("[ShareString.1.3];########################-------#-------#####--------#---PPPPP###---------#---PPPPPP##---------#---PPPPPP##------#######PPPPPP##-----##-----##PPPPP##----##SLSDSAS##PPPP##----#-SDSMSDS-#PPPP##----#-SLSMSAS-#PPPP#######-SDSTSDS-#######----#-SLSMSAS-#----##----#-SDSMSDS-#----##----##SLSDSAS##----##-----##-----##-----##------#######--RR--##---------#ZB--RTTR-##---------#PJ--RTTTR###--------#-----RTT#####-------#------R########################");
@@ -6018,15 +6114,15 @@ END Boss Only Section
                 resw.push([0,0,0,0,1,500000,500000,500000,500000,0,0,0,0,1,0,0,0,0,0,500000,500000,500000,500000]);
                 cww++;
                 selectbuttsw+='<option value="'+cww+'">Stingers</option>';
-                layoutsw.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##-----##-----##----##-------##----##----#---------#----##----#---------#----#######----T----#######----#---------#SPHX##----#---------#-M--##----##-------##----##-----##-----##BBBB-##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#----BBV########################");
-                remarksw.push("stingers"); notesw.push("3480 stingers @ 84 days");
-                troopcounw.push([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3480,0]);
+                layoutsw.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##-----##-----##----##-------##----##----#---------#----##----#---------#----#######-SS-TPP--#######-XBB#-ML--PP--#BBBB##--BB#-S-------#BBBB##--BB##-------##BBBB##--BBB##-----##BBBBB##--BBBB#######BBVVBB##--BBBBBBB#BBBBV##VB##--BJBZBBB#BBBBV###V###-BBBBBBB#BBBBBV#######BBBBBBB#BBBBBBV########################");
+                remarksw.push("stingers"); notesw.push("3198 stingers @ 49days");
+                troopcounw.push([0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,3198,0]);
                 resw.push([0,0,0,0,1,500000,500000,500000,500000,0,0,0,0,1,0,0,0,0,0,500000,500000,500000,500000]);
                 cww++;
                 selectbuttsw+='<option value="'+cww+'">Warships</option>';
-                layoutsw.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##-----##-----##----##-------##----##----#---------#----##----#---------#----#######----T----#######----#---------#SPHX##----#---------#-M--##----##-------##----##-----##-----##BBBB-##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#----BBV########################");
-                remarksw.push("warships"); notesw.push("870 warships @ 42 days");
-                troopcounw.push([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,870]);
+                layoutsw.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##-----##-----##----##-------##----##----#---------#----##----#---------#----#######-SS-TP---#######-XBB#-ML--P---#BBBB##--BB#-S-------#BBBB##--BB##-------##BBBB##--BBB##-----##BBBBB##--BBBB#######BBVVBB##--BBBBBBB#BBBBV##VB##-BBJBZBBB#BBBBV###V###BBBBBBBB#BBBBBV#######BBBBBBB#BBBBBBV########################");
+                remarksw.push("warships"); notesw.push("819 warships @ 42 days");
+                troopcounw.push([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,819]);
                 resw.push([0,0,0,0,1,500000,500000,500000,500000,0,0,0,0,1,0,0,0,0,0,500000,500000,500000,500000]);
                 selectbuttsw+='</select>';
 
@@ -6052,7 +6148,7 @@ END Boss Only Section
                 resl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 ll++;
                 selectbuttsl+='<option value="'+ll+'">4 sec vanqs Portal</option>';
-                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BBBGBGBBB#----##----#BGBBBBBGB#----#######BBBGTGBBB#######SS-X#BGBBBBBGB#----##M---#BBBGBGBBB#----##----##BBGBGBB##----##-----##BBBBB##-----##------#######------##--BBBBBBB#---------##--BBGGBGB#---------###-BBBBBBB#--------#####BJBZBBB#-------########################");
+                layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BBBBBBBBB#----##----#BGBGBGBGB#----#######BBBBTBBGB#######SMSX#BGBGBGBGB#----##SDPP#BBBBBBBBB#----##----##BBGBGBB##----##-----##BBBBB##-----##------#######------##---BBBBBB#---------##---BBBBBB#---------###--BBBBBB#--------#####-BBJBZB#-------########################");
                 remarksl.push("vanqs"); notesl.push("308000 vanqs @ 14.5 days");
                 troopcounl.push([0,0,0,0,0,307999,0,0,0,0,0,0,0,0,0,0,0]);
                 resl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
@@ -6083,19 +6179,19 @@ END Boss Only Section
                 ll++;
                 selectbuttsl+='<option value="'+ll+'">3 sec Priestess</option>';
                 layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BZBZB##-----##----##BBZBZBB##----##----#BZBZBZBZB#----##----#BZBZBZBZB#----#######BZBZTZBZB#######SMSX#BZBZBZBZB#----##SDPP#BZBZBZBZB#----##----##BBZBZBB##----##-BBBB##BBBBB##-----##-ZZZZ-#######------##BBBBBB---#---------##JZZZZB---#---------###BBBB----#--------#####-------#-------########################");
-                remarksl.push("priests"); notesl.push("228000 druids @ 7.9 days");
+                remarksl.push("priests"); notesl.push("228000 Priestess @ 7.9 days");
                 troopcounl.push([0,0,0,0,228000,0,0,0,0,0,0,0,0,0,0,0,0,0]);
                 resl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 ll++;
                 selectbuttsl+='<option value="'+ll+'">4 sec Priestess</option>';
                 layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##ZBZBZBZ##----##----#BBBZBZBBB#----##----#BZBZBZBZB#----#######BZBBTBBZB#######SMSX#BZBZBZBZB#----##SDPP#BBBZBZBBB#----##--PP##ZBZBZBZ##----##-----##BBBBB##-----##----BB#######------##----BJBBB#---------##----BBBZB#---------###---BZBZB#--------#####--BBBBB#-------########################");
-                remarksl.push("priests"); notesl.push("256000 druids @ 12.2 days");
+                remarksl.push("priests"); notesl.push("256000 Priestess @ 12.2 days");
                 troopcounl.push([0,0,0,0,256000,0,0,0,0,0,0,0,0,0,0,0,0,0]);
                 resl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 ll++;
                  selectbuttsl+='<option value="'+ll+'">5 sec Priestess</option>';
                 layoutsl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BZBZBZB##----##----#-BBBBBBB-#----##----#-BZBZBZB-#----#######-BBBTBZB-#######SMSX#-BZBZBZB-#----##SDPP#-BBBBBZB-#----##----##BZBZBZB##----##-----##BBBBB##-----##BBBBB-#######------##BZBZB----#---------##BBBBBBBBB#---------###JBZBZBZB#--------#####BBBBBBB#-------########################");
-                remarksl.push("priests"); notesl.push("288000 druids @ 16.7 days");
+                remarksl.push("priests"); notesl.push("288000 Priestess @ 16.7 days");
                 troopcounl.push([0,0,0,0,288000,0,0,0,0,0,0,0,0,0,0,0,0,0]);
                 resl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 ll++;
