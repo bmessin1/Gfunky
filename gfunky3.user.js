@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name gfunky3
 // @namespace www.tampermonkey.com
-// @version 1.1.16
+// @version 1.1.17
 // @description gfunky3
 // @author Greety
 // @match https://*.crownofthegods.com
@@ -20,7 +20,7 @@ START POPUP MESSAGE FOR PLAYERS WHEN THEY OPEN THE GAME
 (function() {
 
     $(document).ready(function() {
-    var popwin="<div id='HelloWorld' style='width:Auto; max-width: 35% ;height:Auto !important; Max-height: 85%; background-color: #E2CBAC;-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: 4px ridge #DAA520;position:absolute;right:40%;top:100px; z-index:1000000;'><div class=\"popUpBar\"> <span class=\"ppspan\">Welcome!</span><button id=\"gfunkyX\" onclick=\"$('#HelloWorld').remove();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div id='hellobody' class=\"popUpWindow\"><span style='margin-left: 5%;'> <h3 style='text-align:center;'>Welcome to Crown Of The Gods. This is a Beta version prior to being approved by Developers for the addon marketplace</h3></span><br><br><span style='margin-left: 5%;'> <h4 style='text-align:center;'> GFunky3 BY GREETY </h4></span><br><span style='margin-left: 5%;'><h4 style='text-align:center;color:blue;'>Special Thanks to Dhruv, Lionell, And  Fact</h4><br><h4 style='text-align:center;color:green;' >Updated 24th Nov 2020</h4></span><br><br><span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;'><li>Add to Attack Sender and defense sender will now add up to 15</li><li>Added Water Build Layouts</li></ul></span></div></div>";
+    var popwin="<div id='HelloWorld' style='width:Auto; max-width: 35% ;height:Auto !important; Max-height: 85%; background-color: #E2CBAC;-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: 4px ridge #DAA520;position:absolute;right:40%;top:100px; z-index:1000000;'><div class=\"popUpBar\"> <span class=\"ppspan\">Welcome!</span><button id=\"gfunkyX\" onclick=\"$('#HelloWorld').remove();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div id='hellobody' class=\"popUpWindow\"><span style='margin-left: 5%;'> <h3 style='text-align:center;'>Welcome to Crown Of The Gods. This is a Beta version prior to being approved by Developers for the addon marketplace</h3></span><br><br><span style='margin-left: 5%;'> <h4 style='text-align:center;'> GFunky3 BY GREETY </h4></span><br><span style='margin-left: 5%;'><h4 style='text-align:center;color:blue;'>Special Thanks to Dhruv, Lionell, And  Fact</h4><br><h4 style='text-align:center;color:green;' >Updated 26th Nov 2020</h4></span><br><br><span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;'><li>Add to Attack Sender and defense sender will now add up to 15</li><li>Added Selectable Raid options</li></ul></span></div></div>";
 	$("body").append(popwin);
 
         setTimeout(function() {
@@ -4878,14 +4878,16 @@ END Boss Only Section
                 else{loot1=other_loot;}
                 var total_loot= Math.ceil((loot1[Number(dunglvl)-1] * ((1-Number(progress)/100)+1))*1.0175);
 				$("#dungloctab").find(".addraiwc td:nth-child(2)").html("<button id='raidAll' style='padding: 2px; border-radius: 4px;' class='greenb shRnTr'>Use All TS</button>");
-				$("#dungloctab").find(".addraiwc td:nth-child(4)").html("<button id='raid100' style='padding: 2px; border-radius: 4px;' class='greenb shRnTr'>100%</button>");
-				$("#dungloctab").find(".addraiwc td:nth-child(5)").html("<button id='raid115' style='padding: 2px; border-radius: 4px;' class='greenb shRnTr'>115%</button>");
+				$("#dungloctab").find(".addraiwc td:nth-child(5)").html("");
+				$("#dungloctab").find(".addraiwc td:nth-child(4)").html("<select id='raidSelect' style='padding: 2px; border-radius: 4px;' class='greenb shRnTr'><option value=.0>No Option Selected</option><option value='.95'>95%</option><option value='.97'>97%</option><Option value='1.00'>100%</option><option value='1.03'>103%</option><option value='1.05'>105%</option><option value='1.07'>107%</option><option value='1.10'>110%</option><option value='1.12'>112%</option><option value='1.15'>115%</option></select>");
 
   //              var troops = cotg.city.troops();
                 var home;
 
-				$("#raid100").click(function(){
-                    var i=0;
+				$("#raidSelect").on('change', function() {
+                    var raidcarry= document.getElementById("raidSelect").value;
+					//document.getElementById("demo").innerHTML = 'You selected:'	+ raidcarry;
+					var i=0;
                     var home_loot=0;
                     var km=[];
                     for(var x in citytc) {
@@ -4895,7 +4897,7 @@ END Boss Only Section
                         i+=1;
                         if (i === 17) { break; }
                     }
-                    var loot_100=Math.ceil(total_loot*1.00);
+                    var loot_100=Math.ceil(total_loot*raidcarry);
                     if(home_loot>loot_100){
                         var option_numbers=Math.floor(home_loot/loot_100);
                         if(option_numbers<count){
@@ -4917,7 +4919,7 @@ END Boss Only Section
                 });
 
 			   $("#raid115").click(function(){
-                    var i=0;
+				    var i=0;
                     var home_loot=0;
                     var km=[];
                     for(var x in citytc) {
