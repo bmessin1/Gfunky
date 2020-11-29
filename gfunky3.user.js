@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name gfunky3
 // @namespace www.tampermonkey.com
-// @version 1.2.1
+// @version 1.2.1a
 // @description gfunky3
 // @author Greety
 // @match https://*.crownofthegods.com
@@ -43,6 +43,7 @@ START POPUP MESSAGE FOR PLAYERS WHEN THEY OPEN THE GAME
         startupwin+="<li>Added Troop Scout Galleys</li>";
         startupwin+="<li>Redesigned the Welcome Screen</li>";
         startupwin+="<li>Added exit X to welcome screen</li>";
+        startupwin+="<li>Added persistent raid option</li>";
 		startupwin+="</ul></span></div>";
 		startupwin+="</div></div></div>";
 		$("body").append(startupwin);
@@ -4949,8 +4950,16 @@ END Boss Only Section
 
   //              var troops = cotg.city.troops();
                 var home;
+                $(function () {
+					$('#raidSelect').change(function () {
+						localStorage.setItem('raidData', this.value);
+					});
+					if (localStorage.getItem('raidData')) {
+						$('#raidSelect').val(localStorage.getItem('raidData')).trigger('change');
+					}
+				});
 
-				$("#raidSelect").on('change', function() {
+				$("#raidSelect").on('click', function() {
                     var raidcarry= document.getElementById("raidSelect").value;
 					//document.getElementById("demo").innerHTML = 'You selected:'	+ raidcarry;
 					
