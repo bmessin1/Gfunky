@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name gfunky3
 // @namespace www.tampermonkey.com
-// @version 1.2.1a
+// @version 1.2.2
 // @description gfunky3
 // @author Greety
 // @match https://*.crownofthegods.com
@@ -19,7 +19,7 @@ START POPUP MESSAGE FOR PLAYERS WHEN THEY OPEN THE GAME
 */
 (function() {
 
-    
+
    $(document).ready(function() {
 		var startupwin="<div id='startwinDiv' class='longmenu ui-draggable' style='z-index:4002;'>";
 		startupwin+="<div class='anndvwinbgr'><div class='anndvwintop'></div><div class='anndvwincent''></div><div class='anndvwinbott'></div></div>";
@@ -29,27 +29,31 @@ START POPUP MESSAGE FOR PLAYERS WHEN THEY OPEN THE GAME
 		startupwin+="<div id='HelloWorld' class='anwdrh redheading' style='text-align:center;'><span> Welcome to Crown Of The Gods. This is a Beta version prior to being approved by Developers for the addon marketplace</span></div>";
 		startupwin+="<div id='bottomcrownpic'></div>";
 		startupwin+="<div><span style='margin-left: 5%;'> <h1 style='text-align:center;'> GFunky3 BY GREETY </h1></span><br>";
-		startupwin+="<span style='margin-left: 5%;'><h4 style='text-align:center;color:blue;'>Special Thanks to Dhruv, Lionell, And  Fact</h4><br>";
+		startupwin+="<span style='margin-left: 5%;'><h4 style='text-align:center;color:blue;'>Special Thanks to Kalish, Dhruv, Lionell, And  Fact</h4><br>";
 		startupwin+="<h4 style='text-align:center;color:green;' >Updated November 29 2020</h4></span><br><br>";
 		startupwin+="<span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;'>";
-		startupwin+="<li>Redesigned Layouts menu</li>";
-		startupwin+="<li>Added Land Offense</li>";
-		startupwin+="<li>Added Land Defense</li>";
-		startupwin+="<li>Added Water Offense</li>";
-		startupwin+="<li>Added Water Defense</li>";
-		startupwin+="<li>Added Hubs</li>";
-        startupwin+="<li>Added Shippers</li>";
-        startupwin+="<li>Added Portals</li>";
-        startupwin+="<li>Added Troop Scout Galleys</li>";
-        startupwin+="<li>Redesigned the Welcome Screen</li>";
-        startupwin+="<li>Added exit X to welcome screen</li>";
-        startupwin+="<li>Added persistent raid option</li>";
+		startupwin+="	<li>	[Updated] Outgoing Summary GUI	</li>";
+		startupwin+="	<li>	[Updated] Incoming Summary GUI	</li>";
+		startupwin+="	<li>	[Updated] All Summary windows under the “Summary tab” GUI	</li>";
+		startupwin+="	<li>	[Updated] Combat Report Summary GUI	</li>";
+		startupwin+="	<li>	[Updated] Shrine Planner GUI	</li>";
+		startupwin+="	<li>	[Updated] Add City Under Shrine Planner GUI	</li>";
+		startupwin+="	<li>	[Updated] Import Attack Orders GUI	</li>";
+		startupwin+="	<li>	[Updated] Combat Summary Button in “Reports” GUI	</li>";
+		startupwin+="	<li>	[Updated] Combat Summary Button in City Info GUI	</li>";
+		startupwin+="	<li>	[Updated] 6 Button Grouping to be center-aligned	</li>";
+		startupwin+="	<li>	[Added] Recall All Raids Button - Center Aligned	</li>";
+		startupwin+="	<li>	[Removed] Recall <90% Button	</li>";
+		startupwin+="	<li>	[Added] Clicking “Mass Resource Sending” will change to Temple Deliver and uncheck cities from other continents.	</li>";
+		startupwin+="	<li>	[Updated] Misc. other GUI updates	</li>";
+		startupwin+="	<li>	[Removed] Commented out Code (old code)	</li>";
+        startupwin+="	<li>	[Fixed] Hide Cities button in Shrine Planner</li>";
 		startupwin+="</ul></span></div>";
 		startupwin+="</div></div></div>";
 		$("body").append(startupwin);
-	
-		
-		
+
+
+
 
 		setTimeout(function() {
 			var options = {};
@@ -403,22 +407,6 @@ TODO update id for Temple
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  */
         };
 
@@ -480,11 +468,7 @@ TODO update id for Temple
 
 
 // Update curentBuilding status regarding schedule
-        // error: true if wanted to build another resource than existing one.
-        // toDestroy: true if it's curently a resource and want a building, or if it's curently a resource and needToClearAllResources
-        // toMove: true if (not error, nor to destroy), and curent and schedule do not match, and movable.
-        //      spare building are set to toMove at this step.
-        // toAdd: true if (not error, nor to destroy, nor to move), and schedule can be built
+
         that.updateStatus = function (curentBuilding, scheduleBuilding, needToClearAllResources) {
             curentBuilding.error = false;
             curentBuilding.toDestroy = false;
@@ -639,23 +623,6 @@ TODO update id for Temple
                     map: "No map"
                 };
             }
-
-
-
-
-
-// Coordinates
-            //that.data.x=Number(cdata.cid % 65536);
-            //that.data.y=Number((cdata.cid-that.data.x)/65536);
-            //that.data.cont=Number(Math.floor(that.data.x/100)+10*Math.floor(that.data.y/100));
-
-            //that.data.th = cdata.th; // idletroops
-            //that.data.mo = cdata.mo; // Councilors configuration.
-
-
-
-
-
 
 // Current map
             if (cdata.bd) {
@@ -916,23 +883,6 @@ TODO update id for Temple
                 }]
             };
 
-            /*
-            // Updating city buttons
-            var errors = that.data.curentMap.filter(function (item) {
-                return item.error;
-            });
-            if (errors.length > 0) {
-                infoMsg = infoMsg + "\n" + errors.length + " errors";
-                $(BUTTON_CITY_INFO_SELECTOR).attr("style", CSS_FIRST_BUTTON + "color:red;");
-            } else {
-                $(BUTTON_CITY_INFO_SELECTOR).attr("style", CSS_FIRST_BUTTON);
-            }
-            if (that.data.scheduleMap.length === 0 || that.data.curentMap.length === 0) {
-                if (infoMsg.length === 0) {
-                    infoMsg = "No current map. Switch city";
-                }
-            */
-
             if (JSON.stringify(that.previousViewData) !== JSON.stringify(currentViewData)) {
                 // Updating HMI.
                 that.previousViewData = currentViewData;
@@ -1112,10 +1062,6 @@ TODO update id for Temple
             }
 
 
-
-
-
-
 // Buttons for building in left bar
             $("#incAttacksDiv").before(
                 '<div id="' + QB_DIV + '" class="commandinndiv">' +
@@ -1126,9 +1072,6 @@ TODO update id for Temple
                 '<select id="' + SELECT_CITY_MOVE_ID + '" title="Move a building " ' + CLASS_AND_CSS_NEXT_BUTTON + '><option>Move</option></select>' +
                 '<select id="' + SELECT_CITY_ADD_ID + '" title="Add a building" ' + CLASS_AND_CSS_NEXT_BUTTON + '><option>Add</option></select>' +
                 '</div></div>');
-
-
-
 
 /*
 
@@ -1156,10 +1099,6 @@ TODO update id for Temple
         console.log("Quickbuild Script loaded.");
     };
     waitForGameLoaded();
-
-
-
-
 
 
 // Adding for clearing the chat
@@ -1423,7 +1362,10 @@ START OF CORE FUNKY
                     }
                     if (url.indexOf('cgS.php') != -1) {
                         clc = JSON.parse(this.response);
-            }
+					}
+					if (url.indexOf('gFFc.php') != -1) {
+                        gFFc = JSON.parse(this.response);
+					}
                     if (url.indexOf('poll2.php')!=-1) {
                         if(poll2) {
 							var saveclc=poll2.player.clc;
@@ -1547,22 +1489,6 @@ START OF CORE FUNKY
     function roundToTwo(num) {
         return +(Math.round(num + "e+2")  + "e-2");
     }
-/*    function errormsgBR(a, b) {
-        $(a).show();
-        $(b).animate({ opacity: 1, bottom: "+10px" }, 'slow');
-        errormsgBRhide(a, b);
-    }
-    function errormsgBRhide(a, b) {
-        setTimeout(function(){
-            $(b).animate({ opacity: 0, bottom: "-10px" }, 'slow');
-            $(a).fadeOut("slow");
-        }, 5000);
-        setTimeout(function(){
-            $(a).remove();
-        }, 6000);
-    }
-    var errmBR=0;
-    var message="Error, you need at least ";*/
 
     var errz=0;
     function errorgo(j) {
@@ -1757,7 +1683,7 @@ START OF CORE FUNKY
         data: dat
       });
     }, 5000);
-  
+
 
 // WAR COUNC BUTTONS
 //buttons
@@ -1781,7 +1707,7 @@ START OF CORE FUNKY
         bosstab+="<a href='#warBossmanager' class='ui-tabs-anchor' role='presentation' tabindex='-1' id='ui-id-20'>Find Bosses</a></li>";
 	//Boss Page Body
 	   var bosstabbody="<div id='warBossmanager' aria-labeledby='ui-id-20' class='ui-tabs-panel ui-widget-content ui-corner-bottom' ";
-        bosstabbody+=" role='tabpanel' aria-hidden='true' style='display: none;'><div id='fpdcdiv3' class='redheading' style='margin-left: 2%;' >CFunky's Boss Raiding tool:</div>";
+        bosstabbody+=" role='tabpanel' aria-hidden='true' style='display: none;'><div id='fpdcdiv3' class='redheading' style='margin-left: 2%;' >GFunky's Boss Raiding tool: Under Development</div>";
         bosstabbody+="<div id='bossbox' class='beigemenutable scroll-pane' style='width: 96%; height: AUTO !important;max-height: 85%; margin-left: 2%;'></div>";
         bosstabbody+="<div id='idletroops'></div></div>";
 
@@ -1891,10 +1817,31 @@ START OF CORE FUNKY
 
 
 // Import Export
-		var expwin="<div id='ExpImp' style='width:250px;height:200px;' class='popUpBox ui-draggable'><div class=\"popUpBar\"><span class=\"ppspan\">Import/Export attack orders</span>";
-        expwin+="<button id=\"gfunkyX\" onclick=\"$('#ExpImp').remove();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div id='expbody' class=\"popUpWindow\">";
-        expwin+="<textarea style='font-size:11px;width:100%;margin-left:1%;height:100%;' id='expstring' maxlength='300'></textarea><button id='applyExp' style='margin-left: 15px; width: 100px;height: 30px !important; font-size: 12px !important;' class='regButton greenb'>Apply</button></div></div>";
 
+		var gfunkyexpwin="<div id='ExpImp' class='popUpBox ui-resizable ui-draggable' style='z-index:200003; width:80% !important; max-width: 544px'>";
+			gfunkyexpwin+="<div class='ppbwinbgr' >";
+				gfunkyexpwin+="<div class='ppbwintop' style='position: relative !important; height:150px !important;'></div>";
+				gfunkyexpwin+="<div class='ppbwincent' style='position: relative !important; height:auto !important;'></div>";
+				gfunkyexpwin+="<div class='ppbwinbott' style='position: relative !important; height:150px !important;'></div>";
+			gfunkyexpwin+="</div>";
+			gfunkyexpwin+="<div class='ppbwincontent' ;height: auto;'>";
+					gfunkyexpwin+="<div class='popUpBar ui-draggable-handle' style='margin-top:7px !Important;'>";
+						gfunkyexpwin+="<span class='ppspan'>Import Attack Order</span>";
+						gfunkyexpwin+="<button id='sumX' style='margin-right: 5%; margin-top:5px;' class='xbutton' onclick=$('#ExpImp').remove()>";
+							gfunkyexpwin+="<div id='xbuttondiv'>";
+								gfunkyexpwin+="<div>";
+									gfunkyexpwin+="<div id='centxbuttondiv'></div>";
+								gfunkyexpwin+="</div>";
+							gfunkyexpwin+="</div>";
+						gfunkyexpwin+="</button>";
+					gfunkyexpwin+="</div>";
+					gfunkyexpwin+="<div style='margin-left:20px;'>";
+						gfunkyexpwin+="<textarea style='font-size:12px;width:90%;margin-left:1%;height:150px;' id='expstring' maxlength='300'></textarea>";
+						gfunkyexpwin+="<br></br><button id='applyExp' style='width: 100px;height: 30px !important; font-size: 14px !important; float: right; margin-right:2%;' class='regButton greenb'>Apply</button>";
+					gfunkyexpwin+="</div>";
+				gfunkyexpwin+="</div>";
+			gfunkyexpwin+="</div>";
+		gfunkyexpwin+="</div>";
 
 
 
@@ -2211,7 +2158,7 @@ TODO: FIND REFERENCE POINT to Ui-id-115
             var aa=prompt("Attack Orders Expot", JSON.stringify(Aexp));
         });
         $("#Aimport").click(function() {
-            $("body").append(expwin);
+            $("body").append(gfunkyexpwin);
             $("#ExpImp").draggable({ handle: ".popUpBar" , containment: "window", scroll: false});
             document.addEventListener('paste', function (evt) {
                 $("#expstring").val(evt.clipboardData.getData('text/plain'));
@@ -2460,26 +2407,6 @@ TODO: FIND REFERENCE POINT to Ui-id-115
             });
         });
     }
-
-
-//	Troop	0	Guard
-//	Troop	1	Ballista
-//	Troop	2	Ranger
-//	Troop	3	Triari
-//	Troop	4	Priest
-//	Troop	5	Vanq
-//	Troop	6	Sorc
-//	Troop	7	Scout
-//	Troop	8	Arbalist
-//	Troop	9	Preator
-//	Troop	10	Horsemen
-//	Troop	11	Druid
-//	Troop	12	Ram
-//	Troop	13	Scorpion
-//	Troop	14	Galley
-//	Troop	15	Stinger
-//	Troop	16	Warship
-//	Troop	17	Senator
 
 	function totaldeftable(t) {
         var contdef=Number($("#tdefx").val());
@@ -3503,23 +3430,14 @@ END SEND Attack Function
 
 //Buttons convert,fill,demolish, SHRINE Section 2 building count,
     $(document).ready(function() {
-        var fourbutton="<div id='fourbuttons' class='commandinndiv'><div><button id='fb1' style='height:28px; width:65px; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>ON/OFF</button><button id='fb2' style='height:28px; width:65px; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Refine</button><button id='fb3' style='height:28px; width:65px; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Raid</button><button id='fb4' style='height:28px; width:65px; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Demolish</button><button id='fb5' style='height:28px; width:40%; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Clear Resources</button><button id='fb6' style='height:28px; width:40%; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Empire Logs</button></div></div>";
+        var fourbutton="<div id='fourbuttons' class='commandinndiv' style='text-align: center;'><div><button id='fb1' style='height:28px; width:65px; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>ON/OFF</button><button id='fb2' style='height:28px; width:65px; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Refine</button><button id='fb3' style='height:28px; width:65px; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Raid</button><button id='fb4' style='height:28px; width:65px; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Demolish</button><button id='fb5' style='height:28px; width:46%; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Clear Resources</button><button id='fb6' style='height:28px; width:46%; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Empire Logs</button></div></div>";
         var bdcountbox="<div id='currentbd'><div id='bdcountbar' class='queueBar'>";
         bdcountbox+="<div id='bdcountbut' class='tradeqarr2'><div></div></div><span class='qbspan'>Current Buildings</span>";
         bdcountbox+="<div id='numbdleft' class='barRightFloat tooltipstered'>0</div>";
         bdcountbox+="</div><div id='bdcountwin' class='queueWindow' style='display: block;'></div></div>";
         $("#qbDiv").before(fourbutton);
 
-/*
-	 var fillbut='<button id="fillque" class="greenb tooltipstered" style="height:18px; width:40px; margin-left:7px; margin-top:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;">Fill</button>';
-        $('#sortbut').after(fillbut);
-        $('#fillque').click(function() {
-            var dfs=poll2.city.cid;
-            console.log(dfs);
-            event.stopPropagation();
-            var bB = $.post('/overview/fillq.php', {dfs});
-        });
-*/
+
 			var convbut='<button id="convque" class="greenb tooltipstered" style="height:18px; width:60px; margin-left:7px; margin-top:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;">Convert</button>';
         $('#sortbut').after(convbut);
         $('#convque').click(function() {
@@ -3607,12 +3525,12 @@ END SEND Attack Function
         $("#items").after(sumbut);
         $("#Sum").click(function() {
             if(sum) {
-                opensumwin();
+                opengfunkysumwin();
             } else {
-                $('#sumWin').show();
+                $('#gfunkysumwin').show();
             }
         });
-        $("#sumWin").click(function() {
+        $("#gfunkysumwin").click(function() {
             console.log("popsum");
         });
 
@@ -3726,9 +3644,17 @@ END SEND Attack Function
                     }
                 }
                 shrinec.sort(function(a,b) {return a[5]-b[5];});
-                var planwin="<div id='shrinePopup' style='width:40%;height:50%;left: 360px; z-index: 3000;' class='popUpBox'><div class='popUpBar'><span class=\"ppspan\">Shrine Planner</span><button id='hidec' class='greenb' style='margin-left:10px;border-radius: 7px;margin-top: 2px;height: 28px;'>Hide Cities</button>";
-                planwin+="<button id='addcity' class='greenb' style='margin-left:10px;border-radius: 7px;margin-top: 2px;height: 28px;'>Add City</button><button id=\"sumX\" onclick=\"$('#shrinePopup').remove();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div class=\"popUpWindow\" style='height:100%'>";
-                planwin+="<div id='shrinediv' class='beigemenutable scroll-pane' style='background:none;border: none;padding: 0px;height: AUTO !important;max-height: 85%;'></div></div>";
+
+			var gfunkyplanwin="<div id='gfunkyshrinePopup' class='longmenu ui-draggable ui-resizable' style='z-index:2002; width:70% !important; left: 360px; z-index: 3000;'>";
+			gfunkyplanwin+="<div class='longwindowbgr'><div class='lngwinbgtop'></div><div class='lngwinbgcent'></div><div class='lngwinbgbott'></div></div>";
+			gfunkyplanwin+="<div class='longwindowcontent' style='height:98%; width:98%;'>";
+			gfunkyplanwin+="<div class='popUpBar ui-draggable-handle'> <span class='ppspan'>Shrine Planner</span>";
+			gfunkyplanwin+="<button class='greenb regButton' style='font-size: 14px;margin-left: 20px;margin-top: 10px;height: 50%;width: 100px;'><div class='button'><a id ='hidec' role='button' style='color:#e1c190;'>Hide Cities</a></div></button>";
+			gfunkyplanwin+="<button class='greenb regButton' style='font-size: 14px;margin-left: 20px;margin-top: 10px;height: 50%;width: 100px;'><div class='button'><a id ='addcity' role='button' style='color:#e1c190;'>Add Cities</a></div></button>";
+			gfunkyplanwin+="<button id='sumX' class='xbutton' onclick=$('#gfunkyshrinePopup').remove()><div id='xbuttondiv'><div><div id='centxbuttondiv'></div></div></div></button>";
+			gfunkyplanwin+="</div>";
+			gfunkyplanwin+="<div id='shrinediv' class='beigemenutable scroll-pane' style='background:none;border: none;padding: 0px;height: AUTO !important;max-height: 85%; margin-left:3%; border-radius: 6px;border: ridge #99805D;'></div>";
+			gfunkyplanwin+="</div></div>";
                 for (var i in shrinec) {
                     if (i<101) {
                         var pname=shrinec[i][1];
@@ -3747,7 +3673,7 @@ END SEND Attack Function
                     }
                 }
                 setTimeout(function() {
-                $("#reportsViewBox").after(planwin);
+                $("#reportsViewBox").after(gfunkyplanwin);
                 $( "#shrinePopup" ).draggable({ handle: ".popUpBar" , containment: "window", scroll: false});
                 $( "#shrinePopup" ).resizable();
                 if (localStorage.getItem("hidecities")) {
@@ -3771,11 +3697,14 @@ END SEND Attack Function
                     }
                 });
                 updateshrine();
-                var addcitypop="<div id='addcityPopup' style='width:500px;height:100px;left: 360px; z-index: 3000;' class='popUpBox'><div class='popUpBar'><span class=\"ppspan\">Add City</span>";
-                addcitypop+="<button id=\"sumX\" onclick=\"$('#addcityPopup').remove();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div class=\"popUpWindow\" style='height:100%'>";
-                addcitypop+="<div><table><td>X: <input id='addx' type='number' style='width: 35px;height: 22px;font-size: 10px;'></td><td>y: <input id='addy' type='number' style='width: 35px;height: 22px;font-size: 10px;'></td>";
-                addcitypop+="<td>score: <input id='addscore' type='number' style='width: 45px;height: 22px;font-size: 10px;'></td><td>Type: <select id='addtype' class='greensel' style='font-size: 15px !important;width:55%;height:30px;'>";
-                addcitypop+="<option value='city'>City</option><option value='castle'>Castle</option></select></td><td><button id='addadd' class='greenb'>Add</button></td></table></div></div>";
+				var addcitypop="<div id='addcityPopup' class='popUpBox ui-resizable ui-draggable' style='z-index:200002; width:80%;!important'>";
+				addcitypop+="<div class='ppbwinbgr' ><div class='ppbwintop' style='position: relative !important; height:150px !important;'></div><div class='ppbwincent' style='position: relative !important; height:auto !important;'></div><div class='ppbwinbott' style='position: relative !important; height:150px !important;'></div></div>";
+				addcitypop+="<div class='ppbwincontent' style='width: auto;'>";
+				addcitypop+="<div class='popUpBar ui-draggable-handle' style='margin-top:7px !Important;'> <span class='ppspan'>Add  Cities</span><button id='sumX' style='margin-right: 5%; margin-top:5px;' class='xbutton' onclick=$('#addcityPopup').remove()><div id='xbuttondiv'> <div><div id='centxbuttondiv'></div></div></div></button></div>";
+				addcitypop+="<div class='popUpWindow' style='margin-left:20px'>";
+				addcitypop+="<div><table><td>X: <input id='addx' type='number' style='width: 35px;height: 22px;font-size: 10px;'></td><td>y: <input id='addy' type='number' style='width: 35px;height: 22px;font-size: 10px;'></td>";
+				addcitypop+="<td>score: <input id='addscore' type='number' style='width: 45px;height: 22px;font-size: 10px;'></td><td>Type: <select id='addtype' class='greensel' style='font-size: 15px !important;height:30px;'>";
+                addcitypop+="<option value='city'>City</option><option value='castle'>Castle</option></select></td><td><button id='addadd' class='greenb'>Add</button></td></table></div></div></div>";
                 $("#addcity").click(function() {
                     $("body").append(addcitypop);
                     $( "#addcityPopup" ).draggable({ handle: ".popUpBar" , containment: "window", scroll: false});
@@ -4092,9 +4021,19 @@ END Predicting Incoming Troops Section
         },300);
 
         var selectcont=$("#idleCsel").clone(false).attr({id:"selcr",style:"width:40%;height:28px;font-size:11;border-radius:6px;margin:7px"});
-        var returnwin="<div id='returnAll' style='width:300px;height:320px;background-color: #E2CBAC;-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;border: 4px ridge #DAA520;position:absolute;right:100px;top:100px; z-index:1000000;'><div class=\"popUpBar\"> <span class=\"ppspan\">Return all troops in all cities</span>";
-        returnwin+="<button id=\"gfunkyX\" onclick=\"$('#returnAll').remove();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div id='returnbody' class=\"popUpWindow\">";
-        returnwin+="</div></div>";
+
+
+        var gfunkyreturnwin="<div id='returnAll' class='popUpBox ui-resizable ui-draggable' style='z-index:20002; width:80%;!important'>";
+		gfunkyreturnwin+="<div class='ppbwinbgr' ><div class='ppbwintop' style='position: relative !important; height:150px !important;'></div><div class='ppbwincent' style='position: relative !important; height:auto !important;'></div><div class='ppbwinbott' style='position: relative !important; height:150px !important;'></div></div>";
+		gfunkyreturnwin+="<div class='ppbwincontent' style='width: auto;'>";
+		gfunkyreturnwin+="<div class='popUpBar ui-draggable-handle' style='margin-top:7px !Important;'> <span class='ppspan'>Add  Cities</span><button id='sumX' style='margin-right: 5%; margin-top:5px;' class='xbutton' onclick=$('#returnAll').remove()><div id='xbuttondiv'> <div><div id='centxbuttondiv'></div></div></div></button></div>";
+		gfunkyreturnwin+="<div id='returnbody' class='popUpWindow'>";
+        gfunkyreturnwin+="</div></div>";
+
+
+
+
+
         var selecttype="<select id='selType' class='greensel' style='width:50%;height:28px;font-size:11;border-radius:6px;margin:7px'><option value='1'>Offense and Defense</option><option value='2'>Offense</option><option value='3'>Defense</option></select><br>";
         var selectret=$("#raidrettimesela").clone(false).attr({id:"returnSel",style:"width:40%;height:28px;font-size:11;border-radius:6px;margin:7px"});
         var selecttime="<br><div id='timeblock' style='height:100px; width 95%'><div id='timesel' style='display: none;'><span style='text-align:left;font-weight:800;margin-left:2%;'>Input latest return time:</span><br><table style='width:80%;margin-left:10px'><thead><tr style='text-align:center;'><td>Hr</td><td>Min</td><td>Sec</td><td colspan='2'>Date</td></tr></thead><tbody>";
@@ -4104,7 +4043,7 @@ END Predicting Incoming Troops Section
         var nextcity="<button id='nextCity' style='display: none;margin-left:10%; width: 35%;height: 30px !important; font-size: 12px !important; position: static !important;' class='regButton greenb'>Next City</button>";
         var returntroops="<button id='returnTroops' style='display: none;margin-left:10%; width: 35%;height: 30px !important; font-size: 12px !important; position: static !important;' class='regButton greenb'>Return troops</button>";
         var selectlist=$("#organiser").clone(false).attr({id:"selClist",style:"width:40%;height:28px;font-size:11;border-radius:6px;margin:7px"});
-        $("body").append(returnwin);
+        $("body").append(gfunkyreturnwin);
         $("#returnAll").draggable({ handle: ".popUpBar" , containment: "window", scroll: false});
         $("#returnbody").html(selectcont);
         //$("#selcr").attr("style","width:40%;height:28px;font-size:11;border-radius:6px;margin:7px");
@@ -4855,7 +4794,43 @@ END Boss Only Section
         }
         loop();
     }
+    function massresTemple(){
 
+        setTimeout(function() {
+			$("#msendtradesel").val(2).change();
+	    },10);
+        setTimeout(function() {
+			$( "#msendocont" ).prop( "checked", false );
+        },10);
+    }
+
+// Gfunky Return All
+
+	function gfunkyReturnAll(){
+
+		var trlist = $("#commandtable tbody tr:nth-child(1)");
+		var i=0;
+        jQuery(trlist).find(".commandinntabl table tbody tr td:nth-child(2)")[0].click(); // table tbody tr td:nth-child(2)
+        setTimeout(function() {
+			$("#raidrettimesela").val(1).change();
+	    },300);
+        setTimeout(function() {
+			jQuery("#doneOGAll")[0].click();
+        },500);
+        setTimeout(function() {
+            $("#outgoingPopUpBox").hide();
+        },600);
+    }
+
+	function gfunkyremoveTempleres(){
+		var gcid= gFFc[0];
+		var trlist = $("#fillresdiv filltabdiv mrstctbbresult fillresbody");
+		var i=0;
+        jQuery(trlist).find(".tr td:nth-child(6)")[0].click();
+        setTimeout(function() {
+			$("filltr" + gcid).remove();
+	    },10);
+	}
 
 
 
@@ -4962,7 +4937,7 @@ END Boss Only Section
 				$("#raidSelect").on('click', function() {
                     var raidcarry= document.getElementById("raidSelect").value;
 					//document.getElementById("demo").innerHTML = 'You selected:'	+ raidcarry;
-					
+
 					var i=0;
                     var home_loot=0;
                     var km=[];
@@ -4993,7 +4968,7 @@ END Boss Only Section
                         carry_percentage(total_loot);
                     }
                 });
-	
+
 
 			   $("#raid115").click(function(){
 				    var i=0;
@@ -5094,13 +5069,19 @@ END Boss Only Section
 
 //raiding part, cancel allt attack part
     $(document).ready(function() {
-        var newbutz="<div style='float: left; margin-left: 2%;'><button id='newbuttonu' style='font-size:8px; padding: 4px; border-radius: 8px;' class='greenb shRnTr'>Recall(<90%)</button></div>";
-        $("#totalTS").before(newbutz);
-        $("#newbuttonu").click(function() {
-            setTimeout(function(){recallraidl100();}, 500);
-        });
-        $("#totalTS").click(function() {
-            setTimeout(function(){carrycheck();}, 500);
+
+       var recallgAll="<div><button id='recallgAllbut' style='font-size:10px; padding: 4px; border-radius: 8px;' class='greenb shRnTr'>Recall All Raids</button></div>";
+
+       $("#commandtable").before(recallgAll);
+        $("#massressendDiv").click(function(){
+			setTimeout(function(){massresTemple();}, 1000);
+		});
+
+         $(".fillXbut").click(function(){
+			setTimeout(function(){gfunkyremoveTempleres();}, 500);
+		});
+        $("#recallgAllbut").click(function() {
+            setTimeout(function(){gfunkyReturnAll();}, 500);
         });
         $("#loccavwarconGo").click(function() {
             //createTable();
@@ -5126,14 +5107,6 @@ END Boss Only Section
             });
         }
 
-        //var cancelallya="<input id='cancelAllya' type='checkbox' checked='checked'> Cancel attack if same alliance";
-        //var cancelallys="<input id='cancelAllys' type='checkbox' checked='checked'> Cancel attack if same alliance";
-        //var cancelallyp="<input id='cancelAllyp' type='checkbox' checked='checked'> Cancel attack if same alliance";
-        //var cancelallyc="<input id='cancelAllyc' type='checkbox' checked='checked'> Cancel attack if same alliance";
-        //$("#assaulttraveltime").parent().next().html(cancelallya);
-        //$("#siegetraveltime").parent().next().html(cancelallys);
-        //$("#plundtraveltime").parent().next().html(cancelallyp);
-        //$("#scouttraveltime").parent().next().html(cancelallyc);
 
     //Send Assault
 		$("#assaultGo").click(function() {
@@ -5249,12 +5222,6 @@ END Boss Only Section
     });
 
 
-
-
-
-
-
-
  //total research
     function Total_Research() {
         jQuery.ajax({url: 'includes/gaLoy.php',type: 'POST',aysnc:false,
@@ -5350,14 +5317,21 @@ END Boss Only Section
                 //console.log(++i);
             }
         });
-        var outsumwin="<div id='outsumWin' style='width:50%;height:40%;left:30%;z-index:4000;' class='popUpBox'><div class='popUpBar'><span class='ppspan'>Outgoing Attacks Summary</span><button class='greenb regButton' style='font-size: 14px;margin-left: 10px;margin-top: 1px;height: 90%;width: 60px;'><div class='button'><a href='#' id ='outsumexp' role='button' style='color:white;'>Export</a></div></button><button id='sumX' onclick=\"$('#outsumWin').remove();\" class='xbutton greenb'><div id='xbuttondiv'><div><div id='centxbuttondiv'></div></div></div></button></div><div id=outsumbody' class='popUpWindow'><div class='beigemenutable scroll-pane' style='height:53%;width: 98%;margin-left: 1%;'><table id='outsumTab'><thead><tr><th>Player</th><th>Alliance</th><th>Target</th><th>Coords</th><th>Number of sieges</th><th>Number of non siege</th><th>Total TS</th></tr></thead><tbody>";
+
+		var gfunkyoutgoingsumWin="<div id='gfunkyoutgoingsumWin' class='popUpBox ui-draggable' style='z-index:2002; width:800px !important;height:50% !important;'>";
+		gfunkyoutgoingsumWin+="<div class='ppbwinbgr ui-draggable'  style='width: 800px !important;'><div class='ppbwintop ui-draggable'  style='width: 800px !important;'></div><div class='ppbwincent  ui-draggable'  style='width: 800px !important;'></div><div class='ppbwinbott ui-draggable' style='width: 800px !important;'></div></div>";
+		gfunkyoutgoingsumWin+="<div class='ppbwincontent  ui-draggable'>";
+		gfunkyoutgoingsumWin+="<div class='popUpBar ui-draggable-handle'> <span class='ppspan'>Outgoing Attack Summary</span><button class='greenb regButton' style='font-size: 14px;margin-left: 20px;margin-top: 10px;height: 50%;width: 60px;'><div class='button'><a href='#' id ='outsumexp' role='button' style='color:#e1c190;'>Export</a></div></button><button id='sumX' class='xbutton' onclick=$('#gfunkyoutgoingsumWin').remove()><div id='xbuttondiv'> <div><div id='centxbuttondiv'></div></div></div></button></div>";
+		gfunkyoutgoingsumWin+="<div id=outsumbody' class='popUpWindow' style='width: auto !important;' ><div class='beigemenutable scroll-pane' style='height:95%;width: 730px !important;margin-left:20px;border-radius: 6px;border: 3px ridge #99805D;'><table id='outsumTab'><thead><tr><th>Player</th><th>Alliance</th><th>Target</th><th>Coords</th><th># Siege</th><th># Not Siege </th><th>Total TS</th></tr></thead><tbody>";
         for (var i in tg.id) {
-            outsumwin+="<tr><td class='playerblink'>"+tg.pn[i]+"</td><td class='allyblink'>"+tg.an[i]+"</td><td class='cityblink'>"+tg.cn[i]+"</td><td class='coordblink shcitt' data='"+tg.id[i]+"'>"+tg.x[i]+":"+tg.y[i]+"</td><td>"+tg.se[i]+"</td><td>"+tg.oth[i]+"</td><td>"+tg.ts[i].toLocaleString()+"</td></tr>";
+            gfunkyoutgoingsumWin+="<tr><td class='playerblink'>"+tg.pn[i]+"</td><td class='allyblink'>"+tg.an[i]+"</td><td class='cityblink'>"+tg.cn[i]+"</td><td class='coordblink shcitt' data='"+tg.id[i]+"'>"+tg.x[i]+":"+tg.y[i]+"</td><td>"+tg.se[i]+"</td><td>"+tg.oth[i]+"</td><td>"+tg.ts[i].toLocaleString()+"</td></tr>";
         }
-        outsumwin+="</tbody></table></div></div></div>";
-        $("body").append(outsumwin);
-        $("#outsumWin").draggable({ handle: ".popUpBar" , containment: "window", scroll: false});
-        $("#outsumWin").resizable();
+        gfunkyoutgoingsumWin+="</tbody></table></div></div></div>";
+
+
+        $("body").append(gfunkyoutgoingsumWin);
+        $("#gfunkyoutgoingsumWin").draggable({ handle: ".popUpBar" , containment: "window", scroll: false});
+       // $("#gfunkyoutgoingsumWin").resizable();
         var newTableObject = document.getElementById('outsumTab');
         sorttable.makeSortable(newTableObject);
         $("#outsumTab td").css("text-align","center");
@@ -5369,7 +5343,7 @@ END Boss Only Section
             exportTableToCSV.apply(this, [$('#outsumTab'), outputFile]);
         });
         setTimeout(function() {
-            $("#outsumWin").css("z-index","4000");
+            $("#gfunkyoutgoingsumWin").css("z-index","4000");
         },300);
     }
 	// Incoming Summary Window
@@ -5399,14 +5373,20 @@ END Boss Only Section
 					//console.log(++i);
 				}
 			});
-			var outsumwin="<div id='outsumWin' style='width:50%;height:40%;left:30%;z-index:4000;' class='popUpBox'><div class='popUpBar'><span class='ppspan'>Incoming Attacks Summary</span><button class='greenb regButton' style='font-size: 14px;margin-left: 10px;margin-top: 1px;height: 90%;width: 60px;'><div class='button'><a href='#' id ='outsumexp' role='button' style='color:white;'>Export</a></div></button><button id='sumX' onclick=\"$('#outsumWin').remove();\" class='xbutton greenb'><div id='xbuttondiv'><div><div id='centxbuttondiv'></div></div></div></button></div><div id=outsumbody' class='popUpWindow'><div class='beigemenutable scroll-pane' style='height:53%;width: 98%;margin-left: 1%;'><table id='outsumTab'><thead><tr><th>Player</th><th>Target</th><th>Coords</th><th>Internal Attacks</th><th>Hostile Attacks</th></tr></thead><tbody>";
+			var gfunkyincomingsumWin="<div id='gfunkyincomingsumWin' class='popUpBox ui-draggable' style='z-index:2002; width:50% !important;height:50% !important;'>";
+			gfunkyincomingsumWin+="<div class='ppbwinbgr ui-draggable' style='width: 800px !important;'><div class='ppbwintop ui-draggable'  style='width: 800px !important;'></div><div class='ppbwincent ui-draggable'  style='width: 800px !important;'></div><div class='ppbwinbott  ui-draggable'  style='width: 800px !important;'></div></div>";
+			gfunkyincomingsumWin+="<div class='ppbwincontent  ui-draggable'>";
+			gfunkyincomingsumWin+="<div class='popUpBar ui-draggable-handle' style='width: 800px;'> <span class='ppspan'>Incoming Attack Summary</span><button class='greenb regButton' style='font-size: 14px;margin-left: 20px;margin-top: 10px;height: 50%;width: 60px;'><div class='button'><a href='#' id ='outsumexp' role='button' style='color:#e1c190;'>Export</a></div></button><button id='sumX' class='xbutton' onclick=$('#gfunkyincomingsumWin').remove()><div id='xbuttondiv'> <div><div id='centxbuttondiv'></div></div></div></button></div>";
+			gfunkyincomingsumWin+="<div id=outsumbody' class='popupBox' syle='width:800px !important;'><div class='beigemenutable scroll-pane' style='height:95%;width: 720px !important;margin-left: 35px;border-radius: 6px;border: 3px ridge #99805D;'><table id='outsumTab'><thead><tr><th>Player</th><th>Target</th><th>Coords</th><th>Internal Attacks</th><th>Hostile Attacks</th></tr></thead><tbody>";
 			for (var i in tg.id) {
-            outsumwin+="<tr><td class='playerblink'>"+tg.pn[i]+"</td><td class='cityblink'>"+tg.cn[i]+"</td><td class='coordblink shcitt' data='"+tg.id[i]+"'>"+tg.x[i]+":"+tg.y[i]+"</td><td>"+tg.fr[i]+"</td><td>"+tg.hos[i]+"</td></tr>";
+				gfunkyincomingsumWin+="<tr><td class='playerblink'>"+tg.pn[i]+"</td><td class='cityblink'>"+tg.cn[i]+"</td><td class='coordblink shcitt' data='"+tg.id[i]+"'>"+tg.x[i]+":"+tg.y[i]+"</td><td>"+tg.fr[i]+"</td><td>"+tg.hos[i]+"</td></tr>";
 			}
-			outsumwin+="</tbody></table></div></div></div>";
-			$("body").append(outsumwin);
-			$("#outsumWin").draggable({ handle: ".popUpBar" , containment: "window", scroll: false});
-			$("#outsumWin").resizable();
+			gfunkyincomingsumWin+="</tbody></table></div></div></div>";
+
+
+			$("body").append(gfunkyincomingsumWin);
+			$("#gfunkyincomingsumWin").draggable({ handle: ".popUpBar" , containment: "window", scroll: false});
+			//$("#gfunkyincomingsumWin").resizable();
 			var newTableObject = document.getElementById('outsumTab');
 			sorttable.makeSortable(newTableObject);
 			$("#outsumTab td").css("text-align","center");
@@ -5418,32 +5398,38 @@ END Boss Only Section
 				exportTableToCSV.apply(this, [$('#outsumTab'), outputFile]);
 			});
 			setTimeout(function() {
-				$("#outsumWin").css("z-index","4000");
+				$("#gfunkyincomingsumWin").css("z-index","4000");
 			},300);
 		}
 
 	// combat reports summary
         $(document).ready(function() {
-            var comsum="<button id='comsumGo' class='regButton greenb' style='margin-top: 40%;width: 95%;height: 25%;font-size: .8vw;'>Combat Summary</button>";
-            var comsump="<button id='comsumpGo' class='regButton greenb' style='margin-left:3%;width: 45%;height: 26px;font-size: 12px;'>Combat Summary</button>";
-            $("#announcementsGo").css("width","45%");
+            var comsum="<button id='comsumGo' class='regButton greenb' style='margin-top: 40%;width: 95%;height: 25%;font-size: .8vw; border-radius: 6px;'>Combat Summary</button>";
+            var comsump="<br></br><button id='comsumpGo' class='regButton greenb' style='margin-left:3%;width: 94%;height: 26px; font-size: 12px;'>Combat Summary</button>";
+			//$("##reportsTable").css("height","80%");
             $("#locatecityGo").after(comsum);
             $("#announcementsGo").after(comsump);
             $("#comsumGo").click(function() {
-                comsumwin("city");
+                gfunkycomsumWin("city");
             });
             $("#comsumpGo").click(function() {
-                comsumwin("player");
+                gfunkycomsumWin("player");
             });
             //$("head").append("<script type='text/javascript' src='https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js'></script>");
         });
 
     //combat sum window
-        function comsumwin(arg) {
-            var comswin="<div id='comsumWin' style='width:60%;height:65%;left:30%' class='popUpBox'><div class='popUpBar'><span class='ppspan'>Combat Reports Summary</span><button id='sumX' onclick=\"$('#comsumWin').remove();\" class='xbutton greenb'><div id='xbuttondiv'><div><div id='centxbuttondiv'></div></div></div></button></div><div id=comsumbody' class='popUpWindow'><span style='margin-left:5%;'>Pick a Date to retrieve combat summary:    </span><input style='width:90px;' id='comsumDat' type='text' value='00/00/0000'><button class='regButton greenbuttonGo greenb' id='getcomSum' style='width:10%;margin-left:5%'> Go </Button><div id='comsumTabbody' style='margin:1%;'></div></div></div>";
-            $("body").append(comswin);
-            $("#comsumWin").draggable({ handle: ".popUpBar" , containment: "window", scroll: false});
-            $("#comsumWin").resizable();
+        function gfunkycomsumWin(arg) {
+            var gfunkycomsWin="<div id='gfunkycomsumWin' class='popUpBox ui-draggable' style='z-index:2002; width:550px !important;'>";
+			gfunkycomsWin+="<div class='ppbwinbgr ui-draggable'><div class='ppbwintop ui-resizable ui-draggable'></div><div class='ppbwincent ui-draggable'></div><div class='ppbwinbott ui-resizable ui-draggable'></div></div>";
+			gfunkycomsWin+="<div class='ppbwincontent ui-draggable' style='height:98%;'>";
+			gfunkycomsWin+="<div class='popUpBar ui-draggable-handle'> <span class='ppspan'>Combat Summary</span><button class='greenb regButton' style='font-size: 14px;margin-left: 20px;margin-top: 10px;height: 50%;width: 60px;'><div class='button'><a href='#' id ='outsumexp' role='button' style='color:#e1c190;'>Export</a></div></button><button id='sumX' class='xbutton' onclick=$('#gfunkycomsumWin').hide()><div id='xbuttondiv'> <div><div id='centxbuttondiv'></div></div></div></button></div>";
+			gfunkycomsWin+="<div id='comsumbody' class='popUpWindow'><span style='margin-left:5%;'>Pick a Date to retrieve combat 	summary:    </span><input style='width:90px;' id='comsumDat' type='datepicker' value='00/00/0000'><button class='regButton greenbuttonGo greenb' id='getcomSum' style='width:10%;margin-left:5%'> Go </Button><div id='comsumTabbody' style='margin:1%;'></div></div>";
+			gfunkycomsWin+="</div>";
+
+            $("body").append(gfunkycomsWin);
+            $("#gfunkycomsumWin").draggable({ handle: ".popUpBar" , containment: "window", scroll: false});
+
             $("#comsumDat").datepicker();
             $("#getcomSum").click(function() {
                 comsumtab(arg);
@@ -5671,34 +5657,7 @@ END Boss Only Section
                                             }
                                         });
                                     }
-                                     /*if (rdata.tts=="none") { //estimating killed troops by the puries from scoutsif all scouts killed
-                                         var tskilled=rdata.puri.w*4000/170;
-                                         dt.lost[18]+=Math.floor(tskilled);
-                                     } // in sieges/assults/plunder rdata.tts is none, in scouts tts positive so pushing scouts TS in
-                                  else {
-                                         for (var i in this.ttle) {
-                                             dt.survive[i]+=rdata.ttle[i];
-                                             dt.sent[i]+=rdata.tts[i];
-                                             dt.lost[i]+=rdata.ttlo[i];
-                                         }
-                                         if ('reinforce' in rdata) { // pushing defender ts in
-                                             $.each(rdata.reinforce, function() {
-                                                 if (spl.indexOf(this.pn)<0) {//pushing defender name into spl
-                                                     spl.push(this.pn);
-                                                 }
-                                                 $.each(this.ttle, function (key, value) {
-                                                     dt.survive[key]+=value;
-                                                 });
-                                                 $.each(this.ttlo, function (key, value) {
-                                                     dt.lost[key]+=value;
-                                                 });
-                                                 $.each(this.tts, function (key, value) {
-                                                     dt.sent[key]+=value;
-                                                 });
-                                             });
-                                         }
-                                     }// pushing sieges defense in */
-                                }
+								}
                             });
 
                     if( ++r < rlines.length ){
@@ -5735,10 +5694,7 @@ END Boss Only Section
 		}
 
         function drawcomsumtable() {
-            //console.log(at,dt);
-            //console.log(aally,dally);
-            //console.log(assc.real,assc.fake,siec.real,siec.fake,pluc.real,pluc.fake);
-            var atps=[];
+                       var atps=[];
             var dtps=[];
             var tassent=0;
             var taasent=0;
@@ -5970,7 +5926,7 @@ END Boss Only Section
             $("#selHub").change(function() {
                 localStorage.setItem('hublist',$("#selHub").val());
             });
-            $('#fastbuildlayout').remove();
+
             $('#landbuildlayouts').remove();
             $('#waterbuildlayouts').remove();
 			$('#landoffenselayouts').remove();
@@ -5981,7 +5937,7 @@ END Boss Only Section
 			$('#hublayouts').remove();
 			$('#portallayouts').remove();
 			$('#troopscoutgalleylayouts').remove();
-			
+
             setTimeout(function(){
                 var currentlayout=$('#currentLOtextarea').text();
                 for (var i=20; i<currentlayout.length-20;i++) {
@@ -5991,35 +5947,35 @@ END Boss Only Section
                         currentlayout=currentlayout.replaceAt(i,"-");
                     }
                 }
-               
-                				
+
+
 				var selectbuttlandoff='<select id="landoffenselayouts" style="font-size: 10px !important;margin-top:1%;margin-left:2%;width:45%;" class="regButton greenb"><option value="0">Land Offense Layouts</option>';
                 var lol=1;
-			
+
                 selectbuttlandoff+='<option value="'+lol+'">1 sec vanqs</option>';
                 layoutlol.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##GBGBG##-----##----##BGBGBGB##----##----#GBGBGBGBG#----##----#GBGBGBGBG#----#######GBGBTBGBG#######S--X#GBGBGBGBG#----##----#GBGBGBGBG#----##----##BGBGBGB##----##GGGGG##GBGBG##-----##BBBBBB#######------##GGGGGGJ--#---------##BBBBBB---#---------###GGGGZ---#--------#####B------#-------########################");
-                remarklol.push("Vanqs"); 
+                remarklol.push("Vanqs");
 				notelol.push("180000 Vanqs @ 2 days");
                 troopcounlol.push([0,0,0,0,0,179999,0,0,0,0,0,0,0,0,0,0,0]);
                 reslol.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 lol++;
                 selectbuttlandoff+='<option value="'+lol+'">2 sec vanqs</option>';
                 layoutlol.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBGBGBGB#----#######BGBBTBBGB#######SSPX#BGBGBGBGB#----##MDPJ#BGBGBGBGB#----##S---##BBGBGBB##----##-----##BBBBB##-----##-BBBBB#######------##-ZBGGB---#---------##-BBBBB---#---------###-BGGB---#--------#####BBBB---#-------########################");
-                remarklol.push("vanqs"); 
+                remarklol.push("vanqs");
 				notelol.push("256000 vanqs @ 6 days");
                 troopcounlol.push([0,0,0,0,0,255999,0,0,0,0,0,0,0,0,0,0,0]);
                 reslol.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 lol++;
                 selectbuttlandoff+='<option value="'+lol+'">3 sec vanqs raiding</option>';
                 layoutlol.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BBBGBGBBB#----##----#BGBBBBBGB#----#######BBBGTGBBB#######SSPX#BGBBBBBGB#----##MDP-#BBBGBGBBB#----##S---##BBGBGBB##----##-----##BBBBB##-----##------#######------##---BBBBBB#---------##---BGGBGB#---------###--BBBBBB#--------#####-JBZBBB#-------########################");
-                remarklol.push("vanqs"); 
+                remarklol.push("vanqs");
 				notelol.push("292000 vanqs @ 10 days");
                 troopcounlol.push([0,0,0,0,0,291999,0,0,0,0,0,0,0,0,0,0,0]);
                 reslol.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 lol++;
                 selectbuttlandoff+='<option value="'+lol+'">4 sec vanqs Portal</option>';
                 layoutlol.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BBBBBBBBB#----##----#BGBGBGBGB#----#######BBBBTBBGB#######SMSX#BGBGBGBGB#----##SDPP#BBBBBBBBB#----##----##BBGBGBB##----##-----##BBBBB##-----##------#######------##---BBBBBB#---------##---BBBBBB#---------###--BBBBBB#--------#####-BBJBZB#-------########################");
-                remarklol.push("vanqs"); 
+                remarklol.push("vanqs");
 				notelol.push("308000 vanqs @ 14.5 days");
                 troopcounlol.push([0,0,0,0,0,307999,0,0,0,0,0,0,0,0,0,0,0]);
                 reslol.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
@@ -6033,77 +5989,77 @@ END Boss Only Section
                 lol++;
                 selectbuttlandoff+='<option value="'+lol+'">5 sec horses</option>';
                 layoutlol.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BEBEBEB##----##----#-BEBEBEB-#----##----#-BEBEBEB-#----#######-BEBTBEB-#######SSPX#-BEBEBEB-#----##MDP-#-BEBEBEB-#----##S---##BEBEBEB##----##-----##BBBBB##-----##--BBBB#######------##--BEEEEEB#---------##-ZBBBBBBB#---------###JBEEEEEB#--------#####BBBBBBB#-------########################");
-                remarklol.push("horses"); 
+                remarklol.push("horses");
 				notelol.push("120000 horses @ 7 days");
                 troopcounlol.push([0,0,0,0,0,0,0,0,0,0,119999,0,0,0,0,0,0]);
                 reslol.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 lol++;
                 selectbuttlandoff+='<option value="'+lol+'">6 sec horses Portal</option>';
                 layoutlol.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBEBEBB##----##----#BEBEBEBEB#----##----#BEBBBBBEB#----#######BEBETEBEB#######SSPX#BEBBBBBEB#----##MDPJ#BEBEBEBEB#----##----##BBEBEBB##----##-----##BBBBB##-----##--BBBZ#######------##--BEBBB--#---------##--BBBEB--#---------###-BEBEB--#--------#####BBBBB--#-------########################");
-                remarklol.push("horses"); 
+                remarklol.push("horses");
 				notelol.push("134000 horses @ 9.5 days");
                 troopcounlol.push([0,0,0,0,0,0,0,0,0,0,133999,0,0,0,0,0,0]);
                 reslol.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 lol++;
                 selectbuttlandoff+='<option value="'+lol+'">4 sec sorc</option>';
                 layoutlol.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BJBJB##-----##----##JBJBJBJ##----##----#-JBJBJBJ-#----##----#-JBJBJBJ-#----#######-JBJTJBJ-#######S--X#-JBJBJBJ-#----##M---#-JBJBJBJ-#----##----##JBJBJBJ##----##-JBJB##BJBJB##-----##BJBJBJ#######------##BJBJBJBJ-#---------##BJBJBJBJ-#---------###JBJBJBJ-#--------#####BJBJBZ-#-------########################");
-                remarklol.push("sorc"); 
+                remarklol.push("sorc");
 				notelol.push("180000 sorc @ 8.3 days");
                 troopcounlol.push([0,0,0,0,0,0,179999,0,0,0,0,0,0,0,0,0,0]);
                 reslol.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 lol++;
                 selectbuttlandoff+='<option value="'+lol+'">5 sec sorc</option>';
                 layoutlol.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BJBJB##-----##----##JBJBJBJ##----##----#BJBJBJBJB#----##----#BJBJBJBJB#----#######BJBJTJBJB#######SMPX#BJBJBJBJB#----##----#BJBJBJBJB#----##----##BBJBJBB##----##-BBBB##BJBJB##-----##-BJBJB#######------##-BJBJB---#---------##ZBJBJB---#---------###BJBJB---#--------#####BBB----#-------########################");
-                remarklol.push("sorc"); 
+                remarklol.push("sorc");
 				notelol.push("224000 sorc @ 12.5 days");
                 troopcounlol.push([0,0,0,0,0,0,223999,0,0,0,0,0,0,0,0,0,0]);
                 reslol.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 lol++;
                 selectbuttlandoff+='<option value="'+lol+'">6 sec sorc Portal</option>';
                 layoutlol.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BJBJBJB##----##----#-BJBJBJB-#----##----#-BJBJBJB-#----#######-BJBTBJB-#######SMSX#-BJBJBJB-#----##SDPP#-BJBJBJB-#----##----##BJBJBJB##----##BBBBB##BBBBB##-----##BJJJJZ#######------##BBBBBBBB-#---------##BJJJJJJJ-#---------###BBBBBBB-#--------#####-------#-------########################");
-                remarklol.push("sorc"); 
+                remarklol.push("sorc");
 				notelol.push("240000 sorc @ 17 days");
                 troopcounlol.push([0,0,0,0,0,0,239999,0,0,0,0,0,0,0,0,0,0]);
                 reslol.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 lol++;
                 selectbuttlandoff+='<option value="'+lol+'">10 sec druids</option>';
                 layoutlol.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BJBJB##-----##----##JBJBJBJ##----##----#BJBJBJBJB#----##----#BJBJBJBJB#----#######BJBJTJBJB#######SM-X#BJBJBJBJB#----##----#BJBJBJBJB#----##BBBB##JBJBJBJ##----##JJJJJ##BJBJB##-----##BBBBBB#######------##JJJJJJ---#---------##BBBBB----#---------###JJZ-----#--------#####-------#-------########################");
-                remarklol.push("druids"); 
+                remarklol.push("druids");
 				notelol.push("102000 druids @ 11.5 days");
                 troopcounlol.push([0,0,0,0,0,0,0,0,0,0,0,101999,0,0,0,0,0,0]);
                 reslol.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 lol++;
                 selectbuttlandoff+='<option value="'+lol+'">11 sec druids</option>';
                 layoutlol.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BJBJB##-----##----##JBJBJBJ##----##----#BJBJBJBJB#----##----#BJBJBJBJB#----#######BJBJTJBJB#######SDPX#BJBJBJBJB#----##M---#BJBJBJBJB#----##----##JBJBJBJ##----##-----##BJBJB##-----##-----Z#######------##BBBBBBBBB#---------##BJJJJJJJJ#---------###BBBBBBBB#--------#####-------#-------########################");
-                remarklol.push("druids"); 
+                remarklol.push("druids");
 				notelol.push("108000 druids @ 13.8 days");
                 troopcounlol.push([0,0,0,0,0,0,0,0,0,0,0,107999,0,0,0,0,0,0]);
                 reslol.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 lol++;
                 selectbuttlandoff+='<option value="'+lol+'">14 sec druids Portal</option>';
                 layoutlol.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BJBJBJB##----##----#-BJBJBJB-#----##----#-BJBJBJB-#----#######-BBBTBJB-#######SMPX#-BJBJBJB-#----##SDP-#-BJBJBJB-#----##----##BJBJBJB##----##BBBBB##BBBBB##-----##BJJJJZ#######------##BBBBBBBB-#---------##BJJJJJJJB#---------###BBBBBBB-#--------#####-------#-------########################");
-                remarklol.push("druids"); 
+                remarklol.push("druids");
 				notelol.push("124000 druids @ 20 days");
                 troopcounlol.push([0,0,0,0,0,0,0,0,0,0,0,123999,0,0,0,0,0,0]);
                 reslol.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 lol++;
                 selectbuttlandoff+='<option value="'+lol+'">18 sec druids Portal</option>';
                 layoutlol.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BJBJBJB##----##----#-BJBJBJB-#----##----#-BJBJBJB-#----#######-BBBTBJB-#######SMPX#-BJBJBJB-#----##SDP-#-BJBJBJB-#----##----##BJBJBJB##----##BBBBB##BBBBB##-----##BJJJJZ#######------##BBBBBBBB-#---------##BJJJJJJJB#---------###BBBBBBB-#--------#####-------#-------########################");
-                remarklol.push("druids"); 
+                remarklol.push("druids");
 				notelol.push("150000 druids @ 31.25 days");
                 troopcounlol.push([0,0,0,0,0,0,0,0,0,0,0,149999,0,0,0,0,0,0]);
                 reslol.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 lol++;
                 selectbuttlandoff+='<option value="'+lol+'">scorp/rams 20s/32s</option>';
                 layoutlol.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##YBYBY##-----##----##BYBYBYB##----##----#-BYBYBYB-#----##----#YBYBYBYBY#----#######YBYBTBYBY#######SS-X#YBYBYBYBY#----##MD--#YBYBYBYBY#----##-BBB##BYBYBYB##----##-YYY-##YBYB-##-----##BBBBBB#######------##YYYYYY---#---------##BBBBBB---#---------###YYYZ----#--------#####BB-----#-------########################");
-                remarklol.push("scorp/rams"); 
+                remarklol.push("scorp/rams");
 				notelol.push("3920 rams / 15680 scorps @ 6.7 days");
                 troopcounlol.push([0,0,0,0,0,0,0,0,0,0,0,0,3920,15680,0,0,0]);
                 reslol.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 lol++;
                 selectbuttlandoff+='<option value="'+lol+'">scorp/rams 24s/39s</option>';
                 layoutlol.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBYB##-----##----##BBYBYBY##----##----#BYBYBYBYB#----##----#BYBYBYBYB#----#######BYBYTYBYB#######SMSX#BYBYBYBYB#----##SD--#BYBYBYBYB#----##----##BBYBYBY##----##-BBBB##BBBBB##-----##BYYYYB#######------##BBBBBB---#---------##BYYYYB---#---------###BBBB----#--------#####-------#-------########################");
-                remarklol.push("scorp/rams"); 
+                remarklol.push("scorp/rams");
 				notelol.push("4720 rams / 18880 scorps @ 9.8 days");
                 troopcounlol.push([0,0,0,0,0,0,0,0,0,0,0,0,4720,18880,0,0,0]);
                 reslol.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
@@ -6117,16 +6073,16 @@ END Boss Only Section
                 lol++;
                 selectbuttlandoff+='<option value="'+lol+'">scorps Portal 44s</option>';
                 layoutlol.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBYB##-----##----##BBYBYBY##----##----#BYBYBYBYB#----##----#BYBYBYBYB#----#######BYBYTYBYB#######SMSX#BYBYBYBYB#----##SD--#BYBYBYBYB#----##----##BBYBYBY##----##-BBBB##BBBBB##-----##BYYYYB#######------##BBBBBB---#---------##BYYYYB---#---------###BBBB----#--------#####-------#-------########################");
-                remarklol.push("scorpions"); 
+                remarklol.push("scorpions");
 				notelol.push("26000 scorps @ 13.25 days");
                 troopcounlol.push([0,0,0,0,0,0,0,0,0,0,0,0,0,26000,0,0,0]);
                 reslol.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 selectbuttlandoff+='</select>';
 
-				
+
 				var selectbuttlanddef='<select id="landdefenselayouts" style="font-size: 10px !important;margin-top:1%;margin-left:2%;width:45%;" class="regButton greenb"><option value="0">Land Defense Layouts</option>';
                 var ldl=1;
-				
+
 				selectbuttlanddef+='<option value="'+ldl+'">2 sec rangers</option>';
                 layoutldl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBGBGBGB#----#######BGBGTGBGB#######SSPX#BGBGBGBGB#----##MLPJ#BGBGBGBGB#----##S---##BBGBGBG##----##-----##BBBGB##-----##--BBBB#######------##-BGGGG---#---------##-BBBBBB--#---------###-GGGG---#--------#####BBBB---#-------########################");
                 remarkldl.push("Rangers"); noteldl.push("228000 inf @ 5.2 days");
@@ -6135,21 +6091,21 @@ END Boss Only Section
                 ldl++;
                 selectbuttlanddef+='<option value="'+ldl+'">3 sec rangers</option>';
                 layoutldl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##GBGBGBG##----##----#BBBGBGBBB#----##----#BGBBBBBGB#----#######BBBGTGBBB#######SMSX#BGBBBBBGB#----##SLPP#BBBGBGBBB#----##----##GBGBGBG##----##-----##BBBBB##-----##------#######------##----BBBBB#---------##---BBGGGB#---------###--JBGBGB#--------#####-BBBBBB#-------########################");
-                remarkldl.push("Rangers"); 
+                remarkldl.push("Rangers");
 				noteldl.push("268000 inf @ 9.3 days");
                 troopcounldl.push([0,0,268000,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
                 resldl.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
                 ldl++;
                 selectbuttlanddef+='<option value="'+ldl+'">2s/3s Rangers/Triari</option>';
                 layoutldl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBGBGBGB#----#######BGBGTGBGB#######SSPX#BGBGBGBGB#----##MLPJ#BGBGBGBGB#----##S---##BBGBGBG##----##-----##BBBGB##-----##--BBBB#######------##-BGGGG---#---------##-BBBBBB--#---------###-GGGG---#--------#####BBBB---#-------########################");
-                remarkldl.push("rangers/triari"); 
+                remarkldl.push("rangers/triari");
 				noteldl.push("228000 inf @ 6.2 days");
                 troopcounldl.push([0,0,152000,76000,0,0,0,0,0,0,0,0,0,0,0,0,0]);
                 resldl.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
                 ldl++;
                 selectbuttlanddef+='<option value="'+ldl+'">3s/3s Rangers/Triari</option>';
                 layoutldl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##-BGBGBB##----##----#BBBGBGBGB#----##----#BGBGBGBGB#----#######BGBBTGBGB#######SLSX#BGBGBGBGB#----##SMPP#BGBGBGBGB#----##----##BBGBGBB##----##-----##BBBBB##-----##--BBBB#######------##--BGBGB--#---------##--BGBGB--#---------###JBGBGB--#--------#####BBBBB--#-------########################");
-                remarkldl.push("rangers/triari"); 
+                remarkldl.push("rangers/triari");
 				noteldl.push("252000 inf @ 6.2 days");
                 troopcounldl.push([0,0,168000,84000,0,0,0,0,0,0,0,0,0,0,0,0,0]);
                 resldl.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
@@ -6163,42 +6119,42 @@ END Boss Only Section
                 ldl++;
                 selectbuttlanddef+='<option value="'+ldl+'">4 sec Priestess</option>';
                 layoutldl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##ZBZBZBZ##----##----#BBBZBZBBB#----##----#BZBZBZBZB#----#######BZBBTBBZB#######SMSX#BZBZBZBZB#----##SDPP#BBBZBZBBB#----##--PP##ZBZBZBZ##----##-----##BBBBB##-----##----BB#######------##----BJBBB#---------##----BBBZB#---------###---BZBZB#--------#####--BBBBB#-------########################");
-                remarkldl.push("priests"); 
+                remarkldl.push("priests");
 				noteldl.push("256000 Priestess @ 12.2 days");
                 troopcounldl.push([0,0,0,0,256000,0,0,0,0,0,0,0,0,0,0,0,0,0]);
                 resldl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 ldl++;
                 selectbuttlanddef+='<option value="'+ldl+'">5 sec Priestess</option>';
                 layoutldl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BZBZBZB##----##----#-BBBBBBB-#----##----#-BZBZBZB-#----#######-BBBTBZB-#######SMSX#-BZBZBZB-#----##SDPP#-BBBBBZB-#----##----##BZBZBZB##----##-----##BBBBB##-----##BBBBB-#######------##BZBZB----#---------##BBBBBBBBB#---------###JBZBZBZB#--------#####BBBBBBB#-------########################");
-                remarkldl.push("priests"); 
+                remarkldl.push("priests");
 				noteldl.push("288000 Priestess @ 16.7 days");
                 troopcounldl.push([0,0,0,0,288000,0,0,0,0,0,0,0,0,0,0,0,0,0]);
                 resldl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 ldl++;
                 selectbuttlanddef+='<option value="'+ldl+'">6 sec praetors</option>';
                 layoutldl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##-BZB-##-----##----##BZBZBZB##----##----#-BZBZBZB-#----##----#-BZBZBZB-#----#######-BZBTBZB-#######SMPX#-BZBZBZB-#----##S-P-#-BZBZBZB-#----##----##BZBZBZB##----##-----##BBZB-##-----##BBBBBB#######------##ZZZZZZZBJ#---------##BBBBBBBBB#---------###ZZZZZZZZ#--------#####BBBBBBB#-------########################");
-                remarkldl.push("praetors"); 
+                remarkldl.push("praetors");
 				noteldl.push("112000 praetors @ 7.75 days");
                 troopcounldl.push([0,0,0,0,0,0,0,0,0,112000,0,0,0,0,0,0,0]);
                 resldl.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
                 ldl++;
                 selectbuttlanddef+='<option value="'+ldl+'">7 sec praetors</option>';
                 layoutldl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBZBB##-----##----##BZBZBZB##----##----#-BZBZBZB-#----##----#-BZBZBZB-#----#######-BZBTBZB-#######SSPX#-BZBZBZB-#----##MDPJ#-BZBZBZB-#----##S---##BZBZBZB##----##-----##BBZBB##-----##-BBBBB#######------##-BZBZBZB-#---------##BBZBZBZB-#---------###BZBZBZB-#--------#####BBBBBB-#-------########################");
-                remarkldl.push("praetors"); 
+                remarkldl.push("praetors");
 				noteldl.push("120000 praetors @ 9.7 days");
                 troopcounldl.push([0,0,0,0,0,0,0,0,0,120000,0,0,0,0,0,0,0]);
                 resldl.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
                 ldl++;
 				selectbuttlanddef+='<option value="'+ldl+'">5 sec arbs</option>';
                 layoutldl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BEBEB##-----##----##EBEBEBE##----##----#BEBEBEBEB#----##----#BEBEBEBEB#----#######BEBETEBEB#######MSLX#BEBEBEBEB#----##--PP#BEBEBEBEB#----##----##BBEBEBB##----##-JBBB##BEBEB##-----##-BEBEB#######------##-BEBEB---#---------##-BEBEB---#---------###BEBEB---#--------#####BB-----#-------########################");
-                remarkldl.push("arbs"); 
+                remarkldl.push("arbs");
 				noteldl.push("110000 arbs @ 6.5 days");
                 troopcounldl.push([0,0,0,0,0,0,0,0,110000,0,0,0,0,0,0,0,0]);
                 resldl.push([0,0,0,0,1,250000,250000,150000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,150000,350000]);
                 ldl++;
                 selectbuttlanddef+='<option value="'+ldl+'">6 sec arbs</option>';
                 layoutldl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BEBEBEB##----##----#-BEBEBEB-#----##----#-BEBEBEB-#----#######-BEBTBEB-#######SMSX#-BEBEBEB-#----##SLPP#-BEBEBEB-#----##----##BEBEBEB##----##-BBBB##BBBBB##-----##-EEEEJ#######------##BBBBBBBBB#---------##BEEEEEEEB#---------###BBBBBBB-#--------#####-------#-------########################");
-                remarkldl.push("arbs"); 
+                remarkldl.push("arbs");
 				noteldl.push("120000 arbs @ 8.3 days");
                 troopcounldl.push([0,0,0,0,0,0,0,0,124000,0,0,0,0,0,0,0,0]);
                 resldl.push([0,0,0,0,1,250000,250000,150000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,150000,350000]);
@@ -6212,23 +6168,23 @@ END Boss Only Section
                 ldl++;
                 selectbuttlanddef+='<option value="'+ldl+'">8 sec arbs</option>';
                 layoutldl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##-BEBEBJ##----##----#BBBEBEBBB#----##----#BEBBBBBEB#----#######BEBETEBEB#######SMSX#BEBBBBBEB#----##SLPP#BBBEBEBBB#----##----##-BEBEB-##----##-----##BBBBB##-----##------#######------##---BBBBBB#---------##--BEBEBEB#---------###-BEBEBEB#--------#####BBBBBBB#-------########################");
-                remarkldl.push("arbs"); 
+                remarkldl.push("arbs");
 				noteldl.push("138000 arbs @ 12.8 days");
                 troopcounldl.push([0,0,0,0,0,0,0,0,124000,0,0,0,0,0,0,0,0]);
                 resldl.push([0,0,0,0,1,250000,250000,150000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,150000,350000]);
                 ldl++;
 				selectbuttlanddef+='<option value="'+ldl+'">ballista</option>';
                 layoutldl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBYBYBB##----##----#BYBYBYBYB#----##----#BYBYBYBYB#----#######BYBYTYBYB#######MSDX#BYBYBYBYB#----##----#BYBYBYBYB#----##----##BBYBYBB##----##-BBBB##BBBBB##-----##-BYBYB#######------##-BYBYB---#---------##-BYBYB---#---------###BYBYB---#--------#####BBBB---#-------########################");
-                remarkldl.push("baldlista"); 
+                remarkldl.push("baldlista");
 				noteldl.push("25600 siege engines @ 10.5 days");
                 troopcounldl.push([0,25600,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
                 resldl.push([0,0,0,0,1,150000,220000,250000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,250000,350000]);
                 selectbuttlanddef+='</select>';
 
-				
+
 				var selectbuttwateroff='<select id="wateroffenselayouts" style="font-size: 10px !important;margin-top:1%;margin-left:2%;width:45%;" class="regButton greenb"><option value="0">Water Offense Layouts</option>';
                 var wol=1;
-				
+
 
 				selectbuttwateroff+='<option value="'+wol+'">2 sec vanq/galley+senator</option>';
                 layoutwol.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BGBGB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBGBGBGB#---H#######BGBGTGBGB#######----#BGBGBGBGB#JSPX##----#BGBGBGBGB#----##----##BBGBGBB##---B##-----##BGBGB##BBBBZ##------#######BBVVBB##---------#---BV##VB##---------#---BV###V###--------#---BBV#######-------#--BBBBV########################");
@@ -6239,7 +6195,7 @@ END Boss Only Section
                 wol++;
 				selectbuttwateroff+='<option value="'+wol+'">3 sec vanq/galley+senator</option>';
                 layoutwol.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BGBGB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBGBGBGB#---H#######BGBGTGBGB#######----#BGBGBGBGB#JSPX##----#BGBGBGBGB#----##----##BBGBGBB##---B##-----##BGBGB##BBBBZ##------#######BBVVBB##---------#---BV##VB##---------#---BV###V###--------#---BBV#######-------#--BBBBV########################");
-                remarkwol.push("vanq/galley+senator"); 
+                remarkwol.push("vanq/galley+senator");
 				notewol.push("219999 inf and 440 galley @ 16 days");
                 troopcounwol.push([0,0,0,0,0,219999,0,0,0,0,0,0,0,0,440,0,0]);
                 reswol.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1350000]);
@@ -6253,14 +6209,14 @@ END Boss Only Section
                 wol++;
                 selectbuttwateroff+='<option value="'+wol+'">5 sec horses/galley</option>';
                 layoutwol.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BEBEB##-----##----##EBEBEBE##----##----#BEBEBEBEB#----##----#BEBEBEBEB#---H#######BEBETEBEB#######----#BEBEBEBEB#JSPX##----#BEBEBEBEB#-M--##----##EBEBEBB##----##-----##BEBEB##BBBB-##------#######BBVVBB##---------#---BV##VB##---------#---BV###V###--------#--BBBV#######-------#--BEBBV########################");
-                remarkwol.push("horses/galley"); 
+                remarkwol.push("horses/galley");
 				notewol.push("90000 cav and 360 galley @ 10.5 days");
                 troopcounwol.push([0,0,0,0,0,0,0,0,0,0,90000,0,0,0,360,0,0]);
                 reswol.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,350000]);
                 wol++;
 				selectbuttwateroff+='<option value="'+wol+'">6 sec horses/galley</option>';
                 layoutwol.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##EBEBEBB##----##----#BEBEBEBEB#----##----#BEBEBEBEB#----#######BEBETEBEB#######----#BEBEBEBEB#SMSX##----#BEBEBEBEB#SDPP##----##EBEBEBB##----##-----##BBBBB##BBBB-##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#---JBBV########################");
-                remarkwol.push("horses/galley"); 
+                remarkwol.push("horses/galley");
 				notewol.push("95000 cav and 380 galley @ 16 days");
                 troopcounwol.push([0,0,0,0,0,0,0,0,0,0,95000,0,0,0,380,0,0]);
                 reswol.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,350000]);
@@ -6274,28 +6230,28 @@ END Boss Only Section
                 wol++;
                 selectbuttwateroff+='<option value="'+wol+'">5 sec sorc/galley</option>';
                 layoutwol.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##JBJBJ##-----##----##BJBJBJB##----##----#JBJBJBJBJ#----##----#JBJBJBJBJ#---H#######JBJBTBJBJ#######----#JBJBJBJBJ#-S-X##----#JBJBJBJBJ#----##----##BJBJBJB##JJ--##-----##JBJBJ##BBBBJ##------#######BBVVBB##---------#--JBV##VB##---------#--JBV###V###--------#---BBV#######-------#---JBBV########################");
-                remarkwol.push("sorc/galley"); 
+                remarkwol.push("sorc/galley");
 				notewol.push("156600 sorc and 314 galley @ 13.5 days");
                 troopcounwol.push([0,0,0,0,0,0,156600,0,0,0,0,0,0,0,314,0,0]);
                 reswol.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,350000]);
                 wol++;
 				selectbuttwateroff+='<option value="'+wol+'">6 sec sorc/galley</option>';
                 layoutwol.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##JJJJJJJ##----##----#BBBBBBBBB#----##----#JJJJJJJJJ#----#######BBBBTBBBB#######----#JJJJJJJJJ#----##----#BBBBBBBBB#----##----##JJJJJJJ##BJ--##-----##BBBBB##BBBBE##------#######BBVVBB##---------#SS-BV##VB##---------#M--BV###V###--------#P--BBV#######-------#X--ZBBV########################");
-                remarkwol.push("sorc/galley"); 
+                remarkwol.push("sorc/galley");
 				notewol.push("173299 sorc and 387 galley @ 25 days");
                 troopcounwol.push([0,0,0,0,0,0,173299,0,0,0,0,0,0,0,387,0,0]);
                 reswol.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,350000]);
                 wol++;
 				selectbuttwateroff+='<option value="'+wol+'">7 sec sorc/galley</option>';
                 layoutwol.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##JJJJJJJ##----##----#BBBBBBBBB#----##----#JJJJJJJJJ#----#######BBBBTBBBB#######----#JJJJJJJJJ#----##----#BBBBBBBBB#----##----##JJJJJJJ##BJ--##-----##BBBBB##BBBBE##------#######BBVVBB##---------#SS-BV##VB##---------#M--BV###V###--------#P--BBV#######-------#X--ZBBV########################");
-                remarkwol.push("sorc/galley"); 
+                remarkwol.push("sorc/galley");
 				notewol.push("193299 sorc and 347 galley @ 20.5 days");
                 troopcounwol.push([0,0,0,0,0,0,193299,0,0,0,0,0,0,0,347,0,0]);
                 reswol.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,350000]);
                 wol++;
                 selectbuttwateroff+='<option value="'+wol+'">vanqs+ports+senator</option>';
                 layoutwol.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBBBBBGB#----#######BBBGTGBBB#######----#BGBBBBBGB#PPJX##----#BGBGBGBGB#BBBB##----##BBGBGBB##BBBB##-----##BBBBB##BBBBB##------#######-BRRBB##---------#----R##RZ##---------#----R###R###--------#----SR#######-------#----MSR########################");
-                remarkwol.push("vanqs+senator+ports"); 
+                remarkwol.push("vanqs+senator+ports");
 				notewol.push("264k infantry @ 10 days");
                 troopcounwol.push([0,0,0,100000,0,164000,0,0,0,0,0,0,0,0,0,0,0]);
                 reswol.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,350000]);
@@ -6308,41 +6264,48 @@ END Boss Only Section
                 selectbuttwateroff+='</select>';
 
 
-				
+
 				var selectbuttwaterdef='<select id="waterdefenselayouts" style="font-size: 10px !important;margin-top:1%;margin-left:2%;width:45%;" class="regButton greenb"><option value="0">Water Defense Layouts</option>';
                 var wdl=1;
-				
+
 				selectbuttwaterdef+='<option value="'+wdl+'">2/3 sec R/T/galley</option>';
                 layoutwdl.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BGBGB##-----##----##GBGBGBG##----##----#BGBGBGBGB#----##----#BGBGBGBGB#---H#######BGBGTGBGB#######----#BGBGBGBGB#JSPX##----#BGBGBGBGB#----##----##GBGBGBG##G---##-----##BGGGB##BBBBG##------#######BBVVBB##---------#--GBV##VB##---------#--GBV###V###--------#---BBV#######-------#----BBV########################");
-                remarkwdl.push("R/T/galley"); 
+                remarkwdl.push("R/T/galley");
 				notewdl.push("166600 inf and 334 galley @ 10 days");
                 troopcounwdl.push([0,0,83300,83300,0,0,0,0,0,0,0,0,0,0,334,0,0]);
                 reswdl.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1450000]);
                 wdl++;
+                selectbuttwaterdef+='<option value="'+wdl+'">3/3 sec R/T/galley</option>';
+                layoutwdl.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BGBGB##-----##----##GBGBGBG##----##----#BGBGBGBGB#----##----#BGBGBGBGB#---H#######BGBGTGBGB#######----#BGBGBGBGB#JSPX##----#BGBGBGBGB#----##----##GBGBGBG##G---##-----##BGGGB##BBBBG##------#######BBVVBB##---------#--GBV##VB##---------#--GBV###V###--------#---BBV#######-------#----BBV########################");
+                remarkwdl.push("R/T/galley");
+				notewdl.push("180000 inf and 360 galley @ 15 days");
+                troopcounwdl.push([0,0,90000,90000,0,0,0,0,0,0,0,0,0,0,360,0,0]);
+                reswdl.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1450000]);
+                wdl++;
 				selectbuttwaterdef+='<option value="'+wdl+'">2 sec Ranger/galley</option>';
                 layoutwdl.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BGBGB##-----##----##GBGBGBG##----##----#BGBGBGBGB#----##----#BGBGBGBGB#---H#######BGBGTGBGB#######----#BGBGBGBGB#JSPX##----#BGBGBGBGB#----##----##GBGBGBG##G---##-----##BGGGB##BBBBG##------#######BBVVBB##---------#--GBV##VB##---------#--GBV###V###--------#---BBV#######-------#----BBV########################");
-                remarkwdl.push("Ranger/galley"); 
+                remarkwdl.push("Ranger/galley");
 				notewdl.push("166600 inf and 334 galley @ 10 days");
                 troopcounwdl.push([0,0,166000,0,0,0,0,0,0,0,0,0,0,0,334,0,0]);
                 reswdl.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1450000]);
                 wdl++;
 				selectbuttwaterdef+='<option value="'+wdl+'">3 sec Ranger/galley</option>';
                 layoutwdl.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##-BBBB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBGBGBGB#----#######BGBGTGBGB#######----#BGBGBGBGB#SMSX##----#BGBGBGBGB#SLPP##----##BBGBGBB##----##-----##BBBBB##BBBBJ##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#---BBBV########################");
-                remarkwdl.push("Ranger/galley"); 
+                remarkwdl.push("Ranger/galley");
 				notewdl.push("196600 inf and 394 galley @ 16 days");
                 troopcounwdl.push([0,0,196600,0,0,0,0,0,0,0,0,0,0,0,394,0,0]);
                 reswdl.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1450000]);
                 wdl++;
 				selectbuttwaterdef+='<option value="'+wdl+'">4 sec Ranger/galley</option>';
                 layoutwdl.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBBBBBGB#----##----#BBBGBGBBB#----#######BGBBTBBGB#######----#BGBGBGBGB#SMSX##----#BGBGBGBGB#SLPP##----##BBGBGBB##----##-----##BBBBB##BBBBJ##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#----BBV########################");
-                remarkwdl.push("Ranger/galley"); 
+                remarkwdl.push("Ranger/galley");
 				notewdl.push("216600 inf and 434 galley @ 20.5 days");
                 troopcounwdl.push([0,0,216600,0,0,0,0,0,0,0,0,0,0,0,434,0,0]);
                 reswdl.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1450000]);
                 wdl++;
 				selectbuttwaterdef+='<option value="'+wdl+'">3 sec priestess/galley</option>';
                 layoutwdl.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BZBZB##-----##----##ZBZBZBZ##----##----#BZBZBZBZB#----##----#BZBZBZBZB#---H#######BZBZTZBZB#######----#BZBZBZBZB#JSPX##----#BZBZBZBZB#----##----##ZBZBZBZ##-Z--##-----##BZZZB##BBBBZ##------#######BBVVBB##---------#---BV##VB##---------#--ZBV###V###--------#---BBV#######-------#---ZBBV########################");
-                remarkwdl.push("priestess/galley"); 
+                remarkwdl.push("priestess/galley");
 				notewdl.push("166600 inf and 334 galley @ 11 days");
                 troopcounwdl.push([0,0,0,0,166600,0,0,0,0,0,0,0,0,0,334,0,0]);
                 reswdl.push([0,0,0,0,1,250000,220000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1350000]);
@@ -6356,56 +6319,56 @@ END Boss Only Section
                 wdl++;
 				selectbuttwaterdef+='<option value="'+wdl+'">5 sec priestess/galley</option>';
                 layoutwdl.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBZBZBB##----##----#BZBZBZBZB#----##----#BBBZBZBBB#----#######BZBZTZBZB#######----#BBBZBZBBB#SMPX##----#BZBZBZBZB#SDPJ##----##BBZBZBB##----##-----##BZBBB##BBBB-##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#---BBBV########################");
-                remarkwdl.push("priestess/galley"); 
+                remarkwdl.push("priestess/galley");
 				notewdl.push("209999 inf and 420 galley @ 22 days");
                 troopcounwdl.push([0,0,0,0,209999,0,0,0,0,0,0,0,0,0,420,0,0]);
                 reswdl.push([0,0,0,0,1,250000,220000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1350000]);
                 wdl++;
 				selectbuttwaterdef+='<option value="'+wdl+'">6 sec priestess/galley</option>';
                 layoutwdl.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBZBZBB##----##----#BZBBBBBZB#----##----#BBBZBZBBB#----#######BZBBTBBZB#######----#BZBZBZBBB#SMSX##----#BZBZBZBZB#SDPP##----##BBZBZBB##----##-----##BBBBB##BBBBJ##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#----BBV########################");
-                remarkwdl.push("priestess/galley"); 
+                remarkwdl.push("priestess/galley");
 				notewdl.push("219999 inf and 440 galley @ 22 days");
                 troopcounwdl.push([0,0,0,0,219999,0,0,0,0,0,0,0,0,0,440,0,0]);
                 reswdl.push([0,0,0,0,1,250000,220000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1350000]);
                 wdl++;
 				selectbuttwaterdef+='<option value="'+wdl+'">6 sec arbs/galley</option>';
                 layoutwdl.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BEBEB##-----##----##EBEBEBE##----##----#BEBEBEBEB#----##----#BEBEBEBEB#----#######BEBETEBEB#######----#BEBEBEBEB#SMSX##----#BEBEBEBEB#SLPP##----##EBEBEBE##----##-----##-EBE-##BBBBE##------#######BBVVBB##---------#--JBVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#---EBBV########################");
-                remarkwdl.push("arbs/galley"); 
+                remarkwdl.push("arbs/galley");
 				notewdl.push("81650 inf and 327 galley @ 13.5 days");
                 troopcounwdl.push([0,0,0,0,0,0,0,0,81650,0,0,0,0,0,327,0,0]);
                 reswdl.push([0,0,0,0,1,250000,250000,150000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,150000,1350000]);
                 wdl++;
 				selectbuttwaterdef+='<option value="'+wdl+'">7 sec arbs/galley</option>';
                 layoutwdl.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##EBEBEBE##----##----#BEBEBEBEB#----##----#BEBEBEBEB#----#######BEBETEBEB#######----#BEBEBEBEB#SMSX##----#BEBEBEBEB#SLPP##----##EBEBEBE##----##-----##BBBBB##BBBB-##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#---JBBV########################");
-                remarkwdl.push("arbs/galley"); 
+                remarkwdl.push("arbs/galley");
 				notewdl.push("91650 inf and 367 galley @ 16.5 days");
                 troopcounwdl.push([0,0,0,0,0,0,0,0,91650,0,0,0,0,0,367,0,0]);
                 reswdl.push([0,0,0,0,1,250000,250000,150000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,150000,1350000]);
                 wdl++;
 				selectbuttwaterdef+='<option value="'+wdl+'">8 sec arbs/galley</option>';
                 layoutwdl.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBEBEBB##----##----#BEBEBEBEB#----##----#BEBEBEBEB#----#######BEBETEBEB#######----#BEBEBEBEB#SMSX##----#BEBEBEBEB#SLPP##----##BBEBEBB##----##-----##BBBBB##BBBB-##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#---JBBV########################");
-                remarkwdl.push("arbs/galley"); 
+                remarkwdl.push("arbs/galley");
 				notewdl.push("98300 inf and 394 galley @ 16.5 days");
                 troopcounwdl.push([0,0,0,0,0,0,0,0,98300,0,0,0,0,0,394,0,0]);
                 reswdl.push([0,0,0,0,1,250000,250000,150000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,150000,1350000]);
                 wdl++;
 				selectbuttwaterdef+='<option value="'+wdl+'">7 sec praetor/galley</option>';
                 layoutwdl.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BZBZB##-----##----##ZBZBZBZ##----##----#BZBZBZBZB#----##----#BZBZBZBZB#----#######BZBZTZBZB#######----#BZBZBZBZB#SPJX##----#BZBZBZBZB#MH--##----##ZBZBZBZ##----##-----##BZBZB##BBBBZ##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#--BZBBV########################");
-                remarkwdl.push("praetors/galley"); 
+                remarkwdl.push("praetors/galley");
 				notewdl.push("86650 praetors and 347 galley @ 12 days");
                 troopcounwdl.push([0,0,0,0,0,0,0,0,0,86650,0,0,0,0,347,0,0]);
                 reswdl.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1350000]);
                 wdl++;
 				selectbuttwaterdef+='<option value="'+wdl+'">8 sec praetor/galley</option>';
                 layoutwdl.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBZB##-----##----##ZBZBZBZ##----##----#BZBZBZBZB#----##----#BZBZBZBZB#----#######BZBZTZBZB#######----#BZBZBZBZB#SMSX##----#BZBZBZBZB#SDPP##----##ZBZBZBZ##----##-----##BBBBB##BBBB-##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#---JBBV########################");
-                remarkwdl.push("praetors/galley"); 
+                remarkwdl.push("praetors/galley");
 				notewdl.push("89999 praetors and 360 galley @ 17 days");
                 troopcounwdl.push([0,0,0,0,0,0,0,0,0,89999,0,0,0,0,360,0,0]);
                 reswdl.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1350000]);
                 wdl++;
 				selectbuttwaterdef+='<option value="'+wdl+'">9 sec praetor/galley</option>';
                 layoutwdl.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBZBZBB##----##----#BZBZBZBZB#----##----#BZBZBZBZB#----#######BZBZTZBZB#######----#BZBZBZBZB#SMSX##----#BZBZBZBZB#SDPP##----##ZBZBZBB##----##-----##BBBBB##BBBB-##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#---JBBV########################");
-                remarkwdl.push("praetors/galley"); 
+                remarkwdl.push("praetors/galley");
 				notewdl.push("96649 praetors and 387 galley @ 19.5 days");
                 troopcounwdl.push([0,0,0,0,0,0,0,0,0,96649,0,0,0,0,387,0,0]);
                 reswdl.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1350000]);
@@ -6445,10 +6408,27 @@ END Boss Only Section
                 reshul.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,26175000,26175000,21175000,21175000]);
                 hul++;
 
+                selectbutthub+='<option value="'+hul+'">Maj Hub Land 14.2K</option>';
+                layouthul.push("[ShareString.1.3]:########################-------#PPPPPPP#####--------#PPPPPPPP###---------#PPPPPPPPP##---------#PPPPPPPPP##------#######PPPPPP##-----##-----##PPPPP##----##-------##PPPP##----#---SLS---#PPPP##----#-SLSMSAS-#PPPP#######-SDSTSDS-#######----#-SLSMSAS-#PPPP##----#---SAS---#PPPP##----##-------##PPPP##-----##ZBJ--##--PPP##------#######------##---------#---------##---------#---------###--------#--------#####-------#-------########################");
+                remarkhul.push("Hub");
+		notehul.push("14200K Carts, 8,975,000 W/S, 8,175,000");
+                troopcounhul.push([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
+                reshul.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,8975000,8975000,8175000,8175000]);
+                hul++;
+
+                selectbutthub+='<option value="'+hul+'">Maj Hub Water 12.6K</option>';
+                layouthul.push("[ShareString.1.3];########################-------#PPPPPPP#####--------#PPPPPPPP###---------#PPPPPPPPP##---------#PPPPPPPPP##------#######PPPPPP##-----##-----##PPPPP##----##-------##PPPP##----#---SLS---#PPPP##----#-SLSMSAS-#PPPP#######-SDSTSDS-#######----#-SLSMSAS-#PPPP##----#---SAS---#-PPP##----##-------##----##-----##ZBJ--##-----##------#######--RR--##---------#----R##R-##---------#----R###R###--------#-----R#######-------#------R########################");
+                remarkhul.push("Hub");
+		notehul.push("12600K Carts, 8,975,000 W/S, 8,175,000 I/F");
+                troopcounhul.push([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
+                reshul.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,8975000,8975000,8175000,8175000]);
+                hul++;
+
+
 		selectbutthub+='<option value="'+hul+'">Cluster transport 12.2K</option>';
                 layouthul.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######--PPPP##-----##-----##-PPPP##----##MMM----##PPPP##----#SSSS-----#PPPP##----#AAAAM-J--#PPPP#######SSSST-B--#######----#LLLLD-Z--#PPPP##----#SSSS-----#PPPP##----##DDD----##PPPP##-----##-----##PPPPP##------#######PPRRPP##---------#PPPPR##RP##---------#PPPPR###R###--------#PPPPPR#######-------#PPPPPPR########################");
                 remarkhul.push("Hub");
-		notehul.push("12,200K Carts, 10,575,000 W/S, 6,575,000 I/F use with 4.2k hub ");
+		notehul.push("12,200K Carts, 10,575,000 W/S, 6,575,000 I/F");
                 troopcounhul.push([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
                 reshul.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,10575000,10575000,6575000,6575000]);
                 hul++;
@@ -6639,7 +6619,7 @@ END Boss Only Section
                 troopcounshl.push([0,0,88000,88000,0,0,0,0,0,0,0,0,0,0,0,0,0]);
                 resshl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,300000,1400000]);
                 selectbuttshipper+='</select>';
-				
+
 				var selectbuttportal='<select id="portallayouts" style="font-size: 10px !important;margin-top:1%;margin-left:2%;width:45%;" class="regButton greenb"><option value="0">Portal Layouts</option>';
                 var pol=1;
 
@@ -6810,12 +6790,12 @@ END Boss Only Section
                 troopcounpol.push([0,0,0,0,0,0,0,0,0,136000,0,0,0,0,0,0,0]);
                 respol.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 selectbuttportal+='</select>';
-				
+
 				var selectbutttroopscoutg='<select id="troopscoutgalleylayouts" style="font-size: 10px !important;margin-top:1%;margin-left:2%;width:45%;" class="regButton greenb"><option value="0">Troop Scout Galley Layouts</option>';
                 var tsg=1;
 				selectbutttroopscoutg+='<option value="'+tsg+'">3 sec vanq/galley</option>';
                 layouttsg.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBBBBBGB#----#######BGBGTGBGB#######----#BGBBBBBGB#----##----#BGBGBGBGB#BBJ-##----##BBBBBBB##BBB-##-----##-----##BBBBZ##------#######BBVVBB##---------#SS-BVTTVB##---------#M--BVTTTV###--------#PP-BBVTT#####-------#X--EBBV########################");
-                remarktsg.push("Vanqs"); 
+                remarktsg.push("Vanqs");
 				notetsg.push("260KTS Default for 10 Fakes - 191500 Vanqs, 15 Scouts, 684 galleys"+ "\n" + "for 4 fakes - 206500 Vanqs, 15 scouts, 533 galleys"+ "\n" + "for 5 fakes - 204000 Vanqs, 15 scouts, 558 galleys"+ "\n" + "for 6 fakes - 201500 Vanqs, 15 scouts, 583 galleys");
                 troopcountsg.push([0,0,0,0,0,191500,0,15,0,0,0,0,0,0,684,0,0]);
                 restsg.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
@@ -6892,7 +6872,7 @@ END Boss Only Section
                 troopcountsg.push([0,0,0,0,184969,0,0,15,0,0,0,0,0,0,670,0,0]);
                 restsg.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                	tsg++;
-			
+
 				 selectbutttroopscoutg+='<option value="'+tsg+'">6 sec priest/galley</option>';
                 layouttsg.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBZBZBB##----##----#BZBBBBBZB#----##----#BBBZBZBBB#----#######BZBBTBBZB#######----#BZBZBZBBB#SMPX##----#BZBZBZBZB#SDP-##----##BBZBZBB##----##-----##BBBBB##BBBBE##------#######BBVVBB##---------#---BV##VB##---------#---BV###V###--------#---BBV#######-------#---JBBV########################");
                 remarktsg.push("Priest");
@@ -6900,23 +6880,23 @@ END Boss Only Section
                 troopcountsg.push([0,0,0,0,194969,0,0,15,0,0,0,0,0,0,690,0,0]);
                 restsg.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                	selectbutttroopscoutg+='</select>';
-							
+
 				$('#clearresquad').after(selectbuttlandoff);
-             
+
 				$('#landoffenselayouts').after(selectbuttlanddef);
                 $('#landdefenselayouts').after(selectbuttwateroff);
-				
+
 				$('#wateroffenselayouts').after(selectbuttwaterdef);
                 $('#waterdefenselayouts').after(selectbutthub);
 				$('#hublayouts').after(selectbuttshipper);
                 $('#shipperlayouts').after(selectbuttportal);
 				$('#portallayouts').after(selectbutttroopscoutg);
-                
+
 				//Land Offense Builds
                 $('#landoffenselayouts').change(function() {
                     var newlayout=currentlayout;
                     for (var j=1; j<layoutlol.length; j++) {
-	
+
                         if ($('#landoffenselayouts').val()==j) {
                             for (var i=20; i<currentlayout.length;i++) {
                                 var tmpchar=layoutlol[j].charAt(i);
@@ -6995,7 +6975,7 @@ END Boss Only Section
 				$('#landdefenselayouts').change(function() {
                     var newlayout=currentlayout;
                     for (var j=1; j<layoutldl.length; j++) {
-		
+
                         if ($('#landdefenselayouts').val()==j) {
                             for (var i=20; i<currentlayout.length;i++) {
                                 var tmpchar=layoutldl[j].charAt(i);
@@ -7224,7 +7204,7 @@ END Boss Only Section
 				$('#hublayouts').change(function() {
                     var newlayout=currentlayout;
                     for (var j=1; j<layouthul.length; j++) {
-		
+
                         if ($('#hublayouts').val()==j) {
                             for (var i=20; i<currentlayout.length;i++) {
                                 var tmpchar=layouthul[j].charAt(i);
@@ -7302,7 +7282,7 @@ END Boss Only Section
 				$('#shipperlayouts').change(function() {
                     var newlayout=currentlayout;
                     for (var j=1; j<layoutshl.length; j++) {
-		
+
                         if ($('#shipperlayouts').val()==j) {
                             for (var i=20; i<currentlayout.length;i++) {
                                 var tmpchar=layoutshl[j].charAt(i);
@@ -7380,7 +7360,7 @@ END Boss Only Section
 				$('#portallayouts').change(function() {
                     var newlayout=currentlayout;
                     for (var j=1; j<layoutpol.length; j++) {
-		
+
                         if ($('#portallayouts').val()==j) {
                             for (var i=20; i<currentlayout.length;i++) {
                                 var tmpchar=layoutpol[j].charAt(i);
@@ -7458,7 +7438,7 @@ END Boss Only Section
 				$('#troopscoutgalleylayouts').change(function() {
                     var newlayout=currentlayout;
                     for (var j=1; j<layouttsg.length; j++) {
-		
+
                         if ($('#troopscoutgalleylayouts').val()==j) {
                             for (var i=20; i<currentlayout.length;i++) {
                                 var tmpchar=layouttsg[j].charAt(i);
@@ -7723,49 +7703,61 @@ END Boss Only Section
 
 
 //Summary
-    function opensumwin() {
+    function opengfunkysumwin() {
         sum=false;
         //console.log(1);
-        var sumwin="<div id='sumWin' style='width:60%;height:50%;left: 360px; z-index: 2000;' class='popUpBox'><div id='popsum' class='popUpBar'><span class=\"ppspan\">Cities Summaries</span> <button id=\"sumX\" onclick=\"$('#sumWin').hide();\" class=\"xbutton greenb\"><div id=\"xbuttondiv\"><div><div id=\"centxbuttondiv\"></div></div></div></button></div><div class=\"popUpWindow\" style='height:100%'>";
-        sumwin+="<div id='sumdiv' class='beigetabspopup' style='background:none;border: none;padding: 0px;height:74%;'><ul id='sumtabs' role='tablist'><li role='tab'><a href='#resTab' role='presentation'>Resources</a></li>";
-        sumwin+="<li role='tab'><a href='#troopsTab' role='presentation'>Troops</a></li><li role='tab'><a href='#raidTab' role='presentation'>Raids</a></li><li role='tab'><a href='#raidoverTab' role='presentation'>Raids Overview</a></li>";
-        sumwin+="<li role='tab'><a href='#supportTab' role='presentation'>Support</a></li><li role='tab'><a href='#incomingTab' role='presentation'>Incoming</a></li></ul>";
-        sumwin+="<div id='resTab'><button id='resup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button><button class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'><div class='button'><a href='#' id ='resexp' role='button' style='color:white;'>Export</a></div></button><span id='respan' style='margin-left:50px;'>Show cities from: </span>";
-        sumwin+="<div class='beigemenutable scroll-pane' style='width:99%;height: AUTO !important;max-height: 85%;margin-left:4px;' ><table id='restable'>";
-        sumwin+="<thead><th>Name</th><th colspan='2'>Notes</th><th>Coords</th><th>Wood</th><th>(Storage)</th><th>Stones</th><th>(Storage)</th><th>Iron</th><th>(Storage)</th><th>Food</th><th>(Storage)</th><th>Carts</th><th>(Total)</th><th>Ships</th><th>(Total)</th><th>Score</th></thead></table></div></div>";
-        sumwin+="<div id='troopsTab'><button id='troopsup' class='greenb' style='font-size:14px;border-radius:6px;margin:4px;'>Update</button><button class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'><div class='button'><a href='#' id ='troopsexp' role='button' style='color:white;'>Export</a></div></button>";
-        sumwin+="<button id='hidespfbut' class='greenb' style='font-size:14px;border-radius:6px;margin:4px;'>Hide Specific Troops Columns</button><span id='troopspan' style='margin-left:50px;'>Show cities from: </span>";
-        sumwin+="<div  class='beigemenutable scroll-pane' style='width:99%;height: AUTO !important;max-height: 85%;margin-left:4px;'><table id='troopstable' style='width:250%'>";
-        sumwin+="<thead><tr data='0'><th>Name</th><th style='width:150px;'>Notes</th><th>Coords</th><th class='spf'><div class='"+tpicdiv[8]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[1]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[11]+"'></div>(home)</th><th class='spf'>(Total)</th>";
-        sumwin+="<th class='spf'><div class='"+tpicdiv[14]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[0]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[10]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[9]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[4]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[12]+"'></div>(home)</th><th class='spf'>(Total)</th>";
-        sumwin+="<th class='spf'><div class='"+tpicdiv[2]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[13]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[7]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[17]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[6]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[15]+"'></div>(home)</th><th class='spf'>(Total)</th>";
-        sumwin+="<th class='spf'><div class='"+tpicdiv[3]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[5]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[16]+"'></div>(home)</th><th class='spf'>(Total)</th><th>TS(home)</th><th>(Total)</th>";
-        sumwin+="</tr></thead></table></div></div>";
-        sumwin+="<div id='raidTab'><button id='raidup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button><span style='margin-left:50px;'>Number of reports to show: </span><select id='raidsturnc' class='greensel' style='border-radius:4px;'><option value='100'>100</option><option value='500'>500</option><option value='1000'>1000</option><option value='10000'>10000</option></select>";
-        sumwin+="<div class='beigemenutable scroll-pane' style='width:99%;height: AUTO !important;max-height: 85%;margin-left:4px;' ><table id='raidtable'>";
-        sumwin+="<thead><th>Report</th><th>Type</th><th>Cavern progress</th><th>losses</th><th>Carry</th><th>Date</th><th>Origin</th></thead></table></div></div>";
-        sumwin+="<div id='raidoverTab'><button id='raidoverup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button><button class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'><div class='button'><a href='#' id ='raidexp' role='button' style='color:white;'>Export</a></div></button><span id='raidspan' style='margin-left:50px;'>Show cities from: </span>";
-        sumwin+="<div class='beigemenutable scroll-pane' style='width:99%;height: AUTO !important;max-height: 85%;margin-left:4px;' ><table id='raidovertable'>";
-        sumwin+="<thead><th></th><th>Name</th><th colspan='2'>Notes</th><th>Coords</th><th>Raids</th><th>Out</th><th>In</th><th>Raiding TS</th><th>Resources</th></thead></table></div></div>";
-        sumwin+="<div id='supportTab'><button id='supportup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button>";
-        sumwin+="<div class='beigemenutable scroll-pane' style='width:99%;height: AUTO !important;max-height: 85%;margin-left:4px;' ><table id='supporttable'>";
-        sumwin+="<thead><th></th><th>Player</th><th>City</th><th>Coords</th><th>Alliance</th><th>TS supporting</th><th>TS sending</th><th>TS returning</th></thead></table></div></div>";
-        sumwin+="<div id='incomingTab'><button id='incomingup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button><span id='incomingspan' style='margin-left:50px;'>Show cities from: </span><span style='margin-left: 20px;color: green;'>Supporting</span><span>/</span><span style='color: #949400;'>Incoming before attack</span><span>/</span><span style='color: red;'>Incoming after attack</span>";
-        sumwin+="<div class='beigemenutable scroll-pane' style='width:99%;height: AUTO !important;max-height: 85%;margin-left:4px;' ><table id='incomingtable' style='width:100%'>";
-        sumwin+="<thead><th>Player</th><th>City</th><th>Coords</th><th># of inc</th><th><div class='"+tpicdiv[2]+"'</div></th><th><div class='"+tpicdiv[3]+"'</div></th><th><div class='"+tpicdiv[4]+"'</div></th><th><div class='"+tpicdiv[7]+"'</div></th><th><div class='"+tpicdiv[8]+"'</div></th><th><div class='"+tpicdiv[9]+"'</div></th><th><div class='"+tpicdiv[15]+"'</div></th><th><div class='"+tpicdiv[14]+"'</div></th><th><div class='"+tpicdiv[1]+"'</div></th><th>other</th><th colspan='2'>TS total</th><th>Next INC</th></thead></table>This Information has been Moved to the Overviews</div></div>";
-        sumwin+="</div></div>";
-        $("#reportsViewBox").after(sumwin);
-        $( "#sumWin" ).draggable({ handle: ".popUpBar" , containment: "window", scroll: false});
-        $( "#sumWin" ).resizable();
+        var gfunkysumwin="<div id='gfunkysumwin' class='longmenu ui-draggable' style='z-index:2002; width: 80% !important;left: 200px !important;'>";
+		gfunkysumwin+="<div class='longwindowbgr'><div class='lngwinbgtop'></div><div class='lngwinbgcent''></div><div class='lngwinbgbott'></div></div>";
+		gfunkysumwin+="<div class='longwindowcontent'>";
+		gfunkysumwin+="<div class='popUpBar ui-draggable-handle'> <span class='ppspan'>Cities Summaries</span><button id='sumWinX' style='margin-right: 5%; margin-top:5px;' class='xbutton' onclick=$('#gfunkysumwin').hide()><div id='xbuttondiv'> <div><div id='centxbuttondiv'></div></div></div></button></div>";
+		gfunkysumwin+="<div  style='aipwindo' width:95%;>";
+
+        gfunkysumwin+="<div id='sumdiv' class='beigetabspopup' style='background:none;border: none;padding: 0px;height:74%; width:97%; margin-left:auto; margin-right:auto;'><ul id='sumtabs' role='tablist' style='width: 95%;'><li role='tab'><a href='#resTab' role='presentation'>Resources</a></li>";
+        gfunkysumwin+="<li role='tab'><a href='#troopsTab' role='presentation'>Troops</a></li><li role='tab'><a href='#raidTab' role='presentation'>Raids</a></li><li role='tab'><a href='#raidoverTab' role='presentation'>Raids Overview</a></li>";
+        gfunkysumwin+="<li role='tab'><a href='#supportTab' role='presentation'>Support</a></li></ul>";
+        gfunkysumwin+="<div id='resTab' style='text-align: center;'><button id='resup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button><button class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'><div class='button'><a href='#' id ='resexp' role='button' style='color:white;'>Export</a></div></button><span id='respan' style='margin-left:50px;'>Show cities from: </span>";
+        gfunkysumwin+="<div class='beigemenutable scroll-pane' style='width:95%;height: AUTO !important;max-height: 75%;margin-left:20px; border-radius: 7px;border: 3px ridge #99805D;' ><table id='restable'>";
+        gfunkysumwin+="<thead><th>Name</th><th colspan='2'>Notes</th><th>Coords</th><th>Wood</th><th>(Storage)</th><th>Stones</th><th>(Storage)</th><th>Iron</th><th>(Storage)</th><th>Food</th><th>(Storage)</th><th>Carts</th><th>(Total)</th><th>Ships</th><th>(Total)</th><th>Score</th></thead></table></div></div>";
+        gfunkysumwin+="<div id='troopsTab' style='text-align: center;'><button id='troopsup' class='greenb' style='font-size:14px;border-radius:6px;margin:4px;'>Update</button><button class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'><div class='button'><a href='#' id ='troopsexp' role='button' style='color:white;'>Export</a></div></button>";
+        gfunkysumwin+="<button id='hidespfbut' class='greenb' style='font-size:14px;border-radius:6px;margin:4px;'>Hide Specific Troops Columns</button><span id='troopspan' style='margin-left:50px;'>Show cities from: </span>";
+        gfunkysumwin+="<div  class='beigemenutable scroll-pane' style='width:99%;height: AUTO !important;max-height: 70%;margin-left:4px; border-radius: 7px;border: 3px ridge #99805D;'><table id='troopstable' style='width:250%;'>";
+        gfunkysumwin+="<thead><tr data='0'><th>Name</th><th style='width:150px;'>Notes</th><th>Coords</th><th class='spf'><div class='"+tpicdiv[8]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[1]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[11]+"'></div>(home)</th><th class='spf'>(Total)</th>";
+        gfunkysumwin+="<th class='spf'><div class='"+tpicdiv[14]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[0]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[10]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[9]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[4]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[12]+"'></div>(home)</th><th class='spf'>(Total)</th>";
+        gfunkysumwin+="<th class='spf'><div class='"+tpicdiv[2]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[13]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[7]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[17]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[6]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[15]+"'></div>(home)</th><th class='spf'>(Total)</th>";
+        gfunkysumwin+="<th class='spf'><div class='"+tpicdiv[3]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[5]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[16]+"'></div>(home)</th><th class='spf'>(Total)</th><th>TS(home)</th><th>(Total)</th>";
+        gfunkysumwin+="</tr></thead></table></div></div>";
+
+        gfunkysumwin+="<div id='raidTab' style='text-align: center;'><button id='raidup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button><span style='margin-left:50px;'>Number of reports to show: </span><select id='raidsturnc' class='greensel' style='border-radius:6px; font-size: 14px !important;'><option value='100'>100</option><option value='500'>500</option><option value='1000'>1000</option><option value='10000'>10000</option></select>";
+        gfunkysumwin+="<div class='beigemenutable scroll-pane' style='width:99%;height: AUTO !important;max-height: 80%;margin-left:4px; border-radius: 7px;border: 3px ridge #99805D;' ><table id='raidtable'>";
+        gfunkysumwin+="<thead><th>Report</th><th>Type</th><th>Cavern progress</th><th>losses</th><th>Carry</th><th>Date</th><th>Origin</th></thead></table></div></div>";
+
+
+        gfunkysumwin+="<div id='raidoverTab' style='text-align: center;'><button id='raidoverup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button><button class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'><div class='button'><a href='#' id ='raidexp' role='button' style='color:white;'>Export</a></div></button><span id='raidspan' style='margin-left:50px;'>Show cities from: </span>";
+        gfunkysumwin+="<div class='beigemenutable scroll-pane' style='width:99%;height: AUTO !important;max-height: 78%;margin-left:4px; border-radius: 7px;border: 3px ridge #99805D;' ><table id='raidovertable'>";
+        gfunkysumwin+="<thead><th>Recall Raids</th><th>Name</th><th colspan='2'>Notes</th><th>Coords</th><th>Raids</th><th>Out</th><th>In</th><th>Raiding TS</th><th>Resources</th></thead></table></div></div>";
+        gfunkysumwin+="<div id='supportTab' style='text-align: center;'><button id='supportup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button>";
+        gfunkysumwin+="<div class='beigemenutable scroll-pane' style='width:99%;height: 80% !important;max-height: 80%;margin-left:4px; border-radius: 7px;border: 3px ridge #99805D;' ><table id='supporttable'>";
+        gfunkysumwin+="<thead><th></th><th>Player</th><th>City</th><th>Coords</th><th>Alliance</th><th>TS supporting</th><th>TS sending</th><th>TS returning</th></thead></table></div></div>";
+
+		/*
+		gfunkysumwin+="<div id='incomingTab'><button id='incomingup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button><span id='incomingspan' style='margin-left:50px;'>Show cities from: </span><span style='margin-left: 20px;color: green;'>Supporting</span><span>/</span><span style='color: #949400;'>Incoming before attack</span><span>/</span><span style='color: red;'>Incoming after attack</span>";
+        gfunkysumwin+="<div class='beigemenutable scroll-pane' style='width:99%;height: AUTO !important;max-height: 80%;margin-left:4px;' ><table id='incomingtable' style='width:100%'>";
+        gfunkysumwin+="<thead><th>Player</th><th>City</th><th>Coords</th><th># of inc</th><th><div class='"+tpicdiv[2]+"'</div></th><th><div class='"+tpicdiv[3]+"'</div></th><th><div class='"+tpicdiv[4]+"'</div></th><th><div class='"+tpicdiv[7]+"'</div></th><th><div class='"+tpicdiv[8]+"'</div></th><th><div class='"+tpicdiv[9]+"'</div></th><th><div class='"+tpicdiv[15]+"'</div></th><th><div class='"+tpicdiv[14]+"'</div></th><th><div class='"+tpicdiv[1]+"'</div></th><th>other</th><th colspan='2'>TS total</th><th>Next INC</th></thead></table>This Information has been Moved to the Overviews</div></div>";
+		*/
+        gfunkysumwin+="</div></div>";
+
+        $("#reportsViewBox").after(gfunkysumwin);
+        $( "#gfunkysumwin" ).draggable({ handle: ".popUpBar" , containment: "window", scroll: false});
+        $( "#gfunkysumwin" ).resizable();
         $(".popUpBar").click(function() {
             //console.log("popup");
-            if ($(this).parent().attr("id")=="sumWin") {
+            if ($(this).parent().attr("id")=="gfunkysumwin") {
                 setTimeout(function() {
-                    $("#sumWin").css("z-index",4001);
+                    $("#gfunkysumwin").css("z-index",4001);
                 },200);
             } else {
                 setTimeout(function() {
-                    $("#sumWin").css("z-index",3000);
+                    $("#gfunkysumwin").css("z-index",3000);
                 },200);
             }
         });
@@ -7780,7 +7772,6 @@ END Boss Only Section
         $("#respan").after(selres);
         $("#troopspan").after(seltroops);
         $("#raidspan").after(selraids);
-        $("#incomingspan").after(selcinc);
         $("#selres").after(selcres);
         $("#seltroops").after(selctroops);
         $("#selraid").after(selcraid);
@@ -7790,7 +7781,7 @@ END Boss Only Section
         $("#selcres").val(56).change();
         $("#selcraid").val(56).change();
         $("#selctroops").val(56).change();
-        $("#selcincoming").val(56).change();
+        //$("#selcincoming").val(56).change();
         //tabs.tabs( "refresh" );
         $("#hidespfbut").click(function() {
             if (hidespf) {
@@ -7965,12 +7956,6 @@ END Boss Only Section
         });
     }
 
-
-
-
-
-
-
 //update incomings summary
     function updateincoming(data) {
         var inctab="<thead><th>Player</th><th>City</th><th>Coords</th><th># INC</th><th><div class='"+tpicdiv[2]+"'</div></th><th><div class='"+tpicdiv[3]+"'</div></th><th><div class='"+tpicdiv[4]+"'</div></th><th><div class='"+tpicdiv[7]+"'</div></th><th><div class='"+tpicdiv[8]+"'</div></th><th><div class='"+tpicdiv[9]+"'</div></th><th><div class='"+tpicdiv[15]+"'</div></th><th><div class='"+tpicdiv[14]+"'</div></th><th><div class='"+tpicdiv[1]+"'</div></th><th>other</th><th colspan='2'>TS total</th><th>Next INC</th></thead><tbody> This Information Has been Moved";
@@ -8047,12 +8032,6 @@ END Boss Only Section
         sorttable.makeSortable(newTableObject);
     }
 
-
-
-
-
-
-
 //update raid overview
     function updateraidover(data,notes) {
        // console.log(notes);
@@ -8091,15 +8070,6 @@ END Boss Only Section
             exportTableToCSV.apply(this, [$('#raidovertable'), outputFile]);
         });
     }
-
-
-
-
-
-
-
-
-
 
 //update support summary
     function updatesupport(data) {
@@ -8171,15 +8141,6 @@ END Boss Only Section
         });
     }
 
-
-
-
-
-
-
-
-
-
 //update raids summary
     function updateraids(data,turnc) {
         var raidtab="<thead><th>Report</th><th>Type</th><th>Cavern progress</th><th>losses</th><th>Carry</th><th>Date</th><th>Origin</th></thead><tbody>";
@@ -8195,7 +8156,7 @@ END Boss Only Section
                 else if (this[2]>5 ) {
                     raidtab+="<tr style='color:red;'>";
                 }
-                raidtab+="<td class='gFrep' data='"+this[6]+"'><span class='unread'>Share report</td><td>"+this[0]+"</span></td><td>"+this[8]+"%"+"</td><td>"+this[2]+"%"+"</td><td>"+this[3]+"%"+"</td><td>"+this[4]+"</td><td>"+this[1]+"</td></tr>";
+                raidtab+="<td class='gFrep brownb mtmdefc' data='"+this[6]+"'><span class='unread'>Share report</td><td>"+this[0]+"</span></td><td>"+this[8]+"%"+"</td><td>"+this[2]+"%"+"</td><td>"+this[3]+"%"+"</td><td>"+this[4]+"</td><td>"+this[1]+"</td></tr>";
             }
             i++;
         });
@@ -8205,14 +8166,6 @@ END Boss Only Section
         var newTableObject = document.getElementById('raidtable');
         sorttable.makeSortable(newTableObject);
     }
-
-
-
-
-
-
-
-
 
 //update res summary
     function updateres(data) {
@@ -8273,7 +8226,7 @@ END Boss Only Section
         //$("#restable").fixedHeaderTable({ cloneHeadToFoot: true });
         var newTableObject = document.getElementById('restable');
         sorttable.makeSortable(newTableObject);
-        var tottab="<div id='rsum' class='beigemenutable scroll-pane' style='width: 99%;height: AUTO !important;max-height: 85%;margin-left: 4px;'><table><td>Total wood: </td><td>"+woodtot.toLocaleString()+"</td><td>Total stones: </td><td>"+stonetot.toLocaleString()+"</td><td>Total iron: </td><td>"+irontot.toLocaleString()+"</td><td>Total food: </td><td>"+foodtot.toLocaleString()+"</td>";
+        var tottab="<div id='rsum' class='beigemenutable scroll-pane' style='width: 99%;height: AUTO !important;max-height: 85%;margin-left: 4px; border-radius: 7px;border: 3px ridge #99805D;'><table><td>Total wood: </td><td>"+woodtot.toLocaleString()+"</td><td>Total stones: </td><td>"+stonetot.toLocaleString()+"</td><td>Total iron: </td><td>"+irontot.toLocaleString()+"</td><td>Total food: </td><td>"+foodtot.toLocaleString()+"</td>";
         tottab+="<td>Total carts: </td><td>"+cartstot.toLocaleString()+"</td><td>Total ships: </td><td>"+shipstot.toLocaleString()+"</td></table></div>";
         $("#rsum").remove();
         $("#resTab").append(tottab);
@@ -8293,13 +8246,6 @@ END Boss Only Section
             exportTableToCSV.apply(this, [$('#restable'), outputFile]);
         });
     }
-
-
-
-
-
-
-
 
 
 //update troops summary
@@ -8501,7 +8447,7 @@ END Boss Only Section
 
             strhome+="</tr></table>";
             strtot+="</tr></table>";
-            //troopstab+="<td class='nspf' colspan='2'>"+strhome+"</td><td class='nspf' colspan='2'>"+strtot+"</td><td>"+tshome.toLocaleString()+"</td><td>"+tstot.toLocaleString()+"</td></tr>";
+
             troopstab+="<td class='nspf'>"+strtot+"</td><td>"+tshome.toLocaleString()+"</td><td>"+tstot.toLocaleString()+"</td></tr>";
         });
         troopstab+="</tbody>";
@@ -8519,7 +8465,7 @@ END Boss Only Section
         $("#troopstable td").css("padding-left","0%");
         var newTableObject = document.getElementById('troopstable');
         sorttable.makeSortable(newTableObject);
-        var tottab="<div id='tsum' class='beigemenutable scroll-pane' style='width: 99%;height: AUTO !important;max-height: 85%;margin-left: 4px;'><table style='font-size: 14px;width: 250%;'><tr><td>Total arbs: </td><td>Total balli: </td><td>Total druids: </td><td>Total galley: </td><td>Total guards: </td><td>Total horses: </td><td>Total praetor: </td><td>Total priest: </td><td>Total rams: </td><td>Total rangers: </td>";
+        var tottab="<div id='tsum' class='beigemenutable scroll-pane' style='width: 99%;height: AUTO !important;max-height: 85%;margin-left: 4px; border-radius: 7px;border: 3px ridge #99805D;'><table style='font-size: 14px;width: 250%;'><tr><td>Total arbs: </td><td>Total balli: </td><td>Total druids: </td><td>Total galley: </td><td>Total guards: </td><td>Total horses: </td><td>Total praetor: </td><td>Total priest: </td><td>Total rams: </td><td>Total rangers: </td>";
         tottab+="<td>Total scorp: </td><td>Total scouts: </td><td>Total senator: </td><td>Total sorc: </td><td>Total stingers: </td><td>Total triari: </td><td>Total vanqs: </td><td>Total warship: </td></tr>";
         tottab+="<tr><td>"+arbstot.toLocaleString()+"</td><td>"+balltot.toLocaleString()+"</td>";
         tottab+="<td>"+druidstot.toLocaleString()+"</td>";
@@ -8559,23 +8505,22 @@ END Boss Only Section
 
 
 
-
-
-
-
-
-//showing cities in shrine planner
-    function showcities() {
-        $("#shrineTab tr").each(function () {
-            if($(this).attr("data")=="city") {
-                $(this).show();
-            }
-        });
-    }
-
-
-
-
+ //hiding cities in shrine planner
+  function hidecities() {
+    $("#shrineTab tr").each(function() {
+      if ($(this).attr("data") == "city") {
+        $(this).hide();
+      }
+    });
+  }
+  //showing cities in shrine planner
+  function showcities() {
+    $("#shrineTab tr").each(function() {
+      if ($(this).attr("data") == "city") {
+        $(this).show();
+      }
+    });
+  }
 
 
 
@@ -8701,12 +8646,6 @@ END Boss Only Section
             updateshrine();
         });
     }
-
-
-
-
-
-
 
 
 // exporting table to csv file taken from https://gist.github.com/adilapapaya/9787842
