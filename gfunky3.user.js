@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name gfunky3
 // @namespace www.tampermonkey.com
-// @version 1.2.3
+// @version 1.2.4
 // @description gfunky3
 // @author Greety
 // @match https://*.crownofthegods.com
@@ -30,8 +30,8 @@ START POPUP MESSAGE FOR PLAYERS WHEN THEY OPEN THE GAME
 		startupwin+="<div id='bottomcrownpic'></div>";
 		startupwin+="<div><span style='margin-left: 5%;'> <h1 style='text-align:center;'> GFunky3 BY GREETY </h1></span><br>";
 		startupwin+="<span style='margin-left: 5%;'><h4 style='text-align:center;color:blue;'>Special Thanks to Kalish, Dhruv, Lionell, And  Fact</h4><br>";
-		startupwin+="<h4 style='text-align:center;color:green;' >Updated December 12 2020</h4></span><br><br>";
-		startupwin+="<span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;'>";
+		startupwin+="<h4 style='text-align:center;color:green;' >Updated December 26 2020</h4></span><br><br>";
+		startupwin+="<span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;font-size:10px !important;'>";
 		startupwin+="	<li>	[Updated] Return All to Return All Raids for better clarity (this might have been part of the midweek patch)	</li>";
 		startupwin+="	<li>	[Updated] CSS across most Gfunky Items. The Styling should be consistent throughout	</li>";
 		startupwin+="	<li>	[Added] Gfunky Name to each Function that is provided by this Script	</li>";
@@ -953,7 +953,7 @@ TODO update id for Temple
             }
         };
 
-
+ $('#citadelResTable table').css({"width":"95%", "margin-left": "auto", "margin-right": "auto"});
 
 
 
