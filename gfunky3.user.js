@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name gfunky3
 // @namespace www.tampermonkey.com
-// @version 1.2.4
+// @version 1.2.5
 // @description gfunky3
 // @author Greety
 // @match https://*.crownofthegods.com
@@ -30,7 +30,7 @@ START POPUP MESSAGE FOR PLAYERS WHEN THEY OPEN THE GAME
 		startupwin+="<div id='bottomcrownpic'></div>";
 		startupwin+="<div><span style='margin-left: 5%;'> <h1 style='text-align:center;'> GFunky3 BY GREETY </h1></span><br>";
 		startupwin+="<span style='margin-left: 5%;'><h4 style='text-align:center;color:blue;'>Special Thanks to Kalish, Dhruv, Lionell, And  Fact</h4><br>";
-		startupwin+="<h4 style='text-align:center;color:green;' >Updated December 26 2020</h4></span><br><br>";
+		startupwin+="<h4 style='text-align:center;color:green;' >Updated December 31 2020</h4></span><br><br>";
 		startupwin+="<span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;font-size:10px !important;'>";
 		startupwin+="	<li>	[Updated] Return All to Return All Raids for better clarity (this might have been part of the midweek patch)	</li>";
 		startupwin+="	<li>	[Updated] CSS across most Gfunky Items. The Styling should be consistent throughout	</li>";
@@ -53,7 +53,7 @@ START POPUP MESSAGE FOR PLAYERS WHEN THEY OPEN THE GAME
 		startupwin+="	<li>	[Updated] Nearest Defense GUI	</li>";
 		startupwin+="	<li>	[Updated] Offensive List GUI	</li>";
 		startupwin+="	<li>	[Updated] Defensive List GUI	</li>";
-		startupwin+="	<li>	[Needs Testing] Sending Temple Donations after closing the mass-res sender, without changing from “normal”. I believe I am actually overriding the normal with temple, however the display is currently not adjusting to show that.	</li>";
+		startupwin+="	<li>	</li>";
 		startupwin+="</ul></span></div>";
 		startupwin+="</div></div></div>";
 		$("body").append(startupwin);
@@ -1718,7 +1718,7 @@ START OF CORE FUNKY
 		
 	//Boss Page Body
 	   var bosstabbody="<div id='warBossmanager' aria-labeledby='ui-id-21' class='ui-tabs-panel' role='tabpanel' aria-hidden='true' style='display: none;'><div id='fpdcdiv3'  style='margin-left: auto;margin-right: auto;font-size: 20px;color: #e1c190;font-weight: 500;padding-top: 5px;padding-bottom: 5px;border-radius: 6px;border: 3px ridge #99805D;text-align: center;background: url(/images/antonui/qmenutop.png);background-size: 100% 100%;' >Gfunky's Boss Hunter</div>";
-       bosstabbody+="<br><div id='bossbox' class='beigemenutable scroll-pane' style='width: 96%; height: AUTO !important;max-height: 85%; margin-left: 2%;'></div><br><div id='idletroops' style='width: 80%; margin-left: auto; margin-right: auto; border-radius: 6px; border: 3px ridge #99805D;'></div><br><div style='text-align:center'><button id='refreshboss' style='width: 70%;height: 30px !important; font-size: 12px !important; border-radius:6px;' class='regButton greenb'>Refresh Bosses</button></div></div>";
+       bosstabbody+="<br><div id='bossbox' class='beigemenutable scroll-pane' style='width: 96%; height: AUTO !important;max-height: 50%; margin-left: 2%;'></div><br><div id='idletroops' style='width: 80%; margin-left: auto; margin-right: auto; border-radius: 6px; border: 3px ridge #99805D;'></div><br><div style='text-align:center'><button id='refreshboss' style='width: 70%;height: 30px !important; font-size: 12px !important; border-radius:6px;' class='regButton greenb'>Refresh Bosses</button></div></div>";
 
 
 
