@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name gfunky3
 // @namespace www.tampermonkey.com
-// @version 1.2.5
+// @version 1.2.6
 // @description gfunky3
 // @author Greety
 // @match https://*.crownofthegods.com
@@ -30,30 +30,13 @@ START POPUP MESSAGE FOR PLAYERS WHEN THEY OPEN THE GAME
 		startupwin+="<div id='bottomcrownpic'></div>";
 		startupwin+="<div><span style='margin-left: 5%;'> <h1 style='text-align:center;'> GFunky3 BY GREETY </h1></span><br>";
 		startupwin+="<span style='margin-left: 5%;'><h4 style='text-align:center;color:blue;'>Special Thanks to Kalish, Dhruv, Lionell, And  Fact</h4><br>";
-		startupwin+="<h4 style='text-align:center;color:green;' >Updated December 31 2020</h4></span><br><br>";
-		startupwin+="<span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;font-size:10px !important;'>";
-		startupwin+="	<li>	[Updated] Return All to Return All Raids for better clarity (this might have been part of the midweek patch)	</li>";
-		startupwin+="	<li>	[Updated] CSS across most Gfunky Items. The Styling should be consistent throughout	</li>";
-		startupwin+="	<li>	[Added] Gfunky Name to each Function that is provided by this Script	</li>";
-		startupwin+="	<li>	[Updated] Formatting in War Counc Tabs.	</li>";
-		startupwin+="	<li>	[Fixed] Tabs Had an Issue where they would float on smaller screens.	</li>";
-		startupwin+="	<li>	[Updated] Formatted the Find Caverns Table down to 65%	</li>";
-		startupwin+="	<li>	[Updated] Formatted the Idle Units Down to 85% and added a line break so the Red Text would not interfere with the WarCounc Tabs	</li>";
-		startupwin+="	<li>	[Updated] Complete redesign of the Locate Boss Tab...Now the Boss Hunter Tab	</li>";
-		startupwin+="	<li>	[Updated] Attack Sender Page. Made the Tables bigger from 31% to 40%	</li>";
-		startupwin+="	<li>	[Added] Export Option for the Shrine Planner	</li>";
-		startupwin+="	<li>	[Fixed] an alignment Issue with the Gfunky Added Coords next to the city name	</li>";
-		startupwin+="	<li>	[Fixed] Formatting on “Return All” under the War Tab	</li>";
-		startupwin+="	<li>	[Added] A date-time selector to the Return All System under the War Tab. This not only Allows you to choose a date, but a time as well. Have not implemented elsewhere yet as it does not include seconds.	</li>";
-		startupwin+="	<li>	[Fixed] The arrow to correctly correlate with open or close on “Gfunky’s Current Buildings”	</li>";
-		startupwin+="	<li>	[Updated] Return All GUI	</li>";
-		startupwin+="	<li>	[Updated] Boss Hunter GUI	</li>";
-		startupwin+="	<li>	[Updated] Attack Sender GUI	</li>";
-		startupwin+="	<li>	[Updated] Defense Sender GUI	</li>";
-		startupwin+="	<li>	[Updated] Nearest Defense GUI	</li>";
-		startupwin+="	<li>	[Updated] Offensive List GUI	</li>";
-		startupwin+="	<li>	[Updated] Defensive List GUI	</li>";
-		startupwin+="	<li>	</li>";
+		startupwin+="<h4 style='text-align:center;color:green;' >Updated January 2 2021</h4></span><br><br>";
+		startupwin+="<span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;font-size:14px !important;'>";
+		startupwin+="<li class='gfadded'>	[Added] Complete Change Log Now Available under Overviews, Formerly Summaries	</li>";
+		startupwin+="<li class='gfupdated'>	[Updated] 30Galley/1 Scout button to Scout-Galley Fake	</li>";
+       startupwin+="<li class='gfadded'>	[Added] Target # Header to Attack Sender	</li>";
+       startupwin+="<li class='gfupdated'>	[Updated] Gfunky Building Counter formatting	</li>";
+       startupwin+="<li class='gfadded'>	[Added] Gfunky Changelog Under the Gfunky “Summary” Button 	</li>";
 		startupwin+="</ul></span></div>";
 		startupwin+="</div></div></div>";
 		$("body").append(startupwin);
@@ -157,7 +140,7 @@ START OF QUICKBUILD SCRIPT
     const CLASS_AND_CSS_NEXT_BUTTON = 'style="' + CSS_NEXT_BUTTON + '" class="regButton greenb"';
 
     var QB = {
-        _version: "0.3.0"
+        _version: "0.4.2"
     };
 
 
@@ -172,250 +155,60 @@ START OF QUICKBUILD SCRIPT
 
 
 // Resources getters
-            forester: {
-                id: [448],
-                buildable: true,
-                schedule: "2",
-                shortcut: "f",
-                movable: true
-            },
-            quarry: {
-                id: [461],
-                buildable: true,
-                schedule: "3",
-                shortcut: "s",
-                movable: true
-            },
-            farmhouse: {
-                id: [447],
-                buildable: true,
-                schedule: "1",
-                shortcut: "a",
-                movable: true
-            },
-            mine: {
-                id: [465],
-                buildable: true,
-                schedule: "4",
-                shortcut: "i",
-                movable: true
-            },
+				foresters_hut: { id: [448], buildable: true, schedule: "2", shortcut: "f", movable: true},
+				stone_mine: {id: [461], buildable: true, schedule: "3", shortcut: "s", movable: true},
+				farm_estate: {id: [447], buildable: true,schedule: "1", shortcut: "a", movable: true},
+				iron_mine: {id: [465], buildable: true, schedule: "4",shortcut: "i", movable: true},
 
+	// Resources helpers
+				sawmill: { id: [460], buildable: true, schedule: "L", shortcut: "l", movable: true},
+				masons_hut: {id: [462], buildable: true, schedule: "A", shortcut: "h", movable: true},
+				grain_mill: {id: [463], buildable: true, schedule: "M", shortcut: "g", movable: true},
+				smelter: {id: [477], buildable: true, schedule: "D", shortcut: "z", movable: true},
 
+	// Others
+				storehouse: {id: [464], buildable: true, schedule: "S", shortcut: "r", movable: true},
+				cabin: {id: [446], buildable: true, schedule: "C", shortcut: "c", movable: true},
+				hideaway: {id: [479], buildable: true, schedule: "H", shortcut: "q", movable: true},
+				villa: {id: [481], buildable: true, schedule: "U", shortcut: "v", movable: true}, // i.e. villa: useless. Raid !
 
+	//DO Not build
+				basilica: {id: [455], buildable: false, schedule: "T"},
+				castle: {id: [467], buildable: false, schedule: "X", movable: true},
+				temple: {id: [1000], buildable: false},
 
-// Resources helpers
-            sawmill: {
-                id: [460],
-                buildable: true,
-                schedule: "L",
-                shortcut: "l",
-                movable: true
-            },
-            stonemason: {
-                id: [462],
-                buildable: true,
-                schedule: "A",
-                shortcut: "h",
-                movable: true
-            },
-            windmill: {
-                id: [463],
-                buildable: true,
-                schedule: "M",
-                shortcut: "g",
-                movable: true
-            },
-            smelter: {
-                id: [477],
-                buildable: true,
-                schedule: "D",
-                shortcut: "z",
-                movable: true
-            },
+	// Trade
+				port: {id: [488, 489, 490], buildable: true, schedule: "R", shortcut: "o", movable: true},
+				forum: {id: [449],buildable: true,schedule: "P", shortcut: "m", movable: true},
 
+	// Military
+				guardhouse: {id: [504], buildable: true, schedule: "K", shortcut: "u", movable: true},
+				barracks: {id: [445], buildable: true, schedule: "B", shortcut: "b", movable: true},
+				training_arena: {id: [483], buildable: true, schedule: "G", shortcut: "t", movable: true},
+				stable: {id: [466], buildable: true,schedule: "E", shortcut: "e", movable: true},
+				sorcerers_tower: {id: [500], buildable: true, schedule: "J", shortcut: "w",movable: true},
+				academy: {id: [482], buildable: true, schedule: "Z", shortcut: "y", movable: true},
+				blacksmith: {id: [502], buildable: true, schedule: "Y", shortcut: "k", movable: true},
+				shipyard: {id: [491, 496, 498], buildable: true, schedule: "V", shortcut: "p",movable: true},
 
-
-
-
-// Others
-            storehouse: {
-                id: [464],
-                buildable: true,
-                schedule: "S",
-                shortcut: "r",
-                movable: true
-            },
-            cottage: {
-                id: [446],
-                buildable: true,
-                schedule: "C",
-                shortcut: "c",
-                movable: true
-            },
-            hideaway: {
-                id: [479],
-                buildable: true,
-                schedule: "H",
-                shortcut: "q",
-                movable: true
-            },
-            townhouse: {
-                id: [481],
-                buildable: true,
-                schedule: "U",
-                shortcut: "v",
-                movable: true
-            }, // i.e. villa: useless. Raid !
-
-
-
-
-//DO Not build
-            townhall: {
-                id: [455],
-                buildable: false,
-                schedule: "T"
-            },
-            castle: {
-                id: [467],
-                buildable: false,
-                schedule: "X",
-                // shortcut: "x", too dangerous !!!
-                movable: true
-            },
-            temple: {
-                id: [1000],
-                buildable: false
-            },
+	// Resources
+				forest: {id: [454], buildable: false, schedule: "."},
+				stone: {id: [451], buildable: false, schedule: ":" },
+				iron: {id: [452], buildable: false, schedule: ","},
+				lake: {id: [453], buildable: false, schedule: ";"},
 /*
-
-
-TODO update id for Temple
-
-
-
-
+	 
+				wall: { id:[809], buildable: true, moveable:false},
+				sentinel_post: { id:[547], buildable: true, shortcut: "1", moveable: true},
+				ranger_post: { id: [543], buildable: true, shortcut:"2", moveable: true},
+				snag_barricade: { id:[567], buildable: true, shortcut:"6", moveable: true},
+				triari_post: { id: [539], buildable: true, shortcut:"3", moveable: true},
+				equine_barricade: { id:[559], buildable: true,shortcut: "7", moveable: true},
+				priestess_post: { id:[551], buildable: true, shortcut:"4", moveable: true},
+				rune_barricade: { id:[563], buildable: true, shortcut:"8", moveable: true},
+				ballista_post: { id:[555], buildable: true, shortcut:"5", moveable: true},
+				veiled_barricade: { id:[571], buildable: true, shortcut "9", moveable: true},
 */
-
-
-
-
-
-// Trade
-            port: {
-                id: [488, 489, 490],
-                buildable: true,
-                schedule: "R",
-                shortcut: "o",
-                movable: true
-            },
-            marketplace: {
-                id: [449],
-                buildable: true,
-                schedule: "P",
-                shortcut: "m",
-                movable: true
-            }, // i.e. forum
-
-
-
-
-
-
-// Military
-            cityguardhouse: {
-                id: [504],
-                buildable: true,
-                schedule: "K",
-                shortcut: "u",
-                movable: true
-            }, // quite useless
-            barracks: {
-                id: [445],
-                buildable: true,
-                schedule: "B",
-                shortcut: "b",
-                movable: true
-            },
-            trainingground: {
-                id: [483],
-                buildable: true,
-                schedule: "G",
-                shortcut: "t",
-                movable: true
-            },
-            stable: {
-                id: [466],
-                buildable: true,
-                schedule: "E",
-                shortcut: "e",
-                movable: true
-            },
-            mage_tower: {
-                id: [500],
-                buildable: true,
-                schedule: "J",
-                shortcut: "w",
-                movable: true
-            },
-            academy: {
-                id: [482],
-                buildable: true,
-                schedule: "Z",
-                shortcut: "y",
-                movable: true
-            },
-            blacksmith: {
-                id: [502],
-                buildable: true,
-                schedule: "Y",
-                shortcut: "k",
-                movable: true
-            },
-            shipyard: {
-                id: [491, 496, 498],
-                buildable: true,
-                schedule: "V",
-                shortcut: "p",
-                movable: true
-            },
-
-
-
-
-
-
-// Resources
-            forest: {
-                id: [454],
-                buildable: false,
-                schedule: "."
-            },
-            stone: {
-                id: [451],
-                buildable: false,
-                schedule: ":"
-            },
-            iron: {
-                id: [452],
-                buildable: false,
-                schedule: ","
-            },
-            lake: {
-                id: [453],
-                buildable: false,
-                schedule: ";"
-            }
-
- /*
-
- TODO: add wall & towers
-
-
-
-
- */
         };
 
 // Same as _DETAILS but in a list.
@@ -456,8 +249,8 @@ TODO update id for Temple
 
 
 // Searching town hall.
-        that.isTownHall = function (btype) {
-            return that._DETAILS.townhall.id[0] === btype;
+        that.isBasilica = function (btype) {
+            return that._DETAILS.basilica.id[0] === btype;
         };
 
 
@@ -636,7 +429,7 @@ TODO update id for Temple
             if (cdata.bd) {
                 updatedData = true;
                 // Updating buildings count for city
-                that.data.townhallLevel = 1;
+                that.data.basilicaLevel = 1;
                 that.data.curentMap = [];
 
                 // Filling curentMap
@@ -647,8 +440,8 @@ TODO update id for Temple
                         index: buildingIndex,
                         building: that.BUILDINGS.buildingFromId(btype)
                     });
-                    if (that.BUILDINGS.isTownHall(btype)) {
-                        that.data.townhallLevel = cdata.bd[buildingIndex].bl;
+                    if (that.BUILDINGS.isBasilica(btype)) {
+                        that.data.basilicaLevel = cdata.bd[buildingIndex].bl;
                     }
                 }
             }
@@ -939,7 +732,7 @@ TODO update id for Temple
                                 }
                                 break;
                             default:
-                                console.error("Todo " + key);
+                                //console.error("Todo " + key);
                                 debugger;
                         };
                         if (classes) {
@@ -1057,7 +850,7 @@ TODO update id for Temple
 // Adding buttons once game loaded
     var waitForGameLoaded = function () {
         if ($("#incAttacksDiv").length > 0) {
-            console.log("Game loaded.");
+            console.log("Game Loaded.");
 
 
 
@@ -1104,7 +897,7 @@ TODO update id for Temple
             setTimeout(waitForGameLoaded, 1000);
         }
 
-        console.log("Quickbuild Script loaded.");
+        console.log("Quickbuild Script Loading");
     };
     waitForGameLoaded();
 
@@ -1147,7 +940,7 @@ TODO update id for Temple
                                 cdata = JSON.parse(this.response);
                                 QB.buildManager.parseCurentCityData(cdata);
                             } catch (e) {
-                                console.error(e);
+                                //console.error(e);
                             }
                         } else if (url.indexOf('poll2.php') != -1) {
                             // Poll2 response: Updating curent city
@@ -1156,7 +949,7 @@ TODO update id for Temple
                                 cdata = poll2.city;
                                 QB.buildManager.parseCurentCityData(cdata);
                             } catch (e) {
-                                console.error(e);
+                                //console.error(e);
                             }
                         }
                     }
@@ -1350,7 +1143,7 @@ START OF CORE FUNKY
 							city.x=Number(city.cid % 65536);
 							city.y=Number((city.cid-city.x)/65536);
 							city.cont=Number(Math.floor(city.x/100)+10*Math.floor(city.y/100));
-							console.log('Coords: ' + city.x + ':' + city.y );
+							//console.log('Coords: ' + city.x + ':' + city.y );
                         city.mo=cdata.mo;
                         setTimeout(function(){
                             updateattack();
@@ -1411,7 +1204,13 @@ START OF CORE FUNKY
     })(XMLHttpRequest.prototype.open);
     },4000);
 
+	
+	$("<style>").prop("type", "text/css").html(".gfadded {color : blue}").appendTo("head");
+	$("<style>").prop("type", "text/css").html(".gffixed {color : lime}").appendTo("head");
+	$("<style>").prop("type", "text/css").html(".gfremoved {color : red ; font-weight: 700}").appendTo("head");
+	$("<style>").prop("type", "text/css").html(".gfupdated {color : yellow}").appendTo("head");
 
+	
 
 
 //decoding world data in the new format
@@ -1718,7 +1517,7 @@ START OF CORE FUNKY
 		
 	//Boss Page Body
 	   var bosstabbody="<div id='warBossmanager' aria-labeledby='ui-id-21' class='ui-tabs-panel' role='tabpanel' aria-hidden='true' style='display: none;'><div id='fpdcdiv3'  style='margin-left: auto;margin-right: auto;font-size: 20px;color: #e1c190;font-weight: 500;padding-top: 5px;padding-bottom: 5px;border-radius: 6px;border: 3px ridge #99805D;text-align: center;background: url(/images/antonui/qmenutop.png);background-size: 100% 100%;' >Gfunky's Boss Hunter</div>";
-       bosstabbody+="<br><div id='bossbox' class='beigemenutable scroll-pane' style='width: 96%; height: AUTO !important;max-height: 50%; margin-left: 2%;'></div><br><div id='idletroops' style='width: 80%; margin-left: auto; margin-right: auto; border-radius: 6px; border: 3px ridge #99805D;'></div><br><div style='text-align:center'><button id='refreshboss' style='width: 70%;height: 30px !important; font-size: 12px !important; border-radius:6px;' class='regButton greenb'>Refresh Bosses</button></div></div>";
+       bosstabbody+="<br><div id='bossbox' class='beigemenutable scroll-pane' style='width: 96%; height: AUTO !important;max-height: 50%; margin-left: auto; margin-right: auto; border: 3px ridge #886f53; border-radius: 6px;'></div><br><div id='idletroops' style='width: 80%; margin-left: auto; margin-right: auto; border-radius: 6px; border: 3px ridge #99805D;'></div><br><div style='text-align:center'><button id='refreshboss' style='width: 70%;height: 30px !important; font-size: 12px !important; border-radius:6px;' class='regButton greenb'>Refresh Bosses</button></div></div>";
 
 
 
@@ -1731,7 +1530,7 @@ START OF CORE FUNKY
 	//Attack Page body
         var attacktabbody="<div id='warAttackmanager' aria-labeledby='ui-id-21' class='ui-tabs-panel' role='tabpanel' aria-hidden='true' style='display: none;'><div id='fpdcdiv4'  style='margin-left: auto;margin-right: auto;font-size: 20px;color: #e1c190;font-weight: 500;padding-top: 5px;padding-bottom: 5px;border-radius: 6px;border: 3px ridge #99805D;text-align: center;background: url(/images/antonui/qmenutop.png);background-size: 100% 100%;' >Gfunky's Attack Sender</div>";
         attacktabbody+="<div id='attackbox' class='beigemenutable scroll-pane' style='width: 53%; height: 40%; float:left; margin-left: auto; margin-right: auto; border-radius: 6px;border: 3px ridge #99805D;'>";
-        attacktabbody+="<table><thead><th></th><th>X</th><th>Y</th><th>Type</th></thead><tbody>";
+        attacktabbody+="<table><thead><th>Target #</th><th>X</th><th>Y</th><th>Type</th></thead><tbody>";
         for (var i=1;i<16;i++) {
             attacktabbody+="<tr><td>Target "+i+" </td><td><input id='t"+i+"x' type='number' style='width: 85%'></td><td><input id='t"+i+"y' type='number' style='width: 85%'></td>";
             attacktabbody+="<td><select id='type"+i+"' class='greensel' style='font-size: 15px !important;width:95%;height:30px;'><option value='0'>Fake</option><option value='1'>Real</option></select></td></tr>";
@@ -1744,7 +1543,7 @@ START OF CORE FUNKY
         attacktabbody+="<tr><td><span>Send fake as:</span></td><td><select id='faketype' class='greensel' style='font-size: 15px !important;width:95%;height:30px; border-radius:6px'>";
         attacktabbody+="<option value='0'>Assault</option><option value='1'>Siege</option><option value='2'>Plunder</option><option value='3'>Scout</option></select></td></tr>";
         attacktabbody+="<tr><td><input id='retcheck' class='clsubopti' type='checkbox' checked> Return all Troops</td><td colspan=2 ><input id='retHr' type='number' style='width: 20px' value='2'> Hours before attack</td></tr>";
-        attacktabbody+="<tr><td><input id='scoutick' class='clsubopti' type='checkbox' checked>30galleys/1scout fake</td></tr></table>";
+        attacktabbody+="<tr><td><input id='scoutick' class='clsubopti' type='checkbox' checked>Scout-Galley Fake</td></tr></table>";
         attacktabbody+="<table style='width:96%;margin-left:2%'><thead><tr style='text-align:center; font-size:12px;'><th></th><th>Hr</th><th>Min</th><th>Sec</th><th colspan='2'>Date</th></tr>";
         attacktabbody+="<tr><td>Set Time: </td><td style='text-align: center;'><input id='attackHr' type='number' style='width: 35px;height: 22px;font-size: 10px;' value='10'></td><td style='text-align: center;'><input id='attackMin' style='width: 35px;height: 22px;font-size: 10px;' type='number' value='00'></td>";
         attacktabbody+="<td style='text-align: center;'><input style='width: 35px;height: 22px;font-size: 10px;' id='attackSec' type='number' value='00'></td><td colspan='2' style='text-align: center;'><input style='width:90px;' id='attackDat' type='text' value='00/00/0000'></td></tr></tbody></table>";
@@ -1841,7 +1640,7 @@ START OF CORE FUNKY
 							gfunkyexpwin+="</div>";
 						gfunkyexpwin+="</button>";
 					gfunkyexpwin+="</div>";
-					gfunkyexpwin+="<div id='expbody' style='margin-left:20px;'>";
+					gfunkyexpwin+="<div id='expbody' style='margin-left:auto; margin-right: auto;'>";
 						gfunkyexpwin+="<textarea style='font-size:11px;width:90%;margin-left:auto; margin-right:auto;height:150px;' id='expstring' maxlength='300'></textarea>";
 						gfunkyexpwin+="<br></br><button id='applyExp' style='width: 100px;height: 30px !important; font-size: 12px !important; float: right; margin-right:2%;' class='regButton greenb'>Apply</button>";
 					gfunkyexpwin+="</div>";
@@ -2551,7 +2350,7 @@ SEND DEFENSE Function
         if (t.type.indexOf(14)>-1) {
             if (t.use[t.type.indexOf(14)]==1) {
                 defendtime=ttspeed[14]/faithbonustravelspeed[14]*maxdist;
-                console.log(defendtime);
+                //console.log(defendtime);
                 var galleydefense=t.type.indexOf(14);
                 if (defobj.dep==0) {
                     var galnumb=Math.floor(t.home[galleydefense]/tarnumb);
@@ -2627,7 +2426,7 @@ SEND DEFENSE Function
 
 
 // sending def
-        console.log(t);
+        //console.log(t);
         var l=0; var end=targets.x.length;
         function dloop() {
             for (var i in t.home) {
@@ -2642,7 +2441,7 @@ SEND DEFENSE Function
             },100);
             $("#reinforcetimingselect").val(Number(defobj.dep)+1).change();
             if ($("#defdeparture").val()>0) {
-                console.log(defobj.min,defobj.hr,defobj.sec);
+                //console.log(defobj.min,defobj.hr,defobj.sec);
                 var date=defobj.date+" "+defobj.hr+":"+defobj.min+":"+defobj.sec;
                 $("#reinfotimeinp").val(date);
             }
@@ -2669,7 +2468,7 @@ SEND DEFENSE Function
 
 
         function art() { //setting return time for raids according to city view outgoing list
-            console.log(poll2.OGA);
+            //console.log(poll2.OGA);
             $("#commandsPopUpBox").hide();
             if (defobj.ret==1) {
                 jQuery(".toptdinncommtbl1:first")[0].click();
@@ -2679,7 +2478,7 @@ SEND DEFENSE Function
                 var minddate = new Date();
                 var first=true;
                 for (var i in poll2.OGA) {
-                    console.log(targets.cstr,poll2.OGA[i][5]);
+                    //console.log(targets.cstr,poll2.OGA[i][5]);
                     if (targets.cstr.indexOf(poll2.OGA[i][5])>-1) {
                         if (first) {
                             first=false;
@@ -2690,13 +2489,13 @@ SEND DEFENSE Function
                             minddate.setHours(Number(ttime[0]));
                             minddate.setMinutes(Number(ttime[1]));
                             minddate.setSeconds(Number(ttime[2]));
-                            console.log(time[1]);
+                            //console.log(time[1]);
                             if (time[1]=="Tomorrow") {
                                 minddate.setDate(minddate.getDate() + 1);
-                                console.log("tmrw");
+                                //console.log("tmrw");
                             } else if (time[1]!="Today") {
                                 var ddate=time[1].split("/");
-                                console.log(ddate);
+                                //console.log(ddate);
                                 minddate.setDate(Number(ddate[1]));
                                 minddate.setMonth(Number(ddate[0]));
                             }
@@ -2710,15 +2509,15 @@ SEND DEFENSE Function
                             d.setMinutes(ttime[1]);
                             d.setSeconds(ttime[2]);
                             if (time[1]=="Tomorrow") {
-                                console.log("tmrw");
+                                //console.log("tmrw");
                                 d.setDate(minddate.getDate() + 1);
                             } else if (time[1]!="Today") {
                                 var ddate=time[1].split("/");
-                                console.log(ddate);
+                                //console.log(ddate);
                                 d.setDate(ddate[1]);
                                 d.setMonth(ddate[0]);
                             }
-                            console.log(d,minddate);
+                            //console.log(d,minddate);
                             if (d<minddate) {
                                 minddate=d;
                             }
@@ -2726,7 +2525,7 @@ SEND DEFENSE Function
                     }
                 }
                 minddate.setHours(minddate.getHours()-defobj.rettime);
-                console.log(minddate);
+                //console.log(minddate);
                 var hour=minddate.getHours();
                 if (hour<10) {
                     hour="0"+hour;
@@ -2740,7 +2539,7 @@ SEND DEFENSE Function
                     sec="0"+sec;
                 }
                 var retdate=getFormattedDate(minddate)+" "+hour+":"+min+":"+sec;
-                console.log(retdate);
+                //console.log(retdate);
                 $("#raidrettimesela").val(3).change();
                 $("#raidrettimeselinp").val(retdate);
                 jQuery("#doneOGAll")[0].click();
@@ -2948,7 +2747,7 @@ Send Attack Function
 //Galley Section
         if (t.type.indexOf(14)>-1 && $("#usereal14").prop( "checked")===true) {
             time=ttspeed[14]/faithbonustravelspeed[14]*maxdist;
-			console.log(time);
+			//console.log(time);
             var gali=t.type.indexOf(14); // Designating "Gali" as Troop 14 which is Galley
             var galcap=500*galnumb;
             var nongalts=0; // Non Galley TS
@@ -3302,7 +3101,7 @@ Send Attack Function
                         }
                         $("#scoIP7").val(t.scoutfake[0]);
                         $("#scoxcoord").val(targets.x[l]);
-                            $("#scoycoord").val(targets.y[l]);
+                        $("#scoycoord").val(targets.y[l]);
                         setTimeout(function(){
                              jQuery("#scoutcoordgo")[0].click();
                         },100);
@@ -3327,7 +3126,7 @@ Send Attack Function
 
 	//RETURN FUNCTION
         function art() { //setting return time for raids according to city view attacks list
-            //console.log(poll2.OGA);
+            ////console.log(poll2.OGA);
             $("#commandsPopUpBox").hide();
             if ($("#retcheck").prop( "checked")==true) {
                 jQuery(".toptdinncommtbl1:first")[0].click();
@@ -3337,7 +3136,7 @@ Send Attack Function
                 var minddate = new Date();
                 var first=true;
                 for (var i in poll2.OGA) {
-                    //console.log(targets.cstr,poll2.OGA[i][5]);
+                    ////console.log(targets.cstr,poll2.OGA[i][5]);
                     if (targets.cstr.indexOf(poll2.OGA[i][5])>-1) {
                         if (first) {
                             first=false;
@@ -3348,16 +3147,16 @@ Send Attack Function
                             minddate.setHours(Number(ttime[0]));
                             minddate.setMinutes(Number(ttime[1]));
                             minddate.setSeconds(Number(ttime[2]));
-                            //console.log(time[1]);
+                            ////console.log(time[1]);
                             if (time[1]=="Tomorrow") {
                                 minddate.setDate(minddate.getDate() + 1);
-                                //console.log("tmrw");
+                                ////console.log("tmrw");
                             } else if (time[1]!="Today") {
                                 var ddate=time[1].split("/");
-                                console.log(ddate);
+                                //console.log(ddate);
                                 minddate.setDate(Number(ddate[1]));
                                 minddate.setMonth(Number(ddate[0]-1));
-                                //console.log(minddate);
+                                ////console.log(minddate);
                             }
                         } else {
                             var a=poll2.OGA[i][6].substr(30);
@@ -3369,16 +3168,16 @@ Send Attack Function
                             d.setMinutes(ttime[1]);
                             d.setSeconds(ttime[2]);
                             if (time[1]=="Tomorrow") {
-                                //console.log("tmrw");
+                                ////console.log("tmrw");
                                 d.setDate(minddate.getDate() + 1);
                             } else if (time[1]!="Today") {
                                 var ddate=time[1].split("/");
-                                //console.log(ddate);
+                                ////console.log(ddate);
                                 d.setDate(ddate[1]);
                                 d.setMonth(ddate[0]-1);
-                                //console.log(minddate);
+                                ////console.log(minddate);
                             }
-                            //console.log(d,minddate);
+                            ////console.log(d,minddate);
                             if (d<minddate) {
                                 minddate=d;
                             }
@@ -3386,7 +3185,7 @@ Send Attack Function
                     }
                 }
                 minddate.setHours(minddate.getHours()-Number($("#retHr").val()));
-                //console.log(minddate);
+                ////console.log(minddate);
                 var hour=minddate.getHours();
                 if (hour<10) {
                     hour="0"+hour;
@@ -3400,7 +3199,7 @@ Send Attack Function
                     sec="0"+sec;
                 }
                 var retdate=getFormattedDate(minddate)+" "+hour+":"+min+":"+sec;
-                //console.log(retdate);
+                ////console.log(retdate);
                 $("#raidrettimesela").val(3).change();
                 $("#raidrettimeselinp").val(retdate);
                 jQuery("#doneOGAll")[0].click();
@@ -3440,20 +3239,28 @@ END SEND Attack Function
 //Buttons convert,fill,demolish, SHRINE Section 2 building count,
     $(document).ready(function() {
         var fourbutton="<div id='fourbuttons' class='commandinndiv' style='text-align: center;'><div><button id='fb1' style='height:28px; width:65px; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>ON/OFF</button><button id='fb2' style='height:28px; width:65px; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Refine</button><button id='fb3' style='height:28px; width:65px; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Raid</button><button id='fb4' style='height:28px; width:65px; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Demolish</button><button id='fb5' style='height:28px; width:46%; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Clear Resources</button><button id='fb6' style='height:28px; width:46%; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Empire Logs</button></div></div>";
-        var bdcountbox="<div id='currentbd'><div id='bdcountbar' class='queueBar'>";
+        var bdcountbox="<div id='currentbuildings' style=' width: 290px; margin-top: 10px; margin-left: auto; margin-right: auto; border: 3px solid #886f53; align-content: center;'><div id='bdcountbar' class='queueBar'>";
         bdcountbox+="<div id='bdcountbut' class='tradeqarr2'><div></div></div><span class='qbspan'>Gfunky's Current Buildings</span>";
         bdcountbox+="<div id='numbdleft' class='barRightFloat tooltipstered'>0</div>";
-        bdcountbox+="</div><div id='bdcountwin' class='queueWindow' style='display: block;'></div></div>";
+        bdcountbox+="</div><div id='bdcountwin' class='queueWindow' style='display: block; padding-top: 15px; padding-bottom: 15px;' ></div></div>";
         $("#qbDiv").before(fourbutton);
 
 
-			var convbut='<button id="convque" class="greenb tooltipstered" style="height:18px; width:60px; margin-left:7px; margin-top:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;">Convert</button>';
+       $('#sortbut').after(convbut);
+			var fillbut='<button id="fillque" class="greenb tooltipstered" style="height:18px; width:40px; margin-left:7px; margin-top:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;">Fill</button>';
+        $('#sortbut').after(fillbut);
+        $('#fillque').click(function() {
+            var gcid=poll2.city.cid;
+			var filq;
+            event.stopPropagation();
+            $.post('/overview/fillq.php', { a: gcid });
+        });
+         var convbut='<button id="convque" class="greenb tooltipstered" style="height:18px; width:60px; margin-left:7px; margin-top:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;">Convert</button>';
         $('#sortbut').after(convbut);
         $('#convque').click(function() {
             var cfd=poll2.city.cid;
-            console.log(cfd);
             event.stopPropagation();
-            var cB = $.post('/overview/mconv.php', { a: cfd });
+            $.post('/overview/mconv.php', { a: cfd });
         });
 
 
@@ -3530,23 +3337,23 @@ END SEND Attack Function
             }
         });
 
-        var sumbut="<button class='tabButton' id='Sum'>Summary</button>";
-        $("#items").after(sumbut);
-        $("#Sum").click(function() {
-            if(sum) {
-                opengfunkysumwin();
+        var overviewbut="<button class='tabButton' id='gfoverview'>Overviews</button>";
+        $("#items").after(overviewbut);
+        $("#gfoverview").click(function() {
+            if(gfoverview) {
+                opengfunkyoverviewwin();
             } else {
-                $('#gfunkysumwin').show();
+                $('#gfunkyoverviewwin').show();
             }
         });
-        $("#gfunkysumwin").click(function() {
-            console.log("popsum");
+        $("#gfunkyoverviewwin").click(function() {
+            //console.log("popsum");
         });
 
         $("#recruitmentQueue").before(bdcountbox);
         $("#bdcountbut").click(function() {
             if (bdcountshow) {
-                console.log(1);
+                //console.log(1);
                 $("#bdcountwin").hide();
                 $("#bdcountbut").removeClass('tradeqarr2').addClass('tradeqarr1');
                 bdcountshow=false;
@@ -3636,13 +3443,13 @@ END SEND Attack Function
                     var cont=Number(Math.floor(tempx/100)+10*Math.floor(tempy/100));
                     if (cont==shrinecont) {
                         var dist=Math.sqrt((tempx-shrinex)*(tempx-shrinex)+(tempy-shriney)*(tempy-shriney));
-                        console.log("dist");
+                        //console.log("dist");
                         if (dist<10) {
                             var l=Number(wdata.cities[i].substr(11,1));
                             var pid=Number(wdata.cities[i].substr(12,l));
                             var pname=pldata[pid];
-                            console.log(pname);
-                            console.log(splayers.name.indexOf(pname),pname,splayers.name);
+                            //console.log(pname);
+                            //console.log(splayers.name.indexOf(pname),pname,splayers.name);
                             var csn=[3,4,7,8];
                             if (csn.indexOf(Number(wdata.cities[i].charAt(4)))>-1) {
                                 shrinec.push(["castle",pname,0,tempx,tempy,dist,"0",0,0,0]);
@@ -3663,7 +3470,7 @@ END SEND Attack Function
 			gfunkyplanwin+="<button class='greenb regButton' style='font-size: 14px;margin-left: 20px;margin-top: 10px;height: 50%;width: 100px;'><div class='button'><a id ='exportshrine' role='button' style='color:#e1c190;'>Export</a></div></button>";
 			gfunkyplanwin+="<button id='sumX' class='xbutton' onclick=$('#gfunkyshrinePopup').remove()><div id='xbuttondiv'><div><div id='centxbuttondiv'></div></div></div></button>";
 			gfunkyplanwin+="</div>";
-			gfunkyplanwin+="<div id='shrinediv' class='beigemenutable scroll-pane' style='background:none;border: none;padding: 0px;height: AUTO !important;max-height: 85%; margin-left:3%; border-radius: 6px;border: ridge #99805D;'></div>";
+			gfunkyplanwin+="<div id='shrinediv' class='beigemenutable scroll-pane' style='background:none;border: none;padding: 0px;height: AUTO !important;max-height: 85%; margin-left: auto; margin-right:right; border-radius: 6px;border: ridge #99805D;'></div>";
 			gfunkyplanwin+="</div></div>";
                 for (var i in shrinec) {
                     if (i<101) {
@@ -3676,7 +3483,7 @@ END SEND Attack Function
                                              splayers.name.push(pinfo.player);
                                              splayers.ally.push(pinfo.a);
                                              splayers.cities.push(pinfo.h);
-                                             console.log(pinfo.a,pinfo.h,pinfo.player);
+                                             //console.log(pinfo.a,pinfo.h,pinfo.player);
                                         }
                                          });
                         }
@@ -3689,7 +3496,7 @@ END SEND Attack Function
                 if (localStorage.getItem("hidecities")) {
                     1==1;
                 } else {
-                    console.log("hideciies nonexists");
+                    //console.log("hideciies nonexists");
                     localStorage.setItem("hidecities","0");
                 }
                 if (localStorage.getItem("hidecities")=="1") {
@@ -3711,7 +3518,7 @@ END SEND Attack Function
 				addcitypop+="<div class='ppbwinbgr' ><div class='ppbwintop' style='position: relative !important; height:150px !important;'></div><div class='ppbwincent' style='position: relative !important; height:auto !important;'></div><div class='ppbwinbott' style='position: relative !important; height:150px !important;'></div></div>";
 				addcitypop+="<div class='ppbwincontent' style='width: auto;'>";
 				addcitypop+="<div class='popUpBar ui-draggable-handle' style='margin-top:7px !Important;'> <span class='ppspan'>Add  Cities</span><button id='sumX' style='margin-right: 5%; margin-top:5px;' class='xbutton' onclick=$('#addcityPopup').remove()><div id='xbuttondiv'> <div><div id='centxbuttondiv'></div></div></div></button></div>";
-				addcitypop+="<div class='popUpWindow' style='margin-left:20px'>";
+				addcitypop+="<div class='popUpWindow' style='margin-left: auto; margin-right:auto;'>";
 				addcitypop+="<div><table><td>X: <input id='addx' type='number' style='width: 35px;height: 22px;font-size: 10px;'></td><td>y: <input id='addy' type='number' style='width: 35px;height: 22px;font-size: 10px;'></td>";
 				addcitypop+="<td>score: <input id='addscore' type='number' style='width: 45px;height: 22px;font-size: 10px;'></td><td>Type: <select id='addtype' class='greensel' style='font-size: 15px !important;height:30px;'>";
                 addcitypop+="<option value='city'>City</option><option value='castle'>Castle</option></select></td><td><button id='addadd' class='greenb'>Add</button></td></table></div></div></div>";
@@ -3761,21 +3568,21 @@ END SEND Attack Function
 				}
 			}
 		}
-		var bdtable="<table id='bdtable'><tbody><tr>";
+		var bdtable="<table id='bdtable' style='margin-left: auto; margin-right: auto;'><tbody><tr>";
 		for (var i in currentbd.bid) {
 			if (i<9 || ((i>9 && i<19) || (i>19 && i<29))) {
-            bdtable+="<td style='text-align:center; width:30px; height:30px;'><div style='background-image: url(/images/city/buildings/icons/"+currentbd.name[i]+".png); background-size:contain;background-repeat:no-repeat;width:30px; height:30px;'></div>"+Number(currentbd.count[i])+"</td>";
+				bdtable+="<td style='text-align:center; width:30px; height:30px; white-space:normal;'><div style='background-image: url(/images/city/buildings/icons/"+currentbd.name[i]+".png); background-size:contain;background-repeat:no-repeat;width:30px; height:30px;'></div>"+Number(currentbd.count[i])+"</td>";
 			}
 			if (i==9 || i==19) {
-            bdtable+="</tr><tr>";
-            bdtable+="<td style='text-align:center; width:30px; height:30px;'><div style='background-image: url(/images/city/buildings/icons/"+currentbd.name[i]+".png); background-size:contain;background-repeat:no-repeat;width:30px; height:30px;'></div>"+Number(currentbd.count[i])+"</td>";
+				bdtable+="</tr><tr>";
+				bdtable+="<td style='text-align:center; width:30px; height:30px; white-space:normal;'><div style='background-image: url(/images/city/buildings/icons/"+currentbd.name[i]+".png); background-size:contain;background-repeat:no-repeat;width:30px; height:30px;'></div>"+Number(currentbd.count[i])+"</td>";
 			}
 		}
 		bdtable+="</tr></tbody></table>";
 		$("#bdcountwin").html(bdtable);
 		$("#numbdleft").html(bdNumber);
 	}
-
+	
 
 
 
@@ -3817,11 +3624,6 @@ Predicting Incoming Troops Section
         for (var i=1; i<201; i++){
             speeeed[i]=speeeed[i-1]+0.5;
         }
-
-
-
-
-
 
 //  separating all possible speeds for troop types
         var navyspeed = [];
@@ -4046,7 +3848,7 @@ END Predicting Incoming Troops Section
 
        var selecttype="<select id='selType' class='greensel' style='width:40%;height:28px;font-size:11;border-radius:6px; margin:7px;'><option value='1'>Offense and Defense</option><option value='2'>Offense</option><option value='3'>Defense</option></select><br>";
         var selectret=$("#raidrettimesela").clone(false).attr({id:"returnSel",style:"width:40%;height:28px;font-size:11;border-radius:6px;margin:7px"});
-        var selecttime="<br><div id='timeblock'><div id='timesel' style='display: none; text-align:center'><span style='font-weight:800;'>Input latest return time:</span><br><table style='width:80%;margin-left:10px'><thead><tr style='text-align:center;'><td>Hr</td><td>Min</td><td>Sec</td><td colspan='2'>Date</td></tr></thead><tbody>";
+        var selecttime="<br><div id='timeblock'><div id='timesel' style='display: none; text-align:center'><span style='font-weight:800;'>Input latest return time:</span><br><table style='width:80%;margin-left:auto; margin-right: auto;'><thead><tr style='text-align:center;'><td>Hr</td><td>Min</td><td>Sec</td><td colspan='2'>Date</td></tr></thead><tbody>";
         selecttime+="<tr><td><input id='returnHr' type='number' style='width: 35px;height: 22px;font-size: 10px;padding: none !important;color: #000;' value='00'></td><td><input id='returnMin' style='width: 35px;height: 22px;font-size: 10px;padding: none !important;color: #000;' type='number' value='00'></td>";
         selecttime+="<td><input style='width: 35px;height: 22px;font-size: 10px;padding: none !important;color: #000;' id='returnSec' type='number' value='00'></td><td colspan='2'><input style='width:90px;' id='returnDat' type='text' value='00/00/0000'></td></tr></tbody></table></div></div>";
         var returnAllgo="<button id='returnAllGo' style=' width: 35%;height: 30px !important; font-size: 12px !important; position: static !important;' class='regButton greenb'>Start Return All</button>";
@@ -4167,11 +3969,6 @@ END Predicting Incoming Troops Section
         });
     }
 
-
-
-
-
-
 /*
 Boss Section
 
@@ -4180,18 +3977,18 @@ Boss Section
         var temp;
         bossinfo={x:[],y:[],lvl:[],data:[],name:[],cont:[],distance:[],cid:[]};
         for (var i in wdata.bosses) {
-                var templvl=Number(wdata.bosses[i].substr(1,2))-10;
-                var tempy=Number(wdata.bosses[i].substr(4,3))-100;
-                var tempx=Number(wdata.bosses[i].substr(7,3))-100;
-                var cid=tempy*65536+tempx;
-                bossinfo.x.push(tempx);
-                bossinfo.y.push(tempy);
-                bossinfo.lvl.push(templvl);
-                bossinfo.cont.push(Number(Math.floor(tempx/100)+10*Math.floor(tempy/100)));
-                //bossinfo.distance.push(distance);
-                bossinfo.data.push(wdata.bosses[i]);
-                bossinfo.cid.push(cid);
-            }
+			var templvl=Number(wdata.bosses[i].substr(1,2))-10;
+			var tempy=Number(wdata.bosses[i].substr(4,3))-100;
+			var tempx=Number(wdata.bosses[i].substr(7,3))-100;
+			var cid=tempy*65536+tempx;
+			bossinfo.x.push(tempx);
+			bossinfo.y.push(tempy);
+			bossinfo.lvl.push(templvl);
+			bossinfo.cont.push(Number(Math.floor(tempx/100)+10*Math.floor(tempy/100)));
+			//bossinfo.distance.push(distance);
+			bossinfo.data.push(wdata.bosses[i]);
+			bossinfo.cid.push(cid);
+        }
     }
 
 
@@ -4303,9 +4100,6 @@ Boss Section
 END Boss Only Section
 
 */
-
-
-
 
 //auto fill boss and raid numbers
     cotgsubscribe.subscribe( "regional", function( data ) {
@@ -4757,7 +4551,6 @@ END Boss Only Section
             $("#cityplayerInfo div table tbody tr:gt(6)").remove();
         }
     });
-
 
 
 
@@ -5333,7 +5126,7 @@ END Boss Only Section
                     tg.oth[ti]++;
                 }
                 tg.ts[ti]+=Number($($(this).children()[10]).html());
-                console.log(++i);
+                //console.log(++i);
             }
         });
 
@@ -5341,7 +5134,7 @@ END Boss Only Section
 		gfunkyoutgoingsumWin+="<div class='ppbwinbgr ui-draggable'  style='width: 800px !important;'><div class='ppbwintop ui-draggable'  style='width: 800px !important;'></div><div class='ppbwincent  ui-draggable'  style='width: 800px !important;'></div><div class='ppbwinbott ui-draggable' style='width: 800px !important;'></div></div>";
 		gfunkyoutgoingsumWin+="<div class='ppbwincontent  ui-draggable'>";
 		gfunkyoutgoingsumWin+="<div class='popUpBar ui-draggable-handle'> <span class='ppspan'>Outgoing Attack Summary</span><button class='greenb regButton' style='font-size: 14px;margin-left: 20px;margin-top: 10px;height: 50%;width: 60px;'><div class='button'><a href='#' id ='outsumexp' role='button' style='color:#e1c190;'>Export</a></div></button><button id='sumX' class='xbutton' onclick=$('#gfunkyoutgoingsumWin').remove()><div id='xbuttondiv'> <div><div id='centxbuttondiv'></div></div></div></button></div>";
-		gfunkyoutgoingsumWin+="<div id=outsumbody' class='popUpWindow' style='width: auto !important;' ><div class='beigemenutable scroll-pane' style='height:95%;width: 730px !important;margin-left:20px;border-radius: 6px;border: 3px ridge #99805D;'><table id='outsumTab'><thead><tr><th>Player</th><th>Alliance</th><th>Target</th><th>Coords</th><th># Siege</th><th># Not Siege </th><th>Total TS</th></tr></thead><tbody>";
+		gfunkyoutgoingsumWin+="<div id=outsumbody' class='popUpWindow' style='width: auto !important;' ><div class='beigemenutable scroll-pane' style='height:95%;width: 730px !important;margin-left:auto; margin-right: auto; border-radius: 6px;border: 3px ridge #99805D;'><table id='outsumTab'><thead><tr><th>Player</th><th>Alliance</th><th>Target</th><th>Coords</th><th># Siege</th><th># Not Siege </th><th>Total TS</th></tr></thead><tbody>";
         for (var i in tg.id) {
             gfunkyoutgoingsumWin+="<tr><td class='playerblink'>"+tg.pn[i]+"</td><td class='allyblink'>"+tg.an[i]+"</td><td class='cityblink'>"+tg.cn[i]+"</td><td class='coordblink shcitt' data='"+tg.id[i]+"'>"+tg.x[i]+":"+tg.y[i]+"</td><td>"+tg.se[i]+"</td><td>"+tg.oth[i]+"</td><td>"+tg.ts[i].toLocaleString()+"</td></tr>";
         }
@@ -5389,14 +5182,14 @@ END Boss Only Section
 					} else {
 						tg.hos[ti]++;
 					}
-					console.log(++i);
+					//console.log(++i);
 				}
 			});
 			var gfunkyincomingsumWin="<div id='gfunkyincomingsumWin' class='popUpBox ui-draggable' style='z-index:2002; width:50% !important;height:50% !important;'>";
 			gfunkyincomingsumWin+="<div class='ppbwinbgr ui-draggable' style='width: 800px !important;'><div class='ppbwintop ui-draggable'  style='width: 800px !important;'></div><div class='ppbwincent ui-draggable'  style='width: 800px !important;'></div><div class='ppbwinbott  ui-draggable'  style='width: 800px !important;'></div></div>";
 			gfunkyincomingsumWin+="<div class='ppbwincontent  ui-draggable'>";
 			gfunkyincomingsumWin+="<div class='popUpBar ui-draggable-handle' style='width: 800px;'> <span class='ppspan'>Incoming Attack Summary</span><button class='greenb regButton' style='font-size: 14px;margin-left: 20px;margin-top: 10px;height: 50%;width: 60px;'><div class='button'><a href='#' id ='outsumexp' role='button' style='color:#e1c190;'>Export</a></div></button><button id='sumX' class='xbutton' onclick=$('#gfunkyincomingsumWin').remove()><div id='xbuttondiv'> <div><div id='centxbuttondiv'></div></div></div></button></div>";
-			gfunkyincomingsumWin+="<div id=outsumbody' class='popupBox' syle='width:800px !important;'><div class='beigemenutable scroll-pane' style='height:95%;width: 720px !important;margin-left: 35px;border-radius: 6px;border: 3px ridge #99805D;'><table id='outsumTab'><thead><tr><th>Player</th><th>Target</th><th>Coords</th><th>Internal Attacks</th><th>Hostile Attacks</th></tr></thead><tbody>";
+			gfunkyincomingsumWin+="<div id=outsumbody' class='popupBox' syle='width:800px !important;'><div class='beigemenutable scroll-pane' style='height:95%;width: 720px !important;margin-left: auto; margin-right: auto; border-radius: 6px;border: 3px ridge #99805D;'><table id='outsumTab'><thead><tr><th>Player</th><th>Target</th><th>Coords</th><th>Internal Attacks</th><th>Hostile Attacks</th></tr></thead><tbody>";
 			for (var i in tg.id) {
 				gfunkyincomingsumWin+="<tr><td class='playerblink'>"+tg.pn[i]+"</td><td class='cityblink'>"+tg.cn[i]+"</td><td class='coordblink shcitt' data='"+tg.id[i]+"'>"+tg.x[i]+":"+tg.y[i]+"</td><td>"+tg.fr[i]+"</td><td>"+tg.hos[i]+"</td></tr>";
 			}
@@ -5475,7 +5268,7 @@ END Boss Only Section
 			var month=$("#comsumDat").val().substring(0,2);
 			var rlines
 			if (arg=="city") {
-			// console.log(arg);
+			// //console.log(arg);
 				rlines=$("#bottomspotinfo table tbody tr");
 			}
 			if (arg=="player") {
@@ -5531,7 +5324,7 @@ END Boss Only Section
                                             return a + b;
 											}, 0);
 											if (ztts===0){
-                                            console.log("duplicate report");
+                                            //console.log("duplicate report");
 											}
 											else{
 												$.each(this.ats, function(key, value) { // pushing attack troops
@@ -5612,7 +5405,7 @@ END Boss Only Section
                                                 return a + b;
                                             }, 0);
                                             if (ztts===0){
-                                                console.log("duplicate report");
+                                                //console.log("duplicate report");
                                             }
                                             else{
 												if (apl.indexOf(this.apn)<0) {// checking enemy name in apl, if not then
@@ -5627,7 +5420,7 @@ END Boss Only Section
 													ata.sent[key]+=value;
 													tempts+=value*ttts[key]; //ttts is TS of the type which we multiply with troop numbers to get fake or not
 												});
-												console.log(tempts);
+												//console.log(tempts);
 												if (rdata.assault) {
 													if (tempts<5000) {
 														assc.fake++;
@@ -7721,66 +7514,215 @@ END Boss Only Section
 
 
 
-//Summary
-    function opengfunkysumwin() {
+//Overviews
+    function opengfunkyoverviewwin() {
         sum=false;
-        console.log(1);
-        var gfunkysumwin="<div id='gfunkysumwin' class='longmenu ui-draggable' style='z-index:2002; width: 80% !important;left: 200px !important;'>";
-		gfunkysumwin+="<div class='longwindowbgr'><div class='lngwinbgtop'></div><div class='lngwinbgcent''></div><div class='lngwinbgbott'></div></div>";
-		gfunkysumwin+="<div class='longwindowcontent'>";
-		gfunkysumwin+="<div class='popUpBar ui-draggable-handle'> <span class='ppspan'>Gfunky's Empire Summaries</span><button id='sumWinX' style='margin-right: 5%; margin-top:5px;' class='xbutton' onclick=$('#gfunkysumwin').hide()><div id='xbuttondiv'> <div><div id='centxbuttondiv'></div></div></div></button></div>";
-		gfunkysumwin+="<div  style='aipwindo' width:95%;>";
+        //console.log(1);
+        var gfunkyoverviewwin="<div id='gfunkyoverviewwin' class='longmenu ui-draggable' style='z-index:2002; width: 80% !important;left: 200px !important;'>";
+		gfunkyoverviewwin+="<div class='longwindowbgr'><div class='lngwinbgtop'></div><div class='lngwinbgcent''></div><div class='lngwinbgbott'></div></div>";
+		gfunkyoverviewwin+="<div class='longwindowcontent'>";
+		gfunkyoverviewwin+="<div class='popUpBar ui-draggable-handle'> <span class='ppspan'>Gfunky's Empire Overviews</span><button id='sumWinX' style='margin-right: 5%; margin-top:5px;' class='xbutton' onclick=$('#gfunkyoverviewwin').hide()><div id='xbuttondiv'> <div><div id='centxbuttondiv'></div></div></div></button></div>";
+		gfunkyoverviewwin+="<div  style='aipwindo' width:95%;>";
 
-        gfunkysumwin+="<div id='sumdiv' class='beigetabspopup' style='background:none;border: none;padding: 0px;height:74%; width:97%; margin-left:auto; margin-right:auto;'><ul id='sumtabs' role='tablist' style='width: 95%;'><li role='tab'><a href='#resTab' role='presentation'>Resources</a></li>";
-        gfunkysumwin+="<li role='tab'><a href='#troopsTab' role='presentation'>Troops</a></li><li role='tab'><a href='#raidTab' role='presentation'>Raids</a></li><li role='tab'><a href='#raidoverTab' role='presentation'>Raids Overview</a></li>";
-        gfunkysumwin+="<li role='tab'><a href='#supportTab' role='presentation'>Support</a></li></ul>";
-        gfunkysumwin+="<div id='resTab' style='text-align: center;'><button id='resup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button><button class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'><div class='button'><a href='#' id ='resexp' role='button' style='color:white;'>Export</a></div></button><span id='respan' style='margin-left:50px;'>Show cities from: </span>";
-        gfunkysumwin+="<div class='beigemenutable scroll-pane' style='width:95%;height: AUTO !important;max-height: 75%;margin-left:20px; border-radius: 7px;border: 3px ridge #99805D;' ><table id='restable'>";
-        gfunkysumwin+="<thead><th>Name</th><th colspan='2'>Notes</th><th>Coords</th><th>Wood</th><th>(Storage)</th><th>Stones</th><th>(Storage)</th><th>Iron</th><th>(Storage)</th><th>Food</th><th>(Storage)</th><th>Carts</th><th>(Total)</th><th>Ships</th><th>(Total)</th><th>Score</th></thead></table></div></div>";
-        gfunkysumwin+="<div id='troopsTab' style='text-align: center;'><button id='troopsup' class='greenb' style='font-size:14px;border-radius:6px;margin:4px;'>Update</button><button class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'><div class='button'><a href='#' id ='troopsexp' role='button' style='color:white;'>Export</a></div></button>";
-        gfunkysumwin+="<button id='hidespfbut' class='greenb' style='font-size:14px;border-radius:6px;margin:4px;'>Hide Specific Troops Columns</button><span id='troopspan' style='margin-left:50px;'>Show cities from: </span>";
-        gfunkysumwin+="<div  class='beigemenutable scroll-pane' style='width:99%;height: AUTO !important;max-height: 70%;margin-left:4px; border-radius: 7px;border: 3px ridge #99805D;'><table id='troopstable' style='width:250%;'>";
-        gfunkysumwin+="<thead><tr data='0'><th>Name</th><th style='width:150px;'>Notes</th><th>Coords</th><th class='spf'><div class='"+tpicdiv[8]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[1]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[11]+"'></div>(home)</th><th class='spf'>(Total)</th>";
-        gfunkysumwin+="<th class='spf'><div class='"+tpicdiv[14]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[0]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[10]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[9]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[4]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[12]+"'></div>(home)</th><th class='spf'>(Total)</th>";
-        gfunkysumwin+="<th class='spf'><div class='"+tpicdiv[2]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[13]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[7]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[17]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[6]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[15]+"'></div>(home)</th><th class='spf'>(Total)</th>";
-        gfunkysumwin+="<th class='spf'><div class='"+tpicdiv[3]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[5]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[16]+"'></div>(home)</th><th class='spf'>(Total)</th><th>TS(home)</th><th>(Total)</th>";
-        gfunkysumwin+="</tr></thead></table></div></div>";
+	//Overview Tabs
+        gfunkyoverviewwin+="<div id='gfunkyoverviewdiv' class='beigetabspopup' style='background:none;border: none;padding: 0px;height:74%; width:97%; margin-left:auto; margin-right:auto;'><ul id='sumtabs' role='tablist' style='width: 95%;'>";
+        gfunkyoverviewwin+="<li role='tab'><a href='#resTab' role='presentation'>Resources</a></li>";
+		gfunkyoverviewwin+=" <li role='tab'><a href='#troopsTab' role='presentation'>Troops</a></li>";
+		gfunkyoverviewwin+="<li role='tab'><a href='#raidTab' role='presentation'>Raids</a></li>";
+		gfunkyoverviewwin+="<li role='tab'><a href='#raidoverTab' role='presentation'>Raids Overview</a></li>";
+		gfunkyoverviewwin+="<li role='tab'><a href='#gsupportTab' role='presentation'>Support</a></li>";
+		//gfunkyoverviewwin+="<li role='tab'><a href='#incomingTab' role='presentation'>Incoming</a></li>";
+		gfunkyoverviewwin+="<li role='tab'><a href='#gFunkyChanglog' role='presentation'>Gfunky Changelog</a></li>";
+		gfunkyoverviewwin+="</ul>";
+    
+	//Resource Overview Tab   
+		gfunkyoverviewwin+="<div id='resTab' style='text-align: center;'><button id='resup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button><button class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'><div class='button'><a href='#' id ='resexp' role='button' style='color:white;'>Export</a></div></button><span id='respan' style='margin-left:50px;'>Show cities from: </span>";
+        gfunkyoverviewwin+="<div id='restabtable' class='beigemenutable scroll-pane' style='width:98%;height: AUTO !important;max-height: 75%;margin-left:auto; margin-right: auto; border-radius: 7px;border: 3px ridge #99805D;' ><table id='restable'>";
+		gfunkyoverviewwin+="<thead><th>Name</th><th colspan='2'>Notes</th><th>Coords</th><th>Wood</th><th>(Storage)</th><th>Stones</th><th>(Storage)</th><th>Iron</th><th>(Storage)</th><th>Food</th><th>(Storage)</th><th>Carts</th><th>(Total)</th><th>Ships</th><th>(Total)</th><th>Score</th></thead></table></div></div>";
+		
+		
+	// Troops Overview Tab	
+        gfunkyoverviewwin+="<div id='troopsTab' style='text-align: center;'><button id='troopsup' class='greenb' style='font-size:14px;border-radius:6px;margin:4px;'>Update</button><button class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'><div class='button'><a href='#' id ='troopsexp' role='button' style='color:white;'>Export</a></div></button>";
+        gfunkyoverviewwin+="<button id='hidespfbut' class='greenb' style='font-size:14px;border-radius:6px;margin:4px;'>Hide Specific Troops Columns</button><span id='troopspan' style='margin-left:50px;'>Show cities from: </span>";
+        gfunkyoverviewwin+="<div  class='beigemenutable scroll-pane' style='width:99%;height: AUTO !important;max-height: 70%;margin-left:auto; margin-right: auto; border-radius: 7px;border: 3px ridge #99805D;'><table id='troopstable' style='width:250%;'>";
+        gfunkyoverviewwin+="<thead><tr data='0'><th>Name</th><th style='width:150px;'>Notes</th><th>Coords</th><th class='spf'><div class='"+tpicdiv[8]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[1]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[11]+"'></div>(home)</th><th class='spf'>(Total)</th>";
+        gfunkyoverviewwin+="<th class='spf'><div class='"+tpicdiv[14]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[0]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[10]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[9]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[4]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[12]+"'></div>(home)</th><th class='spf'>(Total)</th>";
+        gfunkyoverviewwin+="<th class='spf'><div class='"+tpicdiv[2]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[13]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[7]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[17]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[6]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[15]+"'></div>(home)</th><th class='spf'>(Total)</th>";
+        gfunkyoverviewwin+="<th class='spf'><div class='"+tpicdiv[3]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[5]+"'></div>(home)</th><th class='spf'>(Total)</th><th class='spf'><div class='"+tpicdiv[16]+"'></div>(home)</th><th class='spf'>(Total)</th><th>TS(home)</th><th>(Total)</th>";
+        gfunkyoverviewwin+="</tr></thead></table></div></div>";
 
-        gfunkysumwin+="<div id='raidTab' style='text-align: center;'><button id='raidup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button><span style='margin-left:50px;'>Number of reports to show: </span><select id='raidsturnc' class='greensel' style='border-radius:6px; font-size: 14px !important;'><option value='100'>100</option><option value='500'>500</option><option value='1000'>1000</option><option value='10000'>10000</option></select>";
-        gfunkysumwin+="<div class='beigemenutable scroll-pane' style='width:99%;height: AUTO !important;max-height: 80%;margin-left:4px; border-radius: 7px;border: 3px ridge #99805D;' ><table id='raidtable'>";
-        gfunkysumwin+="<thead><th>Report</th><th>Type</th><th>Cavern progress</th><th>losses</th><th>Carry</th><th>Date</th><th>Origin</th></thead></table></div></div>";
+	// Raid Overview Tab	
+        gfunkyoverviewwin+="<div id='raidTab' style='text-align: center;'><button id='raidup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button><span style='margin-left:50px;'>Number of reports to show: </span><select id='raidsturnc' class='greensel' style='border-radius:6px; font-size: 14px !important;'><option value='100'>100</option><option value='500'>500</option><option value='1000'>1000</option><option value='10000'>10000</option></select>";
+        gfunkyoverviewwin+="<div class='beigemenutable scroll-pane' style='width:99%;height: AUTO !important;max-height: 80%;margin-left:auto; margin-right: auto; border-radius: 7px;border: 3px ridge #99805D;' ><table id='raidtable'>";
+        gfunkyoverviewwin+="<thead><th>Report</th><th>Type</th><th>Cavern progress</th><th>losses</th><th>Carry</th><th>Date</th><th>Origin</th></thead></table></div></div>";
 
+	//Raid Overview Summary Tab
+        gfunkyoverviewwin+="<div id='raidoverTab' style='text-align: center;'><button id='raidoverup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button><button class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'><div class='button'><a href='#' id ='raidexp' role='button' style='color:white;'>Export</a></div></button><span id='raidspan' style='margin-left:50px;'>Show cities from: </span>";
+        gfunkyoverviewwin+="<div class='beigemenutable scroll-pane' style='width:99%;height: AUTO !important;max-height: 78%;margin-left:auto; margin-right:auto; border-radius: 7px;border: 3px ridge #99805D;' ><table id='raidovertable'>";
+        gfunkyoverviewwin+="<thead><th>Recall Raids</th><th>Name</th><th colspan='2'>Notes</th><th>Coords</th><th>Raids</th><th>Out</th><th>In</th><th>Raiding TS</th><th>Resources</th></thead></table></div></div>";
+		
+	// Support Overview Tab	
+        gfunkyoverviewwin+="<div id='gsupportTab' style='text-align: center;'><button id='supportup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button>";
+        gfunkyoverviewwin+="<div class='beigemenutable scroll-pane' style='width:99%; max-height: 85%; margin-left:auto; margin-right: auto; border-radius: 7px;border: 3px ridge #99805D;' ><table id='supporttable'>";
+        gfunkyoverviewwin+="<thead><th>Recall Options </th><th>Player</th><th>City</th><th>Coords</th><th>Alliance</th><th>TS supporting</th><th>TS sending</th><th>TS returning</th></thead></table></div></div>";
 
-        gfunkysumwin+="<div id='raidoverTab' style='text-align: center;'><button id='raidoverup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button><button class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'><div class='button'><a href='#' id ='raidexp' role='button' style='color:white;'>Export</a></div></button><span id='raidspan' style='margin-left:50px;'>Show cities from: </span>";
-        gfunkysumwin+="<div class='beigemenutable scroll-pane' style='width:99%;height: AUTO !important;max-height: 78%;margin-left:4px; border-radius: 7px;border: 3px ridge #99805D;' ><table id='raidovertable'>";
-        gfunkysumwin+="<thead><th>Recall Raids</th><th>Name</th><th colspan='2'>Notes</th><th>Coords</th><th>Raids</th><th>Out</th><th>In</th><th>Raiding TS</th><th>Resources</th></thead></table></div></div>";
-        gfunkysumwin+="<div id='supportTab' style='text-align: center;'><button id='supportup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button>";
-        gfunkysumwin+="<div class='beigemenutable scroll-pane' style='width:99%;height: 80% !important;max-height: 80%;margin-left:4px; border-radius: 7px;border: 3px ridge #99805D;' ><table id='supporttable'>";
-        gfunkysumwin+="<thead><th></th><th>Player</th><th>City</th><th>Coords</th><th>Alliance</th><th>TS supporting</th><th>TS sending</th><th>TS returning</th></thead></table></div></div>";
+/*
 
-		/*
-		gfunkysumwin+="<div id='incomingTab'><button id='incomingup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button><span id='incomingspan' style='margin-left:50px;'>Show cities from: </span><span style='margin-left: 20px;color: green;'>Supporting</span><span>/</span><span style='color: #949400;'>Incoming before attack</span><span>/</span><span style='color: red;'>Incoming after attack</span>";
-        gfunkysumwin+="<div class='beigemenutable scroll-pane' style='width:99%;height: AUTO !important;max-height: 80%;margin-left:4px;' ><table id='incomingtable' style='width:100%'>";
-        gfunkysumwin+="<thead><th>Player</th><th>City</th><th>Coords</th><th># of inc</th><th><div class='"+tpicdiv[2]+"'</div></th><th><div class='"+tpicdiv[3]+"'</div></th><th><div class='"+tpicdiv[4]+"'</div></th><th><div class='"+tpicdiv[7]+"'</div></th><th><div class='"+tpicdiv[8]+"'</div></th><th><div class='"+tpicdiv[9]+"'</div></th><th><div class='"+tpicdiv[15]+"'</div></th><th><div class='"+tpicdiv[14]+"'</div></th><th><div class='"+tpicdiv[1]+"'</div></th><th>other</th><th colspan='2'>TS total</th><th>Next INC</th></thead></table>This Information has been Moved to the Overviews</div></div>";
-		*/
-        gfunkysumwin+="</div></div>";
+	// Incoming Overview Tab
+		gfunkyoverviewwin+="<div id='incomingTab'><button id='incomingup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button><span id='incomingspan' style='margin-left:50px;'>Show cities from: </span><span style='margin-left: auto; margin-right: auto; color: green;'>Supporting</span><span>/</span><span style='color: #949400;'>Incoming before attack</span><span>/</span><span style='color: red;'>Incoming after attack</span>";
+		gfunkyoverviewwin+="<div class='beigemenutable scroll-pane' style='width:99%;height:110%;margin-left:auto; margin-right: auto;' ><table id='incomingtable' style='width:150%'>";
+        gfunkyoverviewwin+="<thead><th>Player</th><th>City</th><th>Coords</th><th># of attacks</th><th><div class='"+tpicdiv[2]+"'</div></th><th><div class='"+tpicdiv[3]+"'</div></th><th><div class='"+tpicdiv[4]+"'</div></th><th><div class='"+tpicdiv[7]+"'</div></th><th><div class='"+tpicdiv[8]+"'</div></th><th><div class='"+tpicdiv[9]+"'</div></th><th><div class='"+tpicdiv[15]+"'</div></th><th><div class='"+tpicdiv[14]+"'</div></th><th><div class='"+tpicdiv[1]+"'</div></th><th>other</th><th colspan='2'>TS total</th><th>Next attack</th></thead></table></div></div>";
+		
+*/		
 
-        $("#reportsViewBox").after(gfunkysumwin);
-        $( "#gfunkysumwin" ).draggable({ handle: ".popUpBar" , containment: "window", scroll: false});
-        $( "#gfunkysumwin" ).resizable();
+	// Gfunky Change Log TAB
+		
+		gfunkyoverviewwin+="	<div id='gFunkyChanglog' style='text-align: center;'>";
+		gfunkyoverviewwin+=" <div id='gfunkychanges'  style='margin-left: auto;margin-right: auto;font-size: 20px;color: #e1c190;font-weight: 500;padding-top: 5px;padding-bottom: 5px;border-radius: 6px;border: 3px ridge #99805D;text-align: center;background: url(/images/antonui/qmenutop.png);background-size: 100% 100%;' >Gfunky's Change Log</div><br>";
+		gfunkyoverviewwin+=" <div id='gfunkyupdate'  style='margin-left: auto;margin-right: auto;font-size: 16px;color: #e1c190;font-weight: 500;padding-top: 5px;padding-bottom: 5px;border-radius: 6px;border: 3px ridge #99805D;text-align: center;width: 30%; background: url(/images/antonui/redheader2.png);background-size: 100% 100%;' >Updated January 1, 2021 </div><br> "; 
+		gfunkyoverviewwin+="<span style='margin-left: 5%;'> <ul style='margin-left: auto;margin-right: auto;text-align: left;height: 80%;width: 98%;border: 3px ridge #886f53;border-radius: 6px;' class='beigemenutable scroll-pane'>";
+	gfunkyoverviewwin+="					0.0.1		";
+gfunkyoverviewwin+="	<li class='	gffixed	'	>	[Fixed] Resource summary + Export	</li>	";
+gfunkyoverviewwin+="	<li class='	gffixed	'	>	[Fixed] Troop Summary + Export	</li>	";
+gfunkyoverviewwin+="	<li class='	gffixed	'	>	[Fixed] Raids Summary	</li>	";
+gfunkyoverviewwin+="	<li class='	gffixed	'	>	[Fixed] Raids Overview Summary + Export	</li>	";
+gfunkyoverviewwin+="	<li class='	gffixed	'	>	[Fixed] Support Summary	</li>	";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Changed] Added a note about Incoming summary being moved to overviews	</li>	";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Changed] Fixed Raiding numbers to be more accurate	</li>	";
+gfunkyoverviewwin+="	<li class='	gfadded	'	>	[Added] Quickbuild Function added … THIS IS WAITING FOR APPROVAL FROM DEVS	</li>	";
+gfunkyoverviewwin+="							";
+gfunkyoverviewwin+="					0.0.2		";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Changed] Quickbuild deobfuscated for other coders to understand the coding and speed up processing	</li>	";
+gfunkyoverviewwin+="							";
+gfunkyoverviewwin+="					0.0.3		";
+gfunkyoverviewwin+="	<li class='	gffixed	'	>	[Fixed] cleaned up code to be more user friendly viewing and speed up processing	</li>	";
+gfunkyoverviewwin+="							";
+gfunkyoverviewwin+="					0.0.4		";
+gfunkyoverviewwin+="	<li class='	gfadded	'	>	[Added] 4 quick use buttons above quickbuild script function	</li>	";
+gfunkyoverviewwin+="							";
+gfunkyoverviewwin+="					0.0.5		";
+gfunkyoverviewwin+="	<li class='	gffixed	'	>	[Fixed]Attack sender display issues for <20in or >25in screens	</li>	";
+gfunkyoverviewwin+="	<li class='	gffixed	'	>	[Fixed]Attack sender unit fix to pull all TS [max ts] (this currently still includes galleys)	</li>	";
+gfunkyoverviewwin+="	<li class='	gffixed	'	>	[Fixed*] Return all war functions > sorting by City Groups… You need to let this for 10 minutes before initial use… will take another look at this when other issues are fixed	</li>	";
+gfunkyoverviewwin+="							";
+gfunkyoverviewwin+="					0.0.6		";
+gfunkyoverviewwin+="	<li class='	gfadded	'	>	[Added] Total Defensive Numbers + Mailer functionality started (like the Offensive TS tab)	</li>	";
+gfunkyoverviewwin+="	<li class='	gfadded	'	>	[Added] Notes for developers inside code. Cleaned up sections to make it even easier to identify sections	</li>	";
+gfunkyoverviewwin+="							";
+gfunkyoverviewwin+="					Changes moving Forward will be on a NEW Core GFunky Script		";
+gfunkyoverviewwin+="							";
+gfunkyoverviewwin+="					1.0.0		";
+gfunkyoverviewwin+="							";
+gfunkyoverviewwin+="					1.1.3		";
+gfunkyoverviewwin+="	<li class='	gfadded	'	>	[Added] Combat Summaries	</li>	";
+gfunkyoverviewwin+="							";
+gfunkyoverviewwin+="					1.1.4		";
+gfunkyoverviewwin+="	<li class='	gffixed	'	>	[Fixed] Defensive Sender Timer to include minutes and seconds	</li>	";
+gfunkyoverviewwin+="	<li class='	gffixed	'	>	[Fixed] Defensive Mailer to Allow Navy Numbers	</li>	";
+gfunkyoverviewwin+="	<li class='	gffixed	'	>	[Fixed] Defensive Mailer where is Autofills player name in mail screen	</li>	";
+gfunkyoverviewwin+="					1.1.5		";
+gfunkyoverviewwin+="	<li class='	gfadded	'	>	[Added] Made it possible to use Gfunky on Subbed accounts	</li>	";
+gfunkyoverviewwin+="							";
+gfunkyoverviewwin+="					1.1.6		";
+gfunkyoverviewwin+="	<li class='	gffixed	'	>	[Fixed] Attack Sender now only sends the required amount of galleys, no extra’s	</li>	";
+gfunkyoverviewwin+="					1.1.7		";
+gfunkyoverviewwin+="	<li class='	gffixed	'	>	[Fixed] Building Counter	</li>	";
+gfunkyoverviewwin+="	<li class='	gffixed	'	>	[Fixed] Cleaned up junk code	</li>	";
+gfunkyoverviewwin+="	<li class='	gffixed	'	>	[Fixed] an issue with async … this issue seems to be present in all forms of “Funky”	</li>	";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Improved] with the 3 fixes mentioned above, decreased load on server by nearly 30%, should notice an improvement in how quick the game loads	</li>	";
+gfunkyoverviewwin+="							";
+gfunkyoverviewwin+="					1.1.8		";
+gfunkyoverviewwin+="	<li class='	gffixed	'	>	[Fixed] Attack sender fix line	</li>	";
+gfunkyoverviewwin+="							";
+gfunkyoverviewwin+="					1.1.17	</li>	";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Redesigned] Layouts menu	</li>	";
+gfunkyoverviewwin+="	<li class='	gfadded	'	>	[Added] Land Offense	</li>	";
+gfunkyoverviewwin+="	<li class='	gfadded	'	>	[Added] Land Defense	</li>	";
+gfunkyoverviewwin+="	<li class='	gfadded	'	>	[Added] Water Offense	</li>	";
+gfunkyoverviewwin+="	<li class='	gfadded	'	>	[Added] Water Defense	</li>	";
+gfunkyoverviewwin+="	<li class='	gfadded	'	>	[Added]Added Hubs	</li>	";
+gfunkyoverviewwin+="	<li class='	gfadded	'	>	[Added] Shippers	</li>	";
+gfunkyoverviewwin+="	<li class='	gfadded	'	>	[Added] Portals	</li>	";
+gfunkyoverviewwin+="	<li class='	gfadded	'	>	[Added] Troop Scout Galleys	</li>	";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Redesigned] the Welcome Screen	</li>	";
+gfunkyoverviewwin+="	<li class='	gfadded	'	>	[Added] exit X to welcome screen	</li>	";
+gfunkyoverviewwin+="							";
+gfunkyoverviewwin+="					1.2.1		";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] Outgoing Summary GUI	</li>	";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] Incoming Summary GUI	</li>	";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] All Summary windows under the “Summary tab” GUI	</li>	";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] Combat Report Summary GUI	</li>	";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] Shrine Planner GUI	</li>	";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] Add City Under Shrine Planner GUI	</li>	";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] Import Attack Orders GUI	</li>	";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] Combat Summary Button in “Reports” GUI	</li>	";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] Combat Summary Button in City Info GUI	</li>	";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] 6 Button Grouping to be center-aligned	</li>	";
+gfunkyoverviewwin+="	<li class='	gfadded	'	>	[Added] Recall All Raids Button - Center Aligned	</li>	";
+gfunkyoverviewwin+="	<li class='	gfremoved	'	>	[Removed] Recall <90% Button	</li>	";
+gfunkyoverviewwin+="	<li class='	gfadded	'	>	[Added] Clicking “Mass Resource Sending” will change to Temple Deliver and uncheck cities from other continents.	</li>	";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] Misc. other GUI updates	</li>	";
+gfunkyoverviewwin+="	<li class='	gfremoved	'	>	[Removed] Commented out Code (old code)	</li>	";
+gfunkyoverviewwin+="							";
+gfunkyoverviewwin+="					1.2.2		";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] Return All to Return All Raids for better clarity (this might have been part of the midweek patch)	</li>	";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] CSS across most Gfunky Items. The Styling should be consistent throughout	</li>	";
+gfunkyoverviewwin+="	<li class='	gfadded	'	>	[Added] Gfunky Name to each Function that is provided by this Script	</li>	";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] Formatting in War Counc Tabs.	</li>	";
+gfunkyoverviewwin+="	<li class='	gffixed	'	>	[Fixed] Tabs Had an Issue where they would float on smaller screens.	</li>	";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] Formatted the Find Caverns Table down to 65%	</li>	";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] Formatted the Idle Units Down to 85% and added a line break so the Red Text would not interfere with the WarCounc Tabs	</li>	";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] Complete redesign of the Locate Boss Tab...Now the Boss Hunter Tab	</li>	";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] Attack Sender Page. Made the Tables bigger from 31% to 40%	</li>	";
+gfunkyoverviewwin+="	<li class='	gfadded	'	>	[Added] Export Option for the Shrine Planner	</li>	";
+gfunkyoverviewwin+="	<li class='	gffixed	'	>	[Fixed] an alignment Issue with the Gfunky Added Coords next to the city name	</li>	";
+gfunkyoverviewwin+="	<li class='	gffixed	'	>	[Fixed] Formatting on “Return All” under the War Tab	</li>	";
+gfunkyoverviewwin+="	<li class='	gfadded	'	>	[Added] A date-time selector to the Return All System under the War Tab. This not only Allows you to choose a date, but a time as well. Have not implemented elsewhere yet as it does not include seconds.	</li>	";
+gfunkyoverviewwin+="	<li class='	gffixed	'	>	[Fixed] The arrow to correctly correlate with open or close on “Gfunky’s Current Buildings”	</li>	";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] Return All GUI	</li>	";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] Boss Hunter GUI	</li>	";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] Attack Sender GUI	</li>	";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] Defense Sender GUI	</li>	";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] Nearest Defense GUI	</li>	";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] Offensive List GUI	</li>	";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] Defensive List GUI	</li>	";
+gfunkyoverviewwin+="							";
+gfunkyoverviewwin+="	<li class='	gfremoved	'	>	[Needs Testing] Sending Temple Donations after closing the mass-res sender, without changing from “normal”. I believe I am actually overriding the normal with temple, however the display is currently not adjusting to show that.	</li>	";
+gfunkyoverviewwin+="							";
+gfunkyoverviewwin+="					1.2.4		";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] Css involving temple donation amounts for better visibility and the numbers not smashing each other when the numbers get big	</li>	";
+gfunkyoverviewwin+="							";
+gfunkyoverviewwin+="					1.2.5		";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] table size of boss hunter that inadvertently made the refresh button fall off the page	</li>	";
+gfunkyoverviewwin+="					1.2.6		";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] 30Galley/1 Scout button to Scout-Galley Fake	</li>	";
+gfunkyoverviewwin+="	<li class='	gfadded	'	>	[Added] Target # Header to Attack Sender	</li>	";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] Gfunky Building Counter formatting	</li>	";
+gfunkyoverviewwin+="	<li class='	gfadded	'	>	[Added] Gfunky Changelog Under the Gfunky Overview button, Formerly  Summary Button	</li>	";
+gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] Summary Tab now the Overviews Tab	</li>	";
+		gfunkyoverviewwin+=" </ul></span>";
+		//gfunkyoverviewwin+=" <div id='gfunkythankyou'> Thank You all For Supporting Gfunky! if you live in the USA and enjoy Energy Drinks, Preworkouts or Nutritional Supplements, Consider using this link to buy some. use Discount code 'GreetyMade' for 15% off!! <input type='button' value='Raze Energy' class='greenb'		onclick='https://reppsports.com/?rfsn=4451968.5967e7&utm_source=refersion&utm_medium=affiliate&utm_campaign=4451968.5967e7'></div> ";
+	
+		
+		gfunkyoverviewwin+="</div>";
+		gfunkyoverviewwin+="</div></div>";
+		
+        $("#reportsViewBox").after(gfunkyoverviewwin);
+        $( "#gfunkyoverviewwin" ).draggable({ handle: ".popUpBar" , containment: "window", scroll: false});
+        $( "#gfunkyoverviewwin" ).resizable();
         $(".popUpBar").click(function() {
-            console.log("popup");
-            if ($(this).parent().attr("id")=="gfunkysumwin") {
+            //console.log("popup");
+            if ($(this).parent().attr("id")=="gfunkyoverviewwin") {
                 setTimeout(function() {
-                    $("#gfunkysumwin").css("z-index",4001);
+                    $("#gfunkyoverviewwin").css("z-index",4001);
                 },200);
             } else {
                 setTimeout(function() {
-                    $("#gfunkysumwin").css("z-index",3000);
+                    $("#gfunkyoverviewwin").css("z-index",3000);
                 },200);
             }
         });
-        $( "#sumdiv" ).tabs();
+        $( "#gfunkyoverviewdiv" ).tabs();
         var selres=$("#organiser").clone(false).attr({id:"selres",style:"height: 30px;width:150px;font-size:14px;border-radius:6px;margin:7px"});
         var seltroops=$("#organiser").clone(false).attr({id:"seltroops",style:"height: 30px;width:150px;font-size:14px;border-radius:6px;margin:7px"});
         var selraids=$("#organiser").clone(false).attr({id:"selraid",style:"height: 30px;width:150px;font-size:14px;border-radius:6px;margin:7px"});
@@ -7800,7 +7742,7 @@ END Boss Only Section
         $("#selcres").val(56).change();
         $("#selcraid").val(56).change();
         $("#selctroops").val(56).change();
-        //$("#selcincoming").val(56).change();
+        $("#selcincoming").val("all").change();
         //tabs.tabs( "refresh" );
         $("#hidespfbut").click(function() {
             if (hidespf) {
@@ -7820,73 +7762,73 @@ END Boss Only Section
         $("#resup").click(function() {
             $("#selres").val("all").change();
             jQuery.ajax({url: 'overview/citover.php',type: 'POST',aysnc:false,
-                         success: function(data) {
-                             var sumres=JSON.parse(data);
-                             updateres(sumres);
-                         }
-                        });
+                success: function(data) {
+                    var sumres=JSON.parse(data);
+                    updateres(sumres);
+                }
+            });
         });
         $("#troopsup").click(function() {
             $("#seltroops").val("all").change();
             var notes={id:[],notes:[]};
             jQuery.ajax({url: 'overview/citover.php',type: 'POST',aysnc:false,
-                         success: function(data) {
-                             var sumres=JSON.parse(data);
-                             $.each(sumres, function() {
-                                 notes.id.push(this.id);
-                                 notes.notes.push(this.reference);
-                             });
-                             jQuery.ajax({url: 'overview/trpover.php',type: 'POST',aysnc:false,
-                                          success: function(data) {
-                                              var troopsres=JSON.parse(data);
-                                              updatetroops(troopsres,notes);
-                                          }
-                                         });
-                         }
-                        });
+                success: function(data) {
+                    var sumres=JSON.parse(data);
+                    $.each(sumres, function() {
+                        notes.id.push(this.id);
+                        notes.notes.push(this.reference);
+                    });
+					jQuery.ajax({url: 'overview/trpover.php',type: 'POST',aysnc:false,
+                        success: function(data) {
+							var troopsres=JSON.parse(data);
+                            updatetroops(troopsres,notes);
+                        }
+					});
+				}
+            });
         });
         $("#raidup").click(function() {
             jQuery.ajax({url: 'overview/rreps.php',type: 'POST',aysnc:false,
-                         success: function(data) {
-                             var raids=JSON.parse(data);
-                             updateraids(raids,$("#raidsturnc").val());
-                         }
-                        });
+				success: function(data) {
+					var raids=JSON.parse(data);
+                    updateraids(raids,$("#raidsturnc").val());
+				}
+            });
         });
         $("#raidoverup").click(function() {
             $("#selraid").val("all").change();
             var notes={id:[],notes:[]};
             jQuery.ajax({url: 'overview/citover.php',type: 'POST',aysnc:false,
-                         success: function(data) {
-                             var sumres=JSON.parse(data);
-                             $.each(sumres, function() {
-                                 notes.id.push(this.id);
-                                 notes.notes.push(this.reference);
-                             });
-                             jQuery.ajax({url: 'overview/graid.php',type: 'POST',aysnc:false,
-                                          success: function(data) {
-                                              var raids=JSON.parse(data);
-                                              updateraidover(raids,notes);
-                                          }
-                                         });
-                         }
-                        });
+                success: function(data) {
+                    var sumres=JSON.parse(data);
+                    $.each(sumres, function() {
+                        notes.id.push(this.id);
+                        notes.notes.push(this.reference);
+                    });
+					jQuery.ajax({url: 'overview/graid.php',type: 'POST',aysnc:false,
+                        success: function(data) {
+                            var raids=JSON.parse(data);
+                            updateraidover(raids,notes);
+						}
+                    });
+				}
+            });
         });
         $("#supportup").click(function() {
             jQuery.ajax({url: 'overview/reinover.php',type: 'POST',aysnc:false,
-                         success: function(data) {
-                             var support=JSON.parse(data);
-                             updatesupport(support);
-                         }
-                        });
+                success: function(data) {
+                    var support=JSON.parse(data);
+                    updatesupport(support);
+                }
+			});
         });
         $("#incomingup").click(function() {
-            jQuery.ajax({url: 'overview/incover.php',type: 'POST',aysnc:false,
-                         success: function(data) {
-                             var incoming=JSON.parse(data);
-                             updateincoming(incoming);
-                         }
-                        });
+            jQuery.ajax({url: 'overview/incover.php',type: 'GET',aysnc:false,
+                success: function(data) {
+                    var incoming=JSON.parse(data);
+                    updateincoming(incoming);
+                }
+			});
         });
         var citylist=[];
         $("#seltroops").change(function() {
@@ -7896,7 +7838,7 @@ END Boss Only Section
             filtertroops("troops");
         });
         $("#selcincoming").change(function() {
-            if ($("#selcincoming").val()=="56") {
+            if ($("#selcincoming").val()=="all") {
                 $("#incomingtable tr").each(function() {
                     $(this).show();
                 });
@@ -7918,7 +7860,7 @@ END Boss Only Section
             var clistbool;
             var contbool;
             if (clist!="all") {
-                console.log("1");
+                //console.log("1");
                 $.each(poll2.player.clc, function(key, value) {
                     if (key==clist) {
                         citylist=value;
@@ -7949,12 +7891,12 @@ END Boss Only Section
                                 clistbool=false;
                             }
                         }
-                        console.log(clistbool,contbool);
+                        //console.log(clistbool,contbool);
                         if (clistbool && contbool) {
-                            console.log("show");
+                            //console.log("show");
                             $(this).show();
                         } else {
-                            console.log("hide");
+                            //console.log("hide");
                             $(this).hide();
                         }
                     }
@@ -7977,21 +7919,21 @@ END Boss Only Section
 
 //update incomings summary
     function updateincoming(data) {
-        var inctab="<thead><th>Player</th><th>City</th><th>Coords</th><th># INC</th><th><div class='"+tpicdiv[2]+"'</div></th><th><div class='"+tpicdiv[3]+"'</div></th><th><div class='"+tpicdiv[4]+"'</div></th><th><div class='"+tpicdiv[7]+"'</div></th><th><div class='"+tpicdiv[8]+"'</div></th><th><div class='"+tpicdiv[9]+"'</div></th><th><div class='"+tpicdiv[15]+"'</div></th><th><div class='"+tpicdiv[14]+"'</div></th><th><div class='"+tpicdiv[1]+"'</div></th><th>other</th><th colspan='2'>TS total</th><th>Next INC</th></thead><tbody> This Information Has been Moved";
+        var inctab="<thead><th>Player</th><th>City</th><th>Coords</th><th># of attacks</th><th><div class='"+tpicdiv[2]+"'</div></th><th><div class='"+tpicdiv[3]+"'</div></th><th><div class='"+tpicdiv[4]+"'</div></th><th><div class='"+tpicdiv[7]+"'</div></th><th><div class='"+tpicdiv[8]+"'</div></th><th><div class='"+tpicdiv[9]+"'</div></th><th><div class='"+tpicdiv[15]+"'</div></th><th><div class='"+tpicdiv[14]+"'</div></th><th><div class='"+tpicdiv[1]+"'</div></th><th>other</th><th colspan='2'>TS total</th><th>Next attack</th></thead><tbody>";
         var i=0;
         var ttd=[2,3,4,7,8,9,15,14,1];
-        $.each(data.a, function(key,value) {
+        $.each(data.b, function(cid,value) {
             var reinf=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
             var inc=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
             var incl=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
             var tsreinf=0;
             var tsinc=0;
             var tsincl=0;
-            var tempx=Number(key%65536);
-            var tempy=Number((key-tempx)/65536);
+            var tempx=Number(cid%65536);
+            var tempy=Number((cid-tempx)/65536);
             var cont=Number(Math.floor(tempx/100)+10*Math.floor(tempy/100));
             var atime;
-            inctab+="<tr cont='"+cont+"'><td class='playerblink'>"+this[0]+"</td><td>"+this[1]+"</td><td class='coordblink shcitt' data='"+key+"'>"+tempx+":"+tempy+"</td><td>"+this[3]+"</td>";
+            inctab+="<tr cont='"+cont+"'><td class='playerblink'>"+this[0]+"</td><td>"+this[1]+"</td><td class='coordblink shcitt' data='"+cid+"'>"+tempx+":"+tempy+"</td><td>"+this[3]+"</td>";
             var att=false;
             for (var i in this[9]) {
                 if (this[9][i][5]=="3") {
@@ -8053,7 +7995,7 @@ END Boss Only Section
 
 //update raid overview
     function updateraidover(data,notes) {
-       // console.log(notes);
+       // //console.log(notes);
         var raidovertab="<thead><tr data='0'><th></th><th>Name</th><th colspan='2'>Notes</th><th>Coords</th><th>Raids</th><th>Out</th><th>In</th><th>Raiding TS</th><th>Resources</th></tr></thead><tbody>";
         $.each(data.a, function() {
             var cid=this[0];
@@ -8095,9 +8037,9 @@ END Boss Only Section
         var supporttab="<thead><th></th><th>Player</th><th>City</th><th>Coords</th><th>Alliance</th><th>TS supporting</th><th>TS sending</th><th>TS returning</th></thead><tbody>";
         $.each(data, function() {
             var tid=this[9][0][1];
-            supporttab+="<tr><td><button class='greenb expsup' style='height: 20px;padding-top: 3px;border-radius:6px;'>Expand</button><button data='"+tid+"' class='greenb recasup' style='height: 20px;padding-top: 3px;border-radius:6px;'>Recall all</button>";
+            supporttab+="<tr><td><button id='expandrecall' class='greenb expsup' style='height: 20px;padding-top: 3px;border-radius:6px;'>Expand</button><button data='"+tid+"' class='greenb recasup' style='height: 20px;padding-top: 3px;border-radius:6px;'>Recall all</button>";
             supporttab+="</td><td class='playerblink'>"+this[0]+"</td><td>"+this[2]+"</td><td class='coordblink shcitt' data='"+tid+"'>"+this[3]+":"+this[4]+"</td><td class='allyblink'>"+this[1]+"</td><td>"+this[6]+"</td><td>"+this[7]+"</td><td>"+this[8]+"</td></tr>";
-            supporttab+="<tr class='expsuptab'><td colspan='8'><div class='beigemenutable' style='width:98%;height: AUTO !important;max-height: 85%;'><table><thead><th></th><th>City</th><th>Coords</th><th colspan='2'>Troops</th><th>Status</th><th>Arrival</th></thead><tbody>";
+            supporttab+="<tr class='expsuptab'><td colspan='8'><div class='beigemenutable' style='width:98%;border-radius: 50px;margin-left: auto;margin-right: auto;'><table><thead><th>Recall</th><th>City</th><th>Coords</th><th colspan='2'>Troops</th><th>Status</th><th>Arrival</th></thead><tbody>";
             for (var i in this[9]) {
                 var sid=this[9][i][15];
                 var status;
@@ -8108,7 +8050,7 @@ END Boss Only Section
                         status="Sending";
                         break;
                     case 2:
-                        supporttab+="<tr style='color: green;'><td><button class='greenb recsup' data='"+id+"' style='height: 20px;padding-top: 3px;border-radius:6px;'>Recall</button></td>";
+                        supporttab+="<tr style='color: green;'><td><button id='supporttabrecall' class='greenb recsup' data='"+id+"' style='height: 20px;padding-top: 3px;border-radius:6px;'>Recall</button></td>";
                         status="Reinforcing";
                         break;
                     case 0:
@@ -8484,7 +8426,7 @@ END Boss Only Section
         $("#troopstable td").css("padding-left","0%");
         var newTableObject = document.getElementById('troopstable');
         sorttable.makeSortable(newTableObject);
-        var tottab="<div id='tsum' class='beigemenutable scroll-pane' style='width: 99%;height: AUTO !important;max-height: 85%;margin-left: 4px; border-radius: 7px;border: 3px ridge #99805D;'><table style='font-size: 14px;width: 250%;'><tr><td>Total arbs: </td><td>Total balli: </td><td>Total druids: </td><td>Total galley: </td><td>Total guards: </td><td>Total horses: </td><td>Total praetor: </td><td>Total priest: </td><td>Total rams: </td><td>Total rangers: </td>";
+        var tottab="<div id='tsum' class='beigemenutable scroll-pane' style='width: 99%;height: AUTO !important;max-height: 85%;margin-left: auto; margin-right: auto; border-radius: 7px;border: 3px ridge #99805D;'><table style='font-size: 14px;width: 250%;'><tr><td>Total arbs: </td><td>Total balli: </td><td>Total druids: </td><td>Total galley: </td><td>Total guards: </td><td>Total horses: </td><td>Total praetor: </td><td>Total priest: </td><td>Total rams: </td><td>Total rangers: </td>";
         tottab+="<td>Total scorp: </td><td>Total scouts: </td><td>Total senator: </td><td>Total sorc: </td><td>Total stingers: </td><td>Total triari: </td><td>Total vanqs: </td><td>Total warship: </td></tr>";
         tottab+="<tr><td>"+arbstot.toLocaleString()+"</td><td>"+balltot.toLocaleString()+"</td>";
         tottab+="<td>"+druidstot.toLocaleString()+"</td>";
@@ -8552,7 +8494,7 @@ END Boss Only Section
         for (var i in shrinec) {
             if (i>0) {
                 var k=splayers.name.indexOf(shrinec[i][1]);
-                console.log(k,splayers);
+                //console.log(k,splayers);
                 for (var j in splayers.cities[k]) {
                     if (shrinec[i][3]==splayers.cities[k][j].b && shrinec[i][4]==splayers.cities[k][j].c) {
                         shrinec[i][2]=splayers.cities[k][j].h;
@@ -8574,7 +8516,7 @@ END Boss Only Section
         for (var i in w) {
             w[i]=Math.round(w[i]/wtot*100);
         }
-        console.log(shrinec);
+        //console.log(shrinec);
         var ccounter=0;
         for (var i in shrinec) {
             if (i>0) {
@@ -8623,7 +8565,7 @@ END Boss Only Section
         $("#shrineTab td").css("text-align","center");
         if (localStorage.getItem("hidecities")=="1") {
             hidecities();
-            console.log("hiding");
+            //console.log("hiding");
         }
         $(".shrinechange").click(function() {
             if ($(this).attr("data")=="castle") {
