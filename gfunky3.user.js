@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name gfunky3
 // @namespace www.tampermonkey.com
-// @version 1.2.6
+// @version 1.2.7
 // @description gfunky3
 // @author Greety
 // @match https://*.crownofthegods.com
@@ -30,14 +30,11 @@ START POPUP MESSAGE FOR PLAYERS WHEN THEY OPEN THE GAME
 		startupwin+="<div id='bottomcrownpic'></div>";
 		startupwin+="<div><span style='margin-left: 5%;'> <h1 style='text-align:center;'> GFunky3 BY GREETY </h1></span><br>";
 		startupwin+="<span style='margin-left: 5%;'><h4 style='text-align:center;color:blue;'>Special Thanks to Kalish, Dhruv, Lionell, And  Fact</h4><br>";
-		startupwin+="<h4 style='text-align:center;color:green;' >Updated January 2 2021</h4></span><br><br>";
+		startupwin+="<h4 style='text-align:center;color:green;' >Updated January 4 2021</h4></span><br><br>";
 		startupwin+="<span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;font-size:14px !important;'>";
-		startupwin+="<li class='gfadded'>	[Added] Complete Change Log Now Available under Overviews, Formerly Summaries	</li>";
-		startupwin+="<li class='gfupdated'>	[Updated] 30Galley/1 Scout button to Scout-Galley Fake	</li>";
-       startupwin+="<li class='gfadded'>	[Added] Target # Header to Attack Sender	</li>";
-       startupwin+="<li class='gfupdated'>	[Updated] Gfunky Building Counter formatting	</li>";
-       startupwin+="<li class='gfadded'>	[Added] Gfunky Changelog Under the Gfunky “Summary” Button 	</li>";
-		startupwin+="</ul></span></div>";
+		startupwin+="<li class='gffixed'>	[Fixed] Combat Summary export	</li>";
+		startupwin+="<li class='gffixed'>	[Fixed] Combat Summary display issues </li>";
+       	startupwin+="</ul></span></div>";
 		startupwin+="</div></div></div>";
 		$("body").append(startupwin);
 
@@ -5215,10 +5212,10 @@ END Boss Only Section
 		}
 
 	// combat reports summary
-        $(document).ready(function() {
+         $(document).ready(function() {
             var comsum="<button id='comsumGo' class='regButton greenb' style='margin-top: 40%;width: 95%;height: 25%;font-size: .8vw; border-radius: 6px;'>Combat Summary</button>";
             var comsump="<br></br><button id='comsumpGo' class='regButton greenb' style='margin-left:3%;width: 94%;height: 26px; font-size: 12px;'>Combat Summary</button>";
-			//$("##reportsTable").css("height","80%");
+            $("#reportsTable").css("height","78%");
             $("#locatecityGo").after(comsum);
             $("#announcementsGo").after(comsump);
             $("#comsumGo").click(function() {
@@ -5232,21 +5229,27 @@ END Boss Only Section
 
     //combat sum window
         function gfunkycomsumWin(arg) {
-            var gfunkycomsWin="<div id='gfunkycomsumWin' class='popUpBox ui-draggable' style='z-index:2002; width:550px !important;'>";
-			gfunkycomsWin+="<div class='ppbwinbgr ui-draggable'><div class='ppbwintop ui-resizable ui-draggable'></div><div class='ppbwincent ui-draggable'></div><div class='ppbwinbott ui-resizable ui-draggable'></div></div>";
-			gfunkycomsWin+="<div class='ppbwincontent ui-draggable' style='height:98%;'>";
-			gfunkycomsWin+="<div class='popUpBar ui-draggable-handle'> <span class='ppspan'>Combat Summary</span><button class='greenb regButton' style='font-size: 14px;margin-left: 20px;margin-top: 10px;height: 50%;width: 60px;'><div class='button'><a href='#' id ='outsumexp' role='button' style='color:#e1c190;'>Export</a></div></button><button id='sumX' class='xbutton' onclick=$('#gfunkycomsumWin').hide()><div id='xbuttondiv'> <div><div id='centxbuttondiv'></div></div></div></button></div>";
-			gfunkycomsWin+="<div id='comsumbody' class='popUpWindow'><span style='margin-left:5%;'>Pick a Date to retrieve combat 	summary:    </span><input style='width:90px;' id='comsumDat' type='datepicker' value='00/00/0000'><button class='regButton greenbuttonGo greenb' id='getcomSum' style='width:10%;margin-left:5%'> Go </Button><div id='comsumTabbody' style='margin:1%;'></div></div>";
-			gfunkycomsWin+="</div>";
-
+            var gfunkycomsWin="<div id='gfunkycomsumdiv' class='popUpBox ui-draggable' style='z-index:2002; width:550px !important;'>";
+            gfunkycomsWin+="<div class='ppbwinbgr ui-draggable'><div class='ppbwintop ui-resizable ui-draggable'></div><div class='ppbwincent ui-draggable'></div><div class='ppbwinbott ui-resizable ui-draggable'></div></div>";
+            gfunkycomsWin+="<div class='ppbwincontent ui-draggable' style='height:98%;'>";
+            gfunkycomsWin+="<div class='popUpBar ui-draggable-handle'> <span class='ppspan'>Gfunky's Combat Summary</span><button class='greenb regButton' style='font-size: 12px;margin-left: 20px;margin-top: 10px;height: 50%;width: 60px;'><div class='button'><a href='#' id ='comsumexp' role='button' style='color:#e1c190;'>Export</a></div></button><button id='sumX' class='xbutton' onclick=$('#gfunkycomsumdiv').remove()><div id='xbuttondiv'> <div><div id='centxbuttondiv'></div></div></div></button></div>";
+            gfunkycomsWin+="<div id='comsumbody' class='popUpWindow'><span style='margin-left:5%;'>Pick a Date to retrieve combat     summary:    </span><input style='width:90px;' id='comsumDat' type='datepicker' value='00/00/0000'><button class='regButton greenbuttonGo greenb' id='getcomSum' style='width:10%;margin-left:5%'> Go </Button><div id='comsumTabbody' style='margin:1%;'></div></div>";
+            gfunkycomsWin+="</div>";
             $("body").append(gfunkycomsWin);
-            $("#gfunkycomsumWin").draggable({ handle: ".popUpBar" , containment: "window", scroll: false});
+            $("#gfunkycomsumdiv").draggable({ handle: ".popUpBar" , containment: "window", scroll: false});
 
             $("#comsumDat").datepicker();
             $("#getcomSum").click(function() {
                 comsumtab(arg);
             });
-        }
+            $("#comsumexp").click(function(event) {
+            //var outputFile = window.prompt("What do you want to name your output file (Note: This won't have any effect on Safari)") || 'export';
+            var outputFile = 'CombatSum'+today.getDate()+Number(today.getMonth()+1)+today.getFullYear()+'.csv';
+
+            // CSV
+            exportTableToCSV.apply(this, [$('#comsumbody'), outputFile]);
+        });
+     }
 
 		function comsumtab(arg) {
 			var ata={sent:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],lost:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],survive:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]};// non siege
@@ -5594,10 +5597,10 @@ END Boss Only Section
             }
             comsumbody+="<td>"+tddied.toLocaleString()+"</td><td>"+dt.lost[18].toLocaleString()+"</td></tr></tbody></table><span>Total lost: "+(tddied+dt.lost[18]).toLocaleString()+"</span></div></p>";
             $("#comsumTabbody").html(comsumbody);
-            $("#comsumatab td").css({"text-align":"center","font-size":"15px"});
-            $("#comsumatab th").css({"text-align":"center","font-size":"15px"});
-            $("#comsumdtab td").css({"text-align":"center","font-size":"15px"});
-            $("#comsumdtab th").css({"text-align":"center","font-size":"15px"});
+            $("#comsumatab td").css({"text-align":"center","font-size":"10px"});
+            $("#comsumatab th").css({"text-align":"center","font-size":"10px"});
+            $("#comsumdtab td").css({"text-align":"center","font-size":"10px"});
+            $("#comsumdtab th").css({"text-align":"center","font-size":"10px"});
         }
     }
 
@@ -7700,6 +7703,9 @@ gfunkyoverviewwin+="	<li class='	gfadded	'	>	[Added] Target # Header to Attack S
 gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] Gfunky Building Counter formatting	</li>	";
 gfunkyoverviewwin+="	<li class='	gfadded	'	>	[Added] Gfunky Changelog Under the Gfunky Overview button, Formerly  Summary Button	</li>	";
 gfunkyoverviewwin+="	<li class='	gfupdated	'	>	[Updated] Summary Tab now the Overviews Tab	</li>	";
+gfunkyoverviewwin+="					1.2.7		";
+gfunkyoverviewwin+="	<li class='	gffixed	'   >    [Fixed] Combat Summary export</li>	";
+gfunkyoverviewwin+="	<li class='	gffixed	'   >    [Fixed] Combat Summary Display Issues</li>	";
 		gfunkyoverviewwin+=" </ul></span>";
 		//gfunkyoverviewwin+=" <div id='gfunkythankyou'> Thank You all For Supporting Gfunky! if you live in the USA and enjoy Energy Drinks, Preworkouts or Nutritional Supplements, Consider using this link to buy some. use Discount code 'GreetyMade' for 15% off!! <input type='button' value='Raze Energy' class='greenb'		onclick='https://reppsports.com/?rfsn=4451968.5967e7&utm_source=refersion&utm_medium=affiliate&utm_campaign=4451968.5967e7'></div> ";
 	
