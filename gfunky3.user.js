@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name gfunky3
 // @namespace www.tampermonkey.com
-// @version 1.2.7
+// @version 1.2.8
 // @description gfunky3
 // @author Greety
 // @match https://*.crownofthegods.com
@@ -30,10 +30,10 @@ START POPUP MESSAGE FOR PLAYERS WHEN THEY OPEN THE GAME
 		startupwin+="<div id='bottomcrownpic'></div>";
 		startupwin+="<div><span style='margin-left: 5%;'> <h1 style='text-align:center;'> GFunky3 BY GREETY </h1></span><br>";
 		startupwin+="<span style='margin-left: 5%;'><h4 style='text-align:center;color:blue;'>Special Thanks to Kalish, Dhruv, Lionell, And  Fact</h4><br>";
-		startupwin+="<h4 style='text-align:center;color:green;' >Updated January 4 2021</h4></span><br><br>";
+		startupwin+="<h4 style='text-align:center;color:green;' >Updated January 6 2021</h4></span><br><br>";
 		startupwin+="<span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;font-size:14px !important;'>";
-		startupwin+="<li class='gffixed'>	[Fixed] Combat Summary export	</li>";
-		startupwin+="<li class='gffixed'>	[Fixed] Combat Summary display issues </li>";
+		startupwin+="<li class='gffixed'>	[Fixed] Quick Build Cabins	</li>";
+		
        	startupwin+="</ul></span></div>";
 		startupwin+="</div></div></div>";
 		$("body").append(startupwin);
@@ -798,7 +798,7 @@ START OF QUICKBUILD SCRIPT
                                 return item.building && item.building.buildable
                             }).length < 50) {
                             // Adding a cottage
-                            toAdd = that.BUILDINGS._DETAILS.cottage;
+                            toAdd = that.BUILDINGS._DETAILS.cabin;
                         } else if (that.addedData.pureNavy) {
                             // Adding a barrack
                             toAdd = that.BUILDINGS._DETAILS.barracks;
