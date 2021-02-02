@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name gfunky3
 // @namespace www.tampermonkey.com
-// @version 1.2.8
+// @version 1.2.9
 // @description gfunky3
 // @author Greety
 // @match https://*.crownofthegods.com
@@ -30,7 +30,7 @@ START POPUP MESSAGE FOR PLAYERS WHEN THEY OPEN THE GAME
 		startupwin+="<div id='bottomcrownpic'></div>";
 		startupwin+="<div><span style='margin-left: 5%;'> <h1 style='text-align:center;'> GFunky3 BY GREETY </h1></span><br>";
 		startupwin+="<span style='margin-left: 5%;'><h4 style='text-align:center;color:blue;'>Special Thanks to Kalish, Dhruv, Lionell, And  Fact</h4><br>";
-		startupwin+="<h4 style='text-align:center;color:green;' >Updated January 18 2021</h4></span><br><br>";
+		startupwin+="<h4 style='text-align:center;color:green;' >Updated February 2 2021</h4></span><br><br>";
 		startupwin+="<span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;font-size:14px !important;'>";
 		startupwin+="<li class='gfadded'>	[Added] Complete Change Log Now Available Under Reports and New Button	</li>";
 		
@@ -4108,7 +4108,7 @@ Boss Section
 END Boss Only Section
 
 */
-/*
+
 //auto fill boss and raid numbers
     cotgsubscribe.subscribe( "regional", function( data ) {
             var x=data.x;
@@ -4561,7 +4561,7 @@ END Boss Only Section
     });
 
 
-*/
+
 
 
 // recall button in command window
