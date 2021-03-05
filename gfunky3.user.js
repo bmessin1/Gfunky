@@ -30,9 +30,9 @@ START POPUP MESSAGE FOR PLAYERS WHEN THEY OPEN THE GAME
 		startupwin+="<div id='bottomcrownpic'></div>";
 		startupwin+="<div><span style='margin-left: 5%;'> <h1 style='text-align:center;'> GFunky3 BY GREETY </h1></span><br>";
 		startupwin+="<span style='margin-left: 5%;'><h4 style='text-align:center;color:blue;'>Special Thanks to Kalish, Dhruv, Lionell, And  Fact</h4><br>";
-		startupwin+="<h4 style='text-align:center;color:green;' >Updated January 18 2021</h4></span><br><br>";
+		startupwin+="<h4 style='text-align:center;color:green;' >Updated March 05 2021</h4></span><br><br>";
 		startupwin+="<span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;font-size:14px !important;'>";
-		startupwin+="<li class='gfadded'>	[Added] Complete Change Log Now Available Under Reports and New Button	</li>";
+		startupwin+="<li class='gfadded'>		</li>";
 		
 		startupwin+="</ul></span></div>";
 		startupwin+="</div></div></div>";
