@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name gfunky3
 // @namespace www.tampermonkey.com
-// @version 1.2.9
+// @version 3.1
 // @description gfunky3
 // @author Greety
 // @match https://*.crownofthegods.com
@@ -30,7 +30,7 @@ START POPUP MESSAGE FOR PLAYERS WHEN THEY OPEN THE GAME
 		startupwin+="<div id='bottomcrownpic'></div>";
 		startupwin+="<div><span style='margin-left: 5%;'> <h1 style='text-align:center;'> GFunky3 BY GREETY </h1></span><br>";
 		startupwin+="<span style='margin-left: 5%;'><h4 style='text-align:center;color:blue;'>Special Thanks to Kalish, Dhruv, Lionell, And  Fact</h4><br>";
-		startupwin+="<h4 style='text-align:center;color:green;' >Updated February 2 2021</h4></span><br><br>";
+		startupwin+="<h4 style='text-align:center;color:green;' >Updated January 18 2021</h4></span><br><br>";
 		startupwin+="<span style='margin-left: 5%;'><h4>changes:</h4><ul style='margin-left: 6%;font-size:14px !important;'>";
 		startupwin+="<li class='gfadded'>	[Added] Complete Change Log Now Available Under Reports and New Button	</li>";
 		
@@ -1070,6 +1070,7 @@ START OF CORE FUNKY
 	var troopcounshl=[[]];
 	var troopcounpol=[[]];
 	var troopcountsg=[[]];
+	
     var resw=[[]];
     var resd=[[]];
    	var resl=[[]];
@@ -5681,14 +5682,33 @@ END Boss Only Section
         var layoutopttab="<li id='layoutopt' class='ui-state-default ' role='tab' tabindex='-1' aria-controls='layoutoptBody'";
         layoutopttab+="aria-labeledby='ui-id-60' aria-selected='false' aria-expanded='false'>";
         layoutopttab+="<a href='#layoutoptBody' class='ui-tabs-anchor' role='presentation' tabindex='-1' id='ui-id-60'>Layout Options</a></li>";
+		
+		
         var layoutoptbody="<div id='layoutoptBody' aria-labeledby='ui-id-60' class='ui-tabs-panel ' ";
-        layoutoptbody+=" role='tabpanel' aria-hidden='true' style='display: none;'><table><tbody><tr><td><input id='addnotes' class='clsubopti' type='checkbox' checked> Add Notes</td>";
-        layoutoptbody+="<td><input id='addtroops' class='clsubopti' type='checkbox'> Add Troops</td></tr><tr><td><input id='addtowers' class='clsubopti' type='checkbox'> Add Towers</td><td><input id='addbuildings' class='clsubopti' type='checkbox' checked> Upgrade Cabins</td>";
-        layoutoptbody+="<td> Cabin Lvl: <input id='cablev' type='number' style='width:22px;' value='8' checked></td></tr><tr><td><input id='addwalls' class='clsubopti' type='checkbox' checked> Add Walls</td>";
-        layoutoptbody+="<td><input id='addhub' class='clsubopti' type='checkbox' checked> Set Nearest Hub With layout</td></tr><tr><td>Select Hubs list: </td><td id='selhublist'></td><td>";
-        layoutoptbody+="<button id='nearhubAp' class='regButton greenb' style='width:130px; margin-left: 10%'>Set Nearest Hub</button><button id='infantryAp' class='regButton greenb' style='width:130px; margin-left: 10%'>Infantry setup</button></td></tr></tbody></table>";
-        layoutoptbody+="<table><tbody><tr><td colspan='2'><input id='addres' class='clsubopti' type='checkbox'> Add Resources:</td><td id='buttd' colspan='2'></td></tr><tr><td>wood<input id='woodin' type='number' style='width:100px;' value='250000'></td><td>stones<input id='stonein' type='number' style='width:100px;' value='250000'></td>";
-        layoutoptbody+="<td>iron<input id='ironin' type='number' style='width:100px;' value='200000'></td><td>food<input id='foodin' type='number' style='width:100px;' value='350000'></td></tr>";
+        layoutoptbody+=" role='tabpanel' aria-hidden='true' style='display: none;'><table><tbody>";
+		layoutoptbody+="<tr><td><input id='addnotes' class='clsubopti' type='checkbox' checked> Add Notes</td>";
+        layoutoptbody+="<td><input id='addtroops' class='clsubopti' type='checkbox' checked> Add Troops</td></tr>";
+		layoutoptbody+="<tr><td><input id='addtowers' class='clsubopti' type='checkbox' checked> Add Towers</td>";
+		layoutoptbody+="<td><input id='addbuildings' class='clsubopti' type='checkbox' checked> Upgrade Cabins</td>";
+        layoutoptbody+="<td> Cabin Lvl: <input id='cablev' type='number' style='width:22px;' value='8' checked></td></tr>";
+		layoutoptbody+="<tr><td><input id='addwalls' class='clsubopti' type='checkbox' checked> Add Walls</td>";
+        layoutoptbody+="<td><input id='addhub' class='clsubopti' type='checkbox' checked> Set Nearest Hub With layout</td></tr>";
+		layoutoptbody+="<tr><td>Select Hubs list: </td><td id='selhublist'></td><td>";
+        layoutoptbody+="<button id='nearhubAp' class='regButton greenb' style='width:130px; margin-left: 10%'>Set Nearest Hub</button>";
+		layoutoptbody+="<button id='quickAp' class='regButton greenb' style='width:130px; margin-left: 10%'>Quick Setup</button></td></tr>";
+		layoutoptbody+="</tbody></table>";
+        layoutoptbody+="<table style='border: 3px ridge #99805d; border-radius: 6px; text-align: center; margin-left: auto;margin-right: auto;'><tbody>";
+		layoutoptbody+="<tr><td colspan='2'><input id='addres' class='clsubopti' type='checkbox' checked> Add Resources:</td><td id='buttd' colspan='2'></td></tr>";
+		layoutoptbody+="<tr><td colspan='4'style='text-align: center;font-size: 14px;'> Request Resources If Below These Amounts</td></tr>";
+		layoutoptbody+="<tr><td style='text-align:center;'>Wood<input id='woodin' type='number' style='font-weight: bold;width:100px;border-radius: 6px;background: #e1c190;color: black;text-align: center;' value='220000'></td>";
+		layoutoptbody+="<td style='text-align:center;'>Stone<input id='stonein' type='number' style='font-weight: bold;width:100px;border-radius: 6px;background: #e1c190;color: black;text-align: center;' value='220000'></td>";
+        layoutoptbody+="<td style='text-align:center;'>Iron<input id='ironin' type='number' style='font-weight: bold;width:100px;border-radius: 6px;background: #e1c190;color: black;text-align: center;' value='200000'></td>";
+		layoutoptbody+="<td style='text-align:center;'>Food<input id='foodin' type='number' style='font-weight: bold;width:100px;border-radius: 6px;background: #e1c190;color: black;text-align: center;' value='350000'></td></tr>";
+		layoutoptbody+="<tr><td colspan='4'style='text-align: center;font-size: 14px;'> Send Excess Resources If Above These Amounts</td></tr>";
+		layoutoptbody+="<tr><td style='text-align:center;'>Wood<input id='woodout' type='number' style='font-weight: bold;width:100px;border-radius: 6px;background: #e1c190;color: black;text-align: center;' value='250000'></td>";
+		layoutoptbody+="<td style='text-align:center;'>Stone<input id='stoneout' type='number' style='font-weight: bold;width:100px;border-radius: 6px;background: #e1c190;color: black;text-align: center;' value='250000'></td>";
+        layoutoptbody+="<td style='text-align:center;'>Iron<input id='ironout' type='number' style='font-weight: bold;width:100px;border-radius: 6px;background: #e1c190;color: black;text-align: center;' value='250000'></td>";
+		layoutoptbody+="<td style='text-align:center;'>Food<input id='foodout' type='number' style='font-weight: bold;width:100px;border-radius: 6px;background: #e1c190;color: black;text-align: center;' value='400000'></td></tr>";
         layoutoptbody+="</tbody></table></div>";
         var layoptbut="<button id='layoptBut' class='regButton greenb' style='width:150px;'>Save Res Settings</button>";
         var tabs = $( "#CNtabs" ).tabs();
@@ -5700,14 +5720,18 @@ END Boss Only Section
         $("#nearhubAp").click(function() {
             setnearhub();
         });
-        $("#infantryAp").click(function() {
-            setinfantry();
+        $("#quickAp").click(function() {
+            setquickAP();
         });
         $("#layoptBut").click(function() {
             localStorage.setItem('woodin',$("#woodin").val());
             localStorage.setItem('foodin',$("#foodin").val());
             localStorage.setItem('ironin',$("#ironin").val());
             localStorage.setItem('stonein',$("#stonein").val());
+			localStorage.setItem('woodout',$("#woodout").val());
+            localStorage.setItem('foodout',$("#foodout").val());
+            localStorage.setItem('ironout',$("#ironout").val());
+            localStorage.setItem('stoneout',$("#stoneout").val());
             localStorage.setItem('cablev',$("#cablev").val());
         });
         if (localStorage.getItem('cablev')) {
@@ -5724,6 +5748,18 @@ END Boss Only Section
         }
         if (localStorage.getItem('foodin')) {
             $("#foodin").val(localStorage.getItem('foodin'));
+        }
+		 if (localStorage.getItem('woodout')) {
+            $("#woodout").val(localStorage.getItem('woodout'));
+        }
+        if (localStorage.getItem('stoneout')) {
+            $("#stoneout").val(localStorage.getItem('stoneout'));
+        }
+        if (localStorage.getItem('ironout')) {
+            $("#ironout").val(localStorage.getItem('ironout'));
+        }
+        if (localStorage.getItem('foodout')) {
+            $("#foodout").val(localStorage.getItem('foodout'));
         }
         if (localStorage.getItem('atroops')) {
             if (localStorage.getItem('atroops')==1) {
@@ -5836,14 +5872,14 @@ END Boss Only Section
                 remarklol.push("Vanqs");
 				notelol.push("180000 Vanqs @ 2 days");
                 troopcounlol.push([0,0,0,0,0,179999,0,0,0,0,0,0,0,0,0,0,0]);
-                reslol.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
+                reslol.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250002,250002,200002,400002]);
                 lol++;
                 selectbuttlandoff+='<option value="'+lol+'">2 sec vanqs</option>';
                 layoutlol.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBGBGBGB#----#######BGBBTBBGB#######SSPX#BGBGBGBGB#----##MDPJ#BGBGBGBGB#----##S---##BBGBGBB##----##-----##BBBBB##-----##-BBBBB#######------##-ZBGGB---#---------##-BBBBB---#---------###-BGGB---#--------#####BBBB---#-------########################");
                 remarklol.push("vanqs");
 				notelol.push("256000 vanqs @ 6 days");
                 troopcounlol.push([0,0,0,0,0,255999,0,0,0,0,0,0,0,0,0,0,0]);
-                reslol.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
+                reslol.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250001,250001,200000,400000]);
                 lol++;
                 selectbuttlandoff+='<option value="'+lol+'">3 sec vanqs raiding</option>';
                 layoutlol.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BBBGBGBBB#----##----#BGBBBBBGB#----#######BBBGTGBBB#######SSPX#BGBBBBBGB#----##MDP-#BBBGBGBBB#----##S---##BBGBGBB##----##-----##BBBBB##-----##------#######------##---BBBBBB#---------##---BGGBGB#---------###--BBBBBB#--------#####-JBZBBB#-------########################");
@@ -6069,7 +6105,7 @@ END Boss Only Section
                 layoutwol.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BGBGB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBGBGBGB#---H#######BGBGTGBGB#######----#BGBGBGBGB#JSPX##----#BGBGBGBGB#----##----##BBGBGBB##---B##-----##BGBGB##BBBBZ##------#######BBVVBB##---------#---BV##VB##---------#---BV###V###--------#---BBV#######-------#--BBBBV########################");
                 remarkwol.push("vanq/galley+senator");
 				notewol.push("193299 inf and 387 galley @ 14 days");
-                troopcounwol.push([0,0,0,0,0,1932990,0,0,0,0,0,0,0,0,387,0,0]);
+                troopcounwol.push([0,0,0,0,0,193299,0,0,0,0,0,0,0,0,387,0,0]);
                 reswol.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1350000]);
                 wol++;
 				selectbuttwateroff+='<option value="'+wol+'">3 sec vanq/galley+senator</option>';
@@ -6825,19 +6861,13 @@ END Boss Only Section
                                 reslol[j][14]=0;
                                 reslol[j][15]=0;
                             }
-                            if ($("#addres").prop("checked")==true) {
-                                reslol[j][5]=$("#woodin").val();
-                                reslol[j][6]=$("#stonein").val();
-                                reslol[j][7]=$("#ironin").val();
-                                reslol[j][8]=$("#foodin").val();
-                                reslol[j][19]=$("#woodin").val();
-                                reslol[j][20]=$("#stonein").val();
-                                reslol[j][21]=$("#ironin").val();
-                                reslol[j][22]=$("#foodin").val();
+							if ($("#addres").prop("checked")==true) {
+                                
                                 for (var k in reslol[j]) {
                                     aa[28+Number(k)]=reslol[j][k];
                                 }
                             }
+							
                             if ($("#addbuildings").prop("checked")==true) {
                                 aa[51]=[1,$("#cablev").val()];
                                 aa[1]=1;
@@ -6905,14 +6935,7 @@ END Boss Only Section
                                 resldl[j][15]=0;
                             }
                             if ($("#addres").prop("checked")==true) {
-                                resldl[j][5]=$("#woodin").val();
-                                resldl[j][6]=$("#stonein").val();
-                                resldl[j][7]=$("#ironin").val();
-                                resldl[j][8]=$("#foodin").val();
-                                resldl[j][19]=$("#woodin").val();
-                                resldl[j][20]=$("#stonein").val();
-                                resldl[j][21]=$("#ironin").val();
-                                resldl[j][22]=$("#foodin").val();
+                               
                                 for (var k in resldl[j]) {
                                     aa[28+Number(k)]=resldl[j][k];
                                 }
@@ -6983,14 +7006,7 @@ END Boss Only Section
                                 reswol[j][15]=0;
                             }
                             if ($("#addres").prop("checked")==true) {
-                                reswol[j][5]=$("#woodin").val();
-                                reswol[j][6]=$("#stonein").val();
-                                reswol[j][7]=$("#ironin").val();
-                                reswol[j][8]=$("#foodin").val();
-                                reswol[j][19]=$("#woodin").val();
-                                reswol[j][20]=$("#stonein").val();
-                                reswol[j][21]=$("#ironin").val();
-                                reswol[j][22]=$("#foodin").val();
+                                
                                 for (var k in resw[j]) {
                                     aa[28+Number(k)]=reswol[j][k];
                                 }
@@ -7057,14 +7073,7 @@ END Boss Only Section
                                 reswdl[j][15]=0;
                             }
                             if ($("#addres").prop("checked")==true) {
-                                reswdl[j][5]=$("#woodin").val();
-                                reswdl[j][6]=$("#stonein").val();
-                                reswdl[j][7]=$("#ironin").val();
-                                reswdl[j][8]=$("#foodin").val();
-                                reswdl[j][19]=$("#woodin").val();
-                                reswdl[j][20]=$("#stonein").val();
-                                reswdl[j][21]=$("#ironin").val();
-                                reswdl[j][22]=$("#foodin").val();
+                               
                                 for (var k in reswdl[j]) {
                                     aa[28+Number(k)]=reswdl[j][k];
                                 }
@@ -7134,14 +7143,7 @@ END Boss Only Section
                                 reshul[j][15]=0;
                             }
                             if ($("#addres").prop("checked")==true) {
-                                reshul[j][5]=$("#woodin").val();
-                                reshul[j][6]=$("#stonein").val();
-                                reshul[j][7]=$("#ironin").val();
-                                reshul[j][8]=$("#foodin").val();
-                                reshul[j][19]=$("#woodin").val();
-                                reshul[j][20]=$("#stonein").val();
-                                reshul[j][21]=$("#ironin").val();
-                                reshul[j][22]=$("#foodin").val();
+                               
                                 for (var k in reshul[j]) {
                                     aa[28+Number(k)]=reshul[j][k];
                                 }
@@ -7212,14 +7214,7 @@ END Boss Only Section
                                 resshl[j][15]=0;
                             }
                             if ($("#addres").prop("checked")==true) {
-                                resshl[j][5]=$("#woodin").val();
-                                resshl[j][6]=$("#stonein").val();
-                                resshl[j][7]=$("#ironin").val();
-                                resshl[j][8]=$("#foodin").val();
-                                resshl[j][19]=$("#woodin").val();
-                                resshl[j][20]=$("#stonein").val();
-                                resshl[j][21]=$("#ironin").val();
-                                resshl[j][22]=$("#foodin").val();
+                               
                                 for (var k in resshl[j]) {
                                     aa[28+Number(k)]=resshl[j][k];
                                 }
@@ -7290,14 +7285,7 @@ END Boss Only Section
                                 respol[j][15]=0;
                             }
                             if ($("#addres").prop("checked")==true) {
-                                respol[j][5]=$("#woodin").val();
-                                respol[j][6]=$("#stonein").val();
-                                respol[j][7]=$("#ironin").val();
-                                respol[j][8]=$("#foodin").val();
-                                respol[j][19]=$("#woodin").val();
-                                respol[j][20]=$("#stonein").val();
-                                respol[j][21]=$("#ironin").val();
-                                respol[j][22]=$("#foodin").val();
+                               
                                 for (var k in respol[j]) {
                                     aa[28+Number(k)]=respol[j][k];
                                 }
@@ -7368,14 +7356,7 @@ END Boss Only Section
                                 restsg[j][15]=0;
                             }
                             if ($("#addres").prop("checked")==true) {
-                                restsg[j][5]=$("#woodin").val();
-                                restsg[j][6]=$("#stonein").val();
-                                restsg[j][7]=$("#ironin").val();
-                                restsg[j][8]=$("#foodin").val();
-                                restsg[j][19]=$("#woodin").val();
-                                restsg[j][20]=$("#stonein").val();
-                                restsg[j][21]=$("#ironin").val();
-                                restsg[j][22]=$("#foodin").val();
+                                
                                 for (var k in restsg[j]) {
                                     aa[28+Number(k)]=restsg[j][k];
                                 }
@@ -7392,77 +7373,7 @@ END Boss Only Section
                         }
                     }
                 });
-		//Fast Build Layouts
-                $('#fastbuildlayout').change(function() {
-                    var newlayout=currentlayout;
-                    for (var j=1; j<layoutdf.length; j++) {
-                        if ($('#fastbuildlayout').val()==j) {
-                            for (var i=20; i<currentlayout.length;i++) {
-                                var tmpchar=layoutdf[j].charAt(i);
-                                var cmp=new RegExp(tmpchar);
-                                if (!(cmp.test(emptyspots))) {
-                                    newlayout=newlayout.replaceAt(i,tmpchar);
-                                }
-                            }
-                            //$('#removeoverlayGo').click();
-                            $('#overlaytextarea').val(newlayout);
-                            setTimeout(function(){$("#applyoverlayGo")[0].click();},300);
-                            if ($("#addnotes").prop("checked")==true) {
-                                $('#CNremarks').val(remarkdf[j]);
-                                $('#citynotestextarea').val(notedf[j]);
-                                setTimeout(function(){$("#citnotesaveb")[0].click(); },100);
-                            }
-                            var aa=city.mo;
-                            if ($("#addtroops").prop("checked")==true) {
-                                for (var k in troopcound[j]) {
-                                    aa[9+Number(k)]=troopcound[j][k];
-                                }
-                            }
-                            if ($("#addwalls").prop("checked")==true) {
-                                aa[26]=1;
-                            }
-                            if ($("#addtowers").prop("checked")==true) {
-                                aa[27]=1;
-                            }
-                            if ($("#addhub").prop("checked")==true) {
-                                var hubs={cid:[],distance:[]};
-                                $.each(clc, function(key, value) {
-                                    if (key==$("#selHub").val()) {
-                                        hubs.cid=value;
-                                    }
-                                });
-                                for (var i in hubs.cid) {
-                                    var tempx=Number(hubs.cid[i] % 65536);
-                                    var tempy=Number((hubs.cid[i]-tempx)/65536);
-                                    hubs.distance.push(Math.sqrt((tempx-city.x)*(tempx-city.x)+(tempy-city.y)*(tempy-city.y)));
-                                }
-                                var mindist = Math.min.apply(Math, hubs.distance);
-                                var nearesthub=hubs.cid[hubs.distance.indexOf(mindist)];
-                                resd[j][14]=nearesthub;
-                                resd[j][15]=nearesthub;
-                            } else {
-                                resd[j][14]=0;
-                                resd[j][15]=0;
-                            }
-                            if ($("#addres").prop("checked")==true) {
-                                resd[j][5]=$("#woodin").val();
-                                resd[j][6]=$("#stonein").val();
-                                resd[j][7]=$("#ironin").val();
-                                resd[j][8]=$("#foodin").val();
-                                for (var k in resd[j]) {
-                                    aa[28+Number(k)]=resd[j][k];
-                                }
-                            }
-                            if ($("#addbuildings").prop("checked")==true) {
-                                aa[51]=[1,$("#cablev").val()];
-                                aa[1]=1;
-                            }
-                           //var aaa=JSON.stringify(aa);
-                            var dat={a:JSON.stringify(aa),b:cdata.cid};
-                            $.ajax({url: 'includes/mnio.php',type: 'POST',async:true,data: dat});
-                        }
-                    }
-                });
+	
             },500);
         });
     });
@@ -7512,6 +7423,10 @@ END Boss Only Section
         res[6]=$("#stonein").val();
         res[7]=$("#ironin").val();
         res[8]=$("#foodin").val();
+		res[19]=$("#woodout").val();
+        res[20]=$("#stoneout").val();
+        res[21]=$("#ironout").val();
+        res[22]=$("#foodout").val();
         for (var k in res) {
             aa[28+Number(k)]=res[k];
         }
@@ -7526,8 +7441,8 @@ END Boss Only Section
 
 
 
-//infantry setup
-    function setinfantry() {
+//Quick Setupp
+    function setquickAP() {
         var res=[0,0,0,0,1,200000,220000,200000,350000,0,0,0,0,1,0,0,0,0,0,300000,300000,300000,400000];
         var aa=city.mo;
         var hubs={cid:[],distance:[]};
@@ -7566,6 +7481,10 @@ END Boss Only Section
         res[6]=$("#stonein").val();
         res[7]=$("#ironin").val();
         res[8]=$("#foodin").val();
+		res[19]=$("#woodout").val();
+        res[20]=$("#stoneout").val();
+        res[21]=$("#ironout").val();
+        res[22]=$("#foodout").val();
         for (var k in res) {
             aa[28+Number(k)]=res[k];
         }
@@ -8664,4 +8583,3 @@ END Boss Only Section
         }
     }
 })();
-
