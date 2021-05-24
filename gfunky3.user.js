@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name gfunky3
 // @namespace www.tampermonkey.com
-// @version 3.1.1
+// @version 3.1.2
 // @description gfunky3
 // @author Greety
 // @match https://*.crownofthegods.com
@@ -27,7 +27,7 @@ START POPUP MESSAGE FOR PLAYERS WHEN THEY OPEN THE GAME
 		startupwin+="<div class='popUpBar ui-draggable-handle'><span class='smppspan'>Gfunky+ By Fact and Greety </span><button id='gfunkyX' class='xbutton' onclick=$('#startwinDiv').remove()><div id='xbuttondiv'><div><div id='centxbuttondiv'></div></div></div></button></div>";
 		startupwin+="<div id='announcWindow' style='overflow-y:auto; width:95% !important;left:15px !important'>";
 		//startupwin+="<div id='HelloWorld' class='anwdrh redheading' style='text-align:center;'><span> Welcome to Crown Of The Gods. This is a Beta version prior to being approved by Developers for the addon marketplace</span></div>";
-		startupwin+="<div style='text-align:auto;'><span style='margin-left: 5%;'> <h1 style='text-align:center;'> <img src='http://cotgopt.com/images/icons/Gfunkylogo21a.png'> <br> By Fact and Greety </h1></span><br>";
+		startupwin+="<div style='text-align:center;'><span style='margin-left: 5%;'> <h1 style='text-align:center;'> <img src='http://cotgopt.com/images/icons/Gfunkylogo21a.png'> <br> By Fact and Greety </h1></span><br>";
 		startupwin+="<div id='bottomcrownpic'></div>";
 		startupwin+="<span style='margin-left: 5%;'><span style='text-align:center;color:blue;'>Special Thanks to Kalish, Dhruv, Lionell</span><br>";
 		startupwin+="<h4 style='text-align:center;color:green;' >Updated May 22 2021</h4></span><br><br>";
@@ -3243,9 +3243,23 @@ END SEND Attack Function
 
 
 //Buttons convert,fill,demolish, SHRINE Section 2 building count,
-    $(document).ready(function() {
-        var gfunkyquickbutton="<div id='gfunkyquickbuttons' class='commandinndiv' style='text-align: center;'><div><button id='fb1' style='height:28px; width:65px; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>ON/OFF</button><button id='fb2' style='height:28px; width:65px; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Refine</button><button id='fb3' style='height:28px; width:65px; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Raid</button><button id='fb4' style='height:28px; width:65px; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Demolish</button><button id='fb5' style='height:28px; width:46%; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Clear Resources</button><button id='fb6' style='height:28px; width:46%; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Gfunky Changelog</button></div></div>";
-        var bdcountbox="<div id='currentbuildings' style=' width: 290px; margin-top: 10px; margin-left: auto; margin-right: auto; border: 3px solid #886f53; align-content: center;'><div id='bdcountbar' class='queueBar'>";
+    //3246-3459
+
+$(document).ready(function() {
+        var gfunkyquickbutton="<div id='gfunkyquickbuttons' class='commandinndiv' style='text-align: center;'><div>";
+		gfunkyquickbutton+="<button id='fb1' style='height:28px; width:95%; margin-left:7px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Councillors ON/OFF</button>";
+		gfunkyquickbutton+="<button id='fb7' style='height:28px; width:65px; margin-left:4px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Upgrade</button>";
+		gfunkyquickbutton+="<button id='fb8' style='height:28px; width:65px; margin-left:4px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Up + Que</button>";
+		gfunkyquickbutton+="<button id='fb9' style='height:28px; width:75px; margin-left:4px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Downgrade</button>";
+		gfunkyquickbutton+="<button id='fb4' style='height:28px; width:65px; margin-left:4px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Demolish</button>";
+		gfunkyquickbutton+="<button id='fb2' style='height:28px; width:65px; margin-left:4px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Refine</button>";
+		gfunkyquickbutton+="<button id='fb3' style='height:28px; width:65px; margin-left:4px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Raid</button>";
+		gfunkyquickbutton+="<button id='fb5' style='height:28px; width:49%; margin-left:4px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Clear Resources</button>";
+		gfunkyquickbutton+="<button id='fb10' style='height:28px; width:45%; margin-left:4px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton redb'>Future Button</button>";
+		gfunkyquickbutton+="<button id='fb6' style='height:28px; width:49%; margin-left:4px; margin-bottom:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;' class='regButton greenb'>Gfunky+ Changelog</button>";
+		gfunkyquickbutton+="</div></div>";
+        var bdcountbox="<div id='currentbuildings' style=' width: 290px; margin-top: 10px; margin-left: auto; margin-right: auto; border: 3px solid #886f53; align-content: center;'>";
+		bdcountbox+="<div id='bdcountbar' class='queueBar'>";
         bdcountbox+="<div id='bdcountbut' class='tradeqarr2'><div></div></div><span class='qbspan'>Gfunky's Current Buildings</span>";
         bdcountbox+="<div id='numbdleft' class='barRightFloat tooltipstered'>0</div>";
         bdcountbox+="</div><div id='bdcountwin' class='queueWindow' style='display: block; padding-top: 15px; padding-bottom: 15px;' ></div></div>";
@@ -3261,7 +3275,7 @@ END SEND Attack Function
             event.stopPropagation();
             $.post('/overview/fillq.php', { a: gcid });
         });
-*/		
+*/
         var convbut='<button id="convque" class="greenb tooltipstered" style="height:18px; width:60px; margin-left:7px; margin-top:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;">Convert</button>';
         $('#sortbut').after(convbut);
         $('#convque').click(function() {
@@ -3270,20 +3284,20 @@ END SEND Attack Function
             $.post('/overview/mconv.php', { a: cfd });
         });
 
-
+		var gfunkycoun=0;
         $("#fb1").click(function(){
             $('#councillorPopUpBox').show();
             $("#ui-id-11")[0].click();
             $("#couonoffdv")[0].click();
             setTimeout(function(){
                 $("#councillorXbutton")[0].click();
-            },100);
-            if (coon==0) {
-                coon=1;
+            });
+            if (gfunkycoun==0) {
+                gfunkycoun=1;
                 $(this).removeClass('greenb');
                 $(this).addClass('redb');
             } else {
-                coon=0;
+                gfunkycoun=0;
                 $(this).removeClass('redb');
                 $(this).addClass('greenb');
             }
@@ -3309,7 +3323,69 @@ END SEND Attack Function
                 $(this).removeClass('redb');
                 $(this).addClass('greenb');
             }
+			autoupon=0;
+			$("#fb7").removeClass('redb').addClass('greenb');
+			autoupqon=0;
+			$("#fb8").removeClass('redb').addClass('greenb');
+			autodownon=0;
+			$("#fb9").removeClass('redb').addClass('greenb');
         });
+		var autoupon=0;
+		$("#fb7").click(function() {
+            if (autoupon==0) {
+                autoupon=1;
+                $(this).removeClass('greenb');
+                $(this).addClass('redb');
+            } else {
+                autoupon=0;
+                $(this).removeClass('redb');
+                $(this).addClass('greenb');
+            }
+			autodemoon=0;
+            $("#fb4").removeClass('redb').addClass('greenb');
+			autoupqon=0;
+			$("#fb8").removeClass('redb').addClass('greenb');
+			autodownon=0;
+			$("#fb9").removeClass('redb').addClass('greenb');
+        });
+		var autoupqon=0;
+		$("#fb8").click(function() {
+            if (autoupqon==0) {
+                autoupqon=1;
+                $(this).removeClass('greenb');
+                $(this).addClass('redb');
+            } else {
+                autoupqon=0;
+                $(this).removeClass('redb');
+                $(this).addClass('greenb');
+            }
+			autodemoon=0;
+            $("#fb4").removeClass('redb').addClass('greenb');
+			autoupon=0;
+			$("#fb7").removeClass('redb').addClass('greenb');
+			autodownon=0;
+			$("#fb9").removeClass('redb').addClass('greenb');
+        });
+		var autodownon=0;
+		$("#fb9").click(function() {
+            if (autodownon==0) {
+                autodownon=1;
+                $(this).removeClass('greenb');
+                $(this).addClass('redb');
+            } else {
+                autodownon=0;
+                $(this).removeClass('redb');
+                $(this).addClass('greenb');
+            }
+			autodemoon=0;
+            $("#fb4").removeClass('redb').addClass('greenb');
+			autoupon=0;
+			$("#fb7").removeClass('redb').addClass('greenb');
+			autoupqon=0;
+			$("#fb8").removeClass('redb').addClass('greenb');
+
+        });
+
         $("#fb5").click(function() {
             $('#clearreswin').show();
             setTimeout(function(){
@@ -3319,26 +3395,62 @@ END SEND Attack Function
         $("#fb6").click(function() {
 			gfunkychangelogWin();
 		  });
-            
+		  $("#fb10").click(function() {
+			//gfunkyoptionWin();
+		  });
+
         $("#centarrowNextDiv").click(function() {
             autodemoon=0;
             $("#fb4").removeClass('redb').addClass('greenb');
+			autoupon=0;
+			$("#fb7").removeClass('redb').addClass('greenb');
+			autoupqon=0;
+			$("#fb8").removeClass('redb').addClass('greenb');
+			autodownon=0;
+			$("#fb9").removeClass('redb').addClass('greenb');
         });
         $("#centarrowPrevDiv").click(function() {
             autodemoon=0;
             $("#fb4").removeClass('redb').addClass('greenb');
+			autoupon=0;
+			$("#fb7").removeClass('redb').addClass('greenb');
+			autoupqon=0;
+			$("#fb9").removeClass('redb').addClass('greenb');
+			autodownon=0;
+			$("#fb9").removeClass('redb').addClass('greenb');
         });
         $("#ddctd").click(function() {
             autodemoon=0;
             $("#fb4").removeClass('redb').addClass('greenb');
+			autoupon=0;
+			$("#fb7").removeClass('redb').addClass('greenb');
+			autoupqon=0;
+			$("#fb8").removeClass('redb').addClass('greenb');
+			autodownon=0;
+			$("#fb9").removeClass('redb').addClass('greenb');
         });
         $("#qbuildtbButton").click(function() {
             autodemoon=0;
             $("#fb4").removeClass('redb').addClass('greenb');
+			autoupon=0;
+			$("#fb7").removeClass('redb').addClass('greenb');
+			autoupqon=0;
+			$("#fb8").removeClass('redb').addClass('greenb');
+			autodownon=0;
+			$("#fb9").removeClass('redb').addClass('greenb');
         });
         $("#city_map").click(function() {
             if (autodemoon==1) {
                 $("#buildingDemolishButton").trigger({type:"click",originalEvent:"1"});
+            }
+			 if (autoupon==1) {
+                $("#buildingUpgradeButton").trigger({type:"click",originalEvent:"1"});
+            }
+			 if (autoupqon==1) {
+                $("#queuecouncupgradbut").trigger({type:"click",originalEvent:"1"});
+            }
+			 if (autodownon==1) {
+                $("#buildingDowngradeButton").trigger({type:"click",originalEvent:"1"});
             }
         });
 
@@ -3424,9 +3536,6 @@ END SEND Attack Function
             }
             $("#foodsendamt").val(res);
         });
-
-
-
 
 
 
@@ -4632,7 +4741,7 @@ END Boss Only Section
 
 		var trlist = $("#commandtable tbody tr:nth-child(1)");
 		var i=0;
-        $(trlist).find(".commandinntabl table tbody tr td:nth-child(2)")[0].click(); // table tbody tr td:nth-child(2)
+        $(trlist).find(".commandinntabl tbody tr td table tbody tr td:nth-child(2)")[0].click();
         setTimeout(function() {
 			$("#raidrettimesela").val(1).change();
 	    },300);
@@ -5285,6 +5394,77 @@ END Boss Only Section
 			$("body").append(gfunkychangelWin);
             $("#gfunkychangeldiv").draggable({ handle: ".popUpBar" , containment: "window", scroll: false});
 		}
+    function gfunkyoptionWin(arg) {
+			var  gfunkyoptionsWin="<div id='gfunkyoptiondiv' class='popUpBox ui-resizable ui-draggable' style='z-index:2002; width:500px !important; height:300px;'>";
+				gfunkyoptionsWin+="<div class='ppbwinbgr ui-draggable' style='width:500px !important;'>";
+					gfunkyoptionsWin+="<div class='ppbwintop ui-resizable ui-draggable' style='width:500px !important;'></div>";
+					gfunkyoptionsWin+="<div class='ppbwincent ui-draggable' style='width:500px !important;'></div>";
+					gfunkyoptionsWin+="<div class='ppbwinbott ui-resizable ui-draggable' style='width:500px !important;'></div>"
+				gfunkyoptionsWin+="</div>";
+				gfunkyoptionsWin+="<div class='ppbwincontent ui-resizable ui-draggable' style='width:500px !important;' >";
+					gfunkyoptionsWin+="<div class='popUpBar ui-resizable ui-draggable-handle'>";
+						gfunkyoptionsWin+="<span class='ppspan'>Gfunky+ Options</span>";
+						gfunkyoptionsWin+="<button id='sumX' class='xbutton' onclick=$('#gfunkyoptiondiv').remove()>";
+							gfunkyoptionsWin+="<div id='xbuttondiv'> ";
+								gfunkyoptionsWin+="<div>";
+									gfunkyoptionsWin+="	<div id='centxbuttondiv'></div>";
+								gfunkyoptionsWin+="	</div>";
+							gfunkyoptionsWin+="</div>";
+						gfunkyoptionsWin+="</button>";
+					gfunkyoptionsWin+="</div>";
+					gfunkyoptionsWin+="<div id='gfunkyoptionbody' class='popUpWindow ui-resizable' style='width:95%; margin-left:auto; margin-right:auto; padding-top:50px;'>";
+						gfunkyoptionsWin+="<table style='margin-left:auto;margin-right:auto;width: 95%;font-size: 20px;border-radius: 6px;border: 3px ridge #886f53; background: url(/images/antonui/queue.png);background-size:100% 100%;'><tbody>";
+						gfunkyoptionsWin+="<tr><td><input id='attacklines' class='clsubopti' type='checkbox' checked> Attack Lines</td>";
+						gfunkyoptionsWin+="<td><input id='combatccc' class='clsubopti' type='checkbox' checked> Combat Calculator</td></tr>";
+						gfunkyoptionsWin+="<tr><td><input id='layoutsautoadd' class='clsubopti' type='checkbox' checked> Layouts Push</td>";
+						gfunkyoptionsWin+="<td></td></tr>";
+						//gfunkyoptionsWin+="<tr><td><input id='future2' class='clsubopti' type='checkbox' checked> Future 2</td>";
+						//gfunkyoptionsWin+="<td><input id='future3' class='clsubopti' type='checkbox' checked> Future3</td></tr>";
+						gfunkyoptionsWin+="</tbody></table>";
+					gfunkyoptionsWin+="</div>";
+				gfunkyoptionsWin+="</div>";
+			gfunkyoptionsWin+="</div>";
+			$("body").append(gfunkyoptionsWin);
+            $("#gfunkyoptiondiv").draggable({ handle: ".popUpBar" , containment: "window", scroll: false});
+
+
+			if (localStorage.getItem('attacklines')) {
+				if (localStorage.getItem('attacklines')==1) {
+					$("#attacklines").prop( "checked", true );
+				}  else { $("#attacklines").prop( "checked", false );}
+			}
+			// ACombat Calc
+			if (localStorage.getItem('combatccc')) {
+				if (localStorage.getItem('combatccc')==1) {
+					$("#combatccc").prop( "checked", true );
+				} else { $("#combatccc").prop( "checked", false );}
+			}
+			if (localStorage.getItem('layoutsautoadd')) {
+				if (localStorage.getItem('layoutsautoadd')==1) {
+					$("#layoutsautoadd").prop( "checked", true );
+				} else { $("#layoutsautoadd").prop( "checked", false );}
+			}
+
+			//Note the Change
+			$("#attacklines").change(function() {
+				if ($("#attacklines").prop( "checked")==true) {
+					localStorage.setItem('attacklines',1);
+				} else {localStorage.setItem('attacklines',0);}
+			});
+			$("#combatccc").change(function() {
+				if ($("#combatccc").prop( "checked")==true) {
+					localStorage.setItem('combatccc',1);
+				} else {localStorage.setItem('combatccc',0);}
+			});
+			$("#layoutsautoadd").change(function() {
+				if ($("#layoutsautoadd").prop( "checked")==true) {
+					localStorage.setItem('layoutsautoadd',1);
+				} else {localStorage.setItem('layoutsautoadd',0);}
+			});
+
+		}
+
+
     //combat sum window
         function gfunkycomsumWin(arg) {
             var gfunkycomsWin="<div id='gfunkycomsumdiv' class='popUpBox ui-draggable' style='z-index:2002; width:550px !important;'>";
