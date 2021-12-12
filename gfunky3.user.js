@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name gfunky3
 // @namespace www.tampermonkey.com
-// @version 3.1.2
+// @version 3.1.3
 // @description gfunky3
 // @author Greety
 // @match https://*.crownofthegods.com
@@ -30,7 +30,7 @@ START POPUP MESSAGE FOR PLAYERS WHEN THEY OPEN THE GAME
 		startupwin+="<div style='text-align:center;'><span style='margin-left: 5%;'> <h1 style='text-align:center;'> <img src='http://cotgopt.com/images/icons/Gfunkylogo21a.png'> <br> By Fact and Greety </h1></span><br>";
 		startupwin+="<div id='bottomcrownpic'></div>";
 		startupwin+="<span style='margin-left: 5%;'><span style='text-align:center;color:blue;'>Special Thanks to Kalish, Dhruv, Lionell</span><br>";
-		startupwin+="<h4 style='text-align:center;color:green;' >Updated May 22 2021</h4></span><br><br>";
+		startupwin+="<h4 style='text-align:center;color:green;' >Updated 12 Dec 2021</h4></span><br><br>";
 		startupwin+="<span style='margin-left: 5%;'><h5 style='text-align:center;'>Please See the Gfunky Change Log Located in the Top Left for Changes </h5><ul style='margin-left: 6%;font-size:14px !important;'>";
 		//startupwin+="<li class='gfadded'>		</li>";
 		
@@ -6206,28 +6206,28 @@ END Boss Only Section
                 layoutldl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBGBGBGB#----#######BGBGTGBGB#######SSPX#BGBGBGBGB#----##MLPJ#BGBGBGBGB#----##S---##BBGBGBG##----##-----##BBBGB##-----##--BBBB#######------##-BGGGG---#---------##-BBBBBB--#---------###-GGGG---#--------#####BBBB---#-------########################");
                 remarkldl.push("Rangers"); noteldl.push("228000 inf @ 5.2 days");
                 troopcounldl.push([0,0,228000,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
-                resldl.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
+                resldl.push([0,0,0,0,250000,220000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,220000,350000,350000]);
                 ldl++;
                 selectbuttlanddef+='<option value="'+ldl+'">3 sec rangers</option>';
-                layoutldl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##GBGBGBG##----##----#BBBBBBBBB#----##----#BGBGBGBGB#----#######BBBBTBBBB#######SSPX#BGBGBGBGB#----##LMPJ#BBBBBBBBB#----##S---##GBGBGBG##----##-----##BBBBB##-----##------#######------##----BBBBB#---------##----BGBGB#---------###--BBGBGB#--------#####-BBBBBB#-------########################");
+                layoutldl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##GBGBGBG##----##----#BBBGBGBBB#----##----#BGBBBBBGB#----#######BBBGTGBBB#######SSPX#BGBBBBBGB#----##MLPJ#BBBGBGBBB#----##S---##GBGBGBG##----##-----##BBBBB##-----##--BBBB#######------##--BGBGB--#---------##--BBBBB--#---------###-BGBGB--#--------#####BBBB---#-------########################");
                 remarkldl.push("Rangers");
-				noteldl.push("268000 inf @ 9.3 days");
-                troopcounldl.push([0,0,268000,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
-                resldl.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
+				noteldl.push("276000 inf @ 9.3 days");
+                troopcounldl.push([0,0,276000,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
+                resldl.push([0,0,0,0,1,350000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,450000,220000,150000,350000]);
                 ldl++;
                 selectbuttlanddef+='<option value="'+ldl+'">2s/3s Rangers/Triari</option>';
                 layoutldl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBGBGBGB#----#######BGBGTGBGB#######SSPX#BGBGBGBGB#----##MLPJ#BGBGBGBGB#----##S---##BBGBGBG##----##-----##BBBGB##-----##--BBBB#######------##-BGGGG---#---------##-BBBBBB--#---------###-GGGG---#--------#####BBBB---#-------########################");
                 remarkldl.push("rangers/triari");
 				noteldl.push("228000 inf @ 6.2 days");
                 troopcounldl.push([0,0,152000,76000,0,0,0,0,0,0,0,0,0,0,0,0,0]);
-                resldl.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
+                resldl.push([0,0,0,0,1,250000,220000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,220000,350000,350000]);
                 ldl++;
                 selectbuttlanddef+='<option value="'+ldl+'">3s/3s Rangers/Triari</option>';
                 layoutldl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##-BGBGBB##----##----#BBBGBGBGB#----##----#BGBGBGBGB#----#######BGBBTGBGB#######SLSX#BGBGBGBGB#----##SMPP#BGBGBGBGB#----##----##BBGBGBB##----##-----##BBBBB##-----##--BBBB#######------##--BGBGB--#---------##--BGBGB--#---------###JBGBGB--#--------#####BBBBB--#-------########################");
                 remarkldl.push("rangers/triari");
 				noteldl.push("252000 inf @ 6.2 days");
                 troopcounldl.push([0,0,168000,84000,0,0,0,0,0,0,0,0,0,0,0,0,0]);
-                resldl.push([0,0,0,0,1,150000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,150000,220000,150000,350000]);
+                resldl.push([0,0,0,0,1,250000,220000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,220000,350000,350000]);
                 ldl++;
                 selectbuttlanddef+='<option value="'+ldl+'">3 sec Priestess</option>';
                 layoutldl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BZBZB##-----##----##BBZBZBB##----##----#BZBZBZBZB#----##----#BZBZBZBZB#----#######BZBZTZBZB#######SMSX#BZBZBZBZB#----##SDPP#BZBZBZBZB#----##----##BBZBZBB##----##-BBBB##BBBBB##-----##-ZZZZ-#######------##BBBBBB---#---------##JZZZZB---#---------###BBBB----#--------#####-------#-------########################");
@@ -6528,7 +6528,7 @@ END Boss Only Section
                 hul++;
 
                 selectbutthub+='<option value="'+hul+'">Maj Hub Land 14.2K</option>';
-                layouthul.push("[ShareString.1.3]:########################-------#PPPPPPP#####--------#PPPPPPPP###---------#PPPPPPPPP##---------#PPPPPPPPP##------#######PPPPPP##-----##-----##PPPPP##----##-------##PPPP##----#---SLS---#PPPP##----#-SLSMSAS-#PPPP#######-SDSTSDS-#######----#-SLSMSAS-#PPPP##----#---SAS---#PPPP##----##-------##PPPP##-----##ZBJ--##--PPP##------#######------##---------#---------##---------#---------###--------#--------#####-------#-------########################");
+                layouthul.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##PPPPP##-----##----##-PPPPP-##----##----#---SLS---#----##----#ZSLSMSAS-#----#######BSDSTSDS-#######----#JSLSMSAS-#PPPP##----#---SAS---#PPPP##----##-------##PPPP##-----##PPPPP##PPPPP##------#######PPPPPP##---------#PPPPPPPPP##---------#PPPPPPPPP###--------#PPPPPPPP#####-------#PPPPPPP########################");
                 remarkhul.push("Hub");
 		notehul.push("14200K Carts, 8,975,000 W/S, 8,175,000");
                 troopcounhul.push([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
@@ -6536,7 +6536,7 @@ END Boss Only Section
                 hul++;
 
                 selectbutthub+='<option value="'+hul+'">Maj Hub Water 12.6K</option>';
-                layouthul.push("[ShareString.1.3];########################-------#PPPPPPP#####--------#PPPPPPPP###---------#PPPPPPPPP##---------#PPPPPPPPP##------#######PPPPPP##-----##-----##PPPPP##----##-------##PPPP##----#---SLS---#PPPP##----#-SLSMSAS-#PPPP#######-SDSTSDS-#######----#-SLSMSAS-#PPPP##----#---SAS---#-PPP##----##-------##----##-----##ZBJ--##-----##------#######--RR--##---------#----R##R-##---------#----R###R###--------#-----R#######-------#------R########################");
+                layouthul.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##PPPPP##-----##----##-PPPPP-##----##----#---SLS---#----##----#ZSLSMSAS-#----#######BSDSTSDS-#######----#JSLSMSAS-#PPPP##----#---SAS---#PPPP##----##PPPPPPP##PPPP##-----##PPPPP##PPPPP##------#######PPRRPP##---------#PPPPR##RP##---------#PPPPR###R###--------#PPPPPR#######-------#PPPPPPR########################");
                 remarkhul.push("Hub");
 		notehul.push("12600K Carts, 8,975,000 W/S, 8,175,000 I/F");
                 troopcounhul.push([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
@@ -6569,7 +6569,7 @@ END Boss Only Section
                 hul++;
 
                 selectbutthub+='<option value="'+hul+'">Temple Transport</option>';
-                layouthul.push("[ShareString.1.3];########################-------#------P#####--------#-----PPP###---------#-----PPPP##---------#-----PPPP##------#######--PPPP##-----##-----##-PPPP##----##-------##PPPP##----#-SS------#PPPP##----#AAAA--J--#PPPP#######SSSST-B--#######----#LLLL--Z--#PPPP##----#-SS------#PPPP##----##-------##PPPP##-----##-----##PPPPP##------#######PPRRPP##---------#PPPPR##RP##---------#PPPPR###R###--------#PPPPPR#######-------#PPPPPPR########################");
+                layouthul.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##--PPP##-----##----##JBZPPPP##----##----#-SS-PPPP-#----##----#AAAAPPPP-#----#######SSSSTPPP-#######----#LLLLPPPP-#PPPP##----#-SS-PPPP-#PPPP##----##---PPP-##PPPP##-----##--PPP##PPPPP##------#######PPRRPP##---------#PPPPR##RP##---------#PPPPR###R###--------#PPPPPR#######-------#PPPPPPR########################");
                 remarkhul.push("Temple Transport");
 		notehul.push("14,600 Carts, 8,175,000 W/S, 1,775,000 I/F");
                troopcounhul.push([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
