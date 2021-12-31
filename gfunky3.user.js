@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name gfunky3
 // @namespace www.tampermonkey.com
-// @version 3.1.3
+// @version 3.1.4
 // @description gfunky3
 // @author Greety
 // @match https://*.crownofthegods.com
@@ -30,7 +30,7 @@ START POPUP MESSAGE FOR PLAYERS WHEN THEY OPEN THE GAME
 		startupwin+="<div style='text-align:center;'><span style='margin-left: 5%;'> <h1 style='text-align:center;'> <img src='http://cotgopt.com/images/icons/Gfunkylogo21a.png'> <br> By Fact and Greety </h1></span><br>";
 		startupwin+="<div id='bottomcrownpic'></div>";
 		startupwin+="<span style='margin-left: 5%;'><span style='text-align:center;color:blue;'>Special Thanks to Kalish, Dhruv, Lionell</span><br>";
-		startupwin+="<h4 style='text-align:center;color:green;' >Updated 12 Dec 2021</h4></span><br><br>";
+		startupwin+="<h4 style='text-align:center;color:green;' >Updated 01 Jan 2022</h4></span><br><br>";
 		startupwin+="<span style='margin-left: 5%;'><h5 style='text-align:center;'>Please See the Gfunky Change Log Located in the Top Left for Changes </h5><ul style='margin-left: 6%;font-size:14px !important;'>";
 		//startupwin+="<li class='gfadded'>		</li>";
 		
@@ -1663,7 +1663,7 @@ START OF CORE FUNKY
 		
 		$('div#warCidlemanager').attr('style', 'margin-top: 26px');
 		$('div#warCidledi').attr('style', 'height: 80% !important');
-		$('div#warCraidtable').attr('style', 'height: 65% !important');
+		$('div#warCraidtable').attr('style', 'height: 55% !important');
 		$(warCidledi).css({"border": "3px ridge #99805D", "border-radius": "6px"});
         $( bosstab ).appendTo( ul );
         $( attacktab ).appendTo( ul );
@@ -2352,8 +2352,8 @@ SEND DEFENSE Function
         var defendtime;
 
 
-//Galley DEFEND MATH
-        if (t.type.indexOf(14)>-1) {
+ //Galley DEFEND MATH
+
             if (t.use[t.type.indexOf(14)]==1) {
                 defendtime=ttspeed[14]/faithbonustravelspeed[14]*maxdist;
                 //console.log(defendtime);
@@ -2413,7 +2413,7 @@ SEND DEFENSE Function
                         }
                     }
                 }
-            }
+            
 //END OF GALLEY DEFEND MATH
 //Normal defend MATH
         } else {
@@ -3480,7 +3480,8 @@ $(document).ready(function() {
                 bdcountshow=true;
             }
         });
-        var wood50="<td><button class='brownb' id='wood50'>Add 50%</button></td>";
+       var wood50="<td style='width: 50px'><button class='brownb' id='wood50' >Add 50%</button></td>";
+		var wood45="<td style='width: 50px'><button class='brownb' id='wood45' >Add 45%</button></td>";
         $("#woodmaxbutton").parent().after(wood50);
         $("#wood50").click(function() {
             var res=Number($("#maxwoodsend").text().replace(/,/g,""));
@@ -3494,7 +3495,22 @@ $(document).ready(function() {
             }
             $("#woodsendamt").val(res);
         });
-        var stone50="<td><button class='brownb' id='stone50'>Add 50%</button></td>";
+		$("#woodmaxbutton").parent().after(wood45);
+		$("#wood45").click(function() {
+            var res=Number($("#maxwoodsend").text().replace(/,/g,""));
+            if ($("#landseasendres").val()=="1") {
+                var carts=Math.floor(Number($("#availcartscity").text())*.45)*1000;
+            } else {
+                var carts=Math.floor(Number($("#availshipscity").text())*.45)*10000;
+            }
+            if (res>carts) {
+                res=carts;
+            }
+            $("#woodsendamt").val(res);
+        });
+
+        var stone50="<td  style='width: 75px'><button class='brownb' id='stone50'>Add 50%</button></td>";
+		var stone45="<td style='width: 75px'><button class='brownb' id='stone45' >Add 45%</button></td>";
         $("#stonemaxbutton").parent().after(stone50);
         $("#stone50").click(function() {
             if ($("#landseasendres").val()=="1") {
@@ -3508,7 +3524,22 @@ $(document).ready(function() {
             }
             $("#stonesendamt").val(res);
         });
-        var iron50="<td><button class='brownb' id='iron50'>Add 50%</button></td>";
+		$("#stonemaxbutton").parent().after(stone45);
+        $("#stone45").click(function() {
+            if ($("#landseasendres").val()=="1") {
+                var carts=Math.floor(Number($("#availcartscity").text())*.45)*1000;
+            } else {
+                var carts=Math.floor(Number($("#availshipscity").text())*.45)*10000;
+            }
+            var res=Number($("#maxstonesend").text().replace(/,/g,""));
+            if (res>carts) {
+                res=carts;
+            }
+            $("#stonesendamt").val(res);
+        });
+        var iron50="<td style='width: 75px'><button class='brownb' id='iron50' >Add 50%</button></td>";
+		var iron45="<td style='width: 75px'><button class='brownb' id='iron45' >Add 45%</button></td>";
+
         $("#ironmaxbutton").parent().after(iron50);
         $("#iron50").click(function() {
             var res=Number($("#maxironsend").text().replace(/,/g,""));
@@ -3522,7 +3553,22 @@ $(document).ready(function() {
             }
             $("#ironsendamt").val(res);
         });
-        var food50="<td><button class='brownb' id='food50'>Add 50%</button></td>";
+
+        $("#ironmaxbutton").parent().after(iron45);
+        $("#iron45").click(function() {
+            var res=Number($("#maxironsend").text().replace(/,/g,""));
+            if ($("#landseasendres").val()=="1") {
+                var carts=Math.floor(Number($("#availcartscity").text())*.45)*1000;
+            } else {
+                var carts=Math.floor(Number($("#availshipscity").text())*.45)*10000;
+            }
+            if (res>carts) {
+                res=carts;
+            }
+            $("#ironsendamt").val(res);
+        });
+        var food50="<td style='width: 50px'><button class='brownb' id='food50' >Add 50%</button></td>";
+		var food45="<td style='width: 50px'><button class='brownb' id='food45' >Add 45%</button></td>";
         $("#foodmaxbutton").parent().after(food50);
         $("#food50").click(function() {
             var res=Number($("#maxfoodsend").text().replace(/,/g,""));
@@ -3536,7 +3582,19 @@ $(document).ready(function() {
             }
             $("#foodsendamt").val(res);
         });
-
+		$("#foodmaxbutton").parent().after(food45);
+		 $("#food45").click(function() {
+            var res=Number($("#maxfoodsend").text().replace(/,/g,""));
+            if ($("#landseasendres").val()=="1") {
+                var carts=Math.floor(Number($("#availcartscity").text())*.45)*1000;
+            } else {
+                var carts=Math.floor(Number($("#availshipscity").text())*.45)*10000;
+            }
+            if (res>carts) {
+                res=carts;
+            }
+            $("#foodsendamt").val(res);
+        });
 
 
 //Shrine Section 2
@@ -4852,7 +4910,7 @@ END Boss Only Section
                 var total_loot= Math.ceil((loot1[Number(dunglvl)-1] * ((1-Number(progress)/100)+1))*1.0175);
 				$("#dungloctab").find(".addraiwc td:nth-child(2)").html("<button id='raidAll' style='padding: 2px; border-radius: 4px;' class='greenb shRnTr'>Use All TS</button>");
 				$("#dungloctab").find(".addraiwc td:nth-child(5)").html("");
-				$("#dungloctab").find(".addraiwc td:nth-child(4)").html("<select id='raidSelect' style='padding: 2px; border-radius: 4px;' class='greenb shRnTr' autofocus><option value=.0>No Option Selected</option><option value='.95'>95%</option><option value='.97'>97%</option><Option value='1.00'>100%</option><option value='1.03'>103%</option><option value='1.05'>105%</option><option value='1.07'>107%</option><option value='1.10'>110%</option><option value='1.12'>112%</option><option value='1.15'>115%</option></select>");
+				$("#dungloctab").find(".addraiwc td:nth-child(4)").html("<select id='raidSelect' style='padding: 2px; border-radius: 4px;' class='greenb shRnTr' autofocus><option value=.0>No Option Selected</option><option value='.95'>95%</option><option value='.97'>97%</option><Option value='1.00'>100%</option><option value='1.03'>103%</option><option value='1.05'>105%</option><option value='1.07'>107%</option><option value='1.10'>110%</option><option value='1.12'>112%</option><option value='1.15'>115%</option><option value='1.30'>130%</option><option value='1.50'>150%</option></select>");
 
   //              var troops = cotg.city.troops();
                 var home;
@@ -5364,7 +5422,7 @@ END Boss Only Section
                 gfunkychangelogWin();
             });
 			
-            //$("head").append("<script type='text/javascript' src='https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js'></script>");
+            
         });
 
 
@@ -5859,10 +5917,10 @@ END Boss Only Section
         $("#citynotes").draggable({ handle: ".popUpBar" , containment: "window", scroll: false});
         $('#citynotes').height('420px');
         $('#citynotes').width('500px');
+        $('#openOVLinplanner').html('<a href="https://cotgopt.com/" target="_blank" rel="noopener noreferrer">Open CoTG Opt by GFunky+</a>');
         var layoutopttab="<li id='layoutopt' class='ui-state-default ' role='tab' tabindex='-1' aria-controls='layoutoptBody'";
         layoutopttab+="aria-labeledby='ui-id-60' aria-selected='false' aria-expanded='false'>";
         layoutopttab+="<a href='#layoutoptBody' class='ui-tabs-anchor' role='presentation' tabindex='-1' id='ui-id-60'>Layout Options</a></li>";
-
 
         var layoutoptbody="<div id='layoutoptBody' aria-labeledby='ui-id-60' class='ui-tabs-panel ' ";
         layoutoptbody+=" role='tabpanel' aria-hidden='true' style='display: none;'><table><tbody>";
@@ -6659,6 +6717,14 @@ END Boss Only Section
                 resshl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,300000,1400000]);
                 shl++;
 
+                selectbuttshipper+='<option value="'+shl+'">256K 4sec Ranger Ship</option>';
+                layoutshl.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBBBBBGB#----##----#BBBGBGBBB#----#######BGBBTBBGB#######----#BGBGBGBGB#PP-X##----#BGBGBGBGB#----##----##BBGBGBB##----##-----##BBBB-##BBBB-##------#######BBRRBB##---------#-D-BR##RB##---------#SASBR###R###--------#SL-BBR#######-------#---JBBR########################");
+                remarkshl.push("256K 4S Ranger Shipper");
+		noteshl.push("256KTS 256K Rangers 126K Triari @ 12.8 days  Substitute sawmill, masons hut, smelter or grain mill, as appropriate");
+                troopcounshl.push([0,0,256000,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
+                resshl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,300000,1400000]);
+                shl++;
+
                 selectbuttshipper+='<option value="'+shl+'">240K 3/4 sec R/T +Sen Ship</option>';
                 layoutshl.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBGBGBBB#----##----#BGBBBBBGB#----#######BGBGTGBGB#######----#BGBGBGBGB#SLPX##----#BGBGBGBGB#SDPJ##----##BBGBGBB##----##-----##BBBBB##-----##------#######--RR--##---------#BBBBRTTR-##---------#BGBZRTTTR###--------#BGBB-RTT#####-------#BBBB--R########################");
                 remarkshl.push("240K 3/4s R/T +Sen Shipper");
@@ -6698,6 +6764,15 @@ END Boss Only Section
                 troopcounshl.push([0,0,0,0,260000,0,0,0,0,0,0,0,0,0,0,0,0]);
                 resshl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,300000,1400000]);
                 shl++;
+
+                selectbuttshipper+='<option value="'+shl+'">248K 6sec Priest Ship</option>';
+                layoutshl.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BZBZBZB##----##----#-BBBBBZB-#----##----#-BZBZBZB-#----#######-BBBTBZB-#######----#-BZBZBZB-#-AD-##----#-BBBBBZB-#SSSS##----##BZBZBZB##-LM-##BBBB-##BBBBB##-----##BZBZB-#######--RR--##BBBBB----#X---R##R-##BJBZB----#----R###R###BBBB----#-----R#######-------#PP----R########################");
+                remarkshl.push("248K 6s Priestess Shipper");
+		noteshl.push("248KTS 260K Priestess @ 17.2 days ");
+                troopcounshl.push([0,0,0,0,248000,0,0,0,0,0,0,0,0,0,0,0,0]);
+                resshl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,300000,1400000]);
+                shl++;
+
 
                 selectbuttshipper+='<option value="'+shl+'">248K 5sec Priest Ship</option>';
                 layoutshl.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BZBZBZB##----##----#-BBBBBBB-#----##----#-BZBZBZB-#----#######-BBBTBZB-#######----#-BZBZBZB-#SSPX##----#-BBBBBZB-#MDP-##----##BZBZBZB##S---##-----##BBBBB##-----##BBBBB-#######--RR--##BZZZB----#----R##R-##BBBBBB---#----R###R###JBZZZ---#-----R#######BBBB---#------R########################");
