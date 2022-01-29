@@ -143,842 +143,842 @@ START OF QUICKBUILD SCRIPT
 */
 
 
-(function QuickBuild0Script() {
-    const QB_DIV = "qbDiv";
-    const QB_DIV_DIV_SELECTOR = "#" + QB_DIV + ">div";
-    const BUTTON_CITY_INFO_SELECTOR = "#" + QB_DIV + ">div:nth-child(2)>button";
-    const SELECT_CITY_CLEAR_SELECTOR = "#" + QB_DIV + ">div:nth-child(2)>selector:nth-child(1)";
-    const SELECT_CITY_MOVE_ID = "qbCityMove";
-    const SELECT_CITY_ADD_ID = "qbCityAdd";
-    const CSS_FIRST_BUTTON = "width:24%;font-size:10px !important;";
-    const CSS_NEXT_BUTTON = "width:24%;font-size:10px !important;";
-    const CLASS_AND_CSS_FIRST_BUTTON = 'style="' + CSS_FIRST_BUTTON + '" class="regButton greenb"';
-    const CLASS_AND_CSS_NEXT_BUTTON = 'style="' + CSS_NEXT_BUTTON + '" class="regButton greenb"';
-
-    var QB = {
-        _version: "0.5.1"
-    };
-
-
-
-// Facility to have building informations
-    QB.BUILDINGS = function () {
-        var that = QB;
-
-        // Inner data to characterise buildings
-        that._DETAILS = {
-
-
-
-// Resources getters
-                foresters_hut: { id: [448], buildable: true, schedule: "2", shortcut: "f", movable: true},
-                stone_mine: {id: [461], buildable: true, schedule: "3", shortcut: "s", movable: true},
-                farm_estate: {id: [447], buildable: true,schedule: "1", shortcut: "a", movable: true},
-                iron_mine: {id: [465], buildable: true, schedule: "4",shortcut: "i", movable: true},
+	(function QuickBuild0Script() {
+		const QB_DIV = "qbDiv";
+		const QB_DIV_DIV_SELECTOR = "#" + QB_DIV + ">div";
+		const BUTTON_CITY_INFO_SELECTOR = "#" + QB_DIV + ">div:nth-child(2)>button";
+		const SELECT_CITY_CLEAR_SELECTOR = "#" + QB_DIV + ">div:nth-child(2)>selector:nth-child(1)";
+		const SELECT_CITY_MOVE_ID = "qbCityMove";
+		const SELECT_CITY_ADD_ID = "qbCityAdd";
+		const CSS_FIRST_BUTTON = "width:24%;font-size:10px !important;";
+		const CSS_NEXT_BUTTON = "width:24%;font-size:10px !important;";
+		const CLASS_AND_CSS_FIRST_BUTTON = 'style="' + CSS_FIRST_BUTTON + '" class="regButton greenb"';
+		const CLASS_AND_CSS_NEXT_BUTTON = 'style="' + CSS_NEXT_BUTTON + '" class="regButton greenb"';
+
+		var QB = {
+			_version: "0.5.1"
+		};
+
+
+
+	// Facility to have building informations
+		QB.BUILDINGS = function () {
+			var that = QB;
+
+			// Inner data to characterise buildings
+			that._DETAILS = {
+
+
+
+	// Resources getters
+					foresters_hut: { id: [448], buildable: true, schedule: "2", shortcut: "f", movable: true},
+					stone_mine: {id: [461], buildable: true, schedule: "3", shortcut: "s", movable: true},
+					farm_estate: {id: [447], buildable: true,schedule: "1", shortcut: "a", movable: true},
+					iron_mine: {id: [465], buildable: true, schedule: "4",shortcut: "i", movable: true},
 
-    // Resources helpers
-                sawmill: { id: [460], buildable: true, schedule: "L", shortcut: "l", movable: true},
-                masons_hut: {id: [462], buildable: true, schedule: "A", shortcut: "h", movable: true},
-                grain_mill: {id: [463], buildable: true, schedule: "M", shortcut: "g", movable: true},
-                smelter: {id: [477], buildable: true, schedule: "D", shortcut: "z", movable: true},
-
-    // Others
-                storehouse: {id: [464], buildable: true, schedule: "S", shortcut: "r", movable: true},
-                cabin: {id: [446], buildable: true, schedule: "C", shortcut: "c", movable: true},
-                hideaway: {id: [479], buildable: true, schedule: "H", shortcut: "q", movable: true},
-                villa: {id: [481], buildable: true, schedule: "U", shortcut: "v", movable: true}, // i.e. villa: useless. Raid !
+		// Resources helpers
+					sawmill: { id: [460], buildable: true, schedule: "L", shortcut: "l", movable: true},
+					masons_hut: {id: [462], buildable: true, schedule: "A", shortcut: "h", movable: true},
+					grain_mill: {id: [463], buildable: true, schedule: "M", shortcut: "g", movable: true},
+					smelter: {id: [477], buildable: true, schedule: "D", shortcut: "z", movable: true},
+
+		// Others
+					storehouse: {id: [464], buildable: true, schedule: "S", shortcut: "r", movable: true},
+					cabin: {id: [446], buildable: true, schedule: "C", shortcut: "c", movable: true},
+					hideaway: {id: [479], buildable: true, schedule: "H", shortcut: "q", movable: true},
+					villa: {id: [481], buildable: true, schedule: "U", shortcut: "v", movable: true}, // i.e. villa: useless. Raid !
 
-    //DO Not build
-                basilica: {id: [455], buildable: false, schedule: "T"},
-                castle: {id: [467], buildable: false, schedule: "X", movable: true},
-                temple: {id: [1000], buildable: false},
+		//DO Not build
+					basilica: {id: [455], buildable: false, schedule: "T"},
+					castle: {id: [467], buildable: false, schedule: "X", movable: true},
+					temple: {id: [1000], buildable: false},
 
-    // Trade
-                port: {id: [488, 489, 490], buildable: true, schedule: "R", shortcut: "o", movable: true},
-                forum: {id: [449],buildable: true,schedule: "P", shortcut: "m", movable: true},
-
-    // Military
-                guardhouse: {id: [504], buildable: true, schedule: "K", shortcut: "u", movable: true},
-                barracks: {id: [445], buildable: true, schedule: "B", shortcut: "b", movable: true},
-                training_arena: {id: [483], buildable: true, schedule: "G", shortcut: "t", movable: true},
-                stable: {id: [466], buildable: true,schedule: "E", shortcut: "e", movable: true},
-                sorcerers_tower: {id: [500], buildable: true, schedule: "J", shortcut: "w",movable: true},
-                academy: {id: [482], buildable: true, schedule: "Z", shortcut: "y", movable: true},
-                blacksmith: {id: [502], buildable: true, schedule: "Y", shortcut: "k", movable: true},
-                shipyard: {id: [491, 496, 498], buildable: true, schedule: "V", shortcut: "p",movable: true},
-
-    // Resources
-                forest: {id: [454], buildable: false, schedule: "."},
-                stone: {id: [451], buildable: false, schedule: ":" },
-                iron: {id: [452], buildable: false, schedule: ","},
-                lake: {id: [453], buildable: false, schedule: ";"},
-/*
-     
-                wall: { id:[809], buildable: true, moveable:false},
-                sentinel_post: { id:[547], buildable: true, shortcut: "1", moveable: true},
-                ranger_post: { id: [543], buildable: true, shortcut:"2", moveable: true},
-                snag_barricade: { id:[567], buildable: true, shortcut:"6", moveable: true},
-                triari_post: { id: [539], buildable: true, shortcut:"3", moveable: true},
-                equine_barricade: { id:[559], buildable: true,shortcut: "7", moveable: true},
-                priestess_post: { id:[551], buildable: true, shortcut:"4", moveable: true},
-                rune_barricade: { id:[563], buildable: true, shortcut:"8", moveable: true},
-                ballista_post: { id:[555], buildable: true, shortcut:"5", moveable: true},
-                veiled_barricade: { id:[571], buildable: true, shortcut "9", moveable: true},
-*/
-        };
-
-// Same as _DETAILS but in a list.
-        that._LIST = [];
-
-
-// Hash buildings from city planner letter.
-        that._FromMapLetter = {};
-
-        Object.keys(that._DETAILS).forEach(function (key) {
-            that._DETAILS[key].name = key;
-            that._LIST.push(that._DETAILS[key]);
-            if (that._DETAILS[key].schedule) {
-                that._FromMapLetter[that._DETAILS[key].schedule] = that._DETAILS[key];
-            }
-        });
-
-
-
+		// Trade
+					port: {id: [488, 489, 490], buildable: true, schedule: "R", shortcut: "o", movable: true},
+					forum: {id: [449],buildable: true,schedule: "P", shortcut: "m", movable: true},
+
+		// Military
+					guardhouse: {id: [504], buildable: true, schedule: "K", shortcut: "u", movable: true},
+					barracks: {id: [445], buildable: true, schedule: "B", shortcut: "b", movable: true},
+					training_arena: {id: [483], buildable: true, schedule: "G", shortcut: "t", movable: true},
+					stable: {id: [466], buildable: true,schedule: "E", shortcut: "e", movable: true},
+					sorcerers_tower: {id: [500], buildable: true, schedule: "J", shortcut: "w",movable: true},
+					academy: {id: [482], buildable: true, schedule: "Z", shortcut: "y", movable: true},
+					blacksmith: {id: [502], buildable: true, schedule: "Y", shortcut: "k", movable: true},
+					shipyard: {id: [491, 496, 498], buildable: true, schedule: "V", shortcut: "p",movable: true},
+
+		// Resources
+					forest: {id: [454], buildable: false, schedule: "."},
+					stone: {id: [451], buildable: false, schedule: ":" },
+					iron: {id: [452], buildable: false, schedule: ","},
+					lake: {id: [453], buildable: false, schedule: ";"},
+	/*
+		 
+					wall: { id:[809], buildable: true, moveable:false},
+					sentinel_post: { id:[547], buildable: true, shortcut: "1", moveable: true},
+					ranger_post: { id: [543], buildable: true, shortcut:"2", moveable: true},
+					snag_barricade: { id:[567], buildable: true, shortcut:"6", moveable: true},
+					triari_post: { id: [539], buildable: true, shortcut:"3", moveable: true},
+					equine_barricade: { id:[559], buildable: true,shortcut: "7", moveable: true},
+					priestess_post: { id:[551], buildable: true, shortcut:"4", moveable: true},
+					rune_barricade: { id:[563], buildable: true, shortcut:"8", moveable: true},
+					ballista_post: { id:[555], buildable: true, shortcut:"5", moveable: true},
+					veiled_barricade: { id:[571], buildable: true, shortcut "9", moveable: true},
+	*/
+			};
+
+	// Same as _DETAILS but in a list.
+			that._LIST = [];
+
+
+	// Hash buildings from city planner letter.
+			that._FromMapLetter = {};
+
+			Object.keys(that._DETAILS).forEach(function (key) {
+				that._DETAILS[key].name = key;
+				that._LIST.push(that._DETAILS[key]);
+				if (that._DETAILS[key].schedule) {
+					that._FromMapLetter[that._DETAILS[key].schedule] = that._DETAILS[key];
+				}
+			});
+
+
+
 
-// Is a building type buildable. For information, due to dangerousness of building castles, the operation has to be manual.
-        that.isBuildable = function (btype) {
-            return that._LIST.filter(function (item) {
-                return (item.id.indexOf(btype) >= 0) && (item.buildable);
-            }).length > 0;
-        };
+	// Is a building type buildable. For information, due to dangerousness of building castles, the operation has to be manual.
+			that.isBuildable = function (btype) {
+				return that._LIST.filter(function (item) {
+					return (item.id.indexOf(btype) >= 0) && (item.buildable);
+				}).length > 0;
+			};
 
 
 
 
-// Return building from a btype (if known)
-        that.buildingFromId = function (btype) {
-            return that._LIST.find(function (item) {
-                return (item.id.indexOf(btype) >= 0);
-            });
-        };
-
-
-
-// Searching for Basillica 
-
-        that.isBasilica = function (btype) {
-            return that._DETAILS.basilica.id[0] === btype;
-        };
+	// Return building from a btype (if known)
+			that.buildingFromId = function (btype) {
+				return that._LIST.find(function (item) {
+					return (item.id.indexOf(btype) >= 0);
+				});
+			};
+
+
+
+	// Searching for Basillica 
+
+			that.isBasilica = function (btype) {
+				return that._DETAILS.basilica.id[0] === btype;
+			};
 
 
 
 
-// Return true if has farm or lakes in plan => i.e. food city.
-        that.needToClearAllResources = function (scheduleMap) {
-            if (scheduleMap.length === 0) return false;
-            return scheduleMap.some(function (building) {
-                return (building === that._DETAILS.farmhouse) ||
-                    //(building === that._DETAILS.windmill) ||
-                    (building === that._DETAILS.lake);
-            });
-        };
+	// Return true if has farm or lakes in plan => i.e. food city.
+			that.needToClearAllResources = function (scheduleMap) {
+				if (scheduleMap.length === 0) return false;
+				return scheduleMap.some(function (building) {
+					return (building === that._DETAILS.farmhouse) ||
+						//(building === that._DETAILS.windmill) ||
+						(building === that._DETAILS.lake);
+				});
+			};
 
 
 
-// Update curentBuilding status regarding schedule
+	// Update curentBuilding status regarding schedule
 
-        that.updateStatus = function (curentBuilding, scheduleBuilding, needToClearAllResources) {
-            curentBuilding.error = false;
-            curentBuilding.toDestroy = false;
-            curentBuilding.toMove = false;
-            curentBuilding.toAdd = false;
-            if (scheduleBuilding) {
-                if (scheduleBuilding.id.indexOf(curentBuilding.btype) >= 0) {
-                    // Good building !
-                } else if (scheduleBuilding === that._DETAILS.forest ||
-                    scheduleBuilding === that._DETAILS.stone ||
-                    scheduleBuilding === that._DETAILS.iron ||
-                    scheduleBuilding === that._DETAILS.lake) {
-                    // Resource planed but not in curent
-                    curentBuilding.error = true;
-                } else if (curentBuilding.btype === that._DETAILS.forest.id[0] ||
-                    curentBuilding.btype === that._DETAILS.stone.id[0] ||
-                    curentBuilding.btype === that._DETAILS.iron.id[0] ||
-                    curentBuilding.btype === that._DETAILS.lake.id[0]) {
-                    curentBuilding.toDestroy = !curentBuilding.demolishing; // Something else to build
-                } else if (!curentBuilding.building) {
-                    if (scheduleBuilding.buildable) {
-                        curentBuilding.toAdd = true;
-                        curentBuilding.buildingToAdd = scheduleBuilding;
-                    }
-                } else if (curentBuilding.building.movable) {
-                    // Potentially to move
-                    curentBuilding.toMove = !curentBuilding.demolishing;
-                } else {
-                   
-                }
-                return false;
-            }
+			that.updateStatus = function (curentBuilding, scheduleBuilding, needToClearAllResources) {
+				curentBuilding.error = false;
+				curentBuilding.toDestroy = false;
+				curentBuilding.toMove = false;
+				curentBuilding.toAdd = false;
+				if (scheduleBuilding) {
+					if (scheduleBuilding.id.indexOf(curentBuilding.btype) >= 0) {
+						// Good building !
+					} else if (scheduleBuilding === that._DETAILS.forest ||
+						scheduleBuilding === that._DETAILS.stone ||
+						scheduleBuilding === that._DETAILS.iron ||
+						scheduleBuilding === that._DETAILS.lake) {
+						// Resource planed but not in curent
+						curentBuilding.error = true;
+					} else if (curentBuilding.btype === that._DETAILS.forest.id[0] ||
+						curentBuilding.btype === that._DETAILS.stone.id[0] ||
+						curentBuilding.btype === that._DETAILS.iron.id[0] ||
+						curentBuilding.btype === that._DETAILS.lake.id[0]) {
+						curentBuilding.toDestroy = !curentBuilding.demolishing; // Something else to build
+					} else if (!curentBuilding.building) {
+						if (scheduleBuilding.buildable) {
+							curentBuilding.toAdd = true;
+							curentBuilding.buildingToAdd = scheduleBuilding;
+						}
+					} else if (curentBuilding.building.movable) {
+						// Potentially to move
+						curentBuilding.toMove = !curentBuilding.demolishing;
+					} else {
+					   
+					}
+					return false;
+				}
 
 
 
 
-           if (curentBuilding) {
-// Current but not planned buildings
-                if (!curentBuilding.building) {
-                    return; // Unknown building type.
-                } else if (curentBuilding.btype === that._DETAILS.forest.id[0] ||
-                    curentBuilding.btype === that._DETAILS.stone.id[0] ||
-                    curentBuilding.btype === that._DETAILS.iron.id[0] ||
-                    curentBuilding.btype === that._DETAILS.lake.id[0]) {
-                    curentBuilding.toDestroy = needToClearAllResources && (!curentBuilding.demolishing);
-                } else if (curentBuilding.building.movable) {
-                    // Potentially to move
-                    curentBuilding.toMove = !curentBuilding.demolishing;
-                } else if (!curentBuilding.building.buildable) {
-                    // RAS
-                } else {
-                    
-                }
-                return false;
-            }
-            return false;
-        };
+			   if (curentBuilding) {
+	// Current but not planned buildings
+					if (!curentBuilding.building) {
+						return; // Unknown building type.
+					} else if (curentBuilding.btype === that._DETAILS.forest.id[0] ||
+						curentBuilding.btype === that._DETAILS.stone.id[0] ||
+						curentBuilding.btype === that._DETAILS.iron.id[0] ||
+						curentBuilding.btype === that._DETAILS.lake.id[0]) {
+						curentBuilding.toDestroy = needToClearAllResources && (!curentBuilding.demolishing);
+					} else if (curentBuilding.building.movable) {
+						// Potentially to move
+						curentBuilding.toMove = !curentBuilding.demolishing;
+					} else if (!curentBuilding.building.buildable) {
+						// RAS
+					} else {
+						
+					}
+					return false;
+				}
+				return false;
+			};
 
 
 
- // Count the number of building and transforming to move in to destroy for spare buildings.
-        that.checkMove = function (curentMap, scheduleMap) {
+	 // Count the number of building and transforming to move in to destroy for spare buildings.
+			that.checkMove = function (curentMap, scheduleMap) {
 
 
 
- // Counting in the map per type
-            var nbOfBuildingScheduledPerType = scheduleMap.reduce(function (pv, cv) {
-                if (cv) {
-                    if (pv[cv.name]) {
-                        pv[cv.name] = pv[cv.name] + 1;
-                    } else {
-                        pv[cv.name] = 1;
-                    }
-                }
-                return pv;
-            }, {});
+	 // Counting in the map per type
+				var nbOfBuildingScheduledPerType = scheduleMap.reduce(function (pv, cv) {
+					if (cv) {
+						if (pv[cv.name]) {
+							pv[cv.name] = pv[cv.name] + 1;
+						} else {
+							pv[cv.name] = 1;
+						}
+					}
+					return pv;
+				}, {});
 
 
 
 
-// Removing already ok buildings
-            for (var buildingIndex in curentMap) {
-                var curent = curentMap[buildingIndex];
-                var schedule = scheduleMap[buildingIndex];
+	// Removing already ok buildings
+				for (var buildingIndex in curentMap) {
+					var curent = curentMap[buildingIndex];
+					var schedule = scheduleMap[buildingIndex];
 
-                if (curent && schedule && (curent.building === schedule)) {
-                    if (nbOfBuildingScheduledPerType[schedule.name] > 0) {
-                        nbOfBuildingScheduledPerType[schedule.name] = nbOfBuildingScheduledPerType[schedule.name] - 1;
-                    }
-                }
-            }
+					if (curent && schedule && (curent.building === schedule)) {
+						if (nbOfBuildingScheduledPerType[schedule.name] > 0) {
+							nbOfBuildingScheduledPerType[schedule.name] = nbOfBuildingScheduledPerType[schedule.name] - 1;
+						}
+					}
+				}
 
 
 
 
-// Checking to move
-            curentMap.forEach(function (curent) {
-                if (curent.toMove) {
-                    if ((!nbOfBuildingScheduledPerType[curent.building.name]) ||
-                        (nbOfBuildingScheduledPerType[curent.building.name] === 0)) {
-                        curent.toMove = false;
-                        curent.toDestroy = !curent.demolishing;
-                    } else {
-                        nbOfBuildingScheduledPerType[curent.building.name] = nbOfBuildingScheduledPerType[curent.building.name] - 1;
-                    }
-                }
-            });
-        };
+	// Checking to move
+				curentMap.forEach(function (curent) {
+					if (curent.toMove) {
+						if ((!nbOfBuildingScheduledPerType[curent.building.name]) ||
+							(nbOfBuildingScheduledPerType[curent.building.name] === 0)) {
+							curent.toMove = false;
+							curent.toDestroy = !curent.demolishing;
+						} else {
+							nbOfBuildingScheduledPerType[curent.building.name] = nbOfBuildingScheduledPerType[curent.building.name] - 1;
+						}
+					}
+				});
+			};
 
 
 
 
 
-// Return the building from a plan letter.
-        that.buildingFromMapLetter = function (letter) {
-            return that._FromMapLetter[letter];
-        };
-
-        return that;
-    }();
-
-
-
-
-
-// Build manager constructor
-    QB.buildManager = function () {
-        var that = QB;
-
-
-
-
- // Id to identify curent city (cid in CoTG)
-        that.data = {
-            id: null
-        };
+	// Return the building from a plan letter.
+			that.buildingFromMapLetter = function (letter) {
+				return that._FromMapLetter[letter];
+			};
+
+			return that;
+		}();
+
+
+
+
+
+	// Build manager constructor
+		QB.buildManager = function () {
+			var that = QB;
+
+
+
+
+	 // Id to identify curent city (cid in CoTG)
+			that.data = {
+				id: null
+			};
 
 
-// CoTG city data parser
-        that.parseCurentCityData = function (cdata) {
-            var updatedData = false;
-
-            if (that.data.id !== cdata.cid) {
-                updatedData = true;
-                that.data = {
-                    id: cdata.cid,
-                    curentMap: [],
-                    scheduleMap: [],
-                    quickModeActivated: that.data.quickModeActivated
-                };
-                that.message = {
-                    map: "You don't have a layout applied"
-                };
-            }
-
-// Current map
-            if (cdata.bd) {
-                updatedData = true;
-                // Updating buildings count for city
-                that.data.basilicaLevel = 1;
-                that.data.curentMap = [];
-
-                // Filling curentMap
-                for (var buildingIndex in cdata.bd) {
-                    var btype = Number(cdata.bd[buildingIndex].bid);
-                    that.data.curentMap.push({
-                        btype: btype,
-                        index: buildingIndex,
-                        building: that.BUILDINGS.buildingFromId(btype)
-                    });
-                    if (that.BUILDINGS.isBasilica(btype)) {
-                        that.data.basilicaLevel = cdata.bd[buildingIndex].bl;
-                    }
-                }
-            }
-
-            if (cdata.bq) {
-                updatedData = true;
-
-
-
-// Processing building queue
-                cdata.bq.forEach(function (buildQueueItem) {
-                    var index = buildQueueItem.bspot;
-                    if (that.data.curentMap[index]) {
-                        if (buildQueueItem.elvl === 0) {
-                            that.data.curentMap[index].demolishing = true;
-                        } else if (buildQueueItem.slvl === 0) {
-                            // New building in queue
-                            var btype = buildQueueItem.brep;
-                            that.data.curentMap[index].btype = btype;
-                            that.data.curentMap[index].building = that.BUILDINGS.buildingFromId(btype);
-                        }
-                    }
-                });
-            }
-
-
-
-
-// Schedule map.
-            if (cdata.sts) {
-                updatedData = true;
-                that.data.scheduleMap = [];
-                var stsFormat = cdata.sts.substring(0, 18);
-                if (stsFormat == ("[ShareString.1.3]:") || stsFormat == "[ShareString.1.3];") {
-                    that.message.map = "";
-                    var stsData = cdata.sts.substring(18, 441).split(""); // to char array
-                    for (var index = 0; index < stsData.length; index++) {
-                        var letter = stsData[index];
-                        if ("#-_".indexOf(letter) >= 0) { // RAS no building
-                            that.data.scheduleMap.push(null);
-                        } else {
-                            var building = that.BUILDINGS.buildingFromMapLetter(letter);
-                            if (!building) {
-                                that.message.map = "Unknown type of building '" + letter + "'. Please report the bug.";
-                                that.data.scheduleMap = [];
-                                break;
-                            }
-                            that.data.scheduleMap.push(building);
-                        }
-                    }
-                } else {
-                    that.message.map = "Unknown layout format. Please report to Greety or Fact.";
-                }
-            }
-
-            that.onCityDataUpdated(updatedData);
-        };
-
-
-
-
-
-// Utilities
-        that.utils = {
-            // DOM operation on object:
-            // jquery selector,
-            // remove some classes
-            // add some classes
-            // set a title
-            classSwitch: function (buttonSelector, classToRemove, classToAdd, title) {
-                buttonSelector.removeClass(classToRemove);
-                buttonSelector.addClass(classToAdd);
-                buttonSelector.attr("title", title);
-            },
-            // display a message in bottom rigth
-            errorMsg: {
-                display: function (errormessage1) {
-                    this._id = this._id + 1;
-                    var ident = this._idKey + this._id;
-                    var errormsgs = '<tr ID = "' + ident + '"><td><div class = "errBR">' + errormessage1 + '<div></td></tr>';
-                    $("#errorBRpopup").append(errormsgs);
-                    // Show
-                    $("#" + ident).show();
-                    $("#" + ident + " div").animate({
-                        opacity: 1,
-                        bottom: "+10px"
-                    }, 'slow');
-                    // Hide
-                    setTimeout(function () {
-                        $("#" + ident + " div").animate({
-                            opacity: 0,
-                            bottom: "-10px"
-                        }, 'slow');
-                        $("#" + ident).fadeOut("slow");
-                    }, 5000);
-                    setTimeout(function () {
-                        $("#" + ident).remove();
-                    }, 6000);
-                },
-                _idKey: "qbErrBR",
-                _id: 0
-            }
-        };
-
-
-
-
-
-
-
-// Building added data (re computed ones) & update HMI
-        that.previousViewData = {};
-        that.onCityDataUpdated = function (updatedData) {
-            if (updatedData) {
-                that.addedData = {
-                    needToClearResources: that.BUILDINGS.needToClearAllResources(that.data.scheduleMap),
-                    pureNavy: false,
-                    pureTrade: false
-                };
-
-
-
-
-// Case of warship & stingers
-                var partialMap = that.data.scheduleMap.filter(function (item) {
-                    return item && item.buildable;
-                }).length <= 60;
-                if (partialMap) {
-                    if (that.data.scheduleMap.filter(function (item) {
-                            return item === that.BUILDINGS._DETAILS.shipyard;
-                        }).length === 8) {
-                        that.addedData.pureNavy = true;
-                    }
-                }
-                if (that.data.scheduleMap.filter(function (item) {
-                        return item === that.BUILDINGS._DETAILS.forum;
-                    }).length >= 20) {
-                    that.addedData.pureTrade = true;
-                }
-
-
-
-
-
-// Post processing data regarding scheduledMap
-                if (that.data.scheduleMap.length > 0 && that.data.curentMap.length > 0) {
-                    for (var buildingIndex in that.data.scheduleMap) {
-                        if (that.data.scheduleMap[buildingIndex]) {
-                            that.data.curentMap[buildingIndex].schedule = that.data.scheduleMap[buildingIndex];
-                        }
-                        that.BUILDINGS.updateStatus(
-                            that.data.curentMap[buildingIndex],
-                            that.data.scheduleMap[buildingIndex],
-                            that.addedData.needToClearResources);
-                    }
-
-
-
-// 2nd check to move
-                    that.BUILDINGS.checkMove(that.data.curentMap, that.data.scheduleMap);
-                }
-            }
-
-
-
-
-
-// Building new view data
-            var mapSetOk = (that.data.scheduleMap.length !== 0 && that.data.curentMap.length !== 0);
-            var infoMsg = that.message.map;
-            var buildingsToDestroy = that.data.curentMap.filter(function (item) {
-                return item.toDestroy;
-            });
-            var buildingsToMove = that.data.curentMap.filter(function (item) {
-                return item.toMove;
-            });
-            var buildingsToAdd = that.data.curentMap.filter(function (item) {
-                return item.toAdd;
-            });
-            var divButtons = mapSetOk ? [{ // Button info
-                title: infoMsg,
-                removeClass: "redb greenb",
-                addClass: that.data.quickModeActivated ? "redb" : "greenb",
-                text: that.data.quickModeActivated ? "Activated" : "Disabled"
-            }, { // Selector Clear
-                title: buildingsToDestroy.length > 0 ? "" : "Nothing to Destroy",
-                removeClass: "disable greenb",
-                addClass: buildingsToDestroy.length > 0 ? "greenb" : "Disable",
-                options: buildingsToDestroy.length === 0 ? [{
-                    text: "Clean !"
-                }] : [{
-                    text: buildingsToDestroy.length + " Clear"
-                }].concat(
-                    buildingsToDestroy.reduce(function (pv, cv) {
-                        return pv.concat([{
-                            index: cv.index,
-                            text: cv.building.name
-                        }]);
-                    }, []))
-            }, { // Move selector
-                title: buildingsToMove.length > 0 ? "" : "Nothing to Move",
-                removeClass: "disable greenb",
-                addClass: buildingsToMove.length > 0 ? "greenb" : "disable",
-                options: buildingsToMove.length === 0 ? [{
-                    text: "In Place !"
-                }] : [{
-                    text: buildingsToMove.length + " Move"
-                }].concat(
-                    buildingsToMove.reduce(function (pv, cv) {
-                        return pv.concat([{
-                            index: cv.index,
-                            text: cv.building.name
-                        }]);
-                    }, []))
-            }, { // Add selector
-                title: buildingsToAdd.length > 0 ? "" : "Nothing to Add",
-                removeClass: "disable greenb",
-                addClass: buildingsToAdd.length > 0 ? "greenb" : "disable",
-                options: buildingsToAdd.length === 0 ? [{
-                    text: "Complete !"
-                }] : [{
-                    text: buildingsToAdd.length + " Add"
-                }].concat(
-                    buildingsToAdd.reduce(function (pv, cv) {
-                        return pv.concat([{
-                            index: cv.index,
-                            text: cv.buildingToAdd.name
-                        }]);
-                    }, []))
-            }] : [];
-
-            var currentViewData = {
-                children: [{ // Div info
-                    visible: !mapSetOk,
-                    text: 'Add a layout to use Gfunky Quickbuild!',
-                    title: infoMsg
-                }, { // Div button bar
-                    visible: mapSetOk,
-                    children: divButtons
-                }]
-            };
-
-            if (JSON.stringify(that.previousViewData) !== JSON.stringify(currentViewData)) {
-                // Updating HMI.
-                that.previousViewData = currentViewData;
-                var updateItem = function (selector, data) {
-                    Object.keys(data).forEach(function (key) {
-                        var classes = false;
-                        switch (key) {
-                            case "children":
-                                {
-                                    var childrenSelector = selector.children();
-                                    data[key].forEach(function (childData, index) {
-                                        updateItem(childrenSelector.eq(index), childData);
-                                    });
-                                }
-                                break;
-                            case "visible":
-                                {
-                                    if ((selector.css('display') !== 'none') !== data[key]) {
-                                        selector.toggle();
-                                    }
-                                }
-                                break;
-                            case "text":
-                                {
-                                    selector.html(data[key]);
-                                }
-                                break;
-                            case "title":
-                                {
-                                    selector.attr("title", data[key]);
-                                }
-                                break;
-                            case "removeClass":
-                            case "addClass":
-                                {
-                                    classes = true;
-                                }
-                                break;
-                            case "options":
-                                {
-                                    selector.html(data[key].reduce(
-                                        function (pv, cv) {
-                                            var index = cv.index ? "index='" + cv.index + "'" : "";
-                                            return pv + "<option " + index + ">" + cv.text + "</option>";
-                                        }, ""));
-                                }
-                                break;
-                            default:
-                                //console.error("Todo " + key);
-                               
-                        }
-                        if (classes) {
-                            selector.removeClass(data.removeClass);
-                            selector.addClass(data.addClass);
-                        }
-                    });
-
-                };
-                updateItem($("#" + QB_DIV), currentViewData);
-            }
-        };
-
- $('#citadelResTable table').css({"width":"95%", "margin-left": "auto", "margin-right": "auto"});
-
-
-
-
-
-// What to do with current building
-        that.processBuilding = function () {
-            if (that.data.quickModeActivated) {
-                var selectedBuilding = $("#city_map .hoverbuild").attr("data");
-                if ((selectedBuilding) && that.data.curentMap[selectedBuilding]) {
-                    var curentBuilding = that.data.curentMap[selectedBuilding];
-                    var toAdd = null;
-                    if (curentBuilding.toDestroy) {
-                        that.utils.errorMsg.display("Destroying this resource or building");
-                        $("#buildingDemolishButton").trigger({
-                            type: "click",
-                            originalEvent: "1"
-                        });
-                    } else if (curentBuilding.toMove) {
-                        // Searching a free space.
-                        var curentBuildingIndex = curentBuilding.index;
-                        var found = false;
-                        for (var searchingBuildingIndex in that.data.curentMap) {
-                            if (searchingBuildingIndex !== curentBuildingIndex) {
-                                var searchingCurent = that.data.curentMap[searchingBuildingIndex];
-                                var searchingSchedule = that.data.scheduleMap[searchingBuildingIndex];
-                                if (searchingCurent &&
-                                    searchingSchedule &&
-                                    (searchingCurent.btype === 0) &&
-                                    (searchingSchedule === curentBuilding.building)) {
-                                    // Found!
-                                    found = true;
-                                    that.utils.errorMsg.display("Moving this building");
-                                    $.ajax({
-                                        url: 'includes/mBu.php',
-                                        type: 'POST',
-                                        async: true,
-                                        data: "a=" + curentBuildingIndex + "&b=" + searchingBuildingIndex + "&c=" + that.data.id
-                                    });
-                                    break;
-                                }
-                            }
-                        }
-                        if (!found) {
-                            that.utils.errorMsg.display("Error. Don't know where to move this building. Please report the bug with current and planned Layout");
-                        }
-                    } else if (curentBuilding.toAdd) {
-                        toAdd = that.data.scheduleMap[selectedBuilding];
-                    } else if (curentBuilding.btype === 0) {
-                        // Have click on empty & nothing planed
-                        if (that.data.curentMap.filter(function (item) {
-                                return item.building && item.building.buildable;
-                            }).length < 50) {
-                            // Adding a cabin
-                            toAdd = that.BUILDINGS._DETAILS.cabin;
-                        } else if (that.addedData.pureNavy) {
-                            // Adding a barrack
-                            toAdd = that.BUILDINGS._DETAILS.barracks;
-                        } else if (that.addedData.pureTrade) {
-                            // Adding a forum
-                            toAdd = that.BUILDINGS._DETAILS.forum;
-                        }
-                    }
-                    if (toAdd) {
-                        if (toAdd.shortcut) {
-                            that.utils.errorMsg.display("Creating " + toAdd.name);
-                            var eventData = {
-                                type: "keypress",
-                                keyCode: toAdd.shortcut.charCodeAt()
-                            };
-                            $("body").trigger(eventData);
-                        } else {
-                            that.utils.errorMsg.display("Error. Don't know how to create " + toAdd.name + ". Please report the bug");
-                        }
-                    }
-                }
-            }
-        };
-
-
-
-
-
-// Toggle Quickmode
-        that.toggleQuickMode = function () {
-            that.data.quickModeActivated = !that.data.quickModeActivated;
-            that.onCityDataUpdated(false);
-            that.utils.errorMsg.display("QUICK BUILD MODE IS NOW " +
-                (that.data.quickModeActivated ? "ACTIVE" : "DISABLED"));
-        };
-        return that;
-    }();
-
-
-
-
-
-
-
-
-// Adding buttons once game loaded
-    var waitForGameLoaded = function () {
-        if ($("#incAttacksDiv").length > 0) {
-            console.log("Game Loaded.");
-
-
-
-
-
-// Add'on starting.
-            if ($("#" + QB_DIV).length > 0) {
-                // Removing current
-                $("#" + QB_DIV).remove();
-            }
-
-
-// Buttons for building in left bar
-            $("#incAttacksDiv").before(
-                '<div id="' + QB_DIV + '" style="text-align: center; width:295px" class="commandinndiv">' +
-                '<div style="text-align:center ;font-size: 12px;">Only Works With A Layout</div>' +
-                '<div style="display:none;">' +
-                '<button ' + CLASS_AND_CSS_FIRST_BUTTON + '>Info</button>' +
-                '<select title="Remove Building or Resource" ' + CLASS_AND_CSS_NEXT_BUTTON + '><option>Clear</option></select>' +
-                '<select id="' + SELECT_CITY_MOVE_ID + '" title="Move a building " ' + CLASS_AND_CSS_NEXT_BUTTON + '><option>Move</option></select>' +
-                '<select id="' + SELECT_CITY_ADD_ID + '" title="Add a building" ' + CLASS_AND_CSS_NEXT_BUTTON + '><option>Add</option></select>' +
-                '</div></div>');
-
-/*
-
-
-
-
-// TODO: add buildtooltip tooltipstered & tooltip for BUTTON_CITY_CLEAR_ID
-
-
-
-
-
-*/
-            $(BUTTON_CITY_INFO_SELECTOR).click(function () {
-                QB.buildManager.toggleQuickMode();
-            });
-
-            $("#city_map").click(function () {
-                QB.buildManager.processBuilding();
-            });
-        } else {
-            setTimeout(waitForGameLoaded, 1000);
-        }
-
-        console.log("Quickbuild Script Loading");
-    };
-    waitForGameLoaded();
-
-
-// Adding for clearing the chat
-    var waitForChat = function () {
-        if ($("#clbleft").length > 0) {
-
-            // Adding clear button to chat
-            $("#clbleft").append('<button id="clbclear" class="greenb">Clear</button>');
-            $("#clbclear").click(function () {
-                $("#chatDisplay").html(""); // World
-                $("#chatDisplaya").html(""); // Alliance
-                $("#chatDisplayo").html(""); // Officer
-                $("#chatDisplayw").html(""); // Wisper
-            });
-            $("#chlinkbuts").attr("style", $("#chlinkbuts").attr("style") + ";height: 125px;");
-            $("#clbright").attr("style", "height: 120px;");
-        } else {
-            setTimeout(waitForChat, 1000);
-        }
-        console.log("Quickbuild Script Loaded");
-    };
-    waitForChat();
-
-
-
-
-
-// Overriding some responses
-    setTimeout(function () {
-        (function (open) {
-            XMLHttpRequest.prototype.open = function () {
-                this.addEventListener("readystatechange", function () {
-                    if (this.readyState == 4) {
-                        var url = this.responseURL;
-                        var cdata;
-                        if (url.indexOf('gC.php') != -1) {
-                            // Changing city response.
-                            try {
-                                cdata = JSON.parse(this.response);
-                                QB.buildManager.parseCurentCityData(cdata);
-                            } catch (e) {
-                                //console.error(e);
-                            }
-                        } else if (url.indexOf('poll2.php') != -1) {
-                            // Poll2 response: Updating curent city
-                            try {
-                                var poll2 = JSON.parse(this.response);
-                                cdata = poll2.city;
-                                QB.buildManager.parseCurentCityData(cdata);
-                            } catch (e) {
-                                //console.error(e);
-                            }
-                        }
-                    }
-                }, false);
-                open.apply(this, arguments);
-            };
-        })(XMLHttpRequest.prototype.open);
-        console.log("Chat Loaded");
-    }, 4000);
-
-})();
+	// CoTG city data parser
+			that.parseCurentCityData = function (cdata) {
+				var updatedData = false;
+
+				if (that.data.id !== cdata.cid) {
+					updatedData = true;
+					that.data = {
+						id: cdata.cid,
+						curentMap: [],
+						scheduleMap: [],
+						quickModeActivated: that.data.quickModeActivated
+					};
+					that.message = {
+						map: "You don't have a layout applied"
+					};
+				}
+
+	// Current map
+				if (cdata.bd) {
+					updatedData = true;
+					// Updating buildings count for city
+					that.data.basilicaLevel = 1;
+					that.data.curentMap = [];
+
+					// Filling curentMap
+					for (var buildingIndex in cdata.bd) {
+						var btype = Number(cdata.bd[buildingIndex].bid);
+						that.data.curentMap.push({
+							btype: btype,
+							index: buildingIndex,
+							building: that.BUILDINGS.buildingFromId(btype)
+						});
+						if (that.BUILDINGS.isBasilica(btype)) {
+							that.data.basilicaLevel = cdata.bd[buildingIndex].bl;
+						}
+					}
+				}
+
+				if (cdata.bq) {
+					updatedData = true;
+
+
+
+	// Processing building queue
+					cdata.bq.forEach(function (buildQueueItem) {
+						var index = buildQueueItem.bspot;
+						if (that.data.curentMap[index]) {
+							if (buildQueueItem.elvl === 0) {
+								that.data.curentMap[index].demolishing = true;
+							} else if (buildQueueItem.slvl === 0) {
+								// New building in queue
+								var btype = buildQueueItem.brep;
+								that.data.curentMap[index].btype = btype;
+								that.data.curentMap[index].building = that.BUILDINGS.buildingFromId(btype);
+							}
+						}
+					});
+				}
+
+
+
+
+	// Schedule map.
+				if (cdata.sts) {
+					updatedData = true;
+					that.data.scheduleMap = [];
+					var stsFormat = cdata.sts.substring(0, 18);
+					if (stsFormat == ("[ShareString.1.3]:") || stsFormat == "[ShareString.1.3];") {
+						that.message.map = "";
+						var stsData = cdata.sts.substring(18, 441).split(""); // to char array
+						for (var index = 0; index < stsData.length; index++) {
+							var letter = stsData[index];
+							if ("#-_".indexOf(letter) >= 0) { // RAS no building
+								that.data.scheduleMap.push(null);
+							} else {
+								var building = that.BUILDINGS.buildingFromMapLetter(letter);
+								if (!building) {
+									that.message.map = "Unknown type of building '" + letter + "'. Please report the bug.";
+									that.data.scheduleMap = [];
+									break;
+								}
+								that.data.scheduleMap.push(building);
+							}
+						}
+					} else {
+						that.message.map = "Unknown layout format. Please report to Greety or Fact.";
+					}
+				}
+
+				that.onCityDataUpdated(updatedData);
+			};
+
+
+
+
+
+	// Utilities
+			that.utils = {
+				// DOM operation on object:
+				// jquery selector,
+				// remove some classes
+				// add some classes
+				// set a title
+				classSwitch: function (buttonSelector, classToRemove, classToAdd, title) {
+					buttonSelector.removeClass(classToRemove);
+					buttonSelector.addClass(classToAdd);
+					buttonSelector.attr("title", title);
+				},
+				// display a message in bottom rigth
+				errorMsg: {
+					display: function (errormessage1) {
+						this._id = this._id + 1;
+						var ident = this._idKey + this._id;
+						var errormsgs = '<tr ID = "' + ident + '"><td><div class = "errBR">' + errormessage1 + '<div></td></tr>';
+						$("#errorBRpopup").append(errormsgs);
+						// Show
+						$("#" + ident).show();
+						$("#" + ident + " div").animate({
+							opacity: 1,
+							bottom: "+10px"
+						}, 'slow');
+						// Hide
+						setTimeout(function () {
+							$("#" + ident + " div").animate({
+								opacity: 0,
+								bottom: "-10px"
+							}, 'slow');
+							$("#" + ident).fadeOut("slow");
+						}, 5000);
+						setTimeout(function () {
+							$("#" + ident).remove();
+						}, 6000);
+					},
+					_idKey: "qbErrBR",
+					_id: 0
+				}
+			};
+
+
+
+
+
+
+
+	// Building added data (re computed ones) & update HMI
+			that.previousViewData = {};
+			that.onCityDataUpdated = function (updatedData) {
+				if (updatedData) {
+					that.addedData = {
+						needToClearResources: that.BUILDINGS.needToClearAllResources(that.data.scheduleMap),
+						pureNavy: false,
+						pureTrade: false
+					};
+
+
+
+
+	// Case of warship & stingers
+					var partialMap = that.data.scheduleMap.filter(function (item) {
+						return item && item.buildable;
+					}).length <= 60;
+					if (partialMap) {
+						if (that.data.scheduleMap.filter(function (item) {
+								return item === that.BUILDINGS._DETAILS.shipyard;
+							}).length === 8) {
+							that.addedData.pureNavy = true;
+						}
+					}
+					if (that.data.scheduleMap.filter(function (item) {
+							return item === that.BUILDINGS._DETAILS.forum;
+						}).length >= 20) {
+						that.addedData.pureTrade = true;
+					}
+
+
+
+
+
+	// Post processing data regarding scheduledMap
+					if (that.data.scheduleMap.length > 0 && that.data.curentMap.length > 0) {
+						for (var buildingIndex in that.data.scheduleMap) {
+							if (that.data.scheduleMap[buildingIndex]) {
+								that.data.curentMap[buildingIndex].schedule = that.data.scheduleMap[buildingIndex];
+							}
+							that.BUILDINGS.updateStatus(
+								that.data.curentMap[buildingIndex],
+								that.data.scheduleMap[buildingIndex],
+								that.addedData.needToClearResources);
+						}
+
+
+
+	// 2nd check to move
+						that.BUILDINGS.checkMove(that.data.curentMap, that.data.scheduleMap);
+					}
+				}
+
+
+
+
+
+	// Building new view data
+				var mapSetOk = (that.data.scheduleMap.length !== 0 && that.data.curentMap.length !== 0);
+				var infoMsg = that.message.map;
+				var buildingsToDestroy = that.data.curentMap.filter(function (item) {
+					return item.toDestroy;
+				});
+				var buildingsToMove = that.data.curentMap.filter(function (item) {
+					return item.toMove;
+				});
+				var buildingsToAdd = that.data.curentMap.filter(function (item) {
+					return item.toAdd;
+				});
+				var divButtons = mapSetOk ? [{ // Button info
+					title: infoMsg,
+					removeClass: "redb greenb",
+					addClass: that.data.quickModeActivated ? "redb" : "greenb",
+					text: that.data.quickModeActivated ? "Activated" : "Disabled"
+				}, { // Selector Clear
+					title: buildingsToDestroy.length > 0 ? "" : "Nothing to Destroy",
+					removeClass: "disable greenb",
+					addClass: buildingsToDestroy.length > 0 ? "greenb" : "Disable",
+					options: buildingsToDestroy.length === 0 ? [{
+						text: "Clean !"
+					}] : [{
+						text: buildingsToDestroy.length + " Clear"
+					}].concat(
+						buildingsToDestroy.reduce(function (pv, cv) {
+							return pv.concat([{
+								index: cv.index,
+								text: cv.building.name
+							}]);
+						}, []))
+				}, { // Move selector
+					title: buildingsToMove.length > 0 ? "" : "Nothing to Move",
+					removeClass: "disable greenb",
+					addClass: buildingsToMove.length > 0 ? "greenb" : "disable",
+					options: buildingsToMove.length === 0 ? [{
+						text: "In Place !"
+					}] : [{
+						text: buildingsToMove.length + " Move"
+					}].concat(
+						buildingsToMove.reduce(function (pv, cv) {
+							return pv.concat([{
+								index: cv.index,
+								text: cv.building.name
+							}]);
+						}, []))
+				}, { // Add selector
+					title: buildingsToAdd.length > 0 ? "" : "Nothing to Add",
+					removeClass: "disable greenb",
+					addClass: buildingsToAdd.length > 0 ? "greenb" : "disable",
+					options: buildingsToAdd.length === 0 ? [{
+						text: "Complete !"
+					}] : [{
+						text: buildingsToAdd.length + " Add"
+					}].concat(
+						buildingsToAdd.reduce(function (pv, cv) {
+							return pv.concat([{
+								index: cv.index,
+								text: cv.buildingToAdd.name
+							}]);
+						}, []))
+				}] : [];
+
+				var currentViewData = {
+					children: [{ // Div info
+						visible: !mapSetOk,
+						text: 'Add a layout to use Gfunky Quickbuild!',
+						title: infoMsg
+					}, { // Div button bar
+						visible: mapSetOk,
+						children: divButtons
+					}]
+				};
+
+				if (JSON.stringify(that.previousViewData) !== JSON.stringify(currentViewData)) {
+					// Updating HMI.
+					that.previousViewData = currentViewData;
+					var updateItem = function (selector, data) {
+						Object.keys(data).forEach(function (key) {
+							var classes = false;
+							switch (key) {
+								case "children":
+									{
+										var childrenSelector = selector.children();
+										data[key].forEach(function (childData, index) {
+											updateItem(childrenSelector.eq(index), childData);
+										});
+									}
+									break;
+								case "visible":
+									{
+										if ((selector.css('display') !== 'none') !== data[key]) {
+											selector.toggle();
+										}
+									}
+									break;
+								case "text":
+									{
+										selector.html(data[key]);
+									}
+									break;
+								case "title":
+									{
+										selector.attr("title", data[key]);
+									}
+									break;
+								case "removeClass":
+								case "addClass":
+									{
+										classes = true;
+									}
+									break;
+								case "options":
+									{
+										selector.html(data[key].reduce(
+											function (pv, cv) {
+												var index = cv.index ? "index='" + cv.index + "'" : "";
+												return pv + "<option " + index + ">" + cv.text + "</option>";
+											}, ""));
+									}
+									break;
+								default:
+									//console.error("Todo " + key);
+								   
+							}
+							if (classes) {
+								selector.removeClass(data.removeClass);
+								selector.addClass(data.addClass);
+							}
+						});
+
+					};
+					updateItem($("#" + QB_DIV), currentViewData);
+				}
+			};
+
+	 $('#citadelResTable table').css({"width":"95%", "margin-left": "auto", "margin-right": "auto"});
+
+
+
+
+
+	// What to do with current building
+			that.processBuilding = function () {
+				if (that.data.quickModeActivated) {
+					var selectedBuilding = $("#city_map .hoverbuild").attr("data");
+					if ((selectedBuilding) && that.data.curentMap[selectedBuilding]) {
+						var curentBuilding = that.data.curentMap[selectedBuilding];
+						var toAdd = null;
+						if (curentBuilding.toDestroy) {
+							that.utils.errorMsg.display("Destroying this resource or building");
+							$("#buildingDemolishButton").trigger({
+								type: "click",
+								originalEvent: "1"
+							});
+						} else if (curentBuilding.toMove) {
+							// Searching a free space.
+							var curentBuildingIndex = curentBuilding.index;
+							var found = false;
+							for (var searchingBuildingIndex in that.data.curentMap) {
+								if (searchingBuildingIndex !== curentBuildingIndex) {
+									var searchingCurent = that.data.curentMap[searchingBuildingIndex];
+									var searchingSchedule = that.data.scheduleMap[searchingBuildingIndex];
+									if (searchingCurent &&
+										searchingSchedule &&
+										(searchingCurent.btype === 0) &&
+										(searchingSchedule === curentBuilding.building)) {
+										// Found!
+										found = true;
+										that.utils.errorMsg.display("Moving this building");
+										$.ajax({
+											url: 'includes/mBu.php',
+											type: 'POST',
+											async: false,
+											data: "a=" + curentBuildingIndex + "&b=" + searchingBuildingIndex + "&c=" + that.data.id
+										});
+										break;
+									}
+								}
+							}
+							if (!found) {
+								that.utils.errorMsg.display("Error. Don't know where to move this building. Please report the bug with current and planned Layout");
+							}
+						} else if (curentBuilding.toAdd) {
+							toAdd = that.data.scheduleMap[selectedBuilding];
+						} else if (curentBuilding.btype === 0) {
+							// Have click on empty & nothing planed
+							if (that.data.curentMap.filter(function (item) {
+									return item.building && item.building.buildable;
+								}).length < 50) {
+								// Adding a cabin
+								toAdd = that.BUILDINGS._DETAILS.cabin;
+							} else if (that.addedData.pureNavy) {
+								// Adding a barrack
+								toAdd = that.BUILDINGS._DETAILS.barracks;
+							} else if (that.addedData.pureTrade) {
+								// Adding a forum
+								toAdd = that.BUILDINGS._DETAILS.forum;
+							}
+						}
+						if (toAdd) {
+							if (toAdd.shortcut) {
+								that.utils.errorMsg.display("Creating " + toAdd.name);
+								var eventData = {
+									type: "keypress",
+									keyCode: toAdd.shortcut.charCodeAt()
+								};
+								$("body").trigger(eventData);
+							} else {
+								that.utils.errorMsg.display("Error. Don't know how to create " + toAdd.name + ". Please report the bug");
+							}
+						}
+					}
+				}
+			};
+
+
+
+
+
+	// Toggle Quickmode
+			that.toggleQuickMode = function () {
+				that.data.quickModeActivated = !that.data.quickModeActivated;
+				that.onCityDataUpdated(false);
+				that.utils.errorMsg.display("QUICK BUILD MODE IS NOW " +
+					(that.data.quickModeActivated ? "ACTIVE" : "DISABLED"));
+			};
+			return that;
+		}();
+
+
+
+
+
+
+
+
+	// Adding buttons once game loaded
+		var waitForGameLoaded = function () {
+			if ($("#incAttacksDiv").length > 0) {
+				console.log("Game Loaded.");
+
+
+
+
+
+	// Add'on starting.
+				if ($("#" + QB_DIV).length > 0) {
+					// Removing current
+					$("#" + QB_DIV).remove();
+				}
+
+
+	// Buttons for building in left bar
+				$("#incAttacksDiv").before(
+					'<div id="' + QB_DIV + '" style="text-align: center; width:295px" class="commandinndiv">' +
+					'<div style="text-align:center ;font-size: 12px;">Only Works With A Layout</div>' +
+					'<div style="display:none;">' +
+					'<button ' + CLASS_AND_CSS_FIRST_BUTTON + '>Info</button>' +
+					'<select title="Remove Building or Resource" ' + CLASS_AND_CSS_NEXT_BUTTON + '><option>Clear</option></select>' +
+					'<select id="' + SELECT_CITY_MOVE_ID + '" title="Move a building " ' + CLASS_AND_CSS_NEXT_BUTTON + '><option>Move</option></select>' +
+					'<select id="' + SELECT_CITY_ADD_ID + '" title="Add a building" ' + CLASS_AND_CSS_NEXT_BUTTON + '><option>Add</option></select>' +
+					'</div></div>');
+
+	/*
+
+
+
+
+	// TODO: add buildtooltip tooltipstered & tooltip for BUTTON_CITY_CLEAR_ID
+
+
+
+
+
+	*/
+				$(BUTTON_CITY_INFO_SELECTOR).click(function () {
+					QB.buildManager.toggleQuickMode();
+				});
+
+				$("#city_map").click(function () {
+					QB.buildManager.processBuilding();
+				});
+			} else {
+				setTimeout(waitForGameLoaded, 1000);
+			}
+
+			console.log("Quickbuild Script Loading");
+		};
+		waitForGameLoaded();
+
+
+	// Adding for clearing the chat
+		var waitForChat = function () {
+			if ($("#clbleft").length > 0) {
+
+				// Adding clear button to chat
+				$("#clbleft").append('<button id="clbclear" class="greenb">Clear</button>');
+				$("#clbclear").click(function () {
+					$("#chatDisplay").html(""); // World
+					$("#chatDisplaya").html(""); // Alliance
+					$("#chatDisplayo").html(""); // Officer
+					$("#chatDisplayw").html(""); // Wisper
+				});
+				$("#chlinkbuts").attr("style", $("#chlinkbuts").attr("style") + ";height: 125px;");
+				$("#clbright").attr("style", "height: 120px;");
+			} else {
+				setTimeout(waitForChat, 1000);
+			}
+			console.log("Quickbuild Script Loaded");
+		};
+		waitForChat();
+
+
+
+
+
+	// Overriding some responses
+		setTimeout(function () {
+			(function (open) {
+				XMLHttpRequest.prototype.open = function () {
+					this.addEventListener("readystatechange", function () {
+						if (this.readyState == 4) {
+							var url = this.responseURL;
+							var cdata;
+							if (url.indexOf('gC.php') != -1) {
+								// Changing city response.
+								try {
+									cdata = JSON.parse(this.response);
+									QB.buildManager.parseCurentCityData(cdata);
+								} catch (e) {
+									//console.error(e);
+								}
+							} else if (url.indexOf('poll2.php') != -1) {
+								// Poll2 response: Updating curent city
+								try {
+									var poll2 = JSON.parse(this.response);
+									cdata = poll2.city;
+									QB.buildManager.parseCurentCityData(cdata);
+								} catch (e) {
+									//console.error(e);
+								}
+							}
+						}
+					}, false);
+					open.apply(this, arguments);
+				};
+			})(XMLHttpRequest.prototype.open);
+			console.log("Chat Loaded");
+		}, 4000);
+
+	})();
 
 /*
 
@@ -1150,14 +1150,14 @@ START OF CORE FUNKY
                             if (typeof(leftover) != 'undefined' && leftover != null) {
                                 leftover.remove();
                                 cityCoordsSpan.setAttribute('id', 'citcoordspq');
-                                //cityCoordsSpan.setAttribute('style', 'float:right');
+								cityCoordsSpan.setAttribute('style', 'font-size:10px');
                                 cityCoordsSpan.appendChild(cityCoords);
                                 cityName.appendChild(cityCoordsSpan);
                             }
                             else {
                                
                                 cityCoordsSpan.setAttribute('id', 'citcoordspq');
-                                // cityCoordsSpan.setAttribute('style', 'float:right');
+                                cityCoordsSpan.setAttribute('style', 'font-size:10px');
                                 cityCoordsSpan.appendChild(cityCoords);
                                 cityName.appendChild(cityCoordsSpan);
                             }
@@ -1245,9 +1245,13 @@ START OF CORE FUNKY
     $("<style>").prop("type", "text/css").html(".gffixed {color : lime}").appendTo("head");
     $("<style>").prop("type", "text/css").html(".gfremoved {color : red ; font-weight: 700}").appendTo("head");
     $("<style>").prop("type", "text/css").html(".gfupdated {color : yellow}").appendTo("head");
-
-    
-
+	$('#editspncn').text("Manage City");
+	$('#editspncn').css("color", "#5696ff");
+	$('#citremspq').css("font-size", "10px");
+    $('#topIRsecd1').removeAttr('style');
+	$('#citnamspq').css("font-size", "10px");
+	$('#rqitemss').appendTo('#recruitmentQueueWindow');
+	$('#bqitemss').appendTo('#buildQueueWindow');
 
 //decoding world data in the new format
     function decwdata(data) {
@@ -1301,7 +1305,7 @@ START OF CORE FUNKY
     }
 
 
-
+	
 
 //getting date
     function getFormattedDate(date) {
@@ -1397,7 +1401,7 @@ START OF CORE FUNKY
         return a;
     };
 
-
+	
 
 
 
