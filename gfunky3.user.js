@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name gfunky3
 // @namespace www.tampermonkey.com
-// @version 3.1.5
+// @version 3.1.6
 // @description gfunky3
 // @author Greety
-// @match https://*.crownofthegods.com
+// @match https://*.crownofthegods.com/*
 // @include https://*.crownofthegods.com/?s=*
 // @grant none
 // @updateURL https://raw.githubusercontent.com/bmessin1/Gfunky/master/gfunky3.user.js
@@ -14,7 +14,7 @@
 
 
 /*jshint esversion: 6 */
-/*Gfunky Version Feb 1 ,2022 */
+/*Gfunky Version Feb 25 ,2022 */
 (function() {
 
 
@@ -45,7 +45,7 @@
                         startupwin+="<span style='margin-left: 5%;'>";
                            // startupwin+="<span style='text-align:center;color:blue;'>Special Thanks to Dhruv, Lionell</span><br>";
                             startupwin+="<h4 style='text-align:center;color:green;' >Updated:";
-							startupwin+="Febuary 1, 2022</h4>";
+							startupwin+="Febuary 25, 2022</h4>";
                         startupwin+="</span><br><br>";
                         startupwin+="<span style='margin-left: 5%;'>";
                             startupwin+="<h5 style='text-align:center;'>Special Thanks to Dhruv, Lionell </h5>";
@@ -264,7 +264,7 @@ START OF QUICKBUILD SCRIPT
 
 
 
-	// Searching for Basillica 
+	// Searching for Basilica 
 
 			that.isBasilica = function (btype) {
 				return that._DETAILS.basilica.id[0] === btype;
@@ -829,14 +829,14 @@ START OF QUICKBUILD SCRIPT
 						}
 						if (toAdd) {
 							if (toAdd.shortcut) {
-								that.utils.errorMsg.display("Creating " + toAdd.name);
+								that.utils.errorMsg.display("Creating A(n) " + toAdd.name);
 								var eventData = {
 									type: "keypress",
 									keyCode: toAdd.shortcut.charCodeAt()
 								};
 								$("body").trigger(eventData);
 							} else {
-								that.utils.errorMsg.display("Error. Don't know how to create " + toAdd.name + ". Please report the bug");
+								that.utils.errorMsg.display("Error. Don't know how to Create a(n) " + toAdd.name + ". Please report the bug");
 							}
 						}
 					}
@@ -1125,9 +1125,10 @@ START OF CORE FUNKY
     var coofz;
     var coon;
 	var cotgsettings;
+	var cotgset1;
 
 
-   setTimeout(function() {
+	setTimeout(function() {
         (function(open) {
             XMLHttpRequest.prototype.open = function() {
                 this.addEventListener("readystatechange", function() {
@@ -1190,8 +1191,9 @@ START OF CORE FUNKY
                             pldata=JSON.parse(this.response);
                         }
 					    if (url.indexOf('plOp.php')!=-1) {
-                            cotgsettings=JSON.parse(this.response);
-						    cotgsettings=a;
+                            cotgsettings=JSON.stringify(this.response);
+							console.log(cotgsettings);
+							
                         }
                         if (url.indexOf('cgS.php') != -1) {
                             clc = JSON.parse(this.response);
@@ -1205,6 +1207,7 @@ START OF CORE FUNKY
                             if(poll2) {
 								var saveclc=poll2.player.clc;
 								var saveoga=poll2.OGA;
+								var saveopt=poll2.player.OPT;
 								clc=poll2.player.clc;
                             }
                             poll2=JSON.parse(this.response);
@@ -1217,7 +1220,10 @@ START OF CORE FUNKY
                             city.y=Number((poll2.city.cid-city.x)/65536);
                             city.cont=Number(Math.floor(city.x/100)+10*Math.floor(city.y/100));
 							
-
+							if('opt' in poll2.player){
+							} else{
+								poll2.player.opt=saveopt;
+              }
                             if ('OGA' in poll2) {
 
                             } else {
@@ -1252,6 +1258,7 @@ START OF CORE FUNKY
 	$('#citnamspq').css("font-size", "10px");
 	$('#rqitemss').appendTo('#recruitmentQueueWindow');
 	$('#bqitemss').appendTo('#buildQueueWindow');
+	$('#tbnwbbtbl').appendTo('#resInfo');
 
 //decoding world data in the new format
     function decwdata(data) {
@@ -2546,12 +2553,7 @@ TODO: FIND REFERENCE POINT to Ui-id-115 Alliance Temple Ranking
                 $("#ExpImp").remove();
              });
         });
-    });
-//END OF WAR COUNC GFUNKY - Primary Functions
-//WAR COUNC Secondary Functions 
-
-//import attack orders
-    function Aimp(str) {
+		function Aimp(str) {
         var Aexp=JSON.parse(str);
         for (var i=1; i<=Aexp.x.length; i++) {
             $("#t"+i+"x").val(Aexp.x[i-1]);
@@ -2569,7 +2571,6 @@ TODO: FIND REFERENCE POINT to Ui-id-115 Alliance Temple Ranking
         var cx=$("#ndefx").val();
         var cy=$("#ndefy").val();
         var cont=Number(Math.floor(cx/100)+10*Math.floor(cy/100));
-		
         var cit=[[]];
         for (var i in t) {
             var tid=t[i].id;
@@ -2577,38 +2578,32 @@ TODO: FIND REFERENCE POINT to Ui-id-115 Alliance Temple Ranking
             var tempy=Number((tid-tempx)/65536);
             var tcont=Number(Math.floor(tempx/100)+10*Math.floor(tempy/100));
             var ttspd=0;
-			var tempt=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-			var temph=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-			var tempts=0;
-		var tspeed=0;
-			var tempth=0;
-		var tdist=(Math.sqrt((tempx-cx)*(tempx-cx)+(tempy-cy)*(tempy-cy)));
             if (cont==tcont) {
                 if (t[i].Ballista_total>0 || t[i].Ranger_total>0 || t[i].Triari_total>0 || t[i].Priestess_total || t[i].Arbalist_total>0 || t[i].Praetor_total>0 ) {
-                   
-                    
+                    var tdist=(Math.sqrt((tempx-cx)*(tempx-cx)+(tempy-cy)*(tempy-cy)));
+                    var tempt=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
                     tempt[1]=t[i].Ballista_total;
                     tempt[2]=t[i].Ranger_total;
                     tempt[3]=t[i].Triari_total;
                     tempt[4]=t[i].Priestess_total;
                     tempt[8]=t[i].Arbalist_total;
                     tempt[9]=t[i].Praetor_total;
-                   
+                    var temph=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
                     temph[1]=t[i].Ballista_home;
                     temph[2]=t[i].Ranger_home;
                     temph[3]=t[i].Triari_home;
                     temph[4]=t[i].Priestess_home;
                     temph[8]=t[i].Arbalist_home;
                     temph[9]=t[i].Praetor_home;
-                    //TS total
+                    var tempts=0; //TS total
                     for (var j in tempt) {
                         tempts+=tempt[j]*ttts[j];
                     }
-                    //TS Home
+                    var tempth=0; //TS Home
                     for (var h in temph) {
                         tempth+=temph[h]*ttts[h];
                     }
-                    
+                    var tspeed=0;
                     for (var j in tempt) {
                         if (tempt[j]>0) {
                             if (Number((ttspeed[j]/faithbonustravelspeed[j]).toFixed(2))>tspeed) {
@@ -2621,8 +2616,8 @@ TODO: FIND REFERENCE POINT to Ui-id-115 Alliance Temple Ranking
             }
             if (cont!=tcont || t[i].Galley_total>0 || t[i].Stinger_total>0) {
                 if (t[i].Stinger_total>0 || t[i].Galley_total>0) {
-                   
-                    
+                    var tdist=roundToTwo(Math.sqrt((tempx-cx)*(tempx-cx)+(tempy-cy)*(tempy-cy)));
+                    var tempt=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
                     tempt[1]=t[i].Ballista_total;
                     tempt[2]=t[i].Ranger_total;
                     tempt[3]=t[i].Triari_total;
@@ -2631,7 +2626,7 @@ TODO: FIND REFERENCE POINT to Ui-id-115 Alliance Temple Ranking
                     tempt[9]=t[i].Praetor_total;
                     tempt[14]=t[i].Galley_total;
                     tempt[15]=t[i].Stinger_total;
-                    
+                    var temph=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
                     temph[1]=t[i].Ballista_home;
                     temph[2]=t[i].Ranger_home;
                     temph[3]=t[i].Triari_home;
@@ -2640,15 +2635,15 @@ TODO: FIND REFERENCE POINT to Ui-id-115 Alliance Temple Ranking
                     temph[9]=t[i].Praetor_home;
                     temph[14]=t[i].Galley_home;
                     temph[15]=t[i].Stinger_home;
-                    
+                    var tempts=0;
                     for (var j in tempt) {
                         tempts+=tempt[j]*ttts[j];
                     }
-                    //TS Home
+                    var tempth=0; //TS Home
                     for (var h in temph) {
                         tempth+=temph[h]*ttts[h];
                     }
-                   
+                    var tspeed=0;
                     for (var j in tempt) {
                         if (tempt[j]>0) {
                             if (Number((ttspeed[j]/faithbonustravelspeed[j]).toFixed(2))>tspeed) {
@@ -2662,63 +2657,39 @@ TODO: FIND REFERENCE POINT to Ui-id-115 Alliance Temple Ranking
             }
         }
         cit.sort(function(a,b) {return a[8]-b[8];});
-        var neardeftab="<table id='ndeftable'>";
-			neardeftab+="<thead>";
-				neardeftab+="<th></th>";
-				neardeftab+="<th>City</th>";
-				neardeftab+="<th>Coords</th>";
-				neardeftab+="<th>TS Total</th>";
-				neardeftab+="<th>TS Home</th>";
-				neardeftab+="<th id='ndefdist'>Travel Time</th>";
-				neardeftab+="<th>type</th>";
-			neardeftab+="</thead>";
-			neardeftab+="<tbody>";
-		
-				for (var i in cit) {
-					if(i>0){
-						var h1=Math.floor(cit[i][8]/60);
-						var m1=Math.floor(cit[i][8]%60);
-						h1 = h1 < 10 ? '0' + h1 : h1;
-						m1 = m1 < 10 ? '0' + m1 : m1;
-						neardeftab+="<tr>";
-							neardeftab+="<td>";
-								neardeftab+="<button class='greenb chcity' id='cityGoTowm' a='"+cit[i][7]+"'>Go To</button>";
-							neardeftab+="</td>";
-							neardeftab+="<td>"+cit[i][3]+"</td>";
-							neardeftab+="<td class='coordblink shcitt' data='"+cit[i][7]+"'>"+cit[i][0]+":"+cit[i][1]+"</td>";
-							neardeftab+="<td>"+cit[i][5]+"</td>";
-							neardeftab+="<td>"+cit[i][6]+"</td>";
-							neardeftab+="<td>"+h1+":"+m1+"</td>";
-							neardeftab+="<td>";
-								neardeftab+="<table>";
-									for (var j in cit[i][4]) {
-										if (cit[i][4][j]>0) {
-											neardeftab+="<td>";
-												neardeftab+="<div class='"+tpicdiv20[j]+"'></div>";
-											neardeftab+="</td>";
-										}
-									}
-								neardeftab+="</table>";
-							neardeftab+="</td>";
-						neardeftab+="</tr>";
-					}
-				}
-			neardeftab+="</tbody>";
-		neardeftab+="</table>";
-		
+        var neardeftab="<table id='ndeftable'><thead><th></th><th>City</th><th>Coords</th><th>TS Total</th><th>TS Home</th><th id='ndefdist'>Travel Time</th><th>type</th></thead><tbody>";
+        for (var i in cit) {
+            if(i>0){
+            var h1=Math.floor(cit[i][8]/60);
+            var m1=Math.floor(cit[i][8]%60);
+            h1 = h1 < 10 ? '0' + h1 : h1;
+            m1 = m1 < 10 ? '0' + m1 : m1;
+            neardeftab+="<tr><td><button class='greenb chcity' id='cityGoTowm' a='"+cit[i][7]+"'>Go To</button></td><td>"+cit[i][3]+"</td><td class='coordblink shcitt' data='"+cit[i][7]+"'>"+cit[i][0]+":"+cit[i][1]+"</td>";
+            //style='font-size: 9px;border-radius: 10px;width: 85%;height: 22px;padding: 1;#c7e2e7-space: nowrap;'
+            neardeftab+="<td>"+cit[i][5]+"</td><td>"+cit[i][6]+"</td><td>"+h1+":"+m1+"</td><td><table>";
+            for (var j in cit[i][4]) {
+                if (cit[i][4][j]>0) {
+                    neardeftab+="<td><div class='"+tpicdiv20[j]+"'></div></td>";
+                }
+            }
+            neardeftab+="</table></td></tr>";
+            }
+        }
+        neardeftab+="</tbody></table>";
         $("#Ndefbox").html(neardeftab);
         $("#ndeftable td").css("text-align","center");
         $("#ndeftable td").css("height","25px");
-        var neardefexport = document.getElementById('ndeftable');
-        sorttable.makeSortable(neardefexport);
+        var newTableObject = document.getElementById('ndeftable');
+        sorttable.makeSortable(newTableObject);
         $("#ndefdist").trigger({type:"click",originalEvent:"1"});
+  //      $("#ndefdist").trigger({type:"click",originalEvent:"1"});
     }
 
 //Near Offense Table
     function nearofftable(t) {
         var contoff=Number($("#noffx").val());
         var cit=[[]];
-		var tempt=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+		
         var troopmail=[[]];
         var counteroff=0;
         for (var i in t) {
@@ -2729,7 +2700,7 @@ TODO: FIND REFERENCE POINT to Ui-id-115 Alliance Temple Ranking
             if (contoff==tcont) {
                 if (t[i].Druid_total>0 || t[i].Horseman_total>0 || t[i].Sorcerer_total>0 || t[i].Vanquisher_total>0 || t[i].Scorpion_total>0 || t[i].Ram_total>0) {
                     counteroff+=1;
-                    
+                    var tempt=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
                     tempt[5]=t[i].Vanquisher_total;
                     tempt[6]=t[i].Sorcerer_total;
                     tempt[10]=t[i].Horseman_total;
@@ -2747,7 +2718,7 @@ TODO: FIND REFERENCE POINT to Ui-id-115 Alliance Temple Ranking
             if(contoff=="99"){
                 if (t[i].Warship_total>0  || t[i].Galley_total>0) {
                     counteroff+=1;
-                    
+                    var tempt=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
                     tempt[5]=t[i].Vanquisher_total;
                     tempt[6]=t[i].Sorcerer_total;
                     tempt[10]=t[i].Horseman_total;
@@ -2859,7 +2830,7 @@ TODO: FIND REFERENCE POINT to Ui-id-115 Alliance Temple Ranking
         var contdef=Number($("#tdefx").val());
         var cit=[[]];
         var deftroopmail=[[]];
-		 var tempt=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+		
         var counterdef=0;
         for (var i in t) {
             var tid=t[i].id;
@@ -2869,7 +2840,7 @@ TODO: FIND REFERENCE POINT to Ui-id-115 Alliance Temple Ranking
             if (contdef==tcont) {
                 if (t[i].Ballista_total>0 || t[i].Ranger_total>0 || t[i].Triari_total>0 || t[i].Priestess_total || t[i].Arbalist_total>0 || t[i].Praetor_total>0 ) {
                     counterdef+=1;
-                   
+                    var tempt=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
                     tempt[1]=t[i].Ballista_total;
                     tempt[2]=t[i].Ranger_total;
                     tempt[3]=t[i].Triari_total;
@@ -2887,7 +2858,7 @@ TODO: FIND REFERENCE POINT to Ui-id-115 Alliance Temple Ranking
             if(contdef=="99"){
                 if (t[i].Stinger_total>0 || t[i].Galley_total>0) {
                     counterdef+=1;
-                    
+                    var tempt=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
                     tempt[1]=t[i].Ballista_total;
                     tempt[2]=t[i].Ranger_total;
                     tempt[3]=t[i].Triari_total;
@@ -2997,6 +2968,12 @@ TODO: FIND REFERENCE POINT to Ui-id-115 Alliance Temple Ranking
             });
         });
     }
+    });
+//END OF WAR COUNC GFUNKY - Primary Functions
+//WAR COUNC Secondary Functions 
+
+//import attack orders
+    
 
     function clickevent(element) {
         var event = $.Event("click");
@@ -3922,8 +3899,8 @@ END SEND Attack Function
         }
         return coon;
     }
-	
-	/*function overlayvalue() {
+
+/*	function overlayvalue() {
         if(ovoofz==1) {
 			ovoon=0;
          $("#fb11").removeClass('redb').addClass('activeAllyButton');
@@ -3934,9 +3911,9 @@ END SEND Attack Function
         }
         return ovoon;
     }
-	*/
+	
 
-
+*/
 
 
 //Buttons convert,fill,demolish,
@@ -3952,11 +3929,11 @@ END SEND Attack Function
 						gfunkyquickbutton+="<span class='qbspan'>Gfunky's Quick Buttons</span>";
 					gfunkyquickbutton+="</div>";
 					gfunkyquickbutton+="<div id='qbwin' class='queueWindow' style='display: block; padding-top: 15px; padding-bottom: 15px;' >";
-						gfunkyquickbutton+="<button id='fb1' style='height:28px; width:46%; margin-left:7px; margin-bottom:5px ; border: 1px; border-radius:4px ; font-size: 9px !important; padding: 0px; color:#e1c190;' class='regButton greenb'>Councillors ON/OFF</button>";
+						gfunkyquickbutton+="<button id='fb1' style='height:28px; width:46%; margin-left:4px; margin-bottom:5px ; border: 1px; border-radius:4px ; font-size: 9px !important; padding: 0px; color:#e1c190;' class='regButton greenb'>Councillors ON/OFF</button>";
 						gfunkyquickbutton+="<button id='fb2' style='height:28px; width:23%; margin-left:4px; margin-bottom:5px ; border: 1px; border-radius:4px ; font-size: 9px !important; padding: 0px; color:#e1c190;' class='regButton greenb'>Refine</button>";
 						gfunkyquickbutton+="<button id='fb3' style='height:28px; width:23%; margin-left:4px; margin-bottom:5px ; border: 1px; border-radius:4px ; font-size: 9px !important; padding: 0px; color:#e1c190;' class='regButton greenb'>Raid</button>";
 						gfunkyquickbutton+="<button id='fb5' style='height:28px; width:46%; margin-left:4px; margin-bottom:5px ; border: 1px; border-radius:4px ; font-size: 9px !important; padding: 0px; color:#e1c190;' class='regButton greenb'>Clear Resources</button>";
-						//gfunkyquickbutton+="<button id='fb11' style='height:28px; width:47%; margin-left:7px; margin-bottom:5px ; border: 1px;  border-radius:4px ; font-size: 9px !important; padding: 0px; color:#e1c190;' class='regButton greenb'>Overlay ON/OFF</button>";
+						//gfunkyquickbutton+="<button id='fb11' style='height:28px; width:47%; margin-left:4px; margin-bottom:5px ; border: 1px;  border-radius:4px ; font-size: 9px !important; padding: 0px; color:#e1c190;' class='regButton greenb'>Overlay ON/OFF</button>";
 						gfunkyquickbutton+="<button id='fb7' style='height:28px; width:23%; margin-left:4px; margin-bottom:5px ; border: 1px; border-radius:4px ; font-size: 9px !important; padding: 0px; color:#e1c190;' class='regButton greenb'>Upgrade</button>";
 						gfunkyquickbutton+="<button id='fb8' style='height:28px; width:23%; margin-left:4px; margin-bottom:5px ; border: 1px; border-radius:4px ; font-size: 9px !important; padding: 0px; color:#e1c190;' class='regButton greenb'>Up + Que</button>";
 						gfunkyquickbutton+="<button id='fb6' style='height:28px; width:46%; margin-left:4px; margin-bottom:5px ; border: 1px; border-radius:4px ; font-size: 9px !important; padding: 0px; color:#e1c190;' class='regButton greenb'>Gfunky+ Changelog</button>";
@@ -4120,41 +4097,52 @@ END SEND Attack Function
         $("#fb10").click(function() {
             gfunkyoptionWin();
         });
-		/*
+		
 		var gfunkyoverlay=0;
 		$("#fb11").click(function() {
-            $("#optionsGo")[0].click();
+            $("#optionsGo").click();
 			$("#ovlslider > span").addClass("ui-state-active");
-			
+			var opdat={a:JSON.stringify(poll2.player.opt)};
+			//var gf=cotgsettings;
+			console.log(opdat);
 			
             if (gfunkyoverlay==0) {
-			
-                gfunkyoverlay=1;
+			    gfunkyoverlay=1;
                 $(this).removeClass('greenb');
                 $(this).addClass('activeAllyButton');
 				$("#ovlslider > span").css("left","0%");
 				$("#overlaytext").text("0%");
+				//opdat['23'][0];
 				
             } else {
 			
                 gfunkyoverlay=0;
                 $(this).removeClass('activeAllyButton');
                 $(this).addClass('greenb');
-				$("#ovlslider > span").css("left","75%");
-				$("#overlaytext").text("75%");
+				$("#ovlslider > span").css("left","0%");
+				$("#overlaytext").text("0%");
+				//opdat['23'][75];
 				
             }
-			var gdat={a:JSON.stringify(cotgsettings)};
+					
+			$.ajax({
+				url: 'includes/poll2.php',
+				type: 'POST',
+				async:true,
+				data: opdat
+				
+			});
 			
-			$.ajax({url: 'includes/plOp.php',type: 'POST',async:true,data: gdat});
 			console.log();
 			$("#savesetchGo").click();
 			 setTimeout(function(){
-                $("#centxbuttondiv")[0].click();
+                $("#optionsXbutton").click();
+				
+				
             });
 			
         });
-	*/
+	
 		  
 
         $("#centarrowNextDiv").click(function() {
@@ -4901,7 +4889,7 @@ Boss Section
                     }
                 }
 
-                if (distance<180) {
+                if (distance<5000) {
                     if (city.th[14] || city.th[15] || city.th[16]) {
                         var minutes=distance*ttspeed[14]/faithbonustravelspeed[14];
                         var time=Math.floor(minutes/60)+"h "+Math.floor(minutes % 60)+"m";
@@ -5025,7 +5013,7 @@ Boss Section
             bzTS+="<td></td>";
         bzTS+="</tr>";
         bzTS+="<tr>";
-            bzTS+="<td>Prietess:</td>";
+            bzTS+="<td>Priestess:</td>";
             bzTS+="<td></td>";
         bzTS+="</tr>";
         bzTS+="<tr>";
@@ -6943,6 +6931,9 @@ END Boss Only Section
         $('#citynotes').height('420px');
         $('#citynotes').width('500px');
         $('#openOVLinplanner').html('<a href="https://cotgopt.com/" target="_blank" rel="noopener noreferrer">Open CoTG Opt by GFunky+</a>');
+		//$('#openLOinplanner').html('<a href="https://cotgopt.com/" target="_blank" rel="noopener noreferrer">Open CoTG Opt by GFunky+</a>');
+		$('#citylayoutTab').append('<span id="loinplanner" style="float: right;font-size: 10px;"><a href="https://cotgopt.com/" target="_blank" rel="noopener noreferrer">Open CoTG Opt by GFunky+</a></span>');
+		$('#loinplanner').after(currentLOtextarea);
         var layoutopttab="<li id='layoutopt' class='ui-state-default ' role='tab' tabindex='-1' aria-controls='layoutoptBody'";
         layoutopttab+="aria-labeledby='ui-id-60' aria-selected='false' aria-expanded='false'>";
         layoutopttab+="<a href='#layoutoptBody' class='ui-tabs-anchor' role='presentation' tabindex='-1' id='ui-id-60'>Layout Options</a></li>";
@@ -7268,8 +7259,8 @@ END Boss Only Section
                 selectbuttlandoff+='<option value="'+lol+'">5 sec sorc</option>';
                 layoutlol.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BJBJB##-----##----##JBJBJBJ##----##----#BJBJBJBJB#----##----#BJBJBJBJB#----#######BJBJTJBJB#######SMPX#BJBJBJBJB#----##----#BJBJBJBJB#----##----##BBJBJBB##----##-BBBB##BJBJB##-----##-BJBJB#######------##-BJBJB---#---------##ZBJBJB---#---------###BJBJB---#--------#####BBB----#-------########################");
                 remarklol.push("sorc");
-                notelol.push("224000 sorc @ 12.5 days");
-                troopcounlol.push([0,0,0,0,0,0,223999,0,0,0,0,0,0,0,0,0,0]);
+                notelol.push("228000 sorc @ 14.8 days");
+                troopcounlol.push([0,0,0,0,0,0,227999,0,0,0,0,0,0,0,0,0,0]);
                 reslol.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 lol++;
                 selectbuttlandoff+='<option value="'+lol+'">6 sec sorc Portal</option>';
@@ -7353,35 +7344,35 @@ END Boss Only Section
                 troopcounldl.push([0,0,276000,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
                 resldl.push([0,0,0,0,1,350000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,450000,220000,150000,350000]);
                 ldl++;
-                selectbuttlanddef+='<option value="'+ldl+'">2s/3s Rangers/Triari</option>';
+                selectbuttlanddef+='<option value="'+ldl+'">2s/3s R/T</option>';
                 layoutldl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBGBGBGB#----#######BGBGTGBGB#######SSPX#BGBGBGBGB#----##MLPJ#BGBGBGBGB#----##S---##BBGBGBG##----##-----##BBBGB##-----##--BBBB#######------##-BGGGG---#---------##-BBBBBB--#---------###-GGGG---#--------#####BBBB---#-------########################");
                 remarkldl.push("rangers/triari");
                 noteldl.push("228000 inf @ 6.2 days");
                 troopcounldl.push([0,0,152000,76000,0,0,0,0,0,0,0,0,0,0,0,0,0]);
                 resldl.push([0,0,0,0,1,250000,220000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,220000,350000,350000]);
                 ldl++;
-                selectbuttlanddef+='<option value="'+ldl+'">3s/3s Rangers/Triari</option>';
+                selectbuttlanddef+='<option value="'+ldl+'">3s/3s R/T</option>';
                 layoutldl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##-BGBGBB##----##----#BBBGBGBGB#----##----#BGBGBGBGB#----#######BGBBTGBGB#######SLSX#BGBGBGBGB#----##SMPP#BGBGBGBGB#----##----##BBGBGBB##----##-----##BBBBB##-----##--BBBB#######------##--BGBGB--#---------##--BGBGB--#---------###JBGBGB--#--------#####BBBBB--#-------########################");
                 remarkldl.push("rangers/triari");
                 noteldl.push("252000 inf @ 6.2 days");
                 troopcounldl.push([0,0,168000,84000,0,0,0,0,0,0,0,0,0,0,0,0,0]);
                 resldl.push([0,0,0,0,1,250000,220000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,220000,350000,350000]);
                 ldl++;
-                selectbuttlanddef+='<option value="'+ldl+'">3 sec Priestess</option>';
+                selectbuttlanddef+='<option value="'+ldl+'">3 sec Priest</option>';
                 layoutldl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BZBZB##-----##----##BBZBZBB##----##----#BZBZBZBZB#----##----#BZBZBZBZB#----#######BZBZTZBZB#######SMSX#BZBZBZBZB#----##SDPP#BZBZBZBZB#----##----##BBZBZBB##----##-BBBB##BBBBB##-----##-ZZZZ-#######------##BBBBBB---#---------##JZZZZB---#---------###BBBB----#--------#####-------#-------########################");
                 remarkldl.push("priests");
                 noteldl.push("228000 Priestess @ 7.9 days");
                 troopcounldl.push([0,0,0,0,228000,0,0,0,0,0,0,0,0,0,0,0,0,0]);
                 resldl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 ldl++;
-                selectbuttlanddef+='<option value="'+ldl+'">4 sec Priestess</option>';
+                selectbuttlanddef+='<option value="'+ldl+'">4 sec Priest</option>';
                 layoutldl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##ZBZBZBZ##----##----#BBBZBZBBB#----##----#BZBZBZBZB#----#######BZBBTBBZB#######SMSX#BZBZBZBZB#----##SDPP#BBBZBZBBB#----##--PP##ZBZBZBZ##----##-----##BBBBB##-----##----BB#######------##----BJBBB#---------##----BBBZB#---------###---BZBZB#--------#####--BBBBB#-------########################");
                 remarkldl.push("priests");
                 noteldl.push("256000 Priestess @ 12.2 days");
                 troopcounldl.push([0,0,0,0,256000,0,0,0,0,0,0,0,0,0,0,0,0,0]);
                 resldl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 ldl++;
-                selectbuttlanddef+='<option value="'+ldl+'">5 sec Priestess</option>';
+                selectbuttlanddef+='<option value="'+ldl+'">5 sec Priest</option>';
                 layoutldl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BZBZBZB##----##----#-BBBBBBB-#----##----#-BZBZBZB-#----#######-BBBTBZB-#######SMSX#-BZBZBZB-#----##SDPP#-BBBBBZB-#----##----##BZBZBZB##----##-----##BBBBB##-----##BBBBB-#######------##BZBZB----#---------##BBBBBBBBB#---------###JBZBZBZB#--------#####BBBBBBB#-------########################");
                 remarkldl.push("priests");
                 noteldl.push("288000 Priestess @ 16.7 days");
@@ -7560,28 +7551,28 @@ END Boss Only Section
                 troopcounwdl.push([0,0,216600,0,0,0,0,0,0,0,0,0,0,0,434,0,0]);
                 reswdl.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1450000]);
                 wdl++;
-                selectbuttwaterdef+='<option value="'+wdl+'">3 sec priestess/galley</option>';
+                selectbuttwaterdef+='<option value="'+wdl+'">3 sec priest/galley</option>';
                 layoutwdl.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BZBZB##-----##----##ZBZBZBZ##----##----#BZBZBZBZB#----##----#BZBZBZBZB#---H#######BZBZTZBZB#######----#BZBZBZBZB#JSPX##----#BZBZBZBZB#----##----##ZBZBZBZ##-Z--##-----##BZZZB##BBBBZ##------#######BBVVBB##---------#---BV##VB##---------#--ZBV###V###--------#---BBV#######-------#---ZBBV########################");
                 remarkwdl.push("priestess/galley");
                 notewdl.push("166600 inf and 334 galley @ 11 days");
                 troopcounwdl.push([0,0,0,0,166600,0,0,0,0,0,0,0,0,0,334,0,0]);
                 reswdl.push([0,0,0,0,1,250000,220000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1350000]);
                 wdl++;
-                selectbuttwaterdef+='<option value="'+wdl+'">4 sec priestess/galley</option>';
+                selectbuttwaterdef+='<option value="'+wdl+'">4 sec priest/galley</option>';
                 layoutwdl.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BZBZB##-----##----##BBZBZBB##----##----#BZBZBZBZB#----##----#BZBZBZBZB#----#######BZBZTZBZB#######----#BZBZBZBZB#SMPX##----#BZBZBZBZB#SDPJ##----##BBZBZBB##----##-----##BZBBB##BBBB-##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#---BBBV########################");
                 remarkwdl.push("priestess/galley");
                 notewdl.push("189999 inf and 380 galley @ 18 days");
                 troopcounwdl.push([0,0,0,0,189999,0,0,0,0,0,0,0,0,0,380,0,0]);
                 reswdl.push([0,0,0,0,1,250000,220000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1350000]);
                 wdl++;
-                selectbuttwaterdef+='<option value="'+wdl+'">5 sec priestess/galley</option>';
+                selectbuttwaterdef+='<option value="'+wdl+'">5 sec priest/galley</option>';
                 layoutwdl.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBZBZBB##----##----#BZBZBZBZB#----##----#BBBZBZBBB#----#######BZBZTZBZB#######----#BBBZBZBBB#SMPX##----#BZBZBZBZB#SDPJ##----##BBZBZBB##----##-----##BZBBB##BBBB-##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#---BBBV########################");
                 remarkwdl.push("priestess/galley");
                 notewdl.push("209999 inf and 420 galley @ 22 days");
                 troopcounwdl.push([0,0,0,0,209999,0,0,0,0,0,0,0,0,0,420,0,0]);
                 reswdl.push([0,0,0,0,1,250000,220000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1350000]);
                 wdl++;
-                selectbuttwaterdef+='<option value="'+wdl+'">6 sec priestess/galley</option>';
+                selectbuttwaterdef+='<option value="'+wdl+'">6 sec priest/galley</option>';
                 layoutwdl.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBZBZBB##----##----#BZBBBBBZB#----##----#BBBZBZBBB#----#######BZBBTBBZB#######----#BZBZBZBBB#SMSX##----#BZBZBZBZB#SDPP##----##BBZBZBB##----##-----##BBBBB##BBBBJ##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#----BBV########################");
                 remarkwdl.push("priestess/galley");
                 notewdl.push("219999 inf and 440 galley @ 22 days");
@@ -7805,7 +7796,7 @@ END Boss Only Section
                 resshl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,300000,1400000]);
                 shl++;
 
-                selectbuttshipper+='<option value="'+shl+'">240K 3/4 sec R/T +Sen Ship</option>';
+                selectbuttshipper+='<option value="'+shl+'">240K 3/4 sec R/T Ship</option>';
                 layoutshl.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBGBGBBB#----##----#BGBBBBBGB#----#######BGBGTGBGB#######----#BGBGBGBGB#SLPX##----#BGBGBGBGB#SDPJ##----##BBGBGBB##----##-----##BBBBB##-----##------#######--RR--##---------#BBBBRTTR-##---------#BGBZRTTTR###--------#BGBB-RTT#####-------#BBBB--R########################");
                 remarkshl.push("240K 3/4s R/T +Sen Shipper");
         noteshl.push("240KTS 120K Rangers 120K Triari @ 10 days  Substitute sawmill, masons hut, smelter or grain mill, as appropriate");
@@ -7969,7 +7960,7 @@ END Boss Only Section
                 respol.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 pol++;
 
-                selectbuttportal+='<option value="'+pol+'">252K 40 sec Scorpions Portal</option>';
+                selectbuttportal+='<option value="'+pol+'">252K 40 sec Scorps Portal</option>';
                 layoutpol.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BYBYB##-----##----##BBYBYBB##----##----#BYBYBYBYB#----##----#BYBYBYBYB#----#######BYBYTYBYB#######----#BYBYBYBYB#SS-X##----#BYBYBYBYB#----##----##BBYBYBB##----##-----##BYBYB##-----##------#######------##---------#-BBBBBB--##---------#BYBYBYBB-###--------#BYBYBYBB#####-------#BBBBBBB########################");
                 remarkpol.push("Scorps");
                 notepol.push("252KTS 25,200 Scorps @ 11.5 days");
@@ -7977,7 +7968,7 @@ END Boss Only Section
                 respol.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 pol++;
 
-                selectbuttportal+='<option value="'+pol+'">284K 48 sec Scorpions Portal</option>';
+                selectbuttportal+='<option value="'+pol+'">284K 48 sec Scorps Portal</option>';
                 layoutpol.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##YBYBYBY##----##----#BBBYBYBBB#----##----#BYBBBBBYB#----#######BYBYTYBYB#######----#BYBBBBBYB#SS-X##----#BBBYBYBBB#----##----##YBYBYBY##----##-----##BBBBB##BBB--##------#######-BYB--##---------#--BBBYB--##---------#-BBYBYB--###--------#-BBYBYB-#####-------#-BBBBBB########################");
                 remarkpol.push("Scorps");
                 notepol.push("284KTS 28,400 Scorps @ 16 days");
@@ -9375,7 +9366,7 @@ END Boss Only Section
                 success: function(data) {
                     var gincoming123=JSON.parse(JSON.stringify(data));
                     updategincoming(gincoming123);
-					console.log(gincoming123.a)
+					console.log(gincoming123.a);
                 }
 				
             });
@@ -10008,7 +9999,7 @@ END Boss Only Section
 				troopstab+="<th colspan='2' class='spf'><div class='"+tpicdiv[16]+"'></div></th>";
 				troopstab+="<th colspan='2' class='spf'><div class='"+tpicdiv[17]+"'></div></th>";
 			troopstab+="</tr>";
-			troopstab+="<tr>";
+			troopstab+="<tr class='sorttable'>";
 				troopstab+="<th>HOME</th>";
 				troopstab+="<th>TOTAL</th>";
 				troopstab+="<th>HOME</th>";
@@ -10390,7 +10381,8 @@ END Boss Only Section
         var findmysencitybody="<table id='findmysencitytable'>";
 			findmysencitybody+="<thead>";
 				findmysencitybody+="<tr>";
-					findmysencitybody+="<th>City Info </th>";
+					findmysencitybody+="<th>City Name</th>";
+					findmysencitybody+="<th>Notes</th>";
 					findmysencitybody+="<th>Location</th>";
 					findmysencitybody+="<th >Total Sens</th>";
 					findmysencitybody+="<th># Settling</th>";
@@ -10401,7 +10393,13 @@ END Boss Only Section
 			findmysencitybody+="</thead>";
 			findmysencitybody+="<tbody>";
 				$.each(data.b, function() {
+					var gcid=this[0];
+					var gnot=notes.notes[notes.id.indexOf(gcid)];
+					var x=Number(gcid%65536);
+					var y=Number((gcid-x)/65536);
+					var gcon=Number(Math.floor(x/100)+10*Math.floor(y/100));
 				findmysencitybody+="<tr>";
+					findmysencitybody+="<td>"+this[1]+"</td>";
 					findmysencitybody+="<td>"+this[1]+"</td>";
 					findmysencitybody+="<td>"+this[2]+"</td>";
 					findmysencitybody+="<td>"+this[3]+"</td>";
