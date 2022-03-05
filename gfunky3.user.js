@@ -14,9 +14,19 @@
 
 
 /*jshint esversion: 6 */
-/*Gfunky Version Feb 25 ,2022 */
+/*Gfunky Version Mar 3 ,2022 */
 (function() {
+/*	
+var datascript = document.createElement('script');
+datascript.src = 'https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js';
+datascript.type = 'text/javascript';
+document.getElementsByTagName('head')[0].appendChild(datascript);
 
+var updatescript = document.createElement('script');
+updatescript.src = 'https://code.jquery.com/jquery-3.5.1.js';
+updatescript.type = 'text/javascript';
+document.getElementsByTagName('head')[0].appendChild(updatescript);
+*/
 
    $().ready(function() {
         var startupwin="<div id='startwinDiv' class='popUpBox ui-draggable' style='z-index:4002; left: 50%'>";
@@ -44,8 +54,8 @@
                         startupwin+="<div id='bottomcrownpic'></div>";
                         startupwin+="<span style='margin-left: 5%;'>";
                            // startupwin+="<span style='text-align:center;color:blue;'>Special Thanks to Dhruv, Lionell</span><br>";
-                            startupwin+="<h4 style='text-align:center;color:green;' >Updated:";
-							startupwin+="Febuary 25, 2022</h4>";
+                            startupwin+="<h4 style='text-align:center;color:green;' >Update 3.1.6  ";
+							startupwin+="March 5, 2022</h4>";
                         startupwin+="</span><br><br>";
                         startupwin+="<span style='margin-left: 5%;'>";
                             startupwin+="<h5 style='text-align:center;'>Special Thanks to Dhruv, Lionell </h5>";
@@ -213,7 +223,7 @@ START OF QUICKBUILD SCRIPT
 					iron: {id: [452], buildable: false, schedule: ","},
 					lake: {id: [453], buildable: false, schedule: ";"},
 	/*
-		 
+
 					wall: { id:[809], buildable: true, moveable:false},
 					sentinel_post: { id:[547], buildable: true, shortcut: "1", moveable: true},
 					ranger_post: { id: [543], buildable: true, shortcut:"2", moveable: true},
@@ -264,7 +274,7 @@ START OF QUICKBUILD SCRIPT
 
 
 
-	// Searching for Basilica 
+	// Searching for Basilica
 
 			that.isBasilica = function (btype) {
 				return that._DETAILS.basilica.id[0] === btype;
@@ -315,7 +325,7 @@ START OF QUICKBUILD SCRIPT
 						// Potentially to move
 						curentBuilding.toMove = !curentBuilding.demolishing;
 					} else {
-					   
+
 					}
 					return false;
 				}
@@ -338,7 +348,7 @@ START OF QUICKBUILD SCRIPT
 					} else if (!curentBuilding.building.buildable) {
 						// RAS
 					} else {
-						
+
 					}
 					return false;
 				}
@@ -750,7 +760,7 @@ START OF QUICKBUILD SCRIPT
 									break;
 								default:
 									//console.error("Todo " + key);
-								   
+
 							}
 							if (classes) {
 								selector.removeClass(data.removeClass);
@@ -1093,7 +1103,7 @@ START OF CORE FUNKY
     var troopcounshl=[[]];
     var troopcounpol=[[]];
     var troopcountsg=[[]];
-    
+
     var resw=[[]];
     var resd=[[]];
     var resl=[[]];
@@ -1156,7 +1166,7 @@ START OF CORE FUNKY
                                 cityName.appendChild(cityCoordsSpan);
                             }
                             else {
-                               
+
                                 cityCoordsSpan.setAttribute('id', 'citcoordspq');
                                 cityCoordsSpan.setAttribute('style', 'font-size:10px');
                                 cityCoordsSpan.appendChild(cityCoords);
@@ -1193,7 +1203,7 @@ START OF CORE FUNKY
 					    if (url.indexOf('plOp.php')!=-1) {
                             cotgsettings=JSON.stringify(this.response);
 							console.log(cotgsettings);
-							
+
                         }
                         if (url.indexOf('cgS.php') != -1) {
                             clc = JSON.parse(this.response);
@@ -1202,8 +1212,8 @@ START OF CORE FUNKY
                             gFFc = JSON.parse(this.response);
                         }
                         if (url.indexOf('poll2.php')!=-1) {
-							
-                            
+
+
                             if(poll2) {
 								var saveclc=poll2.player.clc;
 								var saveoga=poll2.OGA;
@@ -1219,7 +1229,7 @@ START OF CORE FUNKY
                             city.x=Number(poll2.city.cid % 65536);
                             city.y=Number((poll2.city.cid-city.x)/65536);
                             city.cont=Number(Math.floor(city.x/100)+10*Math.floor(city.y/100));
-							
+
 							if('opt' in poll2.player){
 							} else{
 								poll2.player.opt=saveopt;
@@ -1246,13 +1256,15 @@ START OF CORE FUNKY
         console.log("Gfunky+ Has Loaded. Presented by Greety and Fact ");
     },4000);
 
-    
+
     $("<style>").prop("type", "text/css").html(".gfadded {color : blue}").appendTo("head");
     $("<style>").prop("type", "text/css").html(".gffixed {color : lime}").appendTo("head");
     $("<style>").prop("type", "text/css").html(".gfremoved {color : red ; font-weight: 700}").appendTo("head");
     $("<style>").prop("type", "text/css").html(".gfupdated {color : yellow}").appendTo("head");
 	$('#editspncn').text("Manage City");
 	$('#editspncn').css("color", "#5696ff");
+	$('#editspncn').css("float","none");
+	$('#citnamqcont').css("margin-left","10px");
 	$('#citremspq').css("font-size", "10px");
     $('#topIRsecd1').removeAttr('style');
 	$('#citnamspq').css("font-size", "10px");
@@ -1312,7 +1324,7 @@ START OF CORE FUNKY
     }
 
 
-	
+
 
 //getting date
     function getFormattedDate(date) {
@@ -1408,7 +1420,7 @@ START OF CORE FUNKY
         return a;
     };
 
-	
+
 
 
 
@@ -1531,13 +1543,13 @@ START OF CORE FUNKY
             });
 		}, 5000);
 	});
-	
+
 /* War Councillors Pages and CSS Changes */
 
-	
+
 	$().ready (function() {
-		
-		
+
+
     //hiding cities in shrine planner
     function hidecities() {
         $("#shrineTab tr").each(function() {
@@ -1554,7 +1566,7 @@ START OF CORE FUNKY
             }
         });
     }
-	
+
 	//Shrine Section 2
 	var shrinebut="<button class='regButton greenb' id='shrineP' style='width: 98%;margins: 1%;'>Shrine Planner</button>";
 	$("#inactiveshrineInfo").before(shrinebut);
@@ -1787,7 +1799,7 @@ START OF CORE FUNKY
 							shrinetab+="</td>";
 							shrinetab+="<td>"+ccounter+"</td>";
 							shrinetab+="<td>"+w[ccounter]+"% "+"</td>";
-							
+
 								} else {
                         shrinetab+="<tr style='color:green;'>";
 							shrinetab+="<td>";
@@ -1798,7 +1810,7 @@ START OF CORE FUNKY
 							shrinetab+="</td>";
 							shrinetab+="<td>"+ccounter+"</td>";
 							shrinetab+="<td>"+w[ccounter]+"% "+"</td>";
-							
+
 								}
 							} else if (ccounter>=17 && ccounter<21) {
 						shrinetab+="<tr>";
@@ -1822,7 +1834,7 @@ START OF CORE FUNKY
 							shrinetab+="</td>";
 							shrinetab+="<td></td>";
 							shrinetab+="<td></td>";
-							
+
 							} else {
 						shrinetab+="<tr style='color:#74A274;'>";
 							shrinetab+="<td>";
@@ -1833,7 +1845,7 @@ START OF CORE FUNKY
 							shrinetab+="</td>";
 							shrinetab+="<td></td>";
 							shrinetab+="<td></td>";
-							
+
 							}
 						}
 							shrinetab+="<td>"+roundToTwo(shrinec[i][5])+"</td>";
@@ -1843,7 +1855,7 @@ START OF CORE FUNKY
 							shrinetab+="<td class='allyblink'>"+shrinec[i][8]+"</td>";
 							shrinetab+="<td>"+shrinec[i][7]+"</td>";
 							shrinetab+="<td>"+shrinec[i][0]+"</td>";
-							
+
 						shrinetab+="</tr>";
 						if (ccounter==20) {
 							break;
@@ -1907,7 +1919,7 @@ START OF CORE FUNKY
         });
 		var shrinetabsort = document.getElementById('shrineTab');
         sorttable.makeSortable(shrinetabsort);
-		
+
     }
 
 // WAR COUNC BUTTONS
@@ -1926,10 +1938,12 @@ START OF CORE FUNKY
 
 
 
+
+
 //Boss Tab
         var bosstab="<li id='bosshuntab' class='ui-state-default ' role='tab' tabindex='-1' aria-controls='warBossmanager' aria-labeledby='ui-id-20' aria-selected='false' aria-expanded='false'>";
         bosstab+="<a href='#warBossmanager' class='ui-tabs-anchor' role='presentation' tabindex='-1' id='ui-id-20'>Boss Hunter</a></li>";
-        
+
     //Boss Page Body
 		var bosstabbody="<div id='warBossmanager' aria-labeledby='ui-id-21' class='ui-tabs-panel' role='tabpanel' aria-hidden='true' style='display: none;'>";
 			bosstabbody+="<div id='fpdcdiv3'  style='margin-left: auto;margin-right: auto;font-size: 20px;color: #e1c190;font-weight: 500;padding-top: 5px;padding-bottom: 5px;border-radius: 6px;border: 3px ridge #99805D;text-align: center;background: url(/images/antonui/qmenutop.png);background-size: 100% 100%;' >Gfunky's Boss Hunter</div>";
@@ -1939,7 +1953,7 @@ START OF CORE FUNKY
 				bosstabbody+="<button id='refreshboss' style='width: 70%;height: 30px !important; font-size: 12px !important; border-radius:6px;' class='regButton greenb'>Refresh Bosses</button>";
             bosstabbody+="</div>";
         bosstabbody+="</div>";
-  
+
 //Attack tab
         var attacktab="<li id='attacktab' class='ui-state-default ' role='tab' tabindex='-1' aria-controls='warAttackmanager' aria-labeledby='ui-id-21' aria-selected='false' aria-expanded='false'>";
         attacktab+="<a href='#warAttackmanager' class='ui-tabs-anchor' role='presentation' tabindex='-1' id='ui-id-21'>Attack</a></li>";
@@ -2017,7 +2031,7 @@ START OF CORE FUNKY
 				attacktabbody+="</table>";
 				attacktabbody+="<table style='width:96%;margin-left:2%'><thead><tr style='text-align:center; font-size:12px;'>";
 					attacktabbody+="<tbody>";
-						attacktabbody+="<tr>";	
+						attacktabbody+="<tr>";
 							attacktabbody+="<th></th>";
 							attacktabbody+="<th>Hr</th>";
 							attacktabbody+="<th>Min</th>";
@@ -2146,7 +2160,7 @@ START OF CORE FUNKY
 				ndeftabbody+="<div id='Ndefbox' class='beigemenutable scroll-pane' style='width: 96%;height: AUTO !important;max-height: 85%;margin-right: auto;margin-left: auto;border: 3px ridge #99805D;border-radius: 6px;'></div>";
 			ndeftabbody+="</div>";
 		ndeftabbody+="</div>";
-			
+
 
 
 
@@ -2175,7 +2189,7 @@ START OF CORE FUNKY
 		nofftabbody+="</div>";
 
 // Defensive LIST TAB
- 
+
        var tdeftab="<li id='totaldeftab' class='ui-state-default ' role='tab' tabindex='-1' aria-controls='warTdefmanager' aria-labeledby='ui-id-125' aria-selected='false' aria-expanded='false'>";
        tdeftab+="<a href='#warTdefmanager' class='ui-tabs-anchor' role='presentation'>Defensive TS</a></li>";
 
@@ -2232,7 +2246,7 @@ START OF CORE FUNKY
         var tabs = $( "#warcouncTabs" ).tabs();
         var ul = tabs.find( "ul" );
         //$( fpdcdiv2 ).prepend ('<br>');
-        
+
         $('div#warCidlemanager').attr('style', 'margin-top: 26px');
         $('div#warCidledi').attr('style', 'height: 80% !important');
         $('div#warCraidtable').attr('style', 'height: 55% !important');
@@ -2268,6 +2282,12 @@ START OF CORE FUNKY
         $("#loccavwarconGo").css("right","65%");
         $("#idluniwarconGo").css("left","34%");
         $("#idluniwarconGo").after(raidbossbut);
+		$('#CheckResHora').css("right", "");
+		$('#CheckResHora').css("margin-top", "135px");
+		$('#CheckResHora').css("left", "35.9%");
+
+
+
         $("#defdeparture").change(function() {
            if ($("#defdeparture").val()==0) {
                $("#deftime").hide();
@@ -2689,7 +2709,7 @@ TODO: FIND REFERENCE POINT to Ui-id-115 Alliance Temple Ranking
     function nearofftable(t) {
         var contoff=Number($("#noffx").val());
         var cit=[[]];
-		
+
         var troopmail=[[]];
         var counteroff=0;
         for (var i in t) {
@@ -2755,7 +2775,7 @@ TODO: FIND REFERENCE POINT to Ui-id-115 Alliance Temple Ranking
 							nearofftab+="</td>";
 							nearofftab+="<td>"+cit[i][4]+"</td>";
 							nearofftab+="<td class='coordblink shcitt' data='"+cit[i][5]+"'>"+cit[i][0]+":"+cit[i][1]+"</td>";
-                
+
 							nearofftab+="<td>"+cit[i][2]+"</td>";
 							nearofftab+="<td>";
 								nearofftab+="<table>";
@@ -2773,14 +2793,14 @@ TODO: FIND REFERENCE POINT to Ui-id-115 Alliance Temple Ranking
 				}
 			nearofftab+="</tbody>";
 		nearofftab+="</table>";
-		
+
         $("#Noffbox").html(nearofftab);
         $("#nofftable td").css("text-align","center");
         $("#nofftable td").css("height","26px");
-		
+
         var nearoffenseexport = document.getElementById('nofftable');
         sorttable.makeSortable(nearoffenseexport);
-		
+
         troopmail.sort(function(a,b) {return b[1]-a[1];});
         $("#mailoff").click(function() {
             //$("#mailComposeBox").show();
@@ -2812,7 +2832,7 @@ TODO: FIND REFERENCE POINT to Ui-id-115 Alliance Temple Ranking
 					}
 				gamemail+="</tbody>";
 			gamemail+="</table>";
-            
+
 			if(conttemp==99){conttemp="Navy";}
             $("#mnlsp")[0].click();
             $("#composeButton")[0].click();
@@ -2830,7 +2850,7 @@ TODO: FIND REFERENCE POINT to Ui-id-115 Alliance Temple Ranking
         var contdef=Number($("#tdefx").val());
         var cit=[[]];
         var deftroopmail=[[]];
-		
+
         var counterdef=0;
         for (var i in t) {
             var tid=t[i].id;
@@ -2913,16 +2933,16 @@ TODO: FIND REFERENCE POINT to Ui-id-115 Alliance Temple Ranking
 				}
 			totaldeftab+="</tbody>";
 		totaldeftab+="</table>";
-		
-		
+
+
         $("#Tdefbox").html(totaldeftab);
         $("#tdeftable td").css("text-align","center");
         $("#tdeftable td").css("height","26px");
-		
+
         var totaldefenseExport = document.getElementById('tdeftable');
         sorttable.makeSortable(totaldefenseExport);
-		
-		
+
+
         deftroopmail.sort(function(a,b) {return b[1]-a[1];});
         $("#maildef").click(function() {
             //$("#mailComposeBox").show();
@@ -2954,8 +2974,8 @@ TODO: FIND REFERENCE POINT to Ui-id-115 Alliance Temple Ranking
 					}
 				mailto+="</tbody>";
 			mailto+="</table>";
-			
-			
+
+
             if(conttemp==99){conttemp="Navy";}
             $("#mnlsp")[0].click();
             $("#composeButton")[0].click();
@@ -2970,10 +2990,10 @@ TODO: FIND REFERENCE POINT to Ui-id-115 Alliance Temple Ranking
     }
     });
 //END OF WAR COUNC GFUNKY - Primary Functions
-//WAR COUNC Secondary Functions 
+//WAR COUNC Secondary Functions
 
 //import attack orders
-    
+
 
     function clickevent(element) {
         var event = $.Event("click");
@@ -3060,7 +3080,7 @@ SEND DEFENSE Function
 					}
 				}
 			}
-		
+
 //END OF GALLEY DEFEND MATH
 //Normal defend MATH
 		} else {
@@ -3202,7 +3222,7 @@ SEND DEFENSE Function
 			}
 		}
 	}
-      
+
 
 /*
 
@@ -3483,7 +3503,7 @@ Send Attack Function
                         } else {nongalts+=ttts[t.type[i]]*(t.home[i])/realnumb;}
                     }
                 }
-    //Includes Senator            
+    //Includes Senator
                 if (t.type[i]==17) {
                     if ($("#usereal"+t.type[i]).prop( "checked")===true) {
                         if ($("#usefake"+t.type[i]).prop( "checked")===true) {
@@ -3871,7 +3891,7 @@ Send Attack Function
                 $("#raidrettimeselinp").val(retdate);
                 $("#doneOGAll")[0].click();
                 alert("Attack set and troops returned");
-            } 
+            }
             else {
                 alert("Attack set");
             }
@@ -3911,7 +3931,7 @@ END SEND Attack Function
         }
         return ovoon;
     }
-	
+
 
 */
 
@@ -3939,16 +3959,16 @@ END SEND Attack Function
 						gfunkyquickbutton+="<button id='fb6' style='height:28px; width:46%; margin-left:4px; margin-bottom:5px ; border: 1px; border-radius:4px ; font-size: 9px !important; padding: 0px; color:#e1c190;' class='regButton greenb'>Gfunky+ Changelog</button>";
 						gfunkyquickbutton+="<button id='fb9' style='height:28px; width:23%; margin-left:4px; margin-bottom:5px ; border: 1px; border-radius:4px ; font-size: 9px !important; padding: 0px; color:#e1c190;' class='regButton greenb'>Downgrade</button>";
 						gfunkyquickbutton+="<button id='fb4' style='height:28px; width:23%; margin-left:4px; margin-bottom:5px ; border: 1px; border-radius:4px ; font-size: 9px !important; padding: 0px; color:#e1c190;' class='regButton greenb'>Demolish</button>";
-						
-						
+
+
 						//gfunkyquickbutton+="<button id='fb10' style='height:28px; width:45%; margin-left:4px; margin-bottom:5px ; border: 1px; border-radius:4px ; font-size: 9px !important; padding: 0px; color:#e1c190;' class='regButton greenb'>Gfunky Notepad</button>";
-						
+
 					gfunkyquickbutton+="</div>";
-				gfunkyquickbutton+="</div>";	
+				gfunkyquickbutton+="</div>";
 			gfunkyquickbutton+="</div>";
 			$("#qbDiv").after(bdcountbox);
-			
-		
+
+
         var bdcountbox="<div id='currentbuildings' style=' width: 290px; margin-top: 10px; margin-left: auto; margin-right: auto; border: 3px solid #886f53; align-content: center;'>";
 			bdcountbox+="<div id='bdcountbar' class='queueBar'>";
 				bdcountbox+="<div id='bdcountbut' class='tradeqarr2'>";
@@ -3969,7 +3989,7 @@ END SEND Attack Function
 			event.stopPropagation();
             var gcid=poll2.city.cid;
             var filq;
-            
+
             $.post('/overview/fillq.php', { a: gcid });
         });
 */
@@ -3989,7 +4009,7 @@ END SEND Attack Function
             setTimeout(function(){
                 $("#councillorXbutton")[0].click();
             });
-		/*	
+		/*
             if (gfunkycoun==0) {
                 gfunkycoun=1;
                 $(this).removeClass('greenb');
@@ -4097,7 +4117,7 @@ END SEND Attack Function
         $("#fb10").click(function() {
             gfunkyoptionWin();
         });
-		
+
 		var gfunkyoverlay=0;
 		$("#fb11").click(function() {
             $("#optionsGo").click();
@@ -4105,7 +4125,7 @@ END SEND Attack Function
 			var opdat={a:JSON.stringify(poll2.player.opt)};
 			//var gf=cotgsettings;
 			console.log(opdat);
-			
+
             if (gfunkyoverlay==0) {
 			    gfunkyoverlay=1;
                 $(this).removeClass('greenb');
@@ -4113,37 +4133,37 @@ END SEND Attack Function
 				$("#ovlslider > span").css("left","0%");
 				$("#overlaytext").text("0%");
 				//opdat['23'][0];
-				
+
             } else {
-			
+
                 gfunkyoverlay=0;
                 $(this).removeClass('activeAllyButton');
                 $(this).addClass('greenb');
 				$("#ovlslider > span").css("left","0%");
 				$("#overlaytext").text("0%");
 				//opdat['23'][75];
-				
+
             }
-					
+
 			$.ajax({
 				url: 'includes/poll2.php',
 				type: 'POST',
 				async:true,
 				data: opdat
-				
+
 			});
-			
+
 			console.log();
 			$("#savesetchGo").click();
 			 setTimeout(function(){
                 $("#optionsXbutton").click();
-				
-				
+
+
             });
-			
+
         });
-	
-		  
+
+
 
         $("#centarrowNextDiv").click(function() {
             autodemoon=0;
@@ -4404,7 +4424,7 @@ END SEND Attack Function
         $("#bdcountwin").html(bdtable);
         $("#numbdleft").html(bdNumber);
     }
-   
+
 /*
 
 Predicting Incoming Troops Section
@@ -5606,7 +5626,7 @@ END Boss Only Section
         },600);
     }
 
-    
+
 
 
 
@@ -6133,7 +6153,7 @@ END Boss Only Section
                 //console.log(++i);
             }
         });
-        
+
 
         var gfunkyoutgoingsumWin="<div id='gfunkyoutgoingsumWin' class='popUpBox ui-draggable' style='z-index:2002; width:800px !important;height:50% !important;'>";
 			gfunkyoutgoingsumWin+="<div class='ppbwinbgr ui-draggable'  style='width: 800px !important;'>";
@@ -6142,8 +6162,8 @@ END Boss Only Section
 				gfunkyoutgoingsumWin+="<div class='ppbwinbott ui-draggable' style='width: 800px !important;'></div>";
 			gfunkyoutgoingsumWin+="</div>";
 			gfunkyoutgoingsumWin+="<div class='ppbwincontent  ui-draggable'>";
-        
-        
+
+
 				gfunkyoutgoingsumWin+="<div class='popUpBar ui-draggable-handle'> ";
 					gfunkyoutgoingsumWin+="<span class='ppspan'>Gfunky's Outgoing Attack Summary</span>";
 					gfunkyoutgoingsumWin+="<button class='greenb regButton' style='font-size: 14px;margin-left: 20px;margin-top: 10px;height: 50%;width: 60px;'>";
@@ -6160,8 +6180,8 @@ END Boss Only Section
 					gfunkyoutgoingsumWin+="</div>";
 				gfunkyoutgoingsumWin+="</button>";
 			gfunkyoutgoingsumWin+="</div>";
-        
-        
+
+
 			gfunkyoutgoingsumWin+="<div id=outsumbody' class='popUpWindow' style='width: auto !important;' >";
 				gfunkyoutgoingsumWin+="<div class='beigemenutable scroll-pane' style='height:95%;width: 730px !important;margin-left:auto; margin-right: auto; border-radius: 6px;border: 3px ridge #99805D;'>";
 					gfunkyoutgoingsumWin+="<table id='outsumTab'>";
@@ -6192,7 +6212,7 @@ END Boss Only Section
 				gfunkyoutgoingsumWin+="</table>";
 			gfunkyoutgoingsumWin+="</div>";
 		gfunkyoutgoingsumWin+="</div>";
-	
+
 
 
         $("body").append(gfunkyoutgoingsumWin);
@@ -6239,8 +6259,8 @@ END Boss Only Section
                     //console.log(++i);
                 }
             });
-            
-            
+
+
             var gfunkyincomingsumWin="<div id='gfunkyincomingsumWin' class='popUpBox ui-draggable' style='z-index:2002; width:800px !important;height:50% !important;'>";
 				gfunkyincomingsumWin+="<div class='ppbwinbgr ui-draggable'  style='width: 800px !important;'>";
 					gfunkyincomingsumWin+="<div class='ppbwintop ui-draggable'  style='width: 800px !important;'></div>";
@@ -6314,14 +6334,14 @@ END Boss Only Section
     // combat reports summary
         $().ready(function() {
             var comsum="<button id='comsumGo' class='regButton greenb' style='margin-top: 40%;width: 95%;height: 25%;font-size: .8vw; border-radius: 6px;'>Combat Summary</button>";
-            
+
             var comsump="<br><button id='comsumpGo' class='regButton greenb' style='margin-left:3%;width: 94%;height: 26px; font-size: 12px;'>Combat Summary</button>";
             var gchangelog="<br><button id='gchangelogGo' class='regButton greenb' style='margin-left:3%;width: 94%;height: 26px; font-size: 12px;'>Gfunky Changelog</button>";
             $("#reportsTable").css("height","70%");
             $("#locatecityGo").after(comsum);
             $("#announcementsGo").after(comsump);
             $("#announcementsGo").after(gchangelog);
-            
+
             $("#comsumGo").click(function() {
                 gfunkycomsumWin("city");
             });
@@ -6331,10 +6351,10 @@ END Boss Only Section
             $("#gchangelogGo").click(function() {
                 gfunkychangelogWin();
             });
-            
-            
+
+
         });
-		
+
 		function notepadWin(arg){
             var notepadwin="<div id='notepadDiv' class='popUpBox ui-draggable' style='z-index:4002; left: 50%'>";
                 notepadwin+="<div class='ppbwinbgr ui-draggable'>";
@@ -6395,7 +6415,7 @@ END Boss Only Section
             $("#gfunkychangeldiv").draggable({ handle: ".popUpBar" , containment: "window", scroll: false});
         }
         function gfunkyoptionWin(arg) {
-		
+
             var  gfunkyoptionsWin="<div id='gfunkyoptiondiv' class='popUpBox ui-resizable ui-draggable' style='z-index:2002; width:500px !important; height:70%;'>";
                 gfunkyoptionsWin+="<div class='ppbwinbgr ui-draggable' style='width:500px !important;'>";
                     gfunkyoptionsWin+="<div class='ppbwintop ui-resizable ui-draggable' style='width:500px !important;'></div>";
@@ -6414,9 +6434,9 @@ END Boss Only Section
                         gfunkyoptionsWin+="</button>";
                     gfunkyoptionsWin+="</div>";
                     gfunkyoptionsWin+="<div id='gfunkyoptionbody' class='popUpWindow ui-resizable' style='width:95%; margin-left:auto; margin-right:auto; padding-top:50px; text-align:center;'>";
-					
+
                         gfunkyoptionsWin+="<textarea cols='50' rows='10' id='Gnotepad'>Type something here</textarea>";
-					
+
                     gfunkyoptionsWin+="</div>";
                 gfunkyoptionsWin+="</div>";
             gfunkyoptionsWin+="</div>";
@@ -6431,9 +6451,9 @@ END Boss Only Section
                     e.stopImmediatePropagation();
                 }
             });
-			
-           
-         /*   
+
+
+         /*
             if (localStorage.getItem('attacklines')) {
                 if (localStorage.getItem('attacklines')==1) {
                     $("#attacklines").prop( "checked", true );
@@ -6459,7 +6479,7 @@ END Boss Only Section
             }
 
             //Note the Change
-/*           
+/*
 		   $("#attacklines").change(function() {
                 if ($("#attacklines").prop( "checked")==true) {
                     localStorage.setItem('attacklines',1);
@@ -6815,7 +6835,7 @@ END Boss Only Section
                     if (scoc>0) {
                         comsumbody+=" | Scouts: "+scoc+"</span>";
                     }
-            
+
                         comsumbody+="<div id='comsumatab' class='beigemenutable' style='border:3px ridge #99805D; border-radius:6px;'>";
                             comsumbody+="<span>Attacking Alliance(s): "+aally+" </span><br>";
                             comsumbody+="<span>Attacker(s): ";
@@ -6912,7 +6932,7 @@ END Boss Only Section
                         comsumbody+="</table>";
                     comsumbody+="<span style='color: red;'>Total lost: "+(tddied+dt.lost[18]).toLocaleString()+"</span>";
                     comsumbody+="</div></p>";
-               
+
                     $("#comsumTabbody").html(comsumbody);
                     $("#comsumatab td").css({"text-align":"center","font-size":"10px"});
                     $("#comsumatab th").css({"text-align":"center","font-size":"10px"});
@@ -6920,7 +6940,7 @@ END Boss Only Section
                     $("#comsumdtab th").css({"text-align":"center","font-size":"10px"});
                 }
             }
-       
+
 
 
 
@@ -6944,15 +6964,19 @@ END Boss Only Section
 					layoutoptbody+="<tr>";
 						layoutoptbody+="<td><input id='addnotes' class='clsubopti' type='checkbox' checked> Add Notes</td>";
 						layoutoptbody+="<td><input id='addtroops' class='clsubopti' type='checkbox' checked> Add Troops</td>";
+						layoutoptbody+="<td><input id='addallbuildings' class='clsubopti' type='checkbox' checked> Upgrade All Buildings</td>";
 					layoutoptbody+="</tr>";
 					layoutoptbody+="<tr>";
 						layoutoptbody+="<td><input id='addtowers' class='clsubopti' type='checkbox' checked> Add Towers</td>";
 						layoutoptbody+="<td><input id='addbuildings' class='clsubopti' type='checkbox' checked> Upgrade Cabins</td>";
 						layoutoptbody+="<td> Cabin Lvl: <input id='cablev' type='number' style='width:22px;' value='8' checked></td>";
+						
 					layoutoptbody+="</tr>";
 					layoutoptbody+="<tr>";
 						layoutoptbody+="<td><input id='addwalls' class='clsubopti' type='checkbox' checked > Add Walls</td>";
-						layoutoptbody+="<td><input id='addhub' class='clsubopti' type='checkbox' checked> Set Nearest Hub With layout</td>";
+						layoutoptbody+="<td><input id='addres' class='clsubopti' type='checkbox' checked> Add Resources</td>";
+						layoutoptbody+="<td><input id='addhub' class='clsubopti' type='checkbox' checked>Set Nearest Hub</td>";
+						
 					layoutoptbody+="</tr>";
 					layoutoptbody+="<tr>";
 						layoutoptbody+="<td>Select Hubs list: </td>";
@@ -6967,8 +6991,7 @@ END Boss Only Section
 			layoutoptbody+="<table style='border: 3px ridge #99805d; border-radius: 6px; text-align: center; margin-left: auto;margin-right: auto;'>";
 				layoutoptbody+="<tbody>";
 					layoutoptbody+="<tr>";
-						layoutoptbody+="<td colspan='2'><input id='addres' class='clsubopti' type='checkbox' checked> Add Resources:</td>";
-						layoutoptbody+="<td id='buttd' colspan='2'></td>";
+					layoutoptbody+="<td id='buttd' colspan='4' style= 'text-align:center';></td>";
 					layoutoptbody+="</tr>";
 					layoutoptbody+="<tr>";
 						layoutoptbody+="<td colspan='4'style='text-align: center;font-size: 14px;'> Request Resources If Below These Amounts</td>";
@@ -7079,6 +7102,13 @@ END Boss Only Section
                     $("#addbuildings").prop( "checked", false );
                 }
             }
+			 if (localStorage.getItem('addallbuildings')) {
+                if (localStorage.getItem('addallbuildings')==1) {
+                    $("#addallbuildings").prop( "checked", true );
+                } else {
+                    $("#addallbuildings").prop( "checked", false );
+                }
+            }
             // Add Notes
             if (localStorage.getItem('addnotes')) {
                 if (localStorage.getItem('addnotes')==1) {
@@ -7139,6 +7169,13 @@ END Boss Only Section
                     localStorage.setItem('addbuildings',1);
                 } else {
                     localStorage.setItem('addbuildings',0);
+                }
+            });
+			 $("#addallbuildings").change(function() {
+                if ($("#addallbuildings").prop( "checked")==true) {
+                    localStorage.setItem('addallbuildings',1);
+                } else {
+                    localStorage.setItem('addallbuildings',0);
                 }
             });
             $("#addwalls").change(function() {
@@ -7344,35 +7381,35 @@ END Boss Only Section
                 troopcounldl.push([0,0,276000,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
                 resldl.push([0,0,0,0,1,350000,220000,150000,350000,0,0,0,0,1,0,0,0,0,0,450000,220000,150000,350000]);
                 ldl++;
-                selectbuttlanddef+='<option value="'+ldl+'">2s/3s R/T</option>';
+                selectbuttlanddef+='<option value="'+ldl+'">2s/3s Rangers/Triari</option>';
                 layoutldl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBGBGBGB#----#######BGBGTGBGB#######SSPX#BGBGBGBGB#----##MLPJ#BGBGBGBGB#----##S---##BBGBGBG##----##-----##BBBGB##-----##--BBBB#######------##-BGGGG---#---------##-BBBBBB--#---------###-GGGG---#--------#####BBBB---#-------########################");
                 remarkldl.push("rangers/triari");
                 noteldl.push("228000 inf @ 6.2 days");
                 troopcounldl.push([0,0,152000,76000,0,0,0,0,0,0,0,0,0,0,0,0,0]);
                 resldl.push([0,0,0,0,1,250000,220000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,220000,350000,350000]);
                 ldl++;
-                selectbuttlanddef+='<option value="'+ldl+'">3s/3s R/T</option>';
+                selectbuttlanddef+='<option value="'+ldl+'">3s/3s Rangers/Triari</option>';
                 layoutldl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##-BGBGBB##----##----#BBBGBGBGB#----##----#BGBGBGBGB#----#######BGBBTGBGB#######SLSX#BGBGBGBGB#----##SMPP#BGBGBGBGB#----##----##BBGBGBB##----##-----##BBBBB##-----##--BBBB#######------##--BGBGB--#---------##--BGBGB--#---------###JBGBGB--#--------#####BBBBB--#-------########################");
                 remarkldl.push("rangers/triari");
                 noteldl.push("252000 inf @ 6.2 days");
                 troopcounldl.push([0,0,168000,84000,0,0,0,0,0,0,0,0,0,0,0,0,0]);
                 resldl.push([0,0,0,0,1,250000,220000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,220000,350000,350000]);
                 ldl++;
-                selectbuttlanddef+='<option value="'+ldl+'">3 sec Priest</option>';
+                selectbuttlanddef+='<option value="'+ldl+'">3 sec Priestess</option>';
                 layoutldl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BZBZB##-----##----##BBZBZBB##----##----#BZBZBZBZB#----##----#BZBZBZBZB#----#######BZBZTZBZB#######SMSX#BZBZBZBZB#----##SDPP#BZBZBZBZB#----##----##BBZBZBB##----##-BBBB##BBBBB##-----##-ZZZZ-#######------##BBBBBB---#---------##JZZZZB---#---------###BBBB----#--------#####-------#-------########################");
                 remarkldl.push("priests");
                 noteldl.push("228000 Priestess @ 7.9 days");
                 troopcounldl.push([0,0,0,0,228000,0,0,0,0,0,0,0,0,0,0,0,0,0]);
                 resldl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 ldl++;
-                selectbuttlanddef+='<option value="'+ldl+'">4 sec Priest</option>';
+                selectbuttlanddef+='<option value="'+ldl+'">4 sec Priestess</option>';
                 layoutldl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##ZBZBZBZ##----##----#BBBZBZBBB#----##----#BZBZBZBZB#----#######BZBBTBBZB#######SMSX#BZBZBZBZB#----##SDPP#BBBZBZBBB#----##--PP##ZBZBZBZ##----##-----##BBBBB##-----##----BB#######------##----BJBBB#---------##----BBBZB#---------###---BZBZB#--------#####--BBBBB#-------########################");
                 remarkldl.push("priests");
                 noteldl.push("256000 Priestess @ 12.2 days");
                 troopcounldl.push([0,0,0,0,256000,0,0,0,0,0,0,0,0,0,0,0,0,0]);
                 resldl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 ldl++;
-                selectbuttlanddef+='<option value="'+ldl+'">5 sec Priest</option>';
+                selectbuttlanddef+='<option value="'+ldl+'">5 sec Priestess</option>';
                 layoutldl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BZBZBZB##----##----#-BBBBBBB-#----##----#-BZBZBZB-#----#######-BBBTBZB-#######SMSX#-BZBZBZB-#----##SDPP#-BBBBBZB-#----##----##BZBZBZB##----##-----##BBBBB##-----##BBBBB-#######------##BZBZB----#---------##BBBBBBBBB#---------###JBZBZBZB#--------#####BBBBBBB#-------########################");
                 remarkldl.push("priests");
                 noteldl.push("288000 Priestess @ 16.7 days");
@@ -7551,28 +7588,28 @@ END Boss Only Section
                 troopcounwdl.push([0,0,216600,0,0,0,0,0,0,0,0,0,0,0,434,0,0]);
                 reswdl.push([0,0,0,0,1,250000,250000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1450000]);
                 wdl++;
-                selectbuttwaterdef+='<option value="'+wdl+'">3 sec priest/galley</option>';
+                selectbuttwaterdef+='<option value="'+wdl+'">3 sec priestess/galley</option>';
                 layoutwdl.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BZBZB##-----##----##ZBZBZBZ##----##----#BZBZBZBZB#----##----#BZBZBZBZB#---H#######BZBZTZBZB#######----#BZBZBZBZB#JSPX##----#BZBZBZBZB#----##----##ZBZBZBZ##-Z--##-----##BZZZB##BBBBZ##------#######BBVVBB##---------#---BV##VB##---------#--ZBV###V###--------#---BBV#######-------#---ZBBV########################");
                 remarkwdl.push("priestess/galley");
                 notewdl.push("166600 inf and 334 galley @ 11 days");
                 troopcounwdl.push([0,0,0,0,166600,0,0,0,0,0,0,0,0,0,334,0,0]);
                 reswdl.push([0,0,0,0,1,250000,220000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1350000]);
                 wdl++;
-                selectbuttwaterdef+='<option value="'+wdl+'">4 sec priest/galley</option>';
+                selectbuttwaterdef+='<option value="'+wdl+'">4 sec priestess/galley</option>';
                 layoutwdl.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BZBZB##-----##----##BBZBZBB##----##----#BZBZBZBZB#----##----#BZBZBZBZB#----#######BZBZTZBZB#######----#BZBZBZBZB#SMPX##----#BZBZBZBZB#SDPJ##----##BBZBZBB##----##-----##BZBBB##BBBB-##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#---BBBV########################");
                 remarkwdl.push("priestess/galley");
                 notewdl.push("189999 inf and 380 galley @ 18 days");
                 troopcounwdl.push([0,0,0,0,189999,0,0,0,0,0,0,0,0,0,380,0,0]);
                 reswdl.push([0,0,0,0,1,250000,220000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1350000]);
                 wdl++;
-                selectbuttwaterdef+='<option value="'+wdl+'">5 sec priest/galley</option>';
+                selectbuttwaterdef+='<option value="'+wdl+'">5 sec priestess/galley</option>';
                 layoutwdl.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBZBZBB##----##----#BZBZBZBZB#----##----#BBBZBZBBB#----#######BZBZTZBZB#######----#BBBZBZBBB#SMPX##----#BZBZBZBZB#SDPJ##----##BBZBZBB##----##-----##BZBBB##BBBB-##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#---BBBV########################");
                 remarkwdl.push("priestess/galley");
                 notewdl.push("209999 inf and 420 galley @ 22 days");
                 troopcounwdl.push([0,0,0,0,209999,0,0,0,0,0,0,0,0,0,420,0,0]);
                 reswdl.push([0,0,0,0,1,250000,220000,250000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,350000,1350000]);
                 wdl++;
-                selectbuttwaterdef+='<option value="'+wdl+'">6 sec priest/galley</option>';
+                selectbuttwaterdef+='<option value="'+wdl+'">6 sec priestess/galley</option>';
                 layoutwdl.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBZBZBB##----##----#BZBBBBBZB#----##----#BBBZBZBBB#----#######BZBBTBBZB#######----#BZBZBZBBB#SMSX##----#BZBZBZBZB#SDPP##----##BBZBZBB##----##-----##BBBBB##BBBBJ##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#----BBV########################");
                 remarkwdl.push("priestess/galley");
                 notewdl.push("219999 inf and 440 galley @ 22 days");
@@ -7796,7 +7833,7 @@ END Boss Only Section
                 resshl.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,350000,350000,300000,1400000]);
                 shl++;
 
-                selectbuttshipper+='<option value="'+shl+'">240K 3/4 sec R/T Ship</option>';
+                selectbuttshipper+='<option value="'+shl+'">240K 3/4 sec R/T +Sen Ship</option>';
                 layoutshl.push("[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBGBGBBB#----##----#BGBBBBBGB#----#######BGBGTGBGB#######----#BGBGBGBGB#SLPX##----#BGBGBGBGB#SDPJ##----##BBGBGBB##----##-----##BBBBB##-----##------#######--RR--##---------#BBBBRTTR-##---------#BGBZRTTTR###--------#BGBB-RTT#####-------#BBBB--R########################");
                 remarkshl.push("240K 3/4s R/T +Sen Shipper");
         noteshl.push("240KTS 120K Rangers 120K Triari @ 10 days  Substitute sawmill, masons hut, smelter or grain mill, as appropriate");
@@ -7960,7 +7997,7 @@ END Boss Only Section
                 respol.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 pol++;
 
-                selectbuttportal+='<option value="'+pol+'">252K 40 sec Scorps Portal</option>';
+                selectbuttportal+='<option value="'+pol+'">252K 40 sec Scorpions Portal</option>';
                 layoutpol.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BYBYB##-----##----##BBYBYBB##----##----#BYBYBYBYB#----##----#BYBYBYBYB#----#######BYBYTYBYB#######----#BYBYBYBYB#SS-X##----#BYBYBYBYB#----##----##BBYBYBB##----##-----##BYBYB##-----##------#######------##---------#-BBBBBB--##---------#BYBYBYBB-###--------#BYBYBYBB#####-------#BBBBBBB########################");
                 remarkpol.push("Scorps");
                 notepol.push("252KTS 25,200 Scorps @ 11.5 days");
@@ -7968,7 +8005,7 @@ END Boss Only Section
                 respol.push([0,0,0,0,1,250000,250000,200000,350000,0,0,0,0,1,0,0,0,0,0,250000,250000,200000,400000]);
                 pol++;
 
-                selectbuttportal+='<option value="'+pol+'">284K 48 sec Scorps Portal</option>';
+                selectbuttportal+='<option value="'+pol+'">284K 48 sec Scorpions Portal</option>';
                 layoutpol.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##YBYBYBY##----##----#BBBYBYBBB#----##----#BYBBBBBYB#----#######BYBYTYBYB#######----#BYBBBBBYB#SS-X##----#BBBYBYBBB#----##----##YBYBYBY##----##-----##BBBBB##BBB--##------#######-BYB--##---------#--BBBYB--##---------#-BBYBYB--###--------#-BBYBYB-#####-------#-BBBBBB########################");
                 remarkpol.push("Scorps");
                 notepol.push("284KTS 28,400 Scorps @ 16 days");
@@ -8212,15 +8249,20 @@ END Boss Only Section
                                 reslol[j][15]=0;
                             }
                             if ($("#addres").prop("checked")==true) {
-                                
+
                                 for (var k in reslol[j]) {
                                     aa[28+Number(k)]=reslol[j][k];
                                 }
                             }
-                            
+
                             if ($("#addbuildings").prop("checked")==true) {
                                 aa[51]=[1,$("#cablev").val()];
                                 aa[1]=1;
+                            }
+							if ($("#addallbuildings").prop("checked")==true) {
+                                aa[51]=[1,$("#cablev").val()];
+								aa[52]=[1,10];aa[53]=[1,10];aa[54]=[1,10];aa[55]=[1,10];aa[56]=[1,10];aa[57]=[1,10];aa[58]=[1,10];aa[59]=[1,10];aa[60]=[1,10];aa[61]=[1,10];aa[62]=[1,10];aa[63]=[1,10];aa[64]=[1,10];aa[65]=[1,10];aa[66]=[1,10];aa[67]=[1,10];aa[68]=[1,10];aa[69]=[1,10];aa[70]=[1,10];aa[71]=[1,10];aa[72]=[1,10];aa[73]=[1,10];aa[74]=[1,10];
+                                aa[1]=1; aa[2]=1; aa[3]=1;aa[4]=1;aa[5]=1;aa[6]=1;aa[7]=1; aa[8]=1;
                             }
 
                            //var aaa=JSON.stringify(aa);
@@ -8289,7 +8331,7 @@ END Boss Only Section
                                 resldl[j][15]=0;
                             }
                             if ($("#addres").prop("checked")==true) {
-                               
+
                                 for (var k in resldl[j]) {
                                     aa[28+Number(k)]=resldl[j][k];
                                 }
@@ -8297,6 +8339,11 @@ END Boss Only Section
                             if ($("#addbuildings").prop("checked")==true) {
                                 aa[51]=[1,$("#cablev").val()];
                                 aa[1]=1;
+                            }
+							if ($("#addallbuildings").prop("checked")==true) {
+                                aa[51]=[1,$("#cablev").val()];
+								aa[52]=[1,10];aa[53]=[1,10];aa[54]=[1,10];aa[55]=[1,10];aa[56]=[1,10];aa[57]=[1,10];aa[58]=[1,10];aa[59]=[1,10];aa[60]=[1,10];aa[61]=[1,10];aa[62]=[1,10];aa[63]=[1,10];aa[64]=[1,10];aa[65]=[1,10];aa[66]=[1,10];aa[67]=[1,10];aa[68]=[1,10];aa[69]=[1,10];aa[70]=[1,10];aa[71]=[1,10];aa[72]=[1,10];aa[73]=[1,10];aa[74]=[1,10];
+                                aa[1]=1; aa[2]=1; aa[3]=1;aa[4]=1;aa[5]=1;aa[6]=1;aa[7]=1; aa[8]=1;
                             }
 
                            //var aaa=JSON.stringify(aa);
@@ -8364,7 +8411,7 @@ END Boss Only Section
                                 reswol[j][15]=0;
                             }
                             if ($("#addres").prop("checked")==true) {
-                                
+
                                 for (var k in resw[j]) {
                                     aa[28+Number(k)]=reswol[j][k];
                                 }
@@ -8372,6 +8419,11 @@ END Boss Only Section
                             if ($("#addbuildings").prop("checked")==true) {
                                 aa[51]=[1,$("#cablev").val()];
                                 aa[1]=1;
+                            }
+							if ($("#addallbuildings").prop("checked")==true) {
+                                aa[51]=[1,$("#cablev").val()];
+								aa[52]=[1,10];aa[53]=[1,10];aa[54]=[1,10];aa[55]=[1,10];aa[56]=[1,10];aa[57]=[1,10];aa[58]=[1,10];aa[59]=[1,10];aa[60]=[1,10];aa[61]=[1,10];aa[62]=[1,10];aa[63]=[1,10];aa[64]=[1,10];aa[65]=[1,10];aa[66]=[1,10];aa[67]=[1,10];aa[68]=[1,10];aa[69]=[1,10];aa[70]=[1,10];aa[71]=[1,10];aa[72]=[1,10];aa[73]=[1,10];aa[74]=[1,10];
+                                aa[1]=1; aa[2]=1; aa[3]=1;aa[4]=1;aa[5]=1;aa[6]=1;aa[7]=1; aa[8]=1;
                             }
                            //var aaa=JSON.stringify(aa);
                             var dat={a:JSON.stringify(aa),b:cdata.cid};
@@ -8436,7 +8488,7 @@ END Boss Only Section
                                 reswdl[j][15]=0;
                             }
                             if ($("#addres").prop("checked")==true) {
-                               
+
                                 for (var k in reswdl[j]) {
                                     aa[28+Number(k)]=reswdl[j][k];
                                 }
@@ -8444,6 +8496,11 @@ END Boss Only Section
                             if ($("#addbuildings").prop("checked")==true) {
                                 aa[51]=[1,$("#cablev").val()];
                                 aa[1]=1;
+                            }
+							if ($("#addallbuildings").prop("checked")==true) {
+                                aa[51]=[1,$("#cablev").val()];
+								aa[52]=[1,10];aa[53]=[1,10];aa[54]=[1,10];aa[55]=[1,10];aa[56]=[1,10];aa[57]=[1,10];aa[58]=[1,10];aa[59]=[1,10];aa[60]=[1,10];aa[61]=[1,10];aa[62]=[1,10];aa[63]=[1,10];aa[64]=[1,10];aa[65]=[1,10];aa[66]=[1,10];aa[67]=[1,10];aa[68]=[1,10];aa[69]=[1,10];aa[70]=[1,10];aa[71]=[1,10];aa[72]=[1,10];aa[73]=[1,10];aa[74]=[1,10];
+                                aa[1]=1; aa[2]=1; aa[3]=1;aa[4]=1;aa[5]=1;aa[6]=1;aa[7]=1; aa[8]=1;
                             }
                            //var aaa=JSON.stringify(aa);
                             var dat={a:JSON.stringify(aa),b:cdata.cid};
@@ -8511,7 +8568,7 @@ END Boss Only Section
                                 reshul[j][15]=0;
                             }
                             if ($("#addres").prop("checked")==true) {
-                               
+
                                 for (var k in reshul[j]) {
                                     aa[28+Number(k)]=reshul[j][k];
                                 }
@@ -8519,6 +8576,11 @@ END Boss Only Section
                             if ($("#addbuildings").prop("checked")==true) {
                                 aa[51]=[1,$("#cablev").val()];
                                 aa[1]=1;
+                            }
+							if ($("#addallbuildings").prop("checked")==true) {
+                                aa[51]=[1,$("#cablev").val()];
+								aa[52]=[1,10];aa[53]=[1,10];aa[54]=[1,10];aa[55]=[1,10];aa[56]=[1,10];aa[57]=[1,10];aa[58]=[1,10];aa[59]=[1,10];aa[60]=[1,10];aa[61]=[1,10];aa[62]=[1,10];aa[63]=[1,10];aa[64]=[1,10];aa[65]=[1,10];aa[66]=[1,10];aa[67]=[1,10];aa[68]=[1,10];aa[69]=[1,10];aa[70]=[1,10];aa[71]=[1,10];aa[72]=[1,10];aa[73]=[1,10];aa[74]=[1,10];
+                                aa[1]=1; aa[2]=1; aa[3]=1;aa[4]=1;aa[5]=1;aa[6]=1;aa[7]=1; aa[8]=1;
                             }
 
                            //var aaa=JSON.stringify(aa);
@@ -8586,7 +8648,7 @@ END Boss Only Section
                                 resshl[j][15]=0;
                             }
                             if ($("#addres").prop("checked")==true) {
-                               
+
                                 for (var k in resshl[j]) {
                                     aa[28+Number(k)]=resshl[j][k];
                                 }
@@ -8595,7 +8657,11 @@ END Boss Only Section
                                 aa[51]=[1,$("#cablev").val()];
                                 aa[1]=1;
                             }
-
+							if ($("#addallbuildings").prop("checked")==true) {
+                                aa[51]=[1,$("#cablev").val()];
+								aa[52]=[1,10];aa[53]=[1,10];aa[54]=[1,10];aa[55]=[1,10];aa[56]=[1,10];aa[57]=[1,10];aa[58]=[1,10];aa[59]=[1,10];aa[60]=[1,10];aa[61]=[1,10];aa[62]=[1,10];aa[63]=[1,10];aa[64]=[1,10];aa[65]=[1,10];aa[66]=[1,10];aa[67]=[1,10];aa[68]=[1,10];aa[69]=[1,10];aa[70]=[1,10];aa[71]=[1,10];aa[72]=[1,10];aa[73]=[1,10];aa[74]=[1,10];
+                                aa[1]=1; aa[2]=1; aa[3]=1;aa[4]=1;aa[5]=1;aa[6]=1;aa[7]=1; aa[8]=1;
+                            }
                            //var aaa=JSON.stringify(aa);
                             var dat={a:JSON.stringify(aa),b:cdata.cid};
                             $.ajax({
@@ -8661,7 +8727,7 @@ END Boss Only Section
                                 respol[j][15]=0;
                             }
                             if ($("#addres").prop("checked")==true) {
-                               
+
                                 for (var k in respol[j]) {
                                     aa[28+Number(k)]=respol[j][k];
                                 }
@@ -8669,6 +8735,11 @@ END Boss Only Section
                             if ($("#addbuildings").prop("checked")==true) {
                                 aa[51]=[1,$("#cablev").val()];
                                 aa[1]=1;
+                            }
+							if ($("#addallbuildings").prop("checked")==true) {
+                                aa[51]=[1,$("#cablev").val()];
+								aa[52]=[1,10];aa[53]=[1,10];aa[54]=[1,10];aa[55]=[1,10];aa[56]=[1,10];aa[57]=[1,10];aa[58]=[1,10];aa[59]=[1,10];aa[60]=[1,10];aa[61]=[1,10];aa[62]=[1,10];aa[63]=[1,10];aa[64]=[1,10];aa[65]=[1,10];aa[66]=[1,10];aa[67]=[1,10];aa[68]=[1,10];aa[69]=[1,10];aa[70]=[1,10];aa[71]=[1,10];aa[72]=[1,10];aa[73]=[1,10];aa[74]=[1,10];
+                                aa[1]=1; aa[2]=1; aa[3]=1;aa[4]=1;aa[5]=1;aa[6]=1;aa[7]=1; aa[8]=1;
                             }
 
                            //var aaa=JSON.stringify(aa);
@@ -8736,7 +8807,7 @@ END Boss Only Section
                                 restsg[j][15]=0;
                             }
                             if ($("#addres").prop("checked")==true) {
-                                
+
                                 for (var k in restsg[j]) {
                                     aa[28+Number(k)]=restsg[j][k];
                                 }
@@ -8745,7 +8816,11 @@ END Boss Only Section
                                 aa[51]=[1,$("#cablev").val()];
                                 aa[1]=1;
                             }
-
+							if ($("#addallbuildings").prop("checked")==true) {
+                                aa[51]=[1,$("#cablev").val()];
+								aa[52]=[1,10];aa[53]=[1,10];aa[54]=[1,10];aa[55]=[1,10];aa[56]=[1,10];aa[57]=[1,10];aa[58]=[1,10];aa[59]=[1,10];aa[60]=[1,10];aa[61]=[1,10];aa[62]=[1,10];aa[63]=[1,10];aa[64]=[1,10];aa[65]=[1,10];aa[66]=[1,10];aa[67]=[1,10];aa[68]=[1,10];aa[69]=[1,10];aa[70]=[1,10];aa[71]=[1,10];aa[72]=[1,10];aa[73]=[1,10];aa[74]=[1,10];
+                                aa[1]=1; aa[2]=1; aa[3]=1;aa[4]=1;aa[5]=1;aa[6]=1;aa[7]=1; aa[8]=1;
+                            }
                            //var aaa=JSON.stringify(aa);
                             var dat={a:JSON.stringify(aa),b:cdata.cid};
                             $.ajax({
@@ -8788,12 +8863,13 @@ END Boss Only Section
         }
         if ($("#addbuildings").prop("checked")==true) {
             aa[51]=[1,$("#cablev").val()];
-            aa[68]=[1,10];
-            aa[69]=[1,10];
-            aa[70]=[1,10];
-            aa[71]=[1,10];
             aa[1]=1;
         }
+		if ($("#addallbuildings").prop("checked")==true) {
+                                aa[51]=[1,$("#cablev").val()];
+								aa[52]=[1,10];aa[53]=[1,10];aa[54]=[1,10];aa[55]=[1,10];aa[56]=[1,10];aa[57]=[1,10];aa[58]=[1,10];aa[59]=[1,10];aa[60]=[1,10];aa[61]=[1,10];aa[62]=[1,10];aa[63]=[1,10];aa[64]=[1,10];aa[65]=[1,10];aa[66]=[1,10];aa[67]=[1,10];aa[68]=[1,10];aa[69]=[1,10];aa[70]=[1,10];aa[71]=[1,10];aa[72]=[1,10];aa[73]=[1,10];aa[74]=[1,10];
+                                aa[1]=1; aa[2]=1; aa[3]=1;aa[4]=1;aa[5]=1;aa[6]=1;aa[7]=1; aa[8]=1;
+                            }
         res[14]=nearesthub;
         res[15]=nearesthub;
         res[5]=$("#woodin").val();
@@ -8848,15 +8924,14 @@ END Boss Only Section
         }
         if ($("#addbuildings").prop("checked")==true) {
             aa[51]=[1,$("#cablev").val()];
-            aa[60]=[1,10];
-            aa[62]=[1,10];
-            aa[68]=[1,10];
-            aa[69]=[1,10];
-            aa[70]=[1,10];
-            aa[71]=[1,10];
-            aa[73]=[1,10];
+           
             aa[1]=1;
         }
+		if ($("#addallbuildings").prop("checked")==true) {
+                                aa[51]=[1,$("#cablev").val()];
+								aa[52]=[1,10];aa[53]=[1,10];aa[54]=[1,10];aa[55]=[1,10];aa[56]=[1,10];aa[57]=[1,10];aa[58]=[1,10];aa[59]=[1,10];aa[60]=[1,10];aa[61]=[1,10];aa[62]=[1,10];aa[63]=[1,10];aa[64]=[1,10];aa[65]=[1,10];aa[66]=[1,10];aa[67]=[1,10];aa[68]=[1,10];aa[69]=[1,10];aa[70]=[1,10];aa[71]=[1,10];aa[72]=[1,10];aa[73]=[1,10];aa[74]=[1,10];
+                                aa[1]=1; aa[2]=1; aa[3]=1;aa[4]=1;aa[5]=1;aa[6]=1;aa[7]=1; aa[8]=1;
+                            }
         res[14]=nearesthub;
         res[15]=nearesthub;
         res[5]=$("#woodin").val();
@@ -8919,8 +8994,8 @@ END Boss Only Section
 						//gfunkyoverviewwin+="<li role='tab'><a href='#gincomingTab' role='presentation'>Incoming</a></li>";
 						gfunkyoverviewwin+="<li role='tab'><a href='#findmysenTab' role='presentation'>Senator</a></li>";
 					gfunkyoverviewwin+="</ul>";
-					
-				//Resource Overview Tab   
+
+				//Resource Overview Tab
 					gfunkyoverviewwin+="<div id='resTab' style='text-align: center;'>";
 						gfunkyoverviewwin+="<button id='resup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button>";
 						gfunkyoverviewwin+="<button class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>";
@@ -8962,8 +9037,8 @@ END Boss Only Section
 							gfunkyoverviewwin+="</table>";
 						gfunkyoverviewwin+="</div>";
 					gfunkyoverviewwin+="</div>";
-						
-				// Troops Overview Tab  
+
+				// Troops Overview Tab
 					gfunkyoverviewwin+="<div id='troopsTab' style='text-align: center;'>";
 						gfunkyoverviewwin+="<button id='troopsup' class='greenb' style='font-size:14px;border-radius:6px;margin:4px;'>Update</button>";
 						gfunkyoverviewwin+="<button class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>";
@@ -8974,34 +9049,37 @@ END Boss Only Section
 						//gfunkyoverviewwin+="<button id='hidespfbut' class='greenb' style='font-size:14px;border-radius:6px;margin:4px;'>Hide Specific Troops Columns</button>";
 						gfunkyoverviewwin+="<span id='troopspan' style='margin-left:50px;'>Show cities from: </span>";
 						gfunkyoverviewwin+="<div class='beigemenutable scroll-pane' style='width:99%;height: AUTO !important;max-height: 70%;margin-left:auto; margin-right: auto; border-radius: 7px;border: 3px ridge #99805D;'>";
-							gfunkyoverviewwin+="<table id='troopstablegfunky' style='width:250%;'>";
+							gfunkyoverviewwin+="<table id='troopstablegfunky' style='width:250%;' class='tablesorter'>";
 								gfunkyoverviewwin+="<thead>";
 									gfunkyoverviewwin+="<tr>";
 										gfunkyoverviewwin+="<th style='width:100px;' rowspan='3'>Name</th>";
-										gfunkyoverviewwin+="<th style='width:150px;' rowspan='3'>Notes</th>";
-										gfunkyoverviewwin+="<th rowspan='3'>Coords</th>";
-										gfunkyoverviewwin+="<th colspan='2'>Guard</th>";
-										gfunkyoverviewwin+="<th colspan='2'>Ballista</th>";
-										gfunkyoverviewwin+="<th colspan='2'>Ranger</th>";
-										gfunkyoverviewwin+="<th colspan='2'>Triari</th>";
-										gfunkyoverviewwin+="<th colspan='2'>Priestess</th>";
-										gfunkyoverviewwin+="<th colspan='2'>Vanquisher</th>";
-										gfunkyoverviewwin+="<th colspan='2'>Sorcerer</th>";
-										gfunkyoverviewwin+="<th colspan='2'>Scouts</th>";
-										gfunkyoverviewwin+="<th colspan='2'>Arbalist</th>";
-										gfunkyoverviewwin+="<th colspan='2'>Praetor</th>";
-										gfunkyoverviewwin+="<th colspan='2'>Horsemen</th>";
-										gfunkyoverviewwin+="<th colspan='2'>Druid</th>";
-										gfunkyoverviewwin+="<th colspan='2'>Ram</th>";
-										gfunkyoverviewwin+="<th colspan='2'>Scorption</th>";
-										gfunkyoverviewwin+="<th colspan='2'>Galley</th>";
-										gfunkyoverviewwin+="<th colspan='2'>Stinger</th>";
-										gfunkyoverviewwin+="<th colspan='2'>Warship</th>";
-										gfunkyoverviewwin+="<th colspan='2'>Senator</th>";
-										gfunkyoverviewwin+="<th rowspan='3'>TS Home</th>";
-										gfunkyoverviewwin+="<th rowspan='3'>TS Total</th>";
+				gfunkyoverviewwin+="<th style='width:150px;' rowspan='3'>Notes</th>";
+				gfunkyoverviewwin+="<th rowspan='3'>Coords</th>";
+				gfunkyoverviewwin+="<th colspan='2'>Guard</th>";
+				gfunkyoverviewwin+="<th colspan='2'>Ballista</th>";
+				gfunkyoverviewwin+="<th colspan='2'>Ranger</th>";
+				gfunkyoverviewwin+="<th colspan='2'>Triari</th>";
+				gfunkyoverviewwin+="<th colspan='2'>Priestess</th>";
+				gfunkyoverviewwin+="<th colspan='2'>Vanquisher</th>";
+				gfunkyoverviewwin+="<th colspan='2'>Sorcerer</th>";
+				gfunkyoverviewwin+="<th colspan='2'>Scouts</th>";
+				gfunkyoverviewwin+="<th colspan='2'>Arbalist</th>";
+				gfunkyoverviewwin+="<th colspan='2'>Praetor</th>";
+				gfunkyoverviewwin+="<th colspan='2'>Horsemen</th>";
+				gfunkyoverviewwin+="<th colspan='2'>Druid</th>";
+				gfunkyoverviewwin+="<th colspan='2'>Ram</th>";
+				gfunkyoverviewwin+="<th colspan='2'>Scorption</th>";
+				gfunkyoverviewwin+="<th colspan='2'>Galley</th>";
+				gfunkyoverviewwin+="<th colspan='2'>Stinger</th>";
+				gfunkyoverviewwin+="<th colspan='2'>Warship</th>";
+				gfunkyoverviewwin+="<th colspan='2'>Senator</th>";
+				gfunkyoverviewwin+="<th rowspan='3'>TS Home</th>";
+				gfunkyoverviewwin+="<th rowspan='3'>TS Total</th>";
 									gfunkyoverviewwin+="</tr>";
 									gfunkyoverviewwin+="<tr data='0'>";
+										//gfunkyoverviewwin+="<th style='width:100px;'></th>";
+										//gfunkyoverviewwin+="<th style='width:150px;'></th>";
+										//gfunkyoverviewwin+="<th></th>";
 										gfunkyoverviewwin+="<th colspan='2' class='spf'><div class ='"+tpicdiv[0]+"'></div></th>";
 										gfunkyoverviewwin+="<th colspan='2' class='spf'><div class='"+tpicdiv[1]+"'></div></th>";
 										gfunkyoverviewwin+="<th colspan='2' class='spf'><div class='"+tpicdiv[2]+"'></div></th>";
@@ -9020,8 +9098,13 @@ END Boss Only Section
 										gfunkyoverviewwin+="<th colspan='2' class='spf'><div class='"+tpicdiv[15]+"'></div></th>";
 										gfunkyoverviewwin+="<th colspan='2' class='spf'><div class='"+tpicdiv[16]+"'></div></th>";
 										gfunkyoverviewwin+="<th colspan='2' class='spf'><div class='"+tpicdiv[17]+"'></div></th>";
+										//gfunkyoverviewwin+="<th></th>";
+										//gfunkyoverviewwin+="<th></th>";
 									gfunkyoverviewwin+="</tr>";
 									gfunkyoverviewwin+="<tr>";
+										//gfunkyoverviewwin+="<th style='width:100px;'>Name</th>";
+										//gfunkyoverviewwin+="<th style='width:150px;'>Notes</th>";
+										//gfunkyoverviewwin+="<th>Coords</th>";
 										gfunkyoverviewwin+="<th>HOME</th>";
 										gfunkyoverviewwin+="<th>TOTAL</th>";
 										gfunkyoverviewwin+="<th>HOME</th>";
@@ -9058,12 +9141,14 @@ END Boss Only Section
 										gfunkyoverviewwin+="<th>TOTAL</th>";
 										gfunkyoverviewwin+="<th>HOME</th>";
 										gfunkyoverviewwin+="<th>TOTAL</th>";
+										//gfunkyoverviewwin+="<th>TS Home</th>";
+										//gfunkyoverviewwin+="<th>TS Total</th>";
 									gfunkyoverviewwin+="</tr>";
 								gfunkyoverviewwin+="</thead>";
 							gfunkyoverviewwin+="</table>";
 						gfunkyoverviewwin+="</div>";
 					gfunkyoverviewwin+="</div>";
-				// Raid Overview Tab    
+				// Raid Overview Tab
 					gfunkyoverviewwin+="<div id='raidTab' style='text-align: center;'>";
 						gfunkyoverviewwin+="<button id='raidup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button>";
 						gfunkyoverviewwin+="<span style='margin-left:50px;'>Number of reports to show: </span>";
@@ -9123,7 +9208,7 @@ END Boss Only Section
 							gfunkyoverviewwin+="</table>";
 						gfunkyoverviewwin+="</div>";
 					gfunkyoverviewwin+="</div>";
-				// Support Overview Tab 
+				// Support Overview Tab
 					gfunkyoverviewwin+="<div id='gsupportTab' style='text-align: center;'>";
 						gfunkyoverviewwin+="<button id='supportup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button>";
 						gfunkyoverviewwin+="<button class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>";
@@ -9152,7 +9237,7 @@ END Boss Only Section
 						gfunkyoverviewwin+="<div class='beigemenutable scroll-pane' style='width:99%; max-height: 85%; margin-left:auto; margin-right: auto; border-radius: 7px;border: 3px ridge #99805D;' >";
 							gfunkyoverviewwin+="<table id='gincomingtable'>";
 								gfunkyoverviewwin+="<thead>";
-									gfunkyoverviewwin+="<th>Buttons</th>";	
+									gfunkyoverviewwin+="<th>Buttons</th>";
 									gfunkyoverviewwin+="<th>Player</th>";
 									gfunkyoverviewwin+="<th>City</th>";
 									gfunkyoverviewwin+="<th>Location</th>";
@@ -9167,7 +9252,7 @@ END Boss Only Section
 						gfunkyoverviewwin+="</div>";
 					gfunkyoverviewwin+="</div>";
 					*/
-				//Senator Overview TAB  
+				//Senator Overview TAB
 					gfunkyoverviewwin+="<div id='findmysenTab' style='text-align: center;'>";
 						gfunkyoverviewwin+="<button id='findmysenup' class='greenb' style='font-size:14px;border-radius:6px;margin:4px;'>Update</button>";
 						gfunkyoverviewwin+="<button class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>";
@@ -9206,9 +9291,15 @@ END Boss Only Section
 					gfunkyoverviewwin+="</div>";
 				gfunkyoverviewwin+="</div>";
 			gfunkyoverviewwin+="</div>";
-		gfunkyoverviewwin+="</div>";	
-		  
-        
+		gfunkyoverviewwin+="</div>";
+
+		  $( function() {
+
+
+
+
+});
+
         $("#reportsViewBox").after(gfunkyoverviewwin);
         $( "#gfunkyoverviewwin" ).draggable({ handle: ".popUpBar" , containment: "window", scroll: false});
         $( "#gfunkyoverviewwin" ).resizable();
@@ -9289,6 +9380,8 @@ END Boss Only Section
                     });
                 }
             });
+			$("troopstablegfunky").trigger("update");
+			 
         });
         $("#raidup").click(function() {
             $.ajax({url: 'overview/rreps.php',type: 'POST',async:true,
@@ -9326,7 +9419,7 @@ END Boss Only Section
                 }
             });
         });
-        
+
         var citylist=[];
         $("#seltroops").change(function() {
             filtertroops("troops");
@@ -9351,13 +9444,13 @@ END Boss Only Section
                 });
             }
         });
-        
+
         $("#findmysenup").click(function() {
             $.ajax({url: 'overview/senfind.php',type: 'POST',async:true,
                 success: function(data) {
                     var gfunsen=JSON.parse(data);
                     updatefindmysen(gfunsen);
-            
+
                 }
             });
         });
@@ -9368,10 +9461,10 @@ END Boss Only Section
                     updategincoming(gincoming123);
 					console.log(gincoming123.a);
                 }
-				
+
             });
         });
-        
+
         function filtertroops(type) {
             var clist=$("#sel"+type).val();
             var con=Number($("#selc"+type).val());
@@ -9436,10 +9529,10 @@ END Boss Only Section
     }
 
 
-    
+
 //update raid overview
     function updateraidover(raids,notes, ) {
-        
+
         var raidover1body="<table id='raidmanagertable'>";
 			raidover1body+="<thead>";
 				raidover1body+="<tr data=''>";
@@ -9467,7 +9560,7 @@ END Boss Only Section
         var raidover1sort = document.getElementById('raidmanagertable');
         sorttable.makeSortable(raidover1sort);
        // //console.log(notes);
-       
+
         var raidover2body="<table id='raidovertable'>";
 			raidover2body+="<thead>";
 				raidover2body+="<tr data='0'>";
@@ -9526,7 +9619,7 @@ END Boss Only Section
 										raidover2body+="<td></td>";
 										status="Returning";
 											break;
-											
+
 											case 0:
 										raidover2body+="<tr style='color: #00858E;'>";
 										raidover2body+="<td></td>";
@@ -9553,13 +9646,13 @@ END Boss Only Section
 			});
 			raidover2body+="</tbody>";
 		raidover2body+="</table>";
-			
-		
+
+
 		$("#raidovertable").html(raidover2body);
         $("#raidovertable td").css("text-align","center");
         var raidoversort = document.getElementById('raidovertable');
         sorttable.makeSortable(raidoversort);
-                  
+
         $(".raidclink").click(function() {
             var aa=$(this).attr("data");
             $("#organiser").val("all").change();
@@ -9571,7 +9664,7 @@ END Boss Only Section
             $.ajax({
                 url: 'overview/rcallall.php',
                 type: 'POST',
-                async:true, 
+                async:true,
                 data: dat
             });
             $(this).remove();
@@ -9712,10 +9805,10 @@ END Boss Only Section
 //update incomings summary
 /*
     function updategincoming(data) {
-			
+
         var gfunkyincomingTab="<table>";
 			gfunkyincomingTab+="<thead>";
-				gfunkyincomingTab+="<th>Buttons</th>";	
+				gfunkyincomingTab+="<th>Buttons</th>";
 				gfunkyincomingTab+="<th>Player</th>";
 				gfunkyincomingTab+="<th>City</th>";
 				gfunkyincomingTab+="<th>Location</th>";
@@ -9727,10 +9820,10 @@ END Boss Only Section
 				gfunkyincomingTab+="<th>Advanced Notice</th>";
 			gfunkyincomingTab+="</thead>";
 			gfunkyincomingTab+="<tbody>";
-			
+
 			$.each(data.a, function() {
 				gfunkyincomingTab+="<tr>";
-					gfunkyincomingTab+="<th>"+this[9]+"</th>";	
+					gfunkyincomingTab+="<th>"+this[9]+"</th>";
 					gfunkyincomingTab+="<th>"+this[0]+"</th>";
 					gfunkyincomingTab+="<th>"+this[1]+"</th>";
 					gfunkyincomingTab+="<th>"+this[2]+"</th>";
@@ -9739,21 +9832,21 @@ END Boss Only Section
 					gfunkyincomingTab+="<th>"+this[8]+"</th>";
 					gfunkyincomingTab+="<th>"+this[7]+"</th>";
 					gfunkyincomingTab+="<th>"+this[12]+"</th>";
-					gfunkyincomingTab+="<th>"+this[6]+"</th>";	
+					gfunkyincomingTab+="<th>"+this[6]+"</th>";
 				gfunkyincomingTab+="</tr>";
-				
+
 			});
-			
+
 			gfunkyincomingTab+="</tbody>";
 		gfunkyincomingTab+="</table>";
-        
+
         $("#gincomingtable").html(gfunkyincomingTab);
         $("#gincomingtable td").css("text-align","center");
         $(".expginctab").toggle();
         $(".usles").hide();
         var incomingsort = document.getElementById('gincomingtable');
         sorttable.makeSortable(incomingsort);
-        
+
         $("#gincomingexp").click(function(event) {
             //var outputFile = window.prompt("What do you want to name your output file (Note: This won't have any effect on Safari)") || 'export';
             var outputFile = 'IncomingSum'+today.getDate()+Number(today.getMonth()+1)+today.getFullYear()+'.csv';
@@ -9761,7 +9854,7 @@ END Boss Only Section
         // CSV
             exportTableToCSV.apply(this, [$('#gincomingtable'), outputFile]);
         });
-    
+
     }
     */
 
@@ -9906,8 +9999,8 @@ END Boss Only Section
         //$("#restable").fixedHeaderTable({ cloneHeadToFoot: true });
         var restablesort = document.getElementById('restable');
         sorttable.makeSortable(restablesort);
-		
-		
+
+
         var tottab="<div id='rsum' class='beigemenutable scroll-pane' style='width: 99%;height: AUTO !important;max-height: 85%;margin-left: 4px; border-radius: 7px;border: 3px ridge #99805D;'>";
 			tottab+="<table>";
 				tottab+="<tr>";
@@ -9952,8 +10045,9 @@ END Boss Only Section
 
 
 //update troops summary
-    function updatetroops(data,notes) {
-        var troopstab="<thead>";
+     function updatetroops(data,notes) {
+    
+		var troopstab="<thead>";
 			troopstab+="<tr data='0'>";
 			troopstab+="<th style='width:100px;' rowspan='3'>Name</th>";
 				troopstab+="<th style='width:150px;' rowspan='3'>Notes</th>";
@@ -9999,7 +10093,7 @@ END Boss Only Section
 				troopstab+="<th colspan='2' class='spf'><div class='"+tpicdiv[16]+"'></div></th>";
 				troopstab+="<th colspan='2' class='spf'><div class='"+tpicdiv[17]+"'></div></th>";
 			troopstab+="</tr>";
-			troopstab+="<tr class='sorttable'>";
+			troopstab+="<tr>";
 				troopstab+="<th>HOME</th>";
 				troopstab+="<th>TOTAL</th>";
 				troopstab+="<th>HOME</th>";
@@ -10094,7 +10188,7 @@ END Boss Only Section
                 troopstab+="<td class='spf'>"+thome.toLocaleString()+"</td>";
 				troopstab+="<td class='spf'>"+ttot.toLocaleString()+"</td>";
             }
-			
+
 			thome=this.Guard_home;
             ttot=this.Guard_total;
             tt=0;
@@ -10102,7 +10196,7 @@ END Boss Only Section
             tshome+=thome;
             tstot+=ttot;
             makets();
-			
+
 			thome=this.Ballista_home;
             ttot=this.Ballista_total;
             tt=1;
@@ -10110,7 +10204,7 @@ END Boss Only Section
             tshome+=10*thome;
             tstot+=10*ttot;
             makets();
-			
+
 			thome=this.Ranger_home;
             ttot=this.Ranger_total;
             tt=2;
@@ -10118,7 +10212,7 @@ END Boss Only Section
             tshome+=thome;
             tstot+=ttot;
             makets();
-			
+
 			thome=this.Triari_home;
             ttot=this.Triari_total;
             tt=3;
@@ -10126,8 +10220,8 @@ END Boss Only Section
             tshome+=thome;
             tstot+=ttot;
             makets();
-			
-			
+
+
 			thome=this.Priestess_home;
             ttot=this.Priestess_total;
             tt=4;
@@ -10135,7 +10229,7 @@ END Boss Only Section
             tshome+=thome;
             tstot+=ttot;
             makets();
-			
+
 			thome=this.Vanquisher_home;
             ttot=this.Vanquisher_total;
             tt=5;
@@ -10143,7 +10237,7 @@ END Boss Only Section
             tshome+=thome;
             tstot+=ttot;
             makets();
-			
+
 			thome=this.Sorcerer_home;
             ttot=this.Sorcerer_total;
             tt=6;
@@ -10151,7 +10245,7 @@ END Boss Only Section
             tshome+=thome;
             tstot+=ttot;
             makets();
-			
+
 			thome=this.Scout_home;
             ttot=this.Scout_total;
             scoutstot+=ttot;
@@ -10159,7 +10253,7 @@ END Boss Only Section
             tshome+=2*thome;
             tstot+=2*ttot;
             makets();
-			
+
             thome=this.Arbalist_home;
             ttot=this.Arbalist_total;
             tt=8;
@@ -10175,7 +10269,7 @@ END Boss Only Section
             tshome+=2*thome;
             tstot+=2*ttot;
             makets();
-			
+
 			thome=this.Horseman_home;
             ttot=this.Horseman_total;
             tt=10;
@@ -10191,7 +10285,7 @@ END Boss Only Section
             tshome+=2*thome;
             tstot+=2*ttot;
             makets();
-			
+
 			thome=this.Ram_home;
             ttot=this.Ram_total;
             tt=12;
@@ -10231,7 +10325,7 @@ END Boss Only Section
             tshome+=400*thome;
             tstot+=400*ttot;
             makets();
-			
+
 			 thome=this.Senator_home;
             ttot=this.Senator_total;
             tt=17;
@@ -10261,10 +10355,16 @@ END Boss Only Section
         }
         $("#troopstablegfunky td").css("text-align","center");
         $("#troopstablegfunky td").css("padding-left","0%");
-        var trooptablegfunkysort = document.getElementById('troopstablegfunky');
-        sorttable.makeSortable(trooptablegfunkysort);
-		
-		
+        $("#troopstablegfunky").sortable();
+		 var troopgfunksort = document.getElementById('troopstablegfunky');
+        sorttable.makeSortable(troopgfunksort);
+
+
+
+
+
+
+
         var tottab="<div id='tsum' class='beigemenutable scroll-pane' style='width: 99%;height: AUTO !important;max-height: 85%;margin-left: auto; margin-right: auto; border-radius: 7px;border: 3px ridge #99805D;'>";
 			tottab+="<table style='font-size: 10px;width: 100%; white-space:break-spaces;'>";
 				tottab+="<tr>";
@@ -10291,8 +10391,8 @@ END Boss Only Section
 					tottab+="<td>"+sorctot.toLocaleString()+"</td>";
 					tottab+="<td>"+scoutstot.toLocaleString()+"</td>";
 					tottab+="<td>"+arbstot.toLocaleString()+"</td>";
-				tottab+="</tr>";	
-				tottab+="<tr>";		
+				tottab+="</tr>";
+				tottab+="<tr>";
 					tottab+="<th>Praetors</th>";
 					tottab+="<th>Horsemen</th>";
 					tottab+="<th>Druids </th>";
@@ -10313,7 +10413,7 @@ END Boss Only Section
 					tottab+="<td>"+stingerstot.toLocaleString()+"</td>";
 					tottab+="<td>"+warshipstot.toLocaleString()+"</td>";
 					tottab+="<td>"+senatortot.toLocaleString()+"</td>";
-					
+
 				tottab+="</tr>";
 			tottab+="</table>";
 		tottab+="</div>";
@@ -10335,10 +10435,10 @@ END Boss Only Section
             exportTableToCSV.apply(this, [$('#troopstablegfunky'), outputFile]);
         });
     }
-    
+
     function updatefindmysen(data){
-         
-        var toReturn; 
+
+        var toReturn;
         var findmysenbody="<table id='findmysenempiretable'>";
 			findmysenbody+="<thead>";
 				findmysenbody+="<tr>";
@@ -10352,10 +10452,10 @@ END Boss Only Section
 					findmysenbody+="<th> You Can Recruit</th>";
 				findmysenbody+="</tr>";
 			findmysenbody+="</thead>";
-			findmysenbody+="<tbody>";  
+			findmysenbody+="<tbody>";
 			$.each(data, function() {
 				if(data.a){
-                                
+
                 findmysenbody+="<tr>";
 					findmysenbody+="<td>"+this[0]+"</td>";
 					findmysenbody+="<td>"+this[1]+"</td>";
@@ -10377,7 +10477,7 @@ END Boss Only Section
         var gfindsenempiresort = document.getElementById('findmysenempiretable');
         sorttable.makeSortable(gfindsenempiresort);
 
-        
+
         var findmysencitybody="<table id='findmysencitytable'>";
 			findmysencitybody+="<thead>";
 				findmysencitybody+="<tr>";
@@ -10415,16 +10515,16 @@ END Boss Only Section
         $("#findmysencitytable td").css("text-align","center");
         var gfindsencitysort = document.getElementById('findmysencitytable');
         sorttable.makeSortable(gfindsencitysort);
-            
+
     }
     /*
-    function updategincoming(data){ 
-    
-        var toReturn; 
+    function updategincoming(data){
+
+        var toReturn;
         var gincomingTab+="<table id='gincomingtable'>";
 			gincomingTab+="<thead>";
 				gincomingTab+="<tr>";
-					gincomingTab+="<th>Expand</th>";	
+					gincomingTab+="<th>Expand</th>";
 					gincomingTab+="<th>Player</th>";
 					gincomingTab+="<th>City</th>";
 					gincomingTab+="<th >Location</th>";
@@ -10436,10 +10536,10 @@ END Boss Only Section
 					gincomingTab+="<th>Advanced Notice</th>";
 				gincomingTab+="</tr>";
 			gincomingTab+="</thead>";
-			gincomingTab+="<tbody>";  
+			gincomingTab+="<tbody>";
 			$.each(data, function() {
 				if(data.a){
-                                
+
                 gincomingTab+="<tr>";
 					gincomingTab+="<td>"+this[9]+"</td>";
 					gincomingTab+="<td>"+this[0]+"</td>";
@@ -10458,19 +10558,19 @@ END Boss Only Section
 			});
 			gincomingTab+="</tbody>";
 		gincomingTab+="</table>";
-     
+
         $("#gincomingtable").html(gincomingTab);
         $("#gincomingtable td").css("text-align","center");
         var gincomingtable1 = document.getElementById('gincomingtable');
         sorttable.makeSortable(gincomingtable1);
-        
+
     }
 	*/
-    
 
 
-		
-    
+
+
+
 
 // exporting table to csv file taken from https://gist.github.com/adilapapaya/9787842
     function exportTableToCSV($table, filename) {
@@ -10512,9 +10612,9 @@ END Boss Only Section
                 return $text.replace('"', '""'); // escape double quotes
         }
     }
-    
+
     //Dhruv's Stuff
-    
+
     //Dhruv's Combat Calculator
     (function DhruvComC() {
         //    'use strict';
@@ -11306,7 +11406,7 @@ END Boss Only Section
                     atkintenstity=1;
                 }
             calculationCC();
-            
+
         }
 
         function combcal() {
@@ -11488,13 +11588,13 @@ END Boss Only Section
                             kumar+='<div id="bla"></div>';
                         //end of Section 2
                         kumar+='</div>';
-                    // end of content section   
+                    // end of content section
                     kumar+='</div>';
-                // end of  content window   
+                // end of  content window
                 kumar+='</div>';
-            //end of popup window   
+            //end of popup window
             kumar+='</div>';
-                
+
             $("#reportsViewBox").after(kumar);
             $( "#kumardiv" ).draggable({ handle: ".popUpBar" , containment: "window", scroll: true});
             //$( "#kumardiv" ).resizable();
@@ -11583,8 +11683,8 @@ END Boss Only Section
             $("#stingAR").change(function(){defenderTSF();});
             $("#wgAR").change(function(){defenderTSF();});
         }
-        
-        
+
+
         function calculationCC(){
             //calculating attack values
             var infattk=0;
@@ -11787,7 +11887,7 @@ END Boss Only Section
             for(var i=0;i<17;i++){
                 lossdefTS[i]=zdefenderts[i]*defloss*defintensity;
                 if(lossdefTS[i]>zdefenderts[i]){
-                    lossdefTS[i]=zdefenderts[i];  
+                    lossdefTS[i]=zdefenderts[i];
                 }
                 survivingdefTS[i]=parseInt(zdefenderts[i]-lossdefTS[i]);
             }
@@ -11837,6 +11937,6 @@ END Boss Only Section
             $("#surWgA").text(survivingattTS[16]);
         }
     })();
-    
-    
+
+
 })();
