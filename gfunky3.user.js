@@ -14,7 +14,7 @@
 
 
 
-/*Gfunky Version 3.1.9 Last Modified Jan 8,2023 */
+/*Gfunky Version 3.1.9 Last Modified Jan 5,2023 */
 (function() {
 	
 
@@ -50,7 +50,7 @@
 						<span style='margin-left: 5%;'>
 							<h4 style='text-align:center;color:green;'>Update 3.1.9</h4>
 							<br>
-							<h4 style='text-align:center;color:green;'>Jan 08, 2023</h4>
+							<h4 style='text-align:center;color:green;'> Jan 08, 2023</h4>
 						</span>
 						<br>
 						<br>
@@ -5005,168 +5005,154 @@
 
 
 
-		const selectType = `
-		  <select id='selType' class='greensel' style='width:40%;height:28px;font-size:11;border-radius:6px; margin:7px;'>
-			<option value='1'>Offense and Defense</option>
-			<option value='2'>Offense</option>
-			<option value='3'>Defense</option>
-		  </select>
-		  <br>
-		`;
-		const selectret = $("#raidrettimesela").clone(false).attr({
-			id: "returnSel",
-			style: "width:40%;height:28px;font-size:11;border-radius:6px;margin:7px"
-		});
+		var selecttype="<select id='selType' class='greensel' style='width:40%;height:28px;font-size:11;border-radius:6px; margin:7px;'>";
+			selecttype+="<option value='1'>Offense and Defense</option>";
+			selecttype+="<option value='2'>Offense</option>";
+			selecttype+="<option value='3'>Defense</option>";
+			selecttype+="</select>";
+			selecttype+="<br>";
+        var selectret=$("#raidrettimesela").clone(false).attr({id:"returnSel",style:"width:40%;height:28px;font-size:11;border-radius:6px;margin:7px"});
+        var selecttime="<br><div id='timeblock'>";
+			selecttime+="<div id='timesel' style='display: none; text-align:center'>";
+				selecttime+="<span style='font-weight:800;'>Input latest return time:</span><br>";
+					selecttime+="<table style='width:80%;margin-left:auto; margin-right: auto;'>";
+						selecttime+="<thead>";
+							selecttime+="<tr style='text-align:center;'>";
+								selecttime+="<td>Hr</td>";
+								selecttime+="<td>Min</td>";
+								selecttime+="<td>Sec</td>";
+								selecttime+="<td colspan='2'>Date</td>";
+							selecttime+="</tr>";
+						selecttime+="</thead>";
+						selecttime+="<tbody>";
+						selecttime+="<tr>";
+							selecttime+="<td><input id='returnHr' type='number' style='width: 35px;height: 22px;font-size: 10px;padding: none !important;color: #000;' value='00'></td>";
+							selecttime+="<td><input id='returnMin' style='width: 35px;height: 22px;font-size: 10px;padding: none !important;color: #000;' type='number' value='00'></td>";
+							selecttime+="<td><input style='width: 35px;height: 22px;font-size: 10px;padding: none !important;color: #000;' id='returnSec' type='number' value='00'></td>";
+							selecttime+="<td colspan='2'><input style='width:90px;' id='returnDat' type='text' value='00/00/0000'></td>";
+						selecttime+="</tr>";
+					selecttime+="</tbody>";
+				selecttime+="</table>";
+			selecttime+="</div>";
+		selecttime+="</div>";
 
-		function createReturnTimeSelect(hr, min, sec, date) {
-			return `
-			<br>
-			<div id="timeblock">
-			  <div id="timesel" style="display: none; text-align:center">
-				<span style="font-weight:800;">Input latest return time:</span><br>
-				<table style="width:80%;margin-left:auto; margin-right: auto;">
-				  <thead>
-					<tr style="text-align:center;">
-					  <td>Hr</td>
-					  <td>Min</td>
-					  <td>Sec</td>
-					  <td colspan="2">Date</td>
-					</tr>
-				  </thead>
-				  <tbody>
-					<tr>
-					  <td><input id="returnHr" type="number" style="width: 35px;height: 22px;font-size: 10px;padding: none !important;color: #000;" value="${hr}"></td>
-					  <td><input id="returnMin" style="width: 35px;height: 22px;font-size: 10px;padding: none !important;color: #000;" type="number" value="${min}"></td>
-					  <td><input style="width: 35px;height: 22px;font-size: 10px;padding: none !important;color: #000;" id="returnSec" type="number" value="${sec}"></td>
-					  <td colspan="2"><input style="width:90px;" id="returnDat" type="text" value="${date}"></td>
-					</tr>
-				  </tbody>
-				</table>
-			  </div>
-			</div>
-		  `;
-		}
-		const selecttime = createReturnTimeSelect('00', '00', '00', '00/00/0000');
-		const returnAllgo = "<button id='returnAllGo' style=' width: 35%;height: 30px !important; font-size: 12px !important; position: static !important;' class='regButton greenb'>Start Return All</button>";
-		const nextcity = "<button id='nextCity' style='display: none;margin-left:10%; width: 35%;height: 30px !important; font-size: 12px !important; position: static !important;' class='regButton greenb'>Next City</button>";
-		const returntroops = "<button id='returnTroops' style='display: none;margin-left:10%; width: 35%;height: 30px !important; font-size: 12px !important; position: static !important;' class='regButton greenb'>Return troops</button>";
-		const selectlist = $("#organiser").clone(false).attr({
-			id: "selClist",
-			style: "width:40%;height:28px;font-size:11;border-radius:6px;margin:7px"
-		});
-		$("body").append(gfunkyreturnwin);
-		$("#gfunkyReturnall").draggable({
-			handle: ".popUpBar",
-			containment: "window",
-			scroll: false
-		});
-		$("#returnbody").html(selectcont);
-		//$("#selcr").attr("style","width:40%;height:28px;font-size:11;border-radius:6px;margin:7px");
-		$("#selcr").after(selecttype);
-		$("#selType").after(selectret);
-		$("#returnSel").after(selectlist);
-		$("#selClist").after(selecttime);
+        var returnAllgo="<button id='returnAllGo' style=' width: 35%;height: 30px !important; font-size: 12px !important; position: static !important;' class='regButton greenb'>Start Return All</button>";
+        var nextcity="<button id='nextCity' style='display: none;margin-left:10%; width: 35%;height: 30px !important; font-size: 12px !important; position: static !important;' class='regButton greenb'>Next City</button>";
+        var returntroops="<button id='returnTroops' style='display: none;margin-left:10%; width: 35%;height: 30px !important; font-size: 12px !important; position: static !important;' class='regButton greenb'>Return troops</button>";
+        var selectlist=$("#organiser").clone(false).attr({id:"selClist",style:"width:40%;height:28px;font-size:11;border-radius:6px;margin:7px"});
+        $("body").append(gfunkyreturnwin);
+        $("#gfunkyReturnall").draggable({ handle: ".popUpBar" , containment: "window", scroll: false});
+        $("#returnbody").html(selectcont);
+        //$("#selcr").attr("style","width:40%;height:28px;font-size:11;border-radius:6px;margin:7px");
+        $("#selcr").after(selecttype);
+        $("#selType").after(selectret);
+        $("#returnSel").after(selectlist);
+        $("#selClist").after(selecttime);
 
-		$(function() {
-			$("#returnDat").datepicker();
-		});
+        $(function() {
+        $( "#returnDat" ).datepicker();
+       });
 
-		$("#returnbody").append(returnAllgo);
-		$("#returnAllGo").after(nextcity);
-		$("#nextCity").after(returntroops);
+        $("#returnbody").append(returnAllgo);
+        $("#returnAllGo").after(nextcity);
+        $("#nextCity").after(returntroops);
 
 
-		$("#returnSel").change(function() {
-			if ($("#returnSel").val() == 3) {
-				$("#timesel").show();
-			} else {
-				$("#timesel").hide();
-			}
-		});
+        $("#returnSel").change(function() {
+            if ($("#returnSel").val()==3) {
+                $("#timesel").show();
+            }
+            else {
+                $("#timesel").hide();
+            }
+        });
 
-		let j;
-		let end;
-		let bb;
-		let cc;
-		let gaa;
-		const returncities = {
-			cid: [],
-			cont: []
-		};
-		$("#returnAllGo").click(function() {
-			if ($("#selClist").val() == "all") {
-				for (const i in data) {
-					const cont = data[i].c.co;
-					if ($("#selcr").val() == 56) {
-						if ($("#selType").val() == 1) {
-							returncities.cid.push(data[i].i);
-							returncities.cont.push(cont);
-						}
-						if ($("#selType").val() == 2 && (data[i].tr.indexOf(5) > -1 || data[i].tr.indexOf(6) > -1 || data[i].tr.indexOf(10) > -1 || data[i].tr.indexOf(11) > -1 || data[i].tr.indexOf(12) > -1 || data[i].tr.indexOf(13) > -1 || data[i].tr.indexOf(14) > -1 || data[i].tr.indexOf(16) > -1)) {
-							returncities.cid.push(data[i].i);
-							returncities.cont.push(cont);
-						}
-						if ($("#selType").val() == 3 && (data[i].tr.indexOf(1) > -1 || data[i].tr.indexOf(2) > -1 || data[i].tr.indexOf(3) > -1 || data[i].tr.indexOf(4) > -1 || data[i].tr.indexOf(8) > -1 || data[i].tr.indexOf(9) > -1 || data[i].tr.indexOf(15) > -1)) {
-							returncities.cid.push(data[i].i);
-							returncities.cont.push(cont);
-						}
-					}
+        var j,end,bb,cc,gaa;
+        var returncities={cid:[],cont:[]};
+        $("#returnAllGo").click(function() {
+            if ($("#selClist").val()=="all") {
+                for (var i in data) {
+                    var cont=data[i].c.co;
+                    if ($("#selcr").val()==56) {
+                        if($("#selType").val()==1) {
+                            returncities.cid.push(data[i].i);
+                            returncities.cont.push(cont);
+                        }
+                        if($("#selType").val()==2) {
+                            if (data[i].tr.indexOf(5)>-1 || data[i].tr.indexOf(6)>-1 || data[i].tr.indexOf(10)>-1 || data[i].tr.indexOf(11)>-1 || data[i].tr.indexOf(12)>-1 || data[i].tr.indexOf(13)>-1 || data[i].tr.indexOf(14)>-1 || data[i].tr.indexOf(16)>-1) {
+                                returncities.cid.push(data[i].i);
+                                returncities.cont.push(cont);
+                            }
+                        }
+                        if($("#selType").val()==3) {
+                            if (data[i].tr.indexOf(1)>-1 || data[i].tr.indexOf(2)>-1 || data[i].tr.indexOf(3)>-1 || data[i].tr.indexOf(4)>-1 || data[i].tr.indexOf(8)>-1 || data[i].tr.indexOf(9)>-1 || data[i].tr.indexOf(15)>-1) {
+                                returncities.cid.push(data[i].i);
+                                returncities.cont.push(cont);
+                            }
+                        }
+                    }
 
-					if (cont == Number($("#selcr").val())) {
-						if ($("#selType").val() == 1) {
-							returncities.cid.push(data[i].i);
-							returncities.cont.push(cont);
-						}
-						if ($("#selType").val() == 2 && (data[i].tr.indexOf(5) > -1 || data[i].tr.indexOf(6) > -1 || data[i].tr.indexOf(10) > -1 || data[i].tr.indexOf(11) > -1 || data[i].tr.indexOf(12) > -1 || data[i].tr.indexOf(13) > -1 || data[i].tr.indexOf(14) > -1 || data[i].tr.indexOf(16) > -1)) {
-							returncities.cid.push(data[i].i);
-							returncities.cont.push(cont);
-						}
-						if ($("#selType").val() == 3 && (data[i].tr.indexOf(1) > -1 || data[i].tr.indexOf(2) > -1 || data[i].tr.indexOf(3) > -1 || data[i].tr.indexOf(4) > -1 || data[i].tr.indexOf(8) > -1 || data[i].tr.indexOf(9) > -1 || data[i].tr.indexOf(15) > -1)) {
-							returncities.cid.push(data[i].i);
-							returncities.cont.push(cont);
-						}
-					}
-				}
+                    if (cont==Number($("#selcr").val())) {
+                        if($("#selType").val()==1) {
+                            returncities.cid.push(data[i].i);
+                            returncities.cont.push(cont);
+                        }
+                        if($("#selType").val()==2) {
+                            if (data[i].tr.indexOf(5)>-1 || data[i].tr.indexOf(6)>-1 || data[i].tr.indexOf(10)>-1 || data[i].tr.indexOf(11)>-1 || data[i].tr.indexOf(12)>-1 || data[i].tr.indexOf(13)>-1 || data[i].tr.indexOf(14)>-1 || data[i].tr.indexOf(16)>-1) {
+                                returncities.cid.push(data[i].i);
+                                returncities.cont.push(cont);
+                            }
+                        }
+                        if($("#selType").val()==3) {
+                            if (data[i].tr.indexOf(1)>-1 || data[i].tr.indexOf(2)>-1 || data[i].tr.indexOf(3)>-1 || data[i].tr.indexOf(4)>-1 || data[i].tr.indexOf(8)>-1 || data[i].tr.indexOf(9)>-1 || data[i].tr.indexOf(15)>-1) {
+                                returncities.cid.push(data[i].i);
+                                returncities.cont.push(cont);
+                            }
+                        }
+                    }
+                }
 
-			} else {
-				$.each(clc, function(key, value) {
-					if (key == $("#selClist").val()) {
-						returncities.cid = value;
-					}
-				});
-			}
-			$("#organiser").val("all").change();
-			//$("#outgoingPopUpBox").open();
-			bb = $("#returnSel").val();
-			cc = bb == 3 ? `${$("#returnDat").val()} ${$("#returnHr").val()}:${$("#returnMin").val()}:${$("#returnSec").val()}` : 0;
-			j = 0;
-			end = returncities.cid.length;
-			gaa = returncities.cid[j];
-			$("#cityDropdownMenu").val(gaa).change();
-			$("#returnTroops").show();
-			$("#nextCity").show();
-			//  $("#returnAllGo").attr("id","nextCity").html("Next City");
-			$("#returnAllGo").hide();
-		});
-		$("#returnTroops").click(function() {
-			$("#raidrettimesela").val(bb).change();
-			$("#raidrettimeselinp").val(cc);
-			$("#doneOGAll")[0].click();
-		});
+            }
+            else {
+                $.each(clc, function(key, value) {
+                    if (key==$("#selClist").val()) {
+                        returncities.cid=value;
+                    }
+                });
+            }
+            $("#organiser").val("all").change();
+            //$("#outgoingPopUpBox").open();
+            bb=$("#returnSel").val();
+            if (bb==3) {
+                cc=$("#returnDat").val()+" "+$("#returnHr").val()+":"+$("#returnMin").val()+":"+$("#returnSec").val();
+            }
+            else {cc=0;}
+            j=0; end=returncities.cid.length;
+            gaa=returncities.cid[j];
+            $("#cityDropdownMenu").val(gaa).change();
+            $("#returnTroops").show();
+            $("#nextCity").show();
+          //  $("#returnAllGo").attr("id","nextCity").html("Next City");
+            $("#returnAllGo").hide();
+        });
+        $("#returnTroops").click(function() {
+            $("#raidrettimesela").val(bb).change();
+            $("#raidrettimeselinp").val(cc);
+            $("#doneOGAll")[0].click();
+        });
 
-		const citiesLength = returncities.cid.length;
-
-		$("#nextCity").click(function() {
-			j++;
-			if (j === citiesLength) {
-				alert("Return all complete");
-				$("#gfunkyReturnall").remove();
-			} else {
-				gaa = returncities.cid[j];
-				$("#cityDropdownMenu").val(gaa).change();
-			}
-		});
-	}
+        $("#nextCity").click(function() {
+            j++;
+            if (j==end)  {
+                alert("Return all complete");
+                $("#gfunkyReturnall").remove();
+            }
+            else {
+                gaa=returncities.cid[j];
+                $("#cityDropdownMenu").val(gaa).change();
+            }
+        });
+    }
 
 	/*
 	Boss Section
