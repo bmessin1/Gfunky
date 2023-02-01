@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name gfunky3
 // @namespace www.tampermonkey.com
-// @version 3.2.0
+// @version 3.2.0.31
 // @description gfunky3
 // @author Greety
 // @match https://*.crownofthegods.com/*
@@ -14,8 +14,8 @@
 
 /*
 
-Version:  3.2.0 
-Last Modified:  Jan 17,2023
+Version:  3.2.0.31 
+Last Modified:  Jan 31,2023
 
 
  */
@@ -50,9 +50,9 @@ Last Modified:  Jan 17,2023
 						<br>
 						<div id='bottomcrownpic'></div>
 						<span style='margin-left: 5%;'>
-							<h4 style='text-align:center;color:green;'>Update 3.2.0</h4>
+							<h4 style='text-align:center;color:green;'>Update 3.2.0.31</h4>
 							<br>
-							<h4 style='text-align:center;color:green;'>Jan 17th, 2023</h4>
+							<h4 style='text-align:center;color:green;'>Jan 31th, 2022</h4>
 						</span>
 						<br>
 						<br>
@@ -985,14 +985,14 @@ Last Modified:  Jan 17,2023
 						}
 						if (toAdd) {
 							if (toAdd.shortcut) {
-								QB.utils.errorMsg.display(`Creating A(n) ${toAdd.name}`);
+								QB.utils.errorMsg.display(`Creating  ${toAdd.name}`);
 								const eventData = {
 									type: "keypress",
 									keyCode: toAdd.shortcut.charCodeAt()
 								};
 								$("body").trigger(eventData);
 							} else {
-								QB.utils.errorMsg.display(`Error. Don't know how to Create a(n) ${toAdd.name}. Please report the bug`);
+								QB.utils.errorMsg.display(`Error. Don't know how to Create  ${toAdd.name}. Please report the bug`);
 							}
 						}
 					}
@@ -1319,14 +1319,12 @@ Last Modified:  Jan 17,2023
     const emptyspots = ",.;:#-T";
     let beentoworld = false;
     let dhruvboss = 0;
-    let splayers = {
+    let shrinePlayers = {
         name: [],
         ally: [],
         cities: []
     };
-    let shrinec = [
-        []
-    ];
+    let shrineCities = [];
     let buildingdata;
     let coofz;
     let coon;
@@ -1351,6 +1349,7 @@ Last Modified:  Jan 17,2023
                         city = {};
                         city.cid = cdata.cid;
                         city.th = cdata.th;
+						city.cg = cdata.cg;
                         citytc = cdata.th;
                         buildingdata = cdata.bd;
                         city.x = Number(cdata.x);
@@ -1423,6 +1422,7 @@ Last Modified:  Jan 17,2023
 						poll2=JSON.parse(this.response);
 						city.x=Number(poll2.city.x);
 						city.y=Number(poll2.city.y);
+						
 						city.cont=Number(poll2.city.co);
 						coonoff=Number(poll2.city.coof);
 						coonvalue();
@@ -1490,6 +1490,7 @@ Last Modified:  Jan 17,2023
             dat = `${Number(cities[i]) + Number(CitiesIndex)}`;
             CitiesIndex = dat;
             DecodedData.cities.push(`2${dat}`);
+		//	console.log(dat);
         }
         for (var i in lawless) {
             dat = `${Number(lawless[i]) + Number(LawlessIndex)}`;
@@ -1743,7 +1744,8 @@ Last Modified:  Jan 17,2023
         }, 5000);
     });
     /* War Councillors Pages and CSS Changes */
-    $(function () {
+   	/* $(function () {
+	
         // Create the export button element
         var gexportButton = $("<button>", {
             "class": "greenb regButton",
@@ -1753,56 +1755,58 @@ Last Modified:  Jan 17,2023
         // Insert the export button before the rankingsXbutton element
         $("#rankingsXbutton").before(gexportButton);
     });
+	*/
     $().ready(function () {
-        //hiding cities in shrine planner
         function hidecities() {
-            $('#shrineTab tr[data="city"]').hide();
-        }
-
-        function showcities() {
-            $('#shrineTab tr[data="city"]').show();
-        }
+        $("#shrineTab tr").each(function() {
+            if ($(this).attr("data") == "city") {
+                $(this).hide();
+            }
+        });
+    }
+    //showing cities in shrine planner
+    function showcities() {
+        $("#shrineTab tr").each(function() {
+            if ($(this).attr("data") == "city") {
+                $(this).show();
+            }
+        });
+    }
         //Shrine Section 2
         const shrinebut = "<button class='regButton greenb' id='shrineP' style='width: 98%;margins: 1%;'>Shrine Planner</button>";
         $("#inactiveshrineInfo").before(shrinebut);
         $("#shrineP").click(function () {
             if (beentoworld) {
-                shrinec = [
-                    []
-                ];
-                splayers = {
-                    name: [],
-                    ally: [],
-                    cities: []
-                };
+               
                 const players = [];
                 const coords = $("#coordstochatGo3").attr("data");
                 const shrinex = parseInt(coords);
                 const shriney = Number(coords.match(/\d+$/)[0]);
-                const shrinecont = Number(Math.floor(shrinex / 100) + 10 * Math.floor(shriney / 100));
+                const shrineContinent = Number(Math.floor(shrinex / 100) + 10 * Math.floor(shriney / 100));
                 for (var i in wdata.cities) {
                     var tempx = Number(wdata.cities[i].substr(8, 3)) - 100;
                     var tempy = Number(wdata.cities[i].substr(5, 3)) - 100;
                     const cont = Number(Math.floor(tempx / 100) + 10 * Math.floor(tempy / 100));
-                    if (cont == shrinecont) {
+                    if (cont == shrineContinent) {
                         var dist = Math.sqrt((tempx - shrinex) * (tempx - shrinex) + (tempy - shriney) * (tempy - shriney));
                         //console.log("dist");
                         if (dist < 10) {
                             var l = Number(wdata.cities[i].substr(11, 1));
+							
                             var pid = Number(wdata.cities[i].substr(12, l));
                             var pname = pldata[pid];
-                            //console.log(pname);
-                            console.log(splayers.name.indexOf(pname), pname, splayers.name);
-                            var csn = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+                            console.log(pname);
+                            //console.log(shrinePlayers.name.indexOf(pname), pname, shrinePlayers.name);
+                            var csn = [3, 4, 7, 8];
                             if (csn.indexOf(Number(wdata.cities[i].charAt(4))) > -1) {
-                                shrinec.push(["castle", pname, 0, tempx, tempy, dist, "0", 0, 0, 0]);
+                                shrineCities.push(["castle", pname, 0, tempx, tempy, dist, "0", 0, 0, 0]);
                             } else {
-                                shrinec.push(["city", pname, 0, tempx, tempy, dist, "0", 0, 0, 0]);
+                                shrineCities.push(["city", pname, 0, tempx, tempy, dist, "0", 0, 0, 0]);
                             }
                         }
                     }
                 }
-                shrinec.sort(function (a, b) {
+                shrineCities.sort(function (a, b) {
                     return a[5] - b[5];
                 });
                 let gfunkyplanwin = `<div id='gfunkyshrinePopup' class='longmenu ui-draggable ui-resizable' style=' width:70% !important; left: 360px; z-index: 3000;'>
@@ -1840,29 +1844,29 @@ Last Modified:  Jan 17,2023
 				<div id='shrinediv' class='beigemenutable scroll-pane' style='background:none;border: none;padding: 0px;height: AUTO !important;max-height: 85%; margin-left: auto; margin-right:right; border-radius: 6px;border: ridge #99805D;'></div>
 				</div>
 				</div>`;
-                for (var i in shrinec) {
-                    if (i < 100) {
-                        var pname = shrinec[i][1];
-                        if (players.indexOf(pname) == -1) {
-                            players.push(pname);
-                            $.ajax({
-                                url: 'includes/gPi.php',
-                                type: 'POST',
-                                async: true,
-                                data: {
-                                    a: pname
-                                },
-                                success(data) {
-                                    var pinfo = JSON.parse(data);
-                                    splayers.name.push(pinfo.player);
-                                    splayers.ally.push(pinfo.a);
-                                    splayers.cities.push(pinfo.h);
-                                    //console.log(pinfo.a,pinfo.h,pinfo.player);
-                                }
-                            });
-                        }
-                    }
-                }
+                for (var i in shrineCities) {
+					if (i < 101) {
+						var pname = shrineCities[i][1];
+						if (players.indexOf(pname)==-1){
+							players.push(pname);
+							$.ajax({
+								url: 'includes/gPi.php',
+								type: 'POST',
+								async: false,
+								data: {
+									a: pname
+								},
+								success(data) {
+									var pinfo = JSON.parse(data);
+									shrinePlayers.name.push(pinfo.player);
+									shrinePlayers.ally.push(pinfo.a);
+									shrinePlayers.cities.push(pinfo.h);
+									//console.log(pinfo.a,pinfo.h,pinfo.player);
+								}
+							});
+						}
+					}
+				}
                 setTimeout(function () {
                     $("#reportsViewBox").after(gfunkyplanwin);
                     $('#shrinePopup').draggable({
@@ -1877,12 +1881,17 @@ Last Modified:  Jan 17,2023
                     if (localStorage.getItem('hidecities') === '1') {
                         $('#hidec').html('Show Cities');
                     }
-                    $('#hidec').click(function () {
-                        const hidecities = localStorage.getItem('hidecities') === '1';
-                        hidecities ? showcities() : hidecities();
-                        localStorage.setItem('hidecities', hidecities ? '0' : '1');
-                        $('#hidec').html(hidecities ? 'Hide Cities' : 'Show Cities');
-                    });
+                    $("#hidec").click(function() {
+					if (localStorage.getItem("hidecities")=="0") {
+						hidecities();
+						localStorage.setItem("hidecities","1");
+						$("#hidec").html("Show Cities");
+					} else if (localStorage.getItem("hidecities")=="1") {
+						showcities();
+						localStorage.setItem("hidecities","0");
+						$("#hidec").html("Hide Cities");
+					}
+				});
                     updateshrine();
                     let addcitypop = `<div id='addcityPopup' class='popUpBox ui-resizable ui-draggable' style='z-index:200002; width:80%;!important'>
 					<div class='ppbwinbgr' >
@@ -1932,14 +1941,16 @@ Last Modified:  Jan 17,2023
                             tempy = $("#addy").val();
                             dist = Math.sqrt((tempx - shrinex) * (tempx - shrinex) + (tempy - shriney) * (tempy - shriney));
                             const temp = [$("#addtype").val(), "Poseidon", "Atlantis", tempx, tempy, dist, "1", $("#addscore").val(), "Hellas", "1"];
-                            shrinec.push(temp);
-                            shrinec.sort(function (a, b) {
+                            shrineCities.push(temp);
+                            shrineCities.sort(function (a, b) {
                                 return a[5] - b[5];
                             });
                             updateshrine();
                             $("#addcityPopup").remove();
                         });
                     });
+			
+       
                 }, 2000);
                 return;
             }
@@ -1949,14 +1960,14 @@ Last Modified:  Jan 17,2023
         function updateshrine() {
             let shrinetab = "<table id='shrineTab'>";
             shrinetab += "<thead>";
-            shrinetab += "<th style='width:150px'>Change</th>";
-            shrinetab += "<th>Spot Rank</th>";
-            shrinetab += "<th >% Light</th>";
-            shrinetab += "<th>Distance</th>";
-            shrinetab += "<th>Player</th>";
-            shrinetab += "<th>City</th>";
+            shrinetab += "<th colspan='3'>Change</th>";
+            shrinetab += "<th>Rank</th>";
+            shrinetab += "<th >%</th>";
+            shrinetab += "<th>Dist.</th>";
+            shrinetab += "<th colspan='2'>Player</th>";
+            shrinetab += "<th colspan='2'>City</th>";
             shrinetab += "<th>Coords</th>";
-            shrinetab += "<th style='width:100px'>Alliance</th>";
+            shrinetab += "<th colspan='3'>Alliance</th>";
             shrinetab += "<th>Score</th>";
             shrinetab += "<th>Type</th>";
             shrinetab += "</thead>";
@@ -1964,24 +1975,24 @@ Last Modified:  Jan 17,2023
             var ccounter = 0;
             const w = [];
             let wtot = 0;
-            for (var i in shrinec) {
+            for (var i in shrineCities) {
                 if (i > 0) {
-                    var k = splayers.name.indexOf(shrinec[i][1]);
-                    console.log(k, splayers);
-                    for (const j in splayers.cities[k]) {
-                        if (shrinec[i][3] == splayers.cities[k][j].b && shrinec[i][4] == splayers.cities[k][j].c) {
-                            shrinec[i][2] = splayers.cities[k][j].h;
-                            if (shrinec[i][9] == 0) {
-                                shrinec[i][7] = splayers.cities[k][j].a;
+                    var k = shrinePlayers.name.indexOf(shrineCities[i][1]);
+                    //console.log(k, shrinePlayers);
+                    for (const j in shrinePlayers.cities[k]) {
+                        if (shrineCities[i][3] == shrinePlayers.cities[k][j].b && shrineCities[i][4] == shrinePlayers.cities[k][j].c) {
+                            shrineCities[i][2] = shrinePlayers.cities[k][j].h;
+                            if (shrineCities[i][9] == 0) {
+                                shrineCities[i][7] = shrinePlayers.cities[k][j].a;
                             }
-                            shrinec[i][8] = splayers.ally[k];
+                            shrineCities[i][8] = shrinePlayers.ally[k];
                         }
                     }
-                    if (shrinec[i][0] == "castle") {
+                    if (shrineCities[i][0] == "castle") {
                         ccounter++;
                         if (ccounter < 17) {
-                            w[ccounter] = shrinec[i][7] / shrinec[i][5];
-                            wtot += shrinec[i][7] / (shrinec[i][5]);
+                            w[ccounter] = shrineCities[i][7] / shrineCities[i][5];
+                            wtot += shrineCities[i][7] / (shrineCities[i][5]);
                         }
                     }
                 }
@@ -1989,26 +2000,40 @@ Last Modified:  Jan 17,2023
             for (var i in w) {
                 w[i] = Math.round(w[i] / wtot * 100);
             }
-            //console.log(shrinec);
+            //console.log(shrineCities);
             var ccounter = 0;
-            for (var i in shrinec) {
+            for (var i in shrineCities) {
                 if (i > 0) {
-                    var cid = shrinec[i][4] * 65_536 + Number(shrinec[i][3]);
-                    if (shrinec[i][0] == "castle") {
+                    var cid = shrineCities[i][4] * 65_536 + Number(shrineCities[i][3]);
+                    if (shrineCities[i][0] == "castle") {
                         ccounter++;
-                        if (ccounter < 17) {
-                            shrinetab += shrinec[i][6] == "0" ? "<tr style='color:purple;'>" : "<tr style='color:green;'>";
-                            shrinetab += "<td>";
-                            shrinetab += `<button data='${i}' class='greenb shrineremove' style='font-size: 10px;height: 20px;padding: 3px;width: 15px;border-radius: 4px;'>x</button>`;
-                            shrinetab += `<button id='${i}' data='castle' class='greenb shrinechange' style='font-size: 10px;height: 20px;padding-top: 3px;border-radius: 4px;'>City</button>`;
-                            shrinetab += `<button data='${i}' class='greenb shrine10k' style='font-size: 10px;height: 20px;padding: 3px;width: 25px;border-radius: 4px;'>10k</button>`;
-                            shrinetab += `<button data='${i}' class='greenb shrine7pt' style='font-size: 10px;height: 20px;padding: 3px;width: 25px;border-radius: 4px;'>7pt</button>`;
-                            shrinetab += "</td>";
-                            shrinetab += `<td>${ccounter}</td>`;
-                            shrinetab += `<td>${w[ccounter]}% </td>`;
+                        if (ccounter<17) {
+								if (shrineCities[i][6]=="0") {
+						shrinetab+="<tr style='color:purple;'>";
+							shrinetab+="<td colspan='3'>";
+								shrinetab+="<button data='"+i+"' class='greenb shrineremove' style='font-size: 10px;height: 20px;padding: 3px;width: 15px;border-radius: 4px;'>x</button>";
+								shrinetab+="<button id='"+i+"' data='castle' class='greenb shrinechange' style='font-size: 10px;height: 20px;padding-top: 3px;border-radius: 4px;'>City</button>";
+								shrinetab+="<button data='"+i+"' class='greenb shrine10k' style='font-size: 10px;height: 20px;padding: 3px;width: 25px;border-radius: 4px;'>10k</button>";
+								shrinetab+="<button data='"+i+"' class='greenb shrine7pt' style='font-size: 10px;height: 20px;padding: 3px;width: 25px;border-radius: 4px;'>7pt</button>";
+							shrinetab+="</td>";
+							shrinetab+="<td>"+ccounter+"</td>";
+							shrinetab+="<td>"+w[ccounter]+"% "+"</td>";
+
+								} else {
+                        shrinetab+="<tr style='color:green;'>";
+							shrinetab+="<td colspan='3'>";
+								shrinetab+="<button data='"+i+"' class='greenb shrineremove' style='font-size: 10px;height: 20px;padding: 3px;width: 15px;border-radius: 4px;'>x</button>";
+								shrinetab+="<button id='"+i+"' data='castle' class='greenb shrinechange' style='font-size: 10px;height: 20px;padding-top: 3px;border-radius: 4px;'>City</button>";
+								shrinetab+="<button data='"+i+"' class='greenb shrine10k' style='font-size: 10px;height: 20px;padding: 3px;width: 25px;border-radius: 4px;'>10k</button>";
+								shrinetab+="<button data='"+i+"' class='greenb shrine7pt' style='font-size: 10px;height: 20px;padding: 3px;width: 25px;border-radius: 4px;'>7pt</button>";
+							shrinetab+="</td>";
+							shrinetab+="<td>"+ccounter+"</td>";
+							shrinetab+="<td>"+w[ccounter]+"% "+"</td>";
+
+								}
                         } else if (ccounter >= 17 && ccounter < 21) {
                             shrinetab += "<tr>";
-                            shrinetab += "<td>";
+                            shrinetab += "<td colspan='3'>";
                             shrinetab += `<button data='${i}' class='greenb shrineremove' style='font-size: 10px;height: 20px;padding: 3px;width: 15px;border-radius: 4px;'>x</button>`;
                             shrinetab += `<button id='${i}' data='castle' class='greenb shrinechange' style='font-size: 10px;height: 20px;padding-top: 3px;border-radius: 4px;'>City</button>`;
                             shrinetab += `<button data='${i}' class='greenb shrine10k' style='font-size: 10px;height: 20px;padding: 3px;width: 25px;border-radius: 4px;'>10k</button>`;
@@ -2018,23 +2043,38 @@ Last Modified:  Jan 17,2023
                             shrinetab += "<td></td>";
                         }
                     } else {
-                        shrinetab += shrinec[i][6] == "0" ? "<tr style='color:grey;' data='city'>" : "<tr style='color:#74A274;'>";
-                        shrinetab += "<td>";
-                        shrinetab += `<button data='${i}' class='greenb shrineremove' style='font-size: 10px;height: 20px;padding: 3px;width: 15px;border-radius: 4px;'>x</button>`;
-                        shrinetab += `<button id='${i}' data='city' class='greenb shrinechange' style='font-size: 10px;height: 20px;padding: 3px;border-radius: 4px;width:45px;'>Castle</button>`;
-                        shrinetab += `<button data='${i}' class='greenb shrine10k' style='font-size: 10px;height: 20px;padding: 3px;width: 25px;border-radius: 4px;'>10k</button>`;
-                        shrinetab += `<button data='${i}' class='greenb shrine7pt' style='font-size: 10px;height: 20px;padding: 3px;width: 25px;border-radius: 4px;'>7pt</button>`;
-                        shrinetab += "</td>";
-                        shrinetab += "<td></td>";
-                        shrinetab += "<td></td>";
-                    }
-                    shrinetab += `<td>${roundToTwo(shrinec[i][5])}</td>`;
-                    shrinetab += `<td class='playerblink'>${shrinec[i][1]}</td>`;
-                    shrinetab += `<td>${shrinec[i][2]}</td>`;
-                    shrinetab += `<td class='coordblink shcitt' data='${cid}'>${shrinec[i][3]}:${shrinec[i][4]}</td>`;
-                    shrinetab += `<td class='allyblink'>${shrinec[i][8]}</td>`;
-                    shrinetab += `<td>${shrinec[i][7]}</td>`;
-                    shrinetab += `<td>${shrinec[i][0]}</td>`;
+						if (shrineCities[i][6]=="0") {
+						shrinetab+="<tr style='color:grey;' data='city'>";
+							shrinetab+="<td colspan='3'>";
+								shrinetab+="<button data='"+i+"' class='greenb shrineremove' style='font-size: 10px;height: 20px;padding: 3px;width: 15px;border-radius: 4px;'>x</button>";
+								shrinetab+="<button id='"+i+"' data='city' class='greenb shrinechange' style='font-size: 10px;height: 20px;padding: 3px;border-radius: 4px;width:45px;'>Castle</button>";
+								shrinetab+="<button data='"+i+"' class='greenb shrine10k' style='font-size: 10px;height: 20px;padding: 3px;width: 25px;border-radius: 4px;'>10k</button>";
+								shrinetab+="<button data='"+i+"' class='greenb shrine7pt' style='font-size: 10px;height: 20px;padding: 3px;width: 25px;border-radius: 4px;'>7pt</button>";
+							shrinetab+="</td>";
+							shrinetab+="<td></td>";
+							shrinetab+="<td></td>";
+
+							} else {
+						shrinetab+="<tr style='color:#74A274;'>";
+							shrinetab+="<td colspan='3'>";
+								shrinetab+="<button data='"+i+"' class='greenb shrineremove' style='font-size: 10px;height: 20px;padding: 3px;width: 15px;border-radius: 4px;'>x</button>";
+								shrinetab+="<button id='"+i+"' data='city' class='greenb shrinechange' style='font-size: 10px;height: 20px;padding: 3px;border-radius: 4px;width:45px;'>Castle</button>";
+								shrinetab+="<button data='"+i+"' class='greenb shrine10k' style='font-size: 10px;height: 20px;padding: 3px;width: 25px;border-radius: 4px;'>10k</button>";
+								shrinetab+="<button data='"+i+"' class='greenb shrine7pt' style='font-size: 10px;height: 20px;padding: 3px;width: 25px;border-radius: 4px;'>7pt</button>";
+							shrinetab+="</td>";
+							shrinetab+="<td></td>";
+							shrinetab+="<td></td>";
+
+							}
+						}
+							shrinetab+="<td>"+roundToTwo(shrineCities[i][5])+"</td>";
+							shrinetab+="<td colspan='2' class='playerblink'>"+shrineCities[i][1]+"</td>";
+							shrinetab+="<td colspan='2'>"+shrineCities[i][2]+"</td>";
+							shrinetab+="<td class='coordblink shcitt' data='"+cid+"'>"+shrineCities[i][3]+":"+shrineCities[i][4]+"</td>";
+							shrinetab+="<td colspan='3' class='allyblink'>"+shrineCities[i][8]+"</td>";
+							shrinetab+="<td>"+shrineCities[i][7]+"</td>";
+							shrinetab+="<td>"+shrineCities[i][0]+"</td>";
+
                     shrinetab += "</tr>";
                     if (ccounter == 20) {
                         break;
@@ -2049,37 +2089,45 @@ Last Modified:  Jan 17,2023
                 hidecities();
                 //console.log("hiding");
             }
-            $(".shrinechange").click(function () {
-                shrinec[$(this).attr("id")][0] = $(this).attr("data") == "castle" ? "city" : "castle";
-                shrinec[$(this).attr("id")][6] = shrinec[$(this).attr("id")][6] == "0" ? 1 : 0;
-                updateshrine();
-            });
+           $(".shrinechange").click(function() {
+            if ($(this).attr("data")=="castle") {
+                shrineCities[$(this).attr("id")][0]="city";
+            } else {
+                shrineCities[$(this).attr("id")][0]="castle";
+            }
+            if (shrineCities[$(this).attr("id")][6]=="0") {
+                shrineCities[$(this).attr("id")][6]=1;
+            } else {
+                shrineCities[$(this).attr("id")][6]=0;
+            }
+            updateshrine();
+        });
             $(".shrineremove").click(function () {
-                shrinec.splice($(this).attr("data"), 1);
+                shrineCities.splice($(this).attr("data"), 1);
                 updateshrine();
             });
-            $(".shrine7pt").click(function () {
-                if (shrinec[$(this).attr("data")][7] == 7) {
-                    shrinec[$(this).attr("data")][9] = 0;
-                    shrinec[$(this).attr("data")][6] = 0;
-                } else {
-                    shrinec[$(this).attr("data")][7] = 7;
-                    shrinec[$(this).attr("data")][9] = 1;
-                    shrinec[$(this).attr("data")][6] = 1;
-                }
-                updateshrine();
-            });
-            $(".shrine10k").click(function () {
-                if (shrinec[$(this).attr("data")][7] == 10_000) {
-                    shrinec[$(this).attr("data")][9] = 0;
-                    shrinec[$(this).attr("data")][6] = 0;
-                } else {
-                    shrinec[$(this).attr("data")][7] = 10_000;
-                    shrinec[$(this).attr("data")][9] = 1;
-                    shrinec[$(this).attr("data")][6] = 1;
-                }
-                updateshrine();
-            });
+			$(".shrine7pt").click(function() {
+            if (shrineCities[$(this).attr("data")][7]!=7) {
+                shrineCities[$(this).attr("data")][7]=7;
+                shrineCities[$(this).attr("data")][9]=1;
+                shrineCities[$(this).attr("data")][6]=1;
+            } else {
+                shrineCities[$(this).attr("data")][9]=0;
+                shrineCities[$(this).attr("data")][6]=0;
+            }
+            updateshrine();
+        });
+        $(".shrine10k").click(function() {
+            if (shrineCities[$(this).attr("data")][7]!=10000) {
+                shrineCities[$(this).attr("data")][7]=10000;
+                shrineCities[$(this).attr("data")][9]=1;
+                shrineCities[$(this).attr("data")][6]=1;
+            } else {
+                shrineCities[$(this).attr("data")][9]=0;
+                shrineCities[$(this).attr("data")][6]=0;
+            }
+            updateshrine();
+        });
             // export shrine planner
             $("#exportshrine").click(function (event) {
                 //var outputFile = window.prompt("What do you want to name your output file (Note: This won't have any effect on Safari)") || 'export';
@@ -2089,7 +2137,7 @@ Last Modified:  Jan 17,2023
             });
             const shrinetabsort = document.getElementById('shrineTab');
             sorttable.makeSortable(shrinetabsort);
-        }
+		}
         /*
 
 
@@ -2433,9 +2481,12 @@ Last Modified:  Jan 17,2023
         $("#dretHr").val(localStorage.getItem('dretHr') || "");
         $("#attackDat").datepicker();
         $("#defDat").datepicker();
-        $('#refreshmax').click(function () {
-            if (beentoworld || !beentoworld && alert("Press World Button")) {
+        $('#refreshboss').click(function() {
+            if (beentoworld)
+            {
                 openbosswin();
+            } else {
+                alert("Press World Button");
             }
         });
         $('#returnAllb').click(function () {
@@ -4133,6 +4184,10 @@ Last Modified:  Jan 17,2023
 		</div>`
         $("#qbDiv").before(gfunkyquickbutton);
         $('#sortbut').after(convbut);
+		//var fillbut='<button id="filq" class="greenb tooltipstered" style="height:18px; width:40px; margin-left:7px; margin-top:5px ; border-radius:4px ; font-size: 10px !important; padding: 0px;">Fill</button>';
+       // $('#csspan').before(fillbut);
+		
+
         var convbut = '<button id="convque" class="greenb tooltipstered" style="height:18px; width:60px; margin-left:7px; margin-top:5px ; border-radius:6px ; font-size: 10px !important; padding: 0px;">Convert</button>';
         $('#csspan').before(convbut);
         $('#convque').click(function () {
@@ -4288,6 +4343,15 @@ Last Modified:  Jan 17,2023
         $("#gfoverview").click(function () {
             if (gfoverview) {
                 opengfunkyoverviewwin();
+				var ab = city.cid;
+				var acg = poll2.city.cg;
+				let hubdata={a: JSON.stringify(acg), cid: ab};
+				$.ajax({
+					url: 'includes/cgS.php',
+					type: 'POST',
+					async: true,
+					data: hubdata
+            });
             } else {
                 $("#gfunkyoverviewwin").toggle(gfoverview);
             }
@@ -4514,17 +4578,20 @@ Last Modified:  Jan 17,2023
     Predicting Incoming Troops Section
 
     */
-    $(document).ready(function () {
-        const incomingtabledata = $("#incomingsAttacksTable").find('tbody tr');
+    $().ready(function() {
+        //adding 2 elements into the html
+        var incomingtabledata = $("#incomingsAttacksTable").children().children().children();
         $("#incomingsAttacksTable table thead tr th:nth-child(2)").width(140);
-        incomingtabledata.append("<th>Lock time</th><th>Travel time</th>");
-        const handleIncomings = () => {
-            setTimeout(function () {
-                incomings();
-            }, 5000);
-        }
-        $("#allianceIncomings").parent().click(handleIncomings);
-        $("#incomingsPic").click(handleIncomings);
+        var Addth ="<th>Lock time</th>";
+            incomingtabledata.append(Addth);
+        var Addth1 ="<th>Travel time</th>";
+            incomingtabledata.append(Addth1);
+        $("#allianceIncomings").parent().click(function() {
+            setTimeout(function(){incomings();}, 5000);
+        });
+        $("#incomingsPic").click(function() {
+            setTimeout(function(){incomings();}, 5000);
+        });
     });
 
     function roundingto2(num) {
@@ -4535,253 +4602,206 @@ Last Modified:  Jan 17,2023
         return n > 9 ? `${n}` : `0${n}`;
     }
 
-    function incomings() {
+   function incomings() {
         //  below will give u a variable called speeeed which contains all the possible speed bonuses that can be in game
-        const speeeed = [];
-        speeeed[0] = 0;
-        for (var i = 1; i < 201; i++) {
-            speeeed[i] = speeeed[i - 1] + 0.5;
+        var speeeed=[];
+        speeeed[0]=0;
+        for (var i=1; i<201; i++){
+            speeeed[i]=speeeed[i-1]+0.5;
         }
-        //  separating all possible speeds for troop types
-        const navyspeed = [];
-        const scoutspeed = [];
-        const cavspeed = [];
-        const infspeed = [];
-        const artspeed = [];
-        const senspeed = [];
-        let temp;
 
-        function roundingto2(x) {
-            return Math.round(x * 100) / 100;
+//  separating all possible speeds for troop types
+        var navyspeed = [];
+        var scoutspeed = [];
+        var cavspeed = [];
+        var infspeed = [];
+        var artspeed = [];
+        var senspeed = [];
+        var temp;
+        for (i in speeeed) {
+            temp=5/(1+speeeed[i]*1.0/100);
+            navyspeed[i]= roundingto2(temp);
+            temp=8/(1+speeeed[i]*1.0/100);
+            scoutspeed[i]= roundingto2(temp);
+            temp=10/(1+speeeed[i]*1.0/100);
+            cavspeed[i]= roundingto2(temp);
+            temp=20/(1+speeeed[i]*1.0/100);
+            infspeed[i]= roundingto2(temp);
+            temp=30/(1+speeeed[i]*1.0/100);
+            artspeed[i]= roundingto2(temp);
+            temp=40/(1+speeeed[i]*1.0/100);
+            senspeed[i]= roundingto2(temp);
         }
-        const unitTypes = ['navyspeed', 'scoutspeed', 'cavspeed', 'infspeed', 'artspeed', 'senspeed'];
-        for (let i = 0; i < speeeed.length; i++) {
-            for (let j = 0; j < unitTypes.length; j++) {
-                const speed = unitTypes[j];
-                let temp;
-                switch (speed) {
-                case 'navyspeed':
-                    temp = 5 / (1 + speeeed[i] * 1.0 / 100);
-                    break;
-                case 'scoutspeed':
-                    temp = 8 / (1 + speeeed[i] * 1.0 / 100);
-                    break;
-                case 'cavspeed':
-                    temp = 10 / (1 + speeeed[i] * 1.0 / 100);
-                    break;
-                case 'infspeed':
-                    temp = 20 / (1 + speeeed[i] * 1.0 / 100);
-                    break;
-                case 'artspeed':
-                    temp = 30 / (1 + speeeed[i] * 1.0 / 100);
-                    break;
-                case 'senspeed':
-                    temp = 40 / (1 + speeeed[i] * 1.0 / 100);
-                    break;
-                default:
-                    break;
-                }
-                window[speed][i] = roundingto2(temp);
+        $("#iaBody tr").each(function() {
+            var tid=$(':nth-child(5)',this).children().children().attr("data");
+            var sid=$(':nth-child(10)',this).children().attr("data");
+            var tx=tid%65536;
+            var sx=sid%65536;
+            var ty=(tid-tx)/65536;
+            var sy=(sid-sx)/65536;
+            var tcont=Math.floor(tx/100)+Math.floor(ty/100)*10;
+            var scont=Math.floor(sx/100)+Math.floor(sy/100)*10;
+            var dist=Math.sqrt((ty-sy)*(ty-sy)+(tx-sx)*(tx-sx));
+            var atime=$(':nth-child(6)',this).text();
+            var stime=$(':nth-child(11)',this).text();
+            var hdiff=atime.substring(0,2)-stime.substring(0,2);
+            var mdiff=atime.substring(3,5)-stime.substring(3,5);
+            var sdiff=atime.substring(6,8)-stime.substring(6,8);
+            var d = new Date();
+            var x = new Date();
+            var arrivaltimemonth;
+            var arrivaltimedate;
+            if(atime.length===14){
+                arrivaltimemonth=Number(atime.substring(9,11));//month
+                arrivaltimedate=Number(atime.substring(12,14));//date
             }
-        }
-        $("#iaBody tr").each(function () {
-            const tid = $(':nth-child(5)', this).children().children().attr("data");
-            const sid = $(':nth-child(10)', this).children().attr("data");
-            const tx = tid % 65_536;
-            const sx = sid % 65_536;
-            const ty = (tid - tx) / 65_536;
-            const sy = (sid - sx) / 65_536;
-            const tcont = Math.floor(tx / 100) + Math.floor(ty / 100) * 10;
-            const scont = Math.floor(sx / 100) + Math.floor(sy / 100) * 10;
-            const dist = Math.sqrt((ty - sy) * (ty - sy) + (tx - sx) * (tx - sx));
-            const atime = $(':nth-child(6)', this).text();
-            const stime = $(':nth-child(11)', this).text();
-            let hdiff = atime.substring(0, 2) - stime.substring(0, 2);
-            let mdiff = atime.substring(3, 5) - stime.substring(3, 5);
-            const sdiff = atime.substring(6, 8) - stime.substring(6, 8);
-            const d = new Date();
-            const x = new Date();
-            const arrivaltimemonth = atime.length === 14 ? Number(atime.substring(9, 11)) : d.getMonth() + 1;
-            const arrivaltimedate = atime.length === 14 ? Number(atime.substring(12, 14)) : d.getDate();
-            let time = hdiff >= 0 ? 60 * hdiff : (24 + hdiff) * 60;
-            (atime.length === 14 || stime.length === 14) && (time += 1440, hdiff += 24);
-            time += mdiff;
-            time += sdiff / 60;
-            const ispeed = roundingto2(time / dist);
-            const nspeed = roundingto2((time - 60) / dist);
+            else{
+                arrivaltimemonth=d.getMonth() +1;
+                arrivaltimedate=d.getDate();
+            }
+            var time;
+            if (hdiff>=0) {time=60*hdiff;}
+            else {time=(24+hdiff)*60;}
+            if((atime.length===14 || stime.length===14) && hdiff>0){
+                time+=+1440;
+                hdiff+=24;
+            }
+            time+=mdiff;
+            time+=sdiff/60;
+            var ispeed=roundingto2(time/dist);
+            var nspeed=roundingto2((time-60)/dist);
             //adds time taken by troops to return home to arrival time and changed formats
-            let locks;
-            let lockm;
-            let lockh;
-            locks = (sdiff >= 0) ? sdiff : (60 + sdiff);
-            if (sdiff < 0) {
-                mdiff--;
+            var locks;
+            var lockm;
+            var lockh;
+            if(sdiff>=0){locks=sdiff;}
+            else{locks=60+sdiff;
+                 mdiff=mdiff-1;}
+            if(mdiff>=0){lockm=mdiff;}
+            else{lockm=60+mdiff;
+                 hdiff=hdiff-1;}
+            if(hdiff>=0){lockh=hdiff;}
+            else{lockh=hdiff+24;}
+            var travelingts=twodigitnum(locks);
+            var travelingtm=twodigitnum(lockm);
+            var travelingth=twodigitnum(lockh);
+            var locktimeh= Number(lockh)+Number(atime.substring(0,2));
+            var locktimem=Number(lockm)+Number(atime.substring(3,5));
+            var locktimes=Number(locks)+Number(atime.substring(6,8));
+            if(locktimes>59){locktimes=locktimes-60;
+                             locktimem=locktimem+1;}
+            if(locktimem>59){locktimem=locktimem-60;
+                             locktimeh=locktimeh+1;}
+            if(locktimeh>23){locktimeh=locktimeh-24;
+                             arrivaltimedate=arrivaltimedate+1;}
+            var atm1=[1,3,5,7,8,10,12];
+            var atm2=[4,6,9,11];
+            if(atm1.indexOf(arrivaltimemonth) >0){
+                if(arrivaltimedate>31){arrivaltimedate=1;}
             }
-            lockm = (mdiff >= 0) ? mdiff : (60 + mdiff);
-            if (mdiff < 0) {
-                hdiff--;
+            if(atm2.indexOf(arrivaltimemonth) >0){
+                if(arrivaltimedate>30){arrivaltimedate=1;}
             }
-            lockh = hdiff >= 0 ? hdiff : hdiff + 24;
-            const travelingts = twodigitnum(locks);
-            const travelingtm = twodigitnum(lockm);
-            const travelingth = twodigitnum(lockh);
-            let locktimeh = Number(lockh) + Number(atime.substring(0, 2));
-            let locktimem = Number(lockm) + Number(atime.substring(3, 5));
-            let locktimes = Number(locks) + Number(atime.substring(6, 8));
-            locktimes -= (locktimes > 59) ? 60 : 0;
-            locktimem += (locktimes > 59) ? 1 : 0;
-            locktimem -= (locktimem > 59) ? 60 : 0;
-            locktimeh += (locktimem > 59) ? 1 : 0;
-            locktimeh -= (locktimeh > 23) ? 24 : 0;
-            arrivaltimedate += (locktimeh > 23) ? 1 : 0;
-            const atm1 = [1, 3, 5, 7, 8, 10, 12];
-            const atm2 = [4, 6, 9, 11];
-            const daysInMonth = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-            if (arrivaltimedate > daysInMonth[arrivaltimemonth]) {
-                arrivaltimedate = 1;
+            if(arrivaltimemonth===02){
+                if(arrivaltimedate>28){arrivaltimedate=1;}
             }
-            const addt = $(this);
-            locktimeh = twodigitnum(locktimeh);
-            locktimem = twodigitnum(locktimem);
-            locktimes = twodigitnum(locktimes);
-            arrivaltimemonth = twodigitnum(arrivaltimemonth);
-            arrivaltimedate = twodigitnum(arrivaltimedate);
-            //output of results
-            const newtd = "<td></td>";
-            const arrivalTime = `${locktimeh}:${locktimem}:${locktimes} ${arrivaltimemonth}/${arrivaltimedate}`;
-            const travelTime = `${travelingth}:${travelingtm}:${travelingts}`;
+            var addt=$(this);
+            locktimeh=twodigitnum(locktimeh);
+            locktimem=twodigitnum(locktimem);
+            locktimes=twodigitnum(locktimes);
+            arrivaltimemonth=twodigitnum(arrivaltimemonth);
+            arrivaltimedate=twodigitnum(arrivaltimedate);
+
+
+
+
+//output of results
+            var newtd="<td></td>";
             if (addt.children().length === 14) {
                 $(this).append(newtd);
-                $(':nth-child(15)', this).text(arrivalTime);
-                if ($(':nth-child(2)', this).text() == "Sieging") {
-                    $(':nth-child(15)', this).css("color", "red");
+                $(':nth-child(15)',this).text(locktimeh+":"+locktimem+":"+locktimes+" "+arrivaltimemonth+"/"+arrivaltimedate);
+                if($(':nth-child(2)',this).text()=="Sieging"){
+                    $(':nth-child(15)',this).css("color", "red");
                 }
             }
             if (addt.children().length === 15) {
                 $(this).append(newtd);
-                $(':nth-child(16)', this).text(travelTime);
-                if ($(':nth-child(2)', this).text() == "Sieging") {
-                    $(':nth-child(16)', this).css("color", "red");
+                $(':nth-child(16)',this).text(travelingth+":"+travelingtm+":"+travelingts);
+                if($(':nth-child(2)',this).text()=="Sieging"){
+                    $(':nth-child(16)',this).css("color", "red");
                 }
             }
-            if ($(':nth-child(2)', this).text() != "-") {
-                return;
-            }
-            // below will return -1 if calculated speed is not found inside the speed arrays and the correct index if it is found within the speed arrays
-            const speedTypes = ['navyspeed', 'scoutspeed', 'cavspeed', 'infspeed', 'artspeed', 'senspeed'];
-            const zns = navyspeed.indexOf(nspeed);
-            const zss = scoutspeed.indexOf(ispeed);
-            const zcs = cavspeed.indexOf(ispeed);
-            const zis = infspeed.indexOf(ispeed);
-            const zas = artspeed.indexOf(ispeed);
-            const zsn = senspeed.indexOf(ispeed);
-            // below use ispeed and above return values to get the correct incoming troop type
-            if (tcont == scont) {
-                if (ispeed > 30 && zsn !== -1) {
-                    $(':nth-child(2)', this).text(`senator ${speeeed[zsn]}%`);
-                } else if (ispeed > 30 && zsn === -1) {
-                    $(':nth-child(2)', this).text("Tower?/Sen");
-                }
-                if (ispeed > 20 && ispeed <= 30) {
-                    if (zsn == -1 && zas == -1) {
-                        $(':nth-child(2)', this).text("Tower?/Art/Sen");
+            if ($(':nth-child(2)',this).text()=="-") {
+// below will return -1 if calculated speed is not found inside the speed arrays and the correct index if it is found within the speed arrays
+                var zns = navyspeed.indexOf(nspeed);
+                var zss = scoutspeed.indexOf(ispeed);
+                var zcs = cavspeed.indexOf(ispeed);
+                var zis = infspeed.indexOf(ispeed);
+                var zas = artspeed.indexOf(ispeed);
+                var zsn = senspeed.indexOf(ispeed);
+
+
+
+
+// below use ispeed and above return values to get the correct incoming troop type
+                if (tcont==scont) {
+                    if (ispeed>30) {
+                        if(zsn == -1){$(':nth-child(2)',this).text("Tower?/Sen");}
+                        else
+                        {$(':nth-child(2)',this).text("senator "+speeeed[zsn]+"%");}
                     }
-                    if (zsn == -1 && zas != -1) {
-                        $(':nth-child(2)', this).text(`Artillery ${speeeed[zas]}%`);
+                    if (ispeed>20 && ispeed<=30) {
+                        if(zsn == -1 && zas == -1){$(':nth-child(2)',this).text("Tower?/Art/Sen");}
+                        if(zsn == -1 && zas != -1){$(':nth-child(2)',this).text("Artillery "+speeeed[zas]+"%");}
+                        if(zsn != -1 && zas == -1){$(':nth-child(2)',this).text("Senator "+speeeed[zsn]+"%");}
+                        if(zsn != -1 && zas != -1){$(':nth-child(2)',this).text("Art "+speeeed[zas]+"%"+"/"+"Sen "+speeeed[zsn]+"%");}
                     }
-                    if (zsn != -1 && zas == -1) {
-                        $(':nth-child(2)', this).text(`Senator ${speeeed[zsn]}%`);
+                    if (ispeed==20){$(':nth-child(2)',this).text("Inf 0%/Art 50%/Sen 100%");}
+                    if (ispeed>=15 && ispeed<20) {
+                        if(zis == -1 && zas == -1){$(':nth-child(2)',this).text("Tower?/Inf &above");}
+                        if(zis == -1 && zas != -1){$(':nth-child(2)',this).text("Artillery "+speeeed[zas]+"%");}
+                        if(zis != -1 && zas == -1){$(':nth-child(2)',this).text("Infantry "+speeeed[zis]+"%");}
+                        if(zis != -1 && zas != -1){$(':nth-child(2)',this).text("Inf "+speeeed[zis]+"%"+"/"+"Art "+speeeed[zas]+"%");}
                     }
-                    if (zsn != -1 && zas != -1) {
-                        $(':nth-child(2)', this).text(`Art ${speeeed[zas]}%/Sen ${speeeed[zsn]}%`);
+                    if (ispeed>=10 && ispeed<15) {
+                        if(zis == -1 && zcs == -1){$(':nth-child(2)',this).text("Tower?/Cav &above");}
+                        if(zis == -1 && zcs != -1){$(':nth-child(2)',this).text("Cav "+speeeed[zcs]+"%");}
+                        if(zis != -1 && zcs == -1){$(':nth-child(2)',this).text("Inf "+speeeed[zis]+"%");}
+                        if(zis != -1 && zcs != -1){$(':nth-child(2)',this).text("Cav "+speeeed[zcs]+"%"+"/"+"Inf "+speeeed[zis]+"%");}
                     }
-                }
-                if (ispeed == 20) {
-                    $(':nth-child(2)', this).text("Inf 0%/Art 50%/Sen 100%");
-                }
-                if (ispeed >= 15 && ispeed < 20) {
-                    if (zis == -1 && zas == -1) {
-                        $(':nth-child(2)', this).text("Tower?/Inf &above");
+                    if (ispeed>8 && ispeed<10) {
+                        if(zcs == -1){$(':nth-child(2)',this).text("Tower?/Cav &above");}
+                        else
+                        {$(':nth-child(2)',this).text("Cav "+speeeed[zcs]+"%");}
                     }
-                    if (zis == -1 && zas != -1) {
-                        $(':nth-child(2)', this).text(`Artillery ${speeeed[zas]}%`);
+                    if (ispeed>5 && ispeed<=8){
+                        if(zss == -1 && zcs == -1){$(':nth-child(2)',this).text("Tower?/Scout &above");}
+                        if(zss == -1 && zcs != -1){$(':nth-child(2)',this).text("Cav "+speeeed[zcs]+"%");}
+                        if(zss != -1 && zcs == -1){$(':nth-child(2)',this).text("Scout "+speeeed[zss]+"%");}
+                        if(zss != -1 && zcs != -1){$(':nth-child(2)',this).text("Scout "+speeeed[zss]+"%"+"/"+"Cav "+speeeed[zcs]+"%");}
                     }
-                    if (zis != -1 && zas == -1) {
-                        $(':nth-child(2)', this).text(`Infantry ${speeeed[zis]}%`);
+                    if (ispeed==5){$(':nth-child(2)',this).text("Navy 0%/Scout 60%/Cav 100%");}
+                    if (ispeed>=4 && ispeed<5) {
+                        if(zss == -1 && zns == -1){$(':nth-child(2)',this).text("Tower?/scout &above");}
+                        if(zss == -1 && zns != -1){$(':nth-child(2)',this).text("Navy "+speeeed[zns]+"%");}
+                        if(zss != -1 && zns == -1){$(':nth-child(2)',this).text("Scout "+speeeed[zss]+"%");}
+                        if(zss != -1 && zns != -1){$(':nth-child(2)',this).text("Navy "+speeeed[zns]+"%"+"/"+"Scout "+speeeed[zss]+"%");}
                     }
-                    if (zis != -1 && zas != -1) {
-                        $(':nth-child(2)', this).text(`Inf ${speeeed[zis]}%/Art ${speeeed[zas]}%`);
-                    }
-                }
-                if (ispeed >= 10 && ispeed < 15) {
-                    if (zis == -1 && zcs == -1) {
-                        $(':nth-child(2)', this).text("Tower?/Cav &above");
-                    }
-                    if (zis == -1 && zcs != -1) {
-                        $(':nth-child(2)', this).text(`Cav ${speeeed[zcs]}%`);
-                    }
-                    if (zis != -1 && zcs == -1) {
-                        $(':nth-child(2)', this).text(`Inf ${speeeed[zis]}%`);
-                    }
-                    if (zis != -1 && zcs != -1) {
-                        $(':nth-child(2)', this).text(`Cav ${speeeed[zcs]}%/Inf ${speeeed[zis]}%`);
-                    }
-                }
-                if (ispeed > 8 && ispeed < 10) {
-                    if (zcs == -1) {
-                        $(':nth-child(2)', this).text("Tower?/Cav &above");
-                    } else {
-                        $(':nth-child(2)', this).text(`Cav ${speeeed[zcs]}%`);
+                    if (ispeed<4){
+                        if(zns == -1){$(':nth-child(2)',this).text("Tower?/Navy &above");}
+                        else
+                        {$(':nth-child(2)',this).text("Navy "+speeeed[zns]+"%");}
                     }
                 }
-                if (ispeed > 5 && ispeed <= 8) {
-                    if (zss == -1 && zcs == -1) {
-                        $(':nth-child(2)', this).text("Tower?/Scout &above");
+                else if ($(':nth-child(1)',this).html()) {$(':nth-child(2)',this).text("Portal");}
+                else {
+                    if(zns != -1){
+                        $(':nth-child(2)',this).text("Navy "+speeeed[zns]+"%");
+                     //   context.strokeStyle = '#000000';//BLACK
+                     //   context.stroke();
                     }
-                    if (zss == -1 && zcs != -1) {
-                        $(':nth-child(2)', this).text(`Cav ${speeeed[zcs]}%`);
-                    }
-                    if (zss != -1 && zcs == -1) {
-                        $(':nth-child(2)', this).text(`Scout ${speeeed[zss]}%`);
-                    }
-                    if (zss != -1 && zcs != -1) {
-                        $(':nth-child(2)', this).text(`Scout ${speeeed[zss]}%/Cav ${speeeed[zcs]}%`);
-                    }
+                    else{$(':nth-child(2)',this).text("Tower?/Navy");}
                 }
-                if (ispeed == 5) {
-                    $(':nth-child(2)', this).text("Navy 0%/Scout 60%/Cav 100%");
-                }
-                if (ispeed >= 4 && ispeed < 5) {
-                    if (zss == -1 && zns == -1) {
-                        $(':nth-child(2)', this).text("Tower?/scout &above");
-                    }
-                    if (zss == -1 && zns != -1) {
-                        $(':nth-child(2)', this).text(`Navy ${speeeed[zns]}%`);
-                    }
-                    if (zss != -1 && zns == -1) {
-                        $(':nth-child(2)', this).text(`Scout ${speeeed[zss]}%`);
-                    }
-                    if (zss != -1 && zns != -1) {
-                        $(':nth-child(2)', this).text(`Navy ${speeeed[zns]}%/Scout ${speeeed[zss]}%`);
-                    }
-                }
-                if (ispeed < 4) {
-                    if (zns == -1) {
-                        $(':nth-child(2)', this).text("Tower?/Navy &above");
-                    } else {
-                        $(':nth-child(2)', this).text(`Navy ${speeeed[zns]}%`);
-                    }
-                }
-                return;
-            }
-            if ($(':nth-child(1)', this).html()) {
-                $(':nth-child(2)', this).text("Portal");
-            } else if (zns == -1) {
-                $(':nth-child(2)', this).text("Tower?/Navy");
-            } else {
-                $(':nth-child(2)', this).text(`Navy ${speeeed[zns]}%`);
-                context.strokeStyle = '#000000'; //BLACK
-                context.stroke();
             }
         });
     }
@@ -5321,123 +5341,123 @@ Last Modified:  Jan 17,2023
         }
     }
 
-    function openbosswin() {
-        const bosslist = {
-            name: [],
-            x: [],
-            y: [],
-            lvl: [],
-            distance: [],
-            cid: [],
-            time: [],
-            cont: []
-        };
+   function openbosswin() {
+        var bosslist={name:[],x:[],y:[],lvl:[],distance:[],cid:[],time:[],cont:[]};
         for (var i in bossinfo.cont) {
-            const distance = (Math.sqrt((bossinfo.x[i] - city.x) * (bossinfo.x[i] - city.x) + (bossinfo.y[i] - city.y) * (bossinfo.y[i] - city.y)));
-            if ((bossinfo.cont[i] == city.cont) && ((bossinfo.name[i] != "Triton")) && (bossinfo.data[i].charAt(0, 1) == 1) && ((city.th[2] || city.th[3] || city.th[4] || city.th[5] || city.th[6] || city.th[8] || city.th[9] || city.th[10] || city.th[11]) && city.th[14] == 0) && bossinfo.cont[i] == city.cont) {
-                if (city.th[2] || city.th[3] || city.th[4] || city.th[5] || city.th[6]) {
-                    var minutes = distance * TroopSpeedIndex[2] / FaithSpeedIndex[2];
-                    var time = `${Math.floor(minutes/60)}h ${Math.floor(minutes % 60)}m`;
-                    bosslist.name.push(bossinfo.name[i]);
+            var distance=(Math.sqrt((bossinfo.x[i]-city.x)*(bossinfo.x[i]-city.x)+(bossinfo.y[i]-city.y)*(bossinfo.y[i]-city.y)));
+                if ((bossinfo.cont[i]==city.cont) && ((bossinfo.name[i]!="Triton")) && (bossinfo.data[i].charAt(0,1)==1)) {
+
+                    if ((city.th[2] || city.th[3] || city.th[4]|| city.th[5]|| city.th[6]|| city.th[8]|| city.th[9]|| city.th[10]|| city.th[11]) && city.th[14]==0) {
+                        if (bossinfo.cont[i]==city.cont) {
+                            if (city.th[2] || city.th[3] || city.th[4]|| city.th[5]|| city.th[6]) {
+                                var minutes=distance*TroopSpeedIndex[2]/FaithSpeedIndex[2];
+                                var time=Math.floor(minutes/60)+"h "+Math.floor(minutes % 60)+"m";
+                                bosslist.name.push(bossinfo.name[i]);
+                                bosslist.x.push(bossinfo.x[i]);
+                                bosslist.y.push(bossinfo.y[i]);
+                                bosslist.cid.push(Number(bossinfo.y[i]*65536+bossinfo.x[i]));
+                                bosslist.lvl.push(bossinfo.lvl[i]);
+                                bosslist.distance.push(roundToTwo(distance));
+                                bosslist.time.push(time);
+                                bosslist.cont.push(bossinfo.cont[i]);
+                            }
+                            if (city.th[8] || city.th[9] || city.th[10]|| city.th[11]) {
+                                var minutes=distance*TroopSpeedIndex[8]/FaithSpeedIndex[8];
+                                var time=Math.floor(minutes/60)+"h "+Math.floor(minutes % 60)+"m";
+                                bosslist.name.push(bossinfo.name[i]);
+                                bosslist.x.push(bossinfo.x[i]);
+                                bosslist.y.push(bossinfo.y[i]);
+                                bosslist.cid.push(Number(bossinfo.y[i]*65536+bossinfo.x[i]));
+                                bosslist.lvl.push(bossinfo.lvl[i]);
+                                bosslist.distance.push(roundToTwo(distance));
+                                bosslist.time.push(time);
+                                bosslist.cont.push(bossinfo.cont[i]);
+                            }
+                        }
+                    }
+                }
+
+                if (distance<5000) {
+                    if (city.th[14] || city.th[15] || city.th[16]) {
+                        var minutes=distance*TroopSpeedIndex[14]/FaithSpeedIndex[14];
+                        var time=Math.floor(minutes/60)+"h "+Math.floor(minutes % 60)+"m";
                     bosslist.x.push(bossinfo.x[i]);
                     bosslist.y.push(bossinfo.y[i]);
-                    bosslist.cid.push(Number(bossinfo.y[i] * 65_536 + bossinfo.x[i]));
+                    bosslist.cid.push(Number(bossinfo.y[i]*65536+bossinfo.x[i]));
                     bosslist.lvl.push(bossinfo.lvl[i]);
                     bosslist.distance.push(roundToTwo(distance));
                     bosslist.time.push(time);
                     bosslist.cont.push(bossinfo.cont[i]);
                 }
-                if (city.th[8] || city.th[9] || city.th[10] || city.th[11]) {
-                    var minutes = distance * TroopSpeedIndex[8] / FaithSpeedIndex[8];
-                    var time = `${Math.floor(minutes/60)}h ${Math.floor(minutes % 60)}m`;
-                    bosslist.name.push(bossinfo.name[i]);
-                    bosslist.x.push(bossinfo.x[i]);
-                    bosslist.y.push(bossinfo.y[i]);
-                    bosslist.cid.push(Number(bossinfo.y[i] * 65_536 + bossinfo.x[i]));
-                    bosslist.lvl.push(bossinfo.lvl[i]);
-                    bosslist.distance.push(roundToTwo(distance));
-                    bosslist.time.push(time);
-                    bosslist.cont.push(bossinfo.cont[i]);
-                }
-            }
-            if (distance < 5000 && (city.th[14] || city.th[15] || city.th[16])) {
-                var minutes = distance * TroopSpeedIndex[14] / FaithSpeedIndex[14];
-                var time = `${Math.floor(minutes/60)}h ${Math.floor(minutes % 60)}m`;
-                bosslist.x.push(bossinfo.x[i]);
-                bosslist.y.push(bossinfo.y[i]);
-                bosslist.cid.push(Number(bossinfo.y[i] * 65_536 + bossinfo.x[i]));
-                bosslist.lvl.push(bossinfo.lvl[i]);
-                bosslist.distance.push(roundToTwo(distance));
-                bosslist.time.push(time);
-                bosslist.cont.push(bossinfo.cont[i]);
             }
         }
-        let bosswin = "<table id='bosstable' class='beigetablescrollp sortable'>";
-        bosswin += "<thead>";
-        bosswin += "<tr>";
-        bosswin += "<th>Coordinates</th>";
-        bosswin += "<th>Level</th>";
-        bosswin += "<th>Continent</th>";
-        bosswin += "<th>Travel Time</th>";
-        bosswin += "<th id='hdistance'>Distance</th>";
-        bosswin += "</tr>";
-        bosswin += "</thead>";
-        bosswin += "<tbody>";
+        var bosswin="<table id='bosstable' class='beigetablescrollp sortable'>";
+            bosswin+="<thead>";
+                bosswin+="<tr>";
+                    bosswin+="<th>Coordinates</th>";
+                    bosswin+="<th>Level</th>";
+                    bosswin+="<th>Continent</th>";
+                    bosswin+="<th>Travel Time</th>";
+                    bosswin+="<th id='hdistance'>Distance</th>";
+                bosswin+="</tr>";
+            bosswin+="</thead>";
+            bosswin+="<tbody>";
+
         for (var i in bosslist.x) {
-            const j = bosses.name.indexOf(bosslist.name[i]);
-            bosswin += `<tr id='bossline${bosslist.cid[i]}' class='dunginf'>`;
-            bosswin += `<td id='cl${bosslist.cid[i]}' class='coordblink shcitt' data='${bosslist.cid[i]}' style='text-align: center;'>${bosslist.x[i]}:${bosslist.y[i]}</td>`;
-            bosswin += `<td style='text-align: center;font-weight: bold;'>${bosslist.lvl[i]}</td>`;
-            bosswin += `<td style='text-align: center;'>${bosslist.cont[i]}</td>`;
-            bosswin += `<td style='text-align: center;'>${bosslist.time[i]}</td>`;
-            bosswin += `<td style='text-align: center;'>${bosslist.distance[i]}</td>`;
-            bosswin += "</tr>";
+            var j=bosses.name.indexOf(bosslist.name[i]);
+                bosswin+="<tr id='bossline"+bosslist.cid[i]+"' class='dunginf'>";
+                    bosswin+="<td id='cl"+bosslist.cid[i]+"' class='coordblink shcitt' data='"+bosslist.cid[i]+"' style='text-align: center;'>"+bosslist.x[i]+":"+bosslist.y[i]+"</td>";
+                    bosswin+="<td style='text-align: center;font-weight: bold;'>"+bosslist.lvl[i]+"</td>";
+                    bosswin+="<td style='text-align: center;'>"+bosslist.cont[i]+"</td>";
+                    bosswin+="<td style='text-align: center;'>"+bosslist.time[i]+"</td>";
+                    bosswin+="<td style='text-align: center;'>"+bosslist.distance[i]+"</td>";
+                bosswin+="</tr>";
         }
-        bosswin += "</tbody>";
-        bosswin += "</table>";
-        //bosswin+=" </div>";
-        let idle = "<table id='idleunits' class='beigetablescrollp'>";
-        idle += "<thead>";
-        idle += "<tr>";
-        idle += "<th style='text-align: center;color: #e1c190;font-size: 10px;font-weight: 400;height: 18px;background: url(/images/antonui/qmenutop.png);background-size: 100% 100%;background-repeat: no-repeat;'>Idle Troop Type:</th>";
-        idle += "<th style='text-align: center;color: #e1c190;font-size: 10px;font-weight: 400;height: 18px;background: url(/images/antonui/qmenutop.png);background-size: 100% 100%;background-repeat: no-repeat;'>Idle Troop Numbers</th>";
-        idle += "</tr>";
-        idle += "</thead>";
-        idle += "<tbody>";
-        const notallow = [0, 1, 7, 12, 13];
-        for (const [key, value] of Object.entries(city.th)) {
-            if (!notallow.includes(key) && value > 0) {
-                idle += "<tr>";
-                idle += "<td>";
-                idle += `<div class='${tpicdiv[key]}' style='text-align: right;'></div>`;
-                idle += "</td>";
-                idle += "<td style='text-align: center;'>";
-                idle += `<span id='thbr${key}'>${value}</span>`;
-                idle += "</td>";
-                idle += "</tr>";
-            }
-        }
-        idle += "</tbody>";
-        idle += "</table>";
-        idle += "</table>";
-        return idle;
-        $("#idlerow").html(idle);
-        $("#idlerow").show();
+
+            bosswin+="</tbody>";
+        bosswin+="</table>";
+    //bosswin+=" </div>";
+
+
+        var idle="<table id='idleunits' class='beigetablescrollp'>";
+            idle+="<thead>";
+                idle+="<tr>";
+                    idle+="<th style='text-align: center;color: #e1c190;font-size: 10px;font-weight: 400;height: 18px;background: url(/images/antonui/qmenutop.png);background-size: 100% 100%;background-repeat: no-repeat;'>Idle Troop Type:</th>";
+                    idle+="<th style='text-align: center;color: #e1c190;font-size: 10px;font-weight: 400;height: 18px;background: url(/images/antonui/qmenutop.png);background-size: 100% 100%;background-repeat: no-repeat;'>Idle Troop Numbers</th>";
+                idle+="</tr>";
+            idle+="</thead>";
+            idle+="<tbody>";
+		for (var i in city.th) {
+  var notallow = [0, 1, 7, 12, 13];
+  if (notallow.indexOf(i) === -1) {
+    if (city.th[i] > 0) {
+      let idleGnumber = +city.th[i];
+      idle += `<tr>
+                <td>
+                  <div class='${tpicdiv[i]}' style='text-align: right;'></div>
+                </td>
+                <td style='text-align: center;'>
+                  <span id='thbr${i}'>${idleGnumber.toLocaleString()}</span>
+                </td>
+              </tr>`;
+    }
+  }
+}
+            idle+="</tbody>";
+        idle+="</table>";
         $("#bossbox").html(bosswin);
         $("#idletroops").html(idle);
-        const newTableObject = document.getElementById('bosstable');
+        var newTableObject = document.getElementById('bosstable');
         sorttable.makeSortable(newTableObject);
-        setTimeout(function () {
+        setTimeout(function(){
             $("#hdistance").trigger("click");
-            setTimeout(function () {
-                $("#hdistance").trigger("click");
-            }, 100);
-        }, 100);
+            setTimeout(function(){$("#hdistance").trigger("click");},100);
+        },100);
         for (var i in bosslist.x) {
-            $(`#cl${bosslist.cid[i]}`).click(function () {
-                setTimeout(function () {
+            $("#cl"+bosslist.cid[i]).click(function() {
+                setTimeout(function(){
                     $("#raidDungGo").trigger("click");
-                }, 500);
+                },500);
             });
         }
     }
@@ -5961,10 +5981,10 @@ Last Modified:  Jan 17,2023
                 massresTemple();
             }, 1000);
         });
-        $(".fillXbut").click(function () {
-            const i = $(this).closest("tr").attr("id");
-            $(`#${i}`).hide();
-        });
+       // $(".fillXbut").click(function () {
+      //      const i = $(this).closest("tr").attr("id");
+      //      $(`#${i}`).hide();
+     //   });
         sorttable.makeSortable(mrstctbbresult);
         /*
         $("#recallgAllbut").click(function() {
@@ -5992,12 +6012,12 @@ Last Modified:  Jan 17,2023
         $("#allianceIncomings").parent().click(function () {
             setTimeout(function () {
                 incomings();
-            }, 4000);
+            }, 5000);
         });
         $("#ui-id-37").click(function () {
             setTimeout(function () {
                 incomings();
-            }, 1000);
+            }, 5000);
         });
         setTimeout(function () {
             Total_Research();
@@ -7431,7 +7451,7 @@ Last Modified:  Jan 17,2023
                 remarkldl.push("Rangers");
                 noteldl.push("228000 inf @ 5.2 days");
                 troopcounldl.push([0, 0, 228_000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
-                resldl.push([0, 0, 0, 0, 250_000, 220_000, 250_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 220_000, 350_000, 350_000]);
+                resldl.push([0, 0, 0, 0, 1, 250_000, 220_000, 250_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 220_000, 350_000, 350_000]);
                 ldl++;
                 selectbuttlanddef += `<option value="${ldl}">3 sec rangers</option>`;
                 layoutldl.push("[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##GBGBGBG##----##----#BBBGBGBBB#----##----#BGBBBBBGB#----#######BBBGTGBBB#######SSPX#BGBBBBBGB#----##MLPJ#BBBGBGBBB#----##S---##GBGBGBG##----##-----##BBBBB##-----##--BBBB#######------##--BGBGB--#---------##--BBBBB--#---------###-BGBGB--#--------#####BBBB---#-------########################");
@@ -8099,16 +8119,18 @@ Last Modified:  Jan 17,2023
 			   //Land Offense Builds
                
 				$('#landoffenselayouts').change(function() {
+					setTimeout(function() {
 					var aa = city.mo;
 					var ab = city.cid;
 					var acg = city.cg;
-					let hubdata={a: acg, cid: ab};
+					let hubdata={a: JSON.stringify(acg), cid: ab};
 					$.ajax({
                                 url: 'includes/cgS.php',
                                 type: 'POST',
                                 async: true,
                                 data: hubdata
                             });
+					},1000);
 					setTimeout(function() {
 					let newlayout = currentlayout;
 						for (let j = 1; j < layoutlol.length; j++) {
@@ -8253,7 +8275,7 @@ Last Modified:  Jan 17,2023
 					var aa = city.mo;
 					var ab = city.cid;
 					var acg = city.cg;
-					let hubdata={a: acg, cid: ab};
+					let hubdata={a: JSON.stringify(acg), cid: ab};
 					$.ajax({
                                 url: 'includes/cgS.php',
                                 type: 'POST',
@@ -8395,7 +8417,7 @@ Last Modified:  Jan 17,2023
 					var aa = city.mo;
 					var ab = city.cid;
 					var acg = city.cg;
-					let hubdata={a: acg, cid: ab};
+					let hubdata={a: JSON.stringify(acg), cid: ab};
 					$.ajax({
                                 url: 'includes/cgS.php',
                                 type: 'POST',
@@ -8534,7 +8556,7 @@ Last Modified:  Jan 17,2023
 					var aa = city.mo;
 					var ab = city.cid;
 					var acg = city.cg;
-					let hubdata={a: acg, cid: ab};
+					let hubdata={a: JSON.stringify(acg), cid: ab};
 					$.ajax({
                                 url: 'includes/cgS.php',
                                 type: 'POST',
@@ -8673,7 +8695,7 @@ Last Modified:  Jan 17,2023
 					var aa = city.mo;
 					var ab = city.cid;
 					var acg = city.cg;
-					let hubdata={a: acg, cid: ab};
+					let hubdata={a: JSON.stringify(acg), cid: ab};
 					$.ajax({
                                 url: 'includes/cgS.php',
                                 type: 'POST',
@@ -8719,25 +8741,35 @@ Last Modified:  Jan 17,2023
                                 aa[27] = 1;
                             }
                             if ($("#addhub").prop("checked") == true) {
-                                var hubs = {
-                                    cid: [],
-                                    distance: []
-                                };
-                                $.each(clc, function (key, value) {
-                                    if (key == $("#selHub").val()) {
-                                        hubs.cid = value;
-                                    }
-                                });
-                                for (var i in hubs.cid) {
-                                    var tempx = Number(hubs.cid[i] % 65536);
-                                    var tempy = Number((hubs.cid[i] - tempx) / 65536);
-                                    hubs.distance.push(Math.sqrt((tempx - city.x) * (tempx - city.x) + (tempy - city.y) * (tempy - city.y)));
-                                }
-                                var mindist = Math.min.apply(Math, hubs.distance);
-                                var nearesthub = hubs.cid[hubs.distance.indexOf(mindist)];
-                                reshul[j][14] = nearesthub;
-                                reshul[j][15] = nearesthub;
-                            } else {
+    var hubs = {
+        cid: [],
+        distance: []
+    };
+    all_values = []
+    $.each(clc, function (key, value) {
+        if (key == $("#selHub").val() || $("#selHub").val() === "all") {
+            all_values += value;
+        }
+    });
+    if($("#selHub").val() === "all"){
+        hubs.cid = all_values;
+    }else{
+        $.each(clc, function (key, value) {
+            if (key == $("#selHub").val()) {
+                hubs.cid = value;
+            }
+        });
+    }
+    for (var i in hubs.cid) {
+        var tempx = Number(hubs.cid[i] % 65536);
+        var tempy = Number((hubs.cid[i] - tempx) / 65536);
+        hubs.distance.push(Math.sqrt((tempx - city.x) * (tempx - city.x) + (tempy - city.y) * (tempy - city.y)));
+    }
+    var mindist = Math.min.apply(Math, hubs.distance);
+    var nearesthub = hubs.cid[hubs.distance.indexOf(mindist)];
+    reshul[j][14] = nearesthub;
+    reshul[j][15] = nearesthub;
+} else {
                                 reshul[j][14] = 0;
                                 reshul[j][15] = 0;
                             }
@@ -8814,7 +8846,7 @@ Last Modified:  Jan 17,2023
 					var aa = city.mo;
 					var ab = city.cid;
 					var acg = city.cg;
-					let hubdata={a: acg, cid: ab};
+					let hubdata={a: JSON.stringify(acg), cid: ab};
 					$.ajax({
                                 url: 'includes/cgS.php',
                                 type: 'POST',
@@ -8955,7 +8987,7 @@ Last Modified:  Jan 17,2023
 					var aa = city.mo;
 					var ab = city.cid;
 					var acg = city.cg;
-					let hubdata={a: acg, cid: ab};
+					let hubdata={a: JSON.stringify(acg), cid: ab};
 					$.ajax({
                                 url: 'includes/cgS.php',
                                 type: 'POST',
@@ -9125,13 +9157,13 @@ Last Modified:  Jan 17,2023
 		var aa = city.mo;
 		var ab = city.cid;
 		var acg = city.cg;
-		let hubdata={a: acg, cid: ab};
+		let hubdata={a: JSON.stringify(acg), cid: ab};
 			$.ajax({
-				url: 'includes/cgS.php',
+                url: 'includes/cgS.php',
                 type: 'POST',
                 async: true,
                 data: hubdata
-            });
+                });
 		setTimeout(function() {	
         var resources = [0, 0, 0, 0, 1, 130000, 130000, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 300000, 300000, 300000, 400000];
       
@@ -9226,7 +9258,8 @@ Last Modified:  Jan 17,2023
 		var aa = city.mo;
 		var ab = city.cid;
 		var acg = city.cg;
-		let hubdata={a: acg, cid: ab};
+		console.log(acg);
+		let hubdata={a: JSON.stringify(acg), cid: ab};
 			$.ajax({
 				url: 'includes/cgS.php',
                 type: 'POST',
@@ -9392,15 +9425,15 @@ Last Modified:  Jan 17,2023
 				`;
         //Resource Overview Tab
         gfunkyoverviewwin += "<div id='resTab' style='text-align: center;'>";
-        gfunkyoverviewwin += "<button id='resup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button>";
+        gfunkyoverviewwin += "<button id='ResourceTableUpdate' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button>";
         gfunkyoverviewwin += "<button class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>";
         gfunkyoverviewwin += "<div class='button'>";
         gfunkyoverviewwin += "<a href='#' id ='resexp' role='button' style='color:#c7e2e7;'>Export</a>";
         gfunkyoverviewwin += "</div>";
         gfunkyoverviewwin += "</button>";
         gfunkyoverviewwin += "<span id='respan' style='margin-left:50px;'></span>";
-        gfunkyoverviewwin += "<div id='restabtable' class='beigemenutable scroll-pane' style='width:98%;height: AUTO !important;max-height: 75%;margin-left:auto; margin-right: auto; border-radius: 7px;border: 3px ridge #99805D;' >";
-        gfunkyoverviewwin += "<table id='restable'>";
+        gfunkyoverviewwin += "<div class='beigemenutable scroll-pane' style='width:98%;height: AUTO !important;max-height: 75%;margin-left:auto; margin-right: auto; border-radius: 7px;border: 3px ridge #99805D;' >";
+        gfunkyoverviewwin += "<table id='gresourcestable'>";
         gfunkyoverviewwin += "</table>";
         gfunkyoverviewwin += "</div>";
         gfunkyoverviewwin += "</div>";
@@ -9436,6 +9469,7 @@ Last Modified:  Jan 17,2023
         gfunkyoverviewwin += "</div>";
         //Raid Overview Summary Tab
         gfunkyoverviewwin += "<div id='raidoverTab' style='text-align: center;'>";
+		gfunkyoverviewwin += "<button id='expandAllexpands' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Hide All</button>";
         gfunkyoverviewwin += "<button id='raidoverup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button>";
         gfunkyoverviewwin += "<button class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>";
         gfunkyoverviewwin += "<div class='button'>";
@@ -9448,7 +9482,7 @@ Last Modified:  Jan 17,2023
         gfunkyoverviewwin += " </table>";
         gfunkyoverviewwin += " </div>";
         gfunkyoverviewwin += "<div id='raidmanager2body' class='beigemenutable scroll-pane' style='width:99%;height: AUTO !important;max-height: 78%;margin-left:auto; margin-right:auto; border-radius: 7px;border: 3px ridge #99805D;' >";
-        gfunkyoverviewwin += "<table id='raidovertable'>";
+        gfunkyoverviewwin += "<table id='gactiveraidstable'>";
         gfunkyoverviewwin += "</table>";
         gfunkyoverviewwin += "</div>";
         gfunkyoverviewwin += "</div>";
@@ -9506,17 +9540,17 @@ Last Modified:  Jan 17,2023
             }
         });
         $("#gfunkyoverviewdiv").tabs();
-        const selres = $("#organiser").clone(false).attr({
-            id: "selres",
+        const selgresources = $("#organiser").clone(false).attr({
+            id: "selgresources",
             style: "height: 30px;width:150px;font-size:14px;border-radius:6px;margin:7px",
             class: "greenb"
         });
-        const selcres = $("#idleCsel").clone(false).attr({
-            id: "selcres",
+        const selContgresources = $("#idleCsel").clone(false).attr({
+            id: "selContgresources",
             style: "width:150px;height:30px;font-size:14px;border-radius:6px;margin:7px"
         });
-        const selcgtroops = $("#idleCsel").clone(false).attr({
-            id: "selcgtroops",
+        const selContgtroops = $("#idleCsel").clone(false).attr({
+            id: "selContgtroops",
             style: "width:150px;height:30px;font-size:14px;border-radius:6px;margin:7px"
         });
         const selgtroops = $("#organiser").clone(false).attr({
@@ -9524,42 +9558,42 @@ Last Modified:  Jan 17,2023
             style: "height: 30px;width:150px;font-size:14px;border-radius:6px;margin:7px",
             class: "greenb"
         });
-        const selraids = $("#organiser").clone(false).attr({
-            id: "selraid",
+        const selgactiveraids = $("#organiser").clone(false).attr({
+            id: "selgactiveraids",
             style: "height: 30px;width:150px;font-size:14px;border-radius:6px;margin:7px",
             class: "greenb"
         });
-        const selcraid = $("#idleCsel").clone(false).attr({
-            id: "selcraid",
+        const selContgactiveraids = $("#idleCsel").clone(false).attr({
+            id: "selContgactiveraids",
             style: "width:150px;height:30px;font-size:14px;border-radius:6px;margin:7px"
         });
         const selinc = $("organiser").clone(false).attr({
             id: "selinc",
             style: "width:150px;height:30px;font-size:14px;border-radius:6px;margin:7px"
         });
-        const selcinc = $("#idleCsel").clone(false).attr({
-            id: "selcinc",
+        const selContinc = $("#idleCsel").clone(false).attr({
+            id: "selContinc",
             style: "width:150px;height:30px;font-size:14px;border-radius:6px;margin:7px"
         });
-        $("#respan").after(selres);
-        $("#selres").after(selcres);
-        $("#selres").val("all").change();
-        $("#selcres").val(56).change();
-        $("#raidspan").after(selraids);
-        $("#selraid").after(selcraid);
-        $("#selraid").val("all").change();
-        $("#selcraid").val(56).change();
+        $("#respan").after(selgresources);
+        $("#selgresources").after(selContgresources);
+        $("#selgresources").val("all").change();
+        $("#selContgresources").val(56).change();
+        $("#raidspan").after(selgactiveraids);
+        $("#selgactiveraids").after(selContgactiveraids);
+        $("#selgactiveraids").val("all").change();
+        $("#selContgactiveraids").val(56).change();
         $("#troopspan").after(selgtroops);
-        $("#selgtroops").after(selcgtroops);
+        $("#selgtroops").after(selContgtroops);
         $("#selgtroops").val("all").change();
-        $("#selcgtroops").val(56).change();
+        $("#selContgtroops").val(56).change();
         //$("#incspan").after(selinc);
         //$("#selinc").after(selcinc);
         $("#selinc").val(56).change();
-        $("#selcinc").val("all").change();
-        $("#resup").click(function () {
-            $("#selres").val("all").change();
-            $("#selcres").val("56").change();
+        $("#selContinc").val("all").change();
+        $("#ResourceTableUpdate").click(function () {
+            $("#selgresources").val("all").change();
+            $("#selContgresources").val("56").change();
             $.ajax({
                 url: 'overview/citover.php',
                 type: 'POST',
@@ -9571,8 +9605,8 @@ Last Modified:  Jan 17,2023
             });
         });
         $("#troopsup").click(function () {
-            $("#seltroops").val("all").change();
-            $("#selctroops").val("56").change();
+            $("#selgtroops").val("all").change();
+            $("#selContgtroops").val("56").change();
             const notes = {
                 id: [],
                 notes: []
@@ -9611,8 +9645,8 @@ Last Modified:  Jan 17,2023
             });
         });
         $("#raidoverup").click(function () {
-            $("#selraid").val("all").change();
-            $("#selcraid").val("56").change();
+            $("#selgactiveraids").val("all").change();
+            $("#selContgactiveraids").val("56").change();
             const notes = {
                 id: [],
                 notes: []
@@ -9633,8 +9667,10 @@ Last Modified:  Jan 17,2023
                         async: true,
                         success(data) {
                             const raids = JSON.parse(data);
-                            const raidsB = raids.b;
-                            updateraidover(raids, notes, raidsB);
+                           
+                            updateraidover(raids, notes);
+							
+							
                         }
                     });
                 }
@@ -9684,75 +9720,68 @@ Last Modified:  Jan 17,2023
         });
 
         function GfunkyTableFilters(type) {
-			var ab = city.cid;
-			var acg = city.cg;
-			let hubdata={a: acg, cid: ab};
-			$.ajax({
-                url: 'includes/cgS.php',
-                type: 'POST',
-                async: true,
-                data: hubdata
-            });
-            console.log("Filtering table with type:", type);
+			
+		
+            //console.log("Filtering table with type:", type);
 			setTimeout(function() {
-            // Make sure clc is defined and has a value before calling GfunkyTableFilters()
-			if (type === "raid") {
-                type += "over";
-            }
-            const clist = $(`#sel${type}`).val();
-            const con = Number($(`#selc${type}`).val());
-            let clistbool;
-            let contbool;
-            let citylist = []; // Initialize citylist to an empty array
-           
-			if (clist!="all") {
-                //console.log("1");
-                $.each(clc, function(key, value) {
-                    if (key==clist) {
-                        citylist=value;
-                    }
-                });
-            }
+				// Make sure clc is defined and has a value before calling GfunkyTableFilters()
+				const clist = $(`#sel${type}`).val();
+				const con = Number($(`#selCont${type}`).val());
+				let clistbool;
+				let contbool;
+				let citylist = []; // Initialize citylist to an empty array
+			   
+				if (clist!="all") {
+					//console.log("1");
+					$.each(clc, function(key, value) {
+						if (key==clist) {
+							citylist=value;
+						}
+					});
+				}
 			
             
-            $(`#${type}table tr`).each(function () {
-                if (!($(this).attr("class") !== "nofilter" && $($(this).children()[0]).is("td"))) {
-                    return;
-                }
-                contbool = con === 56 ? true : con === Number($(this).attr("cont"));
-                clistbool = clist === "all" ? true : citylist.indexOf(Number($(this).attr("data"))) > -1;
-                //console.log(clistbool,contbool);
-                if (clistbool && contbool) {
-                    //console.log("show");
-                    $(this).show();
-                    console.log("Showing row with data:", $(this).attr("data"));
-                } else {
-                    //console.log("hide");
-                    console.log("Hiding row with data:", $(this).attr("data"));
-                    $(this).hide();
-                }
-            });
+				$(`#${type}table tr`).each(function () {
+					if (!($(this).attr("class") !== "nofilter" && $($(this).children()[0]).is("td"))) {
+						return;
+					}
+					contbool = con === 56 ? true : con === Number($(this).attr("cont"));
+					clistbool = clist === "all" ? true : citylist.indexOf(Number($(this).attr("data"))) > -1;
+					//console.log(clistbool,contbool);
+					if (clistbool && contbool) {
+						//console.log("show");
+						$(this).show();
+						//$(this).next().next().show();
+						//console.log("Showing row with data:", $(this).attr("data"));
+					} else {
+						//console.log("hide");
+						//console.log("Hiding row with data:", $(this).attr("data"));
+						$(this).hide();
+						//$(this).next().next().hide();
+					}
+				});
 			},1000);
         }
-        $("#selres").change(function () {
-            GfunkyTableFilters("res");
+        $("#selgresources").change(function () {
+            GfunkyTableFilters("gresources");
         });
-        $("#selcres").change(function () {
-            GfunkyTableFilters("res");
+        $("#selContgresources").change(function () {
+            GfunkyTableFilters("gresources");
         });
-        $("#selraid").change(function () {
-            GfunkyTableFilters("raid");
+        $("#selgactiveraids").change(function () {
+            GfunkyTableFilters("gactiveraids");
         });
-        $("#selcraid").change(function () {
-            GfunkyTableFilters("raid");
+        $("#selContgactiveraids").change(function () {
+            GfunkyTableFilters("gactiveraids");
+			//GfunkyTableFilters("gactiveraidsexpand");
         });
         $("#selgtroops").change(function () {
             GfunkyTableFilters("gtroops");
         });
-        $("#selcgtroops").change(function () {
+        $("#selContgtroops").change(function () {
             GfunkyTableFilters("gtroops");
         });
-        $("#selcincoming").change(function () {
+        $("#selContincoming").change(function () {
             if ($("#selcincoming").val() == "all") {
                 $("#incomingtable tr").each(function () {
                     $(this).show();
@@ -9769,8 +9798,9 @@ Last Modified:  Jan 17,2023
                 });
             }
         });
+		
         //update raid overview
-        function updateraidover(raids, notes, ) {
+        function updateraidover(raids, notes) {
             let raidover1body = "<table id='raidmanagertable'>";
             raidover1body += "<thead>";
             raidover1body += "<tr data=''>";
@@ -9798,7 +9828,7 @@ Last Modified:  Jan 17,2023
             const raidover1sort = document.getElementById('raidmanagertable');
             sorttable.makeSortable(raidover1sort);
             // //console.log(notes);
-            let raidover2body = "<table id='raidovertable'>";
+            let raidover2body = "<table id='gactiveraidstable'>";
             raidover2body += "<thead>";
             raidover2body += "<tr data='0'>";
             raidover2body += "<th>Details</th>";
@@ -9823,7 +9853,7 @@ Last Modified:  Jan 17,2023
                 const con = Number(Math.floor(x / 100) + 10 * Math.floor(y / 100));
                 raidover2body += `<tr data='${cid}' cont='${con}'>`;
                 raidover2body += "<td>";
-                raidover2body += "<button id='expandbuttn' class='greenb expsup' style='height: 20px;padding-top: 3px;border-radius:6px;'>Expand</button>";
+                raidover2body += `<button id='expandbuttn' data-id='${cid}' class='greenb expraid' style='height: 20px;padding-top: 3px;border-radius:6px;'>Hide</button>`;
                 raidover2body += "</td>";
                 raidover2body += `<td data='${cid}' class='coordblink raidclink'>${this[1]}</td>`;
                 raidover2body += `<td colspan='2'>${not}</td>`;
@@ -9836,10 +9866,13 @@ Last Modified:  Jan 17,2023
                 raidover2body += `<td>${(this[7]+this[8]+this[9]+this[10]).toLocaleString()}</td>`;
                 raidover2body += `<td>${(this[11]).toLocaleString()}</td>`;
                 raidover2body += "</tr>"
-                raidover2body += "<tr class='expsuptab' style='display:none' data='${cid}' cont='${con}'>";
+				
+				// Expanded Table 
+				
+                raidover2body += `<tr data='${cid}' cont='${con}' class='expsuptab'>`;
                 raidover2body += "<td colspan='12'>";
-                raidover2body += "<div class='beigemenutable' style='width:99%;border-radius: 5px;margin-left: auto;margin-right: auto; dislay:none'>";
-                raidover2body += "<table>";
+                raidover2body += "<div class='beigemenutable' style='width:99%;border-radius: 5px;margin-left: auto;margin-right: auto;'>";
+                raidover2body += "<table id=gactiveraidsexpandtable>";
                 raidover2body += "<thead>";
                 raidover2body += "<th>Recall</th>";
                 //raidover2body+="<th>Recall All</th>";
@@ -9852,7 +9885,7 @@ Last Modified:  Jan 17,2023
                 raidover2body += "<th>Gold</th>";
                 raidover2body += "<th>Timing</th>";
                 raidover2body += "</thead>";
-                raidover2body += "<tbody data='${cid}' cont='${con}'>";
+                raidover2body += "<tbody>";
                 for (const i in this[12]) {
                     const dungid = this[12][i][8];
                     const dungx = Number(dungid % 65_536);
@@ -9860,8 +9893,8 @@ Last Modified:  Jan 17,2023
                     const raidfreq = this[12][i][4];
                     const recallraidfunky = this[12][i][0];
                     const recallallraidfunky = this[0];
-                    raidover2body += "<tr>";
-                    raidover2body += `<td><button data="${recallraidfunky}" class='greenb recraid' style='height: 20px;padding-top: 3px;border-radius:6px;'>Recall</button></td>`;
+                    raidover2body += `<tr data='${cid}' cont='${con}'>`;
+                    raidover2body += `<td><button data="${recallraidfunky}" class='greenb recraid' style='height: 20px;padding-top: 3px;border-radius:6px;'>Once</button></td>`;
                     //raidover2body += `<td><button data="${recallraidfunky}" dataset="${recallallraidfunky}'  class='greenb recallraid' style='height: 20px;padding-top: 3px;border-radius:6px;'>Recall All</button></td>`;
                     raidover2body += `<td colspan='2' class='coordblink shcitt' data='${dungid}' >${this[12][i][2]}</td>`;
                     raidover2body += `<td class='coordblink shcitt' data='${dungid}'>${dungx}:${dungy}</td>`;
@@ -9882,10 +9915,10 @@ Last Modified:  Jan 17,2023
             });
             raidover2body += "</tbody>";
             raidover2body += "</table>";
-            $("#raidovertable").html(raidover2body);
-            $("#raidovertable td").css("text-align", "center");
-            const raidoversort = document.getElementById('raidovertable');
-            sorttable.makeSortable(raidoversort);
+            $("#gactiveraidstable").html(raidover2body);
+            $("#gactiveraidstable td").css("text-align", "center");
+            const raidoversort = document.getElementById('gactiveraidstable');
+           
             $(".raidclink").click(function () {
                 const aa = $(this).attr("data");
                 $("#organiser").val("all").change();
@@ -9928,12 +9961,28 @@ Last Modified:  Jan 17,2023
                 //var outputFile = window.prompt("What do you want to name your output file (Note: This won't have any effect on Safari)") || 'export';
                 const outputFile = `RaidSum${today.getDate()}${Number(today.getMonth()+1)}${today.getFullYear()}.csv`;
                 // CSV
-                exportTableToCSV(document.getElementById('raidovertable'), outputFile);
+                exportTableToCSV(document.getElementById('gactiveraidstable'), outputFile);
             });
-            $(document).on('click', '.expsup', function () {
-                this.innerHTML = this.innerHTML === "Expand" ? "Hide" : "Expand";
+            $(document).on('click', '.expraid', function () {
+                this.innerHTML = this.innerHTML === "Hide" ? "Show" : "Hide";
                 $(this).parent().parent().next().toggle();
             });
+			$("#expandAllexpands").click(function(){
+				if ($("#expandAllexpands").text() == "Expand All") {
+					$("#expandAllexpands").text("Hide All");
+				} else {
+					$("#expandAllexpands").text("Expand All");
+				}
+				$("#gactiveraidstable #expandbuttn").each(function(){
+					$(this).click();
+				});
+			});
+			$(".expsuptab").toggle();
+
+
+
+
+
         }
         //update support summary
         function updatesupport(data) {
@@ -10158,7 +10207,7 @@ Last Modified:  Jan 17,2023
         function updateResources(data) {
             let restabb = "<thead>";
             restabb += "<tr data='0'>";
-            restabb += "<th rowspan='2'>Name</th>";
+            restabb += "<th rowspan='2' colspan='2'>City Name</th>";
             restabb += "<th rowspan='2' colspan='2'>Notes</th>";
             restabb += "<th rowspan='2'>Coords</th>";
             restabb += "<th colspan='2'>Wood</th>";
@@ -10197,7 +10246,7 @@ Last Modified:  Jan 17,2023
                 const y = Number((cid - x) / 65_536);
                 const con = Number(Math.floor(x / 100) + 10 * Math.floor(y / 100));
                 restabb += `<tr data='${cid}' cont='${con}'>`;
-                restabb += `<td id='cn${cid}' class='coordblink'>${this.city}</td>`;
+                restabb += `<td id='cn${cid}' class='coordblink' colspan='2'>${this.city}</td>`;
                 restabb += `<td colspan='2'>${this.reference}</td>`;
                 restabb += `<td class='coordblink shcitt' data='${cid}'>${x}:${y}</td>`;
                 let resources;
@@ -10246,11 +10295,11 @@ Last Modified:  Jan 17,2023
                 restabb += "</tr>";
             });
             restabb += "</tbody>";
-            $("#restable").html(restabb);
-            $("#restable td").css("text-align", "center");
-            //$("#restable").fixedHeaderTable({ cloneHeadToFoot: true });
-            const restablesort = document.getElementById('restable');
-            sorttable.makeSortable(restablesort);
+            $("#gresourcestable").html(restabb);
+            $("#gresourcestable td").css("text-align", "center");
+            //$("#ResourceTableGFunky").fixedHeaderTable({ cloneHeadToFoot: true });
+            const ResourceTableGFunkysort = document.getElementById('gresourcestable');
+            sorttable.makeSortable(ResourceTableGFunkysort);
             let tottab = "<div id='rsum' class='beigemenutable scroll-pane' style='width: 99%;height: AUTO !important;max-height: 85%;margin-left: 4px; border-radius: 7px;border: 3px ridge #99805D;'>";
             tottab += "<table>";
             tottab += "<tr>";
@@ -10288,7 +10337,7 @@ Last Modified:  Jan 17,2023
                 //var outputFile = window.prompt("What do you want to name your output file (Note: This won't have any effect on Safari)") || 'export';
                 const outputFile = `ResSum${today.getDate()}${Number(today.getMonth()+1)}${today.getFullYear()}.csv`;
                 // CSV
-                exportTableToCSV(document.getElementById('restable'), outputFile);
+                exportTableToCSV(document.getElementById('ResourceTableGFunky'), outputFile);
             });
         }
         //update troops summary
