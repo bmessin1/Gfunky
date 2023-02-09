@@ -1,14 +1,14 @@
 // ==UserScript==
-// @name gfunky3
+// @name Gfunky3
 // @namespace www.tampermonkey.com
 // @version 3.2.0.2.7
-// @description gfunky3
+// @description Gfunky3
 // @author Greety
 // @match https://*.crownofthegods.com/*
 // @include https://*.crownofthegods.com/?s=*
 // @grant none
-// @updateURL https://raw.githubusercontent.com/bmessin1/Gfunky/master/gfunky3.user.js
-// @downloadURL https://raw.githubusercontent.com/bmessin1/Gfunky/master/gfunky3.user.js
+// @updateURL https://raw.githubusercontent.com/bmessin1/Gfunky/master/Gfunky3.user.js
+// @downloadURL https://raw.githubusercontent.com/bmessin1/Gfunky/master/Gfunky3.user.js
 // ==/UserScript==
 
 
