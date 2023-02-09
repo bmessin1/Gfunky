@@ -1,21 +1,21 @@
 // ==UserScript==
-// @name Gfunky3
+// @name gfunky3
 // @namespace www.tampermonkey.com
-// @version 3.2.0.2.7
-// @description Gfunky3
+// @version 3.2.1.2.9
+// @description gfunky3
 // @author Greety
 // @match https://*.crownofthegods.com/*
 // @include https://*.crownofthegods.com/?s=*
 // @grant none
-// @updateURL https://raw.githubusercontent.com/bmessin1/Gfunky/master/Gfunky3.user.js
-// @downloadURL https://raw.githubusercontent.com/bmessin1/Gfunky/master/Gfunky3.user.js
+// @updateURL https://raw.githubusercontent.com/bmessin1/Gfunky/master/gfunky3.user.js
+// @downloadURL https://raw.githubusercontent.com/bmessin1/Gfunky/master/gfunky3.user.js
 // ==/UserScript==
 
 
 /*
 
-Version:  3.2.0.2.7
-Last Modified:  Feb 7,2023
+Version:  3.2.1.2.9
+Last Modified:  Feb 9,2023
 
 
  */
@@ -50,9 +50,9 @@ Last Modified:  Feb 7,2023
 						<br>
 						<div id='bottomcrownpic'></div>
 						<span style='margin-left: 5%;'>
-							<h4 style='text-align:center;color:green;'>Update 3.2.0.2.7</h4>
+							<h4 style='text-align:center;color:green;'>Update 3.2.1.2.9</h4>
 							<br>
-							<h4 style='text-align:center;color:green;'>Feb 7, 2023</h4>
+							<h4 style='text-align:center;color:green;'>Feb 9, 2023</h4>
 						</span>
 						<br>
 						<br>
@@ -4724,24 +4724,38 @@ Last Modified:  Feb 7,2023
             var newtd="<td></td>";
 			const arrivalTime = `${locktimeh}:${locktimem}:${locktimes} ${arrivaltimemonth}/${arrivaltimedate}`;
 			const travelTime = `${travelingth}:${travelingtm}:${travelingts}`;
-			
+			const attackingAlliance = $(':nth-child(8)', this);
+			let allianceName = '';
+
+			if (attackingAlliance.length) {
+			  if (attackingAlliance[0].textContent) {
+				allianceName = attackingAlliance[0].textContent.trim();
+			  } else if (attackingAlliance[0].innerText) {
+				allianceName = attackingAlliance[0].innerText.trim();
+			  }
+			}
 			
             if (addt.children().length === 14) {
                 $(this).append(newtd);
                $(':nth-child(15)', this).text(arrivalTime);
                 if($(':nth-child(2)',this).text()=="Sieging"){
-					 var percentage = parseInt($(':nth-child(14)',this));
-					if (percentage >= 0 && percentage <= 20) {
-						$(':nth-child(15)',this).css("color", "#ff0000").css("font-weight", "normal").css("font-size", "10px");
-						
-					} else if (percentage >= 21 && percentage <= 50) {
-						$(':nth-child(15)',this).css("color", "#c00000").css("font-weight", "normal").css("font-size", "12px");
-						
-					} else if (percentage >= 51 && percentage <= 100) {
-						$(':nth-child(15)',this).css("color", "#910101").css("font-weight", "bold").css("font-size", "14px");
-						
+					if (allianceName === poll2.player.planame) {
+						$(this).children().css("color", "green").css("font-style", "italic").css("font-weight", "bold").css("font-size", "8px");
 					}
-                    $(this).children().css("color", "red").css("font-weight", "bold");
+					else{
+						const percentage = parseInt($(':nth-child(14)', this).text().trim());
+						if (!isNaN(percentage)) {
+						  if (percentage >= 0 && percentage <= 20) {
+							$(this).css("color", "#ff0000").css("font-weight", "normal").css("font-size", "10px");
+						  } else if (percentage >= 21 && percentage <= 50) {
+							$(this).css("color", "#c00000").css("font-weight", "bold").css("font-size", "12px");
+						  } else if (percentage >= 51 && percentage <= 100) {
+							$(this).css("color", "#ffffff").css("font-weight", "normal").css("font-size", "14px").css("background", "red");
+						  }
+						}
+
+                   // $(this).children().css("color", "red").css("font-weight", "bold");
+					}
                 }
 				if ($(':nth-child(2)',this).text()=="Internal Attack"){
 					 $(this).children().css("color", "green").css("font-style", "italic").css("font-weight", "bold").css("font-size", "8px");
@@ -4751,23 +4765,28 @@ Last Modified:  Feb 7,2023
                 $(this).append(newtd);
                $(':nth-child(16)', this).text(travelTime);
                 if($(':nth-child(2)',this).text()=="Sieging"){
-					var percentage = parseInt($(':nth-child(14)',this));
-					if (percentage >= 0 && percentage <= 20) {
-						$(':nth-child(15)',this).css("color", "#ff0000").css("font-weight", "normal").css("font-size", "14px");
-					
-						} else if (percentage >= 21 && percentage <= 50) {
-						$(':nth-child(15)',this).css("color", "#c00000").css("font-weight", "normal").css("font-size", "16px");
-						
-					} else if (percentage >= 51 && percentage <= 100) {
-						$(':nth-child(15)',this).css("color", "#910101").css("font-weight", "bold").css("font-size", "18px");
-						
+					if (allianceName === poll2.player.planame) {
+						$(this).children().css("color", "green").css("font-style", "italic").css("font-weight", "bold").css("font-size", "8px");
 					}
-                    $(this).children().css("color", "red").css("font-weight", "bold");
-					
+					else{
+						const percentage = parseInt($(':nth-child(14)', this).text().trim());
+						if (!isNaN(percentage)) {
+						  if (percentage >= 0 && percentage <= 20) {
+							$(this).css("color", "#ff0000").css("font-weight", "normal").css("font-size", "10px");
+						  } else if (percentage >= 21 && percentage <= 50) {
+							$(this).css("color", "#c00000").css("font-weight", "bold").css("font-size", "12px");
+						  } else if (percentage >= 51 && percentage <= 100) {
+							$(this).css("color", "#ffffff").css("font-weight", "normal").css("font-size", "14px").css("background", "red");
+						  }
+						}
+
+                    //$(this).children().css("color", "red").css("font-weight", "bold");
+					}
                 }
 				if($(':nth-child(2)',this).text()=="Internal Attack"){
                     $(this).children().css("color", "green").css("font-style", "italic").css("font-weight", "bold").css("font-size", "8px");
                 }
+				
             }
             if ($(':nth-child(2)',this).text()=="-") {
 // below will return -1 if calculated speed is not found inside the speed arrays and the correct index if it is found within the speed arrays
