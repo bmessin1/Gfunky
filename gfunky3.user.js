@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name gfunky3
 // @namespace www.tampermonkey.com
-// @version 3.2.1
+// @version 3.2.1.4.21
 // @description gfunky3
 // @author Greety
 // @match https://*.crownofthegods.com/*
@@ -10,17 +10,18 @@
 // @updateURL https://raw.githubusercontent.com/bmessin1/Gfunky/master/gfunky3.user.js
 // @downloadURL https://raw.githubusercontent.com/bmessin1/Gfunky/master/gfunky3.user.js
 // ==/UserScript==
-
-
-
 /*
 
-Version:  3.2.1.3.31
-Last Modified:  Mar 31,2023
+Version:  3.2.1.4.21
+Last Modified:  April 21,2023
 
 
  */
 (function() {
+
+
+
+
 
   $(() => {
 	const startupWindowContent = `
@@ -54,7 +55,7 @@ Last Modified:  Mar 31,2023
 			  <span style='margin-left: 5%;'>
 				<h4 style='text-align:center;color:green;'>Update 3.2.1</h4>
 				<br>
-				<h4 style='text-align:center;color:green;'>Mar 31, 2023</h4>
+				<h4 style='text-align:center;color:green;'>Apr 21, 2023</h4>
 			  </span>
 			  <br>
 			  <br>
@@ -358,55 +359,55 @@ Last Modified:  Mar 31,2023
 					id: [547, 548, 549, 550],
 					buildable: true,
 					shortcut: "1",
-					movable: true
+					//movable: true
 				},
 				ranger_post: {
 					id: [543, 544, 545, 546],
 					buildable: true,
 					shortcut: "2",
-					movable: true
+					//movable: true
 				},
 				snag_barricade: {
 					id: [567, 568, 569, 570],
 					buildable: true,
 					shortcut: "6",
-					movable: true
+					//movable: true
 				},
 				triari_post: {
 					id: [539, 540, 541, 542],
 					buildable: true,
 					shortcut: "3",
-					movable: true
+					//movable: true
 				},
 				equine_barricade: {
 					id: [559, 560, 561, 562],
 					buildable: true,
 					shortcut: "7",
-					movable: true
+					//movable: true
 				},
 				priestess_post: {
 					id: [551, 552, 553, 554],
 					buildable: true,
 					shortcut: "4",
-					movable: true
+					//movable: true
 				},
 				rune_barricade: {
 					id: [563, 564, 565, 567],
 					buildable: true,
 					shortcut: "8",
-					movable: true
+					//movable: true
 				},
 				ballista_post: {
 					id: [555, 556, 557, 558],
 					buildable: true,
 					shortcut: "5",
-					movable: true
+					//movable: true
 				},
 				veiled_barricade: {
 					id: [571, 572, 573, 574],
 					buildable: true,
 					shortcut: "9",
-					movable: true
+					//movable: true
 				},
 
 			};
@@ -1414,7 +1415,7 @@ cotgsubscribe.subscribe( "regional", function( data ) {});
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 250_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 350_000, 1_350_000],
 					}, {
 						layoutName: " 3s (216.6K/434) Vanq Galley+Senator",
-						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBBBBBGB#----##----#BBBGBGBBB#----#######BGBBTBBGB#######---X#BGBGBGBGB#----##-SS-#BGBGBGBGB#----##-MD-##BBGBGBB##----##-S---##BBBBB##BBBB-##------#######BBVVBB##---------#---BVTTVB##--------J#---BVTTTV###-------P#---BBVTT#####------P#----BBV########################",
+						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBBBBBGB#----##----#BBBGBGBBB#----#######BGBBTBBGB#######----#BGBGBGBGB#SDPX##----#BGBGBGBGB#SMP-##----##BBGBGBB##----##-----##BBBBB##BBBBZ##------#######BBVVBB##---------#---BV##VB##---------#---BV###V###--------#---BBV#######-------#---JBBV########################",
 						layoutRemark: "vanq+galley+senator",
 						layoutNote: "216600 inf and 434 galley @ 16.4 days",
 						layoutTroops: [0, 0, 0, 0, 0, 216_599, 0, 0, 0, 0, 0, 0, 0, 0, 434, 0, 0],
@@ -1455,11 +1456,11 @@ cotgsubscribe.subscribe( "regional", function( data ) {});
 						layoutTroops: [0, 0, 0, 0, 0, 0, 156_600, 0, 0, 0, 0, 0, 0, 0, 314, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 250_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 350_000, 350_000],
 					}, {
-						layoutName: " 6s (173.3K/347) Sorc Galley",
-						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##JJJJJJJ##----##----#BBBBBBBBB#----##----#JJJJJJJJJ#----#######BBBBTBBBB#######----#JJJJJJJJJ#----##----#BBBBBBBBB#----##----##JJJJJJJ##BJ--##-----##BBBBB##BBBBE##------#######BBVVBB##---------#SS-BV##VB##---------#M--BV###V###--------#P--BBV#######-------#X--ZBBV########################",
+						layoutName: " 6s (176K/354) Sorc Galley",
+						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##JJJJJJJ##----##----#BBBBBBBBB#----##----#JJJJJJJJJ#----#######BBBBTBBBB#######----#JJJJJJJJJ#----##----#BBBBBBBBB#----##----##JJJJJJJ##BJ--##-----##BBBBB##BBBBB##------#######BBVVBB##---------#SS-BV##VB##---------#M--BV###V###--------#P--BBV#######-------#X--ZBBV########################",
 						layoutRemark: "sorc/galley",
-						layoutNote: "173299 sorc and 347 galley @ 25 days",
-						layoutTroops: [0, 0, 0, 0, 0, 0, 173_299, 0, 0, 0, 0, 0, 0, 0, 347, 0, 0],
+						layoutNote: "176599 sorc and 354 galley @ 25 days",
+						layoutTroops: [0, 0, 0, 0, 0, 0, 176_599, 0, 0, 0, 0, 0, 0, 0, 354, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 250_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 350_000, 350_000],
 					}, {
 						layoutName: " 7s (186.6K/374) Sorc Galley",
@@ -2057,6 +2058,7 @@ cotgsubscribe.subscribe( "regional", function( data ) {});
 
 
 	const emptyspots = ",.;:#-T";
+	
 	let beentoworld = false;
 	let dhruvboss = 0;
 	let shrinePlayers = {
@@ -2191,7 +2193,7 @@ cotgsubscribe.subscribe( "regional", function( data ) {});
 						coonvalue();
 
 					}
-
+					
 				}, false);
 				open.apply(this, arguments);
 			};
@@ -3722,7 +3724,9 @@ lastThreeTabs.forEach(({
 				}
 			});
 		});
-		 $("#Aexport").click(function () {
+		//Updated 4.10.23 Allows the imports/mails to include the attack strings inside tables
+
+	 $("#Aexport").click(function () {
             const Aexp = {
                 x: [],
                 y: [],
@@ -3756,6 +3760,51 @@ lastThreeTabs.forEach(({
         });
 
     $(document).ready(function () {
+		//Mail Filter Search Added 4.11.23
+		const searchMail = $('<input type="text" id="searchInput" placeholder="Search Mail...">');
+		const mailsTabs = $('#mailsTabs');
+
+		searchMail.appendTo(mailsTabs.find('ul').css('text-align', 'center'));
+
+		const searchInput = document.getElementById('searchInput');
+		const mailTable = document.getElementById('mailTable');
+		const outboxTable = document.getElementById('outboxTable');
+
+		searchInput.addEventListener('keyup', function () {
+		  const searchTerm = searchInput.value.toLowerCase();
+
+		  const mailSenderCells = mailTable.querySelectorAll('#mailTable #mtBody td#mailSender');
+		  const mailTitleCells = mailTable.querySelectorAll('#mailTable #mtBody td#mailTitle');
+		  for (let i = 0; i < mailSenderCells.length; i++) {
+			const senderCell = mailSenderCells[i];
+			const titleCell = mailTitleCells[i];
+			const row = senderCell.parentNode;
+			const senderText = senderCell.innerText.toLowerCase();
+			const titleText = titleCell.innerText.toLowerCase();
+			if (senderText.includes(searchTerm) || titleText.includes(searchTerm)) {
+			  row.style.display = '';
+			} else {
+			  row.style.display = 'none';
+			}
+		  }
+
+		  const outboxSenderCells = outboxTable.querySelectorAll('#outboxTable #outbBody td#mailTo');
+		  const outboxTitleCells = outboxTable.querySelectorAll('#outboxTable #outbBody td#mailTitle');
+		  for (let i = 0; i < outboxSenderCells.length; i++) {
+			const senderCell = outboxSenderCells[i];
+			const titleCell = outboxTitleCells[i];
+			const row = senderCell.parentNode;
+			const senderText = senderCell.innerText.toLowerCase();
+			const titleText = titleCell.innerText.toLowerCase();
+			if (senderText.includes(searchTerm) || titleText.includes(searchTerm)) {
+			  row.style.display = '';
+			} else {
+			  row.style.display = 'none';
+			}
+		  }
+		});
+		
+		
 	  // Define a function to check the value of #mailrSub and toggle the visibility of #scheduleDiv
 	  function checkMailrSub() {
 		var mailrSub = $("#mailrSub").text().toLowerCase();
@@ -3794,23 +3843,27 @@ lastThreeTabs.forEach(({
 			// Call the function to reset the attack orders
 			resetAttackOrders();
 			var content = "";
-			$("#mailrMess p").each(function() {
+			$("#mailrMess p, #mailrMess td").each(function() {
 			  content += $(this).html().replace(/<br\s*[\/]?>/gi, "\n") + "\n";
 			});
 			Aimp(content);
 			alert("Any previous orders have been cleared. New orders have been imported to the Attack Scheduler and are ready to be used!");
-
+			setTimeout(function() {
+				// Remove the alert after 5 seconds
+				$('.alert').remove();
+			}, 2000);
 		});
 	});
-
-
 
 
 let jsonStrings = [];
 let orderCounts = {};
 
 function Aimp(str) {
-  const lines = str.split("\n");
+  // Remove HTML tags and trim the string
+  const cleanStr = str.replace(/<\/?[^>]+(>|$)/g, "").trim();
+
+  const lines = cleanStr.split("\n");
   for (let line of lines) {
     const match = line.match(/{.*}/);
     if (match) {
@@ -3822,35 +3875,39 @@ function Aimp(str) {
       const nameWithCount = `${orderName} #${orderCounts[orderName]}`;
       jsonStrings.push({ name: nameWithCount, json: match[0] });
       $(`#orders-dropdown`).append(`<option value=${jsonStrings.length - 1}>${nameWithCount}</option>`);
-
-
-
+      console.log(nameWithCount);
     }
   }
+
   // regenerate the dropdown options
   $("#orders-dropdown").empty();
   $("#orders-dropdown").append(`<option value="">Choose Your Attack Order </option>`);
-  for (let i = 0; i < jsonStrings.length; i++) {
-    $(`#orders-dropdown`).append(`<option value=${i}>${jsonStrings[i].name}</option>`);
+
+  // set the default selection to the first string if there is only one string
+  if (jsonStrings.length === 1) {
+    $("#orders-dropdown").append(`<option value="0" selected>${jsonStrings[0].name}</option>`);
+    updateForm(0);
+  } else {
+    // add other strings to the dropdown
+    for (let i = 0; i < jsonStrings.length; i++) {
+      if (i !== 0 || jsonStrings.length > 1) {
+        $(`#orders-dropdown`).append(`<option value=${i}>${jsonStrings[i].name}</option>`);
+      }
+    }
   }
 }
 
-// create the dropdown
-$("#orders").append(`<select id="orders-dropdown" class='greenb' style='width:100%; height:30px; font-size:12px; font-family:trojan; text-align:center'><option>No Attack Orders</option></select>`);
-
-// handle the change event of the dropdown
-$("#orders-dropdown").change(function () {
-	// Check if the orderName string contains the type of attack
-      const attackType = ["Assault", "Siege", "Plunder", "Scout"];
-      const selectedIndex = $(this).val();
-		const jsonString = jsonStrings[selectedIndex].json;
-		const name = jsonStrings[selectedIndex].name;
-	for (let i = 0; i < attackType.length; i++) {
-		if (name.includes(attackType[i])) {
-			$(`#realtype`).val(i).change();
-    break;
+function updateForm(selectedIndex) {
+  // Check if the orderName string contains the type of attack
+  const attackType = ["Assault", "Siege", "Plunder", "Scout"];
+  const jsonString = jsonStrings[selectedIndex].json;
+  const name = jsonStrings[selectedIndex].name;
+  for (let i = 0; i < attackType.length; i++) {
+    if (name.includes(attackType[i])) {
+      $(`#realtype`).val(i).change();
+      break;
+    }
   }
-}
   const Aexp = JSON.parse(jsonString);
   for (let i = 1; i <= Aexp.x.length; i++) {
     $(`#t${i}x`).val(Aexp.x[i - 1]);
@@ -3861,29 +3918,43 @@ $("#orders-dropdown").change(function () {
   $("#attackMin").val(Aexp.time[1]);
   $("#attackSec").val(Aexp.time[2]);
   $("#attackDat").val(Aexp.time[3]);
+}
+
+// create the dropdown
+$("#orders").append(`<select id="orders-dropdown" class='greenb' style='width:100%; height:30px; font-size:12px; font-family:trojan; text-align:center'><option>No Attack Orders</option></select>`);
+
+// handle the change event of the dropdown
+$("#orders-dropdown").change(function () {
+  const selectedIndex = $(this).val();
+  updateForm(selectedIndex);
 });
+
 
 $("#ClearAttack").click(function() {
  // Call the function to reset the attack orders
 resetAttackOrders();
 });
  function resetAttackOrders() {
-  // Clear the orders dropdown
-  $("#orders-dropdown").empty();
-  $("#orders-dropdown").append(`<option value="">No Attack Orders</option>`);
-
   // Reset the x, y, type, and time values
-  for (let i = 0; i < 20; i++) {
+  for (let i = 1; i <= 20; i++) {
     $(`#t${i}x`).val("");
     $(`#t${i}y`).val("");
+    $(`#type${i}`).val("");
   }
-  jsonStrings = [];
-  orderCounts = {};
+
   // Reset the attack hour, minute, second, and date values
   $("#attackHr").val("10");
   $("#attackMin").val("00");
   $("#attackSec").val("00");
   $("#attackDat").val("");
+
+  // Reset the JSON strings and order counts
+  jsonStrings = [];
+  orderCounts = {};
+
+  // Regenerate the dropdown options
+  $("#orders-dropdown").empty();
+  $("#orders-dropdown").append(`<option value="">No Attack Orders</option>`);
 }
 
 		// Near Defense Table
@@ -5896,7 +5967,16 @@ resetAttackOrders();
 	Predicting Incoming Troops Section
 
 	*/
-	$().ready(function() {
+	$().ready(function() {	
+	
+
+	
+	
+	
+		
+		
+		
+
 		//adding 2 elements into the html
 		var incomingtabledata = $("#incomingsAttacksTable").children().children().children();
 		$("#incomingsAttacksTable table thead tr th:nth-child(2)").width(140);
@@ -7531,37 +7611,64 @@ resetAttackOrders();
 					break;
 			}
 		});
+      //Added 4.5.23
 
+        function formatTableCells() {
+            $('#playerRankings table tr, #allianceScoreRankings table tr').each(function() {
+                $(this).find('td').each(function() {
+                    const cellContent = $(this).text();
+                    const num = parseFloat(cellContent);
+                    if (!isNaN(num) && num.toString() === cellContent) {
+                        $(this).text(num.toLocaleString());
+                    }
+                });
+            });
+        }
+
+
+        $("#rankings, #grran0,ggrran2, #ui-id-95, #ui-id-110, #ui-id-94").click(function() {
+            // Add a setTimeout to give some time for the table to update before formatting
+            setTimeout(function() {
+                formatTableCells();
+            }, 2500); // Adjust the delay (in milliseconds) based on your specific use case
+        });
 		// Added 3.16.23 Fact
 		//Updated to Include Officer Version of the Notes Section to allow officers to also see the highlighted HLT 3.23.23 Fact
 		//updated 3.28.23 Fact - Error When Running non userscript. could not find input val if player doesnt have access
 		var inputVal = $(this).find("td:nth-child(11) input");
 
 
-		$(document).ready(function() {
-		  $("#favoredPic, #favoredSpan, #ui-id-39, #playerFavorings, allianceFavorings").click(function() {
-			setTimeout(function() {
-				$("#favoredcitiesBody tr").each(function() {
-					var priority = $(this).find("td:nth-child(9)").attr("sorttable_customkey");
-					var inputVal = $(this).find("td:nth-child(11) input");
+        $(document).ready(function () {
+          $("#favoredPic, #favoredSpan, #ui-id-39, #playerFavorings, allianceFavorings").click(function () {
+            setTimeout(function () {
+              $("#favoredcitiesBody tr").each(function () {
+                var priority = $(this).find("td:nth-child(9)").attr("sorttable_customkey");
+                var inputVal = $(this).find("td:nth-child(11) input");
 
-					if (priority == "1") {
-					  $(this).css("background", "#FF9B9B");
-					} else if (priority == "2") {
-					  $(this).css("background", "#FEC861");
-					} else if (priority == "3") {
-					  $(this).css("background", "#FBFA84");
-					} else if (priority == "4" && inputVal.length > 0 && inputVal.val().indexOf("HLT") !== -1) {
-						$(this).css("background", "#00ff19");
-					} else if (priority == "4" && $(this).find("td:nth-child(11)").text().indexOf("HLT") !== -1) {
-						$(this).css("background", "#00ff19");
-					} else if (priority == "4") {
-					   $(this).css("background", "#A7FF9B");
-					}
-				});
-			}, 1000); // 1000 milliseconds = 1 second delay
-		  });
-		});
+                if (priority == "1") {
+                  $(this).css("background", "#FF9B9B");
+                } else if (priority == "2") {
+                  $(this).css("background", "#FEC861");
+                } else if (priority == "3") {
+                  $(this).css("background", "#FBFA84");
+                } else if (
+                  priority == "4" &&
+                  inputVal.length > 0 &&
+                  inputVal.val().toLowerCase().indexOf("hlt") !== -1
+                ) {
+                  $(this).css("background", "#00ff19");
+                } else if (
+                  priority == "4" &&
+                  $(this).find("td:nth-child(11)").text().toLowerCase().indexOf("hlt") !== -1
+                ) {
+                  $(this).css("background", "#00ff19");
+                } else if (priority == "4") {
+                  $(this).css("background", "#A7FF9B");
+                }
+              });
+            }, 1000); // 1000 milliseconds = 1 second delay
+          });
+        });
 
 
 
@@ -7815,8 +7922,26 @@ resetAttackOrders();
 	}
 	//incoming and outoging summary window from inside the ingame attacks (NOT PART OF  GFUNKY OVERVIEWS)
 	$().ready(function() {
-		const outsumbut = "<button style='margin-left:10%;font-size: 12px;width: 150px;' class='greenb regButton' id='outsumGo'>Outgoing Summary</button>";
-		const incsumbut = "<button style='margin-left:10%;font-size: 12px;width: 150px;' class='greenb regButton' id='incsumGo'>Incomings Summary</button>";
+		
+		$('#ui-id-35').text("Outgoing");
+		$('#ui-id-36').text("Off History");
+		$('#ui-id-37').text("Incoming");
+		$('#ui-id-38').text("Def History");
+		$('#ui-id-39').text("Blessed");
+		
+		const firstparaAIP = document.querySelector('#firstparaAIP');
+const mycitiesonlyOutgoings = document.querySelector('#mycitiesonlyOutgoings');
+
+if (firstparaAIP && mycitiesonlyOutgoings) {
+  firstparaAIP.insertBefore(mycitiesonlyOutgoings, firstparaAIP.firstChild);
+}
+
+		
+		
+		
+		const outsumbut = "<button style='margin-left:5%;font-size: 12px;width: 150px;' class='greenb regButton' id='outsumGo'>Outgoing Summary</button>";
+		const incsumbut = "<button style='margin-left:5%;font-size: 12px;width: 150px;' class='greenb regButton' id='incsumGo'>Incomings Summary</button>";
+		
 		$("#contselectorAIPog").after(outsumbut);
 		$("#contselectorAIPic").after(incsumbut);
 		$("#outsumGo").click(function() {
@@ -7826,6 +7951,151 @@ resetAttackOrders();
 			makeincsum();
 		});
 	});
+
+	const addSearchFilter = (tbodyId, afterElementId, buffer = 500) => {
+  const tbody = document.getElementById(tbodyId);
+  const afterElement = document.getElementById(afterElementId);
+  let timerId;
+
+  if (tbody && afterElement) {
+    // Insert search input element after specified element
+    const searchInput = document.createElement('input');
+    searchInput.setAttribute('type', 'text');
+    searchInput.setAttribute('id', `${tbodyId}-searchInput`);
+    searchInput.setAttribute('placeholder', 'Search...');
+    searchInput.setAttribute('style', 'font-size: 10px;'); // Set font-size
+    afterElement.after(searchInput);
+
+    // Add event listeners and observers
+    const searchTable = () => {
+      clearTimeout(timerId);
+      timerId = setTimeout(() => {
+        const searchTerm = searchInput.value.toLowerCase();
+        const rows = tbody.querySelectorAll('tr');
+        rows.forEach(row => {
+          let matchFound = false;
+          row.querySelectorAll('td, td span').forEach(td => {
+            if (td.innerText.toLowerCase().includes(searchTerm)) {
+              matchFound = true;
+            }
+          });
+          if (matchFound) {
+            row.classList.remove('hideIA');
+          } else {
+            row.classList.add('hideIA');
+          }
+        });
+      }, buffer);
+    };
+
+    searchInput.addEventListener('keyup', searchTable);
+
+    const observer = new MutationObserver(searchTable);
+    const tableBody = tbody.querySelector('tr');
+    if (tableBody) {
+      observer.observe(tableBody, { childList: true });
+    }
+  }
+};
+
+
+// Apply filter/search function to multiple tables
+addSearchFilter('iaBody', 'incsumGo');
+addSearchFilter('oaBody', 'outsumGo');
+addSearchFilter('favoredcitiesBody', 'contselectorAIP');
+addSearchFilter('dhBody', 'contselectorAIPdH');
+addSearchFilter('oHBody', 'contselectorAIPoH');
+	
+
+$('#outgoingAttacksTable').attr('style', 'height: calc(100% - 70px) !important;');
+
+
+
+
+  const attackTypeCountODiv = `<div id="outgoingTypeCount" style="text-align: center; margin-left: auto; margin-right: auto; background: tan; border: 3px #886f53 ridge; border-radius: 6px; min-width: 60%; max-width: 90%; font-size: 12px; font-style: italic; font-weight: 900; color: #000;"><p id='countOP'></p></div>`;
+
+   $("#outgoingAttacksTable").after(attackTypeCountODiv);
+   
+function countOAttacks() {
+  // Get the table body
+  const tableBody = document.getElementById("oaBody");
+
+  // Create an object to store the counts
+  const counts = {};
+
+  // Get the <p> element with an ID of "countP"
+  const countP = document.getElementById("countOP");
+
+  // Loop through each row in the table body
+  for (let i = 0; i < tableBody.children.length; i++) {
+    const row = tableBody.children[i];
+
+   // Check if the row and the necessary cells exist before accessing their textContent properties
+    if (!row || !row.children[2] || !row.children[10] || row.children[2].classList.contains('hideOA') || row.children[10].classList.contains('hideOA') || row.children[2].classList.contains('hideIA') || row.children[10].classList.contains('hideIA')) {
+      continue;
+    }
+ 
+
+    const attackType = row.children[2].textContent;
+    const attackingTS = row.children[10].textContent;
+
+    const parsedAttackingTS = parseInt(attackingTS);
+
+    // If the attacking TS is less than 3500, add 1 to the "Fakes" key in the counts object and skip this row
+    if (parsedAttackingTS < 3500) {
+      counts["Fakes"] = (counts["Fakes"] || 0) + 1;
+      continue;
+    }
+
+    // Increase the count for this attack type
+    counts[attackType] = (counts[attackType] || 0) + 1;
+  }
+
+  // If the counts object is empty, display a message indicating that there are no attacks to count
+  if (Object.keys(counts).length === 0) {
+    countP.textContent = "Click Me to Show Attack Types";
+  } else {
+    // Sort the keys alphabetically, except for the "Fakes" key which should always come last
+    const keys = Object.keys(counts).sort();
+    const fakesIndex = keys.indexOf("Fakes");
+    if (fakesIndex > -1) {
+      keys.splice(fakesIndex, 1);
+    }
+    keys.push("Fakes");
+
+    // Create a new text content with the attack type counts
+    let newTextContent = "";
+    for (const key of keys) {
+      newTextContent += `${key}: ${counts[key]}    `;
+    }
+
+    // Replace the existing text content of the <p> element with the new text content
+    countP.textContent = newTextContent;
+  }
+}
+// Delay the function call by 5 seconds using arrow function syntax
+setTimeout(() => countOAttacks(), 5000);
+
+// Add a click event listener to each element using an array and forEach method
+const elements = [
+  document.getElementById("ui-id-35"),
+  document.getElementById("outgoingsSpan"),
+  document.getElementById("outgoingsPic"),
+  document.getElementById("outgoingTypeCount")
+].filter(element => element !== null);
+
+
+elements.forEach(element => element.addEventListener("click", countOAttacks));
+
+	
+	
+	
+	
+	
+	
+	
+	
+
 
 	function makeoutsum() {
 		const tg = {
@@ -8591,67 +8861,114 @@ resetAttackOrders();
 		//$('#openLOinplanner').html('<a href="https://cotgopt.com/" target="_blank" rel="noopener noreferrer">Open CoTG Opt by GFunky+</a>');
 		$('#citylayoutTab').append('<span id="loinplanner" style="float: right;font-size: 10px;"><a href="https://cotgopt.com/" target="_blank" rel="noopener noreferrer">CoTGOpt x GFunky+</a></span>');
 		$('#loinplanner').after(currentLOtextarea);
-		let layoutopttab = "<li id='layoutopt' class='ui-state-default ' role='tab' tabindex='-1' aria-controls='layoutoptBody'";
+	
+	let layoutopttab = "<li id='layoutopt' class='ui-state-default ' role='tab' tabindex='-1' aria-controls='layoutoptBody'";
 		layoutopttab += "aria-labeledby='ui-id-60' aria-selected='false' aria-expanded='false'>";
 		layoutopttab += "<a href='#layoutoptBody' class='ui-tabs-anchor' role='presentation' tabindex='-1' id='ui-id-60'>Layout Options</a></li>";
 		let layoutoptbody = `
-		<div id='layoutoptBody' aria-labeledby='ui-id-60' class='ui-tabs-panel' role='tabpanel' aria-hidden='true' style='display: none;'>
-			<table>
-				<tbody>
-					<tr>
-					  <td><input id='addnotes' class='clsubopti' type='checkbox' checked> Add Notes</td>
-					  <td><input id='addtroops' class='clsubopti' type='checkbox' checked> Add Troops</td>
-					  <td><input id='addallbuildings' class='clsubopti' type='checkbox' checked> Upgrade All Buildings</td>
-					</tr>
-					<tr>
-					  <td><input id='addtowers' class='clsubopti' type='checkbox' checked> Add Towers</td>
-					  <td><input id='addcabins' class='clsubopti' type='checkbox' checked> Upgrade Cabins</td>
-					  <td> Cabin Lvl: <input id='cablev' type='number' style='width:22px;' value='8'></td>
-					</tr>
-					<tr>
-					  <td><input id='addwalls' class='clsubopti' type='checkbox' checked > Add Walls</td>
-					  <td><input id='addres' class='clsubopti' type='checkbox' checked> Add Resources</td>
-					  <td><input id='addhub' class='clsubopti' type='checkbox' checked>Set Nearest Hub</td>
-					</tr>
-					<tr>
-					  <td><input id='addfoodwarning' class='clsubopti' type='checkbox' checked > Set Food Warning </td>
-					  <td colspan='2'> Hours of Warning: <input id='fwlev' type='number' style='width:22px;' value='8'></td>
-					</tr>
-					<tr>
+		<div id='layoutoptBody' aria-labeledby='ui-id-60' class='ui-tabs-panel' role='tabpanel' aria-hidden='true' style='display: none;'> 
+			 <table style='width: 32%;display: inline-block;background: #e1c190;border: 3px tan ridge;border-radius: 6px;'>
+    <tr>
+      <th style='text-align: center;font-size: 12px;border: 3px tan ridge;border-radius: 6px;background: #f3d298;'>Building Settings</th>
+    </tr>
+    <tr>
+      <td><input id='addnotes' class='clsubopti' type='checkbox' checked> Set Notes</input></td>
+    </tr>
+    <tr>
+      <td><input id='addcabins' class='clsubopti' type='checkbox' checked> Cabins: </input><input id='cablev' type='number' style='width:22px;' value='8'></input></td>
+    </tr>
+    <tr>
+      <td><input id='addallbuildings' class='clsubopti' type='checkbox' checked> Buildings </input></td>
+    </tr>
+  </table>
+
+  <table style='width: 32%;display: inline-block;background: #e1c190;border: 3px tan ridge;border-radius: 6px;'>
+    <tr>
+      <th style='text-align: center;font-size: 12px;border: 3px tan ridge;border-radius: 6px;background: #f3d298;'>Defense Settings</th>
+    </tr>
+    <tr>
+      <td><input id='addtroops' class='clsubopti' type='checkbox' checked> Set Troops </input></td>
+    </tr>
+    <tr>
+      <td><input id='addwalls' class='clsubopti' type='checkbox' checked > Upgrade Walls </input></td>
+    </tr>
+    <tr>
+      <td><input id='addtowers' class='clsubopti' type='checkbox' checked> Upgrade Towers </input></td>
+    </tr>
+  </table>
+
+  <table style='width: 32%;display: inline-block;background: #e1c190;border: 3px tan ridge;border-radius: 6px;'>
+    <tr>
+      <th style='text-align: center;font-size: 12px;border: 3px tan ridge;border-radius: 6px;background: #f3d298;'>Resource Settings</th>
+    </tr>
+    <tr>
+      <td><input id='addres' class='clsubopti' type='checkbox' checked> Set Resources </input></td>
+    </tr>
+    <tr>
+      <td><input id='addhub' class='clsubopti' type='checkbox' checked> Set Hub </input> </td>
+    </tr>
+    <tr>
+      <td><input id='addfoodwarning' class='clsubopti' type='checkbox' checked > Food Warning: </input><input id='fwlev' type='number' style='width:22px;' value='8' placeholder='LVL'></input> </td>
+    </tr>
+  </table>
+  <table style='color: #f3d298; border-radius: 9px; background: #42331e; border: 3px tan ridge;'>
+  <tr>
 					  <td>Select Hubs list: </td>
 					  <td id='selhublist'></td>
 					  <td>
-						<button id='nearhubAp' class='regButton greenb' style='width:130px; margin-left: 10%'>Set Nearest Hub</button>
-						<button id='quickAp' class='regButton greenb' style='width:130px; margin-left: 10%'>Quick Setup</button>
+						<button id='nearhubAp' class='regButton greenb' style='width:90%; margin-left: 10%'> Set Nearest Hub </button>
+						<button id='quickAp' class='regButton greenb' style='width:90%; margin-left: 10%'> Quick Setup </button>
 					  </td>
 					</tr>
-				</tbody>
-			</table>
-			<table style='border: 3px ridge #99805d; border-radius: 6px; text-align: center; margin-left: auto;margin-right: auto;'>
-				<tbody>
+		</table>
+			<table style='border: 3px ridge #99805d; border-radius: 6px; text-align: center; margin-left: auto;margin-right: auto; display:inline-block; width:49%;'>
 					<tr>
-					  <td id='buttd' colspan='4' style='text-align:center';></td>
+					  <td colspan='2'style='text-align: center;font-size: 17px;border: 3px tan ridge;border-radius: 6px;background: #f3d298;'> Request Resources</td>
 					</tr>
 					<tr>
-					  <td colspan='4'style='text-align: center;font-size: 14px;'> Request Resources If Below These Amounts</td>
+					  <td style='text-align:center;'>Wood</td>
+					  <td><input id='woodin' type='number' style='font-weight: bold;width:100px;border-radius: 6px;color: black;text-align: center;' value='220000'></td>
+					  </tr>
+					<tr>
+					  <td style='text-align:center;'>Stone</td>
+					  <td><input id='stonein' type='number' style='font-weight: bold;width:100px;border-radius: 6px;color: black;text-align: center;' value='220000'></td>
+					  </tr>
+					<tr>
+					  <td style='text-align:center;'>Iron</td>
+					  <td><input id='ironin' type='number' style='font-weight: bold;width:100px;border-radius: 6px;color: black;text-align: center;' value='200000'></td>
+					  </tr>
+					<tr>
+					  <td style='text-align:center;'>Food</td>
+					  <td><input id='foodin' type='number' style='font-weight: bold;width:100px;border-radius: 6px;color: black;text-align: center;' value='350000'></td>
+					</tr>
+					</table>
+					<table style='border: 3px ridge #99805d; border-radius: 6px; text-align: center; margin-left: auto;margin-right: auto; display:inline-block; width:49%;'>
+					<tr>
+					  <td colspan='2' style='text-align: center;font-size: 17px;border: 3px tan ridge;border-radius: 6px;background: #f3d298;'>Excess Resources</td>
 					</tr>
 					<tr>
-					  <td style='text-align:center;'>Wood<input id='woodin' type='number' style='font-weight: bold;width:100px;border-radius: 6px;color: black;text-align: center;' value='220000'></td>
-					  <td style='text-align:center;'>Stone<input id='stonein' type='number' style='font-weight: bold;width:100px;border-radius: 6px;color: black;text-align: center;' value='220000'></td>
-					  <td style='text-align:center;'>Iron<input id='ironin' type='number' style='font-weight: bold;width:100px;border-radius: 6px;color: black;text-align: center;' value='200000'></td>
-					  <td style='text-align:center;'>Food<input id='foodin' type='number' style='font-weight: bold;width:100px;border-radius: 6px;color: black;text-align: center;' value='350000'></td>
-					</tr>
+					  <td style='text-align:center;'>Wood</td>
+					  <td><input id='woodout' type='number' style='font-weight: bold;width:100px;border-radius: 6px;color: black;text-align: center;' value='250000'></td>
+					  </tr>
 					<tr>
-					  <td colspan='4'style='text-align: center;font-size: 14px;'> Send Excess Resources If Above These Amounts</td>
-					</tr>
+					  <td style='text-align:center;'>Stone</td>
+					  <td><input id='stoneout' type='number' style='font-weight: bold;width:100px;border-radius: 6px;color: black;text-align: center;' value='250000'></td>
+					  </tr>
 					<tr>
-					  <td style='text-align:center;'>Wood<input id='woodout' type='number' style='font-weight: bold;width:100px;border-radius: 6px;color: black;text-align: center;' value='250000'></td>
-					  <td style='text-align:center;'>Stone<input id='stoneout' type='number' style='font-weight: bold;width:100px;border-radius: 6px;color: black;text-align: center;' value='250000'></td>
-					  <td style='text-align:center;'>Iron<input id='ironout' type='number' style='font-weight: bold;width:100px;border-radius: 6px;color: black;text-align: center;' value='250000'></td>
-					  <td style='text-align:center;'>Food<input id='foodout' type='number' style='font-weight: bold;width:100px;border-radius: 6px;color: black;text-align: center;' value='400000'></td>
+					  <td style='text-align:center;'>Iron</td>
+					  <td><input id='ironout' type='number' style='font-weight: bold;width:100px;border-radius: 6px;color: black;text-align: center;' value='250000'></td>
+					  </tr>
+					<tr>
+					  <td style='text-align:center;'>Food</td>
+					  <td><input id='foodout' type='number' style='font-weight: bold;width:100px;border-radius: 6px;color: black;text-align: center;' value='400000'></td>
 					</tr>
-				</tbody>
-			</table>
+				</table>
+				<table>
+					<tr>
+					  <td id='buttd' style='text-align:center';></td>
+					</tr>
+				</table>
+			
 		</div>`;
 		const layoptbut = "<button id='layoptBut' class='regButton greenb' style='width:150px;'>Save Res Settings</button>";
 		const tabs = $("#CNtabs").tabs();
@@ -8819,12 +9136,9 @@ resetAttackOrders();
 					$('#clearresquad').after(selectButtons);
 				}
 				var currentlayout = $('#currentLOtextarea').text();
-			/*	// If current layout is empty, set it to the default layout string from currentLOtextarea
-				if (currentlayout === '') {
-					currentlayout = $('#currentLOtextarea').val().trim();
-				}
-				*/
+		
 				// Replace invalid characters in current layout
+				
 				for (var i = 20; i < currentlayout.length - 20; i++) {
 					var tmpchar = currentlayout.charAt(i);
 					var cmp = new RegExp(tmpchar);
@@ -8871,7 +9185,7 @@ resetAttackOrders();
 							newlayout = layoutString;
 						}
 
-
+						
 						for (let i = 20; i < currentlayout.length; i++) {
 							const tmpchar = layoutString.charAt(i);
 							const cmp = new RegExp(tmpchar);
@@ -8879,9 +9193,11 @@ resetAttackOrders();
 								newlayout = newlayout.replaceAt(i, tmpchar);
 							}
 						}
+						
+						
 						//console.log("LayoutData", layoutData);
-
-						$('#overlaytextarea').val(newlayout);
+						// Updated 4.18.23 Fact 
+						$('#overlaytextarea').val(layoutString);
 						//console.log("new Layout", newlayout);
 						//console.log("current Layout", currentlayout);
 
@@ -8954,10 +9270,13 @@ resetAttackOrders();
 							for (var i = 52; i <= 74; i++) {
 								aa[i] = [1, 10];
 							}
-							for (var i = 1; i <= 8; i++) {
-								aa[i] = 1;
+							for (var i = 0; i < 8 ; i++) {
+								if (i != 8) {
+									aa[i] = 1;
+								}
 							}
 						}
+
 
 						var dat = {
 							a: JSON.stringify(aa),
@@ -9047,8 +9366,10 @@ resetAttackOrders();
 				for (var i = 52; i <= 74; i++) {
 					aa[i] = [1, 10];
 				}
-				for (var i = 1; i <= 8; i++) {
-					aa[i] = 1;
+				for (var i = 0; i < 8 ; i++) {
+					if (i != 8) {
+						aa[i] = 1;
+					}
 				}
 			}
 			resources[14] = nearesthub;
@@ -9128,8 +9449,10 @@ resetAttackOrders();
 				for (var i = 52; i <= 74; i++) {
 					aa[i] = [1, 10];
 				}
-				for (var i = 1; i <= 8; i++) {
-					aa[i] = 1;
+				for (var i = 0; i < 8 ; i++) {
+					if (i != 8) {
+						aa[i] = 1;
+					}
 				}
 			}
 			resources[14] = nearesthub;
@@ -9980,26 +10303,28 @@ resetAttackOrders();
 				$("#organiser").val("all").change();
 				$("#cityDropdownMenu").val(cid).change();
 			});
-			$(".recsup").click(function() {
+			$.getScript("https://w29.crownofthegods.com/overview/datatables.min.js", function() {
+
+       $(".recsup").click(function() {
+			  const id = $(this).attr("data");
+			  const dat = {
+				"a": id
+			  };
+			  $.ajax({
+				url: 'overview/reinreca.php',
+				type: 'POST',
+				async: true,
+				data: dat,
+				success: function(response) {
+				  console.log(response);
+				}
+			  });
+			  $(this).remove();
+			}); // Add your code here that uses DataTables
+		$(".recasup").click(function() {
 				const id = $(this).attr("data");
 				const dat = {
-					a: id
-				};
-				$.ajax({
-					url: 'overview/reinreca.php',
-					type: 'POST',
-					async: true,
-					data: dat
-				});
-				$(this).remove();
-			});
-			$(".expsup").click(function() {
-				$(this).parent().parent().next().toggle();
-			});
-			$(".recasup").click(function() {
-				const id = $(this).attr("data");
-				const dat = {
-					a: id
+					"a": id
 				};
 				$.ajax({
 					url: 'overview/reinrecall.php',
@@ -10009,6 +10334,15 @@ resetAttackOrders();
 				});
 				$(this).remove();
 			});
+
+
+});
+
+
+			$(".expsup").click(function() {
+				$(this).parent().parent().next().toggle();
+			});
+
 			$("#supportexp").click(function(event) {
 				//var outputFile = window.prompt("What do you want to name your output file (Note: This won't have any effect on Safari)") || 'export';
 				const outputFile = `SupportSum${today.getDate()}${Number(today.getMonth()+1)}${today.getFullYear()}.csv`;
@@ -11846,4 +12180,7 @@ resetAttackOrders();
 			$("#surWgA").text(survivingaTroopScoreIndex[16]);
 		}
 	})();
+
+
+
 })();
