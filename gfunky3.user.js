@@ -1,73 +1,69 @@
 // ==UserScript==
 // @name gfunky3
 // @namespace www.tampermonkey.com
-// @version 3.2.1.4.21
+// @version 3.2.7
 // @description gfunky3
 // @author Greety
-// @match https://*.crownofthegods.com/*
+// @match https://*.crownofthegods.com/
 // @include https://*.crownofthegods.com/?s=*
 // @grant none
 // @updateURL https://raw.githubusercontent.com/bmessin1/Gfunky/master/gfunky3.user.js
 // @downloadURL https://raw.githubusercontent.com/bmessin1/Gfunky/master/gfunky3.user.js
 // ==/UserScript==
 /*
-
-Version:  3.2.1.4.21
-Last Modified:  April 21,2023
-
-
+Version:  3.2.7
+Last Modified:  Mar 9,2024
  */
 (function() {
+	const version = '3.2.7';
+	const LMD = new Date('Mar 9, 2024');
 
-
-
-
-
-  $(() => {
-	const startupWindowContent = `
-	  <div id='startwinDiv' class='popUpBox ui-draggable'>
-		<div class='ppbwinbgr ui-draggable'>
-		  <div class='ppbwintop ui-draggable'></div>
-		  <div class='ppbwincent ui-draggable'></div>
-		  <div class='ppbwinbott ui-draggable'></div>
-		</div>
-		<div class='ppbwincontent ui-draggable'>
-		  <div class='popUpBar ui-draggable-handle'>
-			<span class='smppspan'>Gfunky+ By Fact and Greety </span>
-			<button id='gfunkyX' class='xbutton' onclick=$('#startwinDiv').remove()>
-			  <div id='xbuttondiv'>
-				<div>
-				  <div id='centxbuttondiv'></div>
-				</div>
-			  </div>
-			</button>
+	$(() => {
+	  const startupWindowContent = '
+		<div id='startwinDiv' class='popUpBox ui-draggable'>
+		  <div class='ppbwinbgr ui-draggable'>
+			<div class='ppbwintop ui-draggable'></div>
+			<div class='ppbwincent ui-draggable'></div>
+			<div class='ppbwinbott ui-draggable'></div>
 		  </div>
-		  <div id='announcWindow' style='overflow-y:auto;'>
-			<div style='text-align:center;'>
-			  <span style='margin-left: 5%;'>
-				<h1 style='text-align:center;'>
-				  <img src='https://cotgopt.com/images/icons/Gfunkylogo21a.png'>
-				  <br> By Fact and Greety
-				</h1>
-			  </span>
-			  <br>
-			  <div id='bottomcrownpic'></div>
-			  <span style='margin-left: 5%;'>
-				<h4 style='text-align:center;color:green;'>Update 3.2.1</h4>
+		  <div class='ppbwincontent ui-draggable'>
+			<div class='popUpBar ui-draggable-handle'>
+			  <span class='smppspan'>Gfunky+ By Fact and Greety </span>
+			  <button id='gfunkyX' class='xbutton' onclick=$('#startwinDiv').remove()>
+				<div id='xbuttondiv'>
+				  <div>
+					<div id='centxbuttondiv'></div>
+				  </div>
+				</div>
+			  </button>
+			</div>
+			<div id='announcWindow' style='overflow-y:auto;'>
+			  <div style='text-align:center;'>
+				<span style='margin-left: 5%;'>
+				  <h1 style='text-align:center;'>
+					<img src='https://cotgopt.com/images/icons/Gfunkylogo21a.png'>
+					<br> By Fact and Greety
+				  </h1>
+				</span>
 				<br>
-				<h4 style='text-align:center;color:green;'>Apr 21, 2023</h4>
-			  </span>
-			  <br>
-			  <br>
-			  <span style='margin-left: 5%;'>
-				<h5 style='text-align:center;'>Special Thanks to Everyone who continues to support this project </h5>
-				<ul style='margin-left: 6%;font-size:14px !important;'></ul>
-			  </span>
+				<div id='bottomcrownpic'></div>
+				<span style='margin-left: 5%;'>
+				  <h4 style='text-align:center;color:green;'>Update <span id="version">${version}</span></h4>
+				  <br>
+				  <h4 style='text-align:center;color:green;'><span id="LMD">${LMD.toLocaleDateString()}</span></h4>
+				</span>
+				<br>
+				<br>
+				<span style='margin-left: 5%;'>
+				  <h5 style='text-align:center;'>Special Thanks to Everyone who continues to support this project </h5>
+				  <ul style='margin-left: 6%;font-size:14px !important;'></ul>
+				</span>
+			  </div>
 			</div>
 		  </div>
 		</div>
-	  </div>
-	`;
+	  `;
+
 	$('body').append(startupWindowContent);
 	setTimeout(function() {
 			var options = {};
@@ -108,6 +104,10 @@ Last Modified:  April 21,2023
 	$('#rqitemss').appendTo('#recruitmentQueueWindow');
 	$('#bqitemss').appendTo('#buildQueueWindow');
 	$('#tbnwbbtbl').appendTo('#resInfo');
+	const element = document.getElementById("itemover");
+	const anchorElement = element.querySelector("a");
+	anchorElement.innerHTML = "My Items";
+
 
 	/*
 
@@ -298,7 +298,7 @@ Last Modified:  April 21,2023
 					shortcut: "e",
 					movable: true
 				},
-				sorcerers_tower: {
+				Sorcserers_tower: {
 					id: [500],
 					buildable: true,
 					schedule: "J",
@@ -1176,7 +1176,7 @@ Last Modified:  April 21,2023
 
 */
 
-cotgsubscribe.subscribe( "regional", function( data ) {});
+
  // run the function every 5 seconds
 
 		const gfunkyLayouts = {
@@ -1190,112 +1190,112 @@ cotgsubscribe.subscribe( "regional", function( data ) {});
 					}, {
 						layoutName: " 2s (256k) Vanqs",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBGBGBGB#----#######BGBBTBBGB#######SSPX#BGBGBGBGB#----##MDPJ#BGBGBGBGB#----##S---##BBGBGBB##----##-----##BBBBB##-----##-BBBBB#######------##-ZBGGB---#---------##-BBBBB---#---------###-BGGB---#--------#####BBBB---#-------########################",
-						layoutRemark: "vanqs",
-						layoutNote: "256000 vanqs @ 6 days",
+						layoutRemark: "Vanqs",
+						layoutNote: "256000 Vanqs @ 6 days",
 						layoutTroops: [0, 0, 0, 0, 0, 255_999, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_001, 250_001, 200_000, 400_000],
 					}, {
 						layoutName: " 3s (292K) Vanqs Raiding",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BBBGBGBBB#----##----#BGBBBBBGB#----#######BBBGTGBBB#######SSPX#BGBBBBBGB#----##MDP-#BBBGBGBBB#----##S---##BBGBGBB##----##-----##BBBBB##-----##------#######------##---BBBBBB#---------##---BGGBGB#---------###--BBBBBB#--------#####-JBZBBB#-------########################",
-						layoutRemark: "vanqs",
-						layoutNote: "292000 vanqs @ 10 days",
+						layoutRemark: "Vanqs",
+						layoutNote: "292000 Vanqs @ 10 days",
 						layoutTroops: [0, 0, 0, 0, 0, 291_999, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 200_000, 400_000],
 					}, {
 						layoutName: " 4s (308K) Vanqs Portal",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BBBBBBBBB#----##----#BGBGBGBGB#----#######BBBBTBBGB#######SMSX#BGBGBGBGB#----##SDPP#BBBBBBBBB#----##----##BBGBGBB##----##-----##BBBBB##-----##------#######------##---BBBBBB#---------##---BBBBBB#---------###--BBBBBB#--------#####-BBJBZB#-------########################",
-						layoutRemark: "vanqs",
-						layoutNote: "308000 vanqs @ 14.5 days",
+						layoutRemark: "Vanqs",
+						layoutNote: "308000 Vanqs @ 14.5 days",
 						layoutTroops: [0, 0, 0, 0, 0, 307_999, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 200_000, 400_000],
 					}, {
 						layoutName: " 4s (110K) Horsemen",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BEBEB##-----##----##-BEBEB-##----##----#BEBEBEBEB#----##----#BEBEBEBEB#----#######BEBETEBEB#######SM-X#BEBEBEBEB#----##S---#BEBEBEBEB#----##----##-BEBEB-##----##-BBBB##BEBEB##-----##ZEEEE-#######------##BBBBBBBB-#---------##JEEEEEEE-#---------###BBBBBBB-#--------#####-------#-------########################",
-						layoutRemark: "horses",
-						layoutNote: "110000 horses @ 5 days",
+						layoutRemark: "Horses",
+						layoutNote: "110000 Horses @ 5 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 109_999, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 200_000, 400_000],
 					}, {
 						layoutName: " 5s (120K) Horsemen",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BEBEBEB##----##----#-BEBEBEB-#----##----#-BEBEBEB-#----#######-BEBTBEB-#######SSPX#-BEBEBEB-#----##MDP-#-BEBEBEB-#----##S---##BEBEBEB##----##-----##BBBBB##-----##--BBBB#######------##--BEEEEEB#---------##-ZBBBBBBB#---------###JBEEEEEB#--------#####BBBBBBB#-------########################",
-						layoutRemark: "horses",
-						layoutNote: "120000 horses @ 7 days",
+						layoutRemark: "Horses",
+						layoutNote: "120000 Horses @ 7 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 120_000, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 200_000, 400_000],
 					}, {
 						layoutName: " 6s (134K) Horsemen Portal",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBEBEBB##----##----#BEBEBEBEB#----##----#BEBBBBBEB#----#######BEBETEBEB#######SSPX#BEBBBBBEB#----##MDPJ#BEBEBEBEB#----##----##BBEBEBB##----##-----##BBBBB##-----##--BBBZ#######------##--BEBBB--#---------##--BBBEB--#---------###-BEBEB--#--------#####BBBBB--#-------########################",
-						layoutRemark: "horses",
-						layoutNote: "134000 horses @ 9.5 days",
+						layoutRemark: "Horses",
+						layoutNote: "134000 Horses @ 9.5 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 133_999, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 200_000, 400_000],
 					}, {
 						layoutName: " 4s (180K) Sorcs",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BJBJB##-----##----##JBJBJBJ##----##----#-JBJBJBJ-#----##----#-JBJBJBJ-#----#######-JBJTJBJ-#######S--X#-JBJBJBJ-#----##M---#-JBJBJBJ-#----##----##JBJBJBJ##----##-JBJB##BJBJB##-----##BJBJBJ#######------##BJBJBJBJ-#---------##BJBJBJBJ-#---------###JBJBJBJ-#--------#####BJBJBZ-#-------########################",
-						layoutRemark: "sorc",
-						layoutNote: "180000 sorc @ 8.3 days",
+						layoutRemark: "Sorcs",
+						layoutNote: "180000 Sorcs @ 8.3 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 179_999, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 200_000, 400_000],
 					}, {
 						layoutName: " 5s (228K) Sorcs",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BJBJB##-----##----##JBJBJBJ##----##----#BJBJBJBJB#----##----#BJBJBJBJB#----#######BJBJTJBJB#######SMPX#BJBJBJBJB#----##----#BJBJBJBJB#----##----##BBJBJBB##----##-BBBB##BJBJB##-----##-BJBJB#######------##-BJBJB---#---------##ZBJBJB---#---------###BJBJB---#--------#####BBB----#-------########################",
-						layoutRemark: "sorc",
-						layoutNote: "228000 sorc @ 14.8 days",
+						layoutRemark: "Sorcs",
+						layoutNote: "228000 Sorcs @ 14.8 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 227_999, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 200_000, 400_000],
 					}, {
 						layoutName: " 6s (240K) Sorcs Portal",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BJBJBJB##----##----#-BJBJBJB-#----##----#-BJBJBJB-#----#######-BJBTBJB-#######SMSX#-BJBJBJB-#----##SDPP#-BJBJBJB-#----##----##BJBJBJB##----##BBBBB##BBBBB##-----##BJJJJZ#######------##BBBBBBBB-#---------##BJJJJJJJ-#---------###BBBBBBB-#--------#####-------#-------########################",
-						layoutRemark: "sorc",
-						layoutNote: "240000 sorc @ 17 days",
+						layoutRemark: "Sorcs",
+						layoutNote: "240000 Sorcs @ 17 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 239_999, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 200_000, 400_000],
 					}, {
 						layoutName: " 10s (102K) Druids",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BJBJB##-----##----##JBJBJBJ##----##----#BJBJBJBJB#----##----#BJBJBJBJB#----#######BJBJTJBJB#######SM-X#BJBJBJBJB#----##----#BJBJBJBJB#----##BBBB##JBJBJBJ##----##JJJJJ##BJBJB##-----##BBBBBB#######------##JJJJJJ---#---------##BBBBB----#---------###JJZ-----#--------#####-------#-------########################",
-						layoutRemark: "druids",
+						layoutRemark: "Druids",
 						layoutNote: "102000 druids @ 11.5 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 101_999, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 200_000, 400_000],
 					}, {
 						layoutName: " 11s (108K) Druids",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BJBJB##-----##----##JBJBJBJ##----##----#BJBJBJBJB#----##----#BJBJBJBJB#----#######BJBJTJBJB#######SDPX#BJBJBJBJB#----##M---#BJBJBJBJB#----##----##JBJBJBJ##----##-----##BJBJB##-----##-----Z#######------##BBBBBBBBB#---------##BJJJJJJJJ#---------###BBBBBBBB#--------#####-------#-------########################",
-						layoutRemark: "druids",
+						layoutRemark: "Druids",
 						layoutNote: "108000 druids @ 13.8 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 107_999, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 200_000, 400_000],
 					}, {
 						layoutName: " 14s (124K) Druids Portal",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BJBJBJB##----##----#-BJBJBJB-#----##----#-BJBJBJB-#----#######-BBBTBJB-#######SMPX#-BJBJBJB-#----##SDP-#-BJBJBJB-#----##----##BJBJBJB##----##BBBBB##BBBBB##-----##BJJJJZ#######------##BBBBBBBB-#---------##BJJJJJJJB#---------###BBBBBBB-#--------#####-------#-------########################",
-						layoutRemark: "druids",
+						layoutRemark: "Druids",
 						layoutNote: "124000 druids @ 20 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 123_999, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 200_000, 400_000],
 					}, {
 						layoutName: " 18s (150K) Druids Portal",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##-BJBJB-##----##----#BBBJBJBBB#----##----#BJBJBBBJB#----#######BBBJTJBJB#######----#BJBBBBBBB#S--X##----#BBBJBJB--#M---##----##-BJBJB-##----##-----##BBBBB##BBB--##------#######BBJB--##---------#BBBBBJB--##---------#BJBJBBB--###--------#BJBJBJB-#####-------#BBBBBBB########################",
-						layoutRemark: "druids",
+						layoutRemark: "Druids",
 						layoutNote: " 300kTS 150k druids @ 31.25 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 150_000, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 200_000, 400_000],
 					}, {
 						layoutName: " 32s/20s (15680/3920) Scorp Rams",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##YBYBY##-----##----##BYBYBYB##----##----#-BYBYBYB-#----##----#YBYBYBYBY#----#######YBYBTBYBY#######SS-X#YBYBYBYBY#----##MD--#YBYBYBYBY#----##-BBB##BYBYBYB##----##-YYY-##YBYB-##-----##BBBBBB#######------##YYYYYY---#---------##BBBBBB---#---------###YYYZ----#--------#####BB-----#-------########################",
-						layoutRemark: "scorp/rams",
+						layoutRemark: "SE",
 						layoutNote: "3920 rams / 15680 scorps @ 6.7 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3920, 15_680, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 200_000, 400_000],
 					}, {
 						layoutName: " 39s/24s (18880/4720) Scorp Rams",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBYB##-----##----##BBYBYBY##----##----#BYBYBYBYB#----##----#BYBYBYBYB#----#######BYBYTYBYB#######SMSX#BYBYBYBYB#----##SD--#BYBYBYBYB#----##----##BBYBYBY##----##-BBBB##BBBBB##-----##BYYYYB#######------##BBBBBB---#---------##BYYYYB---#---------###BBBB----#--------#####-------#-------########################",
-						layoutRemark: "Scorp/Rams",
+						layoutRemark: "SE",
 						layoutNote: "4720 rams / 18880 scorps @ 9.8 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4720, 18_880, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 200_000, 400_000],
 					}, {
 						layoutName: " 44s/28s (20800/5200) Scorp Rams",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BYBYBYB##----##----#-BYBYBYB-#----##----#-BYBYBYB-#----#######-BBBTBYB-#######----#-BYBYBYB-#SDSX##----#-BYBYBYB-#SM--##----##BYBYBYB##----##-----##BBBBB##BBBBB##------#######-BYYYB##---------#BBBBBBBBB##---------#BYYYYYYYB###--------#BBBBBBBB#####-------#-------########################",
-						layoutRemark: "scorp/rams",
+						layoutRemark: "SE",
 						layoutNote: "5200 rams / 20800 scorps @ 12.3 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5200, 20_800, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 200_000, 400_000],
@@ -1308,7 +1308,7 @@ cotgsubscribe.subscribe( "regional", function( data ) {});
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 200_000, 400_000],
 					}],
 					"Land Defense": [{
-						layoutName: " 2s (228K) rangers",
+						layoutName: " 2s (228K) Rangers",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBGBGBGB#----#######BGBGTGBGB#######SSPX#BGBGBGBGB#----##MLPJ#BGBGBGBGB#----##S---##BBGBGBG##----##-----##BBBGB##-----##--BBBB#######------##-BGGGG---#---------##-BBBBBB--#---------###-GGGG---#--------#####BBBB---#-------########################",
 						layoutRemark: "Rangers",
 						layoutNote: "228000 inf @ 5.2 days",
@@ -1324,84 +1324,84 @@ cotgsubscribe.subscribe( "regional", function( data ) {});
 					}, {
 						layoutName: " 2s 3s (152K/76K) Rangers Triari",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBGBGBGB#----#######BGBGTGBGB#######SSPX#BGBGBGBGB#----##MLPJ#BGBGBGBGB#----##S---##BBGBGBG##----##-----##BBBGB##-----##--BBBB#######------##-BGGGG---#---------##-BBBBBB--#---------###-GGGG---#--------#####BBBB---#-------########################",
-						layoutRemark: "rangers/triari",
+						layoutRemark: "RT",
 						layoutNote: "228000 inf @ 6.2 days",
 						layoutTroops: [0, 0, 152_000, 76_000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 220_000, 250_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 220_000, 350_000, 350_000],
 					}, {
 						layoutName: " 3s 3s (168K 84K) Rangers Triari",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##-BGBGBB##----##----#BBBGBGBGB#----##----#BGBGBGBGB#----#######BGBBTGBGB#######SLSX#BGBGBGBGB#----##SMPP#BGBGBGBGB#----##----##BBGBGBB##----##-----##BBBBB##-----##--BBBB#######------##--BGBGB--#---------##--BGBGB--#---------###JBGBGB--#--------#####BBBBB--#-------########################",
-						layoutRemark: "rangers/triari",
+						layoutRemark: "RT",
 						layoutNote: "252000 inf @ 6.2 days",
 						layoutTroops: [0, 0, 168_000, 84_000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 220_000, 250_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 220_000, 350_000, 350_000],
 					}, {
 						layoutName: " 3s (228K) Priestess",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BZBZB##-----##----##BBZBZBB##----##----#BZBZBZBZB#----##----#BZBZBZBZB#----#######BZBZTZBZB#######SMSX#BZBZBZBZB#----##SDPP#BZBZBZBZB#----##----##BBZBZBB##----##-BBBB##BBBBB##-----##-ZZZZ-#######------##BBBBBB---#---------##JZZZZB---#---------###BBBB----#--------#####-------#-------########################",
-						layoutRemark: "priests",
+						layoutRemark: "Priests",
 						layoutNote: "228000 Priestess @ 7.9 days",
 						layoutTroops: [0, 0, 0, 0, 228_000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 200_000, 400_000],
 					}, {
 						layoutName: " 4s (256K) Priestess",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##ZBZBZBZ##----##----#BBBZBZBBB#----##----#BZBZBZBZB#----#######BZBBTBBZB#######SMSX#BZBZBZBZB#----##SDPP#BBBZBZBBB#----##--PP##ZBZBZBZ##----##-----##BBBBB##-----##----BB#######------##----BJBBB#---------##----BBBZB#---------###---BZBZB#--------#####--BBBBB#-------########################",
-						layoutRemark: "priests",
+						layoutRemark: "Priests",
 						layoutNote: "256000 Priestess @ 12.2 days",
 						layoutTroops: [0, 0, 0, 0, 256_000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 200_000, 400_000],
 					}, {
 						layoutName: " 5s (288K) Priestess",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BZBZBZB##----##----#-BBBBBBB-#----##----#-BZBZBZB-#----#######-BBBTBZB-#######SMSX#-BZBZBZB-#----##SDPP#-BBBBBZB-#----##----##BZBZBZB##----##-----##BBBBB##-----##BBBBB-#######------##BZBZB----#---------##BBBBBBBBB#---------###JBZBZBZB#--------#####BBBBBBB#-------########################",
-						layoutRemark: "priests",
+						layoutRemark: "Priests",
 						layoutNote: "288000 Priestess @ 16.7 days",
 						layoutTroops: [0, 0, 0, 0, 288_000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 200_000, 400_000],
 					}, {
 						layoutName: " 6s (112K) Praetors",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##-BZB-##-----##----##BZBZBZB##----##----#-BZBZBZB-#----##----#-BZBZBZB-#----#######-BZBTBZB-#######SMPX#-BZBZBZB-#----##S-P-#-BZBZBZB-#----##----##BZBZBZB##----##-----##BBZB-##-----##BBBBBB#######------##ZZZZZZZBJ#---------##BBBBBBBBB#---------###ZZZZZZZZ#--------#####BBBBBBB#-------########################",
-						layoutRemark: "praetors",
+						layoutRemark: "Preats",
 						layoutNote: "112000 praetors @ 7.75 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 0, 112_000, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 150_000, 220_000, 150_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 150_000, 220_000, 150_000, 350_000],
 					}, {
 						layoutName: " 7s (120k) Praetors",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBZBB##-----##----##BZBZBZB##----##----#-BZBZBZB-#----##----#-BZBZBZB-#----#######-BZBTBZB-#######SSPX#-BZBZBZB-#----##MDPJ#-BZBZBZB-#----##S---##BZBZBZB##----##-----##BBZBB##-----##-BBBBB#######------##-BZBZBZB-#---------##BBZBZBZB-#---------###BZBZBZB-#--------#####BBBBBB-#-------########################",
-						layoutRemark: "praetors",
+						layoutRemark: "Preats",
 						layoutNote: "120000 praetors @ 9.7 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 0, 120_000, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 150_000, 220_000, 150_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 150_000, 220_000, 150_000, 350_000],
 					}, {
 						layoutName: " 5s (110K) Arbs",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BEBEB##-----##----##EBEBEBE##----##----#BEBEBEBEB#----##----#BEBEBEBEB#----#######BEBETEBEB#######MSLX#BEBEBEBEB#----##--PP#BEBEBEBEB#----##----##BBEBEBB##----##-JBBB##BEBEB##-----##-BEBEB#######------##-BEBEB---#---------##-BEBEB---#---------###BEBEB---#--------#####BB-----#-------########################",
-						layoutRemark: "arbs",
-						layoutNote: "110000 arbs @ 6.5 days",
+						layoutRemark: "Arbs",
+						layoutNote: "110000 Arbs @ 6.5 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 110_000, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 150_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 150_000, 350_000],
 					}, {
 						layoutName: " 6s (120k) Arbs",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BEBEBEB##----##----#-BEBEBEB-#----##----#-BEBEBEB-#----#######-BEBTBEB-#######SMSX#-BEBEBEB-#----##SLPP#-BEBEBEB-#----##----##BEBEBEB##----##-BBBB##BBBBB##-----##-EEEEJ#######------##BBBBBBBBB#---------##BEEEEEEEB#---------###BBBBBBB-#--------#####-------#-------########################",
-						layoutRemark: "arbs",
-						layoutNote: "120000 arbs @ 8.3 days",
+						layoutRemark: "Arbs",
+						layoutNote: "120000 Arbs @ 8.3 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 124_000, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 150_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 150_000, 350_000],
 					}, {
 						layoutName: " 7s (130k) Arbs",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBEBEBB##----##----#BEBEBEBEB#----##----#BEBBBBBEB#----#######BEBETEBEB#######SMSX#BEBBBBBEB#----##SLPP#BEBEBEBEB#----##----##BBEBEBB##----##-----##BBBBB##-----##------#######------##---BBBBBJ#---------##--BEBEBEB#---------###-BEBEBEB#--------#####--BBBB-#-------########################",
-						layoutRemark: "arbs",
-						layoutNote: "130000 arbs @ 10.5 days",
+						layoutRemark: "Arbs",
+						layoutNote: "130000 Arbs @ 10.5 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 130_000, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 150_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 150_000, 350_000],
 					}, {
 						layoutName: " 8s (138K) Arbs",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##-BEBEBJ##----##----#BBBEBEBBB#----##----#BEBBBBBEB#----#######BEBETEBEB#######SMSX#BEBBBBBEB#----##SLPP#BBBEBEBBB#----##----##-BEBEB-##----##-----##BBBBB##-----##------#######------##---BBBBBB#---------##--BEBEBEB#---------###-BEBEBEB#--------#####BBBBBBB#-------########################",
 						layoutRemark: "Arbs",
-						layoutNote: "138000 arbs @ 12.8 days",
+						layoutNote: "138000 Arbs @ 12.8 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 138_000, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 150_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 150_000, 350_000],
 					}, {
 						layoutName: "(25.6K) Ballista",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBYBYBB##----##----#BYBYBYBYB#----##----#BYBYBYBYB#----#######BYBYTYBYB#######MSDX#BYBYBYBYB#----##----#BYBYBYBYB#----##----##BBYBYBB##----##-BBBB##BBBBB##-----##-BYBYB#######------##-BYBYB---#---------##-BYBYB---#---------###BYBYB---#--------#####BBBB---#-------########################",
-						layoutRemark: "ballista",
+						layoutRemark: "Balis",
 						layoutNote: "25600 siege engines @ 10.5 days",
 						layoutTroops: [0, 25_600, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 150_000, 220_000, 250_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 150_000, 220_000, 250_000, 350_000],
@@ -1409,70 +1409,70 @@ cotgsubscribe.subscribe( "regional", function( data ) {});
 					"Water Offense": [{
 						layoutName: " 2s (194K/387) Vanq Galley+Senator",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BGBGB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBGBGBGB#---H#######BGBGTGBGB#######----#BGBGBGBGB#JSPX##----#BGBGBGBGB#----##----##BBGBGBB##---B##-----##BGBGB##BBBBZ##------#######BBVVBB##---------#---BV##VB##---------#---BV###V###--------#---BBV#######-------#--BBBBV########################",
-						layoutRemark: "vanq+galley+senator",
+						layoutRemark: "V-Galley+S",
 						layoutNote: "193299 inf and 387 galley @ 14 days",
 						layoutTroops: [0, 0, 0, 0, 0, 193_299, 0, 0, 0, 0, 0, 0, 0, 0, 387, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 250_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 350_000, 1_350_000],
 					}, {
 						layoutName: " 3s (216.6K/434) Vanq Galley+Senator",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBBBBBGB#----##----#BBBGBGBBB#----#######BGBBTBBGB#######----#BGBGBGBGB#SDPX##----#BGBGBGBGB#SMP-##----##BBGBGBB##----##-----##BBBBB##BBBBZ##------#######BBVVBB##---------#---BV##VB##---------#---BV###V###--------#---BBV#######-------#---JBBV########################",
-						layoutRemark: "vanq+galley+senator",
+						layoutRemark: "V-Galley+S",
 						layoutNote: "216600 inf and 434 galley @ 16.4 days",
 						layoutTroops: [0, 0, 0, 0, 0, 216_599, 0, 0, 0, 0, 0, 0, 0, 0, 434, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 250_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 350_000, 1_350_000],
 					}, {
 						layoutName: " 4s (233K/467) Vanq Galley+Senator",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BBBBBBBBB#----##----#BGBGBGBGB#----#######BBBBTBBGB#######----#BGBGBGBGB#----##----#BBBBBBBBB#----##----##BBGBGB-##----##-----##BBBBB##BBBBB##------#######BBVVBB##---------#SS-BV##VB##---------#DM-BV###V###--------#SP-BBV#######-------#XP-ZBBV########################",
-						layoutRemark: "vanq+galley+senator",
+						layoutRemark: "V-Galley+S",
 						layoutNote: "233299 inf and 467 galley @ 22 days",
 						layoutTroops: [0, 0, 0, 0, 0, 233_299, 0, 0, 0, 0, 0, 0, 0, 0, 467, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 250_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 350_000, 1_350_000],
 					}, {
 						layoutName: " 5s (90K/360) Horsemen Galley",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BEBEB##-----##----##EBEBEBE##----##----#BEBEBEBEB#----##----#BEBEBEBEB#---H#######BEBETEBEB#######----#BEBEBEBEB#JSPX##----#BEBEBEBEB#-M--##----##EBEBEBB##----##-----##BEBEB##BBBB-##------#######BBVVBB##---------#---BV##VB##---------#---BV###V###--------#--BBBV#######-------#--BEBBV########################",
-						layoutRemark: "horses/galley",
+						layoutRemark: "Horses/Galley",
 						layoutNote: "90000 cav and 360 galley @ 10.5 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 90_000, 0, 0, 0, 360, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 250_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 350_000, 350_000],
 					}, {
 						layoutName: " 6s( 95K/380) Horsemen/Galley",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##EBEBEBB##----##----#BEBEBEBEB#----##----#BEBEBEBEB#----#######BEBETEBEB#######----#BEBEBEBEB#SMSX##----#BEBEBEBEB#SDPP##----##EBEBEBB##----##-----##BBBBB##BBBB-##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#---JBBV########################",
-						layoutRemark: "horses/galley",
+						layoutRemark: "Horses/Galley",
 						layoutNote: "95000 cav and 380 galley @ 16 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 95_000, 0, 0, 0, 380, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 250_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 350_000, 350_000],
 					}, {
 						layoutName: " 7s (103.3K/414) Horsemen Galley",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##-----##-----##----##BBBBBBB##----##----#BEEEEEEEB#----##----#BBBBBBBBB#----#######EEEETEEEB#######----#BBBBBBBBB#BBZ-##----#BEEEEEEEB#BBBB##----##BBBBBBB##BEBB##-----##-----##BBBBB##------#######BBVVBB##---------#SS-BV##VB##---------#M--BV###V###--------#PP-BBV#######-------#X--JBBV########################",
-						layoutRemark: "horses/galley",
+						layoutRemark: "Horses/Galley",
 						layoutNote: "103299 cav and 414 galley @ 18.5 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 103_299, 0, 0, 0, 414, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 250_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 350_000, 350_000],
 					}, {
 						layoutName: " 5s (156.6K/314) Sorc Galley",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##JBJBJ##-----##----##BJBJBJB##----##----#JBJBJBJBJ#----##----#JBJBJBJBJ#---H#######JBJBTBJBJ#######----#JBJBJBJBJ#-S-X##----#JBJBJBJBJ#----##----##BJBJBJB##JJ--##-----##JBJBJ##BBBBJ##------#######BBVVBB##---------#--JBV##VB##---------#--JBV###V###--------#---BBV#######-------#---JBBV########################",
-						layoutRemark: "sorc/galley",
-						layoutNote: "156600 sorc and 314 galley @ 13.5 days",
+						layoutRemark: "Sorcs/Galley",
+						layoutNote: "156600 Sorcs and 314 galley @ 13.5 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 156_600, 0, 0, 0, 0, 0, 0, 0, 314, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 250_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 350_000, 350_000],
 					}, {
 						layoutName: " 6s (176K/354) Sorc Galley",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##JJJJJJJ##----##----#BBBBBBBBB#----##----#JJJJJJJJJ#----#######BBBBTBBBB#######----#JJJJJJJJJ#----##----#BBBBBBBBB#----##----##JJJJJJJ##BJ--##-----##BBBBB##BBBBB##------#######BBVVBB##---------#SS-BV##VB##---------#M--BV###V###--------#P--BBV#######-------#X--ZBBV########################",
-						layoutRemark: "sorc/galley",
-						layoutNote: "176599 sorc and 354 galley @ 25 days",
+						layoutRemark: "Sorcs/Galley",
+						layoutNote: "176599 Sorcs and 354 galley @ 25 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 176_599, 0, 0, 0, 0, 0, 0, 0, 354, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 250_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 350_000, 350_000],
 					}, {
 						layoutName: " 7s (186.6K/374) Sorc Galley",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##JBJBJBJ##----##----#BJBJBJBJB#----##----#BJBJBJBJB#----#######BJBJTJBJB#######---X#BJBJBJBJB#----##-SS-#BJBJBJBJB#----##-MD-##JBJBJBJ##----##-S---##BBBBB##BBBB-##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###-------P#---BBVTT#####------P#B---BBV########################",
-						layoutRemark: "sorc/galley",
-						layoutNote: "186600 sorc and 374 galley @ 20.5 days",
+						layoutRemark: "Sorcs/Galley",
+						layoutNote: "186600 Sorcs and 374 galley @ 20.5 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 186_599, 0, 0, 0, 0, 0, 0, 0, 374, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 250_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 350_000, 350_000],
 					}, {
 						layoutName: " 3s (264K) Vanqs Ports & Senator",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBBBBBGB#----#######BBBGTGBBB#######----#BGBBBBBGB#PPJX##----#BGBGBGBGB#BBBB##----##BBGBGBB##BBBB##-----##BBBBB##BBBBB##------#######-BRRBB##---------#----R##RZ##---------#----R###R###--------#----SR#######-------#----MSR########################",
-						layoutRemark: "vanqs+senator+ports",
+						layoutRemark: "Vanqs +Sen Ports",
 						layoutNote: "264k infantry @ 10 days",
 						layoutTroops: [0, 0, 0, 0, 0, 263_999, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 250_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 350_000, 350_000],
@@ -1487,112 +1487,112 @@ cotgsubscribe.subscribe( "regional", function( data ) {});
 					"Water Defense": [{
 						layoutName: " 2/3s (73.25K/73.25K/293)  RT Galley",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##-GBG-##-----##----##GBGBGBG##----##----#BGBGBGBG-#----##----#BGBGBGBGB#----#######BGBGTGBGB#######---X#BGBGBGBGB#----##-SS-#-GBGBGBG-#----##-MD-##GBGBGBG##GGG-##-S---##-GBG-##BBBBG##------#######BBVVBB##---------#--GBVTTVB##--------J#--GBVTTTV###-------P#---BBVTT#####------P#---GBBV########################",
-						layoutRemark: "RT/galley",
+						layoutRemark: "RT/Galley",
 						layoutNote: "146500 inf and 293 galley @ 10 days",
 						layoutTroops: [0, 0, 73_250, 73_250, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 293, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 250_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 350_000, 1_450_000],
 					}, {
 						layoutName: " 3/3s (88.3K/88.3K/354)  RT Galley",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BGBGB##-----##----##GBGBGBG##----##----#BGBGBGBGB#----##----#BGBGBGBGB#----#######BGBGTGBGB#######---X#BGBGBGBGB#----##-SS-#BGBGBGBGB#----##-MD-##GBGBGBG##----##-S---##BBBBB##BBBB-##------#######BBVVBB##---------#---BVTTVB##--------J#---BVTTTV###-------P#---BBVTT#####------P#----BBV########################",
-						layoutRemark: "RT/galley",
+						layoutRemark: "RT/Galley",
 						layoutNote: "176000 inf and 354 galley @ 15 days",
 						layoutTroops: [0, 0, 88_300, 88_300, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 354, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 250_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 350_000, 1_450_000],
 					}, {
 						layoutName: " 2s (166K/334)  Ranger Galley",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BGBGB##-----##----##GBGBGBG##----##----#BGBGBGBGB#----##----#BGBGBGBGB#---H#######BGBGTGBGB#######----#BGBGBGBGB#JSPX##----#BGBGBGBGB#----##----##GBGBGBG##G---##-----##BGGGB##BBBBG##------#######BBVVBB##---------#--GBV##VB##---------#--GBV###V###--------#---BBV#######-------#----BBV########################",
-						layoutRemark: "Ranger/galley",
+						layoutRemark: "Ranger/Galley",
 						layoutNote: "166600 inf and 334 galley @ 10 days",
 						layoutTroops: [0, 0, 166_000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 334, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 250_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 350_000, 1_450_000],
 					}, {
 						layoutName: " 3s (196.6K/394) Ranger Galley",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##-BBBB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBGBGBGB#----#######BGBGTGBGB#######----#BGBGBGBGB#SMSX##----#BGBGBGBGB#SLPP##----##BBGBGBB##----##-----##BBBBB##BBBBJ##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#---BBBV########################",
-						layoutRemark: "Ranger/galley",
+						layoutRemark: "Ranger/Galley",
 						layoutNote: "196600 inf and 394 galley @ 16 days",
 						layoutTroops: [0, 0, 196_600, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 394, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 250_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 350_000, 1_450_000],
 					}, {
 						layoutName: " 4s (216.6K/434) Ranger Galley",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBBBBBGB#----##----#BBBGBGBBB#----#######BGBBTBBGB#######----#BGBGBGBGB#SMSX##----#BGBGBGBGB#SLPP##----##BBGBGBB##----##-----##BBBBB##BBBBJ##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#----BBV########################",
-						layoutRemark: "Ranger/galley",
+						layoutRemark: "Ranger/Galley",
 						layoutNote: "216600 inf and 434 galley @ 20.5 days",
 						layoutTroops: [0, 0, 216_600, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 434, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 250_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 350_000, 1_450_000],
 					}, {
 						layoutName: " 3s (166.6K/334) Priestess/Galley",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BZBZB##-----##----##ZBZBZBZ##----##----#BZBZBZBZB#----##----#BZBZBZBZB#---H#######BZBZTZBZB#######----#BZBZBZBZB#JSPX##----#BZBZBZBZB#----##----##ZBZBZBZ##-Z--##-----##BZZZB##BBBBZ##------#######BBVVBB##---------#---BV##VB##---------#--ZBV###V###--------#---BBV#######-------#---ZBBV########################",
-						layoutRemark: "priestess/galley",
+						layoutRemark: "Priest/Galley",
 						layoutNote: "166600 inf and 334 galley @ 11 days",
 						layoutTroops: [0, 0, 0, 0, 166_600, 0, 0, 0, 0, 0, 0, 0, 0, 0, 334, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 220_000, 250_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 350_000, 1_350_000],
 					}, {
 						layoutName: " 4s (190K/380) Priestess Galley",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BZBZB##-----##----##BBZBZBB##----##----#BZBZBZBZB#----##----#BZBZBZBZB#----#######BZBZTZBZB#######----#BZBZBZBZB#SMPX##----#BZBZBZBZB#SDPJ##----##BBZBZBB##----##-----##BZBBB##BBBB-##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#---BBBV########################",
-						layoutRemark: "priestess/galley",
+						layoutRemark: "Priest/Galley",
 						layoutNote: "189999 inf and 380 galley @ 18 days",
 						layoutTroops: [0, 0, 0, 0, 189_999, 0, 0, 0, 0, 0, 0, 0, 0, 0, 380, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 220_000, 250_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 350_000, 1_350_000],
 					}, {
 						layoutName: " 5s (210K/420) Priestess Galley",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBZBZBB##----##----#BZBZBZBZB#----##----#BBBZBZBBB#----#######BZBZTZBZB#######----#BBBZBZBBB#SMPX##----#BZBZBZBZB#SDPJ##----##BBZBZBB##----##-----##BZBBB##BBBB-##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#---BBBV########################",
-						layoutRemark: "priestess/galley",
+						layoutRemark: "Priest/Galley",
 						layoutNote: "209999 inf and 420 galley @ 22 days",
 						layoutTroops: [0, 0, 0, 0, 209_999, 0, 0, 0, 0, 0, 0, 0, 0, 0, 420, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 220_000, 250_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 350_000, 1_350_000],
 					}, {
 						layoutName: " 6s (220K/440) Priestess Galley",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBZBZBB##----##----#BZBBBBBZB#----##----#BBBZBZBBB#----#######BZBBTBBZB#######----#BZBZBZBBB#SMSX##----#BZBZBZBZB#SDPP##----##BBZBZBB##----##-----##BBBBB##BBBBJ##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#----BBV########################",
-						layoutRemark: "priestess/galley",
+						layoutRemark: "Priest/Galley",
 						layoutNote: "219999 inf and 440 galley @ 22 days",
 						layoutTroops: [0, 0, 0, 0, 219_999, 0, 0, 0, 0, 0, 0, 0, 0, 0, 440, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 220_000, 250_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 350_000, 1_350_000],
 					}, {
 						layoutName: " 6s (81.65K/327) Arbs Galley",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BEBEB##-----##----##EBEBEBE##----##----#BEBEBEBEB#----##----#BEBEBEBEB#----#######BEBETEBEB#######----#BEBEBEBEB#SMSX##----#BEBEBEBEB#SLPP##----##EBEBEBE##----##-----##-EBE-##BBBBE##------#######BBVVBB##---------#--JBVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#---EBBV########################",
-						layoutRemark: "arbs/galley",
+						layoutRemark: "Arbs/Galley",
 						layoutNote: "81650 inf and 327 galley @ 13.5 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 81_650, 0, 0, 0, 0, 0, 327, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 150_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 150_000, 1_350_000],
 					}, {
 						layoutName: " 7s (91.65K/367) Arbs Galley",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##EBEBEBE##----##----#BEBEBEBEB#----##----#BEBEBEBEB#----#######BEBETEBEB#######----#BEBEBEBEB#SMSX##----#BEBEBEBEB#SLPP##----##EBEBEBE##----##-----##BBBBB##BBBB-##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#---JBBV########################",
-						layoutRemark: "arbs/galley",
+						layoutRemark: "Arbs/galley",
 						layoutNote: "91650 inf and 367 galley @ 16.5 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 91_650, 0, 0, 0, 0, 0, 367, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 150_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 150_000, 1_350_000],
 					}, {
 						layoutName: " 8s (98.3K/394) Arbs Galley",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBEBEBB##----##----#BEBEBEBEB#----##----#BEBEBEBEB#----#######BEBETEBEB#######----#BEBEBEBEB#SMSX##----#BEBEBEBEB#SLPP##----##BBEBEBB##----##-----##BBBBB##BBBB-##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#---JBBV########################",
-						layoutRemark: "arbs/galley",
+						layoutRemark: "Arbs/Galley",
 						layoutNote: "98300 inf and 394 galley @ 16.5 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 98_300, 0, 0, 0, 0, 0, 394, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 150_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 150_000, 1_350_000],
 					}, {
 						layoutName: " 7s (86.65K/347) Praetor Galley",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BZBZB##-----##----##ZBZBZBZ##----##----#BZBZBZBZB#----##----#BZBZBZBZB#----#######BZBZTZBZB#######----#BZBZBZBZB#SPJX##----#BZBZBZBZB#MH--##----##ZBZBZBZ##----##-----##BZBZB##BBBBZ##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#--BZBBV########################",
-						layoutRemark: "praetors/galley",
+						layoutRemark: "Preats/Galley",
 						layoutNote: "86650 praetors and 347 galley @ 12 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 0, 86_650, 0, 0, 0, 0, 347, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 250_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 350_000, 1_350_000],
 					}, {
 						layoutName: " 8s (90K/360) Praetor Galley",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBZB##-----##----##ZBZBZBZ##----##----#BZBZBZBZB#----##----#BZBZBZBZB#----#######BZBZTZBZB#######----#BZBZBZBZB#SMSX##----#BZBZBZBZB#SDPP##----##ZBZBZBZ##----##-----##BBBBB##BBBB-##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#---JBBV########################",
-						layoutRemark: "praetors/galley",
+						layoutRemark: "Preats/Galley",
 						layoutNote: "89999 praetors and 360 galley @ 17 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 0, 89_999, 0, 0, 0, 0, 360, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 250_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 350_000, 1_350_000],
 					}, {
 						layoutName: " 9s (96.65K/387) Praetor Galley",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBZBZBB##----##----#BZBZBZBZB#----##----#BZBZBZBZB#----#######BZBZTZBZB#######----#BZBZBZBZB#SMSX##----#BZBZBZBZB#SDPP##----##ZBZBZBB##----##-----##BBBBB##BBBB-##------#######BBVVBB##---------#---BVTTVB##---------#---BVTTTV###--------#---BBVTT#####-------#---JBBV########################",
-						layoutRemark: "praetors/galley",
+						layoutRemark: "Preats/Galley",
 						layoutNote: "96649 praetors and 387 galley @ 19.5 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 0, 96_649, 0, 0, 0, 0, 387, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 250_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 350_000, 1_350_000],
 					}, {
 						layoutName: " (3198)Stingers",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##-----##-----##----##-------##----##----#---------#----##----#---------#----#######-SS-TPP--#######-XBB#-ML--PP--#BBBB##--BB#-S-------#BBBB##--BB##-------##BBBB##--BBB##-----##BBBBB##--BBBB#######BBVVBB##--BBBBBBB#BBBBV##VB##--BJBZBBB#BBBBV###V###-BBBBBBB#BBBBBV#######BBBBBBB#BBBBBBV########################",
-						layoutRemark: "stingers",
+						layoutRemark: "Stingers",
 						layoutNote: "3198 stingers @ 49days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3198, 0],
 						layoutResources: [0, 0, 0, 0, 1, 500_000, 500_000, 500_000, 500_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 500_000, 500_000, 500_000, 500_000],
@@ -1727,91 +1727,91 @@ cotgsubscribe.subscribe( "regional", function( data ) {});
 					"Shipper": [{
 						layoutName: "  3s/4s (126k/126k) R/T Ship",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BBBGBGBGB#----##----#BGBGBGBBB#----#######BGBGTGBGB#######----#BGBGBGBBB#SMSX##----#BGBGBGBGB#S---##----##BBGBGBB##----##-----##BBBBB##-----##---BBB#######--RR--##---JBBBBB#----RTTR-##----BGBGB#----RTTTR###---BBBBB#-----RTT#####-------#------R########################",
-						layoutRemark: "252K 3/4s R/T Shipper",
+						layoutRemark: "RT Shipper",
 						layoutNote: "252KTS 126K Rangers 126K Triari @ 10 days  Substitute sawmill, masons hut, smelter or grain mill, as appropriate",
 						layoutTroops: [0, 0, 126_000, 126_000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 300_000, 1_400_000],
 					}, {
 						layoutName: " 256K 4sec Ranger Ship",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBBBBBGB#----##----#BBBGBGBBB#----#######BGBBTBBGB#######----#BGBGBGBGB#PP-X##----#BGBGBGBGB#----##----##BBGBGBB##----##-----##BBBB-##BBBB-##------#######BBRRBB##---------#-D-BR##RB##---------#SASBR###R###--------#SL-BBR#######-------#---JBBR########################",
-						layoutRemark: "256K 4S Ranger Shipper",
+						layoutRemark: "Ranger Shipper",
 						layoutNote: "256KTS 256K Rangers 126K Triari @ 12.8 days  Substitute sawmill, masons hut, smelter or grain mill, as appropriate",
 						layoutTroops: [0, 0, 256_000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 300_000, 1_400_000],
 					}, {
 						layoutName: " 3s/4s (120K/120K) R/T +Sen Ship",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBGBGBBB#----##----#BGBBBBBGB#----#######BGBGTGBGB#######----#BGBGBGBGB#SLPX##----#BGBGBGBGB#SDPJ##----##BBGBGBB##----##-----##BBBBB##-----##------#######--RR--##---------#BBBBRTTR-##---------#BGBZRTTTR###--------#BGBB-RTT#####-------#BBBB--R########################",
-						layoutRemark: "240K 3/4s R/T +Sen Shipper",
+						layoutRemark: "RT+Sen Shipper",
 						layoutNote: "240KTS 120K Rangers 120K Triari @ 10 days  Substitute sawmill, masons hut, smelter or grain mill, as appropriate",
 						layoutTroops: [0, 0, 120_000, 120_000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 300_000, 1_400_000],
 					}, {
 						layoutName: " 3/3s (112K/112K) R/T Ship",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBGBGBGB#----#######BGBGTGBGB#######----#BGBGBGBGB#SLPX##----#BGBGBGBGB#S-P-##----##BBGBGBG##----##-----##BBBGB##-----##--BBBB#######--RR--##--BGBJ---#----RTTR-##--BGBB---#----RTTTR###-BGB----#-----RTT#####BBB----#------R########################",
-						layoutRemark: "224K 3/3s R/T Shipper",
+						layoutRemark: "RT Shipper",
 						layoutNote: "224KTS 112K Rangers 112K Triari @ 8 days  Substitute sawmill, masons hut, smelter or grain mill, as appropriate",
 						layoutTroops: [0, 0, 112_000, 112_000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 300_000, 1_400_000],
 					}, {
 						layoutName: " 3s (248K) Ranger Ship",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BGGGGGB##----##----#BBBBBBBBB#----##----#BGGGBGGGB#----#######BBBBTBBBB#######----#BGGGBGGGB#SLPX##----#BBBBBBBBB#S-PJ##----##BGGBGGB##----##-----##BBBBB##-----##------#######--RR--##---------#BBBBRTTR-##---------#BGBBRTTTR###--------#BGBB-RTT#####-------#BBBBB-R########################",
-						layoutRemark: "248K 3s Ranger Shipper",
+						layoutRemark: "Ranger Shipper",
 						layoutNote: "248KTS 248K Rangers @ 9 days  Substitute sawmill, masons hut, smelter or grain mill, as appropriate",
 						layoutTroops: [0, 0, 248_000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 300_000, 1_400_000],
 					}, {
 						layoutName: " 4s (264K) Ranger Ship",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BBBGBGBBB#----##----#BGBBBBBGB#----#######BGB-TGBBB#######----#BGBBBBBGB#SSPJ##----#BBBGBGBBB#MLPX##----##BBGBGBB##S---##-----##BBBBB##-----##------#######--RR--##---BBBBB-#----R##R-##---BGGGBB#----R###R###--BBBBB-#-----R#######-------#------R########################",
-						layoutRemark: "264K 3s Ranger Shipper",
+						layoutRemark: "Ranger Shipper",
 						layoutNote: "264KTS 264K Rangers @ 12 days  Substitute sawmill, masons hut, smelter or grain mill, as appropriate",
 						layoutTroops: [0, 0, 264_000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 300_000, 1_400_000],
 					}, {
 						layoutName: " 6s (260K) Priest Ship",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BZBZBZB##----##----#BBZBBBZBB#----##----#BBZBZBZBB#----#######BBZBTBZBB#######----#BBZBZBZBB#DAPX##----#BBBBBBZBB#SSP-##----##BZBZBZB##ML--##-----##BBBBB##-----##------#######--RR--##---------#BBB-RTTR-##---------#BBBJRTTTR###--------#BBBB-RTT#####-------#BBBB--R########################",
-						layoutRemark: "260K 6s Priestess Shipper",
+						layoutRemark: "Priest Shipper",
 						layoutNote: "260KTS 260K Priestess @ 18 days ",
 						layoutTroops: [0, 0, 0, 0, 260_000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 300_000, 1_400_000],
 					}, {
 						layoutName: " 6s (248K) Priest Ship",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BZBZBZB##----##----#-BBBBBZB-#----##----#-BZBZBZB-#----#######-BBBTBZB-#######----#-BZBZBZB-#-AD-##----#-BBBBBZB-#SSSS##----##BZBZBZB##-LM-##BBBB-##BBBBB##-----##BZBZB-#######--RR--##BBBBB----#X---R##R-##BJBZB----#----R###R###BBBB----#-----R#######-------#PP----R########################",
-						layoutRemark: "248K 6s Priestess Shipper",
+						layoutRemark: "Priest Shipper",
 						layoutNote: "248KTS 260K Priestess @ 17.2 days ",
 						layoutTroops: [0, 0, 0, 0, 248_000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 300_000, 1_400_000],
 					}, {
 						layoutName: " 5s (248K) Priest Ship",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BZBZBZB##----##----#-BBBBBBB-#----##----#-BZBZBZB-#----#######-BBBTBZB-#######----#-BZBZBZB-#SSPX##----#-BBBBBZB-#MDP-##----##BZBZBZB##S---##-----##BBBBB##-----##BBBBB-#######--RR--##BZZZB----#----R##R-##BBBBBB---#----R###R###JBZZZ---#-----R#######BBBB---#------R########################",
-						layoutRemark: "248K 5s Priestess Shipper",
+						layoutRemark: "Priest Shipper",
 						layoutNote: "248KTS 248K Priestess @ 14.5 days ",
 						layoutTroops: [0, 0, 0, 0, 248_000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 300_000, 1_400_000],
 					}, {
 						layoutName: " 4s (228K) Priest Ship",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBZBZBB##----##----#BZBZBZBZB#----##----#BZBZBZBZB#----#######BZBZTZBZB#######----#BZBZBZBZB#SS-X##----#BZBZBZBZB#LD-P##----##BBZBZBB##SS-P##-----##BBBBB##-----##------#######--RR--##---------#BBB-R##R-##---------#BZBBR###R###--------#BZBB-R#######-------#BBBB--R########################",
-						layoutRemark: "228K 4s Priestess Shipper",
+						layoutRemark: "Priest Shipper",
 						layoutNote: "228KTS 228K Priestess @ 12.2 days ",
 						layoutTroops: [0, 0, 0, 0, 228_000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 300_000, 1_400_000],
 					}, {
 						layoutName: " 7s (98K) Praetor Ship",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##ZBZBB##-----##----##BZBZBZB##----##----#-BZBZBZB-#----##----#-BZBZBZB-#----#######-BZBTBZB-#######----#-BZBZBZB-#SSJX##----#-BZBZBZB-#M---##----##BZBZBZB##----##-----##BBZBB##-----##---BBB#######--RR--##-BZBZBZB-#----RTTR-##-BZBZBZBJ#----RTT#R###BZBZBZB-#-----RT######BBBB---#------R########################",
-						layoutRemark: "7s (98K) Praetor Shipper",
+						layoutRemark: "Praets Shipper",
 						layoutNote: "196KTS 98000 Praetor @ 8.75 days ",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 0, 98_000, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 300_000, 1_400_000],
 					}, {
 						layoutName: " 5s (188K) Priest Mini Hub",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBZBZBB##----##----#BZBZBZBZB#----##----#BZBZBZBZB#----#######BZBBTBBBB#######----#BZBZBZBZB#SASM##----#BZBZBZBZB#SLSD##----##BBZBZBB##----##-----##BBBBB##PPPP-##------#######PPRRPP##---------#X--PRTTRP##---------#---PRTTTR###--------#---PPRTT#####-------#----JPR########################",
-						layoutRemark: "188K 5s Priest Mini Hub",
+						layoutRemark: "Priest Mini Hub",
 						layoutNote: "2800 carts, 188KTS 188000 Priest @ 11 days ",
 						layoutTroops: [0, 0, 0, 0, 188_000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 300_000, 1_400_000],
 					}, {
 						layoutName: " 3s/4s (88K/88K) R/T Mini Hub",
 						layoutString: "[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BGBGBGBGB#----##----#BGBGBGBGB#----#######BGBGTGBGB#######----#BGBGBGBGB#----##----#BGBGBGBGB#----##----##BBGBGBB##----##-----##BBBBB##PPPP-##------#######PPRRPP##---------#AL-PRTTRP##---------#SS-PRTTTR###--------#MD-PPRTT#####-------#XJZ-PPR########################",
-						layoutRemark: "176K 3/4sec R/T Mini Hub",
+						layoutRemark: "RT Mini Hub",
 						layoutNote: "3000 carts, 176KTS 88K rangers, 88K Triari @ 7 days ",
 						layoutTroops: [0, 0, 88_000, 88_000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 350_000, 350_000, 300_000, 1_400_000],
@@ -1820,15 +1820,15 @@ cotgsubscribe.subscribe( "regional", function( data ) {});
 					"Portal": [{
 						layoutName: " 3s (292K) Vanqs",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BBBGBGBBB#----##----#BGBBBBBGB#----#######BBBGTGBBB#######SSPX#BGBBBBBGB#----##MDP-#BBBGBGBBB#----##S---##BBGBGBB##----##-----##BBBBB##-----##------#######------##---BBBBBB#---------##---BGGBGB#---------###--BBBBBB#--------#####-JBZBBB#-------########################",
-						layoutRemark: "vanqs",
-						layoutNote: "292000 vanqs @ 10 days",
+						layoutRemark: "Vanqs",
+						layoutNote: "292000 Vanqs @ 10 days",
 						layoutTroops: [0, 0, 0, 0, 0, 291_999, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 200_000, 400_000],
 					}, {
 						layoutName: " 4s (308k) Vanqs Portal",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBGBGBB##----##----#BBBBBBBBB#----##----#BGBGBGBGB#----#######BBBBTBBGB#######SMSX#BGBGBGBGB#----##SDPP#BBBBBBBBB#----##----##BBGBGBB##----##-----##BBBBB##-----##------#######------##---BBBBBB#---------##---BBBBBB#---------###--BBBBBB#--------#####-BBJBZB#-------########################",
-						layoutRemark: "vanqs",
-						layoutNote: "308000 vanqs @ 14.5 days",
+						layoutRemark: "Vanqs",
+						layoutNote: "308000 Vanqs @ 14.5 days",
 						layoutTroops: [0, 0, 0, 0, 0, 307_999, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 200_000, 400_000],
 					}, {
@@ -1841,14 +1841,14 @@ cotgsubscribe.subscribe( "regional", function( data ) {});
 					}, {
 						layoutName: " 5s (130k) Horsemen Portal",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BEEEEEB##----##----#BBBBBBBBB#----##----#BEEEEEEEB#----#######BBBBTBBBB#######----#BEEEEEEEB#SPJX##----#BBBBBBBBB#S---##----##BEEEEEB##BBB-##-----##BBBBB##BBBBB##------#######-BEEEB##---------#----BBBBB##---------#----BEEEB###--------#----BBBB#####-------#-------########################",
-						layoutRemark: "Horse",
+						layoutRemark: "Horses",
 						layoutNote: "260KTS 130,000 Horse @ 7.5 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 130_000, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 200_000, 400_000],
 					}, {
 						layoutName: " 6s (136K) Horsemen Portal",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBEBEBB##----##----#BEBEBEBEB#----##----#BEBBBBBEB#----#######BEBETEBEB#######----#BEBBBBBEB#SMPX##----#BEBEBEBEB#SDPJ##----##BBEBEBB##----##-----##BBBBB##-----##------#######BBBBB-##---------#---BEBEB-##---------#---BBBBB-###--------#---BEBEB#####-------#---BBBB########################",
-						layoutRemark: "Horse",
+						layoutRemark: "Horses",
 						layoutNote: "272KTS 136,000 Horse @ 9.5 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 136_000, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 200_000, 400_000],
@@ -1897,21 +1897,21 @@ cotgsubscribe.subscribe( "regional", function( data ) {});
 					}, {
 						layoutName: " 25s (25.6K) Rams Portal",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BYBYB##-----##----##BBYBYBB##----##----#BYBYBYBYB#----##----#BYBYBYBYB#----#######BYBYTYBYB#######----#BYBYBYBYB#SS-X##----#BYBYBYBYB#----##----##BBYBYBB##----##-----##BBBYB##-----##------#######------##---------#-BBBBBB--##---------#BYBYBYBB-###--------#BYBYBYBB#####-------#BBBBBBB########################",
-						layoutRemark: "Battering Rams",
+						layoutRemark: "Rams",
 						layoutNote: "256KTS 25,600 Scorps @ 7.5 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25_600, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 200_000, 400_000],
 					}, {
 						layoutName: " 30s (28.4K) Rams Portal",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##YBYBYBY##----##----#BBBYBYBBB#----##----#BYBBBBBYB#----#######BYBYTYBYB#######----#BYBBBBBYB#SS-X##----#BBBYBYBBB#----##----##YBYBYBY##----##-----##BBBBB##BBB--##------#######-BYB--##---------#--BBBYB--##---------#-BBYBYB--###--------#-BBYBYB-#####-------#-BBBBBB########################",
-						layoutRemark: "Battering Rams",
+						layoutRemark: "Rams",
 						layoutNote: "284KTS 28,400 Rams @ 10 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28_400, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 200_000, 400_000],
 					}, {
 						layoutName: " 3s/3s (132K/132K) RT Portal",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##GBGBGBG##----##----#BBBGBGBBB#----##----#BGBGBGBGB#----#######BBBGTGBGB#######----#BGBGBGBGB#S-PX##----#BBBGBGBBB#S-P-##----##GBGBGBG##----##-----##BBBBB##-----##------#######BBBB--##---------#--BGBGBB-##---------#--BBBGBJ-###--------#--BGBGBB#####-------#--BBBBB########################",
-						layoutRemark: "R/T",
+						layoutRemark: "RT",
 						layoutNote: "264KTS 132000 Ranger, 132000 Triari @ 9 days",
 						layoutTroops: [0, 0, 132_000, 132_000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 200_000, 400_000],
@@ -1960,12 +1960,59 @@ cotgsubscribe.subscribe( "regional", function( data ) {});
 					}, {
 						layoutName: " 8s (136K) Praetor Portal",
 						layoutString: "[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BBZBZBB##----##----#BZBZBZBZB#----##----#BZBBBBBZB#----#######BZBZTZBZB#######----#BZBBBBBZB#SPJX##----#BZBZBZBZB#SP--##----##BBZBZBB##----##-----##BBBBB##-----##------#######BBBBBB##---------#---BZZZZB##---------#---BBBBBB###--------#---BZZB-#####-------#---BBBB########################",
-						layoutRemark: "Praetor",
+						layoutRemark: "Praets",
 						layoutNote: "272KTS 136,000 Praetor @ 12.5 days",
 						layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 0, 136_000, 0, 0, 0, 0, 0, 0, 0],
 						layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 200_000, 400_000],
-					}]
+					}],
+                    "Misc": [{
+                        layoutName: "Food Land",
+                        layoutString: "[ShareString.1.3]:########################-------#-------#####1-1-1-1-#-1-1-1-1###--M1C1M1-#-1M1C1M--##-1-1-1---#---1-1-1-##------#######------##-1-1-##-----##-1-1-##--M-##1-1-1-1##-M--##-11-#--M---M--#-11-##----#-111-111-#----#######--C-T-C--#######----#-111-111-#---P##-11-#--M---M--#-11-##--M-##1-1-1-1##-M--##-1-1-##-----##-111-##------#######------##-1-1-1---#---1-1-1-##--M1C1M1-#-1M1C1M--###1-1-1-1-#-1-1-1-1#####-------#-------########################",
+                        layoutRemark: "Food",
+                        layoutNote: "144k Food/hr",
+                        layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                        layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 0, 0],
+                    },{
+                        layoutName: "Food Water",
+                        layoutString: "[ShareString.1.3];########################-------#-------#####1-1-1-1-#-1-1-1-1###--M-C1M1-#-1M1C-M--##-111-1---#---1-111-##--C---#######---C--##-111-##-----##-111-##--M-##1-1-1-1##-M--##-11-#-1M1C1M--#-11-##----#-1-1-1-1-#----#######----T----#######----#-1-1-1-1-#----##-11-#-1M1C1M1-#-11-##--M-##1-1-1-1##-M--##-111-##-----##-1-1-##--C---#######--__--##-111-1---#---1_##_-##--M-C1M1-#-1M-_###_###1-1-1-1-#-1-1-_#######-------#-----P_########################",
+                        layoutRemark: "Food",
+                        layoutNote: "140.9k Food/hr",
+                        layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                        layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 0, 0],
 
+                    },{
+                        layoutName:"Standard HLT",
+                        layoutString:"[ShareString.1.3]:########################CCCCCCC#CCCCCC-#####CCCCCCCC#CCCCCCCC###CCCCCCCCC#CCCCCCCCC##CCCCCCCCC#CCCCCCCCC##CCCCC-#######-CCCCC##CCCC-##-----##-----##CCCC##-------##----##CCCC#---------#----##CCCC#---------#----#######----T----#######---X#---------#----##----#---KSS---#----##----##---MM--##----##-----##--SS-##-----##------#######------##---------#---------##---------#---------###--------#--------#####-------#-------########################",
+                        layoutRemark:"HLT",
+                        layoutNote:"Standard HLT Build",
+                        layoutTroops: [999_999, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                        layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 0, 1_000_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 0, 1_000_000],
+
+                    },{
+                        layoutName:"Defensive HLT",
+                        layoutString:"[ShareString.1.3];########################-------#-------#####--------#--------###---------#---------##CCC------#------1--##CCCC--#######---M--##CCCC-##-----##-SSS-##CCCC##-------##-M--##CCCC#---------#----##CCCC#---------#----#######----T----#######CCCC#---------#XKKK##CCCC#---------#JKKK##CCCC##-------##-KKK##CCCCC##-----##--KKK##-CCCCC#######--__-K##CCCCCCCCC#----_##_-##CCCCCCCCC#----_###_###CCCCCCCC#-----_#######CCCCCCC#------_########################",
+                        layoutRemark:"HLT",
+                        layoutNote:"Defensive HLT Build",
+                        layoutTroops: [9_999_999, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                        layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 0, 1_000_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 0, 1_000_000],
+
+                    },{
+                        layoutName:"39pt Focus",
+                        layoutString:"[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##-----##-----##----##-------##----##----#---------#----##----#---------#----#######----T----#######---X#---------#----##----#----SS---#----##----##---SS--##----##-----##--SS-##-----##------#######------##---------#---------##---------#---------###--------#--------#####-------#-------########################",
+                        layoutRemark:"39PT",
+                        layoutNote:"Build Bas to 8, build Warehouses to level 1. build castle to level 1. build level 1 sentinel towers in every slot. downgrade bas to level 1 after rest are complete",
+                        layoutTroops: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                        layoutResources: [0, 0, 0, 0, 1, 150_000, 150_000, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 150_000, 150_000, 0, 0],
+
+                    },{
+                        layoutName:"3s (134K) Scouts",
+                        layoutString:"[ShareString.1.3]:########################-------#-------#####--------#--------###---------#---------##---------#---------##------#######------##-----##BBBBB##-----##----##BEEEEEB##----##----#BBBBBBBBB#----##----#BEEEEEEEB#----#######BBBBTBBBB#######S-PX#BEEEEEEEB#----##M--J#BBBBBBBBB#----##----##-BEEEEB##----##-----##BBBBB##-----##-BBB--#######------##-BEB-----#---------##-BEBBBBBB#---------###BBBEEBEB#--------#####-BBBBBB#-------########################",
+                        layoutRemark:"Scouts",
+                        layoutNote:"134k in 4Days 16Hours",
+                        layoutTroops: [0, 0, 0, 0, 0, 0, 0, 134_000, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                        layoutResources: [0, 0, 0, 0, 1, 250_000, 250_000, 200_000, 350_000, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 250_000, 250_000, 200_000, 400_000],
+                    },
+                ]
 				};
 
 
@@ -2058,7 +2105,7 @@ cotgsubscribe.subscribe( "regional", function( data ) {});
 
 
 	const emptyspots = ",.;:#-T";
-	
+
 	let beentoworld = false;
 	let dhruvboss = 0;
 	let shrinePlayers = {
@@ -2075,7 +2122,50 @@ cotgsubscribe.subscribe( "regional", function( data ) {});
 
 
 
-		const options = {};
+	const options = {};
+
+
+
+	const updateContinentFromTableRow = (tableRow) => {
+	  const oHBody = document.querySelector('#oHBody');
+	  const dhBody = document.querySelector('#dhBody');
+
+	  let coordinatesCell;
+
+	  if (oHBody && tableRow.closest('#oHBody')) {
+		coordinatesCell = tableRow.querySelector('td:nth-child(6) > span');
+	  } else if (dhBody && tableRow.closest('#dhBody')) {
+		coordinatesCell = tableRow.querySelector('td:nth-child(5) > span');
+	  }
+
+	  if (coordinatesCell) {
+		const coordinates = coordinatesCell.textContent;
+		const continent = parseInt(coordinates.split(':')[1][0] + coordinates.split(':')[0][0]);
+		tableRow.setAttribute('co', continent);
+	  }
+	};
+
+	const observerCallback = (mutationsList, observer) => {
+	  for (const mutation of mutationsList) {
+		if (mutation.type === 'childList') {
+		  const oHBody = document.querySelector('#oHBody');
+		  if (oHBody) {
+			oHBody.querySelectorAll('tr').forEach(updateContinentFromTableRow);
+		  }
+
+		  const dhBody = document.querySelector('#dhBody');
+		  if (dhBody) {
+			dhBody.querySelectorAll('tr').forEach(updateContinentFromTableRow);
+		  }
+		}
+	  }
+	};
+
+	const aipTabs = document.querySelector('#aipTabs');
+	const continentObserver = new MutationObserver(observerCallback);
+
+	continentObserver.observe(aipTabs, { childList: true, subtree: true });
+
 
 
 	setTimeout(function() {
@@ -2145,6 +2235,7 @@ cotgsubscribe.subscribe( "regional", function( data ) {});
 						city.tt = poll2.city.tt;
 						city.mo = poll2.city.mo;
 						city.cid = poll2.city.cid;
+						city.cg = poll2.city.cg;
 
 						if ('opt' in poll2.player) {} else {
 							poll2.player.opt = saveopt;
@@ -2155,7 +2246,7 @@ cotgsubscribe.subscribe( "regional", function( data ) {});
 							poll2.OGA = saveoga;
 						}
 						if ('bd' in poll2.city) {
-							buildingdata= poll2.city.bd;
+							buildingdata = poll2.city.bd;
 							makebuildcount();
 						}
 						if ('clc' in poll2.player) {
@@ -2184,23 +2275,27 @@ cotgsubscribe.subscribe( "regional", function( data ) {});
 
 						//////console.log('Coords: ' + city.x + ':' + city.y );
 						city.mo = cdata.mo;
-						setTimeout(function() {
+
 							updateattack();
 							updatedef();
 							makebuildcount();
-						}, 2000);
+
 
 						coonvalue();
 
 					}
-					
+					if (url.indexOf('ofdf.php') !=-1) {
+						//responseData = JSON.parse(this.response);
+						//updateContinent(responseData);
+
+					}
+
 				}, false);
 				open.apply(this, arguments);
 			};
 		})(XMLHttpRequest.prototype.open);
 		////console.log("Gfunky+ Has Loaded. Presented by Greety and Fact ");
 	}, 8000);
-
 
 
 	function cityCoords() {
@@ -2225,9 +2320,13 @@ cotgsubscribe.subscribe( "regional", function( data ) {});
 
 
 	function removeNonAlphaNumericCharacters(str) {
-  // replace all non-alphanumeric characters with whitespace
-  return str.replace(/[^a-zA-Z0-9\s]/g, " ");
-}
+ 		 // replace all non-alphanumeric characters with whitespace
+  		return str.replace(/[^a-zA-Z0-9\s]/g, " ");
+	}
+
+
+
+
 
 function checkPoll2Layout() {
 	if (poll2.city) {
@@ -2489,7 +2588,7 @@ function checkPoll2Layout() {
 		}
 		return a;
 	};
-	$("#ui-id-79").text("My Items");
+
 	//getting faith and research bonuses
 	$().ready(function() {
 		$.ajax({
@@ -2574,7 +2673,7 @@ function checkPoll2Layout() {
 				FaithAttackIndex[3] += ((Number(naerafaith) * 0.5) / 100) + (Number(Res[research[31]]) / 100); //triari
 				FaithAttackIndex[4] += ((Number(naerafaith) * 0.5) / 100) + (Number(Res[research[32]]) / 100); //priestess
 				FaithAttackIndex[5] += ((Number(vexifaith) * 0.5) / 100) + (Number(Res[research[33]]) / 100); //vanq
-				FaithAttackIndex[6] += ((Number(vexifaith) * 0.5) / 100) + (Number(Res[research[34]]) / 100); //sorc
+				FaithAttackIndex[6] += ((Number(vexifaith) * 0.5) / 100) + (Number(Res[research[34]]) / 100); //Sorcs
 				FaithAttackIndex[7] += ((Number(vexifaith) * 0.5) / 100) + (Number(Res[research[46]]) / 100); //scout
 				FaithAttackIndex[8] += ((Number(naerafaith) * 0.5) / 100) + (Number(Res[research[35]]) / 100); //arb
 				FaithAttackIndex[9] += ((Number(naerafaith) * 0.5) / 100) + (Number(Res[research[36]]) / 100); //pra
@@ -3013,6 +3112,7 @@ function checkPoll2Layout() {
 			const shrinetabsort = document.getElementById('shrineTab');
 			sorttable.makeSortable(shrinetabsort);
 		}
+
 		/*
 
 
@@ -3022,91 +3122,232 @@ function checkPoll2Layout() {
 			WAR COUNC BUTTONS
 				buttons
         */
-		const returnAllbut = "<button id='returnAllb' style='right: 35.6%; margin-top: 55px;width: 150px;height: 30px !important; font-size: 12px !important; position: absolute;' class='regButton greenb'>Return All</button>";
+
 		const raidbossbut = "<button id='raidbossGo' style='left: 65%;margin-left: 10px;margin-top: 15px;width: 150px;height: 30px !important; font-size: 12px !important; position: absolute;' class='regButton greenb'>Boss Hunter</button>";
-		const attackbut = "<button id='attackGo' style='margin-left: 25px;margin-top: 55px;width: 150px;height: 30px !important; font-size: 12px !important; position: absolute;' class='regButton greenb'>Attack Scheduler</button>";
+
+		const attackbut = "<button id='attackGo' style='margin-right: 10px;margin-top: 55px;width: 150px;height: 30px !important;font-size: 12px !important;position: absolute;right: 65%;' class='regButton greenb'>Attack Scheduler</button>";
+		const returnAllbut = "<button id='returnAllb' style='right: 35.6%; margin-top: 55px;width: 150px;height: 30px !important; font-size: 12px !important; position: absolute;' class='regButton greenb'>Return All</button>";
 		const defbut = "<button id='defGo' style='left: 65%;margin-left: 10px;margin-top: 55px;width: 150px;height: 30px !important; font-size: 12px !important; position: absolute;' class='regButton greenb'>Defense Scheduler</button>";
-		const quickdefbut = "<button id='quickdefCityGo' style='width:96%; margin-top:2%; margin-left:2%;' class='regButton greenbuttonGo greenb'> Quick Reinforcements</button>";
-		const neardefbut = "<button id='ndefGo' style='left: 4%;margin-left: 3px;margin-top: 95px;width: 150px;height: 30px !important; font-size: 12px !important; position: absolute;' class='regButton greenb'> Nearest Defense</button>";
+
+		const neardefbut = "<button id='ndefGo' style='margin-right: 10px;margin-top: 95px;width: 150px;height: 30px !important;font-size: 12px !important;position: absolute;right: 65%;' class='regButton greenb'> Nearest Defense</button>";
 		const totaloffbut = "<button id='toffGo' style='right: 35.6%; margin-top: 95px;width: 150px;height: 30px !important; font-size: 12px !important; position: absolute;' class='regButton greenb'> Offensive list</button>";
 		const totaldefbut = "<button id='tdefGo' style='left: 65%;margin-top: 95px;margin-left: 10px;width: 150px;height: 30px !important;font-size: 12px !important;position: absolute;' class='regButton greenb'> Defensive list</button>";
+
+		const raidingIncome ='<button id="checkResperHour" style="right: 35.6%; margin-top: 135px;width: 150px;height: 30px !important; font-size: 12px !important; position: absolute;" class="regButton greenb">Raiding Income</button>'
+		const combatCalcDK = "<button class='regButton greenb' id='CoCa' style='left: 65%;margin-top: 135px;margin-left: 10px;width: 150px;height: 30px !important;font-size: 12px !important;position: absolute;'>Combat Calculator</button>";
+
+		const quickdefbut = "<button id='quickdefCityGo' style='width:96%; margin-top:2%; margin-left:2%;' class='regButton greenbuttonGo greenb'> Quick Reinforcements</button>";
 		const addtoatt = "<button id='addtoAtt' style='margin-left: 7%;margin-top: -5%;width: 40%;height: 26px !important; font-size: 9px !important;' class='regButton greenb'>Add to Attack Scheduler</button>";
 		const addtodef = "<button id='addtoDef' style='margin-left: 7%;width: 40%;height: 26px !important; font-size: 9px !important;' class='regButton greenb'>Add to Defense Scheduler</button>";
+
+		// Constants
+		const troopLoad = {Guard:0, Warship:3000, Druid:10, Priestess:10, Horseman:15, Scorpion:0, Sorcerer:5, Ballista:0, Scout:0, Praetor:20, Ranger:10, Arbalist:15, Ram:0, Vanquisher:10, Stinger:1500, Senator:0, Galley:1000, Triari:20};
+		const troopTypes = ["Guard", "Ballista", "Ranger", "Triari", "Priestess", "Vanquisher", "Sorcerer", "Scout", "Arbalist", "Praetor", "Horseman", "Druid", "Ram", "Scorpion", "Galley", "Stinger", "Warship"];
+		const raidLoot = [0, 400, 1000, 4500, 15000, 33000, 60000, 120000, 201000, 300000, 446000];
+		const troopSpeed = { Scout: 8, Horseman: 10, Druid: 10, Praetor: 10, Arbalist: 10, Vanquisher: 20, Sorcerer: 20, Ranger: 20, Triari: 20, Priestess: 20, Ram: 30, Ballista: 30, Scorpion: 30, Senator: 40, Stinger: 5, Galley: 5, Warship: 5 };
+		const researchValues = [0, 1, 3, 6, 10, 15, 20, 25, 30, 35, 40, 45, 50];
+
+
+		
+		// Calculate the resource per hour status
+	function calculateResourcePerHourStatus() {
+		const SIResPerHour = [" ", " k", " m", " b", " t", " p", " e"];
+		let ResPerHourCid, ResPerHour, TotalResPerHour = 0, gfNumRaids = 0, gfNumRaidsCid = 0, resourceVal, ContResPerHour = new Array(60).fill(0), ContSperHour = "", gfTierSI, NContResPerHour = new Array(60).fill(0);
+
+		gffetchRaids().then(raids => {
+		raids.a.forEach(city => {
+			ResPerHour = 0;
+			city[12].forEach(raid => {
+			resourceVal = 100;
+			raid[5].forEach(TrRaidando => {
+				if ([2, 3, 4, 5, 6].includes(TrRaidando.tt)) resourceVal = Math.min(resourceVal, researchValues[cotg.player.research()[8]]);
+				else if ([8, 9, 10, 11].includes(TrRaidando.tt)) resourceVal = Math.min(resourceVal, researchValues[cotg.player.research()[9]]);
+				else if ([14, 15, 16].includes(TrRaidando.tt)) resourceVal = Math.min(resourceVal, researchValues[cotg.player.research()[13]]);
+				ResPerHour += (1 > troopLoad[troopTypes[TrRaidando.tt]] * TrRaidando.tv / raidLoot[raid[2].match(/(?<=l\s).+?(?=\s\()/g)] / (2 - raid[2].match(/(?<=\().+?(?=\%)/g) / 100))
+				? troopLoad[troopTypes[TrRaidando.tt]] * TrRaidando.tv / (Math.sqrt(Math.pow(((raid[8] - raid[8] % 65536) / 65536 - (city[0] - city[0] % 65536) / 65536), 2) + Math.pow((raid[8] % 65536 - city[0] % 65536), 2)) * troopSpeed[troopTypes[TrRaidando.tt]] / (1 + resourceVal / 100) * 2 + 120) * 60
+				: raidLoot[raid[2].match(/(?<=vel\s).+?(?=\s\()/g)] / (2 - raid[2].match(/(?<=\().+?(?=\%)/g) / 100) / (Math.sqrt(Math.pow(((raid[8] - raid[8] % 65536) / 65536 - (city[0] - city[0] % 65536) / 65536), 2) + Math.pow((raid[8] % 65536 - city[0] % 65536), 2)) * troopSpeed[troopTypes[TrRaidando.tt]] / (1 + resourceVal / 100) * 2 + 120) * 60;
+				});
+
+				gfNumRaids++;
+				NContResPerHour[Number(city[2].split(" ")[1])]++;
+				if (Number($("#cityDropdownMenu option:selected").val()) == city[0]) gfNumRaidsCid++;
+				});
+
+				// Display the full number with commas
+				ResPerHourCid = (Number($("#cityDropdownMenu option:selected").val()) == city[0]) ? ResPerHour.toLocaleString() + " /Hour" : ResPerHourCid;
+				TotalResPerHour += (!isNaN(ResPerHour)) ? ResPerHour : 0;
+				ContResPerHour[Number(city[2].split(" ")[1])] += (!isNaN(ResPerHour)) ? ResPerHour : 0;
+				});
+
+				gfTierSI = Math.log10(TotalResPerHour) / 3 | 0;
+				ResPerHour = (gfTierSI != 0) ? Math.floor(TotalResPerHour / Math.pow(10, gfTierSI * 3)).toLocaleString() + SIResPerHour[gfTierSI] + " /Hour" : Math.floor(TotalResPerHour).toLocaleString() + " R/h";
+				let ContRows = "";
+				ContResPerHour.forEach((cont, ncont) => {
+				if (cont != 0) {
+					gfTierSI = Math.log10(cont) / 3 | 0;
+					const continentRow = `
+					<tr>
+						<td style='font-size:12px; text-align:center;'>C${ncont}</td>
+						<td style='font-size:12px; text-align:center;'>${(gfTierSI != 0) ? (cont / Math.pow(10, gfTierSI * 3)).toFixed(2).toLocaleString() + SIResPerHour[gfTierSI] + " /Hour" : cont.toFixed(2).toLocaleString() + " R/h"}</td>
+						<td style='font-size:12px; text-align:center;'>${NContResPerHour[ncont]} Raids (${Math.round(cont / TotalResPerHour * 100)}%)</td>
+					</tr>
+					`;
+					ContRows += continentRow;
+				}
+				});
+
+			const raidTableHTML = `
+			<table class='beigemenutable'>
+				<thead>
+				<tr>
+					<th style='font-size:16px; text-align:center;'>Location</th>
+					<th style='font-size:16px; text-align:center;'>Amounts</th>
+					<th style='font-size:16px; text-align:center;'>Raids</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td style='font-size:12px; text-align:center;'>Total</td>
+					<td style='font-size:12px; text-align:center;'>${ResPerHour}</td>
+					<td style='font-size:12px; text-align:center;'>${gfNumRaids} Raids</td>
+				</tr>
+				${ContRows}
+				<tr>
+					<td style='font-size:12px; text-align:center;'>Current City (${$('#cityDropdownMenu option:selected').val() % 65536}:${(Number($('#cityDropdownMenu option:selected').val()) - $('#cityDropdownMenu option:selected').val() % 65536) / 65536})</td>
+					<td style='font-size:12px; text-align:center;'>${ResPerHourCid}</td>
+					<td style='font-size:12px; text-align:center;'>${gfNumRaidsCid} Raids</td>
+				</tr>
+				</tbody>
+			</table>
+			`;
+
+
+		$("#checkRaidsperHour").html(raidTableHTML);
+		}).catch(error => {
+		console.error('Error in processing raids:', error);
+		});
+  	}
+
+	// Fetch raids
+	function gffetchRaids() {
+		return fetch("overview/graid.php")
+		.then(response => {
+			if (!response.ok) {
+			throw new Error(`HTTP error! status: ${response.status}`);
+			}
+			return response.json();
+		})
+	}
+
+	// Click handler
+	$(document).on("click", "#checkResperHour", function() {
+		if (!$("#checkResperHourBox").length) {
+		$("body").append(`
+			<div id='checkResperHourBox' class='popUpBox ui-resizable ui-draggable' style='z-index:20001; width:50%; position:absolute; '>
+			<div class='ppbwinbgr'>
+				<div class='ppbwintop' style='position: relative; height:150px; width:100%;'></div>
+				<div class='ppbwincent' style='position: relative; height:auto; width:100%;'></div>
+				<div class='ppbwinbott' style='position: relative; height:150px; width:100%;'></div>
+			</div>
+			<div class='ppbwincontent'>
+				<div class='popUpBar ui-draggable-handle' style='margin-top:7px;'>
+				<span class='ppspan'>Gfunky's Raiding Income</span>
+				<button id='gfraidincX' style='margin-top:5px;' class='xbutton' onclick='$("#checkResperHourBox").remove();'>
+					<div id='xbuttondiv'>
+					<div>
+						<div id='centxbuttondiv'></div>
+					</div>
+					</div>
+				</button>
+				</div>
+				<div style='text-align:center;'>
+				<button class="greenb" id="UpdateResPerH" style="border-radius:6px;width:298px;">Update</button>
+				<br/><br/><div id="checkRaidsperHour" class="beigemenutable scroll-pane" style="color:black;background: #e1c190;border-radius: 9px;border: 3px ridge tan;width: 80%;margin-left: auto;margin-right: auto;font-size: medium;">Computing...</div>
+				</div>
+			</div>
+			</div>`);
+
+		$("#checkResperHourBox").draggable({ handle: ".popUpBar", containment: "window", scroll: false });
+		$("#UpdateResPerH").click(calculateResourcePerHourStatus);
+		calculateResourcePerHourStatus();
+		}
+	});
+
 		//Boss Tab
 		const wartabs = [{
-    id: 'bosshuntab',
-    ariaControls: 'warBossmanager',
-    text: 'Boss Hunter',
-    href: '#warBossmanager'
-  },
-  {
-    id: 'attacktab',
-    ariaControls: 'warAttackmanager',
-    text: 'Attack Scheduler',
-    href: '#warAttackmanager'
-  },
-  {
-    id: 'deftab',
-    ariaControls: 'warDefmanager',
-    text: 'Defense Scheduler',
-    href: '#warDefmanager'
-  },
-  {
-    id: 'neardeftab',
-    ariaControls: 'warNdefmanager',
-    text: 'Nearby Def',
-    href: '#warNdefmanager'
-  },
-  {
-    id: 'totalofftab',
-    ariaControls: 'warToffmanager',
-    text: 'Offensive TS',
-    href: '#warToffmanager'
-  },
-  {
-    id: 'totaldeftab',
-    ariaControls: 'warTdefmanager',
-    text: 'Defensive TS',
-    href: '#warTdefmanager'
-  },
-];
+			id: 'bosshuntab',
+			ariaControls: 'warBossmanager',
+			text: 'Boss Hunter',
+			href: '#warBossmanager'
+		},
+		{
+			id: 'attacktab',
+			ariaControls: 'warAttackmanager',
+			text: 'Attack Scheduler',
+			href: '#warAttackmanager'
+		},
+		{
+			id: 'deftab',
+			ariaControls: 'warDefmanager',
+			text: 'Defense Scheduler',
+			href: '#warDefmanager'
+		},
+		{
+			id: 'neardeftab',
+			ariaControls: 'warNdefmanager',
+			text: 'Nearby Def',
+			href: '#warNdefmanager'
+		},
+		{
+			id: 'totalofftab',
+			ariaControls: 'warToffmanager',
+			text: 'Offensive TS',
+			href: '#warToffmanager'
+		},
+		{
+			id: 'totaldeftab',
+			ariaControls: 'warTdefmanager',
+			text: 'Defensive TS',
+			href: '#warTdefmanager'
+		},
+		];
 
-let tabsHTML = '';
+		let tabsHTML = '';
 
-// Split the wartabs array into two arrays
-const firstThreeTabs = wartabs.slice(0, 2);
-const lastThreeTabs = wartabs.slice(2);
+		// Split the wartabs array into two arrays
+		const firstThreeTabs = wartabs.slice(0, 2);
+		const lastThreeTabs = wartabs.slice(2);
 
-// Generate HTML for the first 3 tabs
-firstThreeTabs.forEach(({
-  id,
-  ariaControls,
-  text,
-  href
-}) => {
-  tabsHTML += `
-        <li id="${id}" class="ui-state-default" role="tab" tabindex="-1" aria-controls="${ariaControls}" aria-labeledby="ui-id-20" aria-selected="false" aria-expanded="false" style='height:21px;'>
-          <a href="${href}" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-20">${text}</a>
-        </li>
-    `;
-});
+		// Generate HTML for the first 3 tabs
+		firstThreeTabs.forEach(({
+		id,
+		ariaControls,
+		text,
+		href
+		}) => {
+		tabsHTML += `
+				<li id="${id}" class="ui-state-default" role="tab" tabindex="-1" aria-controls="${ariaControls}" aria-labeledby="ui-id-20" aria-selected="false" aria-expanded="false" style='height:21px;'>
+				<a href="${href}" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-20">${text}</a>
+				</li>
+			`;
+		});
 
-// Add a line break
-tabsHTML += '<br>';
+		// Add a line break
+		tabsHTML += '<br>';
 
-// Generate HTML for the last 3 tabs
-lastThreeTabs.forEach(({
-  id,
-  ariaControls,
-  text,
-  href
-}) => {
-  tabsHTML += `
-        <li id="${id}" class="ui-state-default" role="tab" tabindex="-1" aria-controls="${ariaControls}" aria-labeledby="ui-id-20" aria-selected="false" aria-expanded="false" style='height:21px;'>
-          <a href="${href}" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-20">${text}</a>
-        </li>
-    `;
-});
+		// Generate HTML for the last 3 tabs
+		lastThreeTabs.forEach(({
+		id,
+		ariaControls,
+		text,
+		href
+		}) => {
+		tabsHTML += `
+				<li id="${id}" class="ui-state-default" role="tab" tabindex="-1" aria-controls="${ariaControls}" aria-labeledby="ui-id-20" aria-selected="false" aria-expanded="false" style='height:21px;'>
+				<a href="${href}" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-20">${text}</a>
+				</li>
+			`;
+		});
 
 
 		let bosstabbody = `
@@ -3408,6 +3649,13 @@ lastThreeTabs.forEach(({
 		</div>
 		</div>
 		</div>`;
+
+		'use strict';
+
+
+
+
+
 		//BUTTONS  on War Council Tab
 		const tabs = $("#warcouncTabs").tabs();
 		const ul = tabs.find("ul");
@@ -3431,14 +3679,14 @@ lastThreeTabs.forEach(({
 		$("#defpreset").hide();
 
 		$("#dret").hide();
-		$("#warCounc").append(returnAllbut, attackbut, defbut, neardefbut, totaloffbut, totaldefbut)
+		$("#warCounc").append(returnAllbut, attackbut, defbut, neardefbut, totaloffbut, totaldefbut, combatCalcDK,raidingIncome);
 		$("#coordstochatGo1").after(addtoatt);
 		$("#addtoAtt").after(addtodef);
 		$("#loccavwarconGo").css("right", "65%");
 		$("#idluniwarconGo").css("left", "34%");
 		$("#idluniwarconGo").after(raidbossbut);
 		$('#CheckResHora').css("right", "");
-		$('#CheckResHora').css("margin-top", "135px");
+		$('#CheckResHora').css("margin-top", "335px");
 		$('#CheckResHora').css("left", "35.9%");
 		$('#defdeparture').change(function() {
 			($('#defdeparture').val() === '0') ? $('#deftime, #dret, #defpreset').hide(): $('#deftime, #dret, #defpreset').show();
@@ -3618,11 +3866,11 @@ lastThreeTabs.forEach(({
 		$("#addtoAtt").click(function() {
 			for (let i = 1; i < 16; i++) {
 				if (!$(`#t${i}x`).val()) {
-					var tid = Number($("#showReportsGo").attr("data"));
+					var tid =$("#citycoords").text().split(":");
 					var tempx;
 					var tempy;
-					tempx = Number(tid % 65_536);
-					tempy = Number((tid - tempx) / 65_536);
+					tempx = Number(tid[0]);
+					tempy = Number(tid[1]);
 					$(`#t${i}x`).val(tempx);
 					$(`#t${i}y`).val(tempy);
 					break;
@@ -3632,11 +3880,11 @@ lastThreeTabs.forEach(({
 		$("#addtoDef").click(function() {
 			for (let i = 1; i < 16; i++) {
 				if (!$(`#d${i}x`).val()) {
-					var tid = Number($("#showReportsGo").attr("data"));
+					var tid = $("#citycoords").text().split(":");
 					var tempx;
 					var tempy;
-					tempx = Number(tid % 65_536);
-					tempy = Number((tid - tempx) / 65_536);
+					tempx = Number(tid[0]);
+					tempy = Number(tid[1]);
 					$(`#d${i}x`).val(tempx);
 					$(`#d${i}y`).val(tempy);
 					break;
@@ -3644,11 +3892,11 @@ lastThreeTabs.forEach(({
 			}
 		});
 		$("#quickdefCityGo").click(function() {
-			const tid = Number($("#showReportsGo").attr("data"));
+			const tid = $("#citycoords").text().split(":");
 			let tempx;
 			let tempy;
-			tempx = Number(tid % 65_536);
-			tempy = Number((tid - tempx) / 65_536);
+			tempx = Number(tid[0]);
+			tempy = Number(tid[1]);
 			const defobj = {
 				targets: {
 					x: [tempx],
@@ -3803,8 +4051,8 @@ lastThreeTabs.forEach(({
 			}
 		  }
 		});
-		
-		
+
+
 	  // Define a function to check the value of #mailrSub and toggle the visibility of #scheduleDiv
 	  function checkMailrSub() {
 		var mailrSub = $("#mailrSub").text().toLowerCase();
@@ -3840,62 +4088,110 @@ lastThreeTabs.forEach(({
 
 		// Add a click event listener to the #scheduleButton element
 		$("#scheduleButton").click(function() {
-			// Call the function to reset the attack orders
-			resetAttackOrders();
-			var content = "";
-			$("#mailrMess p, #mailrMess td").each(function() {
-			  content += $(this).html().replace(/<br\s*[\/]?>/gi, "\n") + "\n";
-			});
-			Aimp(content);
-			alert("Any previous orders have been cleared. New orders have been imported to the Attack Scheduler and are ready to be used!");
-			setTimeout(function() {
-				// Remove the alert after 5 seconds
-				$('.alert').remove();
-			}, 2000);
-		});
+            // Call the function to reset the attack orders
+            resetAttackOrders();
+            
+            // Select the entire mail element instead of individual paragraphs or cells
+            var mailElement = $("#mailrMess");
+            var content = mailElement.html()
+              .replace(/<br\s*[\/]?>/gi, "\n")
+              .replace(/(?:^|\n)((?:\w+\s+){1,3}\w+:)(\s*<br>)/gi, "$1\n");
+            
+            Aimp(content);
+            
+            alert("Any previous orders have been cleared. New orders have been imported to the Attack Scheduler and are ready to be used!");
+            
+            setTimeout(function() {
+                // Remove the alert after 2 seconds
+                $('.alert').remove();
+            }, 2000);
+        });
+        
+
+
+
 	});
 
 
-let jsonStrings = [];
-let orderCounts = {};
+	let jsonStrings = [];
+	let orderCounts = {};
 
-function Aimp(str) {
-  // Remove HTML tags and trim the string
-  const cleanStr = str.replace(/<\/?[^>]+(>|$)/g, "").trim();
+	function Aimp(str) {
+		// Remove HTML tags and trim the string
+		const cleanStr = str.replace(/<\/?[^>]+(>|$)/g, "").trim();
 
-  const lines = cleanStr.split("\n");
-  for (let line of lines) {
-    const match = line.match(/{.*}/);
-    if (match) {
-      const orderName = line.split(":")[0].trim();
-      if (!orderCounts[orderName]) {
-        orderCounts[orderName] = 0;
-      }
-      orderCounts[orderName]++;
-      const nameWithCount = `${orderName} #${orderCounts[orderName]}`;
-      jsonStrings.push({ name: nameWithCount, json: match[0] });
-      $(`#orders-dropdown`).append(`<option value=${jsonStrings.length - 1}>${nameWithCount}</option>`);
-      console.log(nameWithCount);
-    }
-  }
+		// Reset the JSON strings and order counts
+		jsonStrings = [];
+		orderCounts = {};
 
-  // regenerate the dropdown options
-  $("#orders-dropdown").empty();
-  $("#orders-dropdown").append(`<option value="">Choose Your Attack Order </option>`);
+		const lines = cleanStr.split("\n");
+		for (let line of lines) {
+			line = line.trim();
+			if (!line) continue;
 
-  // set the default selection to the first string if there is only one string
-  if (jsonStrings.length === 1) {
-    $("#orders-dropdown").append(`<option value="0" selected>${jsonStrings[0].name}</option>`);
-    updateForm(0);
-  } else {
-    // add other strings to the dropdown
-    for (let i = 0; i < jsonStrings.length; i++) {
-      if (i !== 0 || jsonStrings.length > 1) {
-        $(`#orders-dropdown`).append(`<option value=${i}>${jsonStrings[i].name}</option>`);
-      }
-    }
-  }
-}
+			// Skip the metadata lines
+			if (line.startsWith("From:") || line.startsWith("Date:") || line.startsWith("Subject:") || line.startsWith("--------")) {
+				continue;
+			}
+
+			// Check if the line is parsable as JSON
+			let isJson = true;
+			try {
+				JSON.parse(line);
+			} catch (e) {
+				isJson = false;
+			}
+
+			let orderName;
+			let jsonString;
+
+			if (isJson) {
+				// If the line is a JSON string, assign "Attack Order" as the default name
+				orderName = "Attack Order";
+				jsonString = line;
+			} else {
+				// If the line is not a JSON string, attempt to split it into a name and JSON string
+				const match = line.match(/(.*?)(?=\s*\{)(.*)/s);
+				if (match) {
+					orderName = match[1].trim();
+					jsonString = match[2].trim();
+				}
+			}
+
+			// Skip the line if no valid JSON string was found
+			if (!jsonString) {
+				continue;
+			}
+
+			if (!orderCounts[orderName]) {
+				orderCounts[orderName] = 0;
+			}
+			orderCounts[orderName]++;
+			const nameWithCount = `${orderName} #${orderCounts[orderName]}`;
+			jsonStrings.push({ name: nameWithCount, json: jsonString });
+			console.log(nameWithCount);
+		}
+
+
+
+
+		// Regenerate the dropdown options
+		$("#orders-dropdown").empty();
+		$("#orders-dropdown").append(`<option value="">Choose Your Attack Order </option>`);
+
+		// set the default selection to the first string if there is only one string
+		if (jsonStrings.length === 1) {
+		$("#orders-dropdown").append(`<option value="0" selected>${jsonStrings[0].name}</option>`);
+		updateForm(0);
+		} else {
+			// add other strings to the dropdown
+			for (let i = 0; i < jsonStrings.length; i++) {
+				if (i !== 0 || jsonStrings.length > 1) {
+				$(`#orders-dropdown`).append(`<option value=${i}>${jsonStrings[i].name}</option>`);
+				}
+			}
+		}
+	}
 
 function updateForm(selectedIndex) {
   // Check if the orderName string contains the type of attack
@@ -3962,9 +4258,7 @@ resetAttackOrders();
 			const cx = $("#ndefx").val();
 			const cy = $("#ndefy").val();
 			const cont = Number(Math.floor(cx / 100) + 10 * Math.floor(cy / 100));
-			const cit = [
-				[]
-			];
+			const cit = [[]];
 			for (var i in t) {
 				const tid = t[i].id;
 				const tempx = Number(tid % 65_536);
@@ -5667,12 +5961,23 @@ resetAttackOrders();
 		$("#fb10").click(function() {
 			gfunkyoptionWin();
 		});
-		$("#centarrowNextDiv, #centarrowPrevDiv, #ddctd, #qbuildtbButton").click(function() {
+		$("#centarrowNextDiv, #centarrowPrevDiv, #ddctd, #qbuildtbButton, #regionButton, #worldButton").click(function() {
 			["fb4", "fb7", "fb8", "fb9"].forEach(function(id) {
-				$("#" + id).removeClass("redb").addClass("greenb");
+				$("#" + id).removeClass("activeAllyButton").addClass("greenb");
 			});
 			autodemoon = autoupon = autoupqon = autodownon = 0;
 		});
+
+     
+
+        
+        
+        
+        
+        
+        
+        
+
 
 		//Updated 3.10.23 Fact
 		$("#city_map").click(function() {
@@ -5728,7 +6033,7 @@ resetAttackOrders();
 			if (gfoverview) {
 				opengfunkyoverviewwin();
 				var ab = city.cid;
-				var acg = poll2.city.cg;
+				var acg =city.cg;
 				let hubdata = {
 					a: JSON.stringify(acg),
 					cid: ab
@@ -5748,20 +6053,29 @@ resetAttackOrders();
 		});
 		$("#recruitmentQueue").before(bdcountbox);
 		//Updated 3.10.23 Fact
-		$("#bdcountbut").click(function() {
+		$("#bdcountbar").click(function() {
 			const $bdcountwin = $("#bdcountwin");
-			const $bdcountbut = $(this);
+			const $bdcountbut = $('#bdcountbut');
 
 			$bdcountwin.toggle();
 			$bdcountbut.toggleClass("tradeqarr1 tradeqarr2");
 			bdcountshow = $bdcountwin.is(":visible");
+
+			/*	$.ajax({
+					url: 'includes/gC.php',
+					type: 'POST',
+					async: true,
+					data: poll2.city.id
+				});
+				console.log('gC called');
+			*/
 		});
 
 
 		//Updated 3.10.23 Fact
-		$("#qbcbut").click(function() {
+		$("#qb23").click(function() {
 			const $qbwin = $("#qbwin");
-			const $qbcbut = $(this);
+			const $qbcbut = $('#qbcbut');
 			$qbwin.toggle();
 			$qbcbut.toggleClass("tradeqarr1 tradeqarr2");
 			qbcshow = $qbwin.is(":visible");
@@ -5800,8 +6114,12 @@ resetAttackOrders();
 		$("#food45").click(() => setResourceAmount("food", 0.45));
 	});
 	//Updated 3.10.23 Fact
+	$(document).ready(function() {
+		makebuildcount();
+		//setInterval(makebuildcount, 15000); // 10000 milliseconds = 10 seconds
+	  });
 
-	function makebuildcount() {
+	  function makebuildcount() {
 		$("#bdtable").remove();
 		const currentbd = {
 			name: [],
@@ -5832,7 +6150,6 @@ resetAttackOrders();
 		$("#bdcountwin").html(bdtable);
 		$("#numbdleft").html(bdNumber);
 	}
-	setInterval(makebuildcount, 10000); // 10000 milliseconds = 10 seconds
 	// New - Building Data Table 3.10.23 Fact
 	function createBdTable(currentbd) {
 		let bdtable = `<table id='bdtable' style='margin-left: auto; margin-right: auto;'>
@@ -5859,6 +6176,8 @@ resetAttackOrders();
 			  </table>`;
 		return bdtable;
 	}
+
+
 
 	//Updated 3.3.23 Fact
 	async function recallraidl100(citytc, TS_type, TroopLootIndex, MountainLootIndex, ForestHillLootIndex) {
@@ -5967,32 +6286,75 @@ resetAttackOrders();
 	Predicting Incoming Troops Section
 
 	*/
-	$().ready(function() {	
-	
+    $().ready(function() {
+     // Outgoing Table
+        $("#outgoingAttacksTable > table > thead > tr > th:nth-child(13)").text("Claim");
+        $("#outgoingAttacksTable > table > thead > tr > th:nth-child(11)").text("ATTACKER");
+        $("#outgoingAttacksTable > table > thead > tr > th:nth-child(12)").text("DEFENDER");
+        $("#outgoingAttacksTable > table > thead > tr > th:nth-child(7)").text("Coords");
+        $("#outgoingAttacksTable > table > thead > tr > th:nth-child(10)").text("Coords");
+        
+    });
+    function goutgoings() {
+        $('#oaBody > tr').each(function() {
+            const cellsToFormat = [$(this).find('td:nth-child(11)'), $(this).find('td:nth-child(12)')];
+    
+            cellsToFormat.forEach(cell => {
+                const originalValue = cell.attr('sorttable_customkey');
+                const num = parseFloat(originalValue);
+        
+                if (!isNaN(num) && num.toString() === originalValue) {
+                    const formattedValue = num.toLocaleString();
+                    
+                    cell.attr('sorttable_customkey', formattedValue);
+                    cell.text(formattedValue);
+                }
+            });
+        });
+    };
+	$().ready(function() {
+   
 
-	
-	
-	
+		$('.firstparaAIP').text('My Cities');
+		$('.secondparaAIP').text('');
+		const $gfspeedinc = $('<button>', {
+			id: 'incSpeed',
+			text: 'Analyse',
+			class: 'greenb regButton', // Adding the classes
+			css: {
+				'border-radius': '6px',
+				'margin-left': '5%',
+				'font-size': '12px',
+				'width': '80px'
+			}
+		});
 		
-		
+		$('#contselectorAIPic').before($gfspeedinc);
 		
 
+
+
+
+
+        // INCOMING TABLE 
 		//adding 2 elements into the html
 		var incomingtabledata = $("#incomingsAttacksTable").children().children().children();
 		$("#incomingsAttacksTable table thead tr th:nth-child(2)").width(140);
+       
 		var Addth = "<th>Lock time</th>";
 		incomingtabledata.append(Addth);
 		var Addth1 = "<th>Travel time</th>";
 		incomingtabledata.append(Addth1);
-
-		const handleIncomings = () => {
-			setTimeout(function() {
-				incomings();
-			}, 1000);
-		}
-
-		$("#allianceIncomings").parent().click(handleIncomings);
-		$("#incomingsPic").click(handleIncomings);
+        //var Addth2="<th>Inc-Rein</th>";
+       // incomingtabledata.append(Addth2);
+        $("#incomingsAttacksTable > table > thead > tr > th:nth-child(14)").text("Claim");
+       //$("#incomingsAttacksTable > table > thead > tr > th:nth-child(13)").text("ATTACKER");
+       // $("#incomingsAttacksTable > table > thead > tr > th:nth-child(12)").text("DEFENDER");
+        $("#incomingsAttacksTable > table > thead > tr > th:nth-child(5)").text("Coords");
+        $("#incomingsAttacksTable > table > thead > tr > th:nth-child(10)").text("Coords");
+      
+        
+        
 	});
 
 	function roundingto2(num) {
@@ -6004,6 +6366,36 @@ resetAttackOrders();
 	}
 
 	function incomings() {
+        const MAX_WIDTH = '100px';  // Set this to your desired maximum width
+        const MIN_WIDTH = '50px'; 
+        $('#iaBody tr td:nth-child(1)').css({
+            'max-width': MAX_WIDTH,
+            'min-width': MIN_WIDTH,
+            'overflow': 'hidden',
+            'text-overflow': 'ellipsis',
+            'white-space': 'nowrap'
+        });
+        $('#iaBody th, #iaBody td').css({
+            'padding-left': '3px',
+            'padding-right': '3px'
+        });
+        $('#iaBody > tr').each(function() {
+            const cellsToFormat = [$(this).find('td:nth-child(12)'), $(this).find('td:nth-child(13)')];
+        
+            cellsToFormat.forEach(cell => {
+                const originalValue = cell.attr('sorttable_customkey');
+                const num = parseFloat(originalValue);
+        
+                if (!isNaN(num) && num.toString() === originalValue) {
+                    const formattedValue = num.toLocaleString();
+                    
+                    cell.attr('sorttable_customkey', formattedValue);
+                    cell.text(formattedValue);
+                }
+            });
+        });
+        
+
 		//  below will give u a variable called speeeed which contains all the possible speed bonuses that can be in game
 		var speeeed = [];
 		speeeed[0] = 0;
@@ -6124,9 +6516,9 @@ resetAttackOrders();
 					arrivaltimedate = 1;
 				}
 			}
-			if (arrivaltimemonth === 02) {
+			if (arrivaltimemonth === 0o2) {
 				if (arrivaltimedate > 28) {
-					arrivaltimedate = 1;
+				  arrivaltimedate = 1;
 				}
 			}
 			var addt = $(this);
@@ -6652,14 +7044,16 @@ resetAttackOrders();
 				const type_dung = $(this).attr('type');
 				loot1 = type_dung === "Mountain" ? MountainLootIndex : ForestHillLootIndex;
 				const total_loot = Math.ceil((loot1[Number(dunglvl) - 1] * ((1 - Number(progress) / 100) + 1)) * 1.0175);
-				$("#dungloctab").find(".addraiwc td:nth-child(2)").html("<button id='raidAll' style='padding: 2px; border-radius: 4px;' class='greenb shRnTr'>Use All TS</button>");
-				$("#dungloctab").find(".addraiwc td:nth-child(5)").html("");
+				$("#dungloctab").find(".addraiwc td:nth-child(5)").html("<button id='raidAll' style='padding: 2px; border-radius: 4px;' class='greenb shRnTr'>Use All TS</button>");
+
 
 				function createSelectElement() {
 					let select = document.createElement('select');
 					select.id = 'raidSelect';
-					select.style.padding = '2px';
+					//select.style.padding = '2px';
 					select.style.borderRadius = '4px';
+					select.style.height = '100%';
+					select.style.width = '100%';
 					select.className = 'greenb shRnTr';
 					select.autofocus = true;
 					let options = [{
@@ -6898,6 +7292,61 @@ resetAttackOrders();
 	Boss Section
 
 	*/
+    $(document).ready(function () {
+        // Find the spotcityname element
+        var spotcityname = $("#spotcityname");
+        // Get references to the elements
+        var showReportsGo = $("#showReportsGo");
+        var switchtocityGo = $("#switchtocityGo");
+        var spotInfoXbutton = $("#spotInfoXbutton");
+    
+        // Check if spotcityname element exists
+        if (spotcityname.length > 0) {
+            // Create the switchcity span element with the button
+            var switchcitySpan = $("<span id='switchcity' style='margin-left:50px;'><button id='switch2Citygf' class='greenb' style='font-size:10px; border-radius:9px;'>Switch to City</button></span>");
+    
+            // Insert the switchcity span after the spotcityname span
+            spotcityname.after(switchcitySpan);
+    
+            // Add a click event listener to the "Switch to City" button
+            $("#switch2Citygf").on("click", function () {
+                showReportsGo.click();
+                setTimeout(function () {
+                    switchtocityGo.click();
+                }, 500);
+                spotInfoXbutton.click();
+            });
+        }
+    });
+    
+    $(document).ready(function () {
+        // Function to update button visibility
+        function updateButtonVisibility() {
+            var cityplayername = $("#cityplayername").text();
+            var playerName = $("#playerName").text();
+            
+            if (cityplayername === playerName) {
+                console.log("Button should show.");
+                $("#switchcity").show(); // Show the button
+            } else {
+                console.log("Button should hide.");
+                $("#switchcity").hide(); // Hide the button
+            }
+        }
+    
+        // Set up an event listener to react to changes in #cityplayername
+        $("#cityplayername").on("DOMSubtreeModified", function () {
+            console.log("DOMSubtreeModified event fired.");
+            updateButtonVisibility();
+        });
+    
+        // Call the initial updateButtonVisibility function
+        updateButtonVisibility();
+    });
+    
+    
+    
+    
 	function getbossinfo() {
 		bossinfo = {
 			x: [],
@@ -7158,7 +7607,7 @@ resetAttackOrders();
 				const optimalTSM = Math.ceil((MountainLootIndex[lvl - 1] / 10 * ((1 - prog / 100) + 1)) * 1.0175);
 				const cavoptim = Math.ceil((optimalTSM * 2) / 3);
 				const praoptim = Math.ceil(optimalTSM / 2);
-				const sorcoptim = Math.ceil(optimalTSM * 2);
+				const Sorcsoptim = Math.ceil(optimalTSM * 2);
 				const RToptim = Math.ceil(optimalTSM / 3);
 				$("#cityplayerInfo div table tbody tr:nth-child(5) td:nth-child(2)").text(optimalTSM); //vanq
 				$("#cityplayerInfo div table tbody tr:nth-child(6) td:nth-child(2)").text(`${RToptim}/${RToptim}`); //RT
@@ -7166,7 +7615,7 @@ resetAttackOrders();
 				$("#cityplayerInfo div table tbody tr:nth-child(8) td:nth-child(2)").text(praoptim); //triari
 				$("#cityplayerInfo div table tbody tr:nth-child(9) td:nth-child(2)").text(cavoptim); //arb
 				$("#cityplayerInfo div table tbody tr:nth-child(10) td:nth-child(2)").text(cavoptim); //horse
-				$("#cityplayerInfo div table tbody tr:nth-child(11) td:nth-child(2)").text(sorcoptim); //sorc
+				$("#cityplayerInfo div table tbody tr:nth-child(11) td:nth-child(2)").text(Sorcsoptim); //Sorcs
 				$("#cityplayerInfo div table tbody tr:nth-child(12) td:nth-child(2)").text(optimalTSM); //druid
 				$("#cityplayerInfo div table tbody tr:nth-child(13) td:nth-child(2)").text(optimalTSM); //priestess
 				$("#cityplayerInfo div table tbody tr:nth-child(14) td:nth-child(2)").text(praoptim); //pra
@@ -7197,7 +7646,7 @@ resetAttackOrders();
 				};
 				const cavopti = Math.ceil((optimalTS * 2) / 3);
 				const praopti = Math.ceil(optimalTS / 2);
-				const sorcopti = Math.ceil(optimalTS * 2);
+				const Sorcsopti = Math.ceil(optimalTS * 2);
 				const RTopti = Math.ceil(optimalTS / 3);
 				$("#cityplayerInfo div table tbody tr:nth-child(5) td:nth-child(2)").text(optimalTS); //vanq
 				$("#cityplayerInfo div table tbody tr:nth-child(6) td:nth-child(2)").text(`${RTopti}/${RTopti}`); //RT
@@ -7205,7 +7654,7 @@ resetAttackOrders();
 				$("#cityplayerInfo div table tbody tr:nth-child(8) td:nth-child(2)").text(praopti); //triari
 				$("#cityplayerInfo div table tbody tr:nth-child(9) td:nth-child(2)").text(cavopti); //arb
 				$("#cityplayerInfo div table tbody tr:nth-child(10) td:nth-child(2)").text(cavopti); //horse
-				$("#cityplayerInfo div table tbody tr:nth-child(11) td:nth-child(2)").text(sorcopti); //sorc
+				$("#cityplayerInfo div table tbody tr:nth-child(11) td:nth-child(2)").text(Sorcsopti); //Sorcs
 				$("#cityplayerInfo div table tbody tr:nth-child(12) td:nth-child(2)").text(optimalTS); //druid
 				$("#cityplayerInfo div table tbody tr:nth-child(13) td:nth-child(2)").text(optimalTS); //priestess
 				$("#cityplayerInfo div table tbody tr:nth-child(14) td:nth-child(2)").text(praopti); //pra
@@ -7324,7 +7773,7 @@ resetAttackOrders();
 				$("#cityplayerInfo div table tbody tr:nth-child(8) td:nth-child(2)").text("0"); //triari
 				$("#cityplayerInfo div table tbody tr:nth-child(9) td:nth-child(2)").text("0"); //arb
 				$("#cityplayerInfo div table tbody tr:nth-child(10) td:nth-child(2)").text(attackres[10]); //horse
-				$("#cityplayerInfo div table tbody tr:nth-child(11) td:nth-child(2)").text(attackres[6]); //sorc
+				$("#cityplayerInfo div table tbody tr:nth-child(11) td:nth-child(2)").text(attackres[6]); //Sorcs
 				$("#cityplayerInfo div table tbody tr:nth-child(12) td:nth-child(2)").text(attackres[11]); //druid
 				$("#cityplayerInfo div table tbody tr:nth-child(13) td:nth-child(2)").text("0"); //priestess
 				$("#cityplayerInfo div table tbody tr:nth-child(14) td:nth-child(2)").text("0"); //pra
@@ -7360,7 +7809,7 @@ resetAttackOrders();
 				$("#cityplayerInfo div table tbody tr:nth-child(8) td:nth-child(2)").text(attackres[3]); //triari
 				$("#cityplayerInfo div table tbody tr:nth-child(9) td:nth-child(2)").text(attackwres[8]); //arb
 				$("#cityplayerInfo div table tbody tr:nth-child(10) td:nth-child(2)").text(attackwres[10]); //horse
-				$("#cityplayerInfo div table tbody tr:nth-child(11) td:nth-child(2)").text(attackres[6]); //sorc
+				$("#cityplayerInfo div table tbody tr:nth-child(11) td:nth-child(2)").text(attackres[6]); //Sorcs
 				$("#cityplayerInfo div table tbody tr:nth-child(12) td:nth-child(2)").text(attackres[11]); //druid
 				$("#cityplayerInfo div table tbody tr:nth-child(13) td:nth-child(2)").text(attackres[4]); //priestess
 				$("#cityplayerInfo div table tbody tr:nth-child(14) td:nth-child(2)").text(attackwres[9]); //pra
@@ -7396,7 +7845,7 @@ resetAttackOrders();
 				$("#cityplayerInfo div table tbody tr:nth-child(8) td:nth-child(2)").text(attackres[3]); //triari
 				$("#cityplayerInfo div table tbody tr:nth-child(9) td:nth-child(2)").text(attackwres[8]); //arb
 				$("#cityplayerInfo div table tbody tr:nth-child(10) td:nth-child(2)").text(attackwres[10]); //horse
-				$("#cityplayerInfo div table tbody tr:nth-child(11) td:nth-child(2)").text(attackres[6]); //sorc
+				$("#cityplayerInfo div table tbody tr:nth-child(11) td:nth-child(2)").text(attackres[6]); //Sorcs
 				$("#cityplayerInfo div table tbody tr:nth-child(12) td:nth-child(2)").text(attackres[11]); //druid
 				$("#cityplayerInfo div table tbody tr:nth-child(13) td:nth-child(2)").text(attackres[4]); //priestess
 				$("#cityplayerInfo div table tbody tr:nth-child(14) td:nth-child(2)").text(attackwres[9]); //pra
@@ -7432,7 +7881,7 @@ resetAttackOrders();
 				$("#cityplayerInfo div table tbody tr:nth-child(8) td:nth-child(2)").text(attackwres[3]); //triari
 				$("#cityplayerInfo div table tbody tr:nth-child(9) td:nth-child(2)").text(attackres[8]); //arb
 				$("#cityplayerInfo div table tbody tr:nth-child(10) td:nth-child(2)").text(attackres[10]); //horse
-				$("#cityplayerInfo div table tbody tr:nth-child(11) td:nth-child(2)").text(attackres[6]); //sorc
+				$("#cityplayerInfo div table tbody tr:nth-child(11) td:nth-child(2)").text(attackres[6]); //Sorcs
 				$("#cityplayerInfo div table tbody tr:nth-child(12) td:nth-child(2)").text(attackres[11]); //druid
 				$("#cityplayerInfo div table tbody tr:nth-child(13) td:nth-child(2)").text(attackwres[4]); //priestess
 				$("#cityplayerInfo div table tbody tr:nth-child(14) td:nth-child(2)").text(attackres[9]); //pra
@@ -7468,7 +7917,7 @@ resetAttackOrders();
 				$("#cityplayerInfo div table tbody tr:nth-child(8) td:nth-child(2)").text(attackwres[3]); //triari
 				$("#cityplayerInfo div table tbody tr:nth-child(9) td:nth-child(2)").text(attackres[8]); //arb
 				$("#cityplayerInfo div table tbody tr:nth-child(10) td:nth-child(2)").text(attackres[10]); //horse
-				$("#cityplayerInfo div table tbody tr:nth-child(11) td:nth-child(2)").text(attackres[6]); //sorc
+				$("#cityplayerInfo div table tbody tr:nth-child(11) td:nth-child(2)").text(attackres[6]); //Sorcs
 				$("#cityplayerInfo div table tbody tr:nth-child(12) td:nth-child(2)").text(attackres[11]); //druid
 				$("#cityplayerInfo div table tbody tr:nth-child(13) td:nth-child(2)").text(attackwres[4]); //priestess
 				$("#cityplayerInfo div table tbody tr:nth-child(14) td:nth-child(2)").text(attackres[9]); //pra
@@ -7504,7 +7953,7 @@ resetAttackOrders();
 				$("#cityplayerInfo div table tbody tr:nth-child(8) td:nth-child(2)").text(attackres[3]); //triari
 				$("#cityplayerInfo div table tbody tr:nth-child(9) td:nth-child(2)").text(attackres[8]); //arb
 				$("#cityplayerInfo div table tbody tr:nth-child(10) td:nth-child(2)").text(attackres[10]); //horse
-				$("#cityplayerInfo div table tbody tr:nth-child(11) td:nth-child(2)").text(attackwres[6]); //sorc
+				$("#cityplayerInfo div table tbody tr:nth-child(11) td:nth-child(2)").text(attackwres[6]); //Sorcs
 				$("#cityplayerInfo div table tbody tr:nth-child(12) td:nth-child(2)").text(attackwres[11]); //druid
 				$("#cityplayerInfo div table tbody tr:nth-child(13) td:nth-child(2)").text(attackres[4]); //priestess
 				$("#cityplayerInfo div table tbody tr:nth-child(14) td:nth-child(2)").text(attackres[9]); //pra
@@ -7540,7 +7989,7 @@ resetAttackOrders();
 				$("#cityplayerInfo div table tbody tr:nth-child(8) td:nth-child(2)").text(attackres[3]); //triari
 				$("#cityplayerInfo div table tbody tr:nth-child(9) td:nth-child(2)").text(attackres[8]); //arb
 				$("#cityplayerInfo div table tbody tr:nth-child(10) td:nth-child(2)").text(attackres[10]); //horse
-				$("#cityplayerInfo div table tbody tr:nth-child(11) td:nth-child(2)").text(attackwres[6]); //sorc
+				$("#cityplayerInfo div table tbody tr:nth-child(11) td:nth-child(2)").text(attackwres[6]); //Sorcs
 				$("#cityplayerInfo div table tbody tr:nth-child(12) td:nth-child(2)").text(attackwres[11]); //druid
 				$("#cityplayerInfo div table tbody tr:nth-child(13) td:nth-child(2)").text(attackres[4]); //priestess
 				$("#cityplayerInfo div table tbody tr:nth-child(14) td:nth-child(2)").text(attackres[9]); //pra
@@ -7596,21 +8045,24 @@ resetAttackOrders();
 				}
 			}, 1000);
 		});
-		$(document).on("click", "#massressendDiv, #loccavwarconGo, #raidmantab, #allianceIncomings, #ui-id-37", function() {
-			switch (this.id) {
-				case "massressendDiv":
-					setTimeout(massresTemple, 1000);
-					break;
-				case "loccavwarconGo":
-				case "raidmantab":
-					setTimeout(getDugRows, 1000);
-					break;
-				case "allianceIncomings":
-				case "ui-id-37":
-					incomings();
-					break;
-			}
-		});
+        
+
+		$(document).on("click", "#massressendDiv, #loccavwarconGo, #raidmantab, #incSpeed", function() {
+            switch (this.id) {
+                case "massressendDiv":
+                    setTimeout(massresTemple, 1000);
+                    break;
+                case "loccavwarconGo":
+                case "raidmantab":
+                    setTimeout(getDugRows, 1000);
+                    break;
+                case "incSpeed":
+                    // If it's not the first click
+                    incomings();
+                  	 break;
+            }
+        });
+        
       //Added 4.5.23
 
         function formatTableCells() {
@@ -7909,7 +8361,7 @@ resetAttackOrders();
 			CombatResearchIndex[3] += ((Number(naera) * 0.5) / 100) + (Number(Res[research[31]]) / 100); //triari
 			CombatResearchIndex[4] += ((Number(naera) * 0.5) / 100) + (Number(Res[research[32]]) / 100); //priestess
 			CombatResearchIndex[5] += ((Number(vexemis) * 0.5) / 100) + (Number(Res[research[33]]) / 100); //vanq
-			CombatResearchIndex[6] += ((Number(vexemis) * 0.5) / 100) + (Number(Res[research[34]]) / 100); //sorc
+			CombatResearchIndex[6] += ((Number(vexemis) * 0.5) / 100) + (Number(Res[research[34]]) / 100); //Sorcs
 			CombatResearchIndex[7] += ((Number(vexemis) * 0.5) / 100) + (Number(Res[research[46]]) / 100); //scout
 			CombatResearchIndex[8] += ((Number(naera) * 0.5) / 100) + (Number(Res[research[35]]) / 100); //arb
 			CombatResearchIndex[9] += ((Number(naera) * 0.5) / 100) + (Number(Res[research[36]]) / 100); //pra
@@ -7922,26 +8374,32 @@ resetAttackOrders();
 	}
 	//incoming and outoging summary window from inside the ingame attacks (NOT PART OF  GFUNKY OVERVIEWS)
 	$().ready(function() {
-		
-		$('#ui-id-35').text("Outgoing");
-		$('#ui-id-36').text("Off History");
-		$('#ui-id-37').text("Incoming");
-		$('#ui-id-38').text("Def History");
-		$('#ui-id-39').text("Blessed");
-		
+
+		$('a[href="#incomingstab"]').text("Incoming");
+		$('a[href="#outgoingstab"]').text("Outgoing");
+		$('a[href="#offenseHistTab"]').text("Off History");
+		$('a[href="#defenseHistTab"]').text("Def History");
+		$('a[href="#favoredcitiestab"]').text("Blessed");
+
+
+
+
+
 		const firstparaAIP = document.querySelector('#firstparaAIP');
-const mycitiesonlyOutgoings = document.querySelector('#mycitiesonlyOutgoings');
+		const mycitiesonlyOutgoings = document.querySelector('#mycitiesonlyOutgoings');
 
-if (firstparaAIP && mycitiesonlyOutgoings) {
-  firstparaAIP.insertBefore(mycitiesonlyOutgoings, firstparaAIP.firstChild);
-}
+		if (firstparaAIP && mycitiesonlyOutgoings) {
+		  firstparaAIP.insertBefore(mycitiesonlyOutgoings, firstparaAIP.firstChild);
+		}
 
-		
-		
-		
-		const outsumbut = "<button style='margin-left:5%;font-size: 12px;width: 150px;' class='greenb regButton' id='outsumGo'>Outgoing Summary</button>";
-		const incsumbut = "<button style='margin-left:5%;font-size: 12px;width: 150px;' class='greenb regButton' id='incsumGo'>Incomings Summary</button>";
-		
+
+
+
+		const outsumbut = "<button style='margin-left:5%;font-size: 12px;width: 150px;' class='greenb regButton' id='outsumGo'>Summary</button>";
+		const incsumbut = "<button style='margin-left:5%;font-size: 12px;width: 150px;' class='greenb regButton' id='incsumGo'>Summary</button>";
+		$('#outgoingAttacksTable').attr('style', 'height: calc(100% - 70px) !important;');
+		 $("#favoredcitiestab, #defenseHistTab, #incomingstab, #offenseHistTab, #outgoingstab").css("text-align", "center");
+		$("#outgoingstab, #incomingstab").css("text-align", "center");
 		$("#contselectorAIPog").after(outsumbut);
 		$("#contselectorAIPic").after(incsumbut);
 		$("#outsumGo").click(function() {
@@ -7951,150 +8409,325 @@ if (firstparaAIP && mycitiesonlyOutgoings) {
 			makeincsum();
 		});
 	});
-
-	const addSearchFilter = (tbodyId, afterElementId, buffer = 500) => {
-  const tbody = document.getElementById(tbodyId);
-  const afterElement = document.getElementById(afterElementId);
-  let timerId;
-
-  if (tbody && afterElement) {
-    // Insert search input element after specified element
-    const searchInput = document.createElement('input');
-    searchInput.setAttribute('type', 'text');
-    searchInput.setAttribute('id', `${tbodyId}-searchInput`);
-    searchInput.setAttribute('placeholder', 'Search...');
-    searchInput.setAttribute('style', 'font-size: 10px;'); // Set font-size
-    afterElement.after(searchInput);
-
-    // Add event listeners and observers
-    const searchTable = () => {
-      clearTimeout(timerId);
-      timerId = setTimeout(() => {
-        const searchTerm = searchInput.value.toLowerCase();
-        const rows = tbody.querySelectorAll('tr');
-        rows.forEach(row => {
-          let matchFound = false;
-          row.querySelectorAll('td, td span').forEach(td => {
-            if (td.innerText.toLowerCase().includes(searchTerm)) {
-              matchFound = true;
+    const addSearchFilter = (tbodyId, afterElementId, buffer = 500) => {
+        const tbody = document.getElementById(tbodyId);
+        const afterElement = document.getElementById(afterElementId);
+        let timerId;
+    
+        if (tbody && afterElement) {
+            // Insert search input element after specified element
+            const searchInput = document.createElement('input');
+            searchInput.setAttribute('type', 'text');
+            searchInput.setAttribute('id', `${tbodyId}-searchInput`);
+            searchInput.setAttribute('placeholder', 'Search...');
+            searchInput.setAttribute('style', 'font-size: 10px; line-height: 26px;');
+            afterElement.after(searchInput);
+    
+            // Add event listeners and observers
+            const searchTable = () => {
+                clearTimeout(timerId);
+                timerId = setTimeout(() => {
+                    const searchTerm = searchInput.value.toLowerCase();
+                    const rows = Array.from(tbody.querySelectorAll('tr'));
+    
+                    let rowsToHide = [];
+                    let rowsToShow = [];
+    
+                    rows.forEach(row => {
+                        let matchFound = false;
+                        row.querySelectorAll('td, td span').forEach(td => {
+                            if (td.innerText.toLowerCase().includes(searchTerm)) {
+                                matchFound = true;
+                            }
+                        });
+                        if (matchFound) {
+                            rowsToShow.push(row);
+                        } else {
+                            rowsToHide.push(row);
+                        }
+                    });
+    
+                    // Update the DOM in bulk
+                    rowsToHide.forEach(row => row.classList.add('hideIA'));
+                    rowsToShow.forEach(row => row.classList.remove('hideIA'));
+                }, buffer);
+            };
+    
+            searchInput.addEventListener('keyup', searchTable);
+    
+            const observer = new MutationObserver(searchTable);
+            const tableBody = tbody.querySelector('tr');
+            if (tableBody) {
+                observer.observe(tableBody, { childList: true });
             }
-          });
-          if (matchFound) {
-            row.classList.remove('hideIA');
-          } else {
-            row.classList.add('hideIA');
-          }
-        });
-      }, buffer);
+        }
     };
+    
+    // Apply filter/search function to multiple tables
+    addSearchFilter('iaBody', 'contselectorAIPic');
+    addSearchFilter('oaBody', 'contselectorAIPog');
+    addSearchFilter('favoredcitiesBody', 'contselectorAIP');
+    addSearchFilter('dhBody', 'contselectorAIPdH');
+    addSearchFilter('oHBody', 'contselectorAIPoH');
+    
+    /*
+	const addSearchFilter = (tbodyId, afterElementId, buffer = 500) => {
+		const tbody = document.getElementById(tbodyId);
+		const afterElement = document.getElementById(afterElementId);
+		let timerId;
 
-    searchInput.addEventListener('keyup', searchTable);
+		if (tbody && afterElement) {
+			// Insert search input element after specified element
+			const searchInput = document.createElement('input');
+			searchInput.setAttribute('type', 'text');
+			searchInput.setAttribute('id', `${tbodyId}-searchInput`);
+			searchInput.setAttribute('placeholder', 'Search...');
+			searchInput.setAttribute('style', 'font-size: 10px; line-height: 26px;');
+			afterElement.after(searchInput);
 
-    const observer = new MutationObserver(searchTable);
-    const tableBody = tbody.querySelector('tr');
-    if (tableBody) {
-      observer.observe(tableBody, { childList: true });
+			// Add event listeners and observers
+			const searchTable = () => {
+			  clearTimeout(timerId);
+			  timerId = setTimeout(() => {
+				const searchTerm = searchInput.value.toLowerCase();
+				const rows = tbody.querySelectorAll('tr');
+				rows.forEach(row => {
+				  let matchFound = false;
+				  row.querySelectorAll('td, td span').forEach(td => {
+					if (td.innerText.toLowerCase().includes(searchTerm)) {
+					  matchFound = true;
+					}
+				  });
+				  if (matchFound) {
+					row.classList.remove('hideIA');
+				  } else {
+					row.classList.add('hideIA');
+				  }
+				});
+			  }, buffer);
+			};
+
+			searchInput.addEventListener('keyup', searchTable);
+
+			const observer = new MutationObserver(searchTable);
+			const tableBody = tbody.querySelector('tr');
+			if (tableBody) {
+			  observer.observe(tableBody, { childList: true });
+			}
+		}
+	};
+
+
+	// Apply filter/search function to multiple tables
+	addSearchFilter('iaBody', 'contselectorAIPic');
+	addSearchFilter('oaBody', 'contselectorAIPog');
+	addSearchFilter('favoredcitiesBody', 'contselectorAIP');
+	addSearchFilter('dhBody', 'contselectorAIPdH');
+	addSearchFilter('oHBody', 'contselectorAIPoH');
+
+    */
+	const attackTypeCountODiv = `<div id="outgoingTypeCount" style="text-align: center; margin-left: auto; margin-right: auto; background: tan; border: 3px #886f53 ridge; border-radius: 6px; min-width: 60%; max-width: 90%; font-size: 12px; font-style: italic; font-weight: 900; color: #000; display:flex;justify-content: space-between;"><p id='scheduledCount'></p><p id='activeCount'></p></div>`;
+
+	$("#outgoingAttacksTable").after(attackTypeCountODiv);
+
+	function countOAttacks() {
+        // Get the table body
+        const tableBody = document.getElementById("oaBody");
+    
+        // Create objects to store the counts for scheduled and active attacks
+        const scheduledCounts = {
+            Reals: 0,
+            Fakes: 0,
+            Scout: 0,
+        };
+    
+        const activeCounts = {
+            Assault: 0,
+            Plunder: 0,
+            Siege: 0,
+            Sieging: 0,
+            Scout: 0,
+            Fakes: 0,
+        };
+    
+        // Get the <p> elements with IDs for each section
+        const scheduledCountP = document.getElementById("scheduledCount");
+        const activeCountP = document.getElementById("activeCount");
+    
+        // Use a flag variable to track if any counts are present
+        let countsPresent = false;
+    
+        // Loop through each row in the table body
+        for (let i = 0; i < tableBody.children.length; i++) {
+            const row = tableBody.children[i];
+    
+            // Check if the row exists and is not hidden
+            if (!row || $(row).is(':hidden')) {
+                continue;
+            }
+    
+            const attackType = row.children[2].textContent;
+            const attackingTS = parseInt(row.children[10].textContent.replace(/,/g, ''));
+    
+            // Check if the #clockpicTD element exists in the row (scheduled attack)
+            const isScheduled = row.querySelector("#clockpicTD") !== null;
+    
+            if (isScheduled) {
+                if (attackingTS >= 3500) {
+                    if (attackType !== "Scout") {
+                        scheduledCounts.Reals++;
+                    } else {
+                        scheduledCounts.Scout++;
+                    }
+                } else {
+                    scheduledCounts.Fakes++;
+                }
+            } else {
+                if (attackingTS >= 3500) {
+                    if (attackType !== "Scout") {
+                        activeCounts[attackType] = (activeCounts[attackType] || 0) + 1;
+                    } else {
+                        activeCounts.Scout++;
+                    }
+                } else {
+                    if (attackType !== "Scout") {
+                        activeCounts.Fakes++;
+                    } else {
+                        activeCounts.Scout++;
+                    }
+                }
+            }
+    
+            // Set the countsPresent flag to true if any counts are greater than 0
+            if (scheduledCounts.Reals > 0 || scheduledCounts.Fakes > 0 || scheduledCounts.Scout > 0 ||
+                activeCounts.Assault > 0 || activeCounts.Plunder > 0 || activeCounts.Siege > 0 ||
+                activeCounts.Sieging > 0 || activeCounts.Scout > 0 || activeCounts.Fakes > 0) {
+                countsPresent = true;
+            }
+        }
+    
+        // Check if any counts are present to determine the text content
+        if (countsPresent) {
+            // Create arrays to store attack type counts greater than 0
+            const scheduledCountArray = [];
+            const activeCountArray = [];
+    
+            // Populate the arrays with attack type counts greater than 0
+            if (scheduledCounts.Reals > 0) {
+                scheduledCountArray.push(`Reals ${scheduledCounts.Reals}`);
+            }
+            if (scheduledCounts.Fakes > 0) {
+                scheduledCountArray.push(`Fakes ${scheduledCounts.Fakes}`);
+            }
+            if (scheduledCounts.Scout > 0) {
+                scheduledCountArray.push(`Scouts ${scheduledCounts.Scout}`);
+            }
+    
+            if (activeCounts.Assault > 0) {
+                activeCountArray.push(`Assaults ${activeCounts.Assault}`);
+            }
+            if (activeCounts.Plunder > 0) {
+                activeCountArray.push(`Plunders ${activeCounts.Plunder}`);
+            }
+            if (activeCounts.Siege > 0) {
+                activeCountArray.push(`Sieges ${activeCounts.Siege}`);
+            }
+            if (activeCounts.Sieging > 0) {
+                activeCountArray.push(`Sieging ${activeCounts.Sieging}`);
+            }
+            if (activeCounts.Scout > 0) {
+                activeCountArray.push(`Scouts ${activeCounts.Scout}`);
+            }
+            if (activeCounts.Fakes > 0) {
+                activeCountArray.push(`Fakes ${activeCounts.Fakes}`);
+            }
+    
+            // Update the text content of the scheduled counts section or hide it
+            if (scheduledCountArray.length > 0) {
+                scheduledCountP.innerHTML =  `<span style='background:#d5c9ae; border-radius:3px; border:3px #886f53 ridge; padding:2px; color:green;'>Scheduled:</span>\n${scheduledCountArray.join("\n")}`;
+            } else {
+                scheduledCountP.textContent = ""; // Hide the section
+            }
+    
+            // Update the text content of the active counts section or hide it
+            if (activeCountArray.length > 0) {
+                activeCountP.innerHTML = `<span style='background:#d5c9ae; border-radius:3px; border:3px #886f53 ridge; padding:2px; color:red;'>Active:</span>\n${activeCountArray.join("\n")}`;
+            } else {
+                activeCountP.textContent = ""; // Hide the section
+            }
+        } else {
+            // No counts present, display "Click Me to Refresh!"
+            scheduledCountP.textContent = "Click Me to Refresh!";
+            activeCountP.textContent = "Click Me to Refresh!";
+        }
     }
-  }
-};
+    
+    
+    
+    
+    
+	// Delay the function call by 5 seconds using arrow function syntax
+	setTimeout(() => countOAttacks(), 5000);
+
+	// Add a click event listener to each element using an array and forEach method
+	const elements = [
+	  document.getElementById("ui-id-35"),
+	  document.getElementById("outgoingsSpan"),
+	  document.getElementById("outgoingsPic"),
+	  document.getElementById("outgoingTypeCount")
+	].filter(element => element !== null);
 
 
-// Apply filter/search function to multiple tables
-addSearchFilter('iaBody', 'incsumGo');
-addSearchFilter('oaBody', 'outsumGo');
-addSearchFilter('favoredcitiesBody', 'contselectorAIP');
-addSearchFilter('dhBody', 'contselectorAIPdH');
-addSearchFilter('oHBody', 'contselectorAIPoH');
-	
+	elements.forEach(element => element.addEventListener("click", countOAttacks));
 
-$('#outgoingAttacksTable').attr('style', 'height: calc(100% - 70px) !important;');
-
-
-
-
-  const attackTypeCountODiv = `<div id="outgoingTypeCount" style="text-align: center; margin-left: auto; margin-right: auto; background: tan; border: 3px #886f53 ridge; border-radius: 6px; min-width: 60%; max-width: 90%; font-size: 12px; font-style: italic; font-weight: 900; color: #000;"><p id='countOP'></p></div>`;
-
-   $("#outgoingAttacksTable").after(attackTypeCountODiv);
-   
-function countOAttacks() {
-  // Get the table body
-  const tableBody = document.getElementById("oaBody");
-
-  // Create an object to store the counts
-  const counts = {};
-
-  // Get the <p> element with an ID of "countP"
-  const countP = document.getElementById("countOP");
-
-  // Loop through each row in the table body
-  for (let i = 0; i < tableBody.children.length; i++) {
-    const row = tableBody.children[i];
-
-   // Check if the row and the necessary cells exist before accessing their textContent properties
-    if (!row || !row.children[2] || !row.children[10] || row.children[2].classList.contains('hideOA') || row.children[10].classList.contains('hideOA') || row.children[2].classList.contains('hideIA') || row.children[10].classList.contains('hideIA')) {
-      continue;
-    }
- 
-
-    const attackType = row.children[2].textContent;
-    const attackingTS = row.children[10].textContent;
-
-    const parsedAttackingTS = parseInt(attackingTS);
-
-    // If the attacking TS is less than 3500, add 1 to the "Fakes" key in the counts object and skip this row
-    if (parsedAttackingTS < 3500) {
-      counts["Fakes"] = (counts["Fakes"] || 0) + 1;
-      continue;
+    const handleoutgoings = () => {
+        setTimeout(function() {
+            goutgoings();
+       
+            
+        }, 1000);
     }
 
-    // Increase the count for this attack type
-    counts[attackType] = (counts[attackType] || 0) + 1;
-  }
+    $("#allianceOutgoings").parent().click(handleoutgoings);
+    $("#outgoingsPic").click(handleoutgoings);
 
-  // If the counts object is empty, display a message indicating that there are no attacks to count
-  if (Object.keys(counts).length === 0) {
-    countP.textContent = "Click Me to Show Attack Types";
-  } else {
-    // Sort the keys alphabetically, except for the "Fakes" key which should always come last
-    const keys = Object.keys(counts).sort();
-    const fakesIndex = keys.indexOf("Fakes");
-    if (fakesIndex > -1) {
-      keys.splice(fakesIndex, 1);
+
+    // Create the button element
+var allianceXPButton = $("<button id='alliancexp' class='greenb' style='margin-top:8px;'>Export</button>");
+
+// Find the element with ID 'aipxbutton'
+var aipxButton = $("#aipxbutton");
+aipxButton.closest('div').css("text-align", "center");
+
+
+// Insert the allianceXPButton before the aipxButton
+allianceXPButton.insertBefore(aipxButton);
+
+$("#alliancexp").click(function (event) {
+    var outputFile;
+    var currentTableId;
+
+    // Check which table is currently visible (you may need to adjust the visibility check)
+    if ($('#incomingsAttacksTable').is(':visible')) {
+        outputFile = `Alliance_Incoming-${today.getHours()}${today.getMinutes()}${today.getDate()}${Number(today.getMonth() + 1)}${today.getFullYear()}.csv`;
+        currentTableId = 'incomingsAttacksTable';
+    } else if ($('#outgoingAttacksTable').is(':visible')) {
+        outputFile = `Alliance_Outgoing-${today.getHours()}${today.getMinutes()}${today.getDate()}${Number(today.getMonth() + 1)}${today.getFullYear()}.csv`;
+        currentTableId = 'outgoingAttacksTable';
+    } else {
+        alert('No table is currently visible.');
+        return;
     }
-    keys.push("Fakes");
 
-    // Create a new text content with the attack type counts
-    let newTextContent = "";
-    for (const key of keys) {
-      newTextContent += `${key}: ${counts[key]}    `;
-    }
-
-    // Replace the existing text content of the <p> element with the new text content
-    countP.textContent = newTextContent;
-  }
-}
-// Delay the function call by 5 seconds using arrow function syntax
-setTimeout(() => countOAttacks(), 5000);
-
-// Add a click event listener to each element using an array and forEach method
-const elements = [
-  document.getElementById("ui-id-35"),
-  document.getElementById("outgoingsSpan"),
-  document.getElementById("outgoingsPic"),
-  document.getElementById("outgoingTypeCount")
-].filter(element => element !== null);
+    // CSV
+    exportTableToCSV(document.getElementById(currentTableId + ' table'), outputFile);
+});
 
 
-elements.forEach(element => element.addEventListener("click", countOAttacks));
 
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
 
 
 	function makeoutsum() {
@@ -8333,6 +8966,14 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 		$("#gchangelogGo").click(function() {
 			gfunkychangelogWin();
 		});
+		$("#reportsCBs").css({
+		  display: "block",
+		  background: "#f3d298",
+		  borderRadius: "6px",
+		  border: "3px ridge #886f53",
+		  width: "95%",
+		  margin: "auto"
+		});
 	});
 
 	function gfunkychangelogWin(arg) {
@@ -8367,7 +9008,7 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 	}
 	//combat sum window
 	function gfunkycomsumWin(arg) {
-		let gfunkycomsWin = `<div id='gfunkycomsumdiv' class='popUpBox ui-draggable' style='z-index:2002; width:550px !important;'>
+		let gfunkycomsWin = `<div id='gfunkycomsumdiv' class='popUpBox ui-draggable' style='z-index:2002; width:550px !important; height:80%'>
 		<div class='ppbwinbgr ui-draggable'>
 		<div class='ppbwintop ui-resizable ui-draggable'></div>
 		<div class='ppbwincent ui-draggable'></div>
@@ -8704,36 +9345,40 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 			let taadied = 0;
 			let tasdied = 0;
 			let tddied = 0;
-			let comsumbody = `<p><span style='font-weight:bold;color:#980d0d;'>Combat Summary for ${$("poll2.city.citn").text()}(${$("poll2.city.x").text()}) on ${$("#comsumDat").val()}</span><br><span>Reports: ${ajc}</span>`;
+            let tdseen =0;
+            let tdsurv =0;
+			let comsumbody = `<p style='font-size:12px;'><span style='font-weight:bold;color:#980d0d; font-size:14px; float:left;'>Combat Summary for ${$("poll2.city.citn").text()}(${$("poll2.city.x").text()}) on ${$("#comsumDat").val()}</span><span style='font-size:14px;'>Reports: ${ajc}</span><br>`;
 			if (assc.real > 0) {
-				comsumbody += ` | Real assaults: ${assc.real}</span>`;
+				comsumbody += `<span>  Assaults: ${assc.real}</span>`;
 			}
+            if (pluc.real > 0) {
+				comsumbody += `<span> | Plunders: ${pluc.real}</span>`;
+			}
+            if (siec.real > 0) {
+				comsumbody += `<span> | Sieges: ${siec.real}</span>`;
+			}
+            if (scoc > 0) {
+				comsumbody += `<span> | Scouts: ${scoc}</span><br>`;
+			} 
 			if (assc.fake > 0) {
-				comsumbody += ` | Fake assaults: ${assc.fake}</span>`;
+				comsumbody += `<span> | Fake Assaults: ${assc.fake}</span>`;
 			}
-			if (siec.real > 0) {
-				comsumbody += ` | Real sieges: ${siec.real}</span>`;
+            if (pluc.fake > 0) {
+				comsumbody += `<span> | Fake Plunders: ${pluc.fake}</span>`;
 			}
 			if (siec.fake > 0) {
-				comsumbody += ` | Fake sieges: ${siec.fake}</span>`;
+				comsumbody += `<span> | Fake Sieges: ${siec.fake}</span>`;
 			}
-			if (pluc.real > 0) {
-				comsumbody += ` | Real plunders: ${pluc.real}</span>`;
-			}
-			if (pluc.fake > 0) {
-				comsumbody += ` | Fake plundes: ${pluc.fake}</span>`;
-			}
-			if (scoc > 0) {
-				comsumbody += ` | Scouts: ${scoc}</span>`;
-			}
-			comsumbody += "<div id='comsumatab' class='beigemenutable' style='border:3px ridge #99805D; border-radius:6px;'>";
-			comsumbody += `<span>Attacking Alliance(s): ${aally} </span><br>`;
-			comsumbody += "<span>Attacker(s): ";
+			
+			
+			comsumbody += "<div id='comsumatab' class='beigemenutable' style='border:3px ridge #99805D; border-radius:6px; width:auto; max-width:200%'>";
+			comsumbody += `<span style='font-size: 12px;'>Attacking Alliance(s): ${aally} </span><br>`;
+			comsumbody += "<span style='font-size: 12px;'>Attacker(s): ";
 			for (var i in apl) {
 				comsumbody += `${apl[i]}(${aplcount[i]}) `;
 			}
 			comsumbody += "</span>";
-			comsumbody += "<table>";
+			comsumbody += "<table style='width:auto; max-width:200%'>";
 			comsumbody += "<thead>";
 			comsumbody += "<tr>";
 			comsumbody += "<th style='width:100px;height:45px;'></th>";
@@ -8781,12 +9426,12 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 			comsumbody += "</tr>";
 			comsumbody += "</tbody>";
 			comsumbody += "</table>";
-			comsumbody += `<span style='color: lime;'>Total Sent: ${(taasent+tassent).toLocaleString()}</span><br>`;
-			comsumbody += `<span style='color: red;'>Total Lost: ${(taadied+tasdied).toLocaleString()}</span>`;
+			comsumbody += `<span style='color: lime; font-size:18px;float:left;'>Total Sent: ${(taasent+tassent).toLocaleString()}</span>`;
+			comsumbody += `<span style='color: red;font-size:18px;'>Total Lost: ${(taadied+tasdied).toLocaleString()}</span>`;
 			comsumbody += "</div></p>";
-			comsumbody += "<p><div id='comsumdtab' class='beigemenutable'style='border:3px ridge #99805D; border-radius:6px;'>";
-			comsumbody += `<span>Defending Alliance(s): ${dally}</span><br>`;
-			comsumbody += `<span>Defender(s): ${dpl} </span>`;
+			comsumbody += "<p><div id='comsumdtab' class='beigemenutable'style='border:3px ridge #99805D; border-radius:6px; width:auto; max-width:200%'>";
+			comsumbody += `<span style='font-size: 12px;'>Defending Alliance(s): ${dally}</span><br>`;
+			comsumbody += `<span style='font-size: 12px;'>Defender(s): ${dpl} </span>`;
 			if (spl.length > 0) {
 				comsumbody += "<br><span>Supporters: ";
 				for (var i in spl) {
@@ -8794,7 +9439,7 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 				}
 				comsumbody += " </span>";
 			}
-			comsumbody += "<table>";
+			comsumbody += "<table style='width:auto; max-width:200%'>";
 			comsumbody += "<thead>";
 			comsumbody += "<tr>";
 			comsumbody += "<th style='width:100px;height:45px;'></th>";
@@ -8804,23 +9449,37 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 					comsumbody += `<th><div class='${tpicdiv[i]}'></div></th>`;
 				}
 			}
-			comsumbody += "<th>Total (Seen)</th>";
-			comsumbody += "<th>Total (Estimated)</th>";
+			
 			comsumbody += "</tr>";
 			comsumbody += "</thead>";
 			comsumbody += "<tbody>";
 			comsumbody += "<tr>";
-			comsumbody += "<td>Lost</td>";
-			for (var i in dtps) {
-				comsumbody += `<td>${dt.lost[dtps[i]].toLocaleString()}</td>`;
-				tddied += dt.lost[dtps[i]] * TroopScoreIndex[dtps[i]];
+			comsumbody += "<td>Seen</td>";
+            			for (var i in dtps) {
+                comsumbody += `<td>${dt.sent[dtps[i]].toLocaleString()}</td>`;
+              	
+                tdseen += dt.sent[dtps[i]]* TroopScoreIndex[dtps[i]]
+                
 			}
-			comsumbody += `<td>${tddied.toLocaleString()}</td>`;
-			comsumbody += `<td>${dt.lost[18].toLocaleString()}</td>`;
-			comsumbody += "</tr>";
-			comsumbody += "</tbody>";
+            comsumbody += "</tr>";
+            comsumbody += "<tr>";
+            comsumbody += "<td>Killed</td>";
+            			for (var i in dtps) {
+                comsumbody += `<td>${dt.lost[dtps[i]].toLocaleString()}</td>`;
+              	tddied += dt.lost[dtps[i]] * TroopScoreIndex[dtps[i]];
+            }
+            comsumbody += "</tr>";
+            comsumbody += "<tr>";
+            comsumbody += "<td>Lived</td>";
+            			for (var i in dtps) {
+                comsumbody += `<td>${dt.survive[dtps[i]].toLocaleString()}</td>`;
+                tdsurv += dt.survive[dtps[i]] *TroopScoreIndex[dtps[i]]
+            }
+            comsumbody += "</tr>";
+            comsumbody += "</tbody>";
 			comsumbody += "</table>";
-			comsumbody += `<span style='color: red;'>Total lost: ${(tddied+dt.lost[18]).toLocaleString()}</span>`;
+            comsumbody += `<span style='color: lime; font-size:18px;float:left;'>Total D Seen: ${(tdseen).toLocaleString()}</span>`;
+			comsumbody += `<span style='color: red;font-size:18px;'>Total Lost: ${(tddied).toLocaleString()}</span>`;
 			comsumbody += "</div></p>";
 			$("#comsumTabbody").html(comsumbody);
 			$("#comsumatab td").css({
@@ -8833,11 +9492,13 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 			});
 			$("#comsumdtab td").css({
 				"text-align": "center",
-				"font-size": "10px"
+                "width": "101%",
+                "font-size": "10px"
 			});
 			$("#comsumdtab th").css({
 				"text-align": "center",
-				"font-size": "10px"
+				"font-size": "10px",
+                "min-width":'45px'
 			});
 		}
 	}
@@ -8861,12 +9522,12 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 		//$('#openLOinplanner').html('<a href="https://cotgopt.com/" target="_blank" rel="noopener noreferrer">Open CoTG Opt by GFunky+</a>');
 		$('#citylayoutTab').append('<span id="loinplanner" style="float: right;font-size: 10px;"><a href="https://cotgopt.com/" target="_blank" rel="noopener noreferrer">CoTGOpt x GFunky+</a></span>');
 		$('#loinplanner').after(currentLOtextarea);
-	
+
 	let layoutopttab = "<li id='layoutopt' class='ui-state-default ' role='tab' tabindex='-1' aria-controls='layoutoptBody'";
 		layoutopttab += "aria-labeledby='ui-id-60' aria-selected='false' aria-expanded='false'>";
 		layoutopttab += "<a href='#layoutoptBody' class='ui-tabs-anchor' role='presentation' tabindex='-1' id='ui-id-60'>Layout Options</a></li>";
 		let layoutoptbody = `
-		<div id='layoutoptBody' aria-labeledby='ui-id-60' class='ui-tabs-panel' role='tabpanel' aria-hidden='true' style='display: none;'> 
+		<div id='layoutoptBody' aria-labeledby='ui-id-60' class='ui-tabs-panel' role='tabpanel' aria-hidden='true' style='display: none;'>
 			 <table style='width: 32%;display: inline-block;background: #e1c190;border: 3px tan ridge;border-radius: 6px;'>
     <tr>
       <th style='text-align: center;font-size: 12px;border: 3px tan ridge;border-radius: 6px;background: #f3d298;'>Building Settings</th>
@@ -8968,7 +9629,7 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 					  <td id='buttd' style='text-align:center';></td>
 					</tr>
 				</table>
-			
+
 		</div>`;
 		const layoptbut = "<button id='layoptBut' class='regButton greenb' style='width:150px;'>Save Res Settings</button>";
 		const tabs = $("#CNtabs").tabs();
@@ -9103,7 +9764,11 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 					{
 						type: 'Portal',
 						id: 'portallayouts'
-					}
+					},
+                    {
+                        type:'Misc',
+                        id: 'misclayouts'
+                    }
 					// { type: 'Troop Scout Galley', id: 'troopscoutgalleylayouts' }
 				];
 				let selectButtons = '';
@@ -9136,9 +9801,9 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 					$('#clearresquad').after(selectButtons);
 				}
 				var currentlayout = $('#currentLOtextarea').text();
-		
+
 				// Replace invalid characters in current layout
-				
+
 				for (var i = 20; i < currentlayout.length - 20; i++) {
 					var tmpchar = currentlayout.charAt(i);
 					var cmp = new RegExp(tmpchar);
@@ -9148,7 +9813,7 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 				}
 
 
-				$('#landoffenselayouts, #landdefenselayouts, #wateroffenselayouts, #waterdefenselayouts, #hublayouts, #shipperlayouts, #portallayouts').change((event) => {
+				$('#landoffenselayouts, #landdefenselayouts, #wateroffenselayouts, #waterdefenselayouts, #hublayouts, #shipperlayouts, #portallayouts,#misclayouts').change((event) => {
 
 
 						var aa = city.mo;
@@ -9180,12 +9845,12 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 						let layoutTroops = layoutData.layoutTroops;
 						let layoutResources = layoutData.layoutResources;
 						let layoutName = layoutData.layoutName;
-
+                       
 						if (newlayout === '') {
 							newlayout = layoutString;
 						}
 
-						
+
 						for (let i = 20; i < currentlayout.length; i++) {
 							const tmpchar = layoutString.charAt(i);
 							const cmp = new RegExp(tmpchar);
@@ -9193,10 +9858,10 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 								newlayout = newlayout.replaceAt(i, tmpchar);
 							}
 						}
-						
-						
+
+
 						//console.log("LayoutData", layoutData);
-						// Updated 4.18.23 Fact 
+						// Updated 4.18.23 Fact
 						$('#overlaytextarea').val(layoutString);
 						//console.log("new Layout", newlayout);
 						//console.log("current Layout", currentlayout);
@@ -9490,32 +10155,51 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 			});
 		}, 2000);
 	}
+	
 	//Removing All Layout Attibutes
 	$("#removeoverlayGo").click(function() {
-		const resources = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-		const troops = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-		const aa = city.mo;
-		const ab = city.cid;
-
-		$('#CNremarks').val("");
-		$('#citynotestextarea').val("");
-		setTimeout(function() {
-			$("#citnotesaveb")[0].click();
-		}, 1000);
-
-		resources.forEach((val, key) => aa[28 + Number(key)] = val);
-		troops.forEach((val, key) => aa[9 + Number(key)] = val);
-
-		const dat = {
-			a: JSON.stringify(aa),
-			b: ab
-		};
-		$.ajax({
-			url: 'includes/mnio.php',
-			type: 'POST',
-			async: true,
-			data: dat
-		});
+		const removeConfirmation = confirm("Do you want to Remove/Reset all City Options? Click 'OK' for everything or 'Cancel' for just the layout.");
+		if (removeConfirmation) { // User chose to remove everything
+			const resources = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+			const troops = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+            const build =[0,0,0,0,0,0,0,0]
+			const aa = city.mo;
+			const ab = city.cid;
+	
+			$('#CNremarks').val("");
+			$('#citynotestextarea').val("");
+			setTimeout(function() {
+				$("#citnotesaveb")[0].click();
+			}, 1000);
+	
+			resources.forEach((val, key) => aa[28 + Number(key)] = val);
+			troops.forEach((val, key) => aa[9 + Number(key)] = val);
+            build.forEach((val, key) => aa[Number(key)] = val);
+           
+            aa[51] = [0, $("#cablev").val()];
+			for (var i = 52; i <= 74; i++) {
+					aa[i] = [0, 10];
+				}
+            aa[26] = 0;
+			aa[27] = 0;
+			
+			
+	
+			const dat = {
+				a: JSON.stringify(aa),
+				b: ab
+			};
+			$.ajax({
+				url: 'includes/mnio.php',
+				type: 'POST',
+				async: true,
+				data: dat
+			});
+		} else { // User chose to remove just the layout
+			// You can define what needs to be done when only the layout is to be removed here.
+			// For now, I'm just logging it for the sake of demonstration.
+			console.log('Removed Layout Only.');
+		}
 	});
 
 
@@ -9529,51 +10213,63 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 	function opengfunkyoverviewwin() {
 		sum = false;
 		//////console.log(1);
-		let gfunkyoverviewwin = "<div id='gfunkyoverviewwin' class='longmenu ui-draggable' style='z-index:2002; width: 80% !important;left: 200px !important;'>";
-		gfunkyoverviewwin += "<div class='longwindowbgr'>";
-		gfunkyoverviewwin += "<div class='lngwinbgtop'></div>";
-		gfunkyoverviewwin += "<div class='lngwinbgcent''></div>";
-		gfunkyoverviewwin += "<div class='lngwinbgbott'></div>";
-		gfunkyoverviewwin += "</div>";
-		gfunkyoverviewwin += "<div class='longwindowcontent'>";
-		gfunkyoverviewwin += "<div class='popUpBar ui-draggable-handle'> ";
-		gfunkyoverviewwin += "<span class='ppspan'>Gfunky's Empire Overviews</span>";
-		gfunkyoverviewwin += "<button id='sumWinX' style='margin-right: 5%; margin-top:5px;' class='xbutton' onclick=$('#gfunkyoverviewwin').hide()>";
-		gfunkyoverviewwin += "<div id='xbuttondiv'> ";
-		gfunkyoverviewwin += "<div>";
-		gfunkyoverviewwin += "<div id='centxbuttondiv'></div>";
-		gfunkyoverviewwin += "</div>";
-		gfunkyoverviewwin += "</div>";
-		gfunkyoverviewwin += "</button>";
-		gfunkyoverviewwin += "</div>";
+		let gfunkyoverviewwin = `
+			<div id='gfunkyoverviewwin' class='longmenu ui-draggable' style='z-index:2002; width: 80% !important;left: 200px !important;'>
+				<div class='longwindowbgr'>
+					<div class='lngwinbgtop'></div>
+					<div class='lngwinbgcent'></div>
+					<div class='lngwinbgbott'></div>
+				</div>
+				<div class='longwindowcontent'>
+					<div class='popUpBar ui-draggable-handle'>
+						<span class='ppspan'>Gfunky's Empire Overviews</span>
+						<button id='sumWinX' style='margin-right: 5%; margin-top:5px;' class='xbutton' onclick=$('#gfunkyoverviewwin').hide()>
+							<div id='xbuttondiv'>
+								<div>
+									<div id='centxbuttondiv'></div>
+								</div>
+							</div>
+						</button>
+					</div>`;
+
 		//Overview Tabs
 		gfunkyoverviewwin += "<div id='gfunkyoverviewdiv' class='beigetabspopup' style='background:none;border: none;padding: 0px;height:74%; width:97%; margin-left:auto; margin-right:auto;'>";
 		const tabs = [{
 				href: '#resTab',
+				id: 'resTabGF',
 				text: 'Resources'
 			}, {
 				href: '#troopsTab',
+				id: 'troopsTabGF',
 				text: 'Troops'
 			}, {
 				href: '#raidTab',
+				id: 'raidTabGF',
 				text: 'Raid Reports'
 			}, {
 				href: '#raidoverTab',
+				id: 'raidoverTabGF',
 				text: 'Active Raids'
 			}, {
 				href: '#gsupportTab',
+				id: 'gsupportTabGF',
 				text: 'Support'
 			}, {
 				href: '#findmysenTab',
+				id: 'findmtsenTabGF',
 				text: 'Senator'
-			},
+			}, /*{
+				href: '#gincomingTab',
+				id: 'gincTabGF',
+				text: 'Incoming'
+			}*/
 			//{ href: '#gworldTab', text: 'World' }
 		];
 		let listItems = '';
 		for (const tab of tabs) {
 			listItems += `
 					<li role='tab'>
-					  <a href='${tab.href}' role='presentation'>${tab.text}</a>
+					  <a href='${tab.href}' id='${tab.id}' role='presentation'>${tab.text}</a>
 					</li>
 				  `;
 		}
@@ -9583,166 +10279,199 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 				  </ul>
 				`;
 		//Resource Overview Tab
-		gfunkyoverviewwin += "<div id='resTab' style='text-align: center;'>";
-		gfunkyoverviewwin += "<button id='ResourceTableUpdate' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button>";
-		gfunkyoverviewwin += "<button class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>";
-		gfunkyoverviewwin += "<div class='button'>";
-		gfunkyoverviewwin += "<a href='#' id ='resexp' role='button' style='color:#c7e2e7;'>Export</a>";
-		gfunkyoverviewwin += "</div>";
-		gfunkyoverviewwin += "</button>";
-		gfunkyoverviewwin += "<span id='respan' style='margin-left:50px;'></span>";
-		gfunkyoverviewwin += "<div class='beigemenutable scroll-pane' style='width:98%;height: AUTO !important;max-height: 75%;margin-left:auto; margin-right: auto; border-radius: 7px;border: 3px ridge #99805D;' >";
-		gfunkyoverviewwin += "<table>";
-		gfunkyoverviewwin += "<tr data='0'>";
-		gfunkyoverviewwin += "<th colspan='3'></th>";
-		gfunkyoverviewwin += "<th colspan='3'></th>";
-		gfunkyoverviewwin += "<th rowspan='2'></th>";
-		gfunkyoverviewwin += "<th colspan='2'>Wood</th>";
-		gfunkyoverviewwin += "<th colspan='2'>Stone</th>";
-		gfunkyoverviewwin += "<th colspan='2'>Iron</th>";
-		gfunkyoverviewwin += "<th colspan='2'>Food</th>";
-		gfunkyoverviewwin += "<th colspan='2'>Carts</th>";
-		gfunkyoverviewwin += "<th colspan='2'>Ships</th>";
-		gfunkyoverviewwin += "<th ></th>";
-		gfunkyoverviewwin += "</tr>";
-		gfunkyoverviewwin += "<tr>";
-		gfunkyoverviewwin += "</tr>";
-		gfunkyoverviewwin += "</table>";
+		const resTabHtml =`
+			<div id='resTab' style='text-align: center;'>
+				<button id='ResourceTableUpdate' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button>
+				<button class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>
+					<div class='button'>
+						<a href='#' id ='resexp' role='button' style='color:#c7e2e7;'>Export</a>
+					</div>
+				</button>
+				<span id='respan' style='margin-left:50px;'></span>
+				<div class='beigemenutable scroll-pane' style='width:98%;height: AUTO !important;max-height: 75%;margin-left:auto; margin-right: auto; border-radius: 7px;border: 3px ridge #99805D;' >
+					<table>
+						<tr data='0'>
+							<th colspan='3'></th>
+							<th colspan='3'></th>
+							<th rowspan='2'></th>
+							<th colspan='2'>Wood</th>
+							<th colspan='2'>Stone</th>
+							<th colspan='2'>Iron</th>
+							<th colspan='2'>Food</th>
+							<th colspan='2'>Carts</th>
+							<th colspan='2'>Ships</th>
+							<th></th>
+						</tr>
+						<tr></tr>
+					</table>
+					<table id='gresourcestable'></table>
+				</div>
+			</div>`;
+		gfunkyoverviewwin += resTabHtml;
 
-		gfunkyoverviewwin += "<table id='gresourcestable'>";
-		gfunkyoverviewwin += "</table>";
-		gfunkyoverviewwin += "</div>";
-		gfunkyoverviewwin += "</div>";
 		// Troops Overview Tab
-		gfunkyoverviewwin += "<div id='troopsTab' style='text-align: center;'>";
-		gfunkyoverviewwin += "<button id='troopsup' class='greenb' style='font-size:14px;border-radius:6px;margin:4px;'>Update</button>";
-		gfunkyoverviewwin += "<button class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>";
-		gfunkyoverviewwin += "<div class='button'>";
-		gfunkyoverviewwin += "<a href='#' id ='troopsexp' role='button' style='color:#c7e2e7;'>Export</a>";
-		gfunkyoverviewwin += "</div>";
-		gfunkyoverviewwin += "</button>";
-		//gfunkyoverviewwin+="<button id='hidespfbut' class='greenb' style='font-size:14px;border-radius:6px;margin:4px;'>Hide Specific Troops Columns</button>";
-		gfunkyoverviewwin += "<span id='troopspan' style='margin-left:50px;'></span>";
-		gfunkyoverviewwin += "<div class='beigemenutable scroll-pane' style='width:99%;height: AUTO !important;max-height: 70%;margin-left:auto; margin-right: auto; border-radius: 7px;border: 3px ridge #99805D;'>";
-		gfunkyoverviewwin += "<table style='width:250%'>";
-		gfunkyoverviewwin += "<tr data='0'>";
-		gfunkyoverviewwin += "<th colspan='3' rowspan='2' >Name</th>";
-		gfunkyoverviewwin += "<th colspan='3' rowspan='2'>Notes</th>";
-		gfunkyoverviewwin += "<th rowspan='2'>Coords</th>";
-		gfunkyoverviewwin += "<th colspan='2'>Guard</th>";
-		gfunkyoverviewwin += "<th colspan='2'>Ballista</th>";
-		gfunkyoverviewwin += "<th colspan='2'>Ranger</th>";
-		gfunkyoverviewwin += "<th colspan='2'>Triari</th>";
-		gfunkyoverviewwin += "<th colspan='2'>Priestess</th>";
-		gfunkyoverviewwin += "<th colspan='2'>Vanquisher</th>";
-		gfunkyoverviewwin += "<th colspan='2'>Sorcerer</th>";
-		gfunkyoverviewwin += "<th colspan='2'>Scouts</th>";
-		gfunkyoverviewwin += "<th colspan='2'>Arbalist</th>";
-		gfunkyoverviewwin += "<th colspan='2'>Praetor</th>";
-		gfunkyoverviewwin += "<th colspan='2'>Horsemen</th>";
-		gfunkyoverviewwin += "<th colspan='2'>Druid</th>";
-		gfunkyoverviewwin += "<th colspan='2'>Ram</th>";
-		gfunkyoverviewwin += "<th colspan='2'>Scorption</th>";
-		gfunkyoverviewwin += "<th colspan='2'>Galley</th>";
-		gfunkyoverviewwin += "<th colspan='2'>Stinger</th>";
-		gfunkyoverviewwin += "<th colspan='2'>Warship</th>";
-		gfunkyoverviewwin += "<th colspan='2'>Senator</th>";
-		gfunkyoverviewwin += "<th rowspan='2'>TS Home</th>";
-		gfunkyoverviewwin += "<th rowspan='2'>TS Total</th>";
-		gfunkyoverviewwin += "</tr>";
-		gfunkyoverviewwin += "<tr data='0'>";
-		gfunkyoverviewwin += `<th colspan='2' class='spf'><div class ='${tpicdiv[0]}'></div></th>`;
-		gfunkyoverviewwin += `<th colspan='2' class='spf'><div class='${tpicdiv[1]}'></div></th>`;
-		gfunkyoverviewwin += `<th colspan='2' class='spf'><div class='${tpicdiv[2]}'></div></th>`;
-		gfunkyoverviewwin += `<th colspan='2' class='spf'><div class='${tpicdiv[3]}'></div></th>`;
-		gfunkyoverviewwin += `<th colspan='2' class='spf'><div class='${tpicdiv[4]}'></div></th>`;
-		gfunkyoverviewwin += `<th colspan='2' class='spf'><div class='${tpicdiv[5]}'></div></th>`;
-		gfunkyoverviewwin += `<th colspan='2' class='spf'><div class='${tpicdiv[6]}'></div></th>`;
-		gfunkyoverviewwin += `<th colspan='2' class='spf'><div class='${tpicdiv[7]}'></div></th>`;
-		gfunkyoverviewwin += `<th colspan='2' class='spf'><div class='${tpicdiv[8]}'></div></th>`;
-		gfunkyoverviewwin += `<th colspan='2' class='spf'><div class='${tpicdiv[9]}'></div></th>`;
-		gfunkyoverviewwin += `<th colspan='2' class='spf'><div class='${tpicdiv[10]}'></div></th>`;
-		gfunkyoverviewwin += `<th colspan='2' class='spf'><div class='${tpicdiv[11]}'></div></th>`;
-		gfunkyoverviewwin += `<th colspan='2' class='spf'><div class='${tpicdiv[12]}'></div></th>`;
-		gfunkyoverviewwin += `<th colspan='2' class='spf'><div class='${tpicdiv[13]}'></div></th>`;
-		gfunkyoverviewwin += `<th colspan='2' class='spf'><div class='${tpicdiv[14]}'></div></th>`;
-		gfunkyoverviewwin += `<th colspan='2' class='spf'><div class='${tpicdiv[15]}'></div></th>`;
-		gfunkyoverviewwin += `<th colspan='2' class='spf'><div class='${tpicdiv[16]}'></div></th>`;
-		gfunkyoverviewwin += `<th colspan='2' class='spf'><div class='${tpicdiv[17]}'></div></th>`;
-		gfunkyoverviewwin += "</tr>";
-		gfunkyoverviewwin += "</table>";
-		gfunkyoverviewwin += "<table id='gtroopstable' style='width:250%; height:auto;'>";
-		gfunkyoverviewwin += "</table>";
-		gfunkyoverviewwin += "</div>";
-		gfunkyoverviewwin += "</div>";
+
+
+		const troopsTabHtml = `
+		<div id="troopsTab" style="text-align: center;">
+			<button id="troopsup" class="greenb" style="font-size: 14px; border-radius: 6px; margin: 4px;">Update</button>
+			<button class="greenb" style="font-size: 14px; border-radius: 6px; margin: 4px;">
+				<div class="button">
+					<a href="#" id="troopsexp" role="button" style="color: #c7e2e7;">Export</a>
+				</div>
+			</button>
+			<span id="troopspan" style="margin-left: 50px;"></span>
+			<div class="beigemenutable scroll-pane" style="width: 99%; height: AUTO !important; max-height: 70%; margin-left: auto; margin-right: auto; border-radius: 7px; border: 3px ridge #99805D;">
+				<table style="width: 250%">
+					<tr data="0">
+						<th colspan="3" rowspan="2">Name</th>
+						<th colspan="3" rowspan="2">Notes</th>
+						<th rowspan="2">Coords</th>
+						<th colspan="2">Guard</th>
+						<th colspan="2">Ballista</th>
+						<th colspan="2">Ranger</th>
+						<th colspan="2">Triari</th>
+						<th colspan="2">Priestess</th>
+						<th colspan="2">Vanquisher</th>
+						<th colspan="2">Sorcerer</th>
+						<th colspan="2">Scouts</th>
+						<th colspan="2">Arbalist</th>
+						<th colspan="2">Praetor</th>
+						<th colspan="2">Horsemen</th>
+						<th colspan="2">Druid</th>
+						<th colspan="2">Ram</th>
+						<th colspan="2">Scorption</th>
+						<th colspan="2">Galley</th>
+						<th colspan="2">Stinger</th>
+						<th colspan="2">Warship</th>
+						<th colspan="2">Senator</th>
+						<th rowspan="2">TS Home</th>
+						<th rowspan="2">TS Total</th>
+					</tr>
+					<tr data="0">
+						<th colspan="2" class="spf"><div class="${tpicdiv[0]}"></div></th>
+						<th colspan="2" class="spf"><div class="${tpicdiv[1]}"></div></th>
+						<th colspan="2" class="spf"><div class="${tpicdiv[2]}"></div></th>
+						<th colspan="2" class="spf"><div class="${tpicdiv[3]}"></div></th>
+						<th colspan="2" class="spf"><div class="${tpicdiv[4]}"></div></th>
+						<th colspan="2" class="spf"><div class="${tpicdiv[5]}"></div></th>
+						<th colspan="2" class="spf"><div class="${tpicdiv[6]}"></div></th>
+						<th colspan="2" class="spf"><div class="${tpicdiv[7]}"></div></th>
+						<th colspan='2' class='spf'><div class='${tpicdiv[8]}'></div></th>
+						<th colspan='2' class='spf'><div class='${tpicdiv[9]}'></div></th>
+						<th colspan='2' class='spf'><div class='${tpicdiv[10]}'></div></th>
+						<th colspan='2' class='spf'><div class='${tpicdiv[11]}'></div></th>
+						<th colspan='2' class='spf'><div class='${tpicdiv[12]}'></div></th>
+						<th colspan='2' class='spf'><div class='${tpicdiv[13]}'></div></th>
+						<th colspan='2' class='spf'><div class='${tpicdiv[14]}'></div></th>
+						<th colspan='2' class='spf'><div class='${tpicdiv[15]}'></div></th>
+						<th colspan='2' class='spf'><div class='${tpicdiv[16]}'></div></th>
+						<th colspan='2' class='spf'><div class='${tpicdiv[17]}'></div></th>
+					</tr>
+				</table>
+				<table id='gtroopstable' style='width:250%; height:auto;'>
+				</table>
+			</div>
+		</div>`;
+		gfunkyoverviewwin += troopsTabHtml;
+
 		// Raid Overview Tab
-		gfunkyoverviewwin += "<div id='raidTab' style='text-align: center;'>";
-		gfunkyoverviewwin += "<button id='raidup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button>";
-		gfunkyoverviewwin += "<span style='margin-left:10%;'>Number of reports to show: </span>";
-		gfunkyoverviewwin += "<select id='raidsturnc' class='greensel' style='border-radius:6px; font-size: 14px !important;'>";
-		gfunkyoverviewwin += "<option value='100'>100</option>";
-		gfunkyoverviewwin += "<option value='500'>500</option>";
-		gfunkyoverviewwin += "<option value='1000'>1000</option>";
-		gfunkyoverviewwin += "<option value='10000'>10000</option>";
-		gfunkyoverviewwin += "</select>";
-		gfunkyoverviewwin += "<div class='beigemenutable scroll-pane' style='width:99%;height: AUTO !important;max-height: 80%;margin-left:auto; margin-right: auto; border-radius: 7px;border: 3px ridge #99805D;' >";
-		gfunkyoverviewwin += "<table id='raidtable'>";
-		gfunkyoverviewwin += "</table>";
-		gfunkyoverviewwin += "</div>";
-		gfunkyoverviewwin += "</div>";
+		const raidTabHtml = `
+			<div id="raidTab" style="text-align: center;">
+				<button id="raidup" class="greenb" style="font-size: 14px; border-radius: 6px; margin: 4px;">Update</button>
+				<span style="font-size:12px">All Cities Must  have Unique Names. Filter by Carry %, Time or amount of reports</span>
+				<input type="number" id="rrGhours" name="hours" min="0" max="99" step="1" placeholder="hrs" style="text-align: center; border-radius: 6px;"></input>
+				<input type="number" id="rrGpercentage" name="percentage" min="1" max="400" step="1" placeholder="%" style="text-align: center; border-radius: 6px;"></input>
+				<select id="raidsturnc" class="greensel" style="border-radius: 6px; font-size: 14px !important;">
+					<option value="100">100</option>
+					<option value="500">500</option>
+					<option value="1000">1000</option>
+					<option value="10000">10000</option>
+				</select>
+				<div class="beigemenutable scroll-pane" style="width: 99%; height: AUTO !important; max-height: 80%; margin-left: auto; margin-right: auto; border-radius: 7px; border: 3px ridge #99805D;">
+					<table id="raidtable"></table>
+				</div>
+			</div>
+		`;
+
+		gfunkyoverviewwin += raidTabHtml;
+
+
 		//Raid Overview Summary Tab
-		gfunkyoverviewwin += "<div id='raidoverTab' style='text-align: center;'>";
-		gfunkyoverviewwin += "<button id='expandAllexpands' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Hide All</button>";
-		gfunkyoverviewwin += "<button id='raidoverup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button>";
-		gfunkyoverviewwin += "<button class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>";
-		gfunkyoverviewwin += "<div class='button'>";
-		gfunkyoverviewwin += "<a href='#' id ='raidexp' role='button' style='color:#c7e2e7;'>Export</a>";
-		gfunkyoverviewwin += "</div>";
-		gfunkyoverviewwin += "</button>";
-		gfunkyoverviewwin += "<span id='raidspan' style='margin-left:50px;'></span>";
-		gfunkyoverviewwin += "<div id='raidmanager1body' class='beigemenutable scroll-pane' style='width:99%;height: AUTO !important;max-height: 78%;margin-left:auto; margin-right:auto; border-radius: 7px;border: 3px ridge #99805D;' >";
-		gfunkyoverviewwin += "<table id='raidmanagertable'>";
-		gfunkyoverviewwin += " </table>";
-		gfunkyoverviewwin += " </div>";
-		gfunkyoverviewwin += "<div id='raidmanager2body' class='beigemenutable scroll-pane' style='width:99%;height: AUTO !important;max-height: 78%;margin-left:auto; margin-right:auto; border-radius: 7px;border: 3px ridge #99805D;' >";
-		gfunkyoverviewwin += "<table id='gactiveraidstable'>";
-		gfunkyoverviewwin += "</table>";
-		gfunkyoverviewwin += "</div>";
-		gfunkyoverviewwin += "</div>";
+			const raidoverTabHtml = `
+			<div id="raidoverTab" style="text-align: center;">
+				<button id="expandAllexpands" class="greenb" style="font-size: 14px; border-radius: 6px; margin: 4px;">Hide All</button>
+				<button id="raidoverup" class="greenb" style="font-size: 14px; border-radius: 6px; margin: 4px;">Update</button>
+				<button class="greenb" style="font-size: 14px; border-radius: 6px; margin: 4px;">
+					<div class="button">
+						<a href="#" id="raidexp" role="button" style="color: #c7e2e7;">Export</a>
+					</div>
+				</button>
+				<span id="raidspan" style="margin-left: 50px;"></span>
+				<div class="beigemenutable scroll-pane" style="width: 99%; height: AUTO !important; max-height: 78%; margin-left: auto; margin-right: auto; border-radius: 7px; border: 3px ridge #99805D;">
+					<table id="raidmanagertable"></table>
+				</div>
+				<div class="beigemenutable scroll-pane" style="width: 99%; height: AUTO !important; max-height: 78%; margin-left: auto; margin-right: auto; border-radius: 7px; border: 3px ridge #99805D;">
+					<table id="gactiveraidstable"></table>
+				</div>
+			</div>
+		`;
+
+		gfunkyoverviewwin += raidoverTabHtml;
+        // Incoming Overview Tab
+        /*
+			const incomingTabHtml = `
+			<div id="gincomingTab" style="text-align: center;">
+				<button id="incomingup" class="greenb" style="font-size: 14px; border-radius: 6px; margin: 4px;">Update</button>
+				<button class="greenb" style="font-size: 14px; border-radius: 6px; margin: 4px;">
+					<div class="button">
+						<a href="#" id="gincexp" role="button" style="color: #c7e2e7;">Export</a>
+					</div>
+				</button>
+				<div class="beigemenutable scroll-pane" style="width: 99%; max-height: 85%; margin-left: auto; margin-right: auto; border-radius: 7px; border: 3px ridge #99805D;">
+					<table id="ginctable"></table>
+				</div>
+			</div>
+		`;
+        gfunkyoverviewwin += incomingTabHtml;
+        */
 		// Support Overview Tab
-		gfunkyoverviewwin += "<div id='gsupportTab' style='text-align: center;'>";
-		gfunkyoverviewwin += "<button id='supportup' class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>Update</button>";
-		gfunkyoverviewwin += "<button class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>";
-		gfunkyoverviewwin += "<div class='button'>";
-		gfunkyoverviewwin += "<a href='#' id ='supportexp' role='button' style='color:#c7e2e7;'>Export</a>";
-		gfunkyoverviewwin += "</div>";
-		gfunkyoverviewwin += "</button>";
-		gfunkyoverviewwin += "<div class='beigemenutable scroll-pane' style='width:99%; max-height: 85%; margin-left:auto; margin-right: auto; border-radius: 7px;border: 3px ridge #99805D;' >";
-		gfunkyoverviewwin += "<table id='supporttable'>";
-		gfunkyoverviewwin += "</table>";
-		gfunkyoverviewwin += "</div>";
-		gfunkyoverviewwin += "</div>";
+			const supportTabHtml = `
+			<div id="gsupportTab" style="text-align: center;">
+				<button id="supportup" class="greenb" style="font-size: 14px; border-radius: 6px; margin: 4px;">Update</button>
+				<button class="greenb" style="font-size: 14px; border-radius: 6px; margin: 4px;">
+					<div class="button">
+						<a href="#" id="supportexp" role="button" style="color: #c7e2e7;">Export</a>
+					</div>
+				</button>
+				<div class="beigemenutable scroll-pane" style="width: 99%; max-height: 85%; margin-left: auto; margin-right: auto; border-radius: 7px; border: 3px ridge #99805D;">
+					<table id="supporttable"></table>
+				</div>
+			</div>
+		`;
+
+		gfunkyoverviewwin += supportTabHtml;
 		//Senator Overview TAB
-		gfunkyoverviewwin += "<div id='findmysenTab' style='text-align: center;'>";
-		gfunkyoverviewwin += "<button id='findmysenup' class='greenb' style='font-size:14px;border-radius:6px;margin:4px;'>Update</button>";
-		gfunkyoverviewwin += "<button class='greenb' style='font-size:14px;border-radius:6px; margin:4px;'>";
-		gfunkyoverviewwin += "<div class='button'>";
-		gfunkyoverviewwin += "<a href='#' id ='findmysenexp' role='button' style='color:#c7e2e7;'>Export</a>";
-		gfunkyoverviewwin += "</div>";
-		gfunkyoverviewwin += "</button>";
-		gfunkyoverviewwin += "<div id='findmysenbody' style='width:99%; margin-left:auto; margin-right: auto; border-radius: 7px;border: 3px ridge #99805D;' class='beigemenutable scroll-pane'>";
-		gfunkyoverviewwin += "<table id='findmysenempiretable'>";
-		gfunkyoverviewwin += "</table>";
-		gfunkyoverviewwin += "</div>";
-		gfunkyoverviewwin += "<br><br>";
-		gfunkyoverviewwin += "<div id='findmysencitybody' style='width:99%; max-height: 78%; margin-left:auto; margin-right: auto; border-radius: 7px;border: 3px ridge #99805D;' class='beigemenutable scroll-pane'>";
-		gfunkyoverviewwin += "<table id='findmysencitytable'>";
-		gfunkyoverviewwin += "</table>";
-		gfunkyoverviewwin += "</div>";
-		gfunkyoverviewwin += "</div>";
-		gfunkyoverviewwin += "</div>";
-		gfunkyoverviewwin += "</div>";
-		gfunkyoverviewwin += "</div>";
+		const findmysenTabHtml = `
+			<div id="findmysenTab" style="text-align: center;">
+				<button id="findmysenup" class="greenb" style="font-size: 14px; border-radius: 6px; margin: 4px;">Update</button>
+				<button class="greenb" style="font-size: 14px; border-radius: 6px; margin: 4px;">
+					<div class="button">
+						<a href="#" id="findmysenexp" role="button" style="color: #c7e2e7;">Export</a>
+					</div>
+				</button>
+				<div id="findmysenbody" style="width: 99%; margin-left: auto; margin-right: auto; border-radius: 7px; border: 3px ridge #99805D;" class="beigemenutable scroll-pane">
+					<table id="findmysenempiretable"></table>
+				</div>
+				<br><br>
+				<div id="findmysencitybody" style="width: 99%; max-height: 78%; margin-left: auto; margin-right: auto; border-radius: 7px; border: 3px ridge #99805D;" class="beigemenutable scroll-pane">
+					<table id="findmysencitytable"></table>
+				</div>
+			</div>
+		`;
+
+		gfunkyoverviewwin += findmysenTabHtml;
+
 		$("#reportsViewBox").after(gfunkyoverviewwin);
 		$("#gfunkyoverviewwin").draggable({
 			handle: ".popUpBar",
@@ -9814,6 +10543,12 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 		//$("#selinc").after(selcinc);
 		$("#selinc").val(56).change();
 		$("#selContinc").val("all").change();
+
+
+
+
+
+
 		$("#ResourceTableUpdate").click(function() {
 			$("#selgresources").val("all").change();
 			$("#selContgresources").val("56").change();
@@ -9856,17 +10591,117 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 				}
 			});
 		});
-		$("#raidup").click(function() {
-			$.ajax({
-				url: 'overview/rreps.php',
-				type: 'POST',
-				async: true,
-				success(data) {
-					const raids = JSON.parse(data);
-					updateraids(raids, $("#raidsturnc").val());
-				}
-			});
+		const rGhoursInput = document.getElementById('rrGhours');
+		const rGpercentageInput = document.getElementById('rrGpercentage');
+		// Load saved values from local storage if available
+		const savedRGhours = localStorage.getItem("rGhours");
+		const savedRGpercentage = localStorage.getItem("rGpercentage");
+		if (savedRGhours) {
+			  rGhoursInput.value = savedRGhours;
+		}
+		if (savedRGpercentage) {
+		  rGpercentageInput.value = savedRGpercentage;
+		}
+		// Save input values to local storage whenever they change
+		rGhoursInput.addEventListener("input", () => {
+		  localStorage.setItem("rGhours", rGhoursInput.value);
 		});
+		rGpercentageInput.addEventListener("input", () => {
+		  localStorage.setItem("rGpercentage", rGpercentageInput.value);
+		});
+
+		$("#raidup").click(function() {
+		  const hours = $("#rrGhours").val();
+		  const percentage = $("#rrGpercentage").val();
+
+		  // Make AJAX request to fetch raid data
+		  $.ajax({
+			url: 'overview/rreps.php',
+			type: 'POST',
+			async: true,
+			success(data) {
+			  const raids = JSON.parse(data);
+			  const rGhours = hours === "" ? "" : parseInt(hours);
+			  const rGpercentage = percentage === "" ? 999 : parseInt(percentage); // Set default value to 999
+			  const filteredRaids = filterRaids(raids, rGhours, rGpercentage);
+
+			  updateraids(raids, filteredRaids, $("#raidsturnc").val(), rGhours, rGpercentage);
+			}
+		  });
+		});
+
+		function filterRaids(raids, rGhours, rGpercentage) {
+		  // Filter out raids with a percentage greater than user input
+		  let filteredpRaids = raids?.b?.filter((raid) => raid[3] <= rGpercentage);
+		  console.log("Percentage", filteredpRaids);
+
+		  // Apply time filter if rGhours is not empty
+		  const currentTime = new Date();
+		  let pastTime;
+		  if (rGhours === "" || isNaN(rGhours)) {
+			pastTime = new Date(0); // set past time to 1/1/1970 if input is invalid or empty
+		  } else {
+			pastTime = new Date(currentTime.getTime() - (rGhours * 60 * 60 * 1000) + (currentTime.getTimezoneOffset() * 60 * 1000));
+		  }
+
+		  console.log("Current Time:", currentTime);
+		  console.log("Past Time:", pastTime);
+
+		  const timeFilteredRaids = filteredpRaids.filter((raid) => {
+			const raidTimeParts = raid[4].replace(/"/g, '').split(' ');
+			const raidDateParts = raidTimeParts[1].split('/');
+			const raidTime = raidTimeParts[0].split(':');
+			const currentYear = currentTime.getFullYear();
+
+			// Assume raid is in the current year
+			const raidDateTime = new Date(
+			  currentYear,
+			  parseInt(raidDateParts[1]) - 1,
+			  parseInt(raidDateParts[0]),
+			  parseInt(raidTime[0]),
+			  parseInt(raidTime[1]),
+			  parseInt(raidTime[2])
+			);
+
+			// Adjust raidDateTime for timezone offset
+			const adjustedRaidDateTime = new Date(raidDateTime.getTime() + (currentTime.getTimezoneOffset() * 60 * 1000));
+
+			console.log("Raid DateTime:", adjustedRaidDateTime);
+
+			return adjustedRaidDateTime >= pastTime;
+		  });
+
+		  console.log("time", timeFilteredRaids);
+
+		  // Return the timeFilteredRaids array
+		  return timeFilteredRaids;
+		}
+/*
+	$('.gFcl').click(gFCityGo)
+
+		function generatCid(key, value) {
+            var name = value[0]
+            var gNum = cm[name];
+            var y = Math.floor(val/65536);
+            var x = val % 65536
+            var li = "<li class='cityblink gFcl' id='gFcl"+gNum+"' >"+name + " ("+x+":"+y+")</li>"
+            le += li
+            li = "<li >Pr "+value[1] + "% Ca "+value[2]+"% "+value[3]+":"+value[4]+"</li>"
+            ri += li
+        }
+
+		function gfCityGo(event) {
+            var id = event.target.id;
+            //$('#'+id).css("color","#707070");
+            $('#organiser').val("all").change();
+            id = Number(id.substring(4))
+            $('#cityDropdownMenu').val(id).change();
+        }
+*/
+
+
+
+
 		$("#raidoverup").click(function() {
 			$("#selgactiveraids").val("all").change();
 			$("#selContgactiveraids").val("56").change();
@@ -9910,6 +10745,17 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 				}
 			});
 		});
+       /* $("#incomingup").click(function() {
+			$.ajax({
+				url: 'overview/incover.php',
+				type: 'POST',
+				async: true,
+				success(data) {
+					const incoming = JSON.parse(data);
+					updateincoming(incoming);
+				}
+			});
+		});*/
 		$("#findmysenup").click(function() {
 			const notes = {
 				id: [],
@@ -9941,6 +10787,11 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 				}
 			});
 		});
+
+
+
+
+
 
 		function GfunkyTableFilters(type) {
 
@@ -9985,7 +10836,7 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 				});
 			}, 1000);
 		}
-		$("#selgresources").change(function() {
+				$("#selgresources").change(function() {
 			GfunkyTableFilters("gresources");
 		});
 		$("#selContgresources").change(function() {
@@ -10207,6 +11058,147 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 
 
 		}
+ /*       
+        //update support summary
+		function updateincoming(data) {
+			let ginctab = "<table id='ginctable'>";
+			ginctab += "<thead>";
+			ginctab += "<th>Buttons</th>";
+			ginctab += "<th>Player</th>";
+			ginctab += "<th>City</th>";
+			ginctab += "<th>Coords</th>";
+			ginctab += "<th>Alliance</th>";
+			ginctab += "<th>TS supporting</th>";
+			ginctab += "<th>TS sending</th>";
+			ginctab += "<th>TS returning</th>";
+			ginctab += "</thead>";
+			ginctab += "<tbody>";
+			$.each(data, function() {
+				const tid = this[9][0][1];
+				ginctab += "<tr>";
+				ginctab += "<td>";
+				ginctab += "<button id='expandrecall' class='greenb expsup' style='height: 20px;padding-top: 3px;border-radius:6px;'>Expand</button>";
+				ginctab += `<button data='${tid}' class='greenb recasup' style='height: 20px;padding-top: 3px;border-radius:6px;'>Recall all</button>`;
+				ginctab += "</td>";
+				ginctab += `<td class='playerblink'>${this[0]}</td>`;
+				ginctab += `<td>${this[2]}</td>`;
+				ginctab += `<td class='coordblink shcitt' data='${tid}'>${this[3]}:${this[4]}</td>`;
+				ginctab += `<td class='allyblink'>${this[1]}</td>`;
+				ginctab += `<td>${this[6]}</td>`;
+				ginctab += `<td>${this[7]}</td>`;
+				ginctab += `<td>${this[8]}</td>`;
+				ginctab += "</tr>";
+				ginctab += "<tr class='expsuptab'>";
+				ginctab += "<td colspan='8'>";
+				ginctab += "<div class='beigemenutable' style='width:98%;border-radius: 50px;margin-left: auto;margin-right: auto;'>";
+				ginctab += "<table>";
+				ginctab += "<thead>";
+				ginctab += "<th>Recall</th>";
+				ginctab += "<th>City</th>";
+				ginctab += "<th>Coords</th>";
+				ginctab += "<th colspan='2'>Troops</th>";
+				ginctab += "<th>Status</th>";
+				ginctab += "<th>Arrival</th>";
+				ginctab += "</thead>";
+				ginctab += "<tbody>";
+				for (const i in this[9]) {
+					const sid = this[9][i][15];
+					let status;
+					const id = this[9][i][10];
+					switch (this[9][i][0]) {
+						case 1:
+							ginctab += "<tr style='color: purple;'>";
+							ginctab += "<td></td>";
+							status = "Sending";
+							break;
+						case 2:
+							ginctab += "<tr style='color: green;'>";
+							ginctab += "<td>";
+							ginctab += `<button id='supporttabrecall' class='greenb recsup' data='${id}' style='height: 20px;padding-top: 3px;border-radius:6px;'>Recall</button>`;
+							ginctab += "</td>";
+							status = "Reinforcing";
+							break;
+						case 0:
+							ginctab += "<tr style='color: #00858E;'>";
+							ginctab += "<td></td>";
+							status = "returning";
+							break;
+					}
+					ginctab += `<td data='${sid}' class='coordblink suplink'>${this[9][i][11]}</td>`;
+					ginctab += `<td class='coordblink shcitt' data='${sid}'>${this[9][i][12]}:${this[9][i][13]}</td>`;
+					ginctab += "<td colspan='2'>";
+					for (const j in this[9][i][8]) {
+						ginctab += `${this[9][i][8][j]},`;
+					}
+					ginctab += "</td>";
+					ginctab += `<td>${status}</td>`;
+					ginctab += `<td>${this[9][i][9]}</td>`;
+					ginctab += "</tr>";
+				}
+				ginctab += "</tbody>";
+				ginctab += "</table>";
+				ginctab += "</div>";
+				ginctab += "</td>";
+				ginctab += "</tr>";
+				ginctab += "<tr class='usles'></tr>";
+			});
+			ginctab += "</tbody>";
+			ginctab += "</table>";
+			$("#ginctable").html(ginctab);
+			$("#ginctable td").css("text-align", "center");
+			$(".expsuptab").toggle();
+			$(".usles").hide();
+			const newTableObject = document.getElementById('ginctable');
+			sorttable.makeSortable(newTableObject);
+			$(".suplink").click(function() {
+				const cid = $(this).attr("data");
+				$("#organiser").val("all").change();
+				$("#cityDropdownMenu").val(cid).change();
+			});
+			
+            $(".recsup").click(function() {
+			    const id = $(this).attr("data");
+			    const dat = {
+				    "a": id
+			    };
+			    $.ajax({
+                    url: 'overview/reinreca.php',
+                    type: 'POST',
+                    async: true,
+                    data: dat,
+                    success: function(response) {
+                    console.log(response);
+                    }
+                });
+			     $(this).remove();
+			}); // Add your code here that uses DataTables
+            $(".recasup").click(function() {
+                    const id = $(this).attr("data");
+                    const dat = {
+                        "a": id
+                    };
+                    $.ajax({
+                        url: 'overview/reinrecall.php',
+                        type: 'POST',
+                        async: true,
+                        data: dat
+                    });
+                    $(this).remove();
+                });
+                
+                $(".expsup").click(function() {
+                    $(this).parent().parent().next().toggle();
+                });
+
+                $("#gincexp").click(function(event) {
+                    //var outputFile = window.prompt("What do you want to name your output file (Note: This won't have any effect on Safari)") || 'export';
+                    const outputFile = `IncomingSum${today.getDate()}${Number(today.getMonth()+1)}${today.getFullYear()}.csv`;
+                    // CSV
+                    exportTableToCSV(document.getElementById('ginctable'), outputFile);
+                });
+            }
+*/
+
 		//update support summary
 		function updatesupport(data) {
 			let supporttab = "<table id='supporttable'>";
@@ -10303,55 +11295,52 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 				$("#organiser").val("all").change();
 				$("#cityDropdownMenu").val(cid).change();
 			});
-			$.getScript("https://w29.crownofthegods.com/overview/datatables.min.js", function() {
-
-       $(".recsup").click(function() {
-			  const id = $(this).attr("data");
-			  const dat = {
-				"a": id
-			  };
-			  $.ajax({
-				url: 'overview/reinreca.php',
-				type: 'POST',
-				async: true,
-				data: dat,
-				success: function(response) {
-				  console.log(response);
-				}
-			  });
-			  $(this).remove();
+			
+            $(".recsup").click(function() {
+			    const id = $(this).attr("data");
+			    const dat = {
+				    "a": id
+			    };
+			    $.ajax({
+                    url: 'overview/reinreca.php',
+                    type: 'POST',
+                    async: true,
+                    data: dat,
+                    success: function(response) {
+                    console.log(response);
+                    }
+                });
+			     $(this).remove();
 			}); // Add your code here that uses DataTables
-		$(".recasup").click(function() {
-				const id = $(this).attr("data");
-				const dat = {
-					"a": id
-				};
-				$.ajax({
-					url: 'overview/reinrecall.php',
-					type: 'POST',
-					async: true,
-					data: dat
-				});
-				$(this).remove();
-			});
+            $(".recasup").click(function() {
+                    const id = $(this).attr("data");
+                    const dat = {
+                        "a": id
+                    };
+                    $.ajax({
+                        url: 'overview/reinrecall.php',
+                        type: 'POST',
+                        async: true,
+                        data: dat
+                    });
+                    $(this).remove();
+                });
 
+                $(".expsup").click(function() {
+                    $(this).parent().parent().next().toggle();
+                });
 
-});
-
-
-			$(".expsup").click(function() {
-				$(this).parent().parent().next().toggle();
-			});
-
-			$("#supportexp").click(function(event) {
-				//var outputFile = window.prompt("What do you want to name your output file (Note: This won't have any effect on Safari)") || 'export';
-				const outputFile = `SupportSum${today.getDate()}${Number(today.getMonth()+1)}${today.getFullYear()}.csv`;
-				// CSV
-				exportTableToCSV(document.getElementById('supporttable'), outputFile);
-			});
-		}
+                $("#supportexp").click(function(event) {
+                    //var outputFile = window.prompt("What do you want to name your output file (Note: This won't have any effect on Safari)") || 'export';
+                    const outputFile = `SupportSum${today.getDate()}${Number(today.getMonth()+1)}${today.getFullYear()}.csv`;
+                    // CSV
+                    exportTableToCSV(document.getElementById('supporttable'), outputFile);
+                });
+        }
 		//update raids summary
-		function updateraids(data, turnc) {
+		function updateraids(raids, filteredRaids, turnc, rGhours, rGpercentage) {
+		// Filter the raid data based on the user input values
+		//const filteredData = filterRaids(data, hours, percentage);
 			let raidtab = "<thead>";
 			raidtab += "<th>Report</th>";
 			raidtab += "<th>Type</th>";
@@ -10360,39 +11349,84 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 			raidtab += "<th>Carry</th>";
 			raidtab += "<th>Date</th>";
 			raidtab += "<th>Origin</th>";
+			raidtab += "<th>Coords</th>";
+			raidtab += "<th>Cont</th>";
 			raidtab += "</thead>";
 			raidtab += "<tbody>";
 			let i = 0;
 
-			$.each(data.b, function() {
-				const xy = "${this[5]}";
+
+			let matchingCid;
+			$(document).on("click", ".tocityblink", function() {
+			  const rcid = $(this).data("rcid");
+			  $("#organiser").val("all").change();
+			  $("#cityDropdownMenu").val(rcid).change();
+			});
+			$.each(filteredRaids, function() {
+			  const cityName = this[1];
+
+
+
+			  $("#cityDropDownMenu option").each(function() {
+				const optionText = $(this).text();
+				if (optionText.startsWith(cityName)) {
+				  const cityText = optionText.split(' - ')[0];
+				  if (cityText === cityName) {
+					matchingCid = $(this).val();
+					return false;
+				  }
+				}
+			  });
+
+
+
+				const numberCid = Number(matchingCid.substring(2));
+				const rcid =matchingCid;
+				const rx = rcid % 65_536; // Use 'numberCid' instead of 'cid'
+				const ry = Math.floor(rcid / 65_536); // Use 'numberCid' instead of 'cid'
+				const rcoords = `${rx}:${ry}`;
+				const yx = `${ry}${rx}`;
+				const ryStr = String(ry);
+				const rxStr = String(rx);
+				const rcon = Number(ryStr.charAt(0) + rxStr.charAt(0));
+				const xy = `${this[5]}`;
 				const [x, y] = xy.split(':').map(Number);
 				const cid = y * 65_536 + x;
+				//console.log(cid);
+
+
+
 				if (i < turnc) {
-					if (this[2] <= 2) {
-						raidtab += "<tr style='color:green;'>";
-					} else if (2 < this[2] && this[2] <= 5) {
-						raidtab += "<tr style='color:#CF6A00;'>";
-					} else if (this[2] > 5) {
-						raidtab += "<tr style='color:red;'>";
-					}
-					raidtab += `<td class='gFrep brownb mtmdefc' data='${this[6]}'>`;
-					raidtab += "<span class='unread'>Share report</span></td>";
-					raidtab += `<td class="coordblink" data="${cid}">${this[0]}</td>`;
-					raidtab += `<td>${this[8]}%</td>`;
-					raidtab += `<td>${this[2]}%</td>`;
-					raidtab += `<td>${this[3]}%</td>`;
-					raidtab += `<td>${this[4]}</td>`;
-					raidtab += `<td>${this[1]}</td>`;
-					raidtab += "</tr>";
+				  if (this[2] <= 2) {
+					raidtab += `<tr id='rn${rcid}' style='color:green;'>`;
+				  } else if (2 < this[2] && this[2] <= 5) {
+					raidtab += `<tr id='rn${rcid}' style='color:#CF6A00;'>`;
+				  } else if (this[2] > 5) {
+					raidtab += `<tr id='rn${rcid}' style='color:red;'>`;
+				  }
+
+				  raidtab += `<td class='gFrep brownb mtmdefc' data='${this[6]}'>`;
+				  raidtab += "<span class='unread'>Share report</span></td>";
+				  raidtab += `<td class="coordblink" data="${cid}">${this[0]}</td>`;
+				  raidtab += `<td>${this[8]}%</td>`;
+				  raidtab += `<td>${this[2]}%</td>`;
+				  raidtab += `<td>${this[3]}%</td>`;
+				  raidtab += `<td>${this[4]}</td>`;
+				  raidtab += `<td id='r${rcid}' class='tocityblink' data-rcid='${rcid}'>${this[1]}</td>`;
+				  raidtab += `<td class='tocityblink' data-rcid='${rcid}'>${rcoords}</td>`;
+				  raidtab += `<td class='contblink' data='${rcon}'>${rcon}</td>`;
+				  raidtab += "</tr>";
+
 				}
 				i++;
 			});
+
 			raidtab += "</tbody>";
 			$("#raidtable").html(raidtab);
 			$("#raidtable td").css("text-align", "center");
 			const raidtablesort = document.getElementById('raidtable');
 			sorttable.makeSortable(raidtablesort);
+
 			let raid2tab = "<div id='raidsum' class='beigemenutable scroll-pane' style='width:99%; max-height: 85%; margin-left:auto; margin-right: auto; border-radius: 7px;border: 3px ridge #99805D;' >";
 			raid2tab += "<table id='raid2'>";
 			raid2tab += "<thead>";
@@ -10412,15 +11446,15 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 			raid2tab += "<tbody>";
 			raid2tab += "<tr>";
 
-			if (data.a) {
-				for (let i = 2; i < data.a.length; i++) {
-					if (Array.isArray(data.a[i])) {
-						for (let j = 0; j < data.a[i].length; j++) {
-							let number = data.a[i][j].toLocaleString();
+			if (raids.a) {
+				for (let i = 2; i < raids.a.length; i++) {
+					if (Array.isArray(raids.a[i])) {
+						for (let j = 0; j < raids.a[i].length; j++) {
+							let number = raids.a[i][j].toLocaleString();
 							raid2tab += `<td>${number}</td>`;
 						}
 					} else {
-						let number = data.a[i].toLocaleString();
+						let number = raids.a[i].toLocaleString();
 						raid2tab += `<td>${number}</td>`;
 					}
 
@@ -10431,9 +11465,9 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 			$("#raidTab").append(raid2tab);
 			$("#raid2 td").css("text-align", "center");
 			$("#TotalReports").remove();
-			let totalreportspan = $("<span>").text("Total Reports: " + data.a[0]);
+			let totalreportspan = $("<span>").text("Total Reports: " + raids.a[0]);
 			totalreportspan.attr("id", "TotalReports");
-			totalreportspan.attr("style", "margin-right:20%;");
+
 			$("#raidTab").prepend(totalreportspan);
 
 		}
@@ -11015,8 +12049,6 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 	//Dhruv's Combat Calculator
 	(function DhruvComC() {
 		//    'use strict';
-		const TroopNameIndex = ["Guards", "Ballistas", "Rangers", "Triari", "Priestess", "Vanquishers", "Sorcerers", "Scouts", "Arbalists", "Praetors", "Horsemans", "Druids", "Rams", "Scorpions", "Galleys", "Stingers", "Warships", "Senator"];
-		const TroopAttackIndex = [10, 50, 30, 10, 25, 50, 70, 10, 40, 60, 90, 120, 50, 150, 3000, 1200, 12_000]; //troops attack value
 		const ttinfdef = [10, 200, 40, 30, 20, 15, 15, 10, 40, 50, 40, 30, 20, 100, 4000, 4500, 5000]; //infantry defence
 		const ttcavdef = [10, 100, 10, 50, 30, 12, 10, 10, 90, 20, 30, 20, 20, 100, 4000, 4500, 5000]; //cavalry defence
 		const ttmystdef = [10, 200, 25, 20, 50, 10, 30, 10, 30, 90, 20, 50, 20, 200, 2000, 2000, 2500]; //mystic defence
@@ -11025,14 +12057,9 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 		const ttcavdefz = [];
 		const ttmystdefz = [];
 		const ttartdefz = [];
-		const isCavalry = [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0]; //which troop number is cav
-		const isInfantry = [0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; //which troop number is inf
-		const isMagic = [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]; //which troop number is magic
-		const isArtillery = [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1]; //which troop number is artillery
-		let sum = true;
 		let attackerts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 		let defenderts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-		let zdefenderts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+		let zdefenderts =[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 		const survivingdefTS = [];
 		let dresearch = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 		let aresearch = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
@@ -11064,896 +12091,492 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 		let defcavlosses;
 		let defmystlosses;
 		let defartlosses;
-		let defloss;
-		const survoffTS = [];
+		let defloss = [];
+		let survoffTS = [];
 		let defintensity = 5;
 		let atkintenstity = 5;
-		const lossaTroopScoreIndex = [];
-		const survivingaTroopScoreIndex = [];
-		let norrang;
-		let towerrang;
-		let nortri;
-		let towertri;
-		let norpri;
-		let towerpri;
-		let norbali;
-		let towerbali;
-		const dkumar = "<button class='regButton greenb' id='CoCa' style='margin-left: 10px;margin-top: 135px;width: 150px;height: 30px !important;font-size: 12px !important;position: absolute;left: 65%;'>Combat Calculator</button>";
-		$("#warCounc").append(dkumar);
+		let lossaTroopScoreIndex = [];
+		let survivingaTroopScoreIndex = [];
+        var norrang;
+        var towerrang;
+        let nortri;
+        let towertri;
+        let norpri;
+        let towerpri;
+        let norbali;
+        let towerbali;
+
+
 		$("#CoCa").click(function() {
 			if (sum) {
 				combcal();
 			} else {
-				$('#kumardiv').show();
+				$('#gfKumardiv').show();
 			}
 		});
-
 		function repeat() {
-			let HasA = 0;
-			for (var i = 0; i < 17; i++) {
-				HasA += survivingaTroopScoreIndex[i];
-			}
-			let HasD = 0;
-			for (var i = 0; i < 17; i++) {
-				HasD += survivingdefTS[i];
-			}
+			const attackIndices = {
+				"cgA": 0, "vanqA": 5,"sorcA": 6, "rangA": 2, "triA": 3, "priA": 4, "scoutA": 7, "horseA": 10, "druidA": 11, "arbA": 8, "praA": 9, "ramA": 12, "scorpA": 13, "balisA": 1, "galleyA": 14, "stingA": 15, "wgA": 16
+			};
+			const defendIndices = {
+				"cgD": 0, "vanqD": 5,"sorcD": 6, "rangD": 2, "triD": 3, "priD": 4, "scoutD": 7, "horseD": 10, "druidD": 11, "arbD": 8, "praD": 9, "ramD": 12, "scorpD": 13, "balisD": 1, "galleyD": 14, "stingD": 15, "wgD": 16
+			};
+			const HasA = survivingaTroopScoreIndex.reduce((a, b) => a + b, 0);
+			const HasD = survivingdefTS.reduce((a, b) => a + b, 0);
 			if (HasA == 0) {
 				alert("Attack Force has already been obliterated!");
-
 			} else if (HasD == 0) {
 				alert("Defense Force has already been obliterated!");
-
 			} else {
-				document.getElementById("vanqA").value = Math.floor(survivingaTroopScoreIndex[5]);
-				document.getElementById("sorcA").value = Math.floor(survivingaTroopScoreIndex[6]);
-				document.getElementById("rangA").value = Math.floor(survivingaTroopScoreIndex[2]);
-				document.getElementById("triA").value = Math.floor(survivingaTroopScoreIndex[3]);
-				document.getElementById("priA").value = Math.floor(survivingaTroopScoreIndex[4]);
-				document.getElementById("scoutA").value = Math.floor(survivingaTroopScoreIndex[7]);
-				document.getElementById("horseA").value = Math.floor(survivingaTroopScoreIndex[10]);
-				document.getElementById("druidA").value = Math.floor(survivingaTroopScoreIndex[11]);
-				document.getElementById("arbA").value = Math.floor(survivingaTroopScoreIndex[8]);
-				document.getElementById("praA").value = Math.floor(survivingaTroopScoreIndex[9]);
-				document.getElementById("ramA").value = Math.floor(survivingaTroopScoreIndex[12]);
-				document.getElementById("scorpA").value = Math.floor(survivingaTroopScoreIndex[13]);
-				document.getElementById("balisA").value = Math.floor(survivingaTroopScoreIndex[1]);
-				document.getElementById("galleyA").value = Math.floor(survivingaTroopScoreIndex[14]);
-				document.getElementById("stingA").value = Math.floor(survivingaTroopScoreIndex[15]);
-				document.getElementById("wgA").value = Math.floor(survivingaTroopScoreIndex[16]);
-				//Defenders
-				document.getElementById("vanqD").value = Math.floor(survivingdefTS[5]);
-				document.getElementById("cgD").value = Math.floor(survivingdefTS[0]);
-				document.getElementById("sorcD").value = Math.floor(survivingdefTS[6]);
-				document.getElementById("rangD").value = Math.floor(survivingdefTS[2]);
-				document.getElementById("triD").value = Math.floor(survivingdefTS[3]);
-				document.getElementById("priD").value = Math.floor(survivingdefTS[4]);
-				document.getElementById("scoutD").value = Math.floor(survivingdefTS[7]);
-				document.getElementById("horseD").value = Math.floor(survivingdefTS[10]);
-				document.getElementById("druidD").value = Math.floor(survivingdefTS[11]);
-				document.getElementById("arbD").value = Math.floor(survivingdefTS[8]);
-				document.getElementById("praD").value = Math.floor(survivingdefTS[9]);
-				document.getElementById("ramD").value = Math.floor(survivingdefTS[12]);
-				document.getElementById("scorpD").value = Math.floor(survivingdefTS[13]);
-				document.getElementById("balisD").value = Math.floor(survivingdefTS[1]);
-				document.getElementById("galleyD").value = Math.floor(survivingdefTS[14]);
-				document.getElementById("stingD").value = Math.floor(survivingdefTS[15]);
-				document.getElementById("wgD").value = Math.floor(survivingdefTS[16]);
+				for (let id in attackIndices) {
+					document.getElementById(id).value = Math.floor(survivingaTroopScoreIndex[attackIndices[id]]);
+				}
+				for (let id in defendIndices) {
+					document.getElementById(id).value = Math.floor(survivingdefTS[defendIndices[id]]);
+				}
 			}
 			defenderTSF();
 		}
-
 		function reset() {
-			document.getElementById("vanqA").value = 0;
-			document.getElementById("sorcA").value = 0;
-			document.getElementById("rangA").value = 0;
-			document.getElementById("triA").value = 0;
-			document.getElementById("priA").value = 0;
-			document.getElementById("scoutA").value = 0;
-			document.getElementById("horseA").value = 0;
-			document.getElementById("druidA").value = 0;
-			document.getElementById("arbA").value = 0;
-			document.getElementById("praA").value = 0;
-			document.getElementById("ramA").value = 0;
-			document.getElementById("scorpA").value = 0;
-			document.getElementById("balisA").value = 0;
-			document.getElementById("galleyA").value = 0;
-			document.getElementById("stingA").value = 0;
-			document.getElementById("wgA").value = 0;
-			//Defenders
-			document.getElementById("vanqD").value = 0;
-			document.getElementById("cgD").value = 0;
-			document.getElementById("sorcD").value = 0;
-			document.getElementById("rangD").value = 0;
-			document.getElementById("triD").value = 0;
-			document.getElementById("priD").value = 0;
-			document.getElementById("scoutD").value = 0;
-			document.getElementById("horseD").value = 0;
-			document.getElementById("druidD").value = 0;
-			document.getElementById("arbD").value = 0;
-			document.getElementById("praD").value = 0;
-			document.getElementById("ramD").value = 0;
-			document.getElementById("scorpD").value = 0;
-			document.getElementById("balisD").value = 0;
-			document.getElementById("galleyD").value = 0;
-			document.getElementById("stingD").value = 0;
-			document.getElementById("wgD").value = 0;
-			//research entries
-			document.getElementById("vanqAR").value = 0;
-			document.getElementById("sorcAR").value = 0;
-			document.getElementById("rangAR").value = 0;
-			document.getElementById("triAR").value = 0;
-			document.getElementById("priAR").value = 0;
-			document.getElementById("scoutAR").value = 0;
-			document.getElementById("horseAR").value = 0;
-			document.getElementById("druidAR").value = 0;
-			document.getElementById("arbAR").value = 0;
-			document.getElementById("praAR").value = 0;
-			document.getElementById("ramAR").value = 0;
-			document.getElementById("scorpAR").value = 0;
-			document.getElementById("balisAR").value = 0;
-			document.getElementById("galleyAR").value = 0;
-			document.getElementById("stingAR").value = 0;
-			document.getElementById("wgAR").value = 0;
-			//Defenders
-			document.getElementById("cgDR").value = 0;
-			document.getElementById("vanqDR").value = 0;
-			document.getElementById("sorcDR").value = 0;
-			document.getElementById("rangDR").value = 0;
-			document.getElementById("triDR").value = 0;
-			document.getElementById("priDR").value = 0;
-			document.getElementById("scoutDR").value = 0;
-			document.getElementById("horseDR").value = 0;
-			document.getElementById("druidDR").value = 0;
-			document.getElementById("arbDR").value = 0;
-			document.getElementById("praDR").value = 0;
-			document.getElementById("ramDR").value = 0;
-			document.getElementById("scorpDR").value = 0;
-			document.getElementById("balisDR").value = 0;
-			document.getElementById("galleyDR").value = 0;
-			document.getElementById("stingDR").value = 0;
-			document.getElementById("wgDR").value = 0;
-			//modifiers
-			document.getElementById("NightP").value = 0;
-			document.getElementById("MGpen").value = 0;
-			document.getElementById("Ascore").value = 0;
-			document.getElementById("Wall").value = 0;
-			document.getElementById("rangt").value = 0;
-			document.getElementById("trit").value = 0;
-			document.getElementById("prit").value = 0;
-			document.getElementById("balit").value = 0;
-			defenderts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-			zdefenderts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-			attackerts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-			dresearch = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
-			aresearch = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
-			tswalld = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+			const ids = [
+				"vanqA", "sorcA", "rangA", "triA", "priA", "scoutA", "horseA", "druidA", "arbA", "praA", "ramA", "scorpA", "balisA", "galleyA", "stingA", "wgA",
+				"vanqD", "cgD", "sorcD", "rangD", "triD", "priD", "scoutD", "horseD", "druidD", "arbD", "praD", "ramD", "scorpD", "balisD", "galleyD", "stingD", "wgD",
+				"vanqAR", "sorcAR", "rangAR", "triAR", "priAR", "scoutAR", "horseAR", "druidAR", "arbAR", "praAR", "ramAR", "scorpAR", "balisAR", "galleyAR", "stingAR", "wgAR",
+				"cgDR", "vanqDR", "sorcDR", "rangDR", "triDR", "priDR", "scoutDR", "horseDR", "druidDR", "arbDR", "praDR", "ramDR", "scorpDR", "balisDR", "galleyDR", "stingDR", "wgDR",
+				"NightP", "MGpen", "Ascore", "Wall", "rangt", "trit", "prit", "balit"
+			];
+			for (let id of ids) {
+				document.getElementById(id).value = 0;
+			}
+			const ts = Array(17).fill(0);  // Array with 17 zeros
+			const research = Array(17).fill(1);  // Array with 17 ones
+			defenderts = ts.slice();
+			zdefenderts = ts.slice();
+			attackerts = ts.slice();
+			dresearch = research.slice();
+			aresearch = research.slice();
+			tswalld = research.slice();
 			defenderTSF();
 		}
-
 		function defenderTSF() {
-			defenderts[0] = parseInt(document.getElementById("cgD").value);
-			if (isNaN(defenderts[0])) {
-				defenderts[0] = 0;
-				document.getElementById("cgD").value = 0;
-			}
-			zdefenderts[0] = parseInt(document.getElementById("cgD").value);
-			if (isNaN(zdefenderts[0])) {
-				zdefenderts[0] = 0;
-			}
-			//added balli tower
-			norbali = parseInt(document.getElementById("balisD").value);
-			if (isNaN(norbali)) {
-				norbali = 0;
-				document.getElementById("balisD").value = 0;
-			}
-			towerbali = parseInt(document.getElementById("balit").value);
-			if (isNaN(towerbali)) {
-				towerbali = 0;
-				document.getElementById("balit").value = 0;
-			}
-			defenderts[1] = Number(norbali + Math.min(norbali, towerbali));
-			zdefenderts[1] = parseInt(document.getElementById("balisD").value);
-			if (isNaN(zdefenderts[1])) {
-				zdefenderts[1] = 0;
-			}
-			//added tower rang
-			norrang = parseInt(document.getElementById("rangD").value);
-			if (isNaN(norrang)) {
-				norrang = 0;
-				document.getElementById("rangD").value = 0;
-			}
-			towerrang = parseInt(document.getElementById("rangt").value);
-			if (isNaN(towerrang)) {
-				towerrang = 0;
-				document.getElementById("rangt").value = 0;
-			}
-			defenderts[2] = Number(norrang + Math.min(norrang, towerrang));
-			zdefenderts[2] = parseInt(document.getElementById("rangD").value);
-			if (isNaN(zdefenderts[2])) {
-				zdefenderts[2] = 0;
-			}
-			// added tower tri
-			nortri = parseInt(document.getElementById("triD").value);
-			if (isNaN(nortri)) {
-				nortri = 0;
-				document.getElementById("triD").value = 0;
-			}
-			towertri = parseInt(document.getElementById("trit").value);
-			if (isNaN(towertri)) {
-				towertri = 0;
-				document.getElementById("trit").value = 0;
-			}
-			defenderts[3] = Number(nortri + Math.min(nortri, towertri));
-			zdefenderts[3] = parseInt(document.getElementById("triD").value);
-			if (isNaN(zdefenderts[3])) {
-				zdefenderts[3] = 0;
-			}
-			//added tower pri
-			norpri = parseInt(document.getElementById("priD").value);
-			if (isNaN(norpri)) {
-				norpri = 0;
-				document.getElementById("priD").value = 0;
-			}
-			towerpri = parseInt(document.getElementById("prit").value);
-			if (isNaN(towerpri)) {
-				towerpri = 0;
-				document.getElementById("prit").value = 0;
-			}
-			defenderts[4] = Number(norpri + Math.min(norpri, towerpri));
-			zdefenderts[4] = parseInt(document.getElementById("priD").value);
-			if (isNaN(zdefenderts[4])) {
-				zdefenderts[4] = 0;
-			}
-			defenderts[5] = parseInt(document.getElementById("vanqD").value);
-			if (isNaN(defenderts[5])) {
-				defenderts[5] = 0;
-				document.getElementById("vanqD").value = 0;
-			}
-			zdefenderts[5] = parseInt(document.getElementById("vanqD").value);
-			if (isNaN(zdefenderts[5])) {
-				zdefenderts[5] = 0;
-			}
-			defenderts[6] = parseInt(document.getElementById("sorcD").value);
-			if (isNaN(defenderts[6])) {
-				defenderts[6] = 0;
-				document.getElementById("sorcD").value = 0;
-			}
-			zdefenderts[6] = parseInt(document.getElementById("sorcD").value);
-			if (isNaN(zdefenderts[6])) {
-				zdefenderts[6] = 0;
-			}
-			defenderts[7] = parseInt(document.getElementById("scoutD").value);
-			if (isNaN(defenderts[7])) {
-				defenderts[7] = 0;
-				document.getElementById("scoutD").value = 0;
-			}
-			zdefenderts[7] = parseInt(document.getElementById("scoutD").value);
-			if (isNaN(zdefenderts[7])) {
-				zdefenderts[7] = 0;
-			}
-			defenderts[8] = parseInt(document.getElementById("arbD").value);
-			if (isNaN(defenderts[8])) {
-				defenderts[8] = 0;
-				document.getElementById("arbD").value = 0;
-			}
-			zdefenderts[8] = parseInt(document.getElementById("arbD").value);
-			if (isNaN(zdefenderts[8])) {
-				zdefenderts[8] = 0;
-			}
-			defenderts[9] = parseInt(document.getElementById("praD").value);
-			if (isNaN(defenderts[9])) {
-				defenderts[9] = 0;
-				document.getElementById("praD").value = 0;
-			}
-			zdefenderts[9] = parseInt(document.getElementById("praD").value);
-			if (isNaN(zdefenderts[9])) {
-				zdefenderts[9] = 0;
-			}
-			defenderts[10] = parseInt(document.getElementById("horseD").value);
-			if (isNaN(defenderts[10])) {
-				defenderts[10] = 0;
-				document.getElementById("horseD").value = 0;
-			}
-			zdefenderts[10] = parseInt(document.getElementById("horseD").value);
-			if (isNaN(zdefenderts[10])) {
-				zdefenderts[10] = 0;
-			}
-			defenderts[11] = parseInt(document.getElementById("druidD").value);
-			if (isNaN(defenderts[11])) {
-				defenderts[11] = 0;
-				document.getElementById("druidD").value = 0;
-			}
-			zdefenderts[11] = parseInt(document.getElementById("druidD").value);
-			if (isNaN(zdefenderts[11])) {
-				zdefenderts[11] = 0;
-			}
-			defenderts[12] = parseInt(document.getElementById("ramD").value);
-			if (isNaN(defenderts[12])) {
-				defenderts[12] = 0;
-				document.getElementById("ramD").value = 0;
-			}
-			zdefenderts[12] = parseInt(document.getElementById("ramD").value);
-			if (isNaN(zdefenderts[12])) {
-				zdefenderts[12] = 0;
-			}
-			defenderts[13] = parseInt(document.getElementById("scorpD").value);
-			if (isNaN(defenderts[13])) {
-				defenderts[13] = 0;
-				document.getElementById("scorpD").value = 0;
-			}
-			zdefenderts[13] = parseInt(document.getElementById("scorpD").value);
-			if (isNaN(zdefenderts[13])) {
-				zdefenderts[13] = 0;
-			}
-			defenderts[14] = parseInt(document.getElementById("galleyD").value);
-			if (isNaN(defenderts[14])) {
-				defenderts[14] = 0;
-				document.getElementById("galleyD").value = 0;
-			}
-			zdefenderts[14] = parseInt(document.getElementById("galleyD").value);
-			if (isNaN(zdefenderts[14])) {
-				zdefenderts[14] = 0;
-			}
-			defenderts[15] = parseInt(document.getElementById("stingD").value);
-			if (isNaN(defenderts[15])) {
-				defenderts[15] = 0;
-				document.getElementById("stingD").value = 0;
-			}
-			zdefenderts[15] = parseInt(document.getElementById("stingD").value);
-			if (isNaN(zdefenderts[15])) {
-				zdefenderts[15] = 0;
-			}
-			defenderts[16] = parseInt(document.getElementById("wgD").value);
-			if (isNaN(defenderts[16])) {
-				defenderts[16] = 0;
-				document.getElementById("wgD").value = 0;
-			}
-			zdefenderts[16] = parseInt(document.getElementById("wgD").value);
-			if (isNaN(zdefenderts[16])) {
-				zdefenderts[16] = 0;
-			}
-			attackerts[0] = 0;
-			attackerts[1] = parseInt(document.getElementById("balisA").value);
-			if (isNaN(attackerts[1])) {
-				attackerts[1] = 0;
-				document.getElementById("balisA").value = 0;
-			}
-			attackerts[2] = parseInt(document.getElementById("rangA").value);
-			if (isNaN(attackerts[2])) {
-				attackerts[2] = 0;
-				document.getElementById("rangA").value = 0;
-			}
-			attackerts[3] = parseInt(document.getElementById("triA").value);
-			if (isNaN(attackerts[3])) {
-				attackerts[3] = 0;
-				document.getElementById("triA").value = 0;
-			}
-			attackerts[4] = parseInt(document.getElementById("priA").value);
-			if (isNaN(attackerts[4])) {
-				attackerts[4] = 0;
-				document.getElementById("priA").value = 0;
-			}
-			attackerts[5] = parseInt(document.getElementById("vanqA").value);
-			if (isNaN(attackerts[5])) {
-				attackerts[5] = 0;
-				document.getElementById("vanqA").value = 0;
-			}
-			attackerts[6] = parseInt(document.getElementById("sorcA").value);
-			if (isNaN(attackerts[6])) {
-				attackerts[6] = 0;
-				document.getElementById("sorcA").value = 0;
-			}
-			attackerts[7] = parseInt(document.getElementById("scoutA").value);
-			if (isNaN(attackerts[7])) {
-				attackerts[7] = 0;
-				document.getElementById("scoutA").value = 0;
-			}
-			attackerts[8] = parseInt(document.getElementById("arbA").value);
-			if (isNaN(attackerts[8])) {
-				attackerts[8] = 0;
-				document.getElementById("arbA").value = 0;
-			}
-			attackerts[9] = parseInt(document.getElementById("praA").value);
-			if (isNaN(attackerts[9])) {
-				attackerts[9] = 0;
-				document.getElementById("praA").value = 0;
-			}
-			attackerts[10] = parseInt(document.getElementById("horseA").value);
-			if (isNaN(attackerts[10])) {
-				attackerts[10] = 0;
-				document.getElementById("horseA").value = 0;
-			}
-			attackerts[11] = parseInt(document.getElementById("druidA").value);
-			if (isNaN(attackerts[11])) {
-				attackerts[11] = 0;
-				document.getElementById("druidA").value = 0;
-			}
-			attackerts[12] = parseInt(document.getElementById("ramA").value);
-			if (isNaN(attackerts[12])) {
-				attackerts[12] = 0;
-				document.getElementById("ramA").value = 0;
-			}
-			attackerts[13] = parseInt(document.getElementById("scorpA").value);
-			if (isNaN(attackerts[13])) {
-				attackerts[13] = 0;
-				document.getElementById("scorpA").value = 0;
-			}
-			attackerts[14] = parseInt(document.getElementById("galleyA").value);
-			if (isNaN(attackerts[14])) {
-				attackerts[14] = 0;
-				document.getElementById("galleyA").value = 0;
-			}
-			attackerts[15] = parseInt(document.getElementById("stingA").value);
-			if (isNaN(attackerts[15])) {
-				attackerts[15] = 0;
-				document.getElementById("stingA").value = 0;
-			}
-			attackerts[16] = parseInt(document.getElementById("wgA").value);
-			if (isNaN(attackerts[16])) {
-				attackerts[16] = 0;
-				document.getElementById("wgA").value = 0;
-			}
-			//Atackers
-			aresearch[0] = 1;
-			let balisAR = document.getElementById("balisAR").value;
-			if (balisAR > 100 || isNaN(balisAR) == 1) {
-				balisAR = 0;
-				document.getElementById("balisAR").value = 0;
-			}
-			const balisARz = 1 + balisAR / 100;
-			aresearch[1] = balisARz;
-			let rangAR = document.getElementById("rangAR").value;
-			if (rangAR > 100 || isNaN(rangAR) == 1) {
-				rangAR = 0;
-				document.getElementById("rangAR").value = 0;
-			}
-			const rangARz = 1 + rangAR / 100;
-			aresearch[2] = rangARz;
-			let triAR = document.getElementById("triAR").value;
-			if (triAR > 100 || isNaN(triAR) == 1) {
-				triAR = 0;
-				document.getElementById("triAR").value = 0;
-			}
-			const triARz = 1 + triAR / 100;
-			aresearch[3] = triARz;
-			let priAR = document.getElementById("priAR").value;
-			if (priAR > 100 || isNaN(priAR) == 1) {
-				priAR = 0;
-				document.getElementById("priAR").value = 0;
-			}
-			const priARz = 1 + priAR / 100;
-			aresearch[4] = priARz;
-			let vanqAR = document.getElementById("vanqAR").value;
-			if (vanqAR > 100 || isNaN(vanqAR) == 1) {
-				vanqAR = 0;
-				document.getElementById("vanqAR").value = 0;
-			}
-			const vanqARz = 1 + vanqAR / 100;
-			aresearch[5] = vanqARz;
-			let sorcAR = document.getElementById("sorcAR").value;
-			if (sorcAR > 100 || isNaN(sorcAR) == 1) {
-				sorcAR = 0;
-				document.getElementById("sorcAR").value = 0;
-			}
-			const sorcARz = 1 + sorcAR / 100;
-			aresearch[6] = sorcARz;
-			let scoutAR = document.getElementById("scoutAR").value;
-			if (scoutAR > 100 || isNaN(scoutAR) == 1) {
-				scoutAR = 0;
-				document.getElementById("scoutAR").value = 0;
-			}
-			const scoutARz = 1 + scoutAR / 100;
-			aresearch[7] = scoutARz;
-			let arbAR = document.getElementById("arbAR").value;
-			if (arbAR > 100 || isNaN(arbAR) == 1) {
-				arbAR = 0;
-				document.getElementById("arbAR").value = 0;
-			}
-			const arbARz = 1 + arbAR / 100;
-			aresearch[8] = arbARz;
-			let praAR = document.getElementById("praAR").value;
-			if (praAR > 100 || isNaN(praAR) == 1) {
-				praAR = 0;
-				document.getElementById("praAR").value = 0;
-			}
-			const praARz = 1 + praAR / 100;
-			aresearch[9] = praARz;
-			let horseAR = document.getElementById("horseAR").value;
-			if (horseAR > 100 || isNaN(horseAR) == 1) {
-				horseAR = 0;
-				document.getElementById("horseAR").value = 0;
-			}
-			const horseARz = 1 + horseAR / 100;
-			aresearch[10] = horseARz;
-			let druidAR = document.getElementById("druidAR").value;
-			if (druidAR > 100 || isNaN(druidAR) == 1) {
-				druidAR = 0;
-				document.getElementById("druidAR").value = 0;
-			}
-			const druidARz = 1 + druidAR / 100;
-			aresearch[11] = druidARz;
-			let ramAR = document.getElementById("ramAR").value;
-			if (ramAR > 100 || isNaN(ramAR) == 1) {
-				ramAR = 0;
-				document.getElementById("ramAR").value = 0;
-			}
-			const ramARz = 1 + ramAR / 100;
-			aresearch[12] = ramARz;
-			let scorpAR = document.getElementById("scorpAR").value;
-			if (scorpAR > 100 || isNaN(scorpAR) == 1) {
-				scorpAR = 0;
-				document.getElementById("scorpAR").value = 0;
-			}
-			const scorpARz = 1 + scorpAR / 100;
-			aresearch[13] = scorpARz;
-			let galleyAR = document.getElementById("galleyAR").value;
-			if (galleyAR > 100 || isNaN(galleyAR) == 1) {
-				galleyAR = 0;
-				document.getElementById("galleyAR").value = 0;
-			}
-			const galleyARz = 1 + galleyAR / 100;
-			aresearch[14] = galleyARz;
-			let stingAR = document.getElementById("stingAR").value;
-			if (stingAR > 100 || isNaN(stingAR) == 1) {
-				stingAR = 0;
-				document.getElementById("stingAR").value = 0;
-			}
-			const stingARz = 1 + stingAR / 100;
-			aresearch[15] = stingARz;
-			let wgAR = document.getElementById("wgAR").value;
-			if (wgAR > 100 || isNaN(wgAR) == 1) {
-				wgAR = 0;
-				document.getElementById("wgAR").value = 0;
-			}
-			const wgARz = 1 + wgAR / 100;
-			aresearch[16] = wgARz;
-			//Defenders
-			let cgDR = document.getElementById("cgDR").value;
-			if (cgDR > 100 || isNaN(cgDR) == 1) {
-				cgDR = 0;
-				document.getElementById("cgDR").value = 0;
-			}
-			const cgDRz = 1 + cgDR / 100;
-			dresearch[0] = cgDRz;
-			let balisDR = document.getElementById("balisDR").value;
-			if (balisDR > 100 || isNaN(balisDR) == 1) {
-				balisDR = 0;
-				document.getElementById("balisDR").value = 0;
-			}
-			const balisDRz = 1 + balisDR / 100;
-			dresearch[1] = balisDRz;
-			let rangDR = document.getElementById("rangDR").value;
-			if (rangDR > 100 || isNaN(rangDR) == 1) {
-				rangDR = 0;
-				document.getElementById("rangDR").value = 0;
-			}
-			const rangDRz = 1 + rangDR / 100;
-			dresearch[2] = rangDRz;
-			let triDR = document.getElementById("triDR").value;
-			if (triDR > 100 || isNaN(triDR) == 1) {
-				triDR = 0;
-				document.getElementById("triDR").value = 0;
-			}
-			const triDRz = 1 + triDR / 100;
-			dresearch[3] = triDRz;
-			let priDR = document.getElementById("priDR").value;
-			if (priDR > 100 || isNaN(priDR) == 1) {
-				priDR = 0;
-				document.getElementById("priDR").value = 0;
-			}
-			const priDRz = 1 + priDR / 100;
-			dresearch[4] = priDRz;
-			let vanqDR = document.getElementById("vanqDR").value;
-			if (vanqDR > 100 || isNaN(vanqDR) == 1) {
-				vanqDR = 0;
-				document.getElementById("vanqDR").value = 0;
-			}
-			const vanqDRz = 1 + vanqDR / 100;
-			dresearch[5] = vanqDRz;
-			let sorcDR = document.getElementById("sorcDR").value;
-			if (sorcDR > 100 || isNaN(sorcDR) == 1) {
-				sorcDR = 0;
-				document.getElementById("sorcDR").value = 0;
-			}
-			const sorcDRz = 1 + sorcDR / 100;
-			dresearch[6] = sorcDRz;
-			let scoutDR = document.getElementById("scoutDR").value;
-			if (scoutDR > 100 || isNaN(scoutDR) == 1) {
-				scoutDR = 0;
-				document.getElementById("scoutDR").value = 0;
-			}
-			const scoutDRz = 1 + scoutDR / 100;
-			dresearch[7] = scoutDRz;
-			let arbDR = document.getElementById("arbDR").value;
-			if (arbDR > 100 || isNaN(arbDR) == 1) {
-				arbDR = 0;
-				document.getElementById("arbDR").value = 0;
-			}
-			const arbDRz = 1 + arbDR / 100;
-			dresearch[8] = arbDRz;
-			let praDR = document.getElementById("praDR").value;
-			if (praDR > 100 || isNaN(praDR) == 1) {
-				praDR = 0;
-				document.getElementById("praDR").value = 0;
-			}
-			const praDRz = 1 + praDR / 100;
-			dresearch[9] = praDRz;
-			let horseDR = document.getElementById("horseDR").value;
-			if (horseDR > 100 || isNaN(horseDR) == 1) {
-				horseDR = 0;
-				document.getElementById("horseDR").value = 0;
-			}
-			const horseDRz = 1 + horseDR / 100;
-			dresearch[10] = horseDRz;
-			let druidDR = document.getElementById("druidDR").value;
-			if (druidDR > 100 || isNaN(druidDR) == 1) {
-				druidDR = 0;
-				document.getElementById("druidDR").value = 0;
-			}
-			const druidDRz = 1 + druidDR / 100;
-			dresearch[11] = druidDRz;
-			let ramDR = document.getElementById("ramDR").value;
-			if (ramDR > 100 || isNaN(ramDR) == 1) {
-				ramDR = 0;
-				document.getElementById("ramDR").value = 0;
-			}
-			const ramDRz = 1 + ramDR / 100;
-			dresearch[12] = ramDRz;
-			let scorpDR = document.getElementById("scorpDR").value;
-			if (scorpDR > 100 || isNaN(scorpDR) == 1) {
-				scorpDR = 0;
-				document.getElementById("scorpDR").value = 0;
-			}
-			const scorpDRz = 1 + scorpDR / 100;
-			dresearch[13] = scorpDRz;
-			let galleyDR = document.getElementById("galleyDR").value;
-			if (galleyDR > 100 || isNaN(galleyDR) == 1) {
-				galleyDR = 0;
-				document.getElementById("galleyDR").value = 0;
-			}
-			const galleyDRz = 1 + galleyDR / 100;
-			dresearch[14] = galleyDRz;
-			let stingDR = document.getElementById("stingDR").value;
-			if (stingDR > 100 || isNaN(stingDR) == 1) {
-				stingDR = 0;
-				document.getElementById("stingDR").value = 0;
-			}
-			const stingDRz = 1 + stingDR / 100;
-			dresearch[15] = stingDRz;
-			let wgDR = document.getElementById("wgDR").value;
-			if (wgDR > 100 || isNaN(wgDR) == 1) {
-				wgDR = 0;
-				document.getElementById("wgDR").value = 0;
-			}
-			const wgDRz = 1 + wgDR / 100;
-			dresearch[16] = wgDRz;
-			//wall
-			let wall = parseInt(document.getElementById("Wall").value);
-			if (wall > 10 || isNaN(wall) == 1) {
-				wall = 0;
-				document.getElementById("Wall").value = 0;
-			}
+			function getInputValue(id, arr, index) {
+				let value = parseInt(document.getElementById(id).value);
+				if (isNaN(value)) {
+					value = 0;
+					document.getElementById(id).value = 0;
+				}
+				arr[index] = value;
+			}
+
+			function handleTowerInput(id, arr, index) {
+				let el = document.getElementById(id);
+				let towerEl = document.getElementById(id + 't');
+				if (el == null || towerEl == null) {
+					console.warn(`Element not found: ${id}`);
+					return;
+				}
+				let norValue = parseInt(el.value);
+				let towerValue = parseInt(towerEl.value);
+				if (isNaN(norValue)) {
+					norValue = 0;
+					el.value = 0;
+				}
+				if (isNaN(towerValue)) {
+					towerValue = 0;
+					towerEl.value = 0;
+				}
+				arr[index] = norValue + Math.min(norValue, towerValue);
+			}
+
+
+			let ids = ['cgD', 'balisD', 'rangD', 'triD', 'priD', 'vanqD', 'sorcD', 'scoutD', 'arbD', 'praD', 'horseD', 'druidD', 'ramD', 'scorpD', 'galleyD', 'stingD', 'wgD'];
+			let towerIds = ['balisD', 'rangD', 'triD', 'priD'];
+
+			for (let i = 0; i < ids.length; i++) {
+				getInputValue(ids[i], defenderts, i);
+				getInputValue(ids[i], zdefenderts, i);
+			}
+
+			for (let i = 0; i < towerIds.length; i++) {
+				handleTowerInput(towerIds[i], defenderts, i);
+				getInputValue(towerIds[i], zdefenderts, i);
+			}
+
+			const troopTypes = [
+			"balisA", "rangA", "triA", "priA", "vanqA", "sorcA", "scoutA",
+			"arbA", "praA", "horseA", "druidA", "ramA", "scorpA", "galleyA",
+			"stingA", "wgA"
+			];
+
+			function setInputValues(arrayName, troopTypes, arrayIndexStart = 0, isZeroFirst = false) {
+				if (isZeroFirst) arrayName[0] = 0;
+				for (let i = 0; i < troopTypes.length; i++) {
+					const elementId = troopTypes[i];
+					const value = parseInt(document.getElementById(elementId).value);
+					arrayName[arrayIndexStart + i] = isNaN(value) ? 0 : value;
+					if (isNaN(value)) document.getElementById(elementId).value = 0;
+				}
+			}
+			setInputValues(attackerts, troopTypes, 1, true);
+			setInputValues(zdefenderts, ["wgD"], 16);
+			// attacker research types
+			const researchTypes = [
+				"balisAR", "rangAR", "triAR", "priAR", "vanqAR", "sorcAR", "scoutAR",
+				"arbAR", "praAR", "horseAR", "druidAR", "ramAR", "scorpAR", "galleyAR",
+				"stingAR", "wgAR"
+			];
+			function setResearchValues(arrayName, researchTypes, arrayIndexStart = 0, isOneFirst = false) {
+				if (isOneFirst) arrayName[0] = 1;
+				for (let i = 0; i < researchTypes.length; i++) {
+				const elementId = researchTypes[i];
+				let researchValue = document.getElementById(elementId).value;
+				if (researchValue > 100 || isNaN(researchValue)) {
+					researchValue = 0;
+					document.getElementById(elementId).value = 0;
+				}
+				const researchValueNormalized = 1 + researchValue / 100;
+				arrayName[arrayIndexStart + i] = researchValueNormalized;
+				}
+			}
+			setResearchValues(aresearch, researchTypes, 1, true);
+			// defender research types
+			const defenderResearchTypes = [
+				"cgDR", "balisDR", "rangDR", "triDR", "priDR", "vanqDR", "sorcDR", "scoutDR",
+				"arbDR", "praDR", "horseDR", "druidDR", "ramDR", "scorpDR", "galleyDR",
+				"stingDR", "wgDR"
+			];
+			setResearchValues(dresearch, defenderResearchTypes);
+			// wall
+			let wall = getValueWithinRange('Wall', 0, 10, 0);
 			for (let i = 0; i < 17; i++) {
 				tswalld[i] = i < 14 ? wall * 0.05 + 1 : 1;
 			}
-			//night protection
-			const inputnp = parseInt(document.getElementById("NightP").value);
-			inputnightp = Number(1 - inputnp / 100);
-			//morale
-			const inputmor = parseInt(document.getElementById("Ascore").value);
-			inputmorale = Number(1 - inputmor / 100);
-			//portal
-			const inputport = parseInt(document.getElementById("MGpen").value);
-			inputportal = Number(1 - inputport / 100);
-			//input intensity, assult siege or plunder
-			const tempintensity = document.getElementById("atackType").value;
-			if (tempintensity === "assault") {
-				defintensity = 5;
-				atkintenstity = 5;
-			}
-			if (tempintensity === "siege") {
-				defintensity = 1;
-				atkintenstity = 1;
-			}
-			if (tempintensity === "plunder") {
-				defintensity = 0.1;
-				atkintenstity = 1;
-			}
-			calculationCC();
-		}
+			// night protection
+			inputnightp = getValueInRangePercentage('NightP', 1, true);
+			// morale
+			inputmorale = getValueInRangePercentage('Ascore', 1, true);
+			// portal
+			inputportal = getValueInRangePercentage('MGpen', 1, true);
+			// attack type
+			let attackTypes = {
+                'assault': { defintensity: 5, atkintensity: 5 },
+                'siege': { defintensity: 1, atkintensity: 1 },
+                'plunder': { defintensity: 0.1, atkintensity: 1 }
+            };
+            
+            const tempintensity = document.getElementById('atackType').value;
+            
+            if(attackTypes[tempintensity]) {
+                atkintensity = attackTypes[tempintensity].atkintensity;
+                defintensity = attackTypes[tempintensity].defintensity;
+            } else {
+                atkintensity = 1;
+                defintensity = (tempintensity === 'plunder') ? 1 : atkintensity;
+            }
+            
+            calculationCC();
+            
 
+			function getValueWithinRange(id, min, max, defaultValue) {
+				let value = parseInt(document.getElementById(id).value);
+				if (isNaN(value) || value > max || value < min) {
+					value = defaultValue;
+					document.getElementById(id).value = defaultValue;
+				}
+				return value;
+			}
+			function getValueInRangePercentage(id, defaultReturn, inverse = false) {
+				let value = parseInt(document.getElementById(id).value);
+				value = inverse ? 1 - value / 100 : value / 100;
+				return isNaN(value) ? defaultReturn : value;
+			}
+
+		}
 		function combcal() {
 			sum = false;
-			let kumar = `<div id='kumardiv' style='width:522px;height:777px;left: 990px; z-index: 200003;  position: relative; class='popUpBox ui-draggable'>
-			<div class="ppbwinbgr ui-draggable">
-			<div class="ppbwintop  ui-draggable"></div>
-			<div class="ppbwincent ui-draggable"></div>
-			<div class="ppbwinbott  ui-draggable"></div>
-			</div>
-			<div class="ppbwincontent ui-draggable" style="height:98%;">
-			<div class="popUpBar ui-draggable-handle">
-			<span class='ppspan'>Dhruvs Combat Calculator</span>
-			<button id='kumarsumX' style='margin-right: 5%; margin-top:5px;' class='xbutton' onclick=$('#kumardiv').hide()>
-			<div id='xbuttondiv'>
-			<div>
-			<div id='centxbuttondiv'></div>
-			</div>
-			</div>
-			</button>
-			</div>
-			<div id="popkumar" class="popUpWindow" style="margin-left:auto; margin-right:auto;">
-			//Section 1
-			<div id = "toptxt" style="width: 90%;margin-left: auto;margin-right: auto; font-size:12px; text-align:center;">NP:<input type="text" id="NightP" size="1" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;">
-			Portal: <input type="text" id="MGpen" size="1" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;">
-			Morale: <input type="text" id="Ascore" size="1" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;">
-			Type:<select name="atackType" id="atackType" class="regButton greenb" style="color:#e1c190;" onchange=""><option selected value="assault">Assault</option><option value="siege">Siege</option><option value="plunder">Plunder</option></select>
-			<br><span>Defense Protected by Towers</span><br>
-			<span>Ranger=<input type="text" id="rangt" size="1" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;">Triari=<input type="text" id="trit" size="1" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;">Priestess=<input type="text" id="prit" size="1" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;">Balista=<input type="text" id="balit" size="1" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;">
-			<br>Walls lvl: <input type="text" id="Wall" size="1" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"></span>
-			</div>
-			//Section 2
-			<div id="chart" style="height:90%; line-height:90%;">
-			<table id = "tab" style="width:90%; margin-left:auto; margin-right:auto; font-size:10px;">
-			<tr>
-			<!--<th colspan="2">Attacking</th>  <th> +% </th>   <th>  </th>  <th> +%  </th>   <th colspan="2">Defending</th>"cityguard"-->
-			<th>Remaining </th><th>Attacking</th>  <th> +% </th>   <th>  </th>  <th> +%  </th>   <th>Defending</th> <th>Remaining</th>
-			</tr>
+			let gfKumar = `
+			<div id='gfKumardiv' style='width:522px;height:90%;left: 990px; z-index: 200003;  position: relative; class='popUpBox ui-draggable'>
+				<div class="ppbwinbgr ui-draggable">
+					<div class="ppbwintop  ui-draggable"></div>
+					<div class="ppbwincent ui-draggable"></div>
+					<div class="ppbwinbott  ui-draggable"></div>
+				</div>
+				<div class="ppbwincontent ui-draggable" style="height:98%;">
+					<div class="popUpBar ui-draggable-handle">
+						<span class='ppspan'>Dhruvs Combat Calculator</span>
+						<button id='gfKumarsumX' style='margin-right: 5%; margin-top:5px;' class='xbutton' onclick=$('#gfKumardiv').hide()>
+							<div id='xbuttondiv'>
+								<div>
+									<div id='centxbuttondiv'></div>
+								</div>
+							</div>
+						</button>
+					</div>
+					<div id="popgfKumar" class="popUpWindow" style="margin-left:auto; margin-right:auto;">
+					<div id = "toptxt" style="width: 90%;margin-left: auto;margin-right: auto; font-size:12px; text-align:center;">
+						NP:<input type="text" id="NightP" size="1" value="0" style="font-weight: bold; border-radius: 6px;background: #fffff;color: black;text-align: center;">
+						Portal: <input type="text" id="MGpen" size="1" value="0" style="font-weight: bold; border-radius: 6px;background: #fffff;color: black;text-align: center;">
+						Morale: <input type="text" id="Ascore" size="1" value="0" style="font-weight: bold; border-radius: 6px;background: #fffff;color: black;text-align: center;">
+						Type:<select name="atackType" id="atackType" class="regButton greenb" style="color:#e1c190;" onchange="">
+						<option selected value="assault">Assault</option>
+						<option value="siege">Siege</option><option value="plunder">Plunder</option>
+						</select>
+						<br>
+						<span class='queueBar' style='font-size: 19px;padding-left: 3%; padding-right: 3%; border-radius: 6px;'>Towers</span><br>
+						<span>
+							Ranger:<input type="text" id="rangt" size="1" value="0" style="font-weight: bold; border-radius: 6px;background: #fffff;color: black;text-align: center;">
+							Triari:<input type="text" id="trit" size="1" value="0" style="font-weight: bold; border-radius: 6px;background: #fffff;color: black;text-align: center;">
+							Priestess:<input type="text" id="prit" size="1" value="0" style="font-weight: bold; border-radius: 6px;background: #fffff;color: black;text-align: center;">
+							Ballista:<input type="text" id="balit" size="1" value="0" style="font-weight: bold; border-radius: 6px;background: #fffff;color: black;text-align: center;">
+							<br>Walls lvl: <input type="text" id="Wall" size="1" value="0" style="font-weight: bold; border-radius: 6px;background: #fffff;color: black;text-align: center;">
+						</span>
+					</div>
+					<div id="chart" style="height:80%; line-height:90%; Overflow-y:scroll;">
+						<table id = "tab" style="width:90%; margin-left:auto; margin-right:auto; font-size:10px;">
+							<tr style="background: url(/images/antonui/qmenutop.png);border-radius: 6px;color: #f3d298;	">
+								<!--<th colspan="2">Attacking</th>  <th> +% </th>   <th>  </th>  <th> +%  </th>   <th colspan="2">Defending</th>"cityguard"-->
+								<th>Remaining </th><th>Attacking</th>  <th> +% </th>   <th>  </th>  <th> +%  </th>   <th>Defending</th> <th>Remaining</th>
+							</tr>
+							<tr>
+								<td></td><td>-</td><td>-</td>
+								<td style="height: 34px;" ><div class="guard32 trooptdcm" /></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+ 								 	<input type="text" id="cgDR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;">
+								</td>
 
-			<tr>
-			<td></td><td>-</td><td>-</td>
-			<td ><div class="guard32 trooptdcm" /></td>
-			<td><input type="text" id="cgDR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;" ></td>
-			<td><input type="text" id="cgD" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td><td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 2px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="survcgD"></span></td>
-			</tr>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+									<input type="text" id="cgD" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+									<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 2px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="survcgD"></span>
+									</td>
+							</tr>
+							<tr>
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="survanqA" style="font-weight:bold;"></span> </td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="vanqA" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="vanqAR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="height: 34px;" ><div class="vanq32 trooptdcm" /></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="vanqDR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="vanqD" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="survanqD" style="font-weight:bold;"></span></td>
+							</tr>
+							<tr>
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="sursorcA" style="font-weight:bold;"></span> </td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="sorcA" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="sorcAR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="height: 34px;" ><div class="sorc32 trooptdcm" /></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="sorcDR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;">
+								</td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="sorcD" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"> <span id="sursorcD" style="font-weight:bold;"></span></td>
+							</tr>
+							<tr class = "alt">
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surRangA" style="font-weight:bold;"></span></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="rangA" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="rangAR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"></td>
+								<td style="height: 34px;" ><div class="ranger32 trooptdcm" /></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="rangDR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="rangD" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"></td>
+							</tr>
+							<tr>
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surtriA" style="font-weight:bold;"></span> </td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="triA" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="triAR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="height: 34px;" ><div class="triari32 trooptdcm" /></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="triDR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="triD" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"> <span id="surtriD" style="font-weight:bold;"></span></td>
+							</tr>
+							<tr class = "alt">
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surpriA" style="font-weight:bold;"></span> </td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="priA" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="priAR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="height: 34px;" ><div class="priest32 trooptdcm" /></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="priDR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="priD" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surpriD" style="font-weight:bold;"></span></td>
+							</tr>
+							<tr>
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surScoutA" style="font-weight:bold;"></span> </td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="scoutA" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="scoutAR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="height: 34px;" ><div class="scout32 trooptdcm" /></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="scoutDR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="scoutD" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"> <span id="surScoutD" style="font-weight:bold;"></span></td>
+							</tr>
+							<tr class = "alt">
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surhorseA" style="font-weight:bold;"></span> </td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="horseA" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="horseAR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="height: 34px;" ><div class="horsem32 trooptdcm" /></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="horseDR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="horseD" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surhorseD" style="font-weight:bold;"></span></td>
+							</tr>
+							<tr>
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surdruidA" style="font-weight:bold;"></span> </td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="druidA" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="druidAR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="height: 34px;" ><div class="druid32 trooptdcm" /></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="druidDR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="druidD" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"> <span id="surdruidD" style="font-weight:bold;"></span></td>
+							</tr>
+							<tr class = "alt">
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surarbA" style="font-weight:bold;"></span> </td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="arbA" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="arbAR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="height: 34px;" ><div class="arbal32 trooptdcm" /></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="arbDR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="arbD" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surarbD" style="font-weight:bold;"></span></td>
+							</tr>
 
-			<tr>
-			<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="survanqA" style="font-weight:bold;"></span> </td><td><input type="text" id="vanqA" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"></td>
-			<td><input type="text" id="vanqAR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><div class="vanq32 trooptdcm" /></td>
-			<td><input type="text" id="vanqDR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><input type="text" id="vanqD" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td><td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="survanqD" style="font-weight:bold;"></span></td>
-			</tr>
+							<tr>
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surpraA" style="font-weight:bold;"></span> </td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="praA" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="praAR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="height: 34px;" ><div class="praet32 trooptdcm" /></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="praDR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="praD" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"> <span id="surpraD" style="font-weight:bold;"></span></td>
+							</tr>
+							<tr class = "alt">
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surramA" style="font-weight:bold;"></span> </td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="ramA" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="ramAR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="height: 34px;" ><div class="ram32 trooptdcm" /></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="ramDR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="ramD" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surramD" style="font-weight:bold;"></span></td>
+							</tr>
+							<tr>
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surscorpA" style="font-weight:bold;"></span> </td>
+								 <td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="scorpA" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="scorpAR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="height: 34px;" ><div class="scorp32 trooptdcm" /></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="scorpDR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="scorpD" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"> <span id="surscorpD" style="font-weight:bold;"></span></td>
+							</tr>
+							<tr class = "alt">
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surbalisA" style="font-weight:bold;"></span> </td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="balisA" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="balisAR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="height: 34px;" ><div class="bally32 trooptdcm" /></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="balisDR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="balisD" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surbalisD" style="font-weight:bold;"></span></td>
+							</tr>
+							<tr>
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surgalleyA" style="font-weight:bold;"></span> </td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="galleyA" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="galleyAR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="height: 34px;" ><div class="galley32 trooptdcm" /></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="galleyDR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="galleyD" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"> <span id="surgalleyD" style="font-weight:bold;"></span></td>
+							</tr>
+							<tr class = "alt">
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surstingA" style="font-weight:bold;"></span> </td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="stingA" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="stingAR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="height: 34px;" ><div class="sting32 trooptdcm" /></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="stingDR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="stingD" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surstingD" style="font-weight:bold;"></span></td>
+							</tr>
+							<tr>
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surWgA" style="font-weight:bold;"></span> </td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="wgA" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="wgAR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style=" height: 34px;" ><div class="wship32 trooptdcm" /></td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="wgDR" size="1" maxlength="4" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="font-weight: bold; border-radius: 6px; background: #ffffff; color: black; border: 2px ridge black; text-align: center;">
+								<input type="text" id="wgD" size="5" value="0" style="font-weight: bold; border: none; background: transparent; color: inherit; text-align: center; width: 100%;"> </td>
+								<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"> <span id="surWgD" style="font-weight:bold;"></span></td>
+							</tr>
+						</table>
+						<div id="buttonbox" style="text-align:center;">
+							<input type=button value="Repeat" class="regButton greenb" style="width: 150px; margin-right:10px;" id="repeatbutton">
+							<input type=button value="Reset" class="regButton greenb" style="width: 150px;" id="resetbutton">
+						</div>
+						<div id="bla"></div>
+					</div>
+				</div>
+			</div>`;
 
-			<tr>
-			<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="sursorcA" style="font-weight:bold;"></span> </td> <td> <input type="text" id="sorcA" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"></td>
-			<td><input type="text" id="sorcAR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><div class="sorc32 trooptdcm" /></td>
-			<td><input type="text" id="sorcDR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><input type="text" id="sorcD" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td><td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"> <span id="sursorcD" style="font-weight:bold;"></span></td>
-			</tr>
 
-			<tr class = "alt">
-			<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surRangA" style="font-weight:bold;"></span> </td><td><input type="text" id="rangA" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"></td>
-			<td><input type="text" id="rangAR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><div class="ranger32 trooptdcm" /></td>
-			<td><input type="text" id="rangDR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><input type="text" id="rangD" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td><td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surRangD" style="font-weight:bold;"></span></td>
-			</tr>
-
-			<tr>
-			<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surtriA" style="font-weight:bold;"></span> </td> <td> <input type="text" id="triA" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"></td>
-			<td><input type="text" id="triAR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><div class="triari32 trooptdcm" /></td>
-			<td><input type="text" id="triDR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><input type="text" id="triD" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td><td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"> <span id="surtriD" style="font-weight:bold;"></span></td>
-			</tr>
-
-			<tr class = "alt">
-			<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surpriA" style="font-weight:bold;"></span> </td><td><input type="text" id="priA" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"></td>
-			<td><input type="text" id="priAR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><div class="priest32 trooptdcm" /></td>
-			<td><input type="text" id="priDR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><input type="text" id="priD" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td><td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surpriD" style="font-weight:bold;"></span></td>
-			</tr>
-
-			<tr>
-			<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surScoutA" style="font-weight:bold;"></span> </td> <td> <input type="text" id="scoutA" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"></td>
-			<td><input type="text" id="scoutAR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><div class="scout32 trooptdcm" /></td>
-			<td><input type="text" id="scoutDR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><input type="text" id="scoutD" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td><td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"> <span id="surScoutD" style="font-weight:bold;"></span></td>
-			</tr>
-
-			<tr class = "alt">
-			<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surhorseA" style="font-weight:bold;"></span> </td><td><input type="text" id="horseA" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"></td>
-			<td><input type="text" id="horseAR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><div class="horsem32 trooptdcm" /></td>
-			<td><input type="text" id="horseDR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><input type="text" id="horseD" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td><td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surhorseD" style="font-weight:bold;"></span></td>
-			</tr>
-
-			<tr>
-			<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surdruidA" style="font-weight:bold;"></span> </td> <td> <input type="text" id="druidA" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"></td>
-			<td><input type="text" id="druidAR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><div class="druid32 trooptdcm" /></td>
-			<td><input type="text" id="druidDR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><input type="text" id="druidD" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td><td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"> <span id="surdruidD" style="font-weight:bold;"></span></td>
-			</tr>
-
-			<tr class = "alt">
-			<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surarbA" style="font-weight:bold;"></span> </td><td><input type="text" id="arbA" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"></td>
-			<td><input type="text" id="arbAR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><div class="arbal32 trooptdcm" /></td>
-			<td><input type="text" id="arbDR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><input type="text" id="arbD" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td><td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surarbD" style="font-weight:bold;"></span></td>
-			</tr>
-
-			<tr>
-			<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surpraA" style="font-weight:bold;"></span> </td> <td> <input type="text" id="praA" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"></td>
-			<td><input type="text" id="praAR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><div class="praet32 trooptdcm" /></td>
-			<td><input type="text" id="praDR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><input type="text" id="praD" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td><td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"> <span id="surpraD" style="font-weight:bold;"></span></td>
-			</tr>
-
-			<tr class = "alt">
-			<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surramA" style="font-weight:bold;"></span> </td><td><input type="text" id="ramA" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"></td>
-			<td><input type="text" id="ramAR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><div class="ram32 trooptdcm" /></td>
-			<td><input type="text" id="ramDR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><input type="text" id="ramD" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td><td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surramD" style="font-weight:bold;"></span></td>
-			</tr>
-
-			<tr>
-			<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surscorpA" style="font-weight:bold;"></span> </td> <td> <input type="text" id="scorpA" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"></td>
-			<td><input type="text" id="scorpAR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><div class="scorp32 trooptdcm" /></td>
-			<td><input type="text" id="scorpDR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><input type="text" id="scorpD" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td><td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"> <span id="surscorpD" style="font-weight:bold;"></span></td>
-			</tr>
-
-			<tr class = "alt">
-			<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surbalisA" style="font-weight:bold;"></span> </td><td><input type="text" id="balisA" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"></td>
-			<td><input type="text" id="balisAR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><div class="bally32 trooptdcm" /></td>
-			<td><input type="text" id="balisDR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><input type="text" id="balisD" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td><td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surbalisD" style="font-weight:bold;"></span></td>
-			</tr>
-
-			<tr>
-			<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surgalleyA" style="font-weight:bold;"></span> </td> <td> <input type="text" id="galleyA" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"></td>
-			<td><input type="text" id="galleyAR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><div class="galley32 trooptdcm" /></td>
-			<td><input type="text" id="galleyDR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><input type="text" id="galleyD" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td><td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"> <span id="surgalleyD" style="font-weight:bold;"></span></td>
-			</tr>
-
-			<tr class = "alt">
-			<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surstingA" style="font-weight:bold;"></span> </td><td><input type="text" id="stingA" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"></td>
-			<td><input type="text" id="stingAR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><div class="sting32 trooptdcm" /></td>
-			<td><input type="text" id="stingDR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><input type="text" id="stingD" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td><td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surstingD" style="font-weight:bold;"></span></td>
-			</tr>
-
-			<tr>
-			<td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"><span id="surWgA" style="font-weight:bold;"></span> </td> <td> <input type="text" id="wgA" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"></td>
-			<td><input type="text" id="wgAR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><div class="wship32 trooptdcm" /></td>
-			<td><input type="text" id="wgDR" size="1" maxlength="4" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td>
-			<td><input type="text" id="wgD" size="5" value="0" style="font-weight: bold; border-radius: 6px;background: #e1c190;color: black;text-align: center;"> </td><td style="font-size: 12px;font-weight: 1000;margin-left: auto;background: #e1c190;border: ridge 3px #3a3a3a;margin-right: auto;text-align: center;border-radius: 6px;"> <span id="surWgD" style="font-weight:bold;"></span></td>
-			</tr>
-
-			<div id="buttonbox" style="text-align:center;">
-			<input type=button value="Repeat" class="regButton greenb" style="width: 150px; margin-right:10px;" id="repeatbutton">
-			<input type=button value="Reset" class="regButton greenb" style="width: 150px;" id="resetbutton">
-			</div>
-			<div id="bla"></div>`;
-			//end of Section 2
-			kumar += '</div>';
-			// end of content section
-			kumar += '</div>';
-			// end of  content window
-			kumar += '</div>';
-			//end of popup window
-			kumar += '</div>';
-			$("#reportsViewBox").after(kumar);
-			$("#kumardiv").draggable({
+			$("#reportsViewBox").after(gfKumar);
+			$("#gfKumardiv").draggable({
 				handle: ".popUpBar",
 				containment: "window",
 				scroll: true
 			});
-			//$( "#kumardiv" ).resizable();
+			//$( "#gfKumardiv" ).resizable();
 			$("#resetbutton").click(function() {
 				reset();
 			});
@@ -12035,6 +12658,7 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 			mystdef = isFinite(mystdef) ? mystdef : 0;
 			artdef = isFinite(artdef) ? artdef : 0;
 			sumofdef = infdef + cavdef + mystdef + artdef;
+
 			//calculating ratios of attack to defence
 			ratioinf = infatk * 1.0 / infdef;
 			ratiocav = cavatk * 1.0 / cavdef;
@@ -12125,19 +12749,22 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 			defcavlosses = isFinite(defcavlosses) ? defcavlosses : 0;
 			defmystlosses = isFinite(defmystlosses) ? defmystlosses : 0;
 			defartlosses = isFinite(defartlosses) ? defartlosses : 0;
+
 			//surving defence TS calculation
-			defloss = Number(definflosses * percinfattk + defcavlosses * percavattk + defmystlosses * permystattk + defartlosses * perartattk);
-			for (var i = 0; i < 17; i++) {
-				lossdefTS[i] = zdefenderts[i] * defloss * defintensity;
-				if (lossdefTS[i] > zdefenderts[i]) {
-					lossdefTS[i] = zdefenderts[i];
-				}
-				survivingdefTS[i] = parseInt(zdefenderts[i] - lossdefTS[i]);
-			}
+            defloss=Number(definflosses*percinfattk+defcavlosses*percavattk+defmystlosses*permystattk+defartlosses*perartattk);
+            for(var i=0;i<17;i++){
+                lossdefTS[i]=zdefenderts[i]*defloss*defintensity;
+                if(lossdefTS[i]>zdefenderts[i]){
+                    lossdefTS[i]=zdefenderts[i]
+                }
+                survivingdefTS[i]=parseInt(zdefenderts[i]-lossdefTS[i]);
+            }
+            console.log(survivingdefTS);
+			// Updating the HTML elements with surviving defensive TS values
 			$("#survcgD").text(survivingdefTS[0]);
 			$("#survanqD").text(survivingdefTS[5]);
 			$("#sursorcD").text(survivingdefTS[6]);
-			$("#surRangD").text(survivingdefTS[2]);
+			$("#surrangD").text(survivingdefTS[2]);
 			$("#surtriD").text(survivingdefTS[3]);
 			$("#surpriD").text(survivingdefTS[4]);
 			$("#surScoutD").text(survivingdefTS[7]);
@@ -12151,17 +12778,21 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 			$("#surgalleyD").text(survivingdefTS[14]);
 			$("#surstingD").text(survivingdefTS[15]);
 			$("#surWgD").text(survivingdefTS[16]);
-			//surving offensive TS calculation
+
+			// Surviving offensive TS calculation
 			for (var i = 0; i < 17; i++) {
 				survoffTS[i] = attcavlosses * isCavalry[i] + attinflosses * isInfantry[i] + attmystlosses * isMagic[i] + isArtillery[i] * attartlosses;
 			}
+
+			// Updating the HTML elements with surviving offensive TS values
 			for (var i = 0; i < 17; i++) {
-				lossaTroopScoreIndex[i] = attackerts[i] * survoffTS[i] * atkintenstity;
-				if (lossaTroopScoreIndex[i] > attackerts[i]) {
-					lossaTroopScoreIndex[i] = attackerts[i];
-				}
+				lossaTroopScoreIndex[i] = Math.min(attackerts[i] * survoffTS[i] * atkintenstity, attackerts[i]);
+                if(lossaTroopScoreIndex [i]>attackerts[i]){
+                    lossaTroopScoreIndex [i]=attackerts[i]
+                }
 				survivingaTroopScoreIndex[i] = parseInt(attackerts[i] - lossaTroopScoreIndex[i]);
 			}
+
 			$("#survanqA").text(survivingaTroopScoreIndex[5]);
 			$("#sursorcA").text(survivingaTroopScoreIndex[6]);
 			$("#surRangA").text(survivingaTroopScoreIndex[2]);
@@ -12178,9 +12809,7 @@ elements.forEach(element => element.addEventListener("click", countOAttacks));
 			$("#surgalleyA").text(survivingaTroopScoreIndex[14]);
 			$("#surstingA").text(survivingaTroopScoreIndex[15]);
 			$("#surWgA").text(survivingaTroopScoreIndex[16]);
+
 		}
 	})();
-
-
-
 })();
