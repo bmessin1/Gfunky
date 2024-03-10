@@ -19,7 +19,7 @@ Last Modified:  Mar 9,2024
 	const LMD = new Date('Mar 9, 2024');
 
 	$(() => {
-	  const startupWindowContent = '
+	  const startupWindowContent = `
 		<div id='startwinDiv' class='popUpBox ui-draggable'>
 		  <div class='ppbwinbgr ui-draggable'>
 			<div class='ppbwintop ui-draggable'></div>
